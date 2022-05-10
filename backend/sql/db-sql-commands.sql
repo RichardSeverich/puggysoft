@@ -1,0 +1,8 @@
+-- CREATE DATA BASES
+CREATE DATABASE puggysoftdb;
+
+-- DELETE DATA BASES
+DROP DATABASE puggysoftdb;
+
+-- SELECT ALL DATA: show all rows.
+SELECT * FROM users;
