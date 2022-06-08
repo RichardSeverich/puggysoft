@@ -1,4 +1,4 @@
-package com.complejo;
+package com.puggysoft;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

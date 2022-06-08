@@ -1,29 +1,32 @@
-package com.yeshua.dtos.users;
+package com.puggysoft.dtos.users;
 
-import com.yeshua.dtos.DtoSuperClass;
-import com.yeshua.entities.users.EntityUser;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-
+import com.puggysoft.dtos.DtoSuperClass;
+import com.puggysoft.entities.users.EntityUser;
+import java.sql.Blob;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
+/**
+* Class.
+*/
 @Data
 @EqualsAndHashCode(callSuper = true)
 public class DtoUser extends DtoSuperClass {
 
   @NotNull
-  @Size(min = 3, max = 10)
+  @Size(min = 3, max = 20)
   private String username;
 
   @NotNull
-  @Size(min = 3, max = 10)
+  @Size(min = 3, max = 20)
   private String password;
 
   @NotNull
-  @Size(min = 3, max = 10)
+  @Size(min = 3, max = 20)
   private String dni;
 
   @NotNull
@@ -32,7 +35,15 @@ public class DtoUser extends DtoSuperClass {
 
   @NotNull
   @Size(min = 3, max = 30)
+  private String secondName;
+
+  @NotNull
+  @Size(min = 3, max = 30)
   private String lastName;
+
+  @NotNull
+  @Size(min = 3, max = 30)
+  private String secondLastName;
 
   @NotNull
   @Size(min = 10, max = 10)
@@ -40,57 +51,61 @@ public class DtoUser extends DtoSuperClass {
   private String birthDate;
 
   @NotNull
-  @Size(min = 3, max = 60)
-  private String address;
+  @Size(min = 3, max = 30)
+  private String telephone;
 
   @NotNull
-  @Size(min = 3, max = 30)
-  private String phone;
+  @Size(min = 3, max = 60)
+  private String address;
 
   @NotNull
   @Email
   @Size(min = 3, max = 30)
   private String email;
 
+  private Blob image;
+
+  /** convert from dto to entity. */
   public EntityUser dtoToEntity() {
     EntityUser entity = new EntityUser();
     entity.setId(id);
-    entity.setUserCode(userCode);
-    entity.setSpecialization((specialization == null || specialization.isEmpty()) ? "none" : specialization);
-    entity.setDni(dni);
-    entity.setName(name);
-    entity.setLastName(lastName);
-    entity.setBirthDate(birthDate);
-    entity.setAddress(address);
-    entity.setPhone(phone);
-    entity.setEmail(email);
     entity.setUsername(username);
     entity.setPassword(password);
+    entity.setDni(dni);
+    entity.setName(name);
+    entity.setSecondName(secondName);
+    entity.setLastName(lastName);
+    entity.setSecondLastName(secondLastName);
+    entity.setBirthDate(birthDate);
+    entity.setTelephone(telephone);
+    entity.setAddress(address);
+    entity.setEmail(email);
+    entity.setImage(image);
     entity.setCreatedBy(createdBy);
     entity.setUpdatedBy(updatedBy);
-
     return entity;
   }
 
+  /** convert from entity to dto. */
   public static DtoUser entityToDto(EntityUser entity) {
     DtoUser dto = new DtoUser();
     dto.setId(entity.getId());
-    dto.setUserCode(entity.getUserCode());
-    dto.setSpecialization(entity.getSpecialization());
-    dto.setDni(entity.getDni());
-    dto.setName(entity.getName());
-    dto.setLastName(entity.getLastName());
-    dto.setBirthDate(entity.getBirthDate());
-    dto.setAddress(entity.getAddress());
-    dto.setPhone(entity.getPhone());
-    dto.setEmail(entity.getEmail());
     dto.setUsername(entity.getUsername());
     dto.setPassword(entity.getPassword());
+    dto.setDni(entity.getDni());
+    dto.setName(entity.getName());
+    dto.setName(entity.getSecondName());
+    dto.setLastName(entity.getLastName());
+    dto.setLastName(entity.getSecondLastName());
+    dto.setBirthDate(entity.getBirthDate());
+    dto.setTelephone(entity.getTelephone());
+    dto.setAddress(entity.getAddress());
+    dto.setEmail(entity.getEmail());
+    dto.setImage(entity.getImage());
     dto.setCreatedBy(entity.getCreatedBy());
     dto.setUpdatedBy(entity.getUpdatedBy());
     dto.setCreationDate(entity.getCreationDate());
     dto.setUpdateDate(entity.getUpdateDate());
-
     return dto;
   }
 }

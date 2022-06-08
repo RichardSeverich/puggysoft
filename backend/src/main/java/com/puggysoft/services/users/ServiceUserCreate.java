@@ -8,15 +8,17 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+/** Services for create a user. */
 @Service
 public class ServiceUserCreate {
 
   @Autowired
-  private IRepositoryUser repository;
+  private IRepositoryUser repositoryUser;
 
-  public ResponseEntity<String> post(DtoUser dtoUser) {
+  /** method for create a user. */
+  public ResponseEntity<String> create(DtoUser dtoUser) {
     try {
-      repository.save(dtoUser.dtoToEntity());
+      repositoryUser.save(dtoUser.dtoToEntity());
       return ResponseEntity.status(HttpStatus.CREATED).body("Created successfully");
     } catch (DataAccessException ex) {
       String dbException = ex.getMostSpecificCause().getMessage();

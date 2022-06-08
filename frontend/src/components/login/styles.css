@@ -1,0 +1,13 @@
+/* Only applies for resolutions greater than 1080px */
+@media (min-width:1080px) {
+    .puggysoft-login-form {
+        margin: auto;
+        width: 25%;
+        padding-top: 1rem;
+    }
+} 
+
+.app-logo {
+    animation: App-logo-spin infinite 20s linear;
+    height: 7rem;
+}

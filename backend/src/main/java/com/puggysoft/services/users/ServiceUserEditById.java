@@ -1,7 +1,7 @@
-package com.yeshua.services.users;
+package com.puggysoft.services.users;
 
-import com.yeshua.dtos.users.DtoUser;
-import com.yeshua.repositories.users.IRepositoryUser;
+import com.puggysoft.dtos.users.DtoUser;
+import com.puggysoft.repositories.users.IRepositoryUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
@@ -9,18 +9,20 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+/** Services for edit a user by id. */
 @Service
 public class ServiceUserEditById {
 
   @Autowired
-  private IRepositoryUser _iRepositoryUser;
+  private IRepositoryUser repositoryUser;
 
+  /** method for edit a user. */
   @Transactional
-  public ResponseEntity<String> editById(Integer id, DtoUser dtoUser) {
-    if (_iRepositoryUser.existsById(id.longValue())) {
+  public ResponseEntity<String> editById(Long id, DtoUser dtoUser) {
+    if (repositoryUser.existsById(id)) {
       try {
         dtoUser.setId(id.longValue());
-        _iRepositoryUser.save(dtoUser.dtoToEntity());
+        repositoryUser.save(dtoUser.dtoToEntity());
 
         return ResponseEntity.status(HttpStatus.OK).body("Updated successfully");
       } catch (DataAccessException ex) {

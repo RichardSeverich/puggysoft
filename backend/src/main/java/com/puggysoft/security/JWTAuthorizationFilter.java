@@ -1,4 +1,4 @@
-package com.complejo.security;
+package com.puggysoft.security;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;

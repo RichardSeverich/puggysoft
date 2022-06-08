@@ -6,6 +6,7 @@
 2. Install gradle-6.4.1
 3. Install java 1.8.0_201
 4. Install Mysql 5
+5. Install 19.03.8 (Optional)
 
 ### Optional install mysql db in docker
 
@@ -36,7 +37,6 @@ docker run -d --name myadmin --link mysql:db -p 8080:80 phpmyadmin/phpmyadmin:4.
 container will start in:
 http://10.31.35.100:8080/
 root, secret123
-
 ```
 
 ## Deploy 🚀
@@ -47,6 +47,7 @@ root, secret123
 1. gradlew build
 2. configure: build/resources/main/java/com/puggysoft/resources/application.properties
 3. java -jar build/libs/java-spring-puggysoft.jar
+4. Optional for devs: gradlew bootRun
 
 ### Deploy Docker
 0. execute all queries from sql folder
@@ -108,32 +109,66 @@ POST localhost:8080/api/v1/login
   "token": "Bearer ..."
 }
 ```
+
 #### Users:
 
 ```
 GET localhost:8080/api/v1/users
 POST localhost:8080/api/v1/users
 GET localhost:8080/api/v1/users/{id}
+GET localhost:8080/api/v1/users/pagination?page=0&size=10
+GET localhost:8080/api/v1/users/pagination/size/10
 PUT localhost:8080/api/v1/users/{id}
 DELETE localhost:8080/api/v1/users/{id}
 
 {
-  "id": 1000,
-  "username": "admin",
-  "password": "admin123",
-  "dni": "0000000",
-  "name": "Admin",
-  "fatherLastName": "Admin",
-  "motherLastName": "Admin",
-  "birthDate": "1990-01-01",
-  "telephone": "76479009",
-  "address": "Av. Villazon km-5",
-  "email": "Admin@gmail.com",
-  "type": "admin",
-  "creationDate": "2020-10-16 22:46:43",
-  "updateDate": null,
+  "id": 1010,
+  "username": "lzimpson",
+  "password": "cass222",
+  "dni": "5928354",
+  "name": "N/A",
+  "secondName": null,
+  "lastName": "Capry",
+  "secondLastName": null,
+  "birthDate": "1992-03-18",
+  "telephone": "74874444",
+  "address": "Av. Sheeba",
+  "email": "Liza.Simpson@gmail.com",
+  "image": null,
+  "createdBy": "admin",
+  "updatedBy": null,
+  "creationDate": "2022-06-07T14:54:58.000+0000",
+  "updateDate": null
+}
+```
+
+#### Products:
+
+```
+GET localhost:8080/api/v1/products
+POST localhost:8080/api/v1/products
+GET localhost:8080/api/v1/products/{id}
+GET localhost:8080/api/v1/products/pagination?page=0&size=10
+GET localhost:8080/api/v1/products/pagination/size/10
+GET localhost:8080/api/v1/products/size
+PUT localhost:8080/api/v1/products/{id}
+DELETE localhost:8080/api/v1/products/{id}
+
+{
+  "id": 1010,
+  "name": "Te Dharamsala",
+  "purchasePrice": 15.0,
+  "salePrice": 18.0,
+  "stock": 39,
+  "description": "",
+  "image": null,
+  "barCode": null,
+  "location": "Estante 3, Nivel 3",
+  "minimumStock": null,
   "createdBy": null,
-  "updatedBy": null
+  "updatedBy": null,
+  "creationDate": "2022-06-07T14:55:24.000+0000",
+  "updateDate": null
 }
 ```
 

@@ -1,4 +1,4 @@
-package com.complejo.security;
+package com.puggysoft.security;
 
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;

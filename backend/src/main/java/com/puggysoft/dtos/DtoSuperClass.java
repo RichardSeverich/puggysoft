@@ -1,9 +1,8 @@
 package com.puggysoft.dtos;
 
-import lombok.Data;
-
-import javax.validation.constraints.Size;
 import java.util.Date;
+import javax.validation.constraints.Size;
+import lombok.Data;
 
 @Data
 public abstract class DtoSuperClass {
