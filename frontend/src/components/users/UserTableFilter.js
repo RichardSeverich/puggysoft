@@ -5,6 +5,7 @@ import { handleGetRequest } from "../../actions/HandleManager";
 import i18n from "../../i18n/i18n";
 import arrayDataFields from "../../models/users/arrayUserDataFields";
 import arrayColumns from "../../models/users/arrayUserColumns";
+import arrayColumnsFilter from "../../models/users/arrayUserColumnsFilter";
 
 const pageSize = 10;
 const numberPagesToShow = 10;
@@ -42,6 +43,7 @@ function UserTable() {
         paginationSetTotalPages={setTotalPages}
         paginationSetActivePage={setActivePage}
         paginationSetInitialPage={setInitialPage}
+        filterArrayColumns={arrayColumnsFilter}
       ></CommonTablePagination>
     </div>
   );

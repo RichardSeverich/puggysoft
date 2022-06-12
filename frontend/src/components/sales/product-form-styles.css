@@ -1,0 +1,9 @@
+/* Only applies for resolutions greater than 1080px */
+@media (min-width:1080px) {
+    .puggysoft-product-form {
+        margin: auto;
+        width: 30%;
+        padding-top: 1rem;
+    }
+} 
+

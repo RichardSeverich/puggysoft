@@ -1,4 +1,5 @@
 const userTable = {
+  title: "Usuarios",
   columnId: "Id",
   columnUsername: "Username",
   columnPassword: "Contrasena",

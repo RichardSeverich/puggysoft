@@ -10,10 +10,10 @@ const errorStaus409 = () => { alert(i18n.errorMessages.errorStaus409); }
 const invalidCredentials = () => { alert(i18n.errorMessages.invalidCredentials); }
 const customMessage = (message) => { alert(message); }
 
-const commonMessages = (response) => { 
-  if(response && response.status===400){
+const commonMessages = (response) => {
+  if (response && response.status === 400) {
     errorStaus400();
-    if(response.data && response.data.errors){
+    if (response.data && response.data.errors) {
       let meessage = "";
       response.data.errors.forEach(error => {
         let objectName = error.objectName;
@@ -28,11 +28,11 @@ const commonMessages = (response) => {
       });
       customMessage(meessage);
     }
-  } else if (response && response.status===403){
+  } else if (response && response.status === 403) {
     errorStaus403();
-  } else if (response && response.status===409){
+  } else if (response && response.status === 409) {
     errorStaus409();
-    if(response.data && response.data.message){
+    if (response.data && response.data.message) {
       let meessage = response.data.message;
       customMessage(meessage);
     }
@@ -42,22 +42,22 @@ const commonMessages = (response) => {
 }
 
 const addMessages = (response) => {
-  response && response.status===201 ? successfullyCreated() : commonMessages(response);
+  response && response.status === 201 ? successfullyCreated() : commonMessages(response);
 }
 
 const editMessages = (response) => {
-  response && response.status===200 ? successfullyEdited() : commonMessages(response);
+  response && response.status === 200 ? successfullyEdited() : commonMessages(response);
 }
 
-const deleteMessages = (response) => { 
-  response && response.status===200 ? successfullyDeleted() : commonMessages(response);
+const deleteMessages = (response) => {
+  response && response.status === 200 ? successfullyDeleted() : commonMessages(response);
 }
 
-const loginMessages = (response) => { 
-  if(response.status===400){
+const loginMessages = (response) => {
+  if (response.status === 400) {
     // invalid user and password
     invalidCredentials();
-  } else if(response.status===404){
+  } else if (response.status === 404) {
     // user and pass does not exist
     invalidCredentials();
   } else {

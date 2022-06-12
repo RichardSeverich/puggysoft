@@ -3,6 +3,8 @@ import handleGetRequest from "./HandleGetRequest";
 import handleAddRequest from "./HandleAddRequest";
 import handleEditRequest from "./HandleEditRequest";
 import handleDeleteRequest from "./HandleDeleteRequest";
+import handleLoginRequest from "./HandleLoginRequest";
+
 // MOCK
 /*import handleGetMock from "./mock/HandleGetMock";
 import handleAddMock from "./mock/HandleAddMock";
@@ -38,14 +40,10 @@ if(isMockDisable){
   handleDelete = handleDeleteRequest;
 }*/
 
-const handleGet = handleGetRequest;
-const handleCreate = handleAddRequest;
-const handleEdit = handleEditRequest;
-const handleDelete = handleDeleteRequest;
-
 export {
-  handleGet,
-  handleCreate,
-  handleEdit,
-  handleDelete,
+  handleGetRequest,
+  handleAddRequest,
+  handleEditRequest,
+  handleDeleteRequest,
+  handleLoginRequest
 }

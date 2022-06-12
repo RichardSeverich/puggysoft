@@ -1,43 +1,13 @@
 import { useState, useEffect } from "react";
-import CommonTablePagination from '../common/CommonTablePagination';
-import { handleGet } from "../../actions/HandleManager";
+import CommonTablePagination from '../../components-common/CommonTablePagination';
+import CommonLoading from '../../components-common/CommonLoading';
+import { handleGetRequest } from "../../actions/HandleManager";
 import i18n from "../../i18n/i18n";
-
-const arrayDataFields = [
-  'image',
-  'id',
-  'name',
-  'purchasePrice',
-  'salePrice',
-  'stock',
-  'minimumStock',
-  'description',
-  'barCode',
-  'location',
-  'createdBy',
-  'updatedBy',
-  'creationDate',
-  'updateDate'
-];
-
-const arrayColumns = [
-  i18n.productTable.columnImage,
-  i18n.productTable.columnId,
-  i18n.productTable.columnName,
-  i18n.productTable.columnPurchasePrice,
-  i18n.productTable.columnSalePrice,
-  i18n.productTable.columnStock,
-  i18n.productTable.columnMinimumStock,
-  i18n.productTable.columnDescription,
-  i18n.productTable.columnBarCode,
-  i18n.productTable.columnLocation,
-  i18n.productTable.columnCreatedBy,
-  i18n.productTable.columnUpdatedBy,
-  i18n.productTable.columnCreationDate,
-  i18n.productTable.columnUpdateDate,
-];
+import arrayDataFields from "../../models/sales/arrayProductDataFields";
+import arrayColumns from "../../models/sales/arrayProductColumns";
 
 const pageSize = 10;
+const numberPagesToShow = 10;
 
 function ProductTable() {
 
@@ -47,31 +17,32 @@ function ProductTable() {
   const [initialPage, setInitialPage] = useState(1);
 
   useEffect(() => {
-    handleGet(`products/pagination?page=${activePage - 1}&size=${pageSize}`, setArrayData);
+    handleGetRequest(`products/pagination?page=${activePage - 1}&size=${pageSize}`, setArrayData);
   }, [activePage]);
 
   useEffect(() => {
-    handleGet(`products/pagination/size/${pageSize}`, setTotalPages);
+    handleGetRequest(`products/pagination/size/${pageSize}`, setTotalPages);
   }, [activePage]);
 
   if (arrayData == null || totalPages == null) {
-    return "Loading";
+    return <CommonLoading></CommonLoading>;
   }
 
   return (
-    <div className="products-table">
+    <div className="puggysoft-product-table">
       <CommonTablePagination
+        tableTitle={i18n.productTable.title}
         tableArrayData={arrayData}
         tableArrayDataFields={arrayDataFields}
         tableArrayColumns={arrayColumns}
-        activePage={activePage}
-        totalPages={totalPages}
-        initialPage={initialPage}
-        setArrayData={setArrayData}
-        setTotalPages={setTotalPages}
-        setActivePage={setActivePage}
-        setInitialPage={setInitialPage}
-        numberPagesToShow={10}
+        paginationTotalPages={totalPages}
+        paginationNumberPagesToShow={numberPagesToShow}
+        paginationInitialPage={initialPage}
+        paginationActivePage={activePage}
+        paginationSetArrayData={setArrayData}
+        paginationSetTotalPages={setTotalPages}
+        paginationSetActivePage={setActivePage}
+        paginationSetInitialPage={setInitialPage}
       ></CommonTablePagination>
     </div>
   );

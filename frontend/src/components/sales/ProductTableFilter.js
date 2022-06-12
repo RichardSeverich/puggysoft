@@ -3,24 +3,26 @@ import CommonTablePagination from '../../components-common/CommonTablePagination
 import CommonLoading from '../../components-common/CommonLoading';
 import { handleGetRequest } from "../../actions/HandleManager";
 import i18n from "../../i18n/i18n";
-import arrayDataFields from "../../models/users/arrayUserDataFields";
-import arrayColumns from "../../models/users/arrayUserColumns";
+import arrayDataFields from "../../models/sales/arrayProductDataFields";
+import arrayColumns from "../../models/sales/arrayProductColumns";
+import arrayColumnsFilter from "../../models/sales/arrayProductColumnsFilter";
 
 const pageSize = 10;
 const numberPagesToShow = 10;
 
-function UserTable() {
+function ProductTable() {
+
   const [arrayData, setArrayData] = useState(null);
   const [totalPages, setTotalPages] = useState(null);
   const [activePage, setActivePage] = useState(1);
   const [initialPage, setInitialPage] = useState(1);
 
   useEffect(() => {
-    handleGetRequest(`users/pagination?page=${activePage - 1}&size=${pageSize}`, setArrayData);
+    handleGetRequest(`products/pagination?page=${activePage - 1}&size=${pageSize}`, setArrayData);
   }, [activePage]);
 
   useEffect(() => {
-    handleGetRequest(`users/pagination/size/${pageSize}`, setTotalPages);
+    handleGetRequest(`products/pagination/size/${pageSize}`, setTotalPages);
   }, [activePage]);
 
   if (arrayData == null || totalPages == null) {
@@ -28,9 +30,9 @@ function UserTable() {
   }
 
   return (
-    <div className="puggysoft-user-table">
+    <div className="puggysoft-product-table">
       <CommonTablePagination
-        tableTitle={i18n.userTable.title}
+        tableTitle={i18n.productTable.title}
         tableArrayData={arrayData}
         tableArrayDataFields={arrayDataFields}
         tableArrayColumns={arrayColumns}
@@ -42,9 +44,10 @@ function UserTable() {
         paginationSetTotalPages={setTotalPages}
         paginationSetActivePage={setActivePage}
         paginationSetInitialPage={setInitialPage}
+        filterArrayColumns={arrayColumnsFilter}
       ></CommonTablePagination>
     </div>
   );
 }
 
-export default UserTable;
+export default ProductTable;

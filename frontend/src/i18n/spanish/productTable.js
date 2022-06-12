@@ -1,7 +1,8 @@
 const productTable = {
+  title: "Productos",
   columnId: "Id",
   columnName: "Nombre Producto",
-  columnPurchasePrice: "PRecio de compra",
+  columnPurchasePrice: "Precio de compra",
   columnSalePrice: "Precio de venta",
   columnStock: "Stock Disponible",
   columnMinimumStock: "Stock Minimo",
