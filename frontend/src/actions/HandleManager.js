@@ -4,6 +4,8 @@ import handleAddRequest from "./HandleAddRequest";
 import handleEditRequest from "./HandleEditRequest";
 import handleDeleteRequest from "./HandleDeleteRequest";
 import handleLoginRequest from "./HandleLoginRequest";
+import handleFilterRequest from "./HandleFilterRequest";
+
 
 // MOCK
 /*import handleGetMock from "./mock/HandleGetMock";
@@ -45,5 +47,6 @@ export {
   handleAddRequest,
   handleEditRequest,
   handleDeleteRequest,
-  handleLoginRequest
+  handleLoginRequest,
+  handleFilterRequest
 }

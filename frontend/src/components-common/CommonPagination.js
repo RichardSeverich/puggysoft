@@ -86,9 +86,11 @@ function CommonPagination(props) {
   }
 
   const changeActivePage = function (newPage) {
-    setArrayData(null);
-    setTotalPages(null);
-    setActivePage(newPage);
+    if (newPage !== activePage) {
+      setArrayData(null);
+      setTotalPages(null);
+      setActivePage(newPage);
+    }
   }
 
   const pagesItems = function () {
@@ -112,11 +114,11 @@ function CommonPagination(props) {
   return (
     <div className="puggysoft-common-pagination" >
       <Pagination>
-        <Pagination.First onClick={firstPrevHandler} key='Pagination.First' />
+        {totalPages > 1 && <Pagination.First disable onClick={firstPrevHandler} key='Pagination.First' />}
         <Pagination.Prev onClick={lastPrevHandler} key='Pagination.Prev' />
         {pagesItems()}
         <Pagination.Next onClick={nextHandler} key='Pagination.Next' />
-        <Pagination.Last onClick={lastHandler} key='Pagination.Last' />
+        {totalPages > 1 && <Pagination.Last onClick={lastHandler} key='Pagination.Last' />}
       </Pagination>
     </div>
   )

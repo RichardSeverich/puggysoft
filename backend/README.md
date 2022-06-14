@@ -117,7 +117,6 @@ GET localhost:8080/api/v1/users
 POST localhost:8080/api/v1/users
 GET localhost:8080/api/v1/users/{id}
 GET localhost:8080/api/v1/users/pagination?page=0&size=10
-GET localhost:8080/api/v1/users/filter?page=0&size=10
 GET localhost:8080/api/v1/users/pagination/size/10
 PUT localhost:8080/api/v1/users/{id}
 DELETE localhost:8080/api/v1/users/{id}
@@ -140,6 +139,47 @@ DELETE localhost:8080/api/v1/users/{id}
   "updatedBy": null,
   "creationDate": "2022-06-07T14:54:58.000+0000",
   "updateDate": null
+}
+```
+
+* Filter
+```
+POST localhost:8080/api/v1/users/filter?page=0&size=10
+POST localhost:8080/api/v1/users/filter/size/{pageSize}
+POST localhost:8080/api/v1/users/filter/size/10
+
+{
+    "idCriteria": "",
+    "idOperator": "TEXT_CONTAINS",
+    "usernameCriteria": "",
+    "usernameOperator": "TEXT_CONTAINS",
+    "passwordCriteria": "",
+    "passwordOperator": "NONE",
+    "dniCriteria": "",
+    "dniOperator": "TEXT_CONTAINS",
+    "nameCriteria": "",
+    "nameOperator": "TEXT_CONTAINS",
+    "secondNameCriteria": "",
+    "secondNameOperator": "TEXT_CONTAINS",
+    "lastNameCriteria": "",
+    "lastNameOperator": "TEXT_CONTAINS",
+    "secondLastNameCriteria": "",
+    "secondLastNameOperator": "TEXT_CONTAINS",
+    "birthDateNameOperator": "DATE_EQUALS",
+    "telephoneCriteria": "",
+    "telephoneOperator": "TEXT_CONTAINS",
+    "addressCriteria": "",
+    "addressOperator": "TEXT_CONTAINS",
+    "emailCriteria": "",
+    "emailOperator": "TEXT_CONTAINS",
+    "createdByCriteria": "",
+    "createdByOperator": "TEXT_CONTAINS",
+    "updatedByCriteria": "",
+    "updatedByOperator": "TEXT_CONTAINS",
+    "creationDateCriteria": "",
+    "creationDateOperator": "DATE_EQUALS",
+    "updateDateCriteria": "",
+    "updateDateOperator": "DATE_EQUALS"
 }
 ```
 

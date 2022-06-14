@@ -171,9 +171,50 @@ const getColumnsFilterModel = function (
     setOperatorsDefaultValues();
   }
 
+
+  const getFilterBody = () => {
+    const filterBody = {
+      idCriteria: textboxId,
+      idOperator: operatorId,
+      usernameCriteria: textboxUsername,
+      usernameOperator: operatorUsername,
+      passwordCriteria: "",
+      passwordOperator: enumFilterType.NONE,
+      dniCriteria: textboxDni,
+      dniOperator: operatorDni,
+      nameCriteria: textboxName,
+      nameOperator: operatorName,
+      secondNameCriteria: textboxSecondName,
+      secondNameOperator: operatorSecondName,
+      lastNameCriteria: textboxLastName,
+      lastNameOperator: operatorLastName,
+      secondLastNameCriteria: textboxSecondLastName,
+      secondLastNameOperator: operatorSecondLastName,
+      birthDateCriteria: textboxBirthDate,
+      birthDateNameOperator: operatorBirthDate,
+      telephoneCriteria: textboxTelephone,
+      telephoneOperator: operatorTelephone,
+      addressCriteria: textboxAddress,
+      addressOperator: operatorAddress,
+      emailCriteria: textboxEmail,
+      emailOperator: operatorEmail,
+      createdByCriteria: textboxCreatedBy,
+      createdByOperator: operatorCreatedBy,
+      updatedByCriteria: textboxUpdatedBy,
+      updatedByOperator: operatorUpdatedBy,
+      creationDateCriteria: textboxCreatedDate,
+      creationDateOperator: operatorCreatedDate,
+      updateDateCriteria: textboxUpdatedDate,
+      updateDateOperator: operatorUpdatedDate
+    }
+    return filterBody;
+  }
+
   return {
     arrayColumnsFilter,
-    clearFilters
+    clearFilters,
+    getFilterBody,
+    setOperatorsDefaultValues
   }
 
 }

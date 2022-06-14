@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import CommonTablePagination from '../../components-common/CommonTablePagination';
 import CommonLoading from '../../components-common/CommonLoading';
-import { handleGetRequest } from "../../actions/HandleManager";
+import { handleGetRequest, handleFilterRequest } from "../../actions/HandleManager";
 import i18n from "../../i18n/i18n";
 import arrayDataFields from "../../models/users/arrayUserDataFields"
 import arrayColumns from "../../models/users/arrayUserColumns";
@@ -52,7 +52,7 @@ function UserTable() {
   const { value: operatorCreatedDate, onChange: operatorOnChangeCreatedDate, setValue: setCreatedDate } = useInput(enumCompareOperators.DATE_EQUALS);
   const { value: operatorUpdatedDate, onChange: operatorOnChangeUpdatedDate, setValue: setUpdatedDate } = useInput(enumCompareOperators.DATE_EQUALS);
 
-  const { arrayColumnsFilter, clearFilters } = getColumnsFilterModel(
+  const { arrayColumnsFilter, clearFilters, getFilterBody } = getColumnsFilterModel(
     /*ID*/ textboxId, textboxOnChangeId, textboxResetId, operatorId, operatorOnChangeId, setId,
     /*USERNAME*/ textboxUsername, textboxOnChangeUsername, textboxResetUsername, operatorUsername, operatorOnChangeUsername, setUsername,
     /*DNI*/ textboxDni, textboxOnChangeDni, textboxResetDni, operatorDni, operatorOnChangeDni, setDni,
@@ -71,11 +71,13 @@ function UserTable() {
   );
 
   useEffect(() => {
-    handleGetRequest(`users/pagination?page=${activePage - 1}&size=${pageSize}`, setArrayData);
+    const filterBody = getFilterBody();
+    handleFilterRequest(`users/filter?page=${activePage - 1}&size=${pageSize}`, filterBody, setArrayData);
   }, [activePage]);
 
   useEffect(() => {
-    handleGetRequest(`users/pagination/size/${pageSize}`, setTotalPages);
+    const filterBody = getFilterBody();
+    handleFilterRequest(`users/filter/size/${pageSize}`, filterBody, setTotalPages);
   }, [activePage]);
 
   if (arrayData == null || totalPages == null) {
@@ -83,41 +85,12 @@ function UserTable() {
   }
 
   const handleFilter = () => {
-    const filterBody = {
-      idCriteria: textboxId,
-      idOperator: operatorId,
-      usernameCriteria: textboxUsername,
-      usernameOperator: operatorUsername,
-      passwordCriteria: "",
-      passwordOperator: "NONE",
-      dniCriteria: textboxDni,
-      dniOperator: operatorDni,
-      nameCriteria: textboxName,
-      nameOperator: operatorName,
-      secondNameCriteria: textboxSecondName,
-      secondNameOperator: operatorSecondName,
-      lastNameCriteria: textboxLastName,
-      lastNameOperator: operatorLastName,
-      secondLastNameCriteria: textboxSecondLastName,
-      secondLastNameOperator: operatorSecondLastName,
-      birthDateCriteria: textboxBirthDate,
-      birthDateNameOperator: operatorBirthDate,
-      telephoneCriteria: textboxTelephone,
-      telephoneOperator: operatorTelephone,
-      addressCriteria: textboxAddress,
-      addressOperator: operatorAddress,
-      emailCriteria: textboxEmail,
-      emailOperator: operatorEmail,
-      createdByCriteria: textboxCreatedBy,
-      createdByOperator: operatorCreatedBy,
-      updatedByCriteria: textboxUpdatedBy,
-      updatedByOperator: operatorUpdatedBy,
-      creationDateCriteria: textboxCreatedDate,
-      creationDateOperator: operatorCreatedDate,
-      updateDateCriteria: textboxUpdatedDate,
-      updateDateOperator: operatorUpdatedDate
-    }
-    console.log(filterBody);
+    const filterBody = getFilterBody();
+    console.log({filterBody})
+    setArrayData(null);
+    setTotalPages(null);
+    handleFilterRequest(`users/filter?page=${activePage - 1}&size=${pageSize}`, filterBody, setArrayData);
+    handleFilterRequest(`users/filter/size/${pageSize}`, filterBody, setTotalPages);
   }
 
   return (

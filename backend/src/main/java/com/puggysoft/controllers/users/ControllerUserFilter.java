@@ -20,9 +20,9 @@ public class ControllerUserFilter {
 
   @PostMapping(path = "/api/v1/users/filter")
   public ResponseEntity<List<DtoUser>> post(
-    @RequestParam int page,
-    @RequestParam int size,
-    @RequestBody @Valid DtoUserFilter dtoUserFilter) {
+      @RequestParam int page,
+      @RequestParam int size,
+      @RequestBody @Valid DtoUserFilter dtoUserFilter) {
     return servicesUserFilter.filter(page, size, dtoUserFilter);
   }
 }
