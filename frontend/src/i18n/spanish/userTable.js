@@ -3,6 +3,7 @@ const userTable = {
   columnId: "Id",
   columnUsername: "Username",
   columnPassword: "Contrasena",
+  columnDni: "dni",
   columnName: "Primer Nombre",
   columnSecondName: "Segundo Nombre",
   columnLastName: "Apellido Paterno",

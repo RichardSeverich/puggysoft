@@ -117,6 +117,7 @@ GET localhost:8080/api/v1/users
 POST localhost:8080/api/v1/users
 GET localhost:8080/api/v1/users/{id}
 GET localhost:8080/api/v1/users/pagination?page=0&size=10
+GET localhost:8080/api/v1/users/filter?page=0&size=10
 GET localhost:8080/api/v1/users/pagination/size/10
 PUT localhost:8080/api/v1/users/{id}
 DELETE localhost:8080/api/v1/users/{id}

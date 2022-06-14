@@ -1,19 +1,19 @@
-import enumTableColumnFilter from "../enumTableColumnFilter";
+import enumFilterType from "../enumFilterType";
 
 const arrayColumnsFilter = [
-  enumTableColumnFilter.NONE,
-  enumTableColumnFilter.TEXTBOX,
-  enumTableColumnFilter.TEXTBOX,
-  enumTableColumnFilter.TEXTBOX,
-  enumTableColumnFilter.TEXTBOX,
-  enumTableColumnFilter.DROPDOWN,
-  enumTableColumnFilter.TEXTBOX,
-  enumTableColumnFilter.TEXTBOX,
-  enumTableColumnFilter.TEXTBOX,
-  enumTableColumnFilter.TEXTBOX,
-  enumTableColumnFilter.TEXTBOX,
-  enumTableColumnFilter.TEXTBOX,
-  enumTableColumnFilter.DATE,
-  enumTableColumnFilter.DATE,
+  enumFilterType.NONE,
+  enumFilterType.TEXTBOX,
+  enumFilterType.TEXTBOX,
+  enumFilterType.TEXTBOX,
+  enumFilterType.TEXTBOX,
+  enumFilterType.DROPDOWN,
+  enumFilterType.TEXTBOX,
+  enumFilterType.TEXTBOX,
+  enumFilterType.TEXTBOX,
+  enumFilterType.TEXTBOX,
+  enumFilterType.TEXTBOX,
+  enumFilterType.TEXTBOX,
+  enumFilterType.DATE,
+  enumFilterType.DATE,
 ];
 export default arrayColumnsFilter;

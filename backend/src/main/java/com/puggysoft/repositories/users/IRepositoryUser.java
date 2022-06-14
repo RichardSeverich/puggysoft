@@ -23,9 +23,14 @@ public interface IRepositoryUser extends JpaRepository<EntityUser, Long> {
   List<EntityUser> findUsersWithoutRols(Long idRol);
 
   @Query(value = "SELECT * FROM users LIMIT ?1,?2;", nativeQuery = true)
-  List<EntityUser> findUsersByPagination(int page, int size);
+  List<EntityUser> findUsersByPagination(int off, int size);
 
   @Query(value = "SELECT COUNT(*) FROM users;", nativeQuery = true)
   Long findSize();
+
+  @Query(value = "SELECT * FROM users "
+          + "WHERE ?1 "
+          + "LIMIT ?2,?3;", nativeQuery = true)
+  List<EntityUser> filter( String queryFilter, int off, int size);
 
 }

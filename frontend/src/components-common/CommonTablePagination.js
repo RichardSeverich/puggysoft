@@ -22,6 +22,8 @@ function CommonTablePagination(props) {
     paginationSetActivePage,
     paginationSetInitialPage,
     filterArrayColumns,
+    filterClear,
+    filterHandler,
   } = props;
 
   return (
@@ -32,6 +34,8 @@ function CommonTablePagination(props) {
         arrayColumns={tableArrayColumns}
         tableTitle={tableTitle}
         filterArrayColumns={filterArrayColumns}
+        filterClear={filterClear}
+        filterHandler={filterHandler}
       >
       </CommonTable>
       <CommonPagination

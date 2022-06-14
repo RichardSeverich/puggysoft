@@ -5,6 +5,7 @@ const arrayColumns = [
   i18n.userTable.columnId,
   i18n.userTable.columnUsername,
   i18n.userTable.columnPassword,
+  i18n.userTable.columnDni,
   i18n.userTable.columnName,
   i18n.userTable.columnSecondName,
   i18n.userTable.columnLastName,

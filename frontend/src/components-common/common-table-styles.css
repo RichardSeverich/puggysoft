@@ -1,29 +1,32 @@
-table {
-    display: block;
-    overflow-x: auto;
-    white-space: nowrap;
-}
+/* Only applies for resolutions greater than 1080px */
+@media (min-width:1080px) {
+    table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
 
-.puggysoft-filter-button {
-    float: left;
-}
+    .puggysoft-filter-button {
+        float: left;
+    }
 
-.puggysoft-clean-button {
-    float: left;
-}
+    .puggysoft-clean-button {
+        float: left;
+    }
 
-.puggysoft-excel-export-button {
-    float: left;
-}
+    .puggysoft-excel-export-button {
+        float: left;
+    }
 
-.puggysoft-pdf-export-button {
-    float: left;
-}
+    .puggysoft-pdf-export-button {
+        float: left;
+    }
 
-.puggysoft-edit-button {
-    float: left;
-}
+    .puggysoft-edit-button {
+        float: left;
+    }
 
-.puggysoft-delete-button {
-    float: left;
+    .puggysoft-delete-button {
+        float: left;
+    }
 }

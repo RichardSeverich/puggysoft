@@ -1,4 +1,4 @@
-package com.complejo.support;
+package com.puggysoft.support;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;

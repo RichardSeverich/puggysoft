@@ -4,7 +4,9 @@ import Form from 'react-bootstrap/Form'
 import i18n from "../i18n/i18n";
 
 import "./common-table-styles.css"
-import enumTableColumnFilter from "../models/enumTableColumnFilter";
+import enumFilterType from "../models/enumFilterType";
+import enumCompareOperators from "../models/enumCompareOperators";
+
 
 /**
  *  arrayData = [{},{},{},{}]
@@ -20,6 +22,8 @@ function CommonTable(props) {
     arrayColumns,
     arrayDataFields,
     filterArrayColumns,
+    filterClear,
+    filterHandler
   } = props;
 
   const tableColumns = () => {
@@ -30,27 +34,85 @@ function CommonTable(props) {
 
   const tableFilters = () => {
     const result = filterArrayColumns.map(function (filter, index) {
-      if (enumTableColumnFilter.TEXTBOX === filter) {
+      if (enumFilterType.NONE === filter.type) {
+        return <th key={'filter-' + index}>
+          <Form.Control disabled placeholder="" />
+        </th>
+      } else if (enumFilterType.TEXTBOX === filter.type) {
         return <><th key={'filter-' + index}>
-          <Form.Control placeholder="" />
-          <Form.Select>
-            <option value="contains">Contiene</option>
-            <option value="equals">Igual que</option>
-            <option value="equals">Empiza por</option>
+          <Form.Control
+            value={filter.textboxValue}
+            onChange={filter.textboxOnchange}
+            placeholder="" />
+          <Form.Select
+            value={filter.operatorValue}
+            onChange={filter.operatorOnchange}
+          >
+            <option value={enumCompareOperators.TEXT_CONTAINS}>{i18n.commonTable.filterTextContains}</option>
+            <option value={enumCompareOperators.TEXT_EQUALS}>{i18n.commonTable.filterTextEquals}</option>
+            <option value={enumCompareOperators.TEXT_START_WITH}>{i18n.commonTable.filterTextStartWith}</option>
+            <option value={enumCompareOperators.TEXT_END_WITH}>{i18n.commonTable.filterTextEndWith}</option>
           </Form.Select>
         </th></>
-      } else if (enumTableColumnFilter.NONE === filter) {
-        return <th key={'filter-' + index}><Form.Control disabled placeholder="" /></th>
-      } else if (enumTableColumnFilter.DATE === filter) {
-        return <th key={'filter-' + index}><Form.Control type="date" placeholder="" /></th>
-      } else if (enumTableColumnFilter.DROPDOWN === filter) {
+      } else if (enumFilterType.DATE === filter.type) {
         return <th key={'filter-' + index}>
-          <Form.Select>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
+          <Form.Control
+            value={filter.textboxValue}
+            onChange={filter.textboxOnchange}
+            type="date" placeholder="" />
+          <Form.Select
+            value={filter.operatorValue}
+            onChange={filter.operatorOnchange}
+          >
+            <option value={enumCompareOperators.DATE_EQUALS}>{i18n.commonTable.filterDateEquals}</option>
+            <option value={enumCompareOperators.DATE_GREATER_EQUALS_THAN}>{i18n.commonTable.filterDateGreaterEqualsThan}</option>
+            <option value={enumCompareOperators.DATE_GREATER_THAN}>{i18n.commonTable.filterDateGreaterThan}</option>
+            <option value={enumCompareOperators.DATE_SMALLER_EQUALS_THAN}>{i18n.commonTable.filterDateSmallerEqualsThan}</option>
+            <option value={enumCompareOperators.DATE_SMALLER_THAN}>{i18n.commonTable.filterDateSmallerThan}</option>
           </Form.Select>
         </th>
+      } else if (enumFilterType.DATE_RANGE === filter.type) {
+        return <th key={'filter-' + index}>
+          <Form.Control
+            value={filter.textboxValueStartDate}
+            onChange={filter.textboxOnchangeStartDate}
+            type="date" placeholder="" />
+          <Form.Control
+            value={filter.textboxValueStartEnd}
+            onChange={filter.textboxOnchangeStartEnd}
+            type="date" placeholder="" />
+        </th>
+      } else if (enumFilterType.DROPDOWN === filter.type) {
+        return <th key={'filter-' + index}>
+          <Form.Select
+            value={filter.textboxValue}
+            onChange={filter.textboxOnchange}
+          >
+            {
+              filter.type.options.map(function (value, index) {
+                <option value={value}>{value}</option>
+              })
+            }
+          </Form.Select>
+        </th>
+      } else if (enumFilterType.NUMBER === filter.type) {
+        return <><th key={'filter-' + index}>
+          <Form.Control
+            value={filter.textboxValue}
+            onChange={filter.textboxOnchange}
+            type="number"
+            placeholder="" />
+          <Form.Select
+            value={filter.operatorValue}
+            onChange={filter.operatorOnchange}
+          >
+            <option value={enumCompareOperators.NUMBER_EQUALS}>{i18n.commonTable.filterNumberEquals}</option>
+            <option value={enumCompareOperators.NUMBER_GREATER_EQUALS_THAN}>{i18n.commonTable.filterNumberGreaterEqualsThan}</option>
+            <option value={enumCompareOperators.NUMBER_GREATER_THAN}>{i18n.commonTable.filterNumberGreaterThan}</option>
+            <option value={enumCompareOperators.NUMBER_SMALLER_EQUALS_THAN}>{i18n.commonTable.filterNumberSmallerEqualsThan}</option>
+            <option value={enumCompareOperators.NUMBER_SMALLER_THAN}>{i18n.commonTable.filterNumberSmallerThan}</option>
+          </Form.Select>
+        </th></>
       } else {
         return <th key={'filter-' + index}><Form.Control disabled placeholder="" /></th>
       }
@@ -77,8 +139,13 @@ function CommonTable(props) {
   const filterActionButtons = () => {
     return (
       <>
-        <Button variant="info puggysoft-filter-button">{i18n.commonTable.filterButton}</Button>
-        <Button variant="secondary puggysoft-clean-button">{i18n.commonTable.cleanButton}</Button>
+        <Button
+          onClick={filterHandler}
+          variant="info puggysoft-filter-button">{i18n.commonTable.filterButton}</Button>
+        <Button
+          onClick={filterClear}
+          variant="secondary puggysoft-clean-button"
+        >{i18n.commonTable.cleanButton}</Button>
       </>
     )
   }
@@ -86,12 +153,12 @@ function CommonTable(props) {
   return (
     <div className="puggysoft-common-table" >
       <h3>{tableTitle}</h3>
-      <div classname='puggysoft-table-actions'>
+      <div className='puggysoft-table-actions'>
         {filterArrayColumns && filterArrayColumns.length > 0 && filterActionButtons()}
         <Button variant="primary puggysoft-excel-export-button">{i18n.commonTable.excelExportButton}</Button>
         <Button variant="success puggysoft-pdf-export-button">{i18n.commonTable.pdfExportButton}</Button>
       </div>
-      <Table responsive="xl" striped bordered hover>
+      <Table striped bordered hover>
         <thead>
           <tr>
             {tableColumns()}

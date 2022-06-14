@@ -3,6 +3,7 @@ const arrayDataFields = [
   'id',
   'username',
   'password',
+  'dni',
   'name',
   'secondName',
   'lastName',
