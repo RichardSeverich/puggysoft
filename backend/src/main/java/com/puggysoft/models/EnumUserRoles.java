@@ -1,0 +1,14 @@
+package com.puggysoft.models;
+
+public enum EnumUserRoles {
+  ADMIN,
+  ADMIN_USERS,
+  SALES_ADMIN,
+  SALES_CLIENT,
+  SALES_SELLER,
+  // HOSPITAL
+  HOSPITAL_ADMIN,
+  HOSPITAL_PATIENT,
+  HOSPITAL_DOCTOR,
+  HOSPITAL_TICKETS_ADMIN
+}

@@ -41,8 +41,8 @@ function CommonTable(props) {
       } else if (enumFilterType.TEXTBOX === filter.type) {
         return <><th key={'filter-' + index}>
           <Form.Control
-            value={filter.textboxValue}
-            onChange={filter.textboxOnchange}
+            value={filter.criteriaValue}
+            onChange={filter.criteriaOnchange}
             placeholder="" />
           <Form.Select
             value={filter.operatorValue}
@@ -57,8 +57,8 @@ function CommonTable(props) {
       } else if (enumFilterType.DATE === filter.type) {
         return <th key={'filter-' + index}>
           <Form.Control
-            value={filter.textboxValue}
-            onChange={filter.textboxOnchange}
+            value={filter.criteriaValue}
+            onChange={filter.criteriaOnchange}
             type="date" placeholder="" />
           <Form.Select
             value={filter.operatorValue}
@@ -74,23 +74,23 @@ function CommonTable(props) {
       } else if (enumFilterType.DATE_RANGE === filter.type) {
         return <th key={'filter-' + index}>
           <Form.Control
-            value={filter.textboxValueStartDate}
-            onChange={filter.textboxOnchangeStartDate}
+            value={filter.criteriaValueStartDate}
+            onChange={filter.criteriaOnchangeStartDate}
             type="date" placeholder="" />
           <Form.Control
-            value={filter.textboxValueStartEnd}
-            onChange={filter.textboxOnchangeStartEnd}
+            value={filter.criteriaValueStartEnd}
+            onChange={filter.criteriaOnchangeStartEnd}
             type="date" placeholder="" />
         </th>
       } else if (enumFilterType.DROPDOWN === filter.type) {
         return <th key={'filter-' + index}>
           <Form.Select
-            value={filter.textboxValue}
-            onChange={filter.textboxOnchange}
+            value={filter.criteriaValue}
+            onChange={filter.criteriaOnchange}
           >
             {
-              filter.type.options.map(function (value, index) {
-                <option value={value}>{value}</option>
+              filter.dropdownValues.map(function (item, index) {
+                return <option key={'option-' + index} value={item.value}>{item.text}</option>
               })
             }
           </Form.Select>
@@ -98,8 +98,8 @@ function CommonTable(props) {
       } else if (enumFilterType.NUMBER === filter.type) {
         return <><th key={'filter-' + index}>
           <Form.Control
-            value={filter.textboxValue}
-            onChange={filter.textboxOnchange}
+            value={filter.criteriaValue}
+            onChange={filter.criteriaOnchange}
             type="number"
             placeholder="" />
           <Form.Select

@@ -12,10 +12,8 @@ import "./user-form-styles.css"
 function UserForm(props) {
 
   //const [isEdit, setIsEdit] = useState(props.location.state);
-  const [isEdit, setIsEdit] = useState(false);
-  if (props && props.location && props.location.state) {
-    setIsEdit(props.location.state);
-  }
+  const isEditDefaultValue = props && props.location && props.location.state;
+  const [isEdit, setIsEdit] = useState(isEditDefaultValue);
 
   // Put default values:
   let id = isEdit ? isEdit.data.id : "";
@@ -110,7 +108,7 @@ function UserForm(props) {
               <Form.Control
                 onChange={onChangeDni}
                 value={valueDni}
-                type="password"
+                type="text"
                 placeholder={i18n.userForm.fieldDni} />
             </Form.Group>
             <Form.Group className="mb-3" controlId="name">

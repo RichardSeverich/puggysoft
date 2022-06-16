@@ -18,15 +18,15 @@ import lombok.EqualsAndHashCode;
 public class DtoUser extends DtoSuperClass {
 
   @NotNull
-  @Size(min = 3, max = 20)
+  @Size(min = 3, max = 30)
   private String username;
 
   @NotNull
-  @Size(min = 3, max = 20)
+  @Size(min = 3, max = 30)
   private String password;
 
   @NotNull
-  @Size(min = 3, max = 20)
+  @Size(min = 3, max = 30)
   private String dni;
 
   @NotNull
@@ -49,6 +49,18 @@ public class DtoUser extends DtoSuperClass {
   @Size(min = 10, max = 10)
   @Pattern(regexp = "([12]\\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\d|3[01]))")
   private String birthDate;
+
+  @NotNull
+  private int age;
+
+  @NotNull
+  @Size(min = 9, max = 10)
+  @Pattern(regexp = "(MALE|FEMALE)")
+  private String sex; // MALE, FEMALE
+
+  @NotNull
+  @Size(min = 3, max = 60)
+  private String occupation;
 
   @NotNull
   @Size(min = 3, max = 30)
@@ -77,6 +89,9 @@ public class DtoUser extends DtoSuperClass {
     entity.setLastName(lastName);
     entity.setSecondLastName(secondLastName);
     entity.setBirthDate(birthDate);
+    entity.setAge(age);
+    entity.setSex(sex);
+    entity.setOccupation(occupation);
     entity.setTelephone(telephone);
     entity.setAddress(address);
     entity.setEmail(email);
@@ -94,10 +109,13 @@ public class DtoUser extends DtoSuperClass {
     dto.setPassword(entity.getPassword());
     dto.setDni(entity.getDni());
     dto.setName(entity.getName());
-    dto.setName(entity.getSecondName());
+    dto.setSecondName(entity.getSecondName());
     dto.setLastName(entity.getLastName());
-    dto.setLastName(entity.getSecondLastName());
+    dto.setSecondLastName(entity.getSecondLastName());
     dto.setBirthDate(entity.getBirthDate());
+    dto.setAge(entity.getAge());
+    dto.setSex(entity.getSex());
+    dto.setOccupation(entity.getOccupation());
     dto.setTelephone(entity.getTelephone());
     dto.setAddress(entity.getAddress());
     dto.setEmail(entity.getEmail());

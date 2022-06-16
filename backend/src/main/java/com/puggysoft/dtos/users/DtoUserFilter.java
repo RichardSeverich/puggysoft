@@ -12,13 +12,13 @@ public class DtoUserFilter {
 
   public String idCriteria;
   public EnumCompareOperator idOperator;
-  @Size(max = 20)
+  @Size(max = 30)
   public String usernameCriteria;
   public EnumCompareOperator usernameOperator;
-  @Size(max = 20)
+  @Size(max = 30)
   public String passwordCriteria;
   public EnumCompareOperator passwordOperator;
-  @Size(max = 20)
+  @Size(max = 30)
   public String dniCriteria;
   public EnumCompareOperator dniOperator;
   @Size(max = 30)
@@ -35,7 +35,15 @@ public class DtoUserFilter {
   public EnumCompareOperator secondLastNameOperator;
   @Size(max = 10)
   public String birthDateCriteria;
-  public EnumCompareOperator birthDateNameOperator;
+  public EnumCompareOperator birthDateOperator;
+  public String ageCriteria;
+  public EnumCompareOperator ageOperator;
+  @Size(max = 10)
+  public String sexCriteria;
+  public EnumCompareOperator sexOperator;
+  @Size(max = 60)
+  public String occupationCriteria;
+  public EnumCompareOperator occupationOperator;
   @Size(max = 30)
   public String telephoneCriteria;
   public EnumCompareOperator telephoneOperator;

@@ -37,7 +37,7 @@ const navBar = {
   reportSalesAnnual: "Reporte de Ventas anuales",
   reportRevenueByDate: "Reporte de Ingresos por fecha",
   // Config
-  configAdmin: "Reportes",
+  configAdmin: "Config",
   configSystem: "Parametros del sistema",
   configLogout: "Cerrar sesion"
 };

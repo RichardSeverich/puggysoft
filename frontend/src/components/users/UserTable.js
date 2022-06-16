@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
+import { useHistory } from "react-router";
 import CommonTablePagination from '../../components-common/CommonTablePagination';
 import CommonLoading from '../../components-common/CommonLoading';
-import { handleGetRequest } from "../../actions/HandleManager";
+import { handleGetRequest, handleDeleteRequest } from "../../actions/HandleManager";
 import i18n from "../../i18n/i18n";
 import arrayDataFields from "../../models/users/arrayUserDataFields";
 import arrayColumns from "../../models/users/arrayUserColumns";
@@ -14,6 +15,7 @@ function UserTable() {
   const [totalPages, setTotalPages] = useState(null);
   const [activePage, setActivePage] = useState(1);
   const [initialPage, setInitialPage] = useState(1);
+  const history = useHistory();
 
   useEffect(() => {
     handleGetRequest(`users/pagination?page=${activePage - 1}&size=${pageSize}`, setArrayData);
@@ -27,6 +29,20 @@ function UserTable() {
     return <CommonLoading></CommonLoading>;
   }
 
+  function handleEdit(row) {
+    history.push({
+      pathname: "/users-form",
+      state: {
+        data: row,
+        edit: true
+      }
+    })
+  }
+
+  function handleDelete(row) {
+    handleDeleteRequest("users/", row.id)
+  }
+
   return (
     <div className="puggysoft-user-table">
       <CommonTablePagination
@@ -34,6 +50,8 @@ function UserTable() {
         tableArrayData={arrayData}
         tableArrayDataFields={arrayDataFields}
         tableArrayColumns={arrayColumns}
+        tableHandleEdit={handleEdit}
+        tableHandleDelete={handleDelete}
         paginationTotalPages={totalPages}
         paginationNumberPagesToShow={numberPagesToShow}
         paginationInitialPage={initialPage}

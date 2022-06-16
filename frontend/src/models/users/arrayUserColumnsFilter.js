@@ -1,22 +1,27 @@
 import enumFilterType from "../enumFilterType";
 import enumCompareOperators from "./../enumCompareOperators";
+import enumSex from "./../users/enumSex";
+import i18n from "../../i18n/i18n";
 
 const getColumnsFilterModel = function (
-    /*ID*/ textboxId, textboxOnChangeId, textboxResetId, operatorId, operatorOnChangeId, setId,
-    /*USERNAME*/ textboxUsername, textboxOnChangeUsername, textboxResetUsername, operatorUsername, operatorOnChangeUsername, setUsername,
-    /*DNI*/ textboxDni, textboxOnChangeDni, textboxResetDni, operatorDni, operatorOnChangeDni, setDni,
-    /*NAME*/ textboxName, textboxOnChangeName, textboxResetName, operatorName, operatorOnChangeName, setName,
-    /*SECOND NAME*/textboxSecondName, textboxOnChangeSecondName, textboxResetSecondName, operatorSecondName, operatorOnChangeSecondName, setSecondName,
-    /*LAST NAME*/ textboxLastName, textboxOnChangeLastName, textboxResetLastName, operatorLastName, operatorOnChangeLastName, setLastName,
-    /*SECOND LAST NAME*/textboxSecondLastName, textboxOnChangeSecondLastName, textboxResetSecondLastName, operatorSecondLastName, operatorOnChangeSecondLastName, setSecondLastName,
-    /*BIRTHDATE*/textboxBirthDate, textboxOnChangeBirthDate, textboxResetBirthDate, operatorBirthDate, operatorOnChangeBirthDate, setBirthDate,
-    /*TELEPHONE*/textboxTelephone, textboxOnChangeTelephone, textboxResetTelephone, operatorTelephone, operatorOnChangeTelephone, setTelephone,
-    /*ADDRESS*/textboxAddress, textboxOnChangeAddress, textboxResetAddress, operatorAddress, operatorOnChangeAddress, setAddress,
-    /*EMAIL*/textboxEmail, textboxOnChangeEmail, textboxResetEmail, operatorEmail, operatorOnChangeEmail, setEmail,
-    /*CREATED BY*/textboxCreatedBy, textboxOnChangeCreatedBy, textboxResetCreatedBy, operatorCreatedBy, operatorOnChangeCreatedBy, setCreatedBy,
-    /*UPDATED BY*/textboxUpdatedBy, textboxOnChangeUpdatedBy, textboxResetUpdatedBy, operatorUpdatedBy, operatorOnChangeUpdatedBy, setUpdatedBy,
-    /*CREATED DATE*/textboxCreatedDate, textboxOnChangeCreatedDate, setValueCreatedDate, operatorCreatedDate, operatorOnChangeCreatedDate, setCreatedDate,
-    /*UPDATED DATE*/textboxUpdatedDate, textboxOnChangeUpdatedDate, setValueUpdatedDate, operatorUpdatedDate, operatorOnChangeUpdatedDate, setUpdatedDate
+    /*ID*/ criteriaId, criteriaOnChangeId, criteriaSetId, operatorId, operatorOnChangeId, operatorSetId,
+    /*USERNAME*/ criteriaUsername, criteriaOnChangeUsername, criteriaSetUsername, operatorUsername, operatorOnChangeUsername, operatorSetUsername,
+    /*DNI*/ criteriaDni, criteriaOnChangeDni, criteriaSetDni, operatorDni, operatorOnChangeDni, operatorSetDni,
+    /*NAME*/ criteriaName, criteriaOnChangeName, criteriaSetName, operatorName, operatorOnChangeName, operatorSetName,
+    /*SECOND NAME*/criteriaSecondName, criteriaOnChangeSecondName, criteriaSetSecondName, operatorSecondName, operatorOnChangeSecondName, operatorSetSecondName,
+    /*LAST NAME*/ criteriaLastName, criteriaOnChangeLastName, criteriaSetLastName, operatorLastName, operatorOnChangeLastName, operatorSetLastName,
+    /*SECOND LAST NAME*/criteriaSecondLastName, criteriaOnChangeSecondLastName, criteriaSetSecondLastName, operatorSecondLastName, operatorOnChangeSecondLastName, operatorSetSecondLastName,
+    /*BIRTHDATE*/criteriaBirthDate, criteriaOnChangeBirthDate, criteriaSetBirthDate, operatorBirthDate, operatorOnChangeBirthDate, operatorSetBirthDate,
+    /*AGE*/criteriaAge, criteriaOnChangeAge, criteriaSetAge, operatorAge, operatorOnChangeAge, operatorSetAge,
+    /*SEX*/criteriaSex, criteriaOnChangeSex, criteriaSetSex, operatorSex, operatorOnChangeSex, operatorSetSex,
+    /*OCCUPATION*/criteriaOccupation, criteriaOnChangeOccupation, criteriaSetOccupation, operatorOccupation, operatorOnChangeOccupation, operatorSetOccupation,
+    /*TELEPHONE*/criteriaTelephone, criteriaOnChangeTelephone, criteriaSetTelephone, operatorTelephone, operatorOnChangeTelephone, operatorSetTelephone,
+    /*ADDRESS*/criteriaAddress, criteriaOnChangeAddress, criteriaSetAddress, operatorAddress, operatorOnChangeAddress, operatorSetAddress,
+    /*EMAIL*/criteriaEmail, criteriaOnChangeEmail, criteriaSetEmail, operatorEmail, operatorOnChangeEmail, operatorSetEmail,
+    /*CREATED BY*/criteriaCreatedBy, criteriaOnChangeCreatedBy, criteriaSetCreatedBy, operatorCreatedBy, operatorOnChangeCreatedBy, operatorSetCreatedBy,
+    /*UPDATED BY*/criteriaUpdatedBy, criteriaOnChangeUpdatedBy, criteriaSetUpdatedBy, operatorUpdatedBy, operatorOnChangeUpdatedBy, operatorSetUpdatedBy,
+    /*CREATED DATE*/criteriaCreatedDate, criteriaOnChangeCreatedDate, criteriaSetCreatedDate, operatorCreatedDate, operatorOnChangeCreatedDate, operatorSetCreatedDate,
+    /*UPDATED DATE*/criteriaUpdatedDate, criteriaOnChangeUpdatedDate, criteriaSetUpdatedDate, operatorUpdatedDate, operatorOnChangeUpdatedDate, operatorSetUpdatedDate
 ) {
 
   const arrayColumnsFilter = [
@@ -25,15 +30,15 @@ const getColumnsFilterModel = function (
     },
     {
       type: enumFilterType.TEXTBOX,
-      textboxValue: textboxId,
-      textboxOnchange: textboxOnChangeId,
+      criteriaValue: criteriaId,
+      criteriaOnchange: criteriaOnChangeId,
       operatorValue: operatorId,
       operatorOnchange: operatorOnChangeId,
     },
     {
       type: enumFilterType.TEXTBOX,
-      textboxValue: textboxUsername,
-      textboxOnchange: textboxOnChangeUsername,
+      criteriaValue: criteriaUsername,
+      criteriaOnchange: criteriaOnChangeUsername,
       operatorValue: operatorUsername,
       operatorOnchange: operatorOnChangeUsername,
     },
@@ -42,169 +47,206 @@ const getColumnsFilterModel = function (
     },
     {
       type: enumFilterType.TEXTBOX,
-      textboxValue: textboxDni,
-      textboxOnchange: textboxOnChangeDni,
+      criteriaValue: criteriaDni,
+      criteriaOnchange: criteriaOnChangeDni,
       operatorValue: operatorDni,
       operatorOnchange: operatorOnChangeDni,
     },
     {
       type: enumFilterType.TEXTBOX,
-      textboxValue: textboxName,
-      textboxOnchange: textboxOnChangeName,
+      criteriaValue: criteriaName,
+      criteriaOnchange: criteriaOnChangeName,
       operatorValue: operatorName,
       operatorOnchange: operatorOnChangeName,
     },
     {
       type: enumFilterType.TEXTBOX,
-      textboxValue: textboxSecondName,
-      textboxOnchange: textboxOnChangeSecondName,
+      criteriaValue: criteriaSecondName,
+      criteriaOnchange: criteriaOnChangeSecondName,
       operatorValue: operatorSecondName,
       operatorOnchange: operatorOnChangeSecondName,
     },
     {
       type: enumFilterType.TEXTBOX,
-      textboxValue: textboxLastName,
-      textboxOnchange: textboxOnChangeLastName,
+      criteriaValue: criteriaLastName,
+      criteriaOnchange: criteriaOnChangeLastName,
       operatorValue: operatorLastName,
       operatorOnchange: operatorOnChangeLastName,
     },
     {
       type: enumFilterType.TEXTBOX,
-      textboxValue: textboxSecondLastName,
-      textboxOnchange: textboxOnChangeSecondLastName,
+      criteriaValue: criteriaSecondLastName,
+      criteriaOnchange: criteriaOnChangeSecondLastName,
       operatorValue: operatorSecondLastName,
       operatorOnchange: operatorOnChangeSecondLastName,
     },
     {
       type: enumFilterType.DATE,
-      textboxValue: textboxBirthDate,
-      textboxOnchange: textboxOnChangeBirthDate,
+      criteriaValue: criteriaBirthDate,
+      criteriaOnchange: criteriaOnChangeBirthDate,
       operatorValue: operatorBirthDate,
       operatorOnchange: operatorOnChangeBirthDate,
     },
     {
+      type: enumFilterType.NUMBER,
+      criteriaValue: criteriaAge,
+      criteriaOnchange: criteriaOnChangeAge,
+      operatorValue: operatorAge,
+      operatorOnchange: operatorOnChangeAge,
+    },
+    {
+      type: enumFilterType.DROPDOWN,
+      criteriaValue: criteriaSex,
+      criteriaOnchange: criteriaOnChangeSex,
+      operatorValue: operatorSex,
+      operatorOnchange: operatorOnChangeSex,
+      dropdownValues: [
+        { value: "", text: i18n.userSexText.all },
+        { value: enumSex.MALE, text: i18n.userSexText.male },
+        { value: enumSex.FEMALE, text: i18n.userSexText.female }
+      ]
+    },
+    {
       type: enumFilterType.TEXTBOX,
-      textboxValue: textboxTelephone,
-      textboxOnchange: textboxOnChangeTelephone,
+      criteriaValue: criteriaOccupation,
+      criteriaOnchange: criteriaOnChangeOccupation,
+      operatorValue: operatorOccupation,
+      operatorOnchange: operatorOnChangeOccupation,
+    },
+    {
+      type: enumFilterType.TEXTBOX,
+      criteriaValue: criteriaTelephone,
+      criteriaOnchange: criteriaOnChangeTelephone,
       operatorValue: operatorTelephone,
       operatorOnchange: operatorOnChangeTelephone,
     },
 
     {
       type: enumFilterType.TEXTBOX,
-      textboxValue: textboxAddress,
-      textboxOnchange: textboxOnChangeAddress,
+      criteriaValue: criteriaAddress,
+      criteriaOnchange: criteriaOnChangeAddress,
       operatorValue: operatorAddress,
       operatorOnchange: operatorOnChangeAddress,
     },
     {
       type: enumFilterType.TEXTBOX,
-      textboxValue: textboxEmail,
-      textboxOnchange: textboxOnChangeEmail,
+      criteriaValue: criteriaEmail,
+      criteriaOnchange: criteriaOnChangeEmail,
       operatorValue: operatorEmail,
       operatorOnchange: operatorOnChangeEmail,
     },
     {
       type: enumFilterType.TEXTBOX,
-      textboxValue: textboxCreatedBy,
-      textboxOnchange: textboxOnChangeCreatedBy,
+      criteriaValue: criteriaCreatedBy,
+      criteriaOnchange: criteriaOnChangeCreatedBy,
       operatorValue: operatorCreatedBy,
       operatorOnchange: operatorOnChangeCreatedBy,
     },
     {
       type: enumFilterType.TEXTBOX,
-      textboxValue: textboxUpdatedBy,
-      textboxOnchange: textboxOnChangeUpdatedBy,
-      operatorValue: operatorUpdatedBy,
-      operatorOnchange: operatorOnChangeUpdatedBy,
+      criteriaValue: criteriaUpdatedBy,
+      criteriaOnchange: criteriaOnChangeUpdatedBy,
+      operatorValue: criteriaUpdatedBy,
+      operatorOnchange: criteriaOnChangeUpdatedBy,
     },
     {
       type: enumFilterType.DATE,
-      textboxValue: textboxCreatedDate,
-      textboxOnchange: textboxOnChangeCreatedDate,
+      criteriaValue: criteriaCreatedDate,
+      criteriaOnchange: criteriaOnChangeCreatedDate,
       operatorValue: operatorCreatedDate,
       operatorOnchange: operatorOnChangeCreatedDate,
     },
     {
       type: enumFilterType.DATE,
-      textboxValue: textboxUpdatedDate,
-      textboxOnchange: textboxOnChangeUpdatedDate,
+      criteriaValue: criteriaUpdatedDate,
+      criteriaOnchange: criteriaOnChangeUpdatedDate,
       operatorValue: operatorUpdatedDate,
       operatorOnchange: operatorOnChangeUpdatedDate,
     },
   ];
 
   const setOperatorsDefaultValues = function () {
-    setId(enumCompareOperators.TEXT_CONTAINS);
-    setUsername(enumCompareOperators.TEXT_CONTAINS);
-    setDni(enumCompareOperators.TEXT_CONTAINS);
-    setName(enumCompareOperators.TEXT_CONTAINS);
-    setSecondName(enumCompareOperators.TEXT_CONTAINS);
-    setLastName(enumCompareOperators.TEXT_CONTAINS);
-    setSecondLastName(enumCompareOperators.TEXT_CONTAINS);
-    setBirthDate(enumCompareOperators.DATE_EQUALS);
-    setTelephone(enumCompareOperators.TEXT_CONTAINS);
-    setAddress(enumCompareOperators.TEXT_CONTAINS);
-    setEmail(enumCompareOperators.TEXT_CONTAINS);
-    setCreatedBy(enumCompareOperators.TEXT_CONTAINS);
-    setUpdatedBy(enumCompareOperators.TEXT_CONTAINS);
-    setCreatedDate(enumCompareOperators.DATE_EQUALS)
-    setUpdatedDate(enumCompareOperators.DATE_EQUALS);
+    operatorSetId(enumCompareOperators.TEXT_CONTAINS);
+    operatorSetUsername(enumCompareOperators.TEXT_CONTAINS);
+    operatorSetDni(enumCompareOperators.TEXT_CONTAINS);
+    operatorSetName(enumCompareOperators.TEXT_CONTAINS);
+    operatorSetSecondName(enumCompareOperators.TEXT_CONTAINS);
+    operatorSetLastName(enumCompareOperators.TEXT_CONTAINS);
+    operatorSetSecondLastName(enumCompareOperators.TEXT_CONTAINS);
+    operatorSetBirthDate(enumCompareOperators.DATE_EQUALS);
+    operatorSetAge(enumCompareOperators.NUMBER_EQUALS);
+    operatorSetSex(enumCompareOperators.TEXT_EQUALS);
+    operatorSetOccupation(enumCompareOperators.DATE_EQUALS);
+    operatorSetTelephone(enumCompareOperators.TEXT_CONTAINS);
+    operatorSetAddress(enumCompareOperators.TEXT_CONTAINS);
+    operatorSetEmail(enumCompareOperators.TEXT_CONTAINS);
+    operatorSetCreatedBy(enumCompareOperators.TEXT_CONTAINS);
+    operatorSetUpdatedBy(enumCompareOperators.TEXT_CONTAINS);
+    operatorSetCreatedDate(enumCompareOperators.DATE_EQUALS)
+    operatorSetUpdatedDate(enumCompareOperators.DATE_EQUALS);
   }
 
   const clearFilters = function () {
-    textboxResetId();
-    textboxResetUsername();
-    textboxResetDni();
-    textboxResetName();
-    textboxResetSecondName();
-    textboxResetLastName();
-    textboxResetSecondLastName();
-    textboxResetBirthDate();
-    textboxResetTelephone();
-    textboxResetAddress();
-    textboxResetEmail();
-    textboxResetCreatedBy();
-    textboxResetUpdatedBy();
-    setValueCreatedDate("");
-    setValueUpdatedDate("");
-    setOperatorsDefaultValues();
+    criteriaSetId("");
+    criteriaSetUsername("");
+    criteriaSetDni("");
+    criteriaSetName("");
+    criteriaSetSecondName("");
+    criteriaSetLastName("");
+    criteriaSetSecondLastName("");
+    criteriaSetBirthDate("");
+    criteriaSetAge("");
+    criteriaSetSex("");
+    criteriaSetOccupation("");
+    criteriaSetTelephone("");
+    criteriaSetAddress("");
+    criteriaSetEmail("");
+    criteriaSetCreatedBy("");
+    criteriaSetUpdatedBy("");
+    criteriaSetCreatedDate("");
+    criteriaSetUpdatedDate("");
+    setOperatorsDefaultValues("");
   }
-
 
   const getFilterBody = () => {
     const filterBody = {
-      idCriteria: textboxId,
+      idCriteria: criteriaId,
       idOperator: operatorId,
-      usernameCriteria: textboxUsername,
+      usernameCriteria: criteriaUsername,
       usernameOperator: operatorUsername,
       passwordCriteria: "",
       passwordOperator: enumFilterType.NONE,
-      dniCriteria: textboxDni,
+      dniCriteria: criteriaDni,
       dniOperator: operatorDni,
-      nameCriteria: textboxName,
+      nameCriteria: criteriaName,
       nameOperator: operatorName,
-      secondNameCriteria: textboxSecondName,
+      secondNameCriteria: criteriaSecondName,
       secondNameOperator: operatorSecondName,
-      lastNameCriteria: textboxLastName,
+      lastNameCriteria: criteriaLastName,
       lastNameOperator: operatorLastName,
-      secondLastNameCriteria: textboxSecondLastName,
+      secondLastNameCriteria: criteriaSecondLastName,
       secondLastNameOperator: operatorSecondLastName,
-      birthDateCriteria: textboxBirthDate,
-      birthDateNameOperator: operatorBirthDate,
-      telephoneCriteria: textboxTelephone,
+      birthDateCriteria: criteriaBirthDate,
+      birthDateOperator: operatorBirthDate,
+      ageCriteria: criteriaAge,
+      ageOperator: operatorAge,
+      sexCriteria: criteriaSex,
+      sexOperator: operatorSex,
+      occupationCriteria: criteriaOccupation,
+      occupationOperator: operatorOccupation,
+      telephoneCriteria: criteriaTelephone,
       telephoneOperator: operatorTelephone,
-      addressCriteria: textboxAddress,
+      addressCriteria: criteriaAddress,
       addressOperator: operatorAddress,
-      emailCriteria: textboxEmail,
+      emailCriteria: criteriaEmail,
       emailOperator: operatorEmail,
-      createdByCriteria: textboxCreatedBy,
+      createdByCriteria: criteriaCreatedBy,
       createdByOperator: operatorCreatedBy,
-      updatedByCriteria: textboxUpdatedBy,
+      updatedByCriteria: criteriaUpdatedBy,
       updatedByOperator: operatorUpdatedBy,
-      creationDateCriteria: textboxCreatedDate,
+      creationDateCriteria: criteriaCreatedDate,
       creationDateOperator: operatorCreatedDate,
-      updateDateCriteria: textboxUpdatedDate,
+      updateDateCriteria: criteriaUpdatedDate,
       updateDateOperator: operatorUpdatedDate
     }
     return filterBody;

@@ -35,6 +35,12 @@ public class EntityUser extends EntitySuperClass {
   @Column(name = "birth_date")
   private String birthDate;
 
+  private int age;
+
+  private String sex;
+
+  private String occupation;
+
   private String telephone;
 
   private String address;
