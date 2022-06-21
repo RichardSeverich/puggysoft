@@ -18,6 +18,7 @@ const getColumnsFilterModel = function (
     /*TELEPHONE*/criteriaTelephone, criteriaOnChangeTelephone, criteriaSetTelephone, operatorTelephone, operatorOnChangeTelephone, operatorSetTelephone,
     /*ADDRESS*/criteriaAddress, criteriaOnChangeAddress, criteriaSetAddress, operatorAddress, operatorOnChangeAddress, operatorSetAddress,
     /*EMAIL*/criteriaEmail, criteriaOnChangeEmail, criteriaSetEmail, operatorEmail, operatorOnChangeEmail, operatorSetEmail,
+    /*STATUS*/criteriaStatus, criteriaOnChangeStatus, criteriaSetStatus, operatorStatus, operatorOnChangeStatus, operatorSetStatus,
     /*CREATED BY*/criteriaCreatedBy, criteriaOnChangeCreatedBy, criteriaSetCreatedBy, operatorCreatedBy, operatorOnChangeCreatedBy, operatorSetCreatedBy,
     /*UPDATED BY*/criteriaUpdatedBy, criteriaOnChangeUpdatedBy, criteriaSetUpdatedBy, operatorUpdatedBy, operatorOnChangeUpdatedBy, operatorSetUpdatedBy,
     /*CREATED DATE*/criteriaCreatedDate, criteriaOnChangeCreatedDate, criteriaSetCreatedDate, operatorCreatedDate, operatorOnChangeCreatedDate, operatorSetCreatedDate,
@@ -136,6 +137,18 @@ const getColumnsFilterModel = function (
       operatorOnchange: operatorOnChangeEmail,
     },
     {
+      type: enumFilterType.DROPDOWN,
+      criteriaValue: criteriaStatus,
+      criteriaOnchange: criteriaOnChangeStatus,
+      operatorValue: operatorStatus,
+      operatorOnchange: operatorOnChangeStatus,
+      dropdownValues: [
+        { value: "", text: i18n.userStatus.all },
+        { value: true, text: i18n.userStatus.active },
+        { value: false, text: i18n.userStatus.inactive }
+      ]
+    },
+    {
       type: enumFilterType.TEXTBOX,
       criteriaValue: criteriaCreatedBy,
       criteriaOnchange: criteriaOnChangeCreatedBy,
@@ -146,8 +159,8 @@ const getColumnsFilterModel = function (
       type: enumFilterType.TEXTBOX,
       criteriaValue: criteriaUpdatedBy,
       criteriaOnchange: criteriaOnChangeUpdatedBy,
-      operatorValue: criteriaUpdatedBy,
-      operatorOnchange: criteriaOnChangeUpdatedBy,
+      operatorValue: operatorUpdatedBy,
+      operatorOnchange: operatorOnChangeUpdatedBy,
     },
     {
       type: enumFilterType.DATE,
@@ -180,6 +193,7 @@ const getColumnsFilterModel = function (
     operatorSetTelephone(enumCompareOperators.TEXT_CONTAINS);
     operatorSetAddress(enumCompareOperators.TEXT_CONTAINS);
     operatorSetEmail(enumCompareOperators.TEXT_CONTAINS);
+    operatorSetStatus(enumCompareOperators.BOOLEAN_EQUALS);
     operatorSetCreatedBy(enumCompareOperators.TEXT_CONTAINS);
     operatorSetUpdatedBy(enumCompareOperators.TEXT_CONTAINS);
     operatorSetCreatedDate(enumCompareOperators.DATE_EQUALS)
@@ -196,11 +210,12 @@ const getColumnsFilterModel = function (
     criteriaSetSecondLastName("");
     criteriaSetBirthDate("");
     criteriaSetAge("");
-    criteriaSetSex("");
+    criteriaSetSex(""); // Empty means all
     criteriaSetOccupation("");
     criteriaSetTelephone("");
     criteriaSetAddress("");
     criteriaSetEmail("");
+    criteriaSetStatus(""); // Empty means all
     criteriaSetCreatedBy("");
     criteriaSetUpdatedBy("");
     criteriaSetCreatedDate("");
@@ -240,6 +255,8 @@ const getColumnsFilterModel = function (
       addressOperator: operatorAddress,
       emailCriteria: criteriaEmail,
       emailOperator: operatorEmail,
+      activeCriteria: criteriaStatus,
+      activeOperator: operatorStatus,
       createdByCriteria: criteriaCreatedBy,
       createdByOperator: operatorCreatedBy,
       updatedByCriteria: criteriaUpdatedBy,

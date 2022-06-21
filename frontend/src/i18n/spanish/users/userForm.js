@@ -14,6 +14,7 @@ const userForm = {
   fieldTelephone: "Celular",
   fieldAddress: "Direccion/Domicilio",
   fieldEmail: "Correo Electronico",
+  fieldStatus: "Estado",
   fieldImage: "Foto",
   buttonAdd: "Registrar",
 };

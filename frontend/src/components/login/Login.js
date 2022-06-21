@@ -1,11 +1,11 @@
+import { useState, useEffect } from "react";
 import { useHistory } from "react-router";
-
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import Card from 'react-bootstrap/Card'
 import i18n from "./../../i18n/i18n";
 import useInput from "./../../hooks/useInput";
-import { handleLoginRequest } from "../../actions/HandleManager";
+import { handleLoginRequest, handleGetRequest } from "../../actions/HandleManager";
 
 import "./styles.css"
 
@@ -14,20 +14,34 @@ function Login() {
   const history = useHistory();
   const { value: valueUsername, onChange: onChangeUsername, reset: resetUsername } = useInput("");
   const { value: valuePassword, onChange: onChangePassword, reset: resetPassword } = useInput("");
+  const [isValidCredentials, setIsValidCredentials] = useState(false);
 
   const handleLogin = () => {
     const body = {
       username: valueUsername,
       password: valuePassword
     }
-    handleLoginRequest("login", body, (response) => {
-      if (response.status == 200) {
-        window.sessionStorage.setItem("token", response.data.token);
-        window.sessionStorage.setItem("username", response.data.username);
-        history.push("/dashboard");
+    handleLoginRequest("login", body, (responseAuth) => {
+      if (responseAuth.status === 200) {
+        window.sessionStorage.setItem("token", responseAuth.data.token);
+        window.sessionStorage.setItem("username", responseAuth.data.username);
+        handleGetRequest(`roles/user-username/${valueUsername}`, (roles) => {
+          if (roles.length > 0) {
+            window.sessionStorage.setItem("roles", JSON.stringify(roles));
+            setIsValidCredentials(true);
+          } else {
+            alert(i18n.errorMessages.userNoRoles);
+          }
+        });
       }
     });
   }
+
+  useEffect(() => {
+    if (isValidCredentials) {
+      history.push("/dashboard");
+    }
+  }, [isValidCredentials]);
 
   return (
     <div className="puggysoft-login-form" >

@@ -15,6 +15,7 @@ const arrayDataFields = [
   'telephone',
   'address',
   'email',
+  'active',
   'createdBy',
   'updatedBy',
   'creationDate',

@@ -9,6 +9,7 @@ import arrayColumns from "../../models/users/arrayUserColumns";
 import getColumnsFilterModel from "../../models/users/arrayUserColumnsFilter";
 import useInput from "./../../hooks/useInput";
 import enumCompareOperators from "./../../models/enumCompareOperators";
+import fixArrayData from "../../tools/users/fixArrayData"
 
 const pageSize = 10;
 const numberPagesToShow = 10;
@@ -36,6 +37,7 @@ function UserTableFilter() {
   const { value: criteriaTelephone, onChange: criteriaOnChangeTelephone, setValue: criteriaSetTelephone } = useInput('');
   const { value: criteriaAddress, onChange: criteriaOnChangeAddress, setValue: criteriaSetAddress } = useInput('');
   const { value: criteriaEmail, onChange: criteriaOnChangeEmail, setValue: criteriaSetEmail } = useInput('');
+  const { value: criteriaStatus, onChange: criteriaOnChangeStatus, setValue: criteriaSetStatus } = useInput('');
   const { value: criteriaCreatedBy, onChange: criteriaOnChangeCreatedBy, setValue: criteriaSetCreatedBy } = useInput('');
   const { value: criteriaUpdatedBy, onChange: criteriaOnChangeUpdatedBy, setValue: criteriaSetUpdatedBy } = useInput('');
   const { value: criteriaCreatedDate, onChange: criteriaOnChangeCreatedDate, setValue: criteriaSetCreatedDate } = useInput('');
@@ -55,6 +57,7 @@ function UserTableFilter() {
   const { value: operatorTelephone, onChange: operatorOnChangeTelephone, setValue: operatorSetTelephone } = useInput(enumCompareOperators.TEXT_CONTAINS);
   const { value: operatorAddress, onChange: operatorOnChangeAddress, setValue: operatorSetAddress } = useInput(enumCompareOperators.TEXT_CONTAINS);
   const { value: operatorEmail, onChange: operatorOnChangeEmail, setValue: operatorSetEmail } = useInput(enumCompareOperators.TEXT_CONTAINS);
+  const { value: operatorStatus, onChange: operatorOnChangeStatus, setValue: operatorSetStatus } = useInput(enumCompareOperators.BOOLEAN_EQUALS);
   const { value: operatorCreatedBy, onChange: operatorOnChangeCreatedBy, setValue: operatorSetCreatedBy } = useInput(enumCompareOperators.TEXT_CONTAINS);
   const { value: operatorUpdatedBy, onChange: operatorOnChangeUpdatedBy, setValue: operatorSetUpdatedBy } = useInput(enumCompareOperators.TEXT_CONTAINS);
   const { value: operatorCreatedDate, onChange: operatorOnChangeCreatedDate, setValue: operatorSetCreatedDate } = useInput(enumCompareOperators.DATE_EQUALS);
@@ -75,15 +78,21 @@ function UserTableFilter() {
     /*TELEPHONE*/criteriaTelephone, criteriaOnChangeTelephone, criteriaSetTelephone, operatorTelephone, operatorOnChangeTelephone, operatorSetTelephone,
     /*ADDRESS*/criteriaAddress, criteriaOnChangeAddress, criteriaSetAddress, operatorAddress, operatorOnChangeAddress, operatorSetAddress,
     /*EMAIL*/criteriaEmail, criteriaOnChangeEmail, criteriaSetEmail, operatorEmail, operatorOnChangeEmail, operatorSetEmail,
+    /*STATUS*/criteriaStatus, criteriaOnChangeStatus, criteriaSetStatus, operatorStatus, operatorOnChangeStatus, operatorSetStatus,
     /*CREATED BY*/criteriaCreatedBy, criteriaOnChangeCreatedBy, criteriaSetCreatedBy, operatorCreatedBy, operatorOnChangeCreatedBy, operatorSetCreatedBy,
     /*UPDATED BY*/criteriaUpdatedBy, criteriaOnChangeUpdatedBy, criteriaSetUpdatedBy, operatorUpdatedBy, operatorOnChangeUpdatedBy, operatorSetUpdatedBy,
     /*CREATED DATE*/criteriaCreatedDate, criteriaOnChangeCreatedDate, criteriaSetCreatedDate, operatorCreatedDate, operatorOnChangeCreatedDate, operatorSetCreatedDate,
     /*UPDATED DATE*/criteriaUpdatedDate, criteriaOnChangeUpdatedDate, criteriaSetUpdatedDate, operatorUpdatedDate, operatorOnChangeUpdatedDate, operatorSetUpdatedDate
   );
 
+  function updateArrayData(arrayData) {
+    let arrayFixed = fixArrayData(arrayData);
+    setArrayData(arrayFixed);
+  }
+
   useEffect(() => {
     const filterBody = getFilterBody();
-    handleFilterRequest(`users/filter?page=${activePage - 1}&size=${pageSize}`, filterBody, setArrayData);
+    handleFilterRequest(`users/filter?page=${activePage - 1}&size=${pageSize}`, filterBody, updateArrayData);
   }, [activePage]);
 
   useEffect(() => {
@@ -99,23 +108,23 @@ function UserTableFilter() {
     const filterBody = getFilterBody();
     setArrayData(null);
     setTotalPages(null);
-    handleFilterRequest(`users/filter?page=${activePage - 1}&size=${pageSize}`, filterBody, setArrayData);
+    handleFilterRequest(`users/filter?page=${activePage - 1}&size=${pageSize}`, filterBody, updateArrayData);
     handleFilterRequest(`users/filter/size/${pageSize}`, filterBody, setTotalPages);
     setActivePage(1)
   }
 
-  function handleEdit(row) {
+  function handleEdit(data) {
     history.push({
       pathname: "/users-form",
       state: {
-        data: row,
+        data: data,
         edit: true
       }
     })
   }
 
-  function handleDelete(row) {
-    handleDeleteRequest("users/", row.id)
+  function handleDelete(data) {
+    handleDeleteRequest("users/", data.id)
   }
 
   return (

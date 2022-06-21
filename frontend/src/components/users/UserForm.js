@@ -1,18 +1,20 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router";
 
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import Card from 'react-bootstrap/Card'
 import i18n from "./../../i18n/i18n";
 import useInput from "./../../hooks/useInput";
+import enumSex from "./../../models/users/enumSex"
 import { handleAddRequest, handleEditRequest } from "../../actions/HandleManager";
 
 import "./user-form-styles.css"
 
-function UserForm(props) {
+function UserForm() {
 
-  //const [isEdit, setIsEdit] = useState(props.location.state);
-  const isEditDefaultValue = props && props.location && props.location.state;
+  const history = useHistory();
+  const isEditDefaultValue = history && history.location && history.location.state;
   const [isEdit, setIsEdit] = useState(isEditDefaultValue);
 
   // Put default values:
@@ -25,34 +27,47 @@ function UserForm(props) {
   let lastName = isEdit ? isEdit.data.lastName : "";
   let secondLastName = isEdit ? isEdit.data.secondLastName : "";
   let birthDate = isEdit ? isEdit.data.birthDate : "";
+  let age = isEdit ? isEdit.data.age : "";
+  let sex = isEdit ? isEdit.data.sex : enumSex.MALE;
+  let occupation = isEdit ? isEdit.data.occupation : "";
   let telephone = isEdit ? isEdit.data.telephone : "";
   let address = isEdit ? isEdit.data.address : "";
   let email = isEdit ? isEdit.data.email : "";
+  let status = isEdit ? isEdit.data.status : true;
 
   // Use custom hook
-  const { value: valueUsername, onChange: onChangeUsername, reset: resetUsername } = useInput(username);
-  const { value: valuePassword, onChange: onChangePassword, reset: resetPassword } = useInput(password);
-  const { value: valueDni, onChange: onChangeDni, reset: resetDni } = useInput(dni);
-  const { value: valueName, onChange: onChangeName, reset: resetName } = useInput(name);
-  const { value: valueSecondName, onChange: onChangeSecondName, reset: resetSecondName } = useInput(secondName);
-  const { value: valueLastName, onChange: onChangeLastName, reset: resetLastName } = useInput(lastName);
-  const { value: valueSecondLastName, onChange: onChangeSecondLastName, reset: resetSecondLastName } = useInput(secondLastName);
-  const { value: valueBirthDate, onChange: onChangeBirthDate, reset: resetBirthDate } = useInput(birthDate);
-  const { value: valueTelephone, onChange: onChangeTelephone, reset: resetTelephone } = useInput(telephone);
-  const { value: valueAddress, onChange: onChangeAddress, reset: resetAddress } = useInput(address);
-  const { value: valueEmail, onChange: onChangeEmail, reset: resetEmail } = useInput(email);
+  const { value: valueUsername, onChange: onChangeUsername, setValue: setUsername } = useInput(username);
+  const { value: valuePassword, onChange: onChangePassword, setValue: setPassword } = useInput(password);
+  const { value: valueDni, onChange: onChangeDni, setValue: setDni } = useInput(dni);
+  const { value: valueName, onChange: onChangeName, setValue: setName } = useInput(name);
+  const { value: valueSecondName, onChange: onChangeSecondName, setValue: setSecondName } = useInput(secondName);
+  const { value: valueLastName, onChange: onChangeLastName, setValue: setLastName } = useInput(lastName);
+  const { value: valueSecondLastName, onChange: onChangeSecondLastName, setValue: setSecondLastName } = useInput(secondLastName);
+  const { value: valueBirthDate, onChange: onChangeBirthDate, setValue: setBirthDate } = useInput(birthDate);
+  const { value: valueAge, onChange: onChangeAge, setValue: setAge } = useInput(age);
+  const { value: valueSex, onChange: onChangeSex, setValue: setSex } = useInput(sex);
+  const { value: valueOccupation, onChange: onChangeOccupation, setValue: setOccupation } = useInput(occupation);
+  const { value: valueTelephone, onChange: onChangeTelephone, setValue: setTelephone } = useInput(telephone);
+  const { value: valueAddress, onChange: onChangeAddress, setValue: setAddress } = useInput(address);
+  const { value: valueEmail, onChange: onChangeEmail, setValue: setEmail } = useInput(email);
+  const { value: valueStatus, onChange: onChangeStatus, setValue: setStatus } = useInput(status);
 
   const handleReset = () => {
-    resetUsername();
-    resetPassword();
-    resetName();
-    resetSecondName();
-    resetLastName();
-    resetSecondLastName();
-    resetBirthDate();
-    resetTelephone();
-    resetAddress();
-    resetEmail();
+    setUsername('');
+    setPassword('');
+    setDni('');
+    setName('');
+    setSecondName('');
+    setLastName('');
+    setSecondLastName('');
+    setBirthDate('');
+    setAge('');
+    setSex(enumSex.MALE);
+    setOccupation('');
+    setTelephone('');
+    setAddress('');
+    setEmail('');
+    setStatus(true);
   }
 
   const handleAdd = (event) => {
@@ -66,10 +81,14 @@ function UserForm(props) {
       secondName: valueSecondName,
       lastName: valueLastName,
       secondLastName: valueSecondLastName,
+      age: valueAge,
+      sex: valueSex,
+      occupation: valueOccupation,
       birthDate: valueBirthDate,
       telephone: valueTelephone,
       address: valueAddress,
       email: valueEmail,
+      active: valueStatus,
       createdBy: username,
       updatedBy: username,
     }
@@ -151,12 +170,37 @@ function UserForm(props) {
                 type="date"
                 placeholder={i18n.userForm.fieldBirthDate} />
             </Form.Group>
+            <Form.Group className="mb-3" controlId="age">
+              <Form.Label>{i18n.userForm.fieldAge}</Form.Label>
+              <Form.Control
+                onChange={onChangeAge}
+                value={valueAge}
+                type="number"
+                placeholder={i18n.userForm.fieldAge} />
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="sex">
+              <Form.Label>{i18n.userForm.fieldSex}</Form.Label>
+              <Form.Select
+                onChange={onChangeSex}
+                value={valueSex} >
+                <option key='option-male' value={enumSex.MALE}>{i18n.userSexText.male}</option>
+                <option key='option-female' value={enumSex.FEMALE}>{i18n.userSexText.female}</option>
+              </Form.Select>
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="occupation">
+              <Form.Label>{i18n.userForm.fieldOccupation}</Form.Label>
+              <Form.Control
+                onChange={onChangeOccupation}
+                value={valueOccupation}
+                type="text"
+                placeholder={i18n.userForm.fieldOccupation} />
+            </Form.Group>
             <Form.Group className="mb-3" controlId="telephone">
               <Form.Label>{i18n.userForm.fieldTelephone}</Form.Label>
               <Form.Control
                 onChange={onChangeTelephone}
                 value={valueTelephone}
-                type="date"
+                type="number"
                 placeholder={i18n.userForm.fieldTelephone} />
             </Form.Group>
             <Form.Group className="mb-3" controlId="address">
@@ -174,6 +218,15 @@ function UserForm(props) {
                 value={valueEmail}
                 type="email"
                 placeholder={i18n.userForm.fieldEmail} />
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="active">
+              <Form.Label>{i18n.userForm.fieldStatus}</Form.Label>
+              <Form.Select
+                onChange={onChangeStatus}
+                value={valueStatus} >
+                <option key='option-true' value={true}>{i18n.userStatus.active}</option>
+                <option key='option-false' value={false}>{i18n.userStatus.inactive}</option>
+              </Form.Select>
             </Form.Group>
             <Button
               onClick={handleAdd}

@@ -17,10 +17,10 @@ public interface IRepositoryUser extends JpaRepository<EntityUser, Long> {
           + "FROM users "
           + "WHERE users.id "
           + "NOT IN ("
-          + "SELECT users_rols.id_user "
-          + "FROM users_rols "
-          + "WHERE users_rols.id_rol = ?1);", nativeQuery = true)
-  List<EntityUser> findUsersWithoutRols(Long idRol);
+          + "SELECT users_roles.id_user "
+          + "FROM users_roles "
+          + "WHERE users_roles.id_role = ?1);", nativeQuery = true)
+  List<EntityUser> findUsersWithoutRoles(Long idRol);
 
   @Query(value = "SELECT * FROM users LIMIT ?1, ?2", nativeQuery = true)
   List<EntityUser> findUsersByPagination(int off, int size);

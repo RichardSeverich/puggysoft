@@ -1,15 +1,18 @@
 const navBar = {
+  // ******* ******* USERS SYSTEM ******* *******
   // Users
   userAdmin: "Adm. Usuarios",
   userRegistration: "Registrar Usuarios",
   userShowTable: "Mostrar Usuarios (Tabla)",
   userShowTableFilter: "Mostrar Usuarios (Tabla, Filtro)",
   userShowCard: "Mostrar Usuarios (Tarjetas)",
-  // Rols
-  rolAdmin: "Adm. Roles",
-  rolRegistration: "Registrar Role",
-  rolShowTable: "Mostrar Roles (Tabla)",
-  rolShowCard: "Mostrar Roles (Tarjetas)",
+  // Roles
+  roleAdmin: "Adm. Roles",
+  roleRegistration: "Registrar Role",
+  roleShowTable: "Mostrar Roles (Tabla)",
+  roleShowCard: "Mostrar Roles (Tarjetas)",
+
+  // ******* ******* SALES SYSTEM ******* *******
   // Products
   productAdmin: "Adm. Productos",
   productRegistration: "Registrar Producto",
@@ -36,6 +39,43 @@ const navBar = {
   reportRevenueAnnual: "Reporte de Ingresos anuales",
   reportSalesAnnual: "Reporte de Ventas anuales",
   reportRevenueByDate: "Reporte de Ingresos por fecha",
+
+  // ******* ******* HOSPITAL SYSTEM ******* *******
+  // Doctors
+  doctorAdmin: "Adm. Doctores",
+  doctorRegistration: "Registrar Doctores",
+  doctorShowTable: "Mostrar Doctores (Tabla)",
+  doctorShowTableFilter: "Mostrar Doctores (Tabla, Filtro)",
+  doctorShowCard: "Mostrar Doctores (Tarjetas)",
+
+  // Patients 
+  patientAdmin: "Adm. Pacientes ",
+  patientRegistration: "Registrar Pacientes ",
+  patientShowTable: "Mostrar Pacientes  (Tabla)",
+  patientShowTableFilter: "Mostrar Pacientes  (Tabla, Filtro)",
+  patientShowCard: "Mostrar Pacientes  (Tarjetas)",
+
+  // Patients 
+  patientAdmin: "Adm. Pacientes ",
+  patientRegistration: "Registrar Pacientes ",
+  patientShowTable: "Mostrar Pacientes  (Tabla)",
+  patientShowTableFilter: "Mostrar Pacientes  (Tabla, Filtro)",
+  patientShowCard: "Mostrar Pacientes  (Tarjetas)",
+
+  // Doctor Schedule 
+  scheduleAdmin: "Adm. Calendario/Turnos ",
+  scheduleRegistration: "Registrar Calendario/Turnos ",
+  scheduleShowTable: "Mostrar Calendario/Turnos  (Tabla)",
+  scheduleShowTableFilter: "Mostrar Calendario/Turnos  (Tabla, Filtro)",
+  scheduleShowCard: "Mostrar Calendario/Turnos  (Tarjetas)",
+
+  // Reservas/Tickets
+  bookingAdmin: "Adm. Reservas/Fichas ",
+  bookingRegistration: "Registrar Reservas/Fichas ",
+  bookingShowTable: "Mostrar Reservas/Fichas (Tabla)",
+  bookingShowTableFilter: "Mostrar Reservas/Fichas (Tabla, Filtro)",
+  bookingShowCard: "Mostrar Reservas/Fichas (Tarjetas)",
+
   // Config
   configAdmin: "Config",
   configSystem: "Parametros del sistema",

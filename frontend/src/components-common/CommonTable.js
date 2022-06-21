@@ -21,6 +21,8 @@ function CommonTable(props) {
     arrayData,
     arrayColumns,
     arrayDataFields,
+    handleEdit,
+    handleDelete,
     filterArrayColumns,
     filterClear,
     filterHandler
@@ -128,9 +130,19 @@ function CommonTable(props) {
           return singleRow;
         })}
         {<td key={'field-edit' + rowIndex}>
-          <Button variant="warning">{i18n.commonTable.editButton}</Button> </td>}
+          <Button
+            variant="warning"
+            onClick={() => handleEdit(data)}
+          >
+            {i18n.commonTable.editButton}
+          </Button> </td>}
         {<td key={'field-delete' + rowIndex}>
-          <Button variant="danger">{i18n.commonTable.deleteButton}</Button> </td>}
+          <Button
+            variant="danger"
+            onClick={() => handleDelete(data)}
+          >
+            {i18n.commonTable.deleteButton}
+          </Button> </td>}
       </tr>
       return totalRows;
     })

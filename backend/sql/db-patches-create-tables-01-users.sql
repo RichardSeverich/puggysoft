@@ -16,6 +16,7 @@ CREATE TABLE users(
    telephone TEXT NOT NULL,
    address TEXT NOT NULL,
    email TEXT NOT NULL,
+   active BOOLEAN NOT NULL,
    image LONGBLOB,
    creation_date DATETIME DEFAULT CURRENT_TIMESTAMP,
    update_date DATETIME ON UPDATE CURRENT_TIMESTAMP,
@@ -27,7 +28,7 @@ CREATE TABLE users(
 )AUTO_INCREMENT=1000;
 
 -- Roles
-CREATE TABLE rols(
+CREATE TABLE roles(
    id BIGINT AUTO_INCREMENT,
    name VARCHAR(30) NOT NULL,
    created_by VARCHAR(20),
@@ -39,11 +40,11 @@ CREATE TABLE rols(
    PRIMARY KEY (id)
 )AUTO_INCREMENT=1000;
 
--- Relation users-rols
-CREATE TABLE users_rols(
+-- Relation users-roles
+CREATE TABLE users_roles(
    id BIGINT AUTO_INCREMENT,
    id_user BIGINT NOT NULL,
-   id_rol BIGINT NOT NULL,
+   id_role BIGINT NOT NULL,
    created_by VARCHAR(20),
    updated_by VARCHAR(20),
    creation_date DATETIME DEFAULT CURRENT_TIMESTAMP,
@@ -51,7 +52,7 @@ CREATE TABLE users_rols(
    FOREIGN KEY (created_by) REFERENCES users(username),
    FOREIGN KEY (updated_by) REFERENCES users(username),
    FOREIGN KEY (id_user) REFERENCES users(id),
-   FOREIGN KEY (id_rol) REFERENCES rols(id),
-   UNIQUE (id_user, id_rol),
+   FOREIGN KEY (id_role) REFERENCES roles(id),
+   UNIQUE (id_user, id_role),
    PRIMARY KEY (id)
 )AUTO_INCREMENT=1000;

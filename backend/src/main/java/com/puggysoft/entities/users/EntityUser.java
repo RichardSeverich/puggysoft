@@ -47,6 +47,8 @@ public class EntityUser extends EntitySuperClass {
 
   private String email;
 
+  private Boolean active;
+
   //private byte[] image;
   private Blob image;
 

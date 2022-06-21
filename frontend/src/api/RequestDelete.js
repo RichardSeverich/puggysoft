@@ -6,7 +6,7 @@ const remove = (endpoint, callback) => {
   const url = getEndpoint(endpoint);
   console.log("*** DELETE REQUEST ***");
   console.log(url);
-  axios.delete(url, getConfig)
+  axios.delete(url, getConfig())
     .then(response => {
       callback(response);
     })

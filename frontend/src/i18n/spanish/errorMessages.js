@@ -8,6 +8,7 @@ const errorMessages = {
   unknownError: "Error no conocido: Contacte con su administrador",
   invalidCredentials: "Usuario o Contrasena Incorrecto",
   confirmModal: "Esta seguro que desea realizar esta accion ?",
+  userNoRoles: "El usuario no tiene roles asignado",
 };
 
 export default errorMessages;

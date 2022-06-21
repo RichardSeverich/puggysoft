@@ -13,6 +13,8 @@ function CommonTablePagination(props) {
     tableArrayDataFields,
     tableArrayColumns,
     tableTitle,
+    tableHandleEdit,
+    tableHandleDelete,
     paginationTotalPages,
     paginationNumberPagesToShow,
     paginationInitialPage,
@@ -29,10 +31,12 @@ function CommonTablePagination(props) {
   return (
     <div className="puggysoft-common-table-pagination" >
       <CommonTable
+        tableTitle={tableTitle}
         arrayData={tableArrayData}
         arrayDataFields={tableArrayDataFields}
         arrayColumns={tableArrayColumns}
-        tableTitle={tableTitle}
+        handleEdit={tableHandleEdit}
+        handleDelete={tableHandleDelete}
         filterArrayColumns={filterArrayColumns}
         filterClear={filterClear}
         filterHandler={filterHandler}

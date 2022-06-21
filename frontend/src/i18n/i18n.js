@@ -5,6 +5,8 @@ import errorMessages from "./spanish/errorMessages"
 import userTable from "./spanish/users/userTable"
 import userForm from "./spanish/users/userForm"
 import userSexText from "./spanish/users/userSexText"
+import userStatus from "./spanish/users/userStatus"
+import trueFalse from "./spanish/trueFalse"
 import productTable from "./spanish/sales/productTable"
 import productForm from "./spanish/sales/productForm"
 
@@ -19,6 +21,8 @@ const i18n = {
   userSexText,
   productTable,
   productForm,
+  trueFalse,
+  userStatus
 }
 
 export default i18n;

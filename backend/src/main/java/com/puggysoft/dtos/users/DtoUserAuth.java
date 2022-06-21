@@ -12,12 +12,12 @@ import lombok.Setter;
 public class DtoUserAuth {
 
   @NotNull
-  @Size(min = 3, max = 10)
+  @Size(min = 3, max = 30)
   @Getter
   private String username;
 
   @NotNull
-  @Size(min = 3, max = 10)
+  @Size(min = 3, max = 30)
   @Getter
   private String password;
 

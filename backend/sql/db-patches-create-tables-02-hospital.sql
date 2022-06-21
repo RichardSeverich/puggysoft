@@ -36,45 +36,32 @@ CREATE TABLE hospital_doctors_details(
    PRIMARY KEY (id)
 );
 
--- INSERT INTO hospital_resources (name, price_interval, created_by) VALUES ("cancha de basquet", "50", "micky");
-CREATE TABLE hospital_resources(
-   id BIGINT AUTO_INCREMENT,
-   name VARCHAR(50) NOT NULL,
-   price_interval TEXT NOT NULL,
-   image LONGBLOB,
-   description TEXT NOT NULL,
-   creation_date DATETIME DEFAULT CURRENT_TIMESTAMP,
-   update_date DATETIME ON UPDATE CURRENT_TIMESTAMP,
-   created_by VARCHAR(10),
-   updated_by VARCHAR(10),
-   FOREIGN KEY (created_by) REFERENCES users(username),
-   FOREIGN KEY (updated_by) REFERENCES users(username),
-   PRIMARY KEY (id)
-)AUTO_INCREMENT=1000;
+-- INSERT INTO hospital_doctor_time (id_doctor, name, start_time, end_time, available_date, tickets_number, created_by) VALUES (1000, "7:30 a 14:30", '14:30:00', '14:30:00', 20, "2022-06-20", "micky");
+-- INSERT INTO hospital_doctor_time (id_doctor, name, start_time, end_time, available_date, tickets_number, created_by) VALUES (1000, "7:30 a 14:30", '14:30:00', '14:30:00', 10, "2022-06-22", "micky");
+-- INSERT INTO hospital_doctor_time (id_doctor, name, start_time, end_time, available_date, tickets_number, created_by) VALUES (1000, "7:30 a 14:30", '14:30:00', '14:30:00', 30, "2022-06-22", "micky");
 
--- RESERVA POR HORA
--- INSERT INTO hospital_interval_time (name, start_time, end_time, created_by) VALUES ("5:00 a 6:00", '05:00:00', '06:00:00', "micky");
--- INSERT INTO hospital_interval_time (name, start_time, end_time, created_by) VALUES ("18:00 a 19:00", '18:00:00', '19:00:00', "micky");
-
-CREATE TABLE hospital_interval_time (
+CREATE TABLE hospital_doctor_schedule (
    id BIGINT AUTO_INCREMENT,
+   id_doctor BIGINT NOT NULL,
    name VARCHAR(12) NOT NULL,
    start_time TIME NOT NULL,
    end_time TIME NOT NULL,
+   available_date DATE NOT NULL,
+   tickets_number INT NOT NULL,
    creation_date DATETIME DEFAULT CURRENT_TIMESTAMP,
    update_date DATETIME ON UPDATE CURRENT_TIMESTAMP,
    created_by VARCHAR(10),
    updated_by VARCHAR(10),
+   FOREIGN KEY (id_doctor) REFERENCES users(id),
    FOREIGN KEY (created_by) REFERENCES users(username),
    FOREIGN KEY (updated_by) REFERENCES users(username),
    PRIMARY KEY (id)
 )AUTO_INCREMENT=1000;
 
+
 CREATE TABLE hospital_bookings (
-   id INT AUTO_INCREMENT,
-   id_resource INT NOT NULL,
-   id_hospital_interval_time INT NOT NULL,
-   booking_date DATE NOT NULL,
+   id BIGINT AUTO_INCREMENT,
+   id_doctor_schedule BIGINT NOT NULL,
    comments TEXT NOT NULL,
    creation_date DATETIME DEFAULT CURRENT_TIMESTAMP,
    update_date DATETIME ON UPDATE CURRENT_TIMESTAMP,
@@ -82,8 +69,6 @@ CREATE TABLE hospital_bookings (
    updated_by VARCHAR(10),
    FOREIGN KEY (created_by) REFERENCES users(username),
    FOREIGN KEY (updated_by) REFERENCES users(username),
-   FOREIGN KEY (id_resource) REFERENCES hospital_resources(id),
-   FOREIGN KEY (id_hospital_interval_time) REFERENCES hospital_interval_time(id),
-   UNIQUE (id_resource, id_hospital_interval_time, booking_date),
+   FOREIGN KEY (id_doctor_schedule) REFERENCES hospital_doctor_schedule(id),
    PRIMARY KEY (id)
 )AUTO_INCREMENT=1000;

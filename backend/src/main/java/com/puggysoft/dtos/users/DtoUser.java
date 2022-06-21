@@ -54,7 +54,7 @@ public class DtoUser extends DtoSuperClass {
   private int age;
 
   @NotNull
-  @Size(min = 9, max = 10)
+  @Size(min = 3, max = 10)
   @Pattern(regexp = "(MALE|FEMALE)")
   private String sex; // MALE, FEMALE
 
@@ -74,6 +74,9 @@ public class DtoUser extends DtoSuperClass {
   @Email
   @Size(min = 3, max = 30)
   private String email;
+
+  @NotNull
+  private Boolean active;
 
   private Blob image;
 
@@ -95,6 +98,7 @@ public class DtoUser extends DtoSuperClass {
     entity.setTelephone(telephone);
     entity.setAddress(address);
     entity.setEmail(email);
+    entity.setActive(active);
     entity.setImage(image);
     entity.setCreatedBy(createdBy);
     entity.setUpdatedBy(updatedBy);
@@ -119,6 +123,7 @@ public class DtoUser extends DtoSuperClass {
     dto.setTelephone(entity.getTelephone());
     dto.setAddress(entity.getAddress());
     dto.setEmail(entity.getEmail());
+    dto.setActive(entity.getActive());
     dto.setImage(entity.getImage());
     dto.setCreatedBy(entity.getCreatedBy());
     dto.setUpdatedBy(entity.getUpdatedBy());

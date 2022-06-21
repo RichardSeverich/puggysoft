@@ -53,6 +53,8 @@ public class DtoUserFilter {
   @Size(max = 30)
   public String emailCriteria;
   public EnumCompareOperator emailOperator;
+  public Boolean activeCriteria;
+  public EnumCompareOperator activeOperator;
   @Size(max = 20)
   public String createdByCriteria;
   public EnumCompareOperator createdByOperator;

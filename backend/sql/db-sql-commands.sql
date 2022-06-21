@@ -48,7 +48,6 @@ ON products.id=sales_products.id_product
 WHERE sales_products.id_sale = ?1;
 
 
-
 -- FILTER TEXT EXAMPLE
 select * from users
 WHERE 
@@ -99,3 +98,19 @@ WHERE (creation_date BETWEEN '2010-01-30 14:15:55' AND '2010-09-29 10:15:55')
 SELECT *
 FROM users
 WHERE (creation_date BETWEEN '2022-05-05' AND '2022-07-08')
+
+
+
+-- ******* GET ROLES BY USER_ID *******
+SELECT roles.*
+FROM roles
+INNER JOIN users_roles ON users_roles.id_role=roles.id 
+WHERE users_roles.id_user = 1001;
+
+
+-- ******* GET ROLES BY USERNAME *******
+SELECT roles.*
+FROM roles
+INNER JOIN users_roles ON users_roles.id_role=roles.id 
+INNER JOIN users ON users_roles.id_user =users.id 
+WHERE users.username = 'admin';

@@ -6,6 +6,7 @@ import { handleGetRequest, handleDeleteRequest } from "../../actions/HandleManag
 import i18n from "../../i18n/i18n";
 import arrayDataFields from "../../models/users/arrayUserDataFields";
 import arrayColumns from "../../models/users/arrayUserColumns";
+import fixArrayData from "../../tools/users/fixArrayData"
 
 const pageSize = 10;
 const numberPagesToShow = 10;
@@ -17,8 +18,13 @@ function UserTable() {
   const [initialPage, setInitialPage] = useState(1);
   const history = useHistory();
 
+  function updateArrayData(arrayData) {
+    let arrayFixed = fixArrayData(arrayData);
+    setArrayData(arrayFixed);
+  }
+
   useEffect(() => {
-    handleGetRequest(`users/pagination?page=${activePage - 1}&size=${pageSize}`, setArrayData);
+    handleGetRequest(`users/pagination?page=${activePage - 1}&size=${pageSize}`, updateArrayData);
   }, [activePage]);
 
   useEffect(() => {
@@ -29,18 +35,18 @@ function UserTable() {
     return <CommonLoading></CommonLoading>;
   }
 
-  function handleEdit(row) {
+  function handleEdit(data) {
     history.push({
       pathname: "/users-form",
       state: {
-        data: row,
+        data: data,
         edit: true
       }
     })
   }
 
-  function handleDelete(row) {
-    handleDeleteRequest("users/", row.id)
+  function handleDelete(data) {
+    handleDeleteRequest("users/", data.id)
   }
 
   return (

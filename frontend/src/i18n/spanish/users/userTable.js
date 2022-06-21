@@ -15,6 +15,7 @@ const userTable = {
   columnTelephone: "Celular",
   columnAddress: "Direccion/Domicilio",
   columnEmail: "Correo Electronico",
+  columnStatus: "Estado",
   columnImage: "Foto",
   columnCreatedBy: "Creado por",
   columnUpdatedBy: "Editado por",
