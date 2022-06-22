@@ -33,6 +33,11 @@ function NavBar() {
   const navigateProductsForm = () => { history.push("/products-form"); }
   const navigateProductsTable = () => { history.push("/products-table"); }
   const navigateProductsTableFilter = () => { history.push("/products-table-filter"); }
+
+  // ******* ******* ******* HOSPITAL SYSTEM ******* ******* *******
+  const navigateDoctorUserForm = () => { history.push("/hospital-doctor-user-form"); }
+  const navigatePatientUserForm = () => { history.push("/hospital-patient-user-form"); }
+
   function navigateGeneric(event) { console.log({ event }) }
 
   const NavbarBackground = 'dark'; // dark, light, primary
@@ -82,25 +87,25 @@ function NavBar() {
   // ******* ******* ******* HOSPITAL SYSTEM ******* ******* *******
   // DOCTORS
   const doctorAdminLabel = (<><FaUserNurse /> {i18n.navBar.doctorAdmin}</>)
-  const doctorRegistrationLabel = (<><AiOutlineUserAdd /> {i18n.navBar.doctorRegistration}</>)
+  const doctorRegistrationLabel = (<><GrAddCircle /> {i18n.navBar.doctorRegistration}</>)
   const doctorShowTableLabel = (<><AiOutlineTable /> {i18n.navBar.doctorShowTable}</>)
   const doctorShowTableFilterLabel = (<><AiOutlineTable /> {i18n.navBar.doctorShowTableFilter}</>)
   const doctorShowCardLabel = (<><AiOutlineIdcard /> {i18n.navBar.doctorShowCard}</>)
   // PATIENTS
   const patientAdminLabel = (<><MdOutlineSick /> {i18n.navBar.patientAdmin}</>)
-  const patientRegistrationLabel = (<><AiOutlineUserAdd /> {i18n.navBar.patientRegistration}</>)
+  const patientRegistrationLabel = (<><GrAddCircle /> {i18n.navBar.patientRegistration}</>)
   const patientShowTableLabel = (<><AiOutlineTable /> {i18n.navBar.patientShowTable}</>)
   const patientShowTableFilterLabel = (<><AiOutlineTable /> {i18n.navBar.patientShowTableFilter}</>)
   const patientShowCardLabel = (<><AiOutlineIdcard /> {i18n.navBar.patientShowCard}</>)
   // SCHEDULE
   const scheduleAdminLabel = (<><GoCalendar /> {i18n.navBar.scheduleAdmin}</>)
-  const scheduleRegistrationLabel = (<><AiOutlineUserAdd /> {i18n.navBar.scheduleRegistration}</>)
+  const scheduleRegistrationLabel = (<><GrAddCircle /> {i18n.navBar.scheduleRegistration}</>)
   const scheduleShowTableLabel = (<><AiOutlineTable /> {i18n.navBar.scheduleShowTable}</>)
   const scheduleShowTableFilterLabel = (<><AiOutlineTable /> {i18n.navBar.scheduleShowTableFilter}</>)
   const scheduleShowCardLabel = (<><AiOutlineIdcard /> {i18n.navBar.scheduleShowCard}</>)
   // BOOKINGS
   const bookingAdminLabel = (<><FaTicketAlt /> {i18n.navBar.bookingAdmin}</>)
-  const bookingRegistrationLabel = (<><AiOutlineUserAdd /> {i18n.navBar.bookingRegistration}</>)
+  const bookingRegistrationLabel = (<><GrAddCircle /> {i18n.navBar.bookingRegistration}</>)
   const bookingShowTableLabel = (<><AiOutlineTable /> {i18n.navBar.bookingShowTable}</>)
   const bookingShowTableFilterLabel = (<><AiOutlineTable /> {i18n.navBar.bookingShowTableFilter}</>)
   const bookingShowCardLabel = (<><AiOutlineIdcard /> {i18n.navBar.bookingShowCard}</>)
@@ -120,7 +125,9 @@ function NavBar() {
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav>
           {/* ******* ******* ******* USERS SYSTEM ******* ******* ********/}
-          {userRoles.includes(enumRoles.ADMIN_USERS)
+          {(userRoles.includes(enumRoles.ADMIN_USERS)
+            || userRoles.includes(enumRoles.HOSPITAL_ADMIN)
+            || userRoles.includes(enumRoles.SALES_ADMIN))
             && <NavDropdown title={userAdminLabel}>
               <NavDropdown.Item onClick={navigateUsersForm} >{userRegistrationLabel}</NavDropdown.Item>
               <NavDropdown.Item onClick={navigateUsersTable}>{userShowTableLabel}</NavDropdown.Item>
@@ -169,14 +176,14 @@ function NavBar() {
           {/* ******* ******* ******* HOSPITAL SYSTEM ******* ******* ********/}
           {userRoles.includes(enumRoles.HOSPITAL_ADMIN) &&
             <NavDropdown title={doctorAdminLabel}>
-              <NavDropdown.Item onClick={navigateGeneric}>{doctorRegistrationLabel}</NavDropdown.Item>
+              <NavDropdown.Item onClick={navigateDoctorUserForm}>{doctorRegistrationLabel}</NavDropdown.Item>
               <NavDropdown.Item onClick={navigateGeneric}>{doctorShowTableLabel}</NavDropdown.Item>
               <NavDropdown.Item onClick={navigateGeneric}>{doctorShowTableFilterLabel}</NavDropdown.Item>
               <NavDropdown.Item onClick={navigateGeneric}>{doctorShowCardLabel}</NavDropdown.Item>
             </NavDropdown>}
           {userRoles.includes(enumRoles.HOSPITAL_ADMIN) &&
             <NavDropdown title={patientAdminLabel}>
-              <NavDropdown.Item onClick={navigateGeneric}>{patientRegistrationLabel}</NavDropdown.Item>
+              <NavDropdown.Item onClick={navigatePatientUserForm}>{patientRegistrationLabel}</NavDropdown.Item>
               <NavDropdown.Item onClick={navigateGeneric}>{patientShowTableLabel}</NavDropdown.Item>
               <NavDropdown.Item onClick={navigateGeneric}>{patientShowTableFilterLabel}</NavDropdown.Item>
               <NavDropdown.Item onClick={navigateGeneric}>{patientShowCardLabel}</NavDropdown.Item>

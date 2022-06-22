@@ -11,6 +11,9 @@ import UsersTableFilterPage from "./pages/users/UsersTableFilterPage";
 import ProductFormPage from "./pages/sales/ProductFormPage";
 import ProductTablePage from "./pages/sales/ProductTablePage";
 import ProductTableFilterPage from "./pages/sales/ProductTableFilterPage";
+// Hospital System
+import DoctorUserFormPage from "./pages/hospital/DoctorUserFormPage";
+import PatientUserFormPage from "./pages/hospital/PatientUserFormPage";
 
 const AppRoutes = () => (
   <App>
@@ -22,6 +25,8 @@ const AppRoutes = () => (
       <Route exact path="/products-form" component={ProductFormPage} />
       <Route exact path="/products-table" component={ProductTablePage} />
       <Route exact path="/products-table-filter" component={ProductTableFilterPage} />
+      <Route exact path="/hospital-doctor-user-form" component={DoctorUserFormPage} />
+      <Route exact path="/hospital-patient-user-form" component={PatientUserFormPage} />
       <Route exact path="/login" component={LoginPage} />
       <Route exact path="/" component={LoginPage} />
       <Route component={LoginPage} />

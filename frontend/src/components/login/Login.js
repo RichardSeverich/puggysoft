@@ -46,8 +46,8 @@ function Login() {
   return (
     <div className="puggysoft-login-form" >
       <Card>
-        <Card.Title><img src="/logo192.png" className="app-logo" alt="logo" /></Card.Title>
-        <Card.Title>{i18n.login.title}</Card.Title>
+        <Card.Header as='h3'>{i18n.login.title}</Card.Header>
+        {/*<Card.Title><img src="/logo192.png" className="app-logo" alt="logo" /></Card.Title>*/}
         <Card.Body>
           <Form>
             <Form.Group className="mb-3" controlId="formBasicEmail">

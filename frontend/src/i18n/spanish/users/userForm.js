@@ -17,6 +17,21 @@ const userForm = {
   fieldStatus: "Estado",
   fieldImage: "Foto",
   buttonAdd: "Registrar",
+  formTextUsername: "Minimo 3, maximo 30 caracteres",
+  formTextPassword: "Minimo 3, maximo 30 caracteres",
+  formTextDni: "Minimo 3, maximo 30 numeros",
+  formTextFirstName: "Minimo 3, maximo 30 caracteres",
+  formTextSecondName: "Minimo 3, maximo 30 caracteres",
+  formTextLastName: "Minimo 3, maximo 30 caracteres",
+  formTextSecondLastName: "Minimo 3, maximo 30 caracteres",
+  formTextBirthDate: "Seleccione Fecha",
+  formTextAge: "Ingrese su edad (numero mayor igual a 0)",
+  formTextSex: "Seleccione su sexo",
+  formTextOccupation: "Minimo 3, maximo 60 caracteres",
+  formTextTelephone: "Minimo 3, maximo 30 numeros",
+  formTextAddress: "Minimo 3, maximo 60 caracteres",
+  formTextEmail: "Minimo 3, maximo 30 caracteres",
+  formTextStatus: "Seleccione el estado",
 };
 
 export default userForm;

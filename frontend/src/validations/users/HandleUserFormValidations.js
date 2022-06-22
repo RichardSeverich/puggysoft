@@ -1,53 +1,110 @@
-const handleValidations = (data, setColorFormText, colorFormReset) => {
+const classNameRed = "puggysoft-red-text";
+const classNameFormTextNew = {
+  username: classNameRed,
+  password: classNameRed,
+  dni: classNameRed,
+  name: classNameRed,
+  secondName: classNameRed,
+  lastName: classNameRed,
+  secondLastName: classNameRed,
+  age: classNameRed,
+  sex: classNameRed,
+  occupation: classNameRed,
+  birthDate: classNameRed,
+  telephone: classNameRed,
+  address: classNameRed,
+  email: classNameRed,
+  active: classNameRed,
+}
 
+const handleValidation = (data, setClassNameFormText) => {
   let isValid = true;
-  const newColorFormText = colorFormReset;
-  const dangerText = "danger";
-  if (!(data.username.length >= 3 && data.username.length <= 10)) {
+  if (!(data.username.length >= 3 && data.username.length <= 30)) {
     isValid = false;
-    newColorFormText.username = dangerText;
+    classNameFormTextNew.username = classNameRed;
+  } else {
+    classNameFormTextNew.username = "";
   } if (!(data.password.length >= 3 && data.password.length <= 10)) {
     isValid = false;
-    newColorFormText.password = dangerText;
+    classNameFormTextNew.password = classNameRed;
+  } else {
+    classNameFormTextNew.password = "";
   } if (!(data.dni.length >= 3 && data.dni.length <= 10)) {
     isValid = false;
-    newColorFormText.dni = dangerText;
+    classNameFormTextNew.dni = classNameRed;
+  } else if (!/^[0-9]+$/.test(data.dni)) {
+    isValid = false;
+    classNameFormTextNew.dni = classNameRed;
+  } else {
+    classNameFormTextNew.dni = "";
   } if (!(data.name.length >= 3 && data.name.length <= 30)) {
     isValid = false;
-    newColorFormText.name = dangerText;
-  } if (!(data.fatherLastName.length >= 3 && data.fatherLastName.length <= 30)) {
+    classNameFormTextNew.name = classNameRed;
+  } else {
+    classNameFormTextNew.name = "";
+  } if (!(data.secondName.length >= 3 && data.secondName.length <= 30)) {
     isValid = false;
-    newColorFormText.fatherLastName = dangerText;
-  } if (!(data.motherLastName.length >= 3 && data.motherLastName.length <= 30)) {
+    classNameFormTextNew.secondName = classNameRed;
+  } else {
+    classNameFormTextNew.secondName = "";
+  } if (!(data.lastName.length >= 3 && data.lastName.length <= 30)) {
     isValid = false;
-    newColorFormText.motherLastName = dangerText;
+    classNameFormTextNew.lastName = classNameRed;
+  } else {
+    classNameFormTextNew.lastName = "";
+  } if (!(data.secondLastName.length >= 3 && data.secondLastName.length <= 30)) {
+    isValid = false;
+    classNameFormTextNew.secondLastName = classNameRed;
+  } else {
+    classNameFormTextNew.secondLastName = "";
   } if (!(data.birthDate.length === 10)) {
     isValid = false;
-    newColorFormText.birthDate = dangerText;
+    classNameFormTextNew.birthDate = classNameRed;
+  } else {
+    classNameFormTextNew.birthDate = "";
+  } if (!(data.age.length !== "")) {
+    isValid = false;
+    classNameFormTextNew.age = classNameRed;
+  } else if (!(data.age >= 0)) {
+    isValid = false;
+    classNameFormTextNew.age = classNameRed;
+  } else {
+    classNameFormTextNew.age = "";
+  } if (!(data.sex !== "")) {
+    isValid = false;
+    classNameFormTextNew.sex = classNameRed;
+  } else {
+    classNameFormTextNew.sex = "";
+  } if (!(data.occupation.length >= 3 && data.occupation.length <= 60)) {
+    isValid = false;
+    classNameFormTextNew.occupation = classNameRed;
+  } else {
+    classNameFormTextNew.occupation = "";
   } if (!(data.telephone.length >= 3 && data.telephone.length <= 30)) {
     isValid = false;
-    newColorFormText.telephone = dangerText;
+    classNameFormTextNew.telephone = classNameRed;
+  } else if (!/^[0-9]+$/.test(data.telephone)) {
+    isValid = false;
+    classNameFormTextNew.telephone = classNameRed;
+  } else {
+    classNameFormTextNew.telephone = "";
   } if (!(data.address.length >= 3 && data.address.length <= 60)) {
     isValid = false;
-    newColorFormText.address = dangerText;
+    classNameFormTextNew.address = classNameRed;
+  } else {
+    classNameFormTextNew.address = "";
   } if (!(data.email.length >= 3 && data.email.length <= 30)) {
     isValid = false;
-    newColorFormText.email = dangerText;
-  } if (!(data.type === "admin" || data.type === "client")) {
+    classNameFormTextNew.email = classNameRed;
+  } else if (!/\S+@\S+\.\S+/.test(data.email)) {
     isValid = false;
-    newColorFormText.type = dangerText;
-  } if (!/^[0-9]+$/.test(data.dni)) {
-    isValid = false;
-    newColorFormText.dni = dangerText;
-  } if (!/^[0-9]+$/.test(data.telephone)) {
-    isValid = false;
-    newColorFormText.telephone = dangerText;
-  } if (!/\S+@\S+\.\S+/.test(data.email)) {
-    isValid = false;
-    newColorFormText.email = dangerText;
+    classNameFormTextNew.email = classNameRed;
+  } else {
+    classNameFormTextNew.email = "";
   }
-  setColorFormText(newColorFormText);
+  setClassNameFormText(classNameFormTextNew);
   return isValid;
 };
 
-export default handleValidations;
+
+export { handleValidation, classNameFormTextNew };

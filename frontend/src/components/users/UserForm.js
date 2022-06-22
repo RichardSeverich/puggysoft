@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router";
 
 import Form from 'react-bootstrap/Form'
@@ -8,14 +8,18 @@ import i18n from "./../../i18n/i18n";
 import useInput from "./../../hooks/useInput";
 import enumSex from "./../../models/users/enumSex"
 import { handleAddRequest, handleEditRequest } from "../../actions/HandleManager";
+import { handleValidation, classNameFormTextNew } from "./../../validations/users/HandleUserFormValidations"
+import enumRoles from "./../../models/users/enumRoles"
 
 import "./user-form-styles.css"
 
-function UserForm() {
+function UserForm(props) {
 
   const history = useHistory();
   const isEditDefaultValue = history && history.location && history.location.state;
   const [isEdit, setIsEdit] = useState(isEditDefaultValue);
+  const [classNameFormText, setClassNameFormText] = useState(classNameFormTextNew);
+  const { userRole } = props;
 
   // Put default values:
   let id = isEdit ? isEdit.data.id : "";
@@ -70,8 +74,23 @@ function UserForm() {
     setStatus(true);
   }
 
-  const handleAdd = (event) => {
-    event.preventDefault();
+  const handleAfterAdd = function (newUserId) {
+    console.log("THIS IS THE NEW USER ID : " + newUserId);
+    handleReset();
+    // ******* SALE SYSTEM *******
+    if (userRole && userRole === enumRoles.SALES_CLIENT) {
+      // Navigate to client form.
+    } else if (userRole && userRole === enumRoles.SALES_SELLER) {
+      // Navigate to seller form.
+      // ******* HOSPITAL SYSTEM *******
+    } else if (userRole && userRole === enumRoles.HOSPITAL_DOCTOR) {
+      // Navigate to doctor form.
+    } else if (userRole && userRole === enumRoles.HOSPITAL_PATIENT) {
+      // Navigate to patient form.
+    }
+  }
+
+  const getBody = function () {
     const username = window.sessionStorage.getItem("username");
     const body = {
       username: valueUsername,
@@ -92,18 +111,36 @@ function UserForm() {
       createdBy: username,
       updatedBy: username,
     }
-    handleReset()
-    if (isEdit) {
-      handleEditRequest("users/", body, id, handleReset, setIsEdit)
+    return body;
+  }
+
+  const handleAdd = (event) => {
+    event.preventDefault();
+    const body = getBody();
+    let isValid = handleValidation(body, setClassNameFormText);
+    if (isValid) {
+      if (isEdit) {
+        handleEditRequest("users/", body, id, handleReset, setIsEdit)
+      } else {
+        handleAddRequest("users/", body, handleAfterAdd);
+      }
     } else {
-      handleAddRequest("users/", body, handleReset);
+      alert(i18n.errorMessages.validationError);
     }
   }
+
+  useEffect(() => {
+    const body = getBody();
+    handleValidation(body, setClassNameFormText)
+  }, [valueUsername, valuePassword, valueDni, valueName, valueSecondName, valueLastName, valueSecondLastName, valueAge,
+    valueSex, valueOccupation, valueBirthDate, valueTelephone, valueAddress, valueEmail, valueStatus]);
+
+  const title = props && props.title ? props.title : i18n.userForm.title;
 
   return (
     <div className="puggysoft-user-form" >
       <Card>
-        <Card.Title>{i18n.userForm.title}</Card.Title>
+        <Card.Header as='h3'>{title}</Card.Header>
         <Card.Body>
           <Form>
             <Form.Group className="mb-3" controlId="username">
@@ -113,6 +150,9 @@ function UserForm() {
                 value={valueUsername}
                 type="text"
                 placeholder={i18n.userForm.fieldUsername} />
+              <Form.Text muted className={classNameFormText.username}>
+                {i18n.userForm.formTextUsername}
+              </Form.Text>
             </Form.Group>
             <Form.Group className="mb-3" controlId="password">
               <Form.Label>{i18n.userForm.fieldPassword}</Form.Label>
@@ -121,6 +161,9 @@ function UserForm() {
                 value={valuePassword}
                 type="password"
                 placeholder={i18n.userForm.fieldPassword} />
+              <Form.Text muted className={classNameFormText.password}>
+                {i18n.userForm.formTextPassword}
+              </Form.Text>
             </Form.Group>
             <Form.Group className="mb-3" controlId="dni">
               <Form.Label>{i18n.userForm.fieldDni}</Form.Label>
@@ -129,6 +172,9 @@ function UserForm() {
                 value={valueDni}
                 type="text"
                 placeholder={i18n.userForm.fieldDni} />
+              <Form.Text muted className={classNameFormText.dni}>
+                {i18n.userForm.formTextDni}
+              </Form.Text>
             </Form.Group>
             <Form.Group className="mb-3" controlId="name">
               <Form.Label>{i18n.userForm.fieldName}</Form.Label>
@@ -137,6 +183,9 @@ function UserForm() {
                 value={valueName}
                 type="text"
                 placeholder={i18n.userForm.fieldName} />
+              <Form.Text muted className={classNameFormText.name}>
+                {i18n.userForm.formTextFirstName}
+              </Form.Text>
             </Form.Group>
             <Form.Group className="mb-3" controlId="second-name">
               <Form.Label>{i18n.userForm.fieldSecondName}</Form.Label>
@@ -145,6 +194,9 @@ function UserForm() {
                 value={valueSecondName}
                 type="text"
                 placeholder={i18n.userForm.fieldSecondName} />
+              <Form.Text muted className={classNameFormText.secondName}>
+                {i18n.userForm.formTextSecondName}
+              </Form.Text>
             </Form.Group>
             <Form.Group className="mb-3" controlId="lastname">
               <Form.Label>{i18n.userForm.fieldLastName}</Form.Label>
@@ -153,6 +205,9 @@ function UserForm() {
                 value={valueLastName}
                 type="text"
                 placeholder={i18n.userForm.fieldLastName} />
+              <Form.Text muted className={classNameFormText.lastName}>
+                {i18n.userForm.formTextLastName}
+              </Form.Text>
             </Form.Group>
             <Form.Group className="mb-3" controlId="second-lastname">
               <Form.Label>{i18n.userForm.fieldSecondLastName}</Form.Label>
@@ -161,6 +216,9 @@ function UserForm() {
                 value={valueSecondLastName}
                 type="text"
                 placeholder={i18n.userForm.fieldSecondLastName} />
+              <Form.Text muted className={classNameFormText.secondLastName}>
+                {i18n.userForm.formTextSecondLastName}
+              </Form.Text>
             </Form.Group>
             <Form.Group className="mb-3" controlId="birthdate">
               <Form.Label>{i18n.userForm.fieldBirthDate}</Form.Label>
@@ -169,6 +227,9 @@ function UserForm() {
                 value={valueBirthDate}
                 type="date"
                 placeholder={i18n.userForm.fieldBirthDate} />
+              <Form.Text muted className={classNameFormText.birthDate}>
+                {i18n.userForm.formTextBirthDate}
+              </Form.Text>
             </Form.Group>
             <Form.Group className="mb-3" controlId="age">
               <Form.Label>{i18n.userForm.fieldAge}</Form.Label>
@@ -177,6 +238,9 @@ function UserForm() {
                 value={valueAge}
                 type="number"
                 placeholder={i18n.userForm.fieldAge} />
+              <Form.Text muted className={classNameFormText.age}>
+                {i18n.userForm.formTextAge}
+              </Form.Text>
             </Form.Group>
             <Form.Group className="mb-3" controlId="sex">
               <Form.Label>{i18n.userForm.fieldSex}</Form.Label>
@@ -186,6 +250,9 @@ function UserForm() {
                 <option key='option-male' value={enumSex.MALE}>{i18n.userSexText.male}</option>
                 <option key='option-female' value={enumSex.FEMALE}>{i18n.userSexText.female}</option>
               </Form.Select>
+              <Form.Text muted className={classNameFormText.sex}>
+                {i18n.userForm.formTextSex}
+              </Form.Text>
             </Form.Group>
             <Form.Group className="mb-3" controlId="occupation">
               <Form.Label>{i18n.userForm.fieldOccupation}</Form.Label>
@@ -194,6 +261,9 @@ function UserForm() {
                 value={valueOccupation}
                 type="text"
                 placeholder={i18n.userForm.fieldOccupation} />
+              <Form.Text muted className={classNameFormText.occupation}>
+                {i18n.userForm.formTextOccupation}
+              </Form.Text>
             </Form.Group>
             <Form.Group className="mb-3" controlId="telephone">
               <Form.Label>{i18n.userForm.fieldTelephone}</Form.Label>
@@ -202,6 +272,9 @@ function UserForm() {
                 value={valueTelephone}
                 type="number"
                 placeholder={i18n.userForm.fieldTelephone} />
+              <Form.Text muted className={classNameFormText.telephone}>
+                {i18n.userForm.formTextTelephone}
+              </Form.Text>
             </Form.Group>
             <Form.Group className="mb-3" controlId="address">
               <Form.Label>{i18n.userForm.fieldAddress}</Form.Label>
@@ -210,6 +283,9 @@ function UserForm() {
                 value={valueAddress}
                 type="text"
                 placeholder={i18n.userForm.fieldAddress} />
+              <Form.Text muted className={classNameFormText.address}>
+                {i18n.userForm.formTextAddress}
+              </Form.Text>
             </Form.Group>
             <Form.Group className="mb-3" controlId="email">
               <Form.Label>{i18n.userForm.fieldEmail}</Form.Label>
@@ -218,6 +294,9 @@ function UserForm() {
                 value={valueEmail}
                 type="email"
                 placeholder={i18n.userForm.fieldEmail} />
+              <Form.Text muted className={classNameFormText.email}>
+                {i18n.userForm.formTextEmail}
+              </Form.Text>
             </Form.Group>
             <Form.Group className="mb-3" controlId="active">
               <Form.Label>{i18n.userForm.fieldStatus}</Form.Label>
@@ -227,6 +306,9 @@ function UserForm() {
                 <option key='option-true' value={true}>{i18n.userStatus.active}</option>
                 <option key='option-false' value={false}>{i18n.userStatus.inactive}</option>
               </Form.Select>
+              <Form.Text muted className={classNameFormText.status}>
+                {i18n.userForm.formTextStatus}
+              </Form.Text>
             </Form.Group>
             <Button
               onClick={handleAdd}
@@ -235,7 +317,7 @@ function UserForm() {
           </Form>
         </Card.Body>
       </Card>
-    </div>
+    </div >
   )
 }
 

@@ -38,7 +38,7 @@ INSERT INTO roles (name, created_by) VALUES ("SALES_SELLER", "admin");
 
 -- Insert data (User-Roles).
 INSERT INTO users_roles (id_user, id_role, created_by) VALUES (1000, 1000, "admin"); -- Admin Full.
-INSERT INTO users_roles (id_user, id_role, created_by) VALUES (1000, 1002, "admin"); -- Admin Full.
+INSERT INTO users_roles (id_user, id_role, created_by) VALUES (1000, 1001, "admin"); -- Admin Users.
 INSERT INTO users_roles (id_user, id_role, created_by) VALUES (1001, 1002, "admin"); -- Admin hospital.
 INSERT INTO users_roles (id_user, id_role, created_by) VALUES (1002, 1003, "admin"); -- Admin doctor.
 INSERT INTO users_roles (id_user, id_role, created_by) VALUES (1003, 1004, "admin"); -- Admin patient.

@@ -9,6 +9,9 @@ import userStatus from "./spanish/users/userStatus"
 import trueFalse from "./spanish/trueFalse"
 import productTable from "./spanish/sales/productTable"
 import productForm from "./spanish/sales/productForm"
+// Hospital System
+import doctorUserForm from "./spanish/hospital/doctorUserForm"
+import patientUserForm from "./spanish/hospital/patientUserForm"
 
 
 const i18n = {
@@ -22,7 +25,10 @@ const i18n = {
   productTable,
   productForm,
   trueFalse,
-  userStatus
+  userStatus,
+  // Hospital System
+  doctorUserForm,
+  patientUserForm
 }
 
 export default i18n;

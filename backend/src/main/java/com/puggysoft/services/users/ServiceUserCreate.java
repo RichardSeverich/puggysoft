@@ -1,6 +1,7 @@
 package com.puggysoft.services.users;
 
 import com.puggysoft.dtos.users.DtoUser;
+import com.puggysoft.entities.users.EntityUser;
 import com.puggysoft.repositories.users.IRepositoryUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
@@ -18,8 +19,10 @@ public class ServiceUserCreate {
   /** method for create a user. */
   public ResponseEntity<String> create(DtoUser dtoUser) {
     try {
-      repositoryUser.save(dtoUser.dtoToEntity());
-      return ResponseEntity.status(HttpStatus.CREATED).body("Created successfully");
+      EntityUser entity = repositoryUser.save(dtoUser.dtoToEntity());
+      DtoUser dto = DtoUser.entityToDto(entity);
+      String idString = String.valueOf(dto.getId());
+      return ResponseEntity.status(HttpStatus.CREATED).body(idString);
     } catch (DataAccessException ex) {
       String dbException = ex.getMostSpecificCause().getMessage();
       return ResponseEntity.status(HttpStatus.CONFLICT).body(dbException);

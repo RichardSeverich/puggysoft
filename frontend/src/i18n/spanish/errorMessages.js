@@ -9,6 +9,7 @@ const errorMessages = {
   invalidCredentials: "Usuario o Contrasena Incorrecto",
   confirmModal: "Esta seguro que desea realizar esta accion ?",
   userNoRoles: "El usuario no tiene roles asignado",
+  validationError: "Error de validacion porfavor llene corretamente el formulario",
 };
 
 export default errorMessages;
