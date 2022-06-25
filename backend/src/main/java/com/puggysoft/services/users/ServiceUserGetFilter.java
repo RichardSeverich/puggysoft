@@ -18,7 +18,7 @@ import org.springframework.stereotype.Service;
 
 /** Services for filter users. */
 @Service
-public class ServicesUserFilter {
+public class ServiceUserGetFilter {
 
   @Autowired
   private IRepositoryUser repositoryUser;
@@ -27,7 +27,7 @@ public class ServicesUserFilter {
   private EntityManager entityManager;
 
   /** method for filter users. */
-  public ResponseEntity<List<DtoUser>> filter(int page, int size, DtoUserFilter dtoUserFilter) {
+  public ResponseEntity<List<DtoUser>> filter(DtoUserFilter dtoUserFilter, int page, int size) {
 
     String query = SqlUserFilterBuilder.build(dtoUserFilter);
     int off = page * size;

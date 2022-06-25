@@ -4,6 +4,9 @@ INSERT INTO users (username, password, dni, name, second_name, last_name, second
 INSERT INTO users (username, password, dni, name, second_name, last_name, second_last_name, birth_date, age, sex, occupation, telephone, address, email, active, image, created_by) VALUES ("doctor", "admin123", "466587777", "N/A", "doctor", "doctor", "doctor", "1990-10-10", 50, 'MALE', 'Medico General', "76487888", "Av. B. Galindo", "doctor@gmail.com", true, null, "admin");
 INSERT INTO users (username, password, dni, name, second_name, last_name, second_last_name, birth_date, age, sex, occupation, telephone, address, email, active, image, created_by) VALUES ("paciente", "admin123", "4548787", "N/A", "paciente", "paciente", "paciente", "1990-10-10", 50, 'MALE', 'Chef', "76487888", "Av. B. Galindo", "paciente@gmail.com", true, null, "admin");
 INSERT INTO users (username, password, dni, name, second_name, last_name, second_last_name, birth_date, age, sex, occupation, telephone, address, email, active, image, created_by) VALUES ("adminfichas", "admin123", "454878888", "N/A", "adminfichas", "adminfichas", "adminfichas", "1990-10-10", 50, 'MALE', 'Ing. Comercial', "76487888", "Av. B. Galindo", "paciente@gmail.com", true, null, "admin");
+INSERT INTO users (username, password, dni, name, second_name, last_name, second_last_name, birth_date, age, sex, occupation, telephone, address, email, active, image, created_by) VALUES ("adminsales", "admin123", "454879118", "N/A", "adminsales", "adminsales", "adminsales", "1990-10-10", 50, 'MALE', 'Ing. Mecanica', "76487888", "Av. B. Galindo", "adminsales@gmail.com", true, null, "admin");
+INSERT INTO users (username, password, dni, name, second_name, last_name, second_last_name, birth_date, age, sex, occupation, telephone, address, email, active, image, created_by) VALUES ("salesseller", "salesseller", "45511447", "N/A", "salesseller", "salesseller", "salesseller", "1990-10-10", 50, 'FEMALE', 'Ing. ventas', "76487888", "Av. B. Galindo", "salesseller@gmail.com", true, null, "admin");
+INSERT INTO users (username, password, dni, name, second_name, last_name, second_last_name, birth_date, age, sex, occupation, telephone, address, email, active, image, created_by) VALUES ("salesclient", "salesclient", "441188877", "N/A", "salesclient", "salesclient", "salesclient", "1990-10-10", 50, 'FEMALE', 'Empresaria', "76487888", "Av. B. Galindo", "salesclient@gmail.com", true, null, "admin");
 INSERT INTO users (username, password, dni, name, second_name, last_name, second_last_name, birth_date, age, sex, occupation, telephone, address, email, active, image, created_by) VALUES ("rseveric", "secret123", "5928025", "Richard", "Michael", "Severich",  "Zuares", "1994-05-26", 25, 'MALE', 'Ing. Sistemas', "7008088", "Av. Blanco km-5", "Richard.Severich@gmail.com", true, null, "admin");
 INSERT INTO users (username, password, dni, name, second_name, last_name, second_last_name, birth_date, age, sex, occupation, telephone, address, email, active, image, created_by) VALUES ("cluza", "pass123",  "2365874", "Cory", "N/A", "Luza", "Ander", "1994-10-28", 28, 'MALE', 'Ing. Sistemas', "700684700", "Av. Rojo km-10", "Cory.Luza@gmail.com", true, null, "admin");
 INSERT INTO users (username, password, dni, name, second_name, last_name, second_last_name, birth_date, age, sex, occupation, telephone, address, email, active, image, created_by) VALUES ("mjacson", "secret255", "5123659", "Michael", "N/A", "Jackson", "Muller", "1984-02-15", 25, 'MALE', 'Ing. Sistemas', "74600788", "Av. Azul km-11", "Michael.Jackson@gmail.com", true, null, "admin");
@@ -38,11 +41,14 @@ INSERT INTO roles (name, created_by) VALUES ("SALES_SELLER", "admin");
 
 -- Insert data (User-Roles).
 INSERT INTO users_roles (id_user, id_role, created_by) VALUES (1000, 1000, "admin"); -- Admin Full.
-INSERT INTO users_roles (id_user, id_role, created_by) VALUES (1000, 1001, "admin"); -- Admin Users.
-INSERT INTO users_roles (id_user, id_role, created_by) VALUES (1001, 1002, "admin"); -- Admin hospital.
-INSERT INTO users_roles (id_user, id_role, created_by) VALUES (1002, 1003, "admin"); -- Admin doctor.
-INSERT INTO users_roles (id_user, id_role, created_by) VALUES (1003, 1004, "admin"); -- Admin patient.
-INSERT INTO users_roles (id_user, id_role, created_by) VALUES (1004, 1005, "admin"); -- Admin tickets admin.
+INSERT INTO users_roles (id_user, id_role, created_by) VALUES (1000, 1001, "admin"); -- users - Admin Users.
+INSERT INTO users_roles (id_user, id_role, created_by) VALUES (1001, 1002, "admin"); -- hospital - Admin hospital.
+INSERT INTO users_roles (id_user, id_role, created_by) VALUES (1002, 1003, "admin"); -- hospital - doctor.
+INSERT INTO users_roles (id_user, id_role, created_by) VALUES (1003, 1004, "admin"); -- hospital - patient.
+INSERT INTO users_roles (id_user, id_role, created_by) VALUES (1004, 1005, "admin"); -- hospital - tickets admin.
+INSERT INTO users_roles (id_user, id_role, created_by) VALUES (1005, 1006, "admin"); -- Admin sales
+INSERT INTO users_roles (id_user, id_role, created_by) VALUES (1006, 1007, "admin"); -- sales seller
+INSERT INTO users_roles (id_user, id_role, created_by) VALUES (1007, 1008, "admin"); -- sales client
 INSERT INTO users_roles (id_user, id_role, created_by) VALUES (1008, 1001, "admin");
 INSERT INTO users_roles (id_user, id_role, created_by) VALUES (1009, 1003, "admin");
 INSERT INTO users_roles (id_user, id_role, created_by) VALUES (1010, 1003, "admin");

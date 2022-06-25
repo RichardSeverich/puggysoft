@@ -100,10 +100,6 @@ function UserTableFilter() {
     handleFilterRequest(`users/filter/size/${pageSize}`, filterBody, setTotalPages);
   }, [activePage]);
 
-  if (arrayData == null || totalPages == null) {
-    return <CommonLoading></CommonLoading>;
-  }
-
   const handleFilter = () => {
     const filterBody = getFilterBody();
     setArrayData(null);
@@ -125,6 +121,10 @@ function UserTableFilter() {
 
   function handleDelete(data) {
     handleDeleteRequest("users/", data.id)
+  }
+
+  if (arrayData == null || totalPages == null) {
+    return <CommonLoading></CommonLoading>;
   }
 
   return (

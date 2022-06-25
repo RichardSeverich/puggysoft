@@ -8,11 +8,30 @@ const navBar = {
   userShowCard: "Mostrar Usuarios (Tarjetas)",
   // Roles
   roleAdmin: "Adm. Roles",
-  roleRegistration: "Registrar Role",
+  roleRegistration: "Registrar Roles",
   roleShowTable: "Mostrar Roles (Tabla)",
   roleShowCard: "Mostrar Roles (Tarjetas)",
 
+  // Roles - Users
+  roleUserAdmin: "Adm. Roles - Usuarios",
+  roleUserRegistrationByRole: "Asignar Roles a usuario por Role",
+  roleUserRegistrationByUser: "Asignar Roles a usuario por Usuario",
+  roleUserShowByRole: "Mostrar Usuarios por Rol",
+  roleUserShowByUser: "Mostrar Roles por Usuario",
+
   // ******* ******* SALES SYSTEM ******* *******
+  // Seller
+  sellertAdmin: "Adm. Vendedores",
+  sellerRegistration: "Registrar Vendedores",
+  sellerShowTable: "Mostrar Vendedores (Tabla)",
+  sellerShowTableFilter: "Mostrar Vendedores (Tabla, Filtro)",
+  sellerShowCard: "Mostrar Vendedores (Tarjetas)",
+  // Clientes
+  clientAdmin: "Adm. Clientes",
+  clientRegistration: "Registrar Clientes",
+  clientShowTable: "Mostrar Clientes (Tabla)",
+  clientShowTableFilter: "Mostrar Clientes (Tabla, Filtro)",
+  clientShowCard: "Mostrar Clientes (Tarjetas)",
   // Products
   productAdmin: "Adm. Productos",
   productRegistration: "Registrar Producto",

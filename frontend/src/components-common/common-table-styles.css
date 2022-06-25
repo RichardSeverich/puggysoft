@@ -1,6 +1,7 @@
 /* Only applies for resolutions greater than 1080px */
 @media (min-width:1080px) {
-    table {
+    /*@Deprecate with responsive={true}*/
+    /*table {
         display: block;
         overflow-x: auto;
         white-space: nowrap;
@@ -28,5 +29,5 @@
 
     .puggysoft-delete-button {
         float: left;
-    }
+    }*/
 }

@@ -1,12 +1,18 @@
+// Common
 import login from "./spanish/login"
 import navBar from "./spanish/navBar"
 import commonTable from "./spanish/commonTable"
 import errorMessages from "./spanish/errorMessages"
+import trueFalse from "./spanish/trueFalse"
+// Users System
 import userTable from "./spanish/users/userTable"
 import userForm from "./spanish/users/userForm"
 import userSexText from "./spanish/users/userSexText"
 import userStatus from "./spanish/users/userStatus"
-import trueFalse from "./spanish/trueFalse"
+import userRoles from "./spanish/users/userRoles"
+import userRoleTableByRole from "./spanish/users/userRoleTableByRole"
+import roleTable from "./spanish/users/roleTable"
+// Sales System
 import productTable from "./spanish/sales/productTable"
 import productForm from "./spanish/sales/productForm"
 // Hospital System
@@ -15,13 +21,19 @@ import patientUserForm from "./spanish/hospital/patientUserForm"
 
 
 const i18n = {
+  // Common
   login,
   navBar,
   commonTable,
   errorMessages,
+  // Users System
   userForm,
   userTable,
   userSexText,
+  userRoles,
+  userRoleTableByRole,
+  roleTable,
+  // Sales System
   productTable,
   productForm,
   trueFalse,

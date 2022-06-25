@@ -2,6 +2,7 @@ package com.puggysoft.services.users;
 
 import com.puggysoft.dtos.users.DtoUserFilter;
 import com.puggysoft.repositories.users.IRepositoryUser;
+import com.puggysoft.tools.TotalPagesCalculator;
 import com.puggysoft.tools.users.SqlUserFilterBuilder;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -14,7 +15,7 @@ import org.springframework.stereotype.Service;
 
 /** Services for get size. */
 @Service
-public class ServiceUserFilterSize {
+public class ServiceUserGetFilterSize {
 
   @Autowired
   private IRepositoryUser repositoryUser;
@@ -36,10 +37,7 @@ public class ServiceUserFilterSize {
       Query filterQuery = entityManager.createQuery(fullQuery);
       totalRows = Long.valueOf(filterQuery.getSingleResult().toString());
     }
-    Long totalPages = totalRows / pageSize;
-    if (totalRows % pageSize != 0) {
-      totalPages = totalPages + 1L;
-    }
+    Long totalPages = TotalPagesCalculator.getTotalPages(totalRows, pageSize);
     return ResponseEntity.status(HttpStatus.OK).body(totalPages);
   }
 

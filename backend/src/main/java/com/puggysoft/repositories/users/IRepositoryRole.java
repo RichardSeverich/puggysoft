@@ -11,6 +11,9 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface IRepositoryRole extends JpaRepository<EntityRole, Long> {
 
+  @Query(value = "SELECT COUNT(*) FROM roles;", nativeQuery = true)
+  Long findSize();
+
   @Query(value = "SELECT roles.* "
           + "FROM roles "
           + "INNER JOIN users_roles ON users_roles.id_role=roles.id  "

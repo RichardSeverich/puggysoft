@@ -1,0 +1,29 @@
+package com.puggysoft.services.users;
+
+import com.puggysoft.dtos.users.DtoRole;
+import com.puggysoft.repositories.users.IRepositoryRole;
+import java.util.List;
+import java.util.stream.Collectors;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+
+
+/** Services for get pagination users. */
+@Service
+public class ServiceRoleGetPagination {
+
+  @Autowired
+  private IRepositoryRole repositoryRole;
+
+  /** method for retrive users with pagination. */
+  public ResponseEntity<List<DtoRole>> getPagination(Pageable pageable) {
+    List<DtoRole> listDtoRole = repositoryRole.findAll(pageable)
+            .stream()
+            .map(DtoRole::entityToDto)
+            .collect(Collectors.toList());
+    return ResponseEntity.status(HttpStatus.OK).body(listDtoRole);
+  }
+}

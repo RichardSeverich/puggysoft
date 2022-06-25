@@ -4,19 +4,23 @@ import CommonTablePagination from '../../components-common/CommonTablePagination
 import CommonLoading from '../../components-common/CommonLoading';
 import { handleGetRequest, handleDeleteRequest } from "../../actions/HandleManager";
 import i18n from "../../i18n/i18n";
-import arrayDataFields from "../../models/users/arrayUserDataFields";
-import arrayColumns from "../../models/users/arrayUserColumns";
-import fixArrayData from "../../tools/users/fixArrayData"
+import arrayDataFields from "../../models/users/arrayRoleDataFields";
+import arrayColumns from "../../models/users/arrayRoleColumns";
+import enumTableType from "../../models/enumTableType";
+import fixArrayData from "../../tools/users/fixArrayDataRoles"
+
+import "./role-table-styles.css"
 
 const pageSize = 10;
 const numberPagesToShow = 10;
 
-function UserTable() {
+function RoleTable() {
   const [arrayData, setArrayData] = useState(null);
   const [totalPages, setTotalPages] = useState(null);
   const [activePage, setActivePage] = useState(1);
   const [initialPage, setInitialPage] = useState(1);
   const history = useHistory();
+  const routerProps = history && history.location && history.location.state;
 
   function updateArrayData(arrayData) {
     let arrayFixed = fixArrayData(arrayData);
@@ -24,40 +28,45 @@ function UserTable() {
   }
 
   useEffect(() => {
-    handleGetRequest(`users/pagination?page=${activePage - 1}&size=${pageSize}`, updateArrayData);
+    handleGetRequest(`roles/pagination?page=${activePage - 1}&size=${pageSize}`, updateArrayData);
   }, [activePage]);
 
   useEffect(() => {
-    handleGetRequest(`users/pagination/size/${pageSize}`, setTotalPages);
+    handleGetRequest(`roles/pagination/size/${pageSize}`, setTotalPages);
   }, [activePage]);
+
+  let tableArrayCustomRowButtons = undefined;
+  if (routerProps && routerProps.tableType === enumTableType.TABLE_SELECTION) {
+    tableArrayCustomRowButtons = [
+      {
+        variant: "info",
+        handleCustom: handleNavigate,
+        text: i18n.roleTable.selectButton
+      }
+    ]
+  }
+
+  function handleNavigate(data) {
+    history.push({
+      pathname: "/users-table-filter-by-role",
+      state: {
+        data: data
+      }
+    })
+  }
 
   if (arrayData == null || totalPages == null) {
     return <CommonLoading></CommonLoading>;
   }
 
-  function handleEdit(data) {
-    history.push({
-      pathname: "/users-form",
-      state: {
-        data: data,
-        edit: true
-      }
-    })
-  }
-
-  function handleDelete(data) {
-    handleDeleteRequest("users/", data.id)
-  }
-
   return (
-    <div className="puggysoft-user-table">
+    <div className="puggysoft-role-table">
       <CommonTablePagination
-        tableTitle={i18n.userTable.title}
+        tableTitle={i18n.roleTable.title}
         tableArrayData={arrayData}
         tableArrayDataFields={arrayDataFields}
         tableArrayColumns={arrayColumns}
-        tableHandleEdit={handleEdit}
-        tableHandleDelete={handleDelete}
+        tableArrayCustomRowButtons={tableArrayCustomRowButtons}
         paginationTotalPages={totalPages}
         paginationNumberPagesToShow={numberPagesToShow}
         paginationInitialPage={initialPage}
@@ -71,4 +80,4 @@ function UserTable() {
   );
 }
 
-export default UserTable;
+export default RoleTable;

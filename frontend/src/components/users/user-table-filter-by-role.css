@@ -1,0 +1,7 @@
+/* Only applies for resolutions greater than 1080px */
+@media (min-width:1080px) {
+    .puggysoft-user-table-by-role {
+        width: 50%;
+        float: left;
+    }
+}

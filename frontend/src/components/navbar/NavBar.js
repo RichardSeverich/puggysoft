@@ -3,14 +3,15 @@ import { useHistory } from "react-router";
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav'
 import NavDropdown from 'react-bootstrap/NavDropdown'
-import { FaUsers, FaUsersCog, FaChartLine, FaTicketAlt, FaUserNurse } from 'react-icons/fa';
+import { FaUsers, FaUsersCog, FaChartLine, FaTicketAlt, FaUserInjured, FaUserMd, FaUser } from 'react-icons/fa';
 import { AiOutlineUserAdd, AiOutlineTable, AiOutlineIdcard } from 'react-icons/ai';
-import { GrAddCircle, GrProductHunt, GrConfigure, GrDocumentConfig } from 'react-icons/gr';
+import { GrAddCircle, GrProductHunt, GrDocumentConfig } from 'react-icons/gr';
 import { BsCartCheckFill, BsFillBagCheckFill, BsFillBarChartFill } from 'react-icons/bs';
-import { RiLoginCircleLine } from 'react-icons/ri';
-import { MdOutlineSettingsSuggest, MdOutlineSick } from 'react-icons/md';
+import { RiLoginCircleLine, RiUser2Fill } from 'react-icons/ri';
+import { MdOutlineSettingsSuggest } from 'react-icons/md';
 import { GoCalendar } from 'react-icons/go';
 import enumRoles from "./../../models/users/enumRoles";
+import enumTableType from "./../../models/enumTableType"
 
 import i18n from "../../i18n/i18n";
 
@@ -27,9 +28,14 @@ function NavBar() {
     userRoles.push(roleObject.name);
   })
 
+  // ******* ******* ******* USERS SYSTEM ******* ******* *******
   const navigateUsersForm = () => { history.push("/users-form"); }
   const navigateUsersTable = () => { history.push("/users-table"); }
   const navigateUsersTableFilter = () => { history.push("/users-table-filter"); }
+  const navigateRolesTable = () => { history.push("/roles-table"); }
+  const navigateRolesTableSelection = () => { history.push({ pathname: "/roles-table-selection", state: { "tableType": enumTableType.TABLE_SELECTION, } }) }
+
+  // ******* ******* ******* SALES SYSTEM ******* ******* *******
   const navigateProductsForm = () => { history.push("/products-form"); }
   const navigateProductsTable = () => { history.push("/products-table"); }
   const navigateProductsTableFilter = () => { history.push("/products-table-filter"); }
@@ -51,12 +57,31 @@ function NavBar() {
   const userShowTableFilterLabel = (<><AiOutlineTable /> {i18n.navBar.userShowTableFilter}</>)
   const userShowCardLabel = (<><AiOutlineIdcard /> {i18n.navBar.userShowCard}</>)
   // ROLES
-  const rolesAdminLabel = (<><FaUsersCog /> {i18n.navBar.roleAdmin}</>)
+  const rolesAdminLabel = (<><GrDocumentConfig /> {i18n.navBar.roleAdmin}</>)
   const roleRegistrationLabel = (<><GrAddCircle /> {i18n.navBar.roleRegistration}</>)
   const roleShowTableLabel = (<><AiOutlineTable /> {i18n.navBar.roleShowTable}</>)
   const roleShowCardLabel = (<><AiOutlineIdcard /> {i18n.navBar.roleShowCard}</>)
 
+  // ROLES - USER
+  const roleUserAdminLabel = (<><FaUsersCog /> {i18n.navBar.roleUserAdmin}</>)
+  const roleUserRegistrationByRoleLabel = (<><GrAddCircle /> {i18n.navBar.roleUserRegistrationByRole}</>)
+  const roleUserRegistrationByUserLabel = (<><GrAddCircle /> {i18n.navBar.roleUserRegistrationByUser}</>)
+  const roleUserShowByRoleLabel = (<><AiOutlineTable /> {i18n.navBar.roleUserShowByRole}</>)
+  const roleUserShowByUserLabel = (<><AiOutlineTable /> {i18n.navBar.roleUserShowByUser}</>)
+
   // ******* ******* ******* SALES SYSTEM ******* ******* *******
+  // SELLER
+  const sellerAdminLabel = (<><RiUser2Fill /> {i18n.navBar.sellertAdmin}</>)
+  const sellerRegistrationLabel = (<><GrAddCircle /> {i18n.navBar.sellerRegistration}</>)
+  const sellerShowTableLabel = (<><AiOutlineTable /> {i18n.navBar.sellerShowTable}</>)
+  const sellerShowTableFilterLabel = (<><AiOutlineTable /> {i18n.navBar.sellerShowTableFilter}</>)
+  const sellerShowCardLabel = (<><AiOutlineIdcard /> {i18n.navBar.sellerShowCard}</>)
+  // CLIENT
+  const clientAdminLabel = (<><FaUser /> {i18n.navBar.clientAdmin}</>)
+  const clientRegistrationLabel = (<><GrAddCircle /> {i18n.navBar.clientRegistration}</>)
+  const clientShowTableLabel = (<><AiOutlineTable /> {i18n.navBar.clientShowTable}</>)
+  const clientShowTableFilterLabel = (<><AiOutlineTable /> {i18n.navBar.clientShowTableFilter}</>)
+  const clientShowCardLabel = (<><AiOutlineIdcard /> {i18n.navBar.clientShowCard}</>)
   // PRODUCTS
   const productAdminLabel = (<><GrProductHunt /> {i18n.navBar.productAdmin}</>)
   const productRegistrationLabel = (<><GrAddCircle /> {i18n.navBar.productRegistration}</>)
@@ -86,13 +111,13 @@ function NavBar() {
 
   // ******* ******* ******* HOSPITAL SYSTEM ******* ******* *******
   // DOCTORS
-  const doctorAdminLabel = (<><FaUserNurse /> {i18n.navBar.doctorAdmin}</>)
+  const doctorAdminLabel = (<><FaUserMd /> {i18n.navBar.doctorAdmin}</>)
   const doctorRegistrationLabel = (<><GrAddCircle /> {i18n.navBar.doctorRegistration}</>)
   const doctorShowTableLabel = (<><AiOutlineTable /> {i18n.navBar.doctorShowTable}</>)
   const doctorShowTableFilterLabel = (<><AiOutlineTable /> {i18n.navBar.doctorShowTableFilter}</>)
   const doctorShowCardLabel = (<><AiOutlineIdcard /> {i18n.navBar.doctorShowCard}</>)
   // PATIENTS
-  const patientAdminLabel = (<><MdOutlineSick /> {i18n.navBar.patientAdmin}</>)
+  const patientAdminLabel = (<><FaUserInjured /> {i18n.navBar.patientAdmin}</>)
   const patientRegistrationLabel = (<><GrAddCircle /> {i18n.navBar.patientRegistration}</>)
   const patientShowTableLabel = (<><AiOutlineTable /> {i18n.navBar.patientShowTable}</>)
   const patientShowTableFilterLabel = (<><AiOutlineTable /> {i18n.navBar.patientShowTableFilter}</>)
@@ -134,13 +159,39 @@ function NavBar() {
               <NavDropdown.Item onClick={navigateUsersTableFilter}>{userShowTableFilterLabel}</NavDropdown.Item>
               <NavDropdown.Item onClick={navigateGeneric}>{userShowCardLabel}</NavDropdown.Item>
             </NavDropdown>}
-          {userRoles.includes(enumRoles.ADMIN_USERS) && <NavDropdown title={rolesAdminLabel}>
-            <NavDropdown.Item onClick={navigateGeneric}>{roleRegistrationLabel}</NavDropdown.Item>
-            <NavDropdown.Item onClick={navigateGeneric}>{roleShowTableLabel}</NavDropdown.Item>
-            <NavDropdown.Item onClick={navigateGeneric}>{roleShowCardLabel}</NavDropdown.Item>
-          </NavDropdown>}
+          {(userRoles.includes(enumRoles.ADMIN_USERS)
+            || userRoles.includes(enumRoles.HOSPITAL_ADMIN)
+            || userRoles.includes(enumRoles.SALES_ADMIN))
+            && <NavDropdown title={rolesAdminLabel}>
+              <NavDropdown.Item onClick={navigateGeneric}>{roleRegistrationLabel}</NavDropdown.Item>
+              <NavDropdown.Item onClick={navigateRolesTable}>{roleShowTableLabel}</NavDropdown.Item>
+              <NavDropdown.Item onClick={navigateGeneric}>{roleShowCardLabel}</NavDropdown.Item>
+            </NavDropdown>}
+          {(userRoles.includes(enumRoles.ADMIN_USERS)
+            || userRoles.includes(enumRoles.HOSPITAL_ADMIN)
+            || userRoles.includes(enumRoles.SALES_ADMIN))
+            && <NavDropdown title={roleUserAdminLabel}>
+              <NavDropdown.Item onClick={navigateRolesTableSelection}>{roleUserRegistrationByRoleLabel}</NavDropdown.Item>
+              <NavDropdown.Item onClick={navigateGeneric}>{roleUserRegistrationByUserLabel}</NavDropdown.Item>
+              <NavDropdown.Item onClick={navigateRolesTableSelection}>{roleUserShowByRoleLabel}</NavDropdown.Item>
+              <NavDropdown.Item onClick={navigateGeneric}>{roleUserShowByUserLabel}</NavDropdown.Item>
+            </NavDropdown>}
 
           {/* ******* ******* ******* SALES SYSTEM ******* ******* ********/}
+          {userRoles.includes(enumRoles.SALES_ADMIN) &&
+            <NavDropdown title={sellerAdminLabel}>
+              <NavDropdown.Item onClick={navigateGeneric}>{sellerRegistrationLabel}</NavDropdown.Item>
+              <NavDropdown.Item onClick={navigateGeneric}>{sellerShowTableLabel}</NavDropdown.Item>
+              <NavDropdown.Item onClick={navigateGeneric}>{sellerShowTableFilterLabel}</NavDropdown.Item>
+              <NavDropdown.Item onClick={navigateGeneric}>{sellerShowCardLabel}</NavDropdown.Item>
+            </NavDropdown>}
+          {userRoles.includes(enumRoles.SALES_ADMIN) &&
+            <NavDropdown title={clientAdminLabel}>
+              <NavDropdown.Item onClick={navigateGeneric}>{clientRegistrationLabel}</NavDropdown.Item>
+              <NavDropdown.Item onClick={navigateGeneric}>{clientShowTableLabel}</NavDropdown.Item>
+              <NavDropdown.Item onClick={navigateGeneric}>{clientShowTableFilterLabel}</NavDropdown.Item>
+              <NavDropdown.Item onClick={navigateGeneric}>{clientShowCardLabel}</NavDropdown.Item>
+            </NavDropdown>}
           {userRoles.includes(enumRoles.SALES_ADMIN) &&
             <NavDropdown title={productAdminLabel}>
               <NavDropdown.Item onClick={navigateProductsForm}>{productRegistrationLabel}</NavDropdown.Item>

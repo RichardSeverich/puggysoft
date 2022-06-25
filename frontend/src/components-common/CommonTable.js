@@ -1,5 +1,6 @@
 import Table from 'react-bootstrap/Table'
 import Button from 'react-bootstrap/Button'
+import Card from 'react-bootstrap/Card'
 import Form from 'react-bootstrap/Form'
 import i18n from "../i18n/i18n";
 
@@ -21,11 +22,14 @@ function CommonTable(props) {
     arrayData,
     arrayColumns,
     arrayDataFields,
+    arrayCustomRowButtons,
     handleEdit,
     handleDelete,
+    handleExportExcel,
+    handleExportPdf,
     filterArrayColumns,
     filterClear,
-    filterHandler
+    filterHandler,
   } = props;
 
   const tableColumns = () => {
@@ -129,20 +133,21 @@ function CommonTable(props) {
           const singleRow = <td key={'field-' + fieldIndex}>{data[field]}</td>;
           return singleRow;
         })}
-        {<td key={'field-edit' + rowIndex}>
+        {handleEdit && <td key={'field-edit' + rowIndex}>
           <Button
             variant="warning"
             onClick={() => handleEdit(data)}
           >
             {i18n.commonTable.editButton}
           </Button> </td>}
-        {<td key={'field-delete' + rowIndex}>
+        {handleDelete && <td key={'field-delete' + rowIndex}>
           <Button
             variant="danger"
             onClick={() => handleDelete(data)}
           >
             {i18n.commonTable.deleteButton}
           </Button> </td>}
+        {getCustomRowButtons(data)}
       </tr>
       return totalRows;
     })
@@ -162,27 +167,45 @@ function CommonTable(props) {
     )
   }
 
+  const getCustomRowButtons = (data) => {
+    if (arrayCustomRowButtons) {
+      // dataButton.variant, dataButton.handleCustom, dataButton.text
+      return arrayCustomRowButtons.map(function (dataButton, index) {
+        return <td key={'custom-button' + index}><Button
+          variant={dataButton.variant}
+          onClick={() => dataButton.handleCustom(data)}
+        >
+          {dataButton.text}
+        </Button></td>
+      })
+    }
+  }
+
   return (
     <div className="puggysoft-common-table" >
-      <h3>{tableTitle}</h3>
-      <div className='puggysoft-table-actions'>
-        {filterArrayColumns && filterArrayColumns.length > 0 && filterActionButtons()}
-        <Button variant="primary puggysoft-excel-export-button">{i18n.commonTable.excelExportButton}</Button>
-        <Button variant="success puggysoft-pdf-export-button">{i18n.commonTable.pdfExportButton}</Button>
-      </div>
-      <Table striped bordered hover>
-        <thead>
-          <tr>
-            {tableColumns()}
-          </tr>
-          <tr>
-            {filterArrayColumns && filterArrayColumns.length > 0 && tableFilters()}
-          </tr>
-        </thead>
-        <tbody>
-          {tableRows()}
-        </tbody>
-      </Table>
+      <Card>
+        <Card.Header as='h3'>{tableTitle}</Card.Header>
+        <Card.Body>
+          <div className='puggysoft-table-actions'>
+            {filterArrayColumns && filterArrayColumns.length > 0 && filterActionButtons()}
+            {handleExportExcel && <Button variant="primary puggysoft-excel-export-button">{i18n.commonTable.excelExportButton}</Button>}
+            {handleExportPdf && <Button variant="success puggysoft-pdf-export-button">{i18n.commonTable.pdfExportButton}</Button>}
+          </div>
+          <Table striped bordered hover responsive={true}>
+            <thead>
+              <tr>
+                {tableColumns()}
+              </tr>
+              <tr>
+                {filterArrayColumns && filterArrayColumns.length > 0 && tableFilters()}
+              </tr>
+            </thead>
+            <tbody>
+              {tableRows()}
+            </tbody>
+          </Table>
+        </Card.Body>
+      </Card>
     </div>
   )
 }

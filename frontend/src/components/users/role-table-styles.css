@@ -1,0 +1,10 @@
+/* Only applies for resolutions greater than 1080px */
+@media (min-width:1080px) {
+    .puggysoft-role-table {
+        display: flex;
+        justify-content: center;
+    }
+    #table {
+        align-self: center;
+    }
+}

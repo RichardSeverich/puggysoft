@@ -15,6 +15,7 @@ function CommonTablePagination(props) {
     tableTitle,
     tableHandleEdit,
     tableHandleDelete,
+    tableArrayCustomRowButtons,
     paginationTotalPages,
     paginationNumberPagesToShow,
     paginationInitialPage,
@@ -35,6 +36,7 @@ function CommonTablePagination(props) {
         arrayData={tableArrayData}
         arrayDataFields={tableArrayDataFields}
         arrayColumns={tableArrayColumns}
+        arrayCustomRowButtons={tableArrayCustomRowButtons}
         handleEdit={tableHandleEdit}
         handleDelete={tableHandleDelete}
         filterArrayColumns={filterArrayColumns}

@@ -28,6 +28,9 @@ const commonMessages = (response) => {
       });
       customMessage(meessage);
     }
+    if (response.data && response.data.message) {
+      customMessage(response.data.message);
+    }
   } else if (response && response.status === 403) {
     errorStaus403();
   } else if (response && response.status === 409) {

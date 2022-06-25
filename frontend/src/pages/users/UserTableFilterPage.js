@@ -1,13 +1,13 @@
 import NavBar from './../../components/navbar/NavBar'
 import UserTableFilter from './../../components/users/UserTableFilter';
 
-function UsersTableFilterPage() {
+function UserTableFilterPage() {
   return (
-    <div className="product-table-page">
+    <div className="users-table-page">
       <NavBar></NavBar>
       <UserTableFilter></UserTableFilter>
     </div>
   );
 }
 
-export default UsersTableFilterPage;
+export default UserTableFilterPage;

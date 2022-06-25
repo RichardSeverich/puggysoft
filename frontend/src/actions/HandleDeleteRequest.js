@@ -6,7 +6,7 @@ const handleDelete = (endpoint, id) => {
   const url = endpoint.concat(id);
   const message = i18n.errorMessages.confirmModal;
   let result = window.confirm(message);
-  if(result){
+  if (result) {
     requestManager.remove(url, (response) => {
       messageManager.deleteMessages(response);
       window.location.reload();
