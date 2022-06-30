@@ -11,6 +11,7 @@ import userSexText from "./spanish/users/userSexText"
 import userStatus from "./spanish/users/userStatus"
 import userRoles from "./spanish/users/userRoles"
 import userRoleTableByRole from "./spanish/users/userRoleTableByRole"
+import userRoleTableByUser from "./spanish/users/userRoleTableByUser"
 import roleTable from "./spanish/users/roleTable"
 // Sales System
 import productTable from "./spanish/sales/productTable"
@@ -32,6 +33,7 @@ const i18n = {
   userSexText,
   userRoles,
   userRoleTableByRole,
+  userRoleTableByUser,
   roleTable,
   // Sales System
   productTable,

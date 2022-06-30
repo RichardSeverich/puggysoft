@@ -15,6 +15,7 @@ function Login() {
   const { value: valueUsername, onChange: onChangeUsername, reset: resetUsername } = useInput("");
   const { value: valuePassword, onChange: onChangePassword, reset: resetPassword } = useInput("");
   const [isValidCredentials, setIsValidCredentials] = useState(false);
+  const routerProps = history && history.location && history.location.state;
 
   const handleLogin = () => {
     const body = {
@@ -35,6 +36,11 @@ function Login() {
         });
       }
     });
+  }
+
+  if (routerProps && routerProps.logout) {
+    window.sessionStorage.setItem("token", "");
+    window.sessionStorage.setItem("username", "");
   }
 
   useEffect(() => {

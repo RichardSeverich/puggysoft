@@ -3,12 +3,20 @@ import { useHistory } from "react-router";
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav'
 import NavDropdown from 'react-bootstrap/NavDropdown'
-import { FaUsers, FaUsersCog, FaChartLine, FaTicketAlt, FaUserInjured, FaUserMd, FaUser } from 'react-icons/fa';
+import {
+  FaUsers,
+  FaUsersCog,
+  FaChartLine,
+  FaTicketAlt,
+  FaUserInjured,
+  FaUserMd,
+  FaUser,
+} from 'react-icons/fa';
 import { AiOutlineUserAdd, AiOutlineTable, AiOutlineIdcard } from 'react-icons/ai';
 import { GrAddCircle, GrProductHunt, GrDocumentConfig } from 'react-icons/gr';
 import { BsCartCheckFill, BsFillBagCheckFill, BsFillBarChartFill } from 'react-icons/bs';
-import { RiLoginCircleLine, RiUser2Fill } from 'react-icons/ri';
-import { MdOutlineSettingsSuggest } from 'react-icons/md';
+import { RiLoginCircleLine, RiUser2Fill, RiShieldKeyholeFill } from 'react-icons/ri';
+import { MdOutlineSettingsSuggest, MdAdminPanelSettings } from 'react-icons/md';
 import { GoCalendar } from 'react-icons/go';
 import enumRoles from "./../../models/users/enumRoles";
 import enumTableType from "./../../models/enumTableType"
@@ -29,11 +37,15 @@ function NavBar() {
   })
 
   // ******* ******* ******* USERS SYSTEM ******* ******* *******
+
+  const navigateToLogout = () => { history.push({ pathname: "/login", state: { "logout": "logout", } }) }
   const navigateUsersForm = () => { history.push("/users-form"); }
   const navigateUsersTable = () => { history.push("/users-table"); }
   const navigateUsersTableFilter = () => { history.push("/users-table-filter"); }
   const navigateRolesTable = () => { history.push("/roles-table"); }
+  const navigateRolesTableFilter = () => { history.push("/roles-table-filter"); }
   const navigateRolesTableSelection = () => { history.push({ pathname: "/roles-table-selection", state: { "tableType": enumTableType.TABLE_SELECTION, } }) }
+  const navigateUserTableSelection = () => { history.push({ pathname: "/users-table-selection", state: { "tableType": enumTableType.TABLE_SELECTION, } }) }
 
   // ******* ******* ******* SALES SYSTEM ******* ******* *******
   const navigateProductsForm = () => { history.push("/products-form"); }
@@ -57,17 +69,16 @@ function NavBar() {
   const userShowTableFilterLabel = (<><AiOutlineTable /> {i18n.navBar.userShowTableFilter}</>)
   const userShowCardLabel = (<><AiOutlineIdcard /> {i18n.navBar.userShowCard}</>)
   // ROLES
-  const rolesAdminLabel = (<><GrDocumentConfig /> {i18n.navBar.roleAdmin}</>)
-  const roleRegistrationLabel = (<><GrAddCircle /> {i18n.navBar.roleRegistration}</>)
+  const rolesAdminLabel = (<><RiShieldKeyholeFill /> {i18n.navBar.roleAdmin}</>)
+  //const roleRegistrationLabel = (<><GrAddCircle /> {i18n.navBar.roleRegistration}</>)
   const roleShowTableLabel = (<><AiOutlineTable /> {i18n.navBar.roleShowTable}</>)
+  const roleShowTableFilterLabel = (<><AiOutlineTable /> {i18n.navBar.roleShowTableFilter}</>)
   const roleShowCardLabel = (<><AiOutlineIdcard /> {i18n.navBar.roleShowCard}</>)
 
   // ROLES - USER
   const roleUserAdminLabel = (<><FaUsersCog /> {i18n.navBar.roleUserAdmin}</>)
-  const roleUserRegistrationByRoleLabel = (<><GrAddCircle /> {i18n.navBar.roleUserRegistrationByRole}</>)
-  const roleUserRegistrationByUserLabel = (<><GrAddCircle /> {i18n.navBar.roleUserRegistrationByUser}</>)
-  const roleUserShowByRoleLabel = (<><AiOutlineTable /> {i18n.navBar.roleUserShowByRole}</>)
-  const roleUserShowByUserLabel = (<><AiOutlineTable /> {i18n.navBar.roleUserShowByUser}</>)
+  const roleUserCrudByRoleLabel = (<><AiOutlineTable /> {i18n.navBar.roleUserCrudByRole}</>)
+  const roleUserCrudByUserLabel = (<><AiOutlineTable /> {i18n.navBar.roleUserCrudByUser}</>)
 
   // ******* ******* ******* SALES SYSTEM ******* ******* *******
   // SELLER
@@ -148,7 +159,7 @@ function NavBar() {
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
-        <Nav>
+        <Nav className="container-fluid">
           {/* ******* ******* ******* USERS SYSTEM ******* ******* ********/}
           {(userRoles.includes(enumRoles.ADMIN_USERS)
             || userRoles.includes(enumRoles.HOSPITAL_ADMIN)
@@ -163,18 +174,17 @@ function NavBar() {
             || userRoles.includes(enumRoles.HOSPITAL_ADMIN)
             || userRoles.includes(enumRoles.SALES_ADMIN))
             && <NavDropdown title={rolesAdminLabel}>
-              <NavDropdown.Item onClick={navigateGeneric}>{roleRegistrationLabel}</NavDropdown.Item>
+              {/*<NavDropdown.Item onClick={navigateGeneric}>{roleRegistrationLabel}</NavDropdown.Item>*/}
               <NavDropdown.Item onClick={navigateRolesTable}>{roleShowTableLabel}</NavDropdown.Item>
+              <NavDropdown.Item onClick={navigateRolesTableFilter}>{roleShowTableFilterLabel}</NavDropdown.Item>
               <NavDropdown.Item onClick={navigateGeneric}>{roleShowCardLabel}</NavDropdown.Item>
             </NavDropdown>}
           {(userRoles.includes(enumRoles.ADMIN_USERS)
             || userRoles.includes(enumRoles.HOSPITAL_ADMIN)
             || userRoles.includes(enumRoles.SALES_ADMIN))
             && <NavDropdown title={roleUserAdminLabel}>
-              <NavDropdown.Item onClick={navigateRolesTableSelection}>{roleUserRegistrationByRoleLabel}</NavDropdown.Item>
-              <NavDropdown.Item onClick={navigateGeneric}>{roleUserRegistrationByUserLabel}</NavDropdown.Item>
-              <NavDropdown.Item onClick={navigateRolesTableSelection}>{roleUserShowByRoleLabel}</NavDropdown.Item>
-              <NavDropdown.Item onClick={navigateGeneric}>{roleUserShowByUserLabel}</NavDropdown.Item>
+              <NavDropdown.Item onClick={navigateRolesTableSelection}>{roleUserCrudByRoleLabel}</NavDropdown.Item>
+              <NavDropdown.Item onClick={navigateUserTableSelection}>{roleUserCrudByUserLabel}</NavDropdown.Item>
             </NavDropdown>}
 
           {/* ******* ******* ******* SALES SYSTEM ******* ******* ********/}
@@ -257,9 +267,9 @@ function NavBar() {
 
         {/* ******* ******* ******* ALL SYSTEM ******* ******* ********/}
         <Nav variant={'puggysoft-nav-config'}>
-          <NavDropdown title={configAdminLabel}>
-            <NavDropdown.Item onClick={navigateGeneric}>{configSystem}</NavDropdown.Item>
-            <NavDropdown.Item onClick={navigateGeneric}>{configLogout}</NavDropdown.Item>
+          <NavDropdown align="end" title={configAdminLabel}>
+            {/*<NavDropdown.Item onClick={navigateGeneric}>{configSystem}</NavDropdown.Item>*/}
+            <NavDropdown.Item onClick={navigateToLogout}>{configLogout}</NavDropdown.Item>
           </NavDropdown>
         </Nav>
       </Navbar.Collapse>

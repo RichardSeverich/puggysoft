@@ -1,10 +1,12 @@
+import enumRoleFields from "./enumRoleFields";
+
 const arrayDataFields = [
-  'id',
-  'name',
-  'createdBy',
-  'updatedBy',
-  'creationDate',
-  'updateDate'
+  enumRoleFields.ID,
+  enumRoleFields.NAME,
+  enumRoleFields.CREATED_BY,
+  enumRoleFields.UPDATED_BY,
+  enumRoleFields.CREATION_DATE,
+  enumRoleFields.UPDATED_DATE
 ];
 
 export default arrayDataFields;

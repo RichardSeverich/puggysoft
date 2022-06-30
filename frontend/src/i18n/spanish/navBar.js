@@ -10,14 +10,13 @@ const navBar = {
   roleAdmin: "Adm. Roles",
   roleRegistration: "Registrar Roles",
   roleShowTable: "Mostrar Roles (Tabla)",
+  roleShowTableFilter: "Mostrar Roles (Tabla, Filtro)",
   roleShowCard: "Mostrar Roles (Tarjetas)",
 
   // Roles - Users
   roleUserAdmin: "Adm. Roles - Usuarios",
-  roleUserRegistrationByRole: "Asignar Roles a usuario por Role",
-  roleUserRegistrationByUser: "Asignar Roles a usuario por Usuario",
-  roleUserShowByRole: "Mostrar Usuarios por Rol",
-  roleUserShowByUser: "Mostrar Roles por Usuario",
+  roleUserCrudByRole: "Adm. Roles de usuario por Rol",
+  roleUserCrudByUser: "Adm. Roles de usuario por Usuario",
 
   // ******* ******* SALES SYSTEM ******* *******
   // Seller

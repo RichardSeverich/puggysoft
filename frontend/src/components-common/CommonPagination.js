@@ -62,27 +62,31 @@ function CommonPagination(props) {
   }
 
   const firstPrevHandler = function () {
-    setArrayData(null);
-    setTotalPages(null);
-    setActivePage(1);
-    setInitialPage(1);
+    if (activePage > 1) {
+      setArrayData(null);
+      setTotalPages(null);
+      setActivePage(1);
+      setInitialPage(1);
+    }
   }
 
   const lastHandler = function () {
-    setArrayData(null);
-    setTotalPages(null);
-    let newActivePage = totalPages;
-    let newInitialPage = initialPage;
-    let condition = newActivePage >= initialPage + numberPagesToShow;
-    // Find initial pages
-    while (condition) {
-      newInitialPage = newInitialPage + numberPagesToShow;//11
-      if (newInitialPage >= totalPages - numberPagesToShow) {
-        condition = false;
+    if (activePage < totalPages) {
+      setArrayData(null);
+      setTotalPages(null);
+      let newActivePage = totalPages;
+      let newInitialPage = initialPage;
+      let condition = newActivePage >= initialPage + numberPagesToShow;
+      // Find initial pages
+      while (condition) {
+        newInitialPage = newInitialPage + numberPagesToShow;//11
+        if (newInitialPage >= totalPages - numberPagesToShow) {
+          condition = false;
+        }
       }
+      setActivePage(totalPages);
+      setInitialPage(newInitialPage);
     }
-    setActivePage(totalPages);
-    setInitialPage(newInitialPage);
   }
 
   const changeActivePage = function (newPage) {
@@ -114,11 +118,11 @@ function CommonPagination(props) {
   return (
     <div className="puggysoft-common-pagination" >
       <Pagination>
-        {totalPages > 1 && <Pagination.First disable onClick={firstPrevHandler} key='Pagination.First' />}
-        <Pagination.Prev onClick={lastPrevHandler} key='Pagination.Prev' />
+        {/*activePage > 1 &&*/ <Pagination.First onClick={firstPrevHandler} key='Pagination.First' />}
+        {/*activePage > 1 &&*/ <Pagination.Prev onClick={lastPrevHandler} key='Pagination.Prev' />}
         {pagesItems()}
-        <Pagination.Next onClick={nextHandler} key='Pagination.Next' />
-        {totalPages > 1 && <Pagination.Last onClick={lastHandler} key='Pagination.Last' />}
+        {/*activePage < totalPages &&*/ <Pagination.Next onClick={nextHandler} key='Pagination.Next' />}
+        {/*activePage < totalPages &&*/ <Pagination.Last onClick={lastHandler} key='Pagination.Last' />}
       </Pagination>
     </div>
   )

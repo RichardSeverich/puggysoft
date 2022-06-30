@@ -2,11 +2,11 @@ import { useState, useEffect } from "react";
 import { useHistory } from "react-router";
 import CommonTablePagination from '../../components-common/CommonTablePagination';
 import CommonLoading from '../../components-common/CommonLoading';
-import { handleFilterRequest, handleDeleteRequest } from "../../actions/HandleManager";
+import { handleFilterRequest } from "../../actions/HandleManager";
 import i18n from "../../i18n/i18n";
-import arrayDataFields from "../../models/users/arrayUserDataFields"
-import arrayColumns from "../../models/users/arrayUserColumns";
-import getColumnsFilterModel from "../../models/users/arrayUserColumnsFilter";
+import arrayDataFields from "../../models/users/arrayUserDataFieldsSelection"
+import arrayColumns from "../../models/users/arrayUserColumnsSelection";
+import getColumnsFilterModel from "../../models/users/arrayUserColumnsFilterSelection";
 import useInput from "./../../hooks/useInput";
 import enumCompareOperators from "./../../models/enumCompareOperators";
 import fixArrayData from "../../tools/users/fixArrayData"
@@ -33,15 +33,8 @@ function UserTableFilter() {
   const { value: criteriaBirthDate, onChange: criteriaOnChangeBirthDate, setValue: criteriaSetBirthDate } = useInput('');
   const { value: criteriaAge, onChange: criteriaOnChangeAge, setValue: criteriaSetAge } = useInput('');
   const { value: criteriaSex, onChange: criteriaOnChangeSex, setValue: criteriaSetSex } = useInput('');
-  const { value: criteriaOccupation, onChange: criteriaOnChangeOccupation, setValue: criteriaSetOccupation } = useInput('');
-  const { value: criteriaTelephone, onChange: criteriaOnChangeTelephone, setValue: criteriaSetTelephone } = useInput('');
-  const { value: criteriaAddress, onChange: criteriaOnChangeAddress, setValue: criteriaSetAddress } = useInput('');
   const { value: criteriaEmail, onChange: criteriaOnChangeEmail, setValue: criteriaSetEmail } = useInput('');
   const { value: criteriaStatus, onChange: criteriaOnChangeStatus, setValue: criteriaSetStatus } = useInput('');
-  const { value: criteriaCreatedBy, onChange: criteriaOnChangeCreatedBy, setValue: criteriaSetCreatedBy } = useInput('');
-  const { value: criteriaUpdatedBy, onChange: criteriaOnChangeUpdatedBy, setValue: criteriaSetUpdatedBy } = useInput('');
-  const { value: criteriaCreatedDate, onChange: criteriaOnChangeCreatedDate, setValue: criteriaSetCreatedDate } = useInput('');
-  const { value: criteriaUpdatedDate, onChange: criteriaOnChangeUpdatedDate, setValue: criteriaSetUpdatedDate } = useInput('');
   // FILTER OPERATORS
   const { value: operatorId, onChange: operatorOnChangeId, setValue: operatorSetId } = useInput(enumCompareOperators.TEXT_CONTAINS);
   const { value: operatorUsername, onChange: operatorOnChangeUsername, setValue: operatorSetUsername } = useInput(enumCompareOperators.TEXT_CONTAINS);
@@ -53,15 +46,8 @@ function UserTableFilter() {
   const { value: operatorBirthDate, onChange: operatorOnChangeBirthDate, setValue: operatorSetBirthDate } = useInput(enumCompareOperators.DATE_EQUALS);
   const { value: operatorAge, onChange: operatorOnChangeAge, setValue: operatorSetAge } = useInput(enumCompareOperators.NUMBER_EQUALS);
   const { value: operatorSex, onChange: operatorOnChangeSex, setValue: operatorSetSex } = useInput(enumCompareOperators.TEXT_EQUALS);
-  const { value: operatorOccupation, onChange: operatorOnChangeOccupation, setValue: operatorSetOccupation } = useInput(enumCompareOperators.TEXT_CONTAINS);
-  const { value: operatorTelephone, onChange: operatorOnChangeTelephone, setValue: operatorSetTelephone } = useInput(enumCompareOperators.TEXT_CONTAINS);
-  const { value: operatorAddress, onChange: operatorOnChangeAddress, setValue: operatorSetAddress } = useInput(enumCompareOperators.TEXT_CONTAINS);
   const { value: operatorEmail, onChange: operatorOnChangeEmail, setValue: operatorSetEmail } = useInput(enumCompareOperators.TEXT_CONTAINS);
   const { value: operatorStatus, onChange: operatorOnChangeStatus, setValue: operatorSetStatus } = useInput(enumCompareOperators.BOOLEAN_EQUALS);
-  const { value: operatorCreatedBy, onChange: operatorOnChangeCreatedBy, setValue: operatorSetCreatedBy } = useInput(enumCompareOperators.TEXT_CONTAINS);
-  const { value: operatorUpdatedBy, onChange: operatorOnChangeUpdatedBy, setValue: operatorSetUpdatedBy } = useInput(enumCompareOperators.TEXT_CONTAINS);
-  const { value: operatorCreatedDate, onChange: operatorOnChangeCreatedDate, setValue: operatorSetCreatedDate } = useInput(enumCompareOperators.DATE_EQUALS);
-  const { value: operatorUpdatedDate, onChange: operatorOnChangeUpdatedDate, setValue: operatorSetUpdatedDate } = useInput(enumCompareOperators.DATE_EQUALS);
 
   const { arrayColumnsFilter, clearFilters, getFilterBody } = getColumnsFilterModel(
     /*ID*/ criteriaId, criteriaOnChangeId, criteriaSetId, operatorId, operatorOnChangeId, operatorSetId,
@@ -74,15 +60,8 @@ function UserTableFilter() {
     /*BIRTHDATE*/criteriaBirthDate, criteriaOnChangeBirthDate, criteriaSetBirthDate, operatorBirthDate, operatorOnChangeBirthDate, operatorSetBirthDate,
     /*AGE*/criteriaAge, criteriaOnChangeAge, criteriaSetAge, operatorAge, operatorOnChangeAge, operatorSetAge,
     /*SEX*/criteriaSex, criteriaOnChangeSex, criteriaSetSex, operatorSex, operatorOnChangeSex, operatorSetSex,
-    /*OCCUPATION*/criteriaOccupation, criteriaOnChangeOccupation, criteriaSetOccupation, operatorOccupation, operatorOnChangeOccupation, operatorSetOccupation,
-    /*TELEPHONE*/criteriaTelephone, criteriaOnChangeTelephone, criteriaSetTelephone, operatorTelephone, operatorOnChangeTelephone, operatorSetTelephone,
-    /*ADDRESS*/criteriaAddress, criteriaOnChangeAddress, criteriaSetAddress, operatorAddress, operatorOnChangeAddress, operatorSetAddress,
     /*EMAIL*/criteriaEmail, criteriaOnChangeEmail, criteriaSetEmail, operatorEmail, operatorOnChangeEmail, operatorSetEmail,
-    /*STATUS*/criteriaStatus, criteriaOnChangeStatus, criteriaSetStatus, operatorStatus, operatorOnChangeStatus, operatorSetStatus,
-    /*CREATED BY*/criteriaCreatedBy, criteriaOnChangeCreatedBy, criteriaSetCreatedBy, operatorCreatedBy, operatorOnChangeCreatedBy, operatorSetCreatedBy,
-    /*UPDATED BY*/criteriaUpdatedBy, criteriaOnChangeUpdatedBy, criteriaSetUpdatedBy, operatorUpdatedBy, operatorOnChangeUpdatedBy, operatorSetUpdatedBy,
-    /*CREATED DATE*/criteriaCreatedDate, criteriaOnChangeCreatedDate, criteriaSetCreatedDate, operatorCreatedDate, operatorOnChangeCreatedDate, operatorSetCreatedDate,
-    /*UPDATED DATE*/criteriaUpdatedDate, criteriaOnChangeUpdatedDate, criteriaSetUpdatedDate, operatorUpdatedDate, operatorOnChangeUpdatedDate, operatorSetUpdatedDate
+    /*STATUS*/criteriaStatus, criteriaOnChangeStatus, criteriaSetStatus, operatorStatus, operatorOnChangeStatus, operatorSetStatus
   );
 
   function updateArrayData(arrayData) {
@@ -101,27 +80,30 @@ function UserTableFilter() {
   }, [activePage]);
 
   const handleFilter = () => {
-    const filterBody = getFilterBody();
     setActivePage(1)
+    const filterBody = getFilterBody();
     setArrayData(null);
     setTotalPages(null);
     handleFilterRequest(`users/filter?page=${activePage - 1}&size=${pageSize}`, filterBody, updateArrayData);
     handleFilterRequest(`users/filter/size/${pageSize}`, filterBody, setTotalPages);
   }
 
-  function handleEdit(data) {
+  function handleSelection(userData) {
     history.push({
-      pathname: "/users-form",
+      pathname: "/roles-table-filter-by-user",
       state: {
-        data: data,
-        edit: true
+        data: userData
       }
     })
   }
 
-  function handleDelete(data) {
-    handleDeleteRequest("users/", data.id)
-  }
+  let tableArrayCustomRowButtons = [
+    {
+      variant: "info",
+      handleCustom: handleSelection,
+      text: i18n.roleTable.selectButton
+    }
+  ]
 
   if (arrayData == null || totalPages == null) {
     return <CommonLoading></CommonLoading>;
@@ -134,8 +116,7 @@ function UserTableFilter() {
         tableArrayData={arrayData}
         tableArrayDataFields={arrayDataFields}
         tableArrayColumns={arrayColumns}
-        tableHandleEdit={handleEdit}
-        tableHandleDelete={handleDelete}
+        tableArrayCustomRowButtons={tableArrayCustomRowButtons}
         paginationTotalPages={totalPages}
         paginationNumberPagesToShow={numberPagesToShow}
         paginationInitialPage={initialPage}

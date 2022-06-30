@@ -1,10 +1,8 @@
 import enumUserFields from "./enumUserFields";
 
 const arrayDataFields = [
-  enumUserFields.IMAGE,
   enumUserFields.ID,
   enumUserFields.USERNAME,
-  enumUserFields.PASSWORD,
   enumUserFields.DNI,
   enumUserFields.NAME,
   enumUserFields.SECOND_NAME,
@@ -13,15 +11,8 @@ const arrayDataFields = [
   enumUserFields.BIRTHDATE,
   enumUserFields.AGE,
   enumUserFields.SEX,
-  enumUserFields.OCCUPATION,
-  enumUserFields.TELEPHONE,
-  enumUserFields.ADDRESS,
   enumUserFields.EMAIL,
-  enumUserFields.ACTIVE,
-  enumUserFields.CREATED_BY,
-  enumUserFields.UPDATED_BY,
-  enumUserFields.CREATION_DATE,
-  enumUserFields.UPDATE_DATE
+  enumUserFields.ACTIVE
 ];
 
 export default arrayDataFields;

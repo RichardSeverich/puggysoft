@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useHistory } from "react-router";
 import CommonTablePagination from '../../components-common/CommonTablePagination';
 import CommonLoading from '../../components-common/CommonLoading';
-import { handleFilterRequest, handleAddRequest, handleDeleteRequest } from "../../actions/HandleManager";
+import { handleFilterRequest, handleAddRequest, handleDeleteRequestNew } from "../../actions/HandleManager";
 import i18n from "../../i18n/i18n";
 import arrayDataFields from "../../models/users/arrayUserDataFieldsByRole"
 import arrayColumns from "../../models/users/arrayUserColumnsByRole";
@@ -93,24 +93,30 @@ function UserTableFilterByRoles() {
 
   const handleFilter = () => {
     const filterBody = getFilterBody();
+    setActivePage(1)
     setArrayData(null);
     setTotalPages(null);
     handleFilterRequest(`users/filter/without-roles?page=${activePage - 1}&size=${pageSize}&idRole=${roleSelected.id}`, filterBody, updateArrayData);
     handleFilterRequest(`users/filter/without-roles/size?&pageSize=${pageSize}&idRole=${roleSelected.id}`, filterBody, setTotalPages);
-    setActivePage(1)
   }
 
   const handleFilter2 = () => {
+    setActivePage2(1)
     setArrayData2(null);
     setTotalPages2(null);
     const filterBody2 = columnsFilterModel.getFilterBody();
     handleFilterRequest(`users/filter/with-roles?page=${activePage2 - 1}&size=${pageSize}&idRole=${roleSelected.id}`, filterBody2, updateArrayDat2);
     handleFilterRequest(`users/filter/with-roles/size?&pageSize=${pageSize}&idRole=${roleSelected.id}`, filterBody2, setTotalPages2);
-    setActivePage2(1)
   }
 
-  function afterCreateUserRole(userRoleData) {
-    window.location.reload();
+  function afterCreateUserRole() {
+    handleFilter();
+    handleFilter2();
+  }
+
+  function afterDeleteUserRole() {
+    handleFilter();
+    handleFilter2();
   }
 
   const handleAddUserRole = function (userData) {
@@ -122,7 +128,7 @@ function UserTableFilterByRoles() {
   }
 
   const handleRemoveUserRole = function (userData) {
-    handleDeleteRequest(`users-roles?idUser=${userData.id}&idRole=${roleSelected.id}`);
+    handleDeleteRequestNew(`users-roles?idUser=${userData.id}&idRole=${roleSelected.id}`, afterDeleteUserRole);
   }
 
   const tableArrayCustomRowButtons = [
@@ -140,10 +146,6 @@ function UserTableFilterByRoles() {
       text: i18n.userRoleTableByRole.removeButton
     }
   ]
-
-  /* if (arrayData == null || totalPages == null) {
-     return <CommonLoading></CommonLoading>;
-   }*/
 
   return (
     <div className="puggysoft-user-table-by-role-container">
