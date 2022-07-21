@@ -18,6 +18,7 @@ import productTable from "./spanish/sales/productTable"
 import productForm from "./spanish/sales/productForm"
 // Hospital System
 import doctorUserForm from "./spanish/hospital/doctorUserForm"
+import doctorTable from "./spanish/hospital/doctorTable"
 import patientUserForm from "./spanish/hospital/patientUserForm"
 
 
@@ -42,6 +43,7 @@ const i18n = {
   userStatus,
   // Hospital System
   doctorUserForm,
+  doctorTable,
   patientUserForm
 }
 

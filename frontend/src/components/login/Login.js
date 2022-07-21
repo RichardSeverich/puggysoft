@@ -6,6 +6,7 @@ import Card from 'react-bootstrap/Card'
 import i18n from "./../../i18n/i18n";
 import useInput from "./../../hooks/useInput";
 import { handleLoginRequest, handleGetRequest } from "../../actions/HandleManager";
+import enumPaths from "./../../models/enumPaths"
 
 import "./styles.css"
 
@@ -16,6 +17,11 @@ function Login() {
   const { value: valuePassword, onChange: onChangePassword, reset: resetPassword } = useInput("");
   const [isValidCredentials, setIsValidCredentials] = useState(false);
   const routerProps = history && history.location && history.location.state;
+
+  if (routerProps && routerProps.logout) {
+    window.sessionStorage.setItem("token", "");
+    window.sessionStorage.setItem("username", "");
+  }
 
   const handleLogin = () => {
     const body = {
@@ -38,14 +44,9 @@ function Login() {
     });
   }
 
-  if (routerProps && routerProps.logout) {
-    window.sessionStorage.setItem("token", "");
-    window.sessionStorage.setItem("username", "");
-  }
-
   useEffect(() => {
     if (isValidCredentials) {
-      history.push("/dashboard");
+      history.push(enumPaths.DASHBOARD);
     }
   }, [isValidCredentials]);
 

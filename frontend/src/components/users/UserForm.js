@@ -19,7 +19,7 @@ function UserForm(props) {
   const isEditDefaultValue = history && history.location && history.location.state;
   const [isEdit, setIsEdit] = useState(isEditDefaultValue);
   const [classNameFormText, setClassNameFormText] = useState(classNameFormTextNew);
-  const { userRole } = props;
+  const { afterAdd } = props;
 
   // Put default values:
   let id = isEdit ? isEdit.data.id : "";
@@ -75,18 +75,11 @@ function UserForm(props) {
   }
 
   const handleAfterAdd = function (newUserId) {
-    console.log("THIS IS THE NEW USER ID : " + newUserId);
     handleReset();
-    // ******* SALE SYSTEM *******
-    if (userRole && userRole === enumRoles.SALES_CLIENT) {
-      // Navigate to client form.
-    } else if (userRole && userRole === enumRoles.SALES_SELLER) {
-      // Navigate to seller form.
-      // ******* HOSPITAL SYSTEM *******
-    } else if (userRole && userRole === enumRoles.HOSPITAL_DOCTOR) {
-      // Navigate to doctor form.
-    } else if (userRole && userRole === enumRoles.HOSPITAL_PATIENT) {
-      // Navigate to patient form.
+    if (afterAdd) {
+      const newUser = getBody();
+      newUser['id'] = newUserId;
+      afterAdd(newUser);
     }
   }
 

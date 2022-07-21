@@ -11,6 +11,10 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface IRepositoryRole extends JpaRepository<EntityRole, Long> {
 
+
+  @Query(value = "SELECT roles.* FROM roles WHERE roles.name = ?1", nativeQuery = true)
+  EntityRole findRoleByName(String name);
+
   @Query(value = "SELECT COUNT(*) FROM roles;", nativeQuery = true)
   Long findSize();
 

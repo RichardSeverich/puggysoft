@@ -21,6 +21,7 @@ function UserTableFilter() {
   const [activePage, setActivePage] = useState(1);
   const [initialPage, setInitialPage] = useState(1);
   const history = useHistory();
+  const routerProps = history && history.location && history.location.state;
 
   // CRITERIA OF SEARCH OR FILTER
   const { value: criteriaId, onChange: criteriaOnChangeId, setValue: criteriaSetId } = useInput('');
@@ -89,8 +90,9 @@ function UserTableFilter() {
   }
 
   function handleSelection(userData) {
+    const afterSelectRoute = routerProps.afterSelectRoute;
     history.push({
-      pathname: "/roles-table-filter-by-user",
+      pathname: afterSelectRoute,
       state: {
         data: userData
       }
@@ -109,10 +111,12 @@ function UserTableFilter() {
     return <CommonLoading></CommonLoading>;
   }
 
+  const tableTitle = routerProps.tableTitle;
+
   return (
     <div className="puggysoft-user-table">
       <CommonTablePagination
-        tableTitle={i18n.userTable.title}
+        tableTitle={tableTitle}
         tableArrayData={arrayData}
         tableArrayDataFields={arrayDataFields}
         tableArrayColumns={arrayColumns}

@@ -4,8 +4,10 @@ const navBar = {
   userAdmin: "Adm. Usuarios",
   userRegistration: "Registrar Usuarios",
   userShowTable: "Mostrar Usuarios (Tabla)",
-  userShowTableFilter: "Mostrar Usuarios (Tabla, Filtro)",
+  userShowTableFilter: "Mostrar Usuarios (Tabla, Filtro, Editar, Eliminar)",
+  userShowDetails: "Mostrar Detalle de Usuarios (Tabla)",
   userShowCard: "Mostrar Usuarios (Tarjetas)",
+
   // Roles
   roleAdmin: "Adm. Roles",
   roleRegistration: "Registrar Roles",
@@ -63,7 +65,7 @@ const navBar = {
   doctorAdmin: "Adm. Doctores",
   doctorRegistration: "Registrar Doctores",
   doctorShowTable: "Mostrar Doctores (Tabla)",
-  doctorShowTableFilter: "Mostrar Doctores (Tabla, Filtro)",
+  doctorShowTableFilter: "Mostrar Doctores (Tabla, Detalle)",
   doctorShowCard: "Mostrar Doctores (Tarjetas)",
 
   // Patients 

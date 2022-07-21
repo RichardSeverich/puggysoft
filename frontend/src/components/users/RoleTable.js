@@ -8,6 +8,7 @@ import arrayDataFields from "../../models/users/arrayRoleDataFields";
 import arrayColumns from "../../models/users/arrayRoleColumns";
 import enumTableType from "../../models/enumTableType";
 import fixArrayData from "../../tools/users/fixArrayDataRoles"
+import enumPaths from "./../../models/enumPaths"
 
 import "./role-table-styles.css"
 
@@ -48,7 +49,7 @@ function RoleTable() {
 
   function handleNavigate(data) {
     history.push({
-      pathname: "/users-table-filter-by-role",
+      pathname: enumPaths.USERS_TABLE_FILTER_BY_ROLE,
       state: {
         data: data
       }

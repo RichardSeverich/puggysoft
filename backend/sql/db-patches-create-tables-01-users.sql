@@ -30,7 +30,7 @@ CREATE TABLE users(
 -- Roles
 CREATE TABLE roles(
    id BIGINT AUTO_INCREMENT,
-   name VARCHAR(30) NOT NULL,
+   name VARCHAR(30) NOT NULL UNIQUE,
    created_by VARCHAR(20),
    updated_by VARCHAR(20),
    creation_date DATETIME DEFAULT CURRENT_TIMESTAMP,

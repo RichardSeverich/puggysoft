@@ -20,7 +20,7 @@ import { MdOutlineSettingsSuggest, MdAdminPanelSettings } from 'react-icons/md';
 import { GoCalendar } from 'react-icons/go';
 import enumRoles from "./../../models/users/enumRoles";
 import enumTableType from "./../../models/enumTableType"
-
+import enumPaths from "./../../models/enumPaths"
 import i18n from "../../i18n/i18n";
 
 import "./styles.css";
@@ -38,23 +38,44 @@ function NavBar() {
 
   // ******* ******* ******* USERS SYSTEM ******* ******* *******
 
-  const navigateToLogout = () => { history.push({ pathname: "/login", state: { "logout": "logout", } }) }
-  const navigateUsersForm = () => { history.push("/users-form"); }
-  const navigateUsersTable = () => { history.push("/users-table"); }
-  const navigateUsersTableFilter = () => { history.push("/users-table-filter"); }
-  const navigateRolesTable = () => { history.push("/roles-table"); }
-  const navigateRolesTableFilter = () => { history.push("/roles-table-filter"); }
-  const navigateRolesTableSelection = () => { history.push({ pathname: "/roles-table-selection", state: { "tableType": enumTableType.TABLE_SELECTION, } }) }
-  const navigateUserTableSelection = () => { history.push({ pathname: "/users-table-selection", state: { "tableType": enumTableType.TABLE_SELECTION, } }) }
-
+  const navigateToLogout = () => { history.push({ pathname: enumPaths.LOGIN, state: { "logout": "", } }) }
+  const navigateUsersForm = () => { history.push(enumPaths.USERS_FORM); }
+  const navigateUsersTable = () => { history.push(enumPaths.USERS_TABLE); }
+  const navigateUsersTableFilter = () => { history.push(enumPaths.USERS_TABLE_FILTER); }
+  const navigateRolesTable = () => { history.push(enumPaths.ROLES_TABLE); }
+  const navigateRolesTableFilter = () => { history.push(enumPaths.ROLES_TABLE_FILTER); }
+  const navigateRolesTableSelection = () => {
+    history.push({
+      pathname: enumPaths.ROLES_TABLE_SELECTION,
+      state: { "tableType": enumTableType.TABLE_SELECTION, }
+    })
+  }
+  const navigateUserTableSelectionForRoles = () => {
+    history.push({
+      pathname: enumPaths.USERS_TABLE_FILTER_SELECTION,
+      state: {
+        "afterSelectRoute": enumPaths.ROLES_TABLE_FILTER_BY_USER,
+        "tableTitle": i18n.userTable.title
+      }
+    })
+  }
+  const navigateUserTableSelectionForDetails = () => {
+    history.push({
+      pathname: enumPaths.USERS_TABLE_FILTER_SELECTION,
+      state: {
+        "afterSelectRoute": enumPaths.USERS_DETAILS,
+        "tableTitle": i18n.userTable.title
+      }
+    })
+  }
   // ******* ******* ******* SALES SYSTEM ******* ******* *******
-  const navigateProductsForm = () => { history.push("/products-form"); }
-  const navigateProductsTable = () => { history.push("/products-table"); }
-  const navigateProductsTableFilter = () => { history.push("/products-table-filter"); }
+  const navigateProductsForm = () => { history.push(enumPaths.SALES_PRODUCTS_FORM); }
+  const navigateProductsTable = () => { history.push(enumPaths.SALES_PRODUCTS_TABLE); }
+  const navigateProductsTableFilter = () => { history.push(enumPaths.SALES_PRODUCTS_TABLE_FILTER); }
 
   // ******* ******* ******* HOSPITAL SYSTEM ******* ******* *******
-  const navigateDoctorUserForm = () => { history.push("/hospital-doctor-user-form"); }
-  const navigatePatientUserForm = () => { history.push("/hospital-patient-user-form"); }
+  const navigateDoctorUserForm = () => { history.push(enumPaths.HOSPITAL_DOCTOR_USER_FORM); }
+  const navigatePatientUserForm = () => { history.push(enumPaths.HOSPITAL_PATIENT_USER_FORM); }
 
   function navigateGeneric(event) { console.log({ event }) }
 
@@ -67,6 +88,7 @@ function NavBar() {
   const userRegistrationLabel = (<><AiOutlineUserAdd /> {i18n.navBar.userRegistration}</>)
   const userShowTableLabel = (<><AiOutlineTable /> {i18n.navBar.userShowTable}</>)
   const userShowTableFilterLabel = (<><AiOutlineTable /> {i18n.navBar.userShowTableFilter}</>)
+  const userShowTableFilterForDetailsLabel = (<><AiOutlineTable /> {i18n.navBar.userShowDetails}</>)
   const userShowCardLabel = (<><AiOutlineIdcard /> {i18n.navBar.userShowCard}</>)
   // ROLES
   const rolesAdminLabel = (<><RiShieldKeyholeFill /> {i18n.navBar.roleAdmin}</>)
@@ -168,6 +190,7 @@ function NavBar() {
               <NavDropdown.Item onClick={navigateUsersForm} >{userRegistrationLabel}</NavDropdown.Item>
               <NavDropdown.Item onClick={navigateUsersTable}>{userShowTableLabel}</NavDropdown.Item>
               <NavDropdown.Item onClick={navigateUsersTableFilter}>{userShowTableFilterLabel}</NavDropdown.Item>
+              <NavDropdown.Item onClick={navigateUserTableSelectionForDetails}>{userShowTableFilterForDetailsLabel}</NavDropdown.Item>
               <NavDropdown.Item onClick={navigateGeneric}>{userShowCardLabel}</NavDropdown.Item>
             </NavDropdown>}
           {(userRoles.includes(enumRoles.ADMIN_USERS)
@@ -184,7 +207,7 @@ function NavBar() {
             || userRoles.includes(enumRoles.SALES_ADMIN))
             && <NavDropdown title={roleUserAdminLabel}>
               <NavDropdown.Item onClick={navigateRolesTableSelection}>{roleUserCrudByRoleLabel}</NavDropdown.Item>
-              <NavDropdown.Item onClick={navigateUserTableSelection}>{roleUserCrudByUserLabel}</NavDropdown.Item>
+              <NavDropdown.Item onClick={navigateUserTableSelectionForRoles}>{roleUserCrudByUserLabel}</NavDropdown.Item>
             </NavDropdown>}
 
           {/* ******* ******* ******* SALES SYSTEM ******* ******* ********/}

@@ -7,6 +7,7 @@ import i18n from "../../i18n/i18n";
 import arrayDataFields from "../../models/users/arrayUserDataFields";
 import arrayColumns from "../../models/users/arrayUserColumns";
 import fixArrayData from "../../tools/users/fixArrayData"
+import enumPaths from "./../../models/enumPaths"
 
 const pageSize = 10;
 const numberPagesToShow = 10;
@@ -37,7 +38,7 @@ function UserTableBasic() {
 
   function handleEdit(data) {
     history.push({
-      pathname: "/users-form",
+      pathname: enumPaths.USERS_FORM,
       state: {
         data: data,
         edit: true
