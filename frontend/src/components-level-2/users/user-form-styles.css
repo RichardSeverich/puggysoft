@@ -1,12 +1,35 @@
-/* Only applies for resolutions greater than 1080px */
-@media (min-width:1080px) {
-    .puggysoft-user-form {
-        margin: auto;
-        width: 30%;
-        padding-top: 1rem;
-    }
+/* Only applies for resolutions greater than 1600px */
+@media (min-width:1600px) {
+  .puggysoft-user-form {
+    margin: auto;
+    width: 40%;
+    padding-top: 1rem;
+  }
+
+  .puggysoft-form-item-label {
+    display: inline-block;
+    margin: 1rem;
+    width: 10rem;
+  }
+
+  .puggysoft-form-item-input {
+    display: inline-block;
+    margin: 1rem;
+    width: 16rem;
+  }
+
+  .puggysoft-form-item-input-select {
+    text-align: center;
+    padding-right: 4.6rem;
+  }
+
+  .puggysoft-form-item-input-date {
+    text-align: center;
+    padding-right: 6rem;
+  }
+
 }
 
 .puggysoft-red-text {
-    color: red !important;
+  color: red !important;
 }

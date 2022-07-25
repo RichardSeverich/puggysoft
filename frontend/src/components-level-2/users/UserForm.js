@@ -130,6 +130,9 @@ function UserForm(props) {
 
   const title = props && props.title ? props.title : i18n.userForm.title;
 
+  const classNameItemLabel = 'puggysoft-form-item-label';
+  const classNameItemInput = 'puggysoft-form-item-input';
+
   return (
     <div className="puggysoft-user-form" >
       <Card>
@@ -137,168 +140,168 @@ function UserForm(props) {
         <Card.Body>
           <Form>
             <Form.Group className="mb-3" controlId="username">
-              <Form.Label>{i18n.userForm.fieldUsername}</Form.Label>
-              <Form.Control
+              <div className={classNameItemLabel}><Form.Label>{i18n.userForm.fieldUsername}</Form.Label></div>
+              <div className={classNameItemInput}><Form.Control
                 onChange={onChangeUsername}
                 value={valueUsername}
                 type="text"
-                placeholder={i18n.userForm.fieldUsername} />
+                placeholder={i18n.userForm.fieldUsername} /></div>
               <Form.Text muted className={classNameFormText.username}>
                 {i18n.userForm.formTextUsername}
               </Form.Text>
             </Form.Group>
             <Form.Group className="mb-3" controlId="password">
-              <Form.Label>{i18n.userForm.fieldPassword}</Form.Label>
-              <Form.Control
+              <div className={classNameItemLabel}><Form.Label>{i18n.userForm.fieldPassword}</Form.Label></div>
+              <div className={classNameItemInput} ><Form.Control
                 onChange={onChangePassword}
                 value={valuePassword}
                 type="password"
-                placeholder={i18n.userForm.fieldPassword} />
+                placeholder={i18n.userForm.fieldPassword} /></div>
               <Form.Text muted className={classNameFormText.password}>
                 {i18n.userForm.formTextPassword}
               </Form.Text>
             </Form.Group>
             <Form.Group className="mb-3" controlId="dni">
-              <Form.Label>{i18n.userForm.fieldDni}</Form.Label>
-              <Form.Control
+              <div className={classNameItemLabel}><Form.Label>{i18n.userForm.fieldDni}</Form.Label></div>
+              <div className={classNameItemInput} ><Form.Control
                 onChange={onChangeDni}
                 value={valueDni}
                 type="text"
-                placeholder={i18n.userForm.fieldDni} />
+                placeholder={i18n.userForm.fieldDni} /></div>
               <Form.Text muted className={classNameFormText.dni}>
                 {i18n.userForm.formTextDni}
               </Form.Text>
             </Form.Group>
             <Form.Group className="mb-3" controlId="name">
-              <Form.Label>{i18n.userForm.fieldName}</Form.Label>
-              <Form.Control
+              <div className={classNameItemLabel}><Form.Label>{i18n.userForm.fieldName}</Form.Label></div>
+              <div className={classNameItemInput}><Form.Control
                 onChange={onChangeName}
                 value={valueName}
                 type="text"
-                placeholder={i18n.userForm.fieldName} />
+                placeholder={i18n.userForm.fieldName} /></div>
               <Form.Text muted className={classNameFormText.name}>
                 {i18n.userForm.formTextFirstName}
               </Form.Text>
             </Form.Group>
             <Form.Group className="mb-3" controlId="second-name">
-              <Form.Label>{i18n.userForm.fieldSecondName}</Form.Label>
-              <Form.Control
+              <div className={classNameItemLabel}><Form.Label>{i18n.userForm.fieldSecondName}</Form.Label></div>
+              <div className={classNameItemInput}><Form.Control
                 onChange={onChangeSecondName}
                 value={valueSecondName}
                 type="text"
-                placeholder={i18n.userForm.fieldSecondName} />
+                placeholder={i18n.userForm.fieldSecondName} /></div>
               <Form.Text muted className={classNameFormText.secondName}>
                 {i18n.userForm.formTextSecondName}
               </Form.Text>
             </Form.Group>
             <Form.Group className="mb-3" controlId="lastname">
-              <Form.Label>{i18n.userForm.fieldLastName}</Form.Label>
-              <Form.Control
+              <div className={classNameItemLabel}><Form.Label>{i18n.userForm.fieldLastName}</Form.Label></div>
+              <div className={classNameItemInput}><Form.Control
                 onChange={onChangeLastName}
                 value={valueLastName}
                 type="text"
-                placeholder={i18n.userForm.fieldLastName} />
+                placeholder={i18n.userForm.fieldLastName} /></div>
               <Form.Text muted className={classNameFormText.lastName}>
                 {i18n.userForm.formTextLastName}
               </Form.Text>
             </Form.Group>
             <Form.Group className="mb-3" controlId="second-lastname">
-              <Form.Label>{i18n.userForm.fieldSecondLastName}</Form.Label>
-              <Form.Control
+              <div className={classNameItemLabel}><Form.Label>{i18n.userForm.fieldSecondLastName}</Form.Label></div>
+              <div className={classNameItemInput}><Form.Control
                 onChange={onChangeSecondLastName}
                 value={valueSecondLastName}
                 type="text"
-                placeholder={i18n.userForm.fieldSecondLastName} />
+                placeholder={i18n.userForm.fieldSecondLastName} /></div>
               <Form.Text muted className={classNameFormText.secondLastName}>
                 {i18n.userForm.formTextSecondLastName}
               </Form.Text>
             </Form.Group>
-            <Form.Group className="mb-3" controlId="birthdate">
-              <Form.Label>{i18n.userForm.fieldBirthDate}</Form.Label>
-              <Form.Control
+            <Form.Group className="mb-3 puggysoft-form-item-input-date" controlId="birthdate">
+              <div className={classNameItemLabel}><Form.Label>{i18n.userForm.fieldBirthDate}</Form.Label></div>
+              <div className={classNameItemInput}><Form.Control
                 onChange={onChangeBirthDate}
                 value={valueBirthDate}
                 type="date"
-                placeholder={i18n.userForm.fieldBirthDate} />
+                placeholder={i18n.userForm.fieldBirthDate} /></div>
               <Form.Text muted className={classNameFormText.birthDate}>
                 {i18n.userForm.formTextBirthDate}
               </Form.Text>
             </Form.Group>
             <Form.Group className="mb-3" controlId="age">
-              <Form.Label>{i18n.userForm.fieldAge}</Form.Label>
-              <Form.Control
+              <div className={classNameItemLabel}><Form.Label>{i18n.userForm.fieldAge}</Form.Label></div>
+              <div className={classNameItemInput}><Form.Control
                 onChange={onChangeAge}
                 value={valueAge}
                 type="number"
-                placeholder={i18n.userForm.fieldAge} />
+                placeholder={i18n.userForm.fieldAge} /></div>
               <Form.Text muted className={classNameFormText.age}>
                 {i18n.userForm.formTextAge}
               </Form.Text>
             </Form.Group>
-            <Form.Group className="mb-3" controlId="sex">
-              <Form.Label>{i18n.userForm.fieldSex}</Form.Label>
-              <Form.Select
+            <Form.Group className="mb-3 puggysoft-form-item-input-select" controlId="sex">
+              <div className={classNameItemLabel}><Form.Label>{i18n.userForm.fieldSex}</Form.Label></div>
+              <div className={classNameItemInput}><Form.Select
                 onChange={onChangeSex}
                 value={valueSex} >
                 <option key='option-male' value={enumSex.MALE}>{i18n.userSexText.male}</option>
                 <option key='option-female' value={enumSex.FEMALE}>{i18n.userSexText.female}</option>
-              </Form.Select>
+              </Form.Select></div>
               <Form.Text muted className={classNameFormText.sex}>
                 {i18n.userForm.formTextSex}
               </Form.Text>
             </Form.Group>
             <Form.Group className="mb-3" controlId="occupation">
-              <Form.Label>{i18n.userForm.fieldOccupation}</Form.Label>
-              <Form.Control
+              <div className={classNameItemLabel}><Form.Label>{i18n.userForm.fieldOccupation}</Form.Label></div>
+              <div className={classNameItemInput}><Form.Control
                 onChange={onChangeOccupation}
                 value={valueOccupation}
                 type="text"
-                placeholder={i18n.userForm.fieldOccupation} />
+                placeholder={i18n.userForm.fieldOccupation} /></div>
               <Form.Text muted className={classNameFormText.occupation}>
                 {i18n.userForm.formTextOccupation}
               </Form.Text>
             </Form.Group>
             <Form.Group className="mb-3" controlId="telephone">
-              <Form.Label>{i18n.userForm.fieldTelephone}</Form.Label>
-              <Form.Control
+              <div className={classNameItemLabel}><Form.Label>{i18n.userForm.fieldTelephone}</Form.Label></div>
+              <div className={classNameItemInput}><Form.Control
                 onChange={onChangeTelephone}
                 value={valueTelephone}
                 type="number"
-                placeholder={i18n.userForm.fieldTelephone} />
+                placeholder={i18n.userForm.fieldTelephone} /></div>
               <Form.Text muted className={classNameFormText.telephone}>
                 {i18n.userForm.formTextTelephone}
               </Form.Text>
             </Form.Group>
             <Form.Group className="mb-3" controlId="address">
-              <Form.Label>{i18n.userForm.fieldAddress}</Form.Label>
-              <Form.Control
+              <div className={classNameItemLabel}><Form.Label>{i18n.userForm.fieldAddress}</Form.Label></div>
+              <div className={classNameItemInput}><Form.Control
                 onChange={onChangeAddress}
                 value={valueAddress}
                 type="text"
-                placeholder={i18n.userForm.fieldAddress} />
+                placeholder={i18n.userForm.fieldAddress} /></div>
               <Form.Text muted className={classNameFormText.address}>
                 {i18n.userForm.formTextAddress}
               </Form.Text>
             </Form.Group>
             <Form.Group className="mb-3" controlId="email">
-              <Form.Label>{i18n.userForm.fieldEmail}</Form.Label>
-              <Form.Control
+              <div className={classNameItemLabel}><Form.Label>{i18n.userForm.fieldEmail}</Form.Label></div>
+              <div className={classNameItemInput}> <Form.Control
                 onChange={onChangeEmail}
                 value={valueEmail}
                 type="email"
-                placeholder={i18n.userForm.fieldEmail} />
+                placeholder={i18n.userForm.fieldEmail} /></div>
               <Form.Text muted className={classNameFormText.email}>
                 {i18n.userForm.formTextEmail}
               </Form.Text>
             </Form.Group>
-            <Form.Group className="mb-3" controlId="active">
-              <Form.Label>{i18n.userForm.fieldStatus}</Form.Label>
-              <Form.Select
+            <Form.Group className="mb-3 puggysoft-form-item-input-select" controlId="active">
+              <div className={classNameItemLabel}><Form.Label>{i18n.userForm.fieldStatus}</Form.Label></div>
+              <div className={classNameItemInput}><Form.Select
                 onChange={onChangeStatus}
                 value={valueStatus} >
                 <option key='option-true' value={true}>{i18n.userStatus.active}</option>
                 <option key='option-false' value={false}>{i18n.userStatus.inactive}</option>
-              </Form.Select>
+              </Form.Select></div>
               <Form.Text muted className={classNameFormText.status}>
                 {i18n.userForm.formTextStatus}
               </Form.Text>
