@@ -1,0 +1,52 @@
+/* Only applies for resolutions greater than 720px */
+@media (min-width:720px) {
+  .puggysoft-common-textbox-section input {
+    width: 16rem;
+    display: inline;
+  }
+
+  .puggysoft-common-textbox-section select {
+    width: 16rem;
+    display: inline;
+  }
+}
+
+/* Only applies for resolutions less than 720px */
+@media (max-width:720px) {
+  .puggysoft-common-textbox-section input {
+    width: 14rem;
+    display: inline;
+  }
+
+  .puggysoft-common-textbox-section select {
+    width: 14rem;
+    display: inline;
+  }
+}
+
+.puggysoft-common-textbox {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-bottom: 1rem;
+}
+
+.puggysoft-common-textbox-section {
+  display: inline;
+  border: 1px solid #CCC;
+}
+
+.puggysoft-common-textbox-section-cursor {
+  cursor: pointer;
+}
+
+.puggysoft-common-textbox-section-padding {
+  padding: 1rem;
+}
+
+.puggysoft-common-textbox-section-hidden {
+  display: none;
+}
+
+.puggysoft-common-textbox-label {
+  padding-bottom: 1rem;
+}

@@ -7,6 +7,7 @@ import trueFalse from "./spanish/trueFalse"
 // Users System
 import userTable from "./spanish/users/userTable"
 import userForm from "./spanish/users/userForm"
+import userDetails from "./spanish/users/userDetails"
 import userSexText from "./spanish/users/userSexText"
 import userStatus from "./spanish/users/userStatus"
 import userRoles from "./spanish/users/userRoles"
@@ -31,6 +32,7 @@ const i18n = {
   // Users System
   userForm,
   userTable,
+  userDetails,
   userSexText,
   userRoles,
   userRoleTableByRole,

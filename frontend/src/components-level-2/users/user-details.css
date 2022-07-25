@@ -1,0 +1,21 @@
+/* Only applies for resolutions greater than 720px */
+@media (min-width: 720px) {
+  .puggysoft-textbox-item {
+    display: inline-block;
+  }
+
+  .puggysoft-user-details .list-group-item {
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .puggysoft-user-details .card-img-top {
+    width: 8%;
+    height: 8%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+}
