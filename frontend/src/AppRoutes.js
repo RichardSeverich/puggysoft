@@ -4,26 +4,26 @@ import enumPaths from "./models/enumPaths"
 
 // Components
 import App from "./App";
-import LoginPage from "./pages/LoginPage";
-import DashboardPage from "./pages/DashboardPage";
+import LoginPage from "./components-level-3/LoginPage";
+import DashboardPage from "./components-level-3/DashboardPage";
 // Users System
-import UsersFormPage from "./pages/users/UserFormPage";
-import UserTableBasicPage from "./pages/users/UserTableBasicPage";
-import UserTableFilterPage from "./pages/users/UserTableFilterPage";
-import UserTableFilterByRolePage from "./pages/users/UserTableFilterByRolePage";
-import UserTableFilterSelectionPage from "./pages/users/UserTableFilterSelectionPage";
-import UserDetailsPage from "./pages/users/UserDetailsPage";
-import RoleTablePage from "./pages/users/RoleTablePage";
-import RoleTableFilterPage from "./pages/users/RoleTableFilterPage";
-import RoleTablePageByUserPage from "./pages/users/RoleTablePageByUserPage";
+import UsersFormPage from "./components-level-3/users/UserFormPage";
+import UserTableBasicPage from "./components-level-3/users/UserTableBasicPage";
+import UserTableFilterPage from "./components-level-3/users/UserTableFilterPage";
+import UserTableFilterByRolePage from "./components-level-3/users/UserTableFilterByRolePage";
+import UserTableFilterSelectionPage from "./components-level-3/users/UserTableFilterSelectionPage";
+import UserDetailsPage from "./components-level-3/users/UserDetailsPage";
+import RoleTablePage from "./components-level-3/users/RoleTablePage";
+import RoleTableFilterPage from "./components-level-3/users/RoleTableFilterPage";
+import RoleTablePageByUserPage from "./components-level-3/users/RoleTablePageByUserPage";
 // Sales System
-import ProductFormPage from "./pages/sales/ProductFormPage";
-import ProductTablePage from "./pages/sales/ProductTablePage";
-import ProductTableFilterPage from "./pages/sales/ProductTableFilterPage";
+import ProductFormPage from "./components-level-3/sales/ProductFormPage";
+import ProductTablePage from "./components-level-3/sales/ProductTablePage";
+import ProductTableFilterPage from "./components-level-3/sales/ProductTableFilterPage";
 // Hospital System
-import DoctorUserFormPage from "./pages/hospital/DoctorUserFormPage";
-import DoctorUserTableToDetailsPage from "./pages/hospital/DoctorUserTableToDetailsPage";
-import PatientUserFormPage from "./pages/hospital/PatientUserFormPage";
+import DoctorUserFormPage from "./components-level-3/hospital/DoctorUserFormPage";
+import DoctorUserTableToDetailsPage from "./components-level-3/hospital/DoctorUserTableToDetailsPage";
+import PatientUserFormPage from "./components-level-3/hospital/PatientUserFormPage";
 
 
 const AppRoutes = () => (
