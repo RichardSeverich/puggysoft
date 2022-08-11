@@ -72,7 +72,7 @@ public class DtoUser extends DtoSuperClass {
 
   @NotNull
   @Email
-  @Size(min = 3, max = 30)
+  @Size(min = 7, max = 60)
   private String email;
 
   @NotNull

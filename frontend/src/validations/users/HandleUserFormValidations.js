@@ -93,7 +93,7 @@ const handleValidation = (data, setClassNameFormText) => {
     classNameFormTextNew.address = classNameRed;
   } else {
     classNameFormTextNew.address = "";
-  } if (!(data.email.length >= 3 && data.email.length <= 30)) {
+  } if (!(data.email.length >= 7 && data.email.length <= 60)) {
     isValid = false;
     classNameFormTextNew.email = classNameRed;
   } else if (!/\S+@\S+\.\S+/.test(data.email)) {

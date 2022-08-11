@@ -30,7 +30,7 @@ const userForm = {
   formTextOccupation: "Minimo 3, maximo 60 caracteres",
   formTextTelephone: "Minimo 3, maximo 30 numeros",
   formTextAddress: "Minimo 3, maximo 60 caracteres",
-  formTextEmail: "Minimo 3, maximo 30 caracteres",
+  formTextEmail: "Minimo 7, maximo 60 caracteres",
   formTextStatus: "Seleccione el estado",
 };
 

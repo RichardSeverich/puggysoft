@@ -10,11 +10,12 @@
 
 ### Deploy Normal
 
-0. Install dependencies ```npm install```.
-1. Run app: `npm start`
-2. Run test: `npm test`
-3. Run Eject: `npm run eject`
-4. Build: `npm run build`
+0. Install dependencies `npm install`.
+1. Configure: `.env` file
+2. Run app: `npm start`
+3. Run test: `npm test`
+4. Run Eject: `npm run eject`
+5. Build: `npm run build`
 
 ## Documentation
 - React Bootstrap Documentation

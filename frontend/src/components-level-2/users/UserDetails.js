@@ -17,28 +17,50 @@ function UserDetails(props) {
   const routerProps = history && history.location && history.location.state;
   const userData = routerProps.data;
 
+  const { children } = props;
+
   const [classNameFormText, setClassNameFormText] = useState(classNameFormTextNew);
 
   // Use custom hook
-  const { value: valueUsername, onChange: onChangeUsername } = useInput(userData.username);
-  const { value: valuePassword, onChange: onChangePassword } = useInput(userData.password);
-  const { value: valueDni, onChange: onChangeDni } = useInput(userData.dni);
-  const { value: valueName, onChange: onChangeName } = useInput(userData.name);
-  const { value: valueSecondName, onChange: onChangeSecondName } = useInput(userData.secondName);
-  const { value: valueLastName, onChange: onChangeLastName } = useInput(userData.lastName);
-  const { value: valueSecondLastName, onChange: onChangeSecondLastName } = useInput(userData.secondLastName);
-  const { value: valueBirthDate, onChange: onChangeBirthDate } = useInput(userData.birthDate);
-  const { value: valueAge, onChange: onChangeAge } = useInput(userData.age);
-  const { value: valueSex, onChange: onChangeSex } = useInput(userData.sex);
-  const { value: valueOccupation, onChange: onChangeOccupation } = useInput(userData.occupation);
-  const { value: valueTelephone, onChange: onChangeTelephone } = useInput(userData.telephone);
-  const { value: valueAddress, onChange: onChangeAddress } = useInput(userData.address);
-  const { value: valueEmail, onChange: onChangeEmail } = useInput(userData.email);
-  const { value: valueStatus, onChange: onChangeStatus } = useInput(userData.active);
+  const { value: valueUsername, onChange: onChangeUsername, setValue: setValueUsername } = useInput(userData.username);
+  const { value: valuePassword, onChange: onChangePassword, setValue: setValuePassword } = useInput(userData.password);
+  const { value: valueDni, onChange: onChangeDni, setValue: setValueDni } = useInput(userData.dni);
+  const { value: valueName, onChange: onChangeName, setValue: setValueName } = useInput(userData.name);
+  const { value: valueSecondName, onChange: onChangeSecondName, setValue: setValueSecondName } = useInput(userData.secondName);
+  const { value: valueLastName, onChange: onChangeLastName, setValue: setValueLastName } = useInput(userData.lastName);
+  const { value: valueSecondLastName, onChange: onChangeSecondLastName, setValue: setValueSecondLastName } = useInput(userData.secondLastName);
+  const { value: valueBirthDate, onChange: onChangeBirthDate, setValue: setValueBirthDate } = useInput(userData.birthDate);
+  const { value: valueAge, onChange: onChangeAge, setValue: setValueAge } = useInput(userData.age);
+  const userSex = userData.sex === i18n.userSexText.male ? enumSex.MALE : enumSex.FEMALE;
+  const { value: valueSex, onChange: onChangeSex, setValue: setValueSex } = useInput(userSex);
+  const { value: valueOccupation, onChange: onChangeOccupation, setValue: setValueOccupation } = useInput(userData.occupation);
+  const { value: valueTelephone, onChange: onChangeTelephone, setValue: setValueTelephone } = useInput(userData.telephone);
+  const { value: valueAddress, onChange: onChangeAddress, setValue: setValueAddress } = useInput(userData.address);
+  const { value: valueEmail, onChange: onChangeEmail, setValue: setValueEmail } = useInput(userData.email);
+  const isActive = userData.active === i18n.userStatus.active;
+  const { value: valueStatus, onChange: onChangeStatus, setValue: setValueStatus } = useInput(isActive);
   const { value: valueCreatedBy } = useInput(userData.createdBy);
   const { value: valueUpdatedBy } = useInput(userData.updatedBy);
   const { value: valueCreationDate } = useInput(userData.creationDate?.substring(0, 10));
   const { value: valueUpdateDate } = useInput(userData.updateDate?.substring(0, 10));
+
+  const resetValues = function () {
+    setValueUsername(userData.username);
+    setValuePassword(userData.password);
+    setValueDni(userData.dni);
+    setValueName(userData.name);
+    setValueSecondName(userData.secondName);
+    setValueLastName(userData.lastName);
+    setValueSecondLastName(userData.secondLastName);
+    setValueBirthDate(userData.birthDate);
+    setValueAge(userData.age);
+    setValueSex(userSex);
+    setValueOccupation(userData.occupation);
+    setValueTelephone(userData.telephone);
+    setValueAddress(userData.address);
+    setValueEmail(userData.email);
+    setValueStatus(isActive);
+  }
 
   const getBody = function () {
     const username = window.sessionStorage.getItem("username");
@@ -64,12 +86,19 @@ function UserDetails(props) {
     return body;
   }
 
+  const handleAfterEdit = (response) => {
+    if (response.data && response.data.error) {
+      resetValues();
+    }
+  }
+
   const handleAdd = () => {
     const body = getBody();
     let isValid = handleValidation(body, setClassNameFormText);
     if (isValid) {
-      //handleEditRequest("users/", body, userData.id, handleReset, setIsEdit)
+      handleEditRequest("users/", body, userData.id, handleAfterEdit)
     } else {
+      resetValues();
       alert(i18n.errorMessages.validationError);
     }
   }
@@ -344,7 +373,7 @@ function UserDetails(props) {
               </div>
             </ListGroup.Item>
           </ListGroup>
-          {props.children}
+          {children}
         </Card.Body>
       </Card>
     </div >

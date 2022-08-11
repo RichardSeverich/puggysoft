@@ -83,6 +83,10 @@ then: docker start java-spring-puggysoft
 
 ## Usage
 
+### Swagger documentation
+ 
+http://192.168.0.100:8080/swagger-ui.html
+
 ### Default Token: 
 
 ```

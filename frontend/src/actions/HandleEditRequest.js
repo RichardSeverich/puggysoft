@@ -1,14 +1,16 @@
 import requestManager from "./../api/RequestManager"
 import messageManager from "./HandleErrorMessages";
 
-const handleEdit = (endpoint, body, id, handleReset, setIsEdit) => {
+const handleEdit = (endpoint, body, id, callback) => {
   const url = endpoint.concat(id);
   requestManager.put(url, body, (response) => {
     if (response && response.status === 200) {
-      handleReset();
-      setIsEdit(undefined);
+      messageManager.editMessages(response)
+      callback(response.data);
+    } else {
+      callback(response);
+      messageManager.editMessages(response);
     }
-    messageManager.editMessages(response);
   });
 
 };

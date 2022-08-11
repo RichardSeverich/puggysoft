@@ -32,12 +32,18 @@ function UserForm(props) {
   let secondLastName = isEdit ? isEdit.data.secondLastName : "";
   let birthDate = isEdit ? isEdit.data.birthDate : "";
   let age = isEdit ? isEdit.data.age : "";
-  let sex = isEdit ? isEdit.data.sex : enumSex.MALE;
+  let sex = enumSex.MALE;
+  let status = true;
+  if (isEdit && isEdit.data) {
+    const userSex = isEdit.data.sex === i18n.userSexText.male ? enumSex.MALE : enumSex.FEMALE;
+    const userStatus = isEdit.data.active === i18n.userStatus.active;
+    status = userStatus;
+    sex = userSex;
+  }
   let occupation = isEdit ? isEdit.data.occupation : "";
   let telephone = isEdit ? isEdit.data.telephone : "";
   let address = isEdit ? isEdit.data.address : "";
   let email = isEdit ? isEdit.data.email : "";
-  let status = isEdit ? isEdit.data.status : true;
 
   // Use custom hook
   const { value: valueUsername, onChange: onChangeUsername, setValue: setUsername } = useInput(username);
@@ -76,11 +82,17 @@ function UserForm(props) {
 
   const handleAfterAdd = function (newUserId) {
     handleReset();
+    // afterAdd = add some role to new user.
     if (afterAdd) {
       const newUser = getBody();
       newUser['id'] = newUserId;
       afterAdd(newUser);
     }
+  }
+
+  const handleAfterEdit = function () {
+    handleReset();
+    setIsEdit(undefined);
   }
 
   const getBody = function () {
@@ -113,7 +125,7 @@ function UserForm(props) {
     let isValid = handleValidation(body, setClassNameFormText);
     if (isValid) {
       if (isEdit) {
-        handleEditRequest("users/", body, id, handleReset, setIsEdit)
+        handleEditRequest("users/", body, id, handleAfterEdit)
       } else {
         handleAddRequest("users/", body, handleAfterAdd);
       }

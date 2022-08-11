@@ -5,7 +5,7 @@ const navBar = {
   userRegistration: "Registrar Usuarios",
   userShowTable: "Mostrar Usuarios (Tabla)",
   userShowTableFilter: "Mostrar Usuarios (Tabla, Filtro, Editar, Eliminar)",
-  userShowDetails: "Mostrar Detalle de Usuarios (Tabla)",
+  userShowDetails: "Mostrar Usuarios (Tabla, Filtro, Detalle)",
   userShowCard: "Mostrar Usuarios (Tarjetas)",
 
   // Roles
