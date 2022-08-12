@@ -15,7 +15,6 @@ function UserTableFilterGeneric(props) {
     handleGetSize,
     tableTitle,
     tableArrayCustomRowButtons,
-    pageSize,
     numberPagesToShow
   } = props;
 
@@ -73,12 +72,12 @@ function UserTableFilterGeneric(props) {
 
   useEffect(() => {
     const filterBody = getFilterBody();
-    handleGetData(activePage, pageSize, updateArrayData, filterBody);
+    handleGetData(activePage, filterBody, updateArrayData);
   }, [activePage]);
 
   useEffect(() => {
     const filterBody = getFilterBody();
-    handleGetSize(activePage, pageSize, setTotalPages, filterBody);
+    handleGetSize(filterBody, setTotalPages);
   }, [activePage]);
 
   const handleFilter = () => {
@@ -86,8 +85,8 @@ function UserTableFilterGeneric(props) {
     const filterBody = getFilterBody();
     setArrayData(null);
     setTotalPages(null);
-    handleGetData(activePage, pageSize, updateArrayData, filterBody);
-    handleGetSize(activePage, pageSize, setTotalPages, filterBody);
+    handleGetData(activePage, filterBody, updateArrayData);
+    handleGetSize(filterBody, setTotalPages);
   }
 
   if (arrayData === null || totalPages === null) {

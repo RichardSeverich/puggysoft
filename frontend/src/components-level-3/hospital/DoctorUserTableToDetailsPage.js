@@ -1,13 +1,13 @@
 import NavBar from './../../components-level-2/navbar/NavBar'
-import DoctorUserDetailsTable from './../../components-level-2/hospital/DoctorUserDetailsTable';
+import DoctorUserTableSelectionToDetails from './../../components-level-2/hospital/DoctorUserTableSelectionToDetails';
 
-function DoctorUserTablePage() {
+function DoctorUserTableToDetailsPage() {
   return (
     <div className="doctor-table-page">
       <NavBar></NavBar>
-      <DoctorUserDetailsTable></DoctorUserDetailsTable>
+      <DoctorUserTableSelectionToDetails></DoctorUserTableSelectionToDetails>
     </div>
   );
 }
 
-export default DoctorUserTablePage;
+export default DoctorUserTableToDetailsPage;

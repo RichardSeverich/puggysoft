@@ -8,6 +8,7 @@ const USERS_TABLE = "/users-table"
 const USERS_TABLE_FILTER = "/users-table-filter"
 const USERS_TABLE_FILTER_BY_ROLE = "/users-table-filter-by-role"
 const USERS_TABLE_FILTER_SELECTION = "/users-table-filter-selection"
+const USERS_TABLE_FILTER_EDIT_DELETE = "/users-table-filter-edit-delete"
 const USERS_DETAILS = "/user-details"
 const ROLES_TABLE = "/roles-table"
 const ROLES_TABLE_FILTER = "/roles-table-filter"
@@ -33,6 +34,7 @@ const enumPaths = {
   USERS_TABLE_FILTER,
   USERS_TABLE_FILTER_BY_ROLE,
   USERS_TABLE_FILTER_SELECTION,
+  USERS_TABLE_FILTER_EDIT_DELETE,
   USERS_DETAILS,
   ROLES_TABLE,
   ROLES_TABLE_FILTER,

@@ -42,6 +42,7 @@ function NavBar() {
   const navigateUsersForm = () => { history.push(enumPaths.USERS_FORM); }
   const navigateUsersTable = () => { history.push(enumPaths.USERS_TABLE); }
   const navigateUsersTableFilter = () => { history.push(enumPaths.USERS_TABLE_FILTER); }
+  const navigateUsersTableFilterEditDelete = () => { history.push(enumPaths.USERS_TABLE_FILTER_EDIT_DELETE); }
   const navigateRolesTable = () => { history.push(enumPaths.ROLES_TABLE); }
   const navigateRolesTableFilter = () => { history.push(enumPaths.ROLES_TABLE_FILTER); }
   const navigateRolesTableSelection = () => {
@@ -76,6 +77,7 @@ function NavBar() {
   // ******* ******* ******* HOSPITAL SYSTEM ******* ******* *******
   const navigateDoctorUserForm = () => { history.push(enumPaths.HOSPITAL_DOCTOR_USER_FORM); }
   const navigatePatientUserForm = () => { history.push(enumPaths.HOSPITAL_PATIENT_USER_FORM); }
+  const navigateDoctorUserTableToDetails = () => { history.push(enumPaths.HOSPITAL_DOCTOR_USER_TABLE_TO_DETAILS); }
 
   function navigateGeneric(event) { console.log({ event }) }
 
@@ -86,9 +88,10 @@ function NavBar() {
   // USERS
   const userAdminLabel = (<><FaUsers /> {i18n.navBar.userAdmin}</>)
   const userRegistrationLabel = (<><AiOutlineUserAdd /> {i18n.navBar.userRegistration}</>)
-  const userShowTableLabel = (<><AiOutlineTable /> {i18n.navBar.userShowTable}</>)
-  const userShowTableFilterLabel = (<><AiOutlineTable /> {i18n.navBar.userShowTableFilter}</>)
-  const userShowTableFilterForDetailsLabel = (<><AiOutlineTable /> {i18n.navBar.userShowDetails}</>)
+  const userShowTableFilterEditDeleteLabel = (<><AiOutlineTable /> {i18n.navBar.userShowTableFilterEditDelete}</>)
+  const userShowTableFilterDetailsLabel = (<><AiOutlineTable /> {i18n.navBar.userShowTableFilterDetails}</>)
+  const userShowTableFullDataLabel = (<><AiOutlineTable /> {i18n.navBar.userShowTableFullData}</>)
+  const userShowTableFilterFullDataLabel = (<><AiOutlineTable /> {i18n.navBar.userShowTableFilterFullData}</>)
   const userShowCardLabel = (<><AiOutlineIdcard /> {i18n.navBar.userShowCard}</>)
   // ROLES
   const rolesAdminLabel = (<><RiShieldKeyholeFill /> {i18n.navBar.roleAdmin}</>)
@@ -146,7 +149,7 @@ function NavBar() {
   // DOCTORS
   const doctorAdminLabel = (<><FaUserMd /> {i18n.navBar.doctorAdmin}</>)
   const doctorRegistrationLabel = (<><GrAddCircle /> {i18n.navBar.doctorRegistration}</>)
-  const doctorShowTableLabel = (<><AiOutlineTable /> {i18n.navBar.doctorShowTable}</>)
+  // const doctorShowTableLabel = (<><AiOutlineTable /> {i18n.navBar.doctorShowTable}</>) No use more
   const doctorShowTableFilterLabel = (<><AiOutlineTable /> {i18n.navBar.doctorShowTableFilter}</>)
   const doctorShowCardLabel = (<><AiOutlineIdcard /> {i18n.navBar.doctorShowCard}</>)
   // PATIENTS
@@ -188,9 +191,10 @@ function NavBar() {
             || userRoles.includes(enumRoles.SALES_ADMIN))
             && <NavDropdown title={userAdminLabel}>
               <NavDropdown.Item onClick={navigateUsersForm} >{userRegistrationLabel}</NavDropdown.Item>
-              <NavDropdown.Item onClick={navigateUsersTable}>{userShowTableLabel}</NavDropdown.Item>
-              <NavDropdown.Item onClick={navigateUsersTableFilter}>{userShowTableFilterLabel}</NavDropdown.Item>
-              <NavDropdown.Item onClick={navigateUserTableSelectionForDetails}>{userShowTableFilterForDetailsLabel}</NavDropdown.Item>
+              <NavDropdown.Item onClick={navigateUsersTableFilterEditDelete}>{userShowTableFilterEditDeleteLabel}</NavDropdown.Item>
+              <NavDropdown.Item onClick={navigateUserTableSelectionForDetails}>{userShowTableFilterDetailsLabel}</NavDropdown.Item>
+              <NavDropdown.Item onClick={navigateUsersTable}>{userShowTableFullDataLabel}</NavDropdown.Item>
+              <NavDropdown.Item onClick={navigateUsersTableFilter}>{userShowTableFilterFullDataLabel}</NavDropdown.Item>
               <NavDropdown.Item onClick={navigateGeneric}>{userShowCardLabel}</NavDropdown.Item>
             </NavDropdown>}
           {(userRoles.includes(enumRoles.ADMIN_USERS)
@@ -261,8 +265,7 @@ function NavBar() {
           {userRoles.includes(enumRoles.HOSPITAL_ADMIN) &&
             <NavDropdown title={doctorAdminLabel}>
               <NavDropdown.Item onClick={navigateDoctorUserForm}>{doctorRegistrationLabel}</NavDropdown.Item>
-              <NavDropdown.Item onClick={navigateGeneric}>{doctorShowTableLabel}</NavDropdown.Item>
-              <NavDropdown.Item onClick={navigateGeneric}>{doctorShowTableFilterLabel}</NavDropdown.Item>
+              <NavDropdown.Item onClick={navigateDoctorUserTableToDetails}>{doctorShowTableFilterLabel}</NavDropdown.Item>
               <NavDropdown.Item onClick={navigateGeneric}>{doctorShowCardLabel}</NavDropdown.Item>
             </NavDropdown>}
           {userRoles.includes(enumRoles.HOSPITAL_ADMIN) &&

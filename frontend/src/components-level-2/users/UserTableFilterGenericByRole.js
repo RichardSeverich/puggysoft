@@ -2,18 +2,15 @@ import { useState, useEffect } from "react";
 import UserTableFilterGeneric from "./../users/UserTableFilterGeneric";
 import CommonLoading from '../../components-level-1/CommonLoading';
 import { handleFilterRequest, handleGetRequest } from "../../actions/HandleManager";
-import enumRoles from "./../../models/users/enumRoles"
-import i18n from "../../i18n/i18n";
 
-function DoctorUserGenericTable(props) {
+function UserTableFilterGenericByRole(props) {
 
   const pageSize = 10;
   const numberPagesToShow = 10;
-  const roleName = enumRoles.HOSPITAL_DOCTOR;
-  const tableTitle = i18n.doctorTable.title;
   const [role, setRole] = useState(null);
 
-  const { tableArrayCustomRowButtons } = props;
+  // roleName should be instance of enumRoles
+  const { tableArrayCustomRowButtons, roleName, tableTitle } = props;
 
   useEffect(() => {
     handleGetRequest(`role?roleName=${roleName}`, setRole);
@@ -46,4 +43,4 @@ function DoctorUserGenericTable(props) {
   )
 }
 
-export default DoctorUserGenericTable;
+export default UserTableFilterGenericByRole;

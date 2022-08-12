@@ -3,9 +3,10 @@ const navBar = {
   // Users
   userAdmin: "Adm. Usuarios",
   userRegistration: "Registrar Usuarios",
-  userShowTable: "Mostrar Usuarios (Tabla)",
-  userShowTableFilter: "Mostrar Usuarios (Tabla, Filtro, Editar, Eliminar)",
-  userShowDetails: "Mostrar Usuarios (Tabla, Filtro, Detalle)",
+  userShowTableFilterEditDelete: "Mostrar Usuarios (Tabla, Editar, Eliminar)",
+  userShowTableFilterDetails: "Mostrar Usuarios (Tabla, Filtro, Detalle)",
+  userShowTableFullData: "Mostrar Usuarios Full (Tabla)",
+  userShowTableFilterFullData: "Mostrar Usuarios Full (Tabla, Filtro)",
   userShowCard: "Mostrar Usuarios (Tarjetas)",
 
   // Roles
