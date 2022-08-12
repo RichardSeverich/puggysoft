@@ -14,7 +14,7 @@ import fixArrayData from "../../tools/users/fixArrayData"
 const pageSize = 10;
 const numberPagesToShow = 10;
 
-function UserTableFilter() {
+function UserTableFilterSelectionToDetails() {
 
   const [arrayData, setArrayData] = useState(null);
   const [totalPages, setTotalPages] = useState(null);
@@ -137,4 +137,4 @@ function UserTableFilter() {
   );
 }
 
-export default UserTableFilter;
+export default UserTableFilterSelectionToDetails;

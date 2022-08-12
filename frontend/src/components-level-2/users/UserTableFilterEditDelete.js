@@ -8,7 +8,7 @@ function UserTableFilterEditDelete() {
 
   const pageSize = 10;
   const numberPagesToShow = 10;
-  const tableTitle = i18n.userTable.title;
+  const tableTitle = i18n.userTable.titleEditDelete;
   const history = useHistory();
 
   function handleGetData(activePage, filterBody, updateArrayData) {

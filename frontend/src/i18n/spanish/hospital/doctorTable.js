@@ -1,6 +1,6 @@
 const doctorTable = {
     title: "Doctores",
-    titleToDetails: "Tabla Doctores (Seleccione para ver Detalle)",
+    titleSelectionToDetails: "Tabla Doctores (Seleccione para ver detalle)",
     selectButton: "Seleccionar"
 };
 

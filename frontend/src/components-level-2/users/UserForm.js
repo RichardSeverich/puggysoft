@@ -19,6 +19,7 @@ function UserForm(props) {
   const isEditDefaultValue = history && history.location && history.location.state;
   const [isEdit, setIsEdit] = useState(isEditDefaultValue);
   const [classNameFormText, setClassNameFormText] = useState(classNameFormTextNew);
+  const title = props && props.title ? props.title : i18n.userForm.title;
   const { afterAdd } = props;
 
   // Put default values:
@@ -139,8 +140,6 @@ function UserForm(props) {
     handleValidation(body, setClassNameFormText)
   }, [valueUsername, valuePassword, valueDni, valueName, valueSecondName, valueLastName, valueSecondLastName, valueAge,
     valueSex, valueOccupation, valueBirthDate, valueTelephone, valueAddress, valueEmail, valueStatus]);
-
-  const title = props && props.title ? props.title : i18n.userForm.title;
 
   const classNameItemLabel = 'puggysoft-form-item-label';
   const classNameItemInput = 'puggysoft-form-item-input';

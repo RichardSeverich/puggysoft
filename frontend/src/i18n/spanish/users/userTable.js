@@ -1,5 +1,7 @@
 const userTable = {
-  title: "Usuarios",
+  title: "Tabla Usuarios",
+  titleEditDelete: "Tabla Usuarios (Seleccione para Editar/Eliminar)",
+  titleSelectionToDetails: "Tabla Usuarios (Seleccione para ver detalle)",
   columnId: "Id",
   columnUsername: "Username",
   columnPassword: "Contrasena",

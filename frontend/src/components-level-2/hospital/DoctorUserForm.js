@@ -18,13 +18,7 @@ function DoctorUserForm() {
   }, []);
 
   function afterAddUser(userData) {
-    handleAddUserRole();
-    history.push({
-      pathname: "hospital-doctor-user-details-form",
-      state: {
-        data: userData
-      }
-    })
+    handleAddUserRole(userData);
   }
 
   const handleAddUserRole = function (userData) {

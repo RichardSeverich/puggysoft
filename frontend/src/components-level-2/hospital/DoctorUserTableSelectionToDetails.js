@@ -7,7 +7,7 @@ import i18n from "../../i18n/i18n";
 function DoctorUserTableSelectionToDetails() {
 
   const history = useHistory();
-  const tableTitle = i18n.doctorTable.titleToDetails;
+  const tableTitle = i18n.doctorTable.titleSelectionToDetails;
   const roleName = enumRoles.HOSPITAL_DOCTOR;
 
   function handleSelection(userData) {

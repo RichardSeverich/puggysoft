@@ -65,7 +65,7 @@ function NavBar() {
       pathname: enumPaths.USERS_TABLE_FILTER_SELECTION,
       state: {
         "afterSelectRoute": enumPaths.USERS_DETAILS,
-        "tableTitle": i18n.userTable.title
+        "tableTitle": i18n.userTable.titleSelectionToDetails
       }
     })
   }
@@ -193,7 +193,7 @@ function NavBar() {
               <NavDropdown.Item onClick={navigateUsersForm} >{userRegistrationLabel}</NavDropdown.Item>
               <NavDropdown.Item onClick={navigateUsersTableFilterEditDelete}>{userShowTableFilterEditDeleteLabel}</NavDropdown.Item>
               <NavDropdown.Item onClick={navigateUserTableSelectionForDetails}>{userShowTableFilterDetailsLabel}</NavDropdown.Item>
-              <NavDropdown.Item onClick={navigateUsersTable}>{userShowTableFullDataLabel}</NavDropdown.Item>
+              {/*<NavDropdown.Item onClick={navigateUsersTable}>{userShowTableFullDataLabel}</NavDropdown.Item>*/}
               <NavDropdown.Item onClick={navigateUsersTableFilter}>{userShowTableFilterFullDataLabel}</NavDropdown.Item>
               <NavDropdown.Item onClick={navigateGeneric}>{userShowCardLabel}</NavDropdown.Item>
             </NavDropdown>}

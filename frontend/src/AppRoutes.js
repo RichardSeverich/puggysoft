@@ -11,7 +11,7 @@ import UsersFormPage from "./components-level-3/users/UserFormPage";
 import UserTableBasicPage from "./components-level-3/users/UserTableBasicPage";
 import UserTableFilterFullDataPage from "./components-level-3/users/UserTableFilterFullDataPage";
 import UserTableFilterByRolePage from "./components-level-3/users/UserTableFilterByRolePage";
-import UserTableFilterSelectionPage from "./components-level-3/users/UserTableFilterSelectionPage";
+import UserTableFilterSelectionToDetailsPage from "./components-level-3/users/UserTableFilterSelectionToDetailsPage";
 import UserTableFilterEditDeletePage from "./components-level-3/users/UserTableFilterEditDeletePage"
 import UserDetailsPage from "./components-level-3/users/UserDetailsPage";
 import RoleTablePage from "./components-level-3/users/RoleTablePage";
@@ -36,7 +36,7 @@ const AppRoutes = () => (
       <Route exact path={enumPaths.USERS_TABLE} component={UserTableBasicPage} />
       <Route exact path={enumPaths.USERS_TABLE_FILTER} component={UserTableFilterFullDataPage} />
       <Route exact path={enumPaths.USERS_TABLE_FILTER_BY_ROLE} component={UserTableFilterByRolePage} />
-      <Route exact path={enumPaths.USERS_TABLE_FILTER_SELECTION} component={UserTableFilterSelectionPage} />
+      <Route exact path={enumPaths.USERS_TABLE_FILTER_SELECTION} component={UserTableFilterSelectionToDetailsPage} />
       <Route exact path={enumPaths.USERS_TABLE_FILTER_EDIT_DELETE} component={UserTableFilterEditDeletePage} />
       <Route exact path={enumPaths.USERS_DETAILS} component={UserDetailsPage} />
       <Route exact path={enumPaths.ROLES_TABLE} component={RoleTablePage} />
