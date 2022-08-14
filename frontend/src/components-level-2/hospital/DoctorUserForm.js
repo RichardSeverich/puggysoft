@@ -26,7 +26,8 @@ function DoctorUserForm() {
       idUser: userData.id,
       idRole: role.id
     }
-    handleAddRequest('users-roles', body)
+    handleAddRequest('users-roles', body);
+    // here add relation doctor details.
   }
 
   if (role === null) {
