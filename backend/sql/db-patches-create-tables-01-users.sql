@@ -65,6 +65,38 @@ CREATE TABLE tenant (
    description TEXT NOT NULL,
    telephone TEXT NOT NULL,
    address TEXT NOT NULL,
+   image LONGBLOB,
+   created_by VARCHAR(30),
+   updated_by VARCHAR(30),
+   creation_date DATETIME DEFAULT CURRENT_TIMESTAMP,
+   update_date DATETIME ON UPDATE CURRENT_TIMESTAMP,
+   FOREIGN KEY (created_by) REFERENCES users(username),
+   FOREIGN KEY (updated_by) REFERENCES users(username),
+   PRIMARY KEY (id)
+)AUTO_INCREMENT=1000;
+
+
+CREATE TABLE tenant_users (
+   id BIGINT AUTO_INCREMENT,
+   id_tenant BIGINT NOT NULL,
+   id_user BIGINT NOT NULL,
+   created_by VARCHAR(30),
+   updated_by VARCHAR(30),
+   creation_date DATETIME DEFAULT CURRENT_TIMESTAMP,
+   update_date DATETIME ON UPDATE CURRENT_TIMESTAMP,
+   FOREIGN KEY (created_by) REFERENCES users(username),
+   FOREIGN KEY (updated_by) REFERENCES users(username),
+   FOREIGN KEY (id_tenant) REFERENCES tenant(id),
+   FOREIGN KEY (id_user) REFERENCES users(id),
+   UNIQUE (id_user, id_role),
+   PRIMARY KEY (id)
+)AUTO_INCREMENT=1000;
+
+
+CREATE TABLE system_properties (
+   id BIGINT AUTO_INCREMENT,
+   name TEXT NOT NULL,
+   value TEXT NOT NULL,
    created_by VARCHAR(30),
    updated_by VARCHAR(30),
    creation_date DATETIME DEFAULT CURRENT_TIMESTAMP,

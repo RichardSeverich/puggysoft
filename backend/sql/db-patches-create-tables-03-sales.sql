@@ -13,8 +13,8 @@ CREATE TABLE products(
    minimum_stock BIGINT,
    creation_date DATETIME DEFAULT CURRENT_TIMESTAMP,
    update_date DATETIME ON UPDATE CURRENT_TIMESTAMP,
-   created_by VARCHAR(10),
-   updated_by VARCHAR(10),
+   created_by VARCHAR(30),
+   updated_by VARCHAR(30),
    PRIMARY KEY (id)
 )AUTO_INCREMENT=1000;
 
@@ -37,8 +37,8 @@ CREATE TABLE sales(
     status VARCHAR(32) NOT NULL, -- IN-PROGRESS, DONE.
     creation_date DATETIME DEFAULT CURRENT_TIMESTAMP,
     update_date DATETIME ON UPDATE CURRENT_TIMESTAMP,
-    created_by VARCHAR(10),
-    updated_by VARCHAR(10),
+    created_by VARCHAR(30),
+    updated_by VARCHAR(30),
     PRIMARY KEY(id),
     FOREIGN KEY (id_seller) REFERENCES users(id),
     FOREIGN KEY (id_client) REFERENCES clients(id)
@@ -52,8 +52,8 @@ CREATE TABLE sales_products(
     quantity BIGINT NOT NULL,
     creation_date DATETIME DEFAULT CURRENT_TIMESTAMP,
     update_date DATETIME ON UPDATE CURRENT_TIMESTAMP,
-    created_by VARCHAR(10),
-    updated_by VARCHAR(10),
+    created_by VARCHAR(30),
+    updated_by VARCHAR(30),
     PRIMARY KEY (id),
     FOREIGN KEY (id_sale) REFERENCES sales(id),
     FOREIGN KEY (id_product) REFERENCES products(id)
@@ -66,8 +66,8 @@ CREATE TABLE product_groups(
     image LONGBLOB,
     creation_date DATETIME DEFAULT CURRENT_TIMESTAMP,
     update_date DATETIME ON UPDATE CURRENT_TIMESTAMP,
-    created_by VARCHAR(10),
-    updated_by VARCHAR(10),
+    created_by VARCHAR(30),
+    updated_by VARCHAR(30),
     PRIMARY KEY (id)
 )AUTO_INCREMENT=1000;
 
@@ -77,8 +77,8 @@ CREATE TABLE product_groups_products(
     id_product_group BIGINT NOT NULL,
     creation_date DATETIME DEFAULT CURRENT_TIMESTAMP,
     update_date DATETIME ON UPDATE CURRENT_TIMESTAMP,
-    created_by VARCHAR(10),
-    updated_by VARCHAR(10),
+    created_by VARCHAR(30),
+    updated_by VARCHAR(30),
     FOREIGN KEY (id_product) REFERENCES products(id),
     FOREIGN KEY (id_product_group) REFERENCES product_groups(id),
     UNIQUE (id_product, id_product_group)

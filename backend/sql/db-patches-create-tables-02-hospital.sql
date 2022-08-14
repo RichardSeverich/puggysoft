@@ -29,6 +29,7 @@ CREATE TABLE hospital_doctors_details(
 -- Patients: not being used yet
 CREATE TABLE hospital_patients_details(
    id_user BIGINT NOT NULL UNIQUE,
+   sus_code text NOT NULL UNIQUE,
    creation_date DATETIME DEFAULT CURRENT_TIMESTAMP,
    update_date DATETIME ON UPDATE CURRENT_TIMESTAMP,
    created_by VARCHAR(30),
@@ -93,8 +94,8 @@ CREATE TABLE hospital_bookings (
    -- common
    creation_date DATETIME DEFAULT CURRENT_TIMESTAMP,
    update_date DATETIME ON UPDATE CURRENT_TIMESTAMP,
-   created_by VARCHAR(10),
-   updated_by VARCHAR(10),
+   created_by VARCHAR(30),
+   updated_by VARCHAR(30),
    FOREIGN KEY (created_by) REFERENCES users(username),
    FOREIGN KEY (updated_by) REFERENCES users(username),
    FOREIGN KEY (id_doctor_schedule) REFERENCES hospital_doctor_schedule(id),
