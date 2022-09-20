@@ -2,10 +2,10 @@ import UserTableFilterGenericByRoleToDetails from "./../users/UserTableFilterGen
 import enumRoles from "./../../models/users/enumRoles"
 import i18n from "../../i18n/i18n";
 
-function DoctorUserTableSelectionToDetails() {
+function PatientUserTableSelectionToDetails() {
 
-  const tableTitle = i18n.doctorTable.titleSelectionToDetails;
-  const roleName = enumRoles.HOSPITAL_DOCTOR;
+  const tableTitle = i18n.patientTable.titleSelectionToDetails;
+  const roleName = enumRoles.HOSPITAL_PATIENT;
 
   return (
     <UserTableFilterGenericByRoleToDetails
@@ -16,4 +16,4 @@ function DoctorUserTableSelectionToDetails() {
   )
 }
 
-export default DoctorUserTableSelectionToDetails;
+export default PatientUserTableSelectionToDetails;

@@ -20,7 +20,7 @@ function UserForm(props) {
   const [isEdit, setIsEdit] = useState(isEditDefaultValue);
   const [classNameFormText, setClassNameFormText] = useState(classNameFormTextNew);
   const title = props && props.title ? props.title : i18n.userForm.title;
-  const { afterAdd } = props;
+  const { beforeAdd, afterAdd, showMessageOnSuccess } = props;
 
   // Put default values:
   let id = isEdit ? isEdit.data.id : "";
@@ -128,7 +128,14 @@ function UserForm(props) {
       if (isEdit) {
         handleEditRequest("users/", body, id, handleAfterEdit)
       } else {
-        handleAddRequest("users/", body, handleAfterAdd);
+        if (beforeAdd) {
+          beforeAdd()
+        }
+        if (showMessageOnSuccess === undefined) {
+          handleAddRequest("users/", body, handleAfterAdd);
+        } else {
+          handleAddRequest("users/", body, handleAfterAdd, showMessageOnSuccess);
+        }
       }
     } else {
       alert(i18n.errorMessages.validationError);

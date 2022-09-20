@@ -25,6 +25,7 @@ import ProductTableFilterPage from "./components-level-3/sales/ProductTableFilte
 import DoctorUserFormPage from "./components-level-3/hospital/DoctorUserFormPage";
 import DoctorUserTableToDetailsPage from "./components-level-3/hospital/DoctorUserTableToDetailsPage";
 import PatientUserFormPage from "./components-level-3/hospital/PatientUserFormPage";
+import PatientUserTableToDetailsPage from "./components-level-3/hospital/PatientUserTableToDetailsPage";
 
 
 const AppRoutes = () => (
@@ -51,6 +52,7 @@ const AppRoutes = () => (
       <Route exact path={enumPaths.HOSPITAL_DOCTOR_USER_FORM} component={DoctorUserFormPage} />
       <Route exact path={enumPaths.HOSPITAL_DOCTOR_USER_TABLE_TO_DETAILS} component={DoctorUserTableToDetailsPage} />
       <Route exact path={enumPaths.HOSPITAL_PATIENT_USER_FORM} component={PatientUserFormPage} />
+      <Route exact path={enumPaths.HOSPITAL_PATIENT_USER_TABLE_TO_DETAILS} component={PatientUserTableToDetailsPage} />
       <Route exact path={enumPaths.LOGIN} component={LoginPage} />
       <Route exact path="/" component={LoginPage} />
       <Route component={LoginPage} />

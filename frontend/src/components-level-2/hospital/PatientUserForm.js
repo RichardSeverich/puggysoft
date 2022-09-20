@@ -1,13 +1,18 @@
-import { useHistory } from "react-router";
-import UserForm from "./../users/UserForm";
+import UserFormGenericByRole from "./../users/UserFormGenericByRole";
+import enumRoles from "./../../models/users/enumRoles"
 import i18n from "../../i18n/i18n";
+
+const roleName = enumRoles.HOSPITAL_PATIENT;
 
 function PatientUserForm() {
 
+  //userDetailsPatient
   return (
-    <div className="puggysoft-doctor-user-form" >
-      <UserForm title={i18n.patientUserForm.title}></UserForm>
-    </div>
+    <UserFormGenericByRole
+      title={i18n.patientUserForm.title}
+      roleName={roleName}
+    >
+    </UserFormGenericByRole>
   )
 }
 

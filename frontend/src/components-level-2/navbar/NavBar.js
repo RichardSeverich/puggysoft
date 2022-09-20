@@ -78,6 +78,7 @@ function NavBar() {
   const navigateDoctorUserForm = () => { history.push(enumPaths.HOSPITAL_DOCTOR_USER_FORM); }
   const navigatePatientUserForm = () => { history.push(enumPaths.HOSPITAL_PATIENT_USER_FORM); }
   const navigateDoctorUserTableToDetails = () => { history.push(enumPaths.HOSPITAL_DOCTOR_USER_TABLE_TO_DETAILS); }
+  const navigatePatientUserTableToDetails = () => { history.push(enumPaths.HOSPITAL_PATIENT_USER_TABLE_TO_DETAILS); }
 
   function navigateGeneric(event) { console.log({ event }) }
 
@@ -155,7 +156,7 @@ function NavBar() {
   // PATIENTS
   const patientAdminLabel = (<><FaUserInjured /> {i18n.navBar.patientAdmin}</>)
   const patientRegistrationLabel = (<><GrAddCircle /> {i18n.navBar.patientRegistration}</>)
-  const patientShowTableLabel = (<><AiOutlineTable /> {i18n.navBar.patientShowTable}</>)
+  // const patientShowTableLabel = (<><AiOutlineTable /> {i18n.navBar.patientShowTable}</>) No use more
   const patientShowTableFilterLabel = (<><AiOutlineTable /> {i18n.navBar.patientShowTableFilter}</>)
   const patientShowCardLabel = (<><AiOutlineIdcard /> {i18n.navBar.patientShowCard}</>)
   // SCHEDULE
@@ -178,7 +179,7 @@ function NavBar() {
   const configLogout = (<><RiLoginCircleLine /> {i18n.navBar.configLogout}</>)
 
   return (
-    <Navbar collapseOnSelect expand="sm" bg={NavbarBackground} variant={NavbarVariant}>
+    <Navbar collapseOnSelect expand="xl" bg={NavbarBackground} variant={NavbarVariant}>
       <Navbar.Brand>
         <img src="/logo192.png" className="app-logo" alt="logo" />
       </Navbar.Brand>
@@ -271,8 +272,7 @@ function NavBar() {
           {userRoles.includes(enumRoles.HOSPITAL_ADMIN) &&
             <NavDropdown title={patientAdminLabel}>
               <NavDropdown.Item onClick={navigatePatientUserForm}>{patientRegistrationLabel}</NavDropdown.Item>
-              <NavDropdown.Item onClick={navigateGeneric}>{patientShowTableLabel}</NavDropdown.Item>
-              <NavDropdown.Item onClick={navigateGeneric}>{patientShowTableFilterLabel}</NavDropdown.Item>
+              <NavDropdown.Item onClick={navigatePatientUserTableToDetails}>{patientShowTableFilterLabel}</NavDropdown.Item>
               <NavDropdown.Item onClick={navigateGeneric}>{patientShowCardLabel}</NavDropdown.Item>
             </NavDropdown>}
           {userRoles.includes(enumRoles.HOSPITAL_ADMIN) &&

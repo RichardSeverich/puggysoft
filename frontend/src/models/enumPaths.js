@@ -23,6 +23,7 @@ const HOSPITAL_DOCTOR_USER_FORM = "/hospital-doctor-user-form"
 const HOSPITAL_DOCTOR_USER_TABLE = "/hospital-doctor-user-table"
 const HOSPITAL_PATIENT_USER_FORM = "/hospital-patient-user-form"
 const HOSPITAL_DOCTOR_USER_TABLE_TO_DETAILS = "/hospital-doctor-user-table-to-details"
+const HOSPITAL_PATIENT_USER_TABLE_TO_DETAILS = "/hospital-patient-user-table-to-details"
 
 
 const enumPaths = {
@@ -48,7 +49,8 @@ const enumPaths = {
   HOSPITAL_DOCTOR_USER_FORM,
   HOSPITAL_DOCTOR_USER_TABLE,
   HOSPITAL_PATIENT_USER_FORM,
-  HOSPITAL_DOCTOR_USER_TABLE_TO_DETAILS
+  HOSPITAL_DOCTOR_USER_TABLE_TO_DETAILS,
+  HOSPITAL_PATIENT_USER_TABLE_TO_DETAILS
 }
 
 export default enumPaths;

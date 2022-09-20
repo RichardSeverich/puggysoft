@@ -73,14 +73,7 @@ const navBar = {
   patientAdmin: "Adm. Pacientes ",
   patientRegistration: "Registrar Pacientes ",
   patientShowTable: "Mostrar Pacientes  (Tabla)",
-  patientShowTableFilter: "Mostrar Pacientes  (Tabla, Filtro)",
-  patientShowCard: "Mostrar Pacientes  (Tarjetas)",
-
-  // Patients 
-  patientAdmin: "Adm. Pacientes ",
-  patientRegistration: "Registrar Pacientes ",
-  patientShowTable: "Mostrar Pacientes  (Tabla)",
-  patientShowTableFilter: "Mostrar Pacientes  (Tabla, Filtro)",
+  patientShowTableFilter: "Mostrar Pacientes  (Tabla, Detalle)",
   patientShowCard: "Mostrar Pacientes  (Tarjetas)",
 
   // Doctor Schedule 

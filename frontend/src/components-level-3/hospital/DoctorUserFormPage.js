@@ -3,7 +3,7 @@ import DoctorUserForm from './../../components-level-2/hospital/DoctorUserForm';
 
 function DoctorUserFormPage() {
   return (
-    <div className="product-form-page">
+    <div className="doctor-form-page">
       <NavBar></NavBar>
       <DoctorUserForm></DoctorUserForm>
     </div>

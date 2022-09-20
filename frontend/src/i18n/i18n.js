@@ -21,6 +21,7 @@ import productForm from "./spanish/sales/productForm"
 import doctorUserForm from "./spanish/hospital/doctorUserForm"
 import doctorTable from "./spanish/hospital/doctorTable"
 import patientUserForm from "./spanish/hospital/patientUserForm"
+import patientTable from "./spanish/hospital/patientTable"
 
 
 const i18n = {
@@ -46,7 +47,8 @@ const i18n = {
   // Hospital System
   doctorUserForm,
   doctorTable,
-  patientUserForm
+  patientUserForm,
+  patientTable
 }
 
 export default i18n;
