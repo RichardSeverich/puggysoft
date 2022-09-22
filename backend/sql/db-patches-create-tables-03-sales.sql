@@ -15,6 +15,8 @@ CREATE TABLE products(
    update_date DATETIME ON UPDATE CURRENT_TIMESTAMP,
    created_by VARCHAR(30),
    updated_by VARCHAR(30),
+   FOREIGN KEY (created_by) REFERENCES users(username),
+   FOREIGN KEY (updated_by) REFERENCES users(username),
    PRIMARY KEY (id)
 )AUTO_INCREMENT=1000;
 
@@ -31,17 +33,17 @@ CREATE TABLE products(
 -- Sales
 CREATE TABLE sales(
     id BIGINT AUTO_INCREMENT,
-    id_seller BIGINT NOT NULL,
-    id_client BIGINT NOT NULL,
+    client BIGINT NOT NULL,
     sale_date DATE NOT NULL,
     status VARCHAR(32) NOT NULL, -- IN-PROGRESS, DONE.
     creation_date DATETIME DEFAULT CURRENT_TIMESTAMP,
     update_date DATETIME ON UPDATE CURRENT_TIMESTAMP,
     created_by VARCHAR(30),
     updated_by VARCHAR(30),
-    PRIMARY KEY(id),
-    FOREIGN KEY (id_seller) REFERENCES users(id),
-    FOREIGN KEY (id_client) REFERENCES clients(id)
+    FOREIGN KEY (created_by) REFERENCES users(username), -- Seller
+    FOREIGN KEY (updated_by) REFERENCES users(username),
+    FOREIGN KEY (client) REFERENCES users(username), -- Client
+    PRIMARY KEY(id)
 )AUTO_INCREMENT=1000;
 
 -- Relation sales-products
@@ -54,9 +56,11 @@ CREATE TABLE sales_products(
     update_date DATETIME ON UPDATE CURRENT_TIMESTAMP,
     created_by VARCHAR(30),
     updated_by VARCHAR(30),
-    PRIMARY KEY (id),
+    FOREIGN KEY (created_by) REFERENCES users(username),
+    FOREIGN KEY (updated_by) REFERENCES users(username),
     FOREIGN KEY (id_sale) REFERENCES sales(id),
-    FOREIGN KEY (id_product) REFERENCES products(id)
+    FOREIGN KEY (id_product) REFERENCES products(id),
+    PRIMARY KEY (id)
 )AUTO_INCREMENT=1000;
 
 -- Products Groups
@@ -68,6 +72,8 @@ CREATE TABLE product_groups(
     update_date DATETIME ON UPDATE CURRENT_TIMESTAMP,
     created_by VARCHAR(30),
     updated_by VARCHAR(30),
+    FOREIGN KEY (created_by) REFERENCES users(username),
+    FOREIGN KEY (updated_by) REFERENCES users(username),
     PRIMARY KEY (id)
 )AUTO_INCREMENT=1000;
 
@@ -79,6 +85,8 @@ CREATE TABLE product_groups_products(
     update_date DATETIME ON UPDATE CURRENT_TIMESTAMP,
     created_by VARCHAR(30),
     updated_by VARCHAR(30),
+    FOREIGN KEY (created_by) REFERENCES users(username),
+    FOREIGN KEY (updated_by) REFERENCES users(username),
     FOREIGN KEY (id_product) REFERENCES products(id),
     FOREIGN KEY (id_product_group) REFERENCES product_groups(id),
     UNIQUE (id_product, id_product_group)

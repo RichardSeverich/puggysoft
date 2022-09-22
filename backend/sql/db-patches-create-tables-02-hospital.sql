@@ -41,6 +41,8 @@ CREATE TABLE hospital_patients_details(
 
 -- INSERT INTO hospital_doctor_work_days (name, day_of_week, created_by) 
 -- VALUES ("MONDAY", "micky");
+-- VALUES ("WEDNESDAY", "micky");
+-- VALUES ("FRIDAY", "micky");
 
 CREATE TABLE hospital_doctor_work_days (
    day_of_week ENUM('SUNDAY', 'MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY', 'SATURDAY'),
