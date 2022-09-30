@@ -76,7 +76,7 @@ CREATE TABLE tenant (
 )AUTO_INCREMENT=1000;
 
 
-CREATE TABLE tenant_users (
+/*CREATE TABLE tenant_users (
    id BIGINT AUTO_INCREMENT,
    id_tenant BIGINT NOT NULL,
    id_user BIGINT NOT NULL,
@@ -90,7 +90,7 @@ CREATE TABLE tenant_users (
    FOREIGN KEY (id_user) REFERENCES users(id),
    UNIQUE (id_user, id_role),
    PRIMARY KEY (id)
-)AUTO_INCREMENT=1000;
+)AUTO_INCREMENT=1000;*/
 
 
 CREATE TABLE system_properties (

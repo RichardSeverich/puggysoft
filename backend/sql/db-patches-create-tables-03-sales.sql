@@ -33,7 +33,7 @@ CREATE TABLE products(
 -- Sales
 CREATE TABLE sales(
     id BIGINT AUTO_INCREMENT,
-    client BIGINT NOT NULL,
+    client VARCHAR(30) NOT NULL,
     sale_date DATE NOT NULL,
     status VARCHAR(32) NOT NULL, -- IN-PROGRESS, DONE.
     creation_date DATETIME DEFAULT CURRENT_TIMESTAMP,

@@ -29,15 +29,15 @@ INSERT INTO users (username, password, dni, name, second_name, last_name, second
 INSERT INTO users (username, password, dni, name, second_name, last_name, second_last_name, birth_date, age, sex, occupation, telephone, address, email, active, image, created_by) VALUES ("micky", "secret123", "675849", "N/A", "miguel", "aguilar", "paredes", "1994-10-10", 25, 'MALE', 'Lic. Administracion', "77845322", "Av. B. Galindo", "10miguel94@gmail.com", false, null, "admin");
 
 -- Insert data (Roles).
-INSERT INTO roles (name, created_by) VALUES ("ADMIN", "admin");
-INSERT INTO roles (name, created_by) VALUES ("ADMIN_USERS", "admin");
-INSERT INTO roles (name, created_by) VALUES ("HOSPITAL_ADMIN", "admin");
-INSERT INTO roles (name, created_by) VALUES ("HOSPITAL_DOCTOR", "admin");
-INSERT INTO roles (name, created_by) VALUES ("HOSPITAL_PATIENT", "admin");
-INSERT INTO roles (name, created_by) VALUES ("HOSPITAL_TICKETS_ADMIN", "admin");
-INSERT INTO roles (name, created_by) VALUES ("SALES_ADMIN", "admin");
-INSERT INTO roles (name, created_by) VALUES ("SALES_CLIENT", "admin");
-INSERT INTO roles (name, created_by) VALUES ("SALES_SELLER", "admin");
+INSERT INTO roles (name, created_by) VALUES ("ADMIN", "admin"); -- 1000
+INSERT INTO roles (name, created_by) VALUES ("ADMIN_USERS", "admin"); -- 1001
+INSERT INTO roles (name, created_by) VALUES ("HOSPITAL_ADMIN", "admin"); -- 1002
+INSERT INTO roles (name, created_by) VALUES ("HOSPITAL_DOCTOR", "admin"); -- 1003
+INSERT INTO roles (name, created_by) VALUES ("HOSPITAL_PATIENT", "admin"); -- 1004
+INSERT INTO roles (name, created_by) VALUES ("HOSPITAL_TICKETS_ADMIN", "admin"); -- 1005
+INSERT INTO roles (name, created_by) VALUES ("SALES_ADMIN", "admin"); -- 1006
+INSERT INTO roles (name, created_by) VALUES ("SALES_CLIENT", "admin"); -- 1007
+INSERT INTO roles (name, created_by) VALUES ("SALES_SELLER", "admin"); -- 1008
 
 -- Insert data (User-Roles).
 INSERT INTO users_roles (id_user, id_role, created_by) VALUES (1000, 1000, "admin"); -- Admin Full.

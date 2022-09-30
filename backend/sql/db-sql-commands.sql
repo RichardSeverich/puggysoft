@@ -14,10 +14,16 @@ SELECT * FROM users;
 
 -- DELETE ALL DATA: delete all rows
 TRUNCATE TABLE users;
+DELETE FROM users;
 
 
 -- DELETE TABLE: detele the table.
 DROP TABLE users;
+
+-- DELETE ALL TABLES IN DATA BASES GENERATE COMMANDS
+SELECT concat('DROP TABLE IF EXISTS `', table_name, '`;')
+FROM information_schema.tables
+WHERE table_schema = 'MyDatabaseName';
 
 
 
