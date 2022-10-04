@@ -21,7 +21,7 @@ public class ServiceProductEditById {
   public ResponseEntity<String> editById(Long id, DtoProduct dtoProduct) {
     if (repositoryProduct.existsById(id)) {
       try {
-        dtoProduct.setId(id);
+        dtoProduct.setId(id.longValue());
         repositoryProduct.save(dtoProduct.dtoToEntity());
         return ResponseEntity.status(HttpStatus.OK).body("Updated successfully");
       } catch (DataAccessException ex) {

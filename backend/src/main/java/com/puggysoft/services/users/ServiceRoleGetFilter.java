@@ -37,7 +37,7 @@ public class ServiceRoleGetFilter {
     } else {
       // Delete last 'AND' key workd.
       query = query.substring(0, query.length() - 4);
-      String fullQuery = "SELECT roles.* FROM roles WHERE " 
+      String fullQuery = "SELECT roles.* FROM roles WHERE "
           + query + " LIMIT " + off + "," + size;
       // JQPL (createQuery) and Native (createNativeQuery)
       Query filterQuery = entityManager.createNativeQuery(fullQuery, EntityRole.class);

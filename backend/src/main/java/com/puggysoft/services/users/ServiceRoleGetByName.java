@@ -3,8 +3,6 @@ package com.puggysoft.services.users;
 import com.puggysoft.dtos.users.DtoRole;
 import com.puggysoft.entities.users.EntityRole;
 import com.puggysoft.repositories.users.IRepositoryRole;
-import java.util.List;
-import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;

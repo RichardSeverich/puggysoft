@@ -15,11 +15,8 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = true)
 public class DtoSale extends DtoSuperClass {
 
-  @NotNull
-  private Long idSeller;
-
-  @NotNull
-  private Long idClient;
+  @Size(min = 3, max = 30)
+  private String client;
 
   @NotNull
   @Size(min = 10, max = 10)
@@ -27,15 +24,14 @@ public class DtoSale extends DtoSuperClass {
   private String saleDate;
 
   @NotNull
-  // IN-PROGRESS, DONE.
+  // TODO, IN-PROGRESS, DONE.
   private String status;
 
   /** convert from dto to entity. */
   public EntitySale dtoToEntity() {
     EntitySale entity = new EntitySale();
     entity.setId(id);
-    entity.setIdSeller(idSeller);
-    entity.setIdClient(idClient);
+    entity.setClient(client);
     entity.setSaleDate(saleDate);
     entity.setStatus(status);
     entity.setCreatedBy(createdBy);
@@ -47,8 +43,7 @@ public class DtoSale extends DtoSuperClass {
   public static DtoSale entityToDto(EntitySale entity) {
     DtoSale dto = new DtoSale();
     dto.setId(entity.getId());
-    dto.setIdSeller(entity.getIdSeller());
-    dto.setIdClient(entity.getIdClient());
+    dto.setClient(entity.getClient());
     dto.setSaleDate(entity.getSaleDate());
     dto.setStatus(entity.getStatus());
     dto.setCreatedBy(entity.getCreatedBy());

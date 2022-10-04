@@ -1,6 +1,7 @@
 package com.puggysoft.services.sales;
 
 import com.puggysoft.dtos.sales.DtoProduct;
+import com.puggysoft.entities.sales.EntityProduct;
 import com.puggysoft.repositories.sales.IRepositoryProduct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
@@ -18,8 +19,10 @@ public class ServiceProductCreate {
   /** method for create. */
   public ResponseEntity<String> create(DtoProduct dtoProduct) {
     try {
-      repositoryProduct.save(dtoProduct.dtoToEntity());
-      return ResponseEntity.status(HttpStatus.CREATED).body("Created successfully");
+      EntityProduct entity = repositoryProduct.save(dtoProduct.dtoToEntity());
+      DtoProduct dto = DtoProduct.entityToDto(entity);
+      String idString = String.valueOf(dto.getId());
+      return ResponseEntity.status(HttpStatus.CREATED).body(idString);
     } catch (DataAccessException ex) {
       String dbException = ex.getMostSpecificCause().getMessage();
       return ResponseEntity.status(HttpStatus.CONFLICT).body(dbException);

@@ -14,11 +14,7 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = true)
 public class EntitySale extends EntitySuperClass {
 
-  @Column(name = "id_seller")
-  private Long idSeller;
-
-  @Column(name = "id_client")
-  private Long idClient;
+  private String client;
 
   @Column(name = "sale_date")
   private String saleDate;

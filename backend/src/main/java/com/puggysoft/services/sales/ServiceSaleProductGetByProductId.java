@@ -3,7 +3,8 @@ package com.puggysoft.services.sales;
 import com.puggysoft.dtos.sales.DtoSaleProduct;
 import com.puggysoft.entities.sales.EntitySaleProduct;
 import com.puggysoft.repositories.sales.IRepositorySaleProduct;
-import java.util.Optional;
+import java.util.List;
+import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,18 +13,18 @@ import org.springframework.stereotype.Service;
 
 /** Services for get by id. */
 @Service
-public class ServiceSaleProductGetById {
+public class ServiceSaleProductGetByProductId {
 
   @Autowired
   private IRepositorySaleProduct repositorySaleProduct;
 
   /** method for retrive. */
-  public ResponseEntity<DtoSaleProduct> getById(Long id) {
-    Optional<EntitySaleProduct> optionalEntity = repositorySaleProduct.findById(id);
-    if (optionalEntity.isPresent()) {
-      DtoSaleProduct dtoSaleProduct = DtoSaleProduct.entityToDto(optionalEntity.get());
-      return ResponseEntity.status(HttpStatus.OK).body(dtoSaleProduct);
-    }
-    return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+  public ResponseEntity<List<DtoSaleProduct>> getByProductId(Long saleId) {
+    List<EntitySaleProduct> listEntities = repositorySaleProduct.findSalesProductsByProductId(saleId);
+    List<DtoSaleProduct> listDtoSaleProduct = listEntities
+          .stream()
+          .map(DtoSaleProduct::entityToDto)
+          .collect(Collectors.toList());
+    return ResponseEntity.status(HttpStatus.OK).body(listDtoSaleProduct);
   }
 }

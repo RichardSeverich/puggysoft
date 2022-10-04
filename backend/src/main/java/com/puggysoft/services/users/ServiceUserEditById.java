@@ -23,7 +23,6 @@ public class ServiceUserEditById {
       try {
         dtoUser.setId(id.longValue());
         repositoryUser.save(dtoUser.dtoToEntity());
-
         return ResponseEntity.status(HttpStatus.OK).body("Updated successfully");
       } catch (DataAccessException ex) {
         String dbException = ex.getMostSpecificCause().getMessage();
