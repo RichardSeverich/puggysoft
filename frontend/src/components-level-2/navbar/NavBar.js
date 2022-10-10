@@ -71,9 +71,11 @@ function NavBar() {
   }
   // ******* ******* ******* SALES SYSTEM ******* ******* *******
   const navigateProductsForm = () => { history.push(enumPaths.SALES_PRODUCTS_FORM); }
-  const navigateProductsTable = () => { history.push(enumPaths.SALES_PRODUCTS_TABLE); }
   const navigateProductsTableFilter = () => { history.push(enumPaths.SALES_PRODUCTS_TABLE_FILTER); }
-
+  const navigateClientForm = () => { history.push(enumPaths.SALES_CLIENT_FORM); }
+  const navigateClientTableFilter = () => { history.push(enumPaths.SALES_CLIENT_TABLE_FILTER_TO_DETAILS); }
+  const navigateSellerForm = () => { history.push(enumPaths.SALES_SELLER_FORM); }
+  const navigateSellerTableFilter = () => { history.push(enumPaths.SALES_SELLER_TABLE_FILTER_TO_DETAILS); }
   // ******* ******* ******* HOSPITAL SYSTEM ******* ******* *******
   const navigateDoctorUserForm = () => { history.push(enumPaths.HOSPITAL_DOCTOR_USER_FORM); }
   const navigatePatientUserForm = () => { history.push(enumPaths.HOSPITAL_PATIENT_USER_FORM); }
@@ -218,22 +220,19 @@ function NavBar() {
           {/* ******* ******* ******* SALES SYSTEM ******* ******* ********/}
           {userRoles.includes(enumRoles.SALES_ADMIN) &&
             <NavDropdown title={sellerAdminLabel}>
-              <NavDropdown.Item onClick={navigateGeneric}>{sellerRegistrationLabel}</NavDropdown.Item>
-              <NavDropdown.Item onClick={navigateGeneric}>{sellerShowTableLabel}</NavDropdown.Item>
-              <NavDropdown.Item onClick={navigateGeneric}>{sellerShowTableFilterLabel}</NavDropdown.Item>
+              <NavDropdown.Item onClick={navigateSellerForm}>{sellerRegistrationLabel}</NavDropdown.Item>
+              <NavDropdown.Item onClick={navigateSellerTableFilter}>{sellerShowTableFilterLabel}</NavDropdown.Item>
               <NavDropdown.Item onClick={navigateGeneric}>{sellerShowCardLabel}</NavDropdown.Item>
             </NavDropdown>}
           {userRoles.includes(enumRoles.SALES_ADMIN) &&
             <NavDropdown title={clientAdminLabel}>
-              <NavDropdown.Item onClick={navigateGeneric}>{clientRegistrationLabel}</NavDropdown.Item>
-              <NavDropdown.Item onClick={navigateGeneric}>{clientShowTableLabel}</NavDropdown.Item>
-              <NavDropdown.Item onClick={navigateGeneric}>{clientShowTableFilterLabel}</NavDropdown.Item>
+              <NavDropdown.Item onClick={navigateClientForm}>{clientRegistrationLabel}</NavDropdown.Item>
+              <NavDropdown.Item onClick={navigateClientTableFilter}>{clientShowTableFilterLabel}</NavDropdown.Item>
               <NavDropdown.Item onClick={navigateGeneric}>{clientShowCardLabel}</NavDropdown.Item>
             </NavDropdown>}
           {userRoles.includes(enumRoles.SALES_ADMIN) &&
             <NavDropdown title={productAdminLabel}>
               <NavDropdown.Item onClick={navigateProductsForm}>{productRegistrationLabel}</NavDropdown.Item>
-              <NavDropdown.Item onClick={navigateProductsTable}>{productShowTableLabel}</NavDropdown.Item>
               <NavDropdown.Item onClick={navigateProductsTableFilter}>{productShowTableFilterLabel}</NavDropdown.Item>
               <NavDropdown.Item onClick={navigateGeneric}>{productShowCardLabel}</NavDropdown.Item>
             </NavDropdown>}

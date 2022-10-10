@@ -7,6 +7,7 @@ const successfullyDeleted = () => { alert(i18n.errorMessages.successfullyDeleted
 const errorStaus400 = () => { alert(i18n.errorMessages.errorStaus400); }
 const errorStaus403 = () => { alert(i18n.errorMessages.errorStaus403); }
 const errorStaus409 = () => { alert(i18n.errorMessages.errorStaus409); }
+const errorStaus409EntityHasRelation = () => { alert(i18n.errorMessages.errorStaus409EntityHasRelation); }
 const invalidCredentials = () => { alert(i18n.errorMessages.invalidCredentials); }
 const customMessage = (message) => { alert(message); }
 
@@ -35,6 +36,12 @@ const commonMessages = (response) => {
     errorStaus403();
   } else if (response && response.status === 409) {
     errorStaus409();
+    if (response.data
+      && response.data.includes
+      && response.data.includes("Cannot delete or update a parent row: a foreign key constraint fails")
+    ) {
+      errorStaus409EntityHasRelation();
+    }
     if (response.data && response.data.message) {
       let meessage = response.data.message;
       customMessage(meessage);

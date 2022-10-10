@@ -220,7 +220,7 @@ const getColumnsFilterModel = function (
     criteriaSetUpdatedBy("");
     criteriaSetCreatedDate("");
     criteriaSetUpdatedDate("");
-    setOperatorsDefaultValues("");
+    setOperatorsDefaultValues();
   }
 
   const getFilterBody = () => {

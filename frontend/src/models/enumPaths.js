@@ -15,9 +15,12 @@ const ROLES_TABLE_FILTER = "/roles-table-filter"
 const ROLES_TABLE_FILTER_BY_USER = "/roles-table-filter-by-user"
 const ROLES_TABLE_SELECTION = "/roles-table-selection"
 // SALES SYSTEM
-const SALES_PRODUCTS_FORM = "/products-form"
-const SALES_PRODUCTS_TABLE = "/products-table"
-const SALES_PRODUCTS_TABLE_FILTER = "/products-table-filter"
+const SALES_PRODUCTS_FORM = "/sales-products-form"
+const SALES_PRODUCTS_TABLE_FILTER = "/sales-products-table-filter-edit-delete"
+const SALES_CLIENT_FORM = "/sales-client-user-form"
+const SALES_CLIENT_TABLE_FILTER_TO_DETAILS = "/sales-client-user-table-filter-to-details"
+const SALES_SELLER_FORM = "/sales-seller-user-form"
+const SALES_SELLER_TABLE_FILTER_TO_DETAILS = "/sales-seller-user-table-filter-to-details"
 // HOSPITAL SYSTEM
 const HOSPITAL_DOCTOR_USER_FORM = "/hospital-doctor-user-form"
 const HOSPITAL_DOCTOR_USER_TABLE = "/hospital-doctor-user-table"
@@ -43,8 +46,11 @@ const enumPaths = {
   ROLES_TABLE_SELECTION,
   // SALES SYSTEM
   SALES_PRODUCTS_FORM,
-  SALES_PRODUCTS_TABLE,
   SALES_PRODUCTS_TABLE_FILTER,
+  SALES_CLIENT_FORM,
+  SALES_CLIENT_TABLE_FILTER_TO_DETAILS,
+  SALES_SELLER_FORM,
+  SALES_SELLER_TABLE_FILTER_TO_DETAILS,
   // HOSPITAL SYSTEM
   HOSPITAL_DOCTOR_USER_FORM,
   HOSPITAL_DOCTOR_USER_TABLE,

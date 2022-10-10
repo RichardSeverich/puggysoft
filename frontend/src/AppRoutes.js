@@ -19,8 +19,11 @@ import RoleTableFilterPage from "./components-level-3/users/RoleTableFilterPage"
 import RoleTablePageByUserPage from "./components-level-3/users/RoleTablePageByUserPage";
 // Sales System
 import ProductFormPage from "./components-level-3/sales/ProductFormPage";
-import ProductTablePage from "./components-level-3/sales/ProductTablePage";
-import ProductTableFilterPage from "./components-level-3/sales/ProductTableFilterPage";
+import ProductTableFilterEditDeletePage from "./components-level-3/sales/ProductTableFilterEditDeletePage";
+import ClientFormPage from "./components-level-3/sales/ClientFormPage";
+import ClientTableFilterSelectionToDetailsPage from "./components-level-3/sales/ClientTableFilterSelectionToDetailsPage";
+import SellerFormPage from "./components-level-3/sales/SellerFormPage";
+import SellerTableFilterSelectionToDetailsPage from "./components-level-3/sales/SellerTableFilterSelectionToDetailsPage";
 // Hospital System
 import DoctorUserFormPage from "./components-level-3/hospital/DoctorUserFormPage";
 import DoctorUserTableToDetailsPage from "./components-level-3/hospital/DoctorUserTableToDetailsPage";
@@ -46,8 +49,11 @@ const AppRoutes = () => (
       <Route exact path={enumPaths.ROLES_TABLE_SELECTION} component={RoleTablePage} />
       {/** Sales System*/}
       <Route exact path={enumPaths.SALES_PRODUCTS_FORM} component={ProductFormPage} />
-      <Route exact path={enumPaths.SALES_PRODUCTS_TABLE} component={ProductTablePage} />
-      <Route exact path={enumPaths.SALES_PRODUCTS_TABLE_FILTER} component={ProductTableFilterPage} />
+      <Route exact path={enumPaths.SALES_PRODUCTS_TABLE_FILTER} component={ProductTableFilterEditDeletePage} />
+      <Route exact path={enumPaths.SALES_CLIENT_FORM} component={ClientFormPage} />
+      <Route exact path={enumPaths.SALES_CLIENT_TABLE_FILTER_TO_DETAILS} component={ClientTableFilterSelectionToDetailsPage} />
+      <Route exact path={enumPaths.SALES_SELLER_FORM} component={SellerFormPage} />
+      <Route exact path={enumPaths.SALES_SELLER_TABLE_FILTER_TO_DETAILS} component={SellerTableFilterSelectionToDetailsPage} />
       {/** Hospital System*/}
       <Route exact path={enumPaths.HOSPITAL_DOCTOR_USER_FORM} component={DoctorUserFormPage} />
       <Route exact path={enumPaths.HOSPITAL_DOCTOR_USER_TABLE_TO_DETAILS} component={DoctorUserTableToDetailsPage} />

@@ -9,9 +9,10 @@ import useInput from "./../../hooks/useInput";
 import enumSex from "./../../models/users/enumSex"
 import { handleAddRequest, handleEditRequest } from "../../actions/HandleManager";
 import { handleValidation, classNameFormTextNew } from "./../../validations/users/HandleUserFormValidations"
-import enumRoles from "./../../models/users/enumRoles"
 
+import "./../css/all-forms.css"
 import "./user-form-styles.css"
+
 
 function UserForm(props) {
 
@@ -23,28 +24,28 @@ function UserForm(props) {
   const { beforeAdd, afterAdd, showMessageOnSuccess } = props;
 
   // Put default values:
-  let id = isEdit ? isEdit.data.id : "";
-  let username = isEdit ? isEdit.data.username : "";
-  let password = isEdit ? isEdit.data.password : "";
-  let dni = isEdit ? isEdit.data.dni : "";
-  let name = isEdit ? isEdit.data.name : "";
-  let secondName = isEdit ? isEdit.data.secondName : "";
-  let lastName = isEdit ? isEdit.data.lastName : "";
-  let secondLastName = isEdit ? isEdit.data.secondLastName : "";
-  let birthDate = isEdit ? isEdit.data.birthDate : "";
-  let age = isEdit ? isEdit.data.age : "";
+  let id = isEdit && isEdit.data.id !== null ? isEdit.data.id : "";
+  let username = isEdit && isEdit.data.username !== null ? isEdit.data.username : "";
+  let password = isEdit && isEdit.data.password !== null ? isEdit.data.password : "";
+  let dni = isEdit && isEdit.data.dni !== null ? isEdit.data.dni : "";
+  let name = isEdit && isEdit.data.name !== null ? isEdit.data.name : "";
+  let secondName = isEdit && isEdit.data.secondName !== null ? isEdit.data.secondName : "";
+  let lastName = isEdit && isEdit.data.lastName !== null ? isEdit.data.lastName : "";
+  let secondLastName = isEdit && isEdit.data.secondLastName !== null ? isEdit.data.secondLastName : "";
+  let birthDate = isEdit && isEdit.data.birthDate !== null ? isEdit.data.birthDate : "";
+  let age = isEdit && isEdit.data.age !== null ? isEdit.data.age : "";
   let sex = enumSex.MALE;
   let status = true;
-  if (isEdit && isEdit.data) {
+  if (isEdit && isEdit.data && isEdit.data.sex !== null) {
     const userSex = isEdit.data.sex === i18n.userSexText.male ? enumSex.MALE : enumSex.FEMALE;
     const userStatus = isEdit.data.active === i18n.userStatus.active;
     status = userStatus;
     sex = userSex;
   }
-  let occupation = isEdit ? isEdit.data.occupation : "";
-  let telephone = isEdit ? isEdit.data.telephone : "";
-  let address = isEdit ? isEdit.data.address : "";
-  let email = isEdit ? isEdit.data.email : "";
+  let occupation = isEdit && isEdit.data.occupation !== null ? isEdit.data.occupation : "";
+  let telephone = isEdit && isEdit.data.telephone !== null ? isEdit.data.telephone : "";
+  let address = isEdit && isEdit.data.address !== null ? isEdit.data.address : "";
+  let email = isEdit && isEdit.data.email !== null ? isEdit.data.email : "";
 
   // Use custom hook
   const { value: valueUsername, onChange: onChangeUsername, setValue: setUsername } = useInput(username);

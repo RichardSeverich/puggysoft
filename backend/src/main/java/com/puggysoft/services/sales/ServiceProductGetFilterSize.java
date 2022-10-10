@@ -33,8 +33,8 @@ public class ServiceProductGetFilterSize {
     } else {
       // Delete last 'AND' key workd.
       query = query.substring(0, query.length() - 4);
-      String fullQuery = "SELECT COUNT(*) FROM products " + query;
-      Query filterQuery = entityManager.createQuery(fullQuery);
+      String fullQuery = "SELECT COUNT(*) FROM products WHERE " + query;
+      Query filterQuery = entityManager.createNativeQuery(fullQuery);
       totalRows = Long.valueOf(filterQuery.getSingleResult().toString());
     }
     Long totalPages = TotalPagesCalculator.getTotalPages(totalRows, pageSize);

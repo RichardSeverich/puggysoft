@@ -10,6 +10,13 @@ const productForm = {
   fieldBarCode: "Codigo de barras",
   fieldLocation: "Localizacion",
   buttonAdd: "Registrar",
+  formTextName: "Minimo 3, maximo 60 caracteres",
+  formTextPurchasePrice: "Numero mayor igual a 0",
+  formTextSalePrice: "Numero mayor igual a 0",
+  formTextStock: "Numero mayor igual a 0",
+  formTextMinimumStock: "Numero mayor igual a 0",
+  formTextDescription: "Minimo 3, maximo 256 caracteres",
+  formTextLocation: "Minimo 3, maximo 120 caracteres"
 };
 
 export default productForm;

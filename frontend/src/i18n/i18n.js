@@ -17,6 +17,11 @@ import roleTable from "./spanish/users/roleTable"
 // Sales System
 import productTable from "./spanish/sales/productTable"
 import productForm from "./spanish/sales/productForm"
+import clientForm from "./spanish/sales/clientForm"
+import clientTable from "./spanish/sales/clientTable"
+import sellerForm from "./spanish/sales/sellerForm"
+import sellerTable from "./spanish/sales/sellerTable"
+
 // Hospital System
 import doctorUserForm from "./spanish/hospital/doctorUserForm"
 import doctorTable from "./spanish/hospital/doctorTable"
@@ -30,6 +35,7 @@ const i18n = {
   navBar,
   commonTable,
   errorMessages,
+  trueFalse,
   // Users System
   userForm,
   userTable,
@@ -39,11 +45,14 @@ const i18n = {
   userRoleTableByRole,
   userRoleTableByUser,
   roleTable,
+  userStatus,
   // Sales System
   productTable,
   productForm,
-  trueFalse,
-  userStatus,
+  clientForm,
+  clientTable,
+  sellerForm,
+  sellerTable,
   // Hospital System
   doctorUserForm,
   doctorTable,

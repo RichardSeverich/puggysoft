@@ -126,16 +126,16 @@ INSERT INTO users_roles (id_user, id_role, created_by) VALUES (1028, 1003, "admi
 INSERT INTO users_roles (id_user, id_role, created_by) VALUES (1029, 1003, "admin");
 INSERT INTO users_roles (id_user, id_role, created_by) VALUES (1030, 1003, "admin");
 -- HOSPITAL PATIENT
-INSERT INTO users_roles (id_user, id_role, created_by) VALUES (1031, 1007, "admin");
-INSERT INTO users_roles (id_user, id_role, created_by) VALUES (1032, 1007, "admin");
-INSERT INTO users_roles (id_user, id_role, created_by) VALUES (1033, 1007, "admin");
-INSERT INTO users_roles (id_user, id_role, created_by) VALUES (1034, 1007, "admin");
-INSERT INTO users_roles (id_user, id_role, created_by) VALUES (1035, 1007, "admin");
-INSERT INTO users_roles (id_user, id_role, created_by) VALUES (1036, 1007, "admin");
-INSERT INTO users_roles (id_user, id_role, created_by) VALUES (1037, 1007, "admin");
-INSERT INTO users_roles (id_user, id_role, created_by) VALUES (1038, 1007, "admin");
-INSERT INTO users_roles (id_user, id_role, created_by) VALUES (1039, 1007, "admin");
-INSERT INTO users_roles (id_user, id_role, created_by) VALUES (1040, 1007, "admin");
+INSERT INTO users_roles (id_user, id_role, created_by) VALUES (1031, 1004, "admin");
+INSERT INTO users_roles (id_user, id_role, created_by) VALUES (1032, 1004, "admin");
+INSERT INTO users_roles (id_user, id_role, created_by) VALUES (1033, 1004, "admin");
+INSERT INTO users_roles (id_user, id_role, created_by) VALUES (1034, 1004, "admin");
+INSERT INTO users_roles (id_user, id_role, created_by) VALUES (1035, 1004, "admin");
+INSERT INTO users_roles (id_user, id_role, created_by) VALUES (1036, 1004, "admin");
+INSERT INTO users_roles (id_user, id_role, created_by) VALUES (1037, 1004, "admin");
+INSERT INTO users_roles (id_user, id_role, created_by) VALUES (1038, 1004, "admin");
+INSERT INTO users_roles (id_user, id_role, created_by) VALUES (1039, 1004, "admin");
+INSERT INTO users_roles (id_user, id_role, created_by) VALUES (1040, 1004, "admin");
 
 
 -- SALES

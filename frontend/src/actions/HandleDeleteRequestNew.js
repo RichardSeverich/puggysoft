@@ -8,7 +8,9 @@ const handleDelete = (endpoint, callbak) => {
   if (result) {
     requestManager.remove(endpoint, (response) => {
       messageManager.deleteMessages(response);
-      callbak(response.data);
+      if (callbak) {
+        callbak(response.data);
+      }
     });
   }
 };
