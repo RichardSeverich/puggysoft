@@ -47,16 +47,14 @@ function UserTableFilterEditDelete() {
   ]
 
   return (
-    <div className="puggysoft-users-table-edit-delete" >
-      <UserTableFilterGeneric
-        handleGetData={handleGetData}
-        handleGetSize={handleGetSize}
-        tableTitle={tableTitle}
-        tableArrayCustomRowButtons={tableArrayCustomRowButtons}
-        numberPagesToShow={numberPagesToShow}
-      >
-      </UserTableFilterGeneric>
-    </div>
+    <UserTableFilterGeneric
+      handleGetData={handleGetData}
+      handleGetSize={handleGetSize}
+      tableTitle={tableTitle}
+      tableArrayCustomRowButtons={tableArrayCustomRowButtons}
+      numberPagesToShow={numberPagesToShow}
+    >
+    </UserTableFilterGeneric>
   )
 }
 

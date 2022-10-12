@@ -76,6 +76,7 @@ function NavBar() {
   const navigateClientTableFilter = () => { history.push(enumPaths.SALES_CLIENT_TABLE_FILTER_TO_DETAILS); }
   const navigateSellerForm = () => { history.push(enumPaths.SALES_SELLER_FORM); }
   const navigateSellerTableFilter = () => { history.push(enumPaths.SALES_SELLER_TABLE_FILTER_TO_DETAILS); }
+  const navigateSalesTableFilter = () => { history.push(enumPaths.SALES_SALES_TABLE_FILTER_TO_EDIT_DELETE_DETAILS); }
   // ******* ******* ******* HOSPITAL SYSTEM ******* ******* *******
   const navigateDoctorUserForm = () => { history.push(enumPaths.HOSPITAL_DOCTOR_USER_FORM); }
   const navigatePatientUserForm = () => { history.push(enumPaths.HOSPITAL_PATIENT_USER_FORM); }
@@ -251,7 +252,7 @@ function NavBar() {
           {userRoles.includes(enumRoles.SALES_ADMIN) &&
             <NavDropdown title={salesAdminLabel}>
               <NavDropdown.Item onClick={navigateGeneric}>{salesRegistrationLabel}</NavDropdown.Item>
-              <NavDropdown.Item onClick={navigateGeneric}>{salesShowTableLabel}</NavDropdown.Item>
+              <NavDropdown.Item onClick={navigateSalesTableFilter}>{salesShowTableLabel}</NavDropdown.Item>
               <NavDropdown.Item onClick={navigateGeneric}>{salesShowCardLabel}</NavDropdown.Item>
             </NavDropdown>}
           {userRoles.includes(enumRoles.SALES_ADMIN) &&

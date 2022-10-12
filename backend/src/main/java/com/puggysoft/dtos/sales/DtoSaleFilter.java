@@ -17,10 +17,7 @@ public class DtoSaleFilter {
   @Size(max = 30)
   public String clientCriteria;
   public EnumCompareOperator clientOperator;
-  // SALE DATE
-  public String saleDateCriteria;
-  public EnumCompareOperator saleDateOperator;
-  // STATUS
+  // STATUS: TODO, IN-PROGRESS, DONE.
   public String statusCriteria;
   public EnumCompareOperator statusOperator;
   // CREATED BY

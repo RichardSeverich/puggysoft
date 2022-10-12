@@ -20,6 +20,7 @@ function UserDetails(props) {
   const { children } = props;
 
   const [classNameFormText, setClassNameFormText] = useState(classNameFormTextNew);
+  const [isProgressRequest, setIsProgressRequest] = useState(false);
 
   // Use custom hook
   const { value: valueUsername, onChange: onChangeUsername, setValue: setValueUsername } = useInput(userData.username);

@@ -19,11 +19,6 @@ public class DtoSale extends DtoSuperClass {
   private String client;
 
   @NotNull
-  @Size(min = 10, max = 10)
-  @Pattern(regexp = "([12]\\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\d|3[01]))")
-  private String saleDate;
-
-  @NotNull
   // TODO, IN-PROGRESS, DONE.
   private String status;
 
@@ -32,7 +27,6 @@ public class DtoSale extends DtoSuperClass {
     EntitySale entity = new EntitySale();
     entity.setId(id);
     entity.setClient(client);
-    entity.setSaleDate(saleDate);
     entity.setStatus(status);
     entity.setCreatedBy(createdBy);
     entity.setUpdatedBy(updatedBy);
@@ -44,7 +38,6 @@ public class DtoSale extends DtoSuperClass {
     DtoSale dto = new DtoSale();
     dto.setId(entity.getId());
     dto.setClient(entity.getClient());
-    dto.setSaleDate(entity.getSaleDate());
     dto.setStatus(entity.getStatus());
     dto.setCreatedBy(entity.getCreatedBy());
     dto.setUpdatedBy(entity.getUpdatedBy());

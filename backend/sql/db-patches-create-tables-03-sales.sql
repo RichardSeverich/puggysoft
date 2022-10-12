@@ -34,7 +34,6 @@ CREATE TABLE products(
 CREATE TABLE sales(
     id BIGINT AUTO_INCREMENT,
     client VARCHAR(30) NOT NULL,
-    sale_date DATE NOT NULL,
     status VARCHAR(32) NOT NULL, -- IN-PROGRESS, DONE.
     creation_date DATETIME DEFAULT CURRENT_TIMESTAMP,
     update_date DATETIME ON UPDATE CURRENT_TIMESTAMP,
@@ -52,6 +51,8 @@ CREATE TABLE sales_products(
     id_sale BIGINT NOT NULL,
     id_product BIGINT NOT NULL,
     quantity BIGINT NOT NULL,
+    sale_price DOUBLE NOT NULL, -- Need replicate sale_price from product can be changed.
+    purchase_price DOUBLE NOT NULL, -- Need replicate purchase_price from product can be changed.
     creation_date DATETIME DEFAULT CURRENT_TIMESTAMP,
     update_date DATETIME ON UPDATE CURRENT_TIMESTAMP,
     created_by VARCHAR(30),

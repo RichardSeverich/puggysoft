@@ -129,27 +129,25 @@ function UserTableFilter() {
   }
 
   return (
-    <div className="puggysoft-user-table">
-      <CommonTablePagination
-        tableTitle={i18n.userTable.title}
-        tableArrayData={arrayData}
-        tableArrayDataFields={arrayDataFields}
-        tableArrayColumns={arrayColumns}
-        tableHandleEdit={handleEdit}
-        tableHandleDelete={handleDelete}
-        paginationTotalPages={totalPages}
-        paginationNumberPagesToShow={numberPagesToShow}
-        paginationInitialPage={initialPage}
-        paginationActivePage={activePage}
-        paginationSetArrayData={setArrayData}
-        paginationSetTotalPages={setTotalPages}
-        paginationSetActivePage={setActivePage}
-        paginationSetInitialPage={setInitialPage}
-        filterArrayColumns={arrayColumnsFilter}
-        filterClear={clearFilters}
-        filterHandler={handleFilter}
-      ></CommonTablePagination>
-    </div>
+    <CommonTablePagination
+      tableTitle={i18n.userTable.title}
+      tableArrayData={arrayData}
+      tableArrayDataFields={arrayDataFields}
+      tableArrayColumns={arrayColumns}
+      tableHandleEdit={handleEdit}
+      tableHandleDelete={handleDelete}
+      paginationTotalPages={totalPages}
+      paginationNumberPagesToShow={numberPagesToShow}
+      paginationInitialPage={initialPage}
+      paginationActivePage={activePage}
+      paginationSetArrayData={setArrayData}
+      paginationSetTotalPages={setTotalPages}
+      paginationSetActivePage={setActivePage}
+      paginationSetInitialPage={setInitialPage}
+      filterArrayColumns={arrayColumnsFilter}
+      filterClear={clearFilters}
+      filterHandler={handleFilter}
+    ></CommonTablePagination>
   );
 }
 

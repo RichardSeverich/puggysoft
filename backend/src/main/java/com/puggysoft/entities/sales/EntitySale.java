@@ -16,9 +16,6 @@ public class EntitySale extends EntitySuperClass {
 
   private String client;
 
-  @Column(name = "sale_date")
-  private String saleDate;
-
   // IN-PROGRESS, DONE.
   private String status;
 

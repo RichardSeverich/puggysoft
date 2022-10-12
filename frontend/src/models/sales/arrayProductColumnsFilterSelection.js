@@ -1,7 +1,5 @@
 import enumFilterType from "../enumFilterType";
 import enumCompareOperators from "./../enumCompareOperators";
-import enumSex from "./../users/enumSex";
-import i18n from "../../i18n/i18n";
 
 const getColumnsFilterModel = function (
     /*ID*/ criteriaId, criteriaOnChangeId, criteriaSetId, operatorId, operatorOnChangeId, operatorSetId,

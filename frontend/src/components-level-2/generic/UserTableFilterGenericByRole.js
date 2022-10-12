@@ -29,17 +29,15 @@ function UserTableFilterGenericByRole(props) {
   }
 
   return (
-    <div className="puggysoft-doctor-table" >
-      <UserTableFilterGeneric
-        handleGetData={handleGetData}
-        handleGetSize={handleGetSize}
-        tableTitle={tableTitle}
-        tableArrayCustomRowButtons={tableArrayCustomRowButtons}
-        pageSize={pageSize}
-        numberPagesToShow={numberPagesToShow}
-      >
-      </UserTableFilterGeneric>
-    </div>
+    <UserTableFilterGeneric
+      handleGetData={handleGetData}
+      handleGetSize={handleGetSize}
+      tableTitle={tableTitle}
+      tableArrayCustomRowButtons={tableArrayCustomRowButtons}
+      pageSize={pageSize}
+      numberPagesToShow={numberPagesToShow}
+    >
+    </UserTableFilterGeneric>
   )
 }
 

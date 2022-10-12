@@ -114,26 +114,24 @@ function UserTableFilterSelectionToDetails() {
   const tableTitle = routerProps.tableTitle;
 
   return (
-    <div className="puggysoft-user-table">
-      <CommonTablePagination
-        tableTitle={tableTitle}
-        tableArrayData={arrayData}
-        tableArrayDataFields={arrayDataFields}
-        tableArrayColumns={arrayColumns}
-        tableArrayCustomRowButtons={tableArrayCustomRowButtons}
-        paginationTotalPages={totalPages}
-        paginationNumberPagesToShow={numberPagesToShow}
-        paginationInitialPage={initialPage}
-        paginationActivePage={activePage}
-        paginationSetArrayData={setArrayData}
-        paginationSetTotalPages={setTotalPages}
-        paginationSetActivePage={setActivePage}
-        paginationSetInitialPage={setInitialPage}
-        filterArrayColumns={arrayColumnsFilter}
-        filterClear={clearFilters}
-        filterHandler={handleFilter}
-      ></CommonTablePagination>
-    </div>
+    <CommonTablePagination
+      tableTitle={tableTitle}
+      tableArrayData={arrayData}
+      tableArrayDataFields={arrayDataFields}
+      tableArrayColumns={arrayColumns}
+      tableArrayCustomRowButtons={tableArrayCustomRowButtons}
+      paginationTotalPages={totalPages}
+      paginationNumberPagesToShow={numberPagesToShow}
+      paginationInitialPage={initialPage}
+      paginationActivePage={activePage}
+      paginationSetArrayData={setArrayData}
+      paginationSetTotalPages={setTotalPages}
+      paginationSetActivePage={setActivePage}
+      paginationSetInitialPage={setInitialPage}
+      filterArrayColumns={arrayColumnsFilter}
+      filterClear={clearFilters}
+      filterHandler={handleFilter}
+    ></CommonTablePagination>
   );
 }
 

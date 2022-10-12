@@ -3,6 +3,8 @@ const commonTable = {
   deleteButton: "Eliminar",
   filterButton: "Filtrar",
   cleanButton: "Limpiar",
+  selectButton: "Seleccionar",
+  detailsButton: "Detalles",
   excelExportButton: "Exportar Excel",
   pdfExportButton: "Exportar Pdf",
   filterTextContains: "Contiene",
