@@ -23,6 +23,10 @@ public class DtoProduct extends DtoSuperClass {
   @NotNull
   private Double salePrice;
 
+  /*
+  * When returns sales_product, stock could be quantity of relation.
+  * When returns sales_product, id of products is sales_product.id
+  */
   @NotNull
   private Integer stock;
 

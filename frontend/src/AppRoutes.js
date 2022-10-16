@@ -25,6 +25,8 @@ import ClientTableFilterSelectionToDetailsPage from "./components-level-3/sales/
 import SellerFormPage from "./components-level-3/sales/SellerFormPage";
 import SellerTableFilterSelectionToDetailsPage from "./components-level-3/sales/SellerTableFilterSelectionToDetailsPage";
 import SaleTableFilterEditDeleteDetails from "./components-level-3/sales/SaleTableFilterEditDeleteDetails"
+import SaleAddStepOnePage from "./components-level-3/sales/SaleAddStepOnePage"
+import SaleAddStepTwoPage from "./components-level-3/sales/SaleAddStepTwoPage"
 
 // Hospital System
 import DoctorUserFormPage from "./components-level-3/hospital/DoctorUserFormPage";
@@ -57,6 +59,8 @@ const AppRoutes = () => (
       <Route exact path={enumPaths.SALES_SELLER_FORM} component={SellerFormPage} />
       <Route exact path={enumPaths.SALES_SELLER_TABLE_FILTER_TO_DETAILS} component={SellerTableFilterSelectionToDetailsPage} />
       <Route exact path={enumPaths.SALES_SALES_TABLE_FILTER_TO_EDIT_DELETE_DETAILS} component={SaleTableFilterEditDeleteDetails} />
+      <Route exact path={enumPaths.SALES_REGISTRATION_STEP_ONE} component={SaleAddStepOnePage} />
+      <Route exact path={enumPaths.SALES_REGISTRATION_STEP_TWO} component={SaleAddStepTwoPage} />
       {/** Hospital System*/}
       <Route exact path={enumPaths.HOSPITAL_DOCTOR_USER_FORM} component={DoctorUserFormPage} />
       <Route exact path={enumPaths.HOSPITAL_DOCTOR_USER_TABLE_TO_DETAILS} component={DoctorUserTableToDetailsPage} />

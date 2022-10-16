@@ -21,9 +21,6 @@ function ProductForm(props) {
   const [isEdit, setIsEdit] = useState(isEditDefaultValue);
   const [classNameFormText, setClassNameFormText] = useState(classNameFormTextNew);
 
-  console.log("Aca Richard AAAA")
-  console.log({ isEdit, isEditDefaultValue })
-
   // Put default values:
   let id = isEdit && isEdit.data.id !== null ? isEdit.data.id : "";
   let name = isEdit && isEdit.data.name !== null ? isEdit.data.name : "";

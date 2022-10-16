@@ -1,0 +1,13 @@
+/* Only applies for resolutions greater than 1600px */
+@media (min-width:1080px) {
+  .puggysoft-form-label {
+    display: inline-block;
+    width: 8rem;
+  }
+
+  .puggysoft-form-input {
+    display: inline-block;
+    width: 16rem;
+  }
+
+}

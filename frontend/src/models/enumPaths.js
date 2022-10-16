@@ -22,6 +22,9 @@ const SALES_CLIENT_TABLE_FILTER_TO_DETAILS = "/sales-client-user-table-filter-to
 const SALES_SELLER_FORM = "/sales-seller-user-form"
 const SALES_SELLER_TABLE_FILTER_TO_DETAILS = "/sales-seller-user-table-filter-to-details"
 const SALES_SALES_TABLE_FILTER_TO_EDIT_DELETE_DETAILS = "/sales-table-filter-edit-delete-details"
+const SALES_REGISTRATION_STEP_ONE = "/sales-registration-step-one"
+const SALES_REGISTRATION_STEP_TWO = "/sales-registration-step-two"
+
 // HOSPITAL SYSTEM
 const HOSPITAL_DOCTOR_USER_FORM = "/hospital-doctor-user-form"
 const HOSPITAL_DOCTOR_USER_TABLE = "/hospital-doctor-user-table"
@@ -53,6 +56,8 @@ const enumPaths = {
   SALES_SELLER_FORM,
   SALES_SELLER_TABLE_FILTER_TO_DETAILS,
   SALES_SALES_TABLE_FILTER_TO_EDIT_DELETE_DETAILS,
+  SALES_REGISTRATION_STEP_ONE,
+  SALES_REGISTRATION_STEP_TWO,
   // HOSPITAL SYSTEM
   HOSPITAL_DOCTOR_USER_FORM,
   HOSPITAL_DOCTOR_USER_TABLE,

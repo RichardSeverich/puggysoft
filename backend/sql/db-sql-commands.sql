@@ -120,3 +120,14 @@ FROM roles
 INNER JOIN users_roles ON users_roles.id_role=roles.id 
 INNER JOIN users ON users_roles.id_user =users.id 
 WHERE users.username = 'admin';
+
+
+
+
+-- ******* ******* ******* SALES SYSTEM ******* ******* ******* *******
+
+-- ******* GET PRODUCTS BY SALE ID: get all products that belong a sale 1002 *******
+SELECT products.* FROM products 
+INNER JOIN sales_products ON products.id=sales_products.id_product 
+INNER JOIN sales ON sales.id=sales_products.id_sale 
+WHERE sales.id = 1002;

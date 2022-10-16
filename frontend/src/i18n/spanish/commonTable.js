@@ -1,4 +1,5 @@
 const commonTable = {
+  addButton: "Registrar",
   editButton: "Editar",
   deleteButton: "Eliminar",
   filterButton: "Filtrar",

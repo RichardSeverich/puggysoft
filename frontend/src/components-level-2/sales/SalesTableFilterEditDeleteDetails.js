@@ -1,6 +1,7 @@
 import { useHistory } from "react-router";
+import { useState } from "react";
 import TableFilterGeneric from "./../generic/TableFilterGeneric";
-import { handleFilterRequest, handleDeleteRequest } from "../../actions/HandleManager";
+import { handleFilterRequest, handleDeleteRequestNew } from "../../actions/HandleManager";
 import enumPaths from "./../../models/enumPaths"
 import i18n from "../../i18n/i18n";
 import arrayDataFields from "../../models/sales/arraySaleDataFields";
@@ -8,6 +9,8 @@ import arrayColumns from "../../models/sales/arraySaleColumns";
 import enumCompareOperators from "./../../models/enumCompareOperators";
 import useInput from "./../../hooks/useInput";
 import getColumnsFilterModel from "../../models/sales/arraySaleColumnsFilterSelection";
+import CommonLoading from '../../components-level-1/CommonLoading';
+
 
 function SalesTableFilterEditDeleteDetails() {
 
@@ -15,6 +18,7 @@ function SalesTableFilterEditDeleteDetails() {
   const numberPagesToShow = 10;
   const tableTitle = i18n.saleTable.titleSelectionToEditDelete;
   const history = useHistory();
+  const [isRequestInProgress, setIsRequestInProgress] = useState(false);
 
   function handleGetData(activePage, filterBody, updateArrayData) {
     handleFilterRequest(`sales/filter?page=${activePage - 1}&size=${pageSize}`, filterBody, updateArrayData);
@@ -24,27 +28,23 @@ function SalesTableFilterEditDeleteDetails() {
     handleFilterRequest(`sales/filter/size/${pageSize}`, filterBody, setTotalPages);
   }
 
-  function handleEdit(data) {
-    /*history.push({
-      pathname: enumPaths.SALES_PRODUCTS_FORM,
-      state: {
-        data: data,
-        edit: true
-      }
-    })*/
+  function handleAfterDelete(responseData) {
+    setIsRequestInProgress(false);
   }
 
   function handleDelete(data) {
-    handleDeleteRequest("sales/", data.id)
+    setIsRequestInProgress(true);
+    handleDeleteRequestNew(`sales/${data.id}`, handleAfterDelete)
   }
 
-  function handleDetails(userData) {
-    /*history.push({
-      pathname: enumPaths.USERS_DETAILS,
+  function handleDetails(saleData) {
+    const clientData = "";
+    history.push({
+      pathname: enumPaths.SALES_REGISTRATION_STEP_TWO,
       state: {
-        data: userData,
+        data: { clientData, saleData },
       }
-    })*/
+    })
   }
 
   const tableArrayCustomRowButtons = [
@@ -87,6 +87,10 @@ function SalesTableFilterEditDeleteDetails() {
     /*CREATED DATE*/criteriaCreatedDate, criteriaOnChangeCreatedDate, criteriaSetCreatedDate, operatorCreatedDate, operatorOnChangeCreatedDate, operatorSetCreatedDate,
     /*UPDATED DATE*/criteriaUpdatedDate, criteriaOnChangeUpdatedDate, criteriaSetUpdatedDate, operatorUpdatedDate, operatorOnChangeUpdatedDate, operatorSetUpdatedDate
   );
+
+  if (isRequestInProgress) {
+    return <CommonLoading />
+  }
 
   return (
     <TableFilterGeneric

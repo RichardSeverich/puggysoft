@@ -1,6 +1,8 @@
 const productTable = {
   title: "Productos",
   titleSelectionToEditDelete: "Tabla Productos (Seleccione para Editar/Eliminar)",
+  titleSelectionAddSale: "Tabla Productos (Agregue productos la compra)",
+  titleSelectionDeleteSale: "Tabla Productos (Elimine productos de la compra)",
   columnId: "Id",
   columnName: "Nombre Producto",
   columnPurchasePrice: "Precio de compra",
@@ -14,7 +16,8 @@ const productTable = {
   columnCreatedBy: "Creado por",
   columnUpdatedBy: "Editado por",
   columnCreationDate: "Fecha de creacion",
-  columnUpdateDate: "Fecha de edicion"
+  columnUpdateDate: "Fecha de edicion",
+  columnQuantity: "Cantidad"
 };
 
 export default productTable;

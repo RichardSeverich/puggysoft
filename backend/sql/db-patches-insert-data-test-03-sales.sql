@@ -442,198 +442,198 @@ INSERT INTO sales (client, creation_date, status, created_by, updated_by) VALUES
 
 -- Insert sales_products
 -- January
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1000, 1000, 7, 25, 20, "adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1000, 1001, 6, 26, 20, "adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1000, 1002, 4, 27, 20, "adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1000, 1003, 7, 28, 20, "adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1000, 1004, 9, 29, 20, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1000, 1000, 7, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1000, 1001, 6, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1000, 1002, 4, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1000, 1003, 7, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1000, 1004, 9, "adminsales", "adminsales");
 
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1001, 1005, 6, 29, 20, "adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1001, 1006, 6, 29, 20, "adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1001, 1008, 8, 40, 20, "adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1001, 1008, 11, 41, 20,"adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1001, 1009, 6, 42, 20, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1001, 1005, 6, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1001, 1006, 6, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1001, 1008, 8, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1001, 1008, 11,"adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1001, 1009, 6, "adminsales", "adminsales");
 
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1002, 1010, 10, 30, 9, "adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1002, 1011, 5, 30, 5, "adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1002, 1012, 8, 30, 7, "adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1002, 1013, 11, 30, 8, "adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1002, 1014, 20, 30, 7, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1002, 1010, 10, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1002, 1011, 5, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1002, 1012, 8, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1002, 1013, 11, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1002, 1014, 20, "adminsales", "adminsales");
 
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1003, 1015, 3, 51, 11, "adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1003, 1016, 2, 52, 19, "adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1003, 1017, 2, 53, 18, "adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1003, 1018, 1, 54, 17, "adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1003, 1019, 5, 55, 9, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1003, 1015, 3, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1003, 1016, 2, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1003, 1017, 2, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1003, 1018, 1, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1003, 1019, 5, "adminsales", "adminsales");
 
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1004, 1020, 1, 30, 15, "adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1004, 1021, 7, 30, 16, "adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1004, 1022, 2, 30, 17, "adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1004, 1023, 2, 30, 18, "adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1004, 1024, 2, 30, 19, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1004, 1020, 1, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1004, 1021, 7, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1004, 1022, 2, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1004, 1023, 2, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1004, 1024, 2, "adminsales", "adminsales");
 
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1005, 1025, 8, 30, 1, "adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1005, 1026, 5, 30, 2, "adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1005, 1027, 8, 30, 3, "adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1005, 1007, 7, 30, 4, "adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1005, 1008, 7, 30, 5, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1005, 1025, 8, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1005, 1026, 5, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1005, 1027, 8, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1005, 1007, 7, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1005, 1008, 7, "adminsales", "adminsales");
 
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1006, 1028, 3, 30, 20, "adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1006, 1029, 4, 30, 20, "adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1006, 1030, 3, 30, 20, "adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1006, 1031, 4, 30, 20, "adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1006, 1032, 4, 30, 20, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1006, 1028, 3, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1006, 1029, 4, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1006, 1030, 3, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1006, 1031, 4, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1006, 1032, 4, "adminsales", "adminsales");
 
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1007, 1033, 8, 30, 20, "adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1007, 1034, 2, 30, 20, "adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1007, 1035, 1, 30, 20, "adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1007, 1036, 1, 30, 20, "adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1007, 1037, 5, 30, 20, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1007, 1033, 8, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1007, 1034, 2, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1007, 1035, 1, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1007, 1036, 1, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1007, 1037, 5, "adminsales", "adminsales");
 
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1008, 1038, 4, 30, 20, "adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1008, 1039, 4, 30, 20, "adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1008, 1040, 5, 30, 20, "adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1008, 1041, 6, 30, 20, "adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1008, 1042, 6, 30, 20, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1008, 1038, 4, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1008, 1039, 4,  "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1008, 1040, 5, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1008, 1041, 6,  "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1008, 1042, 6,  "adminsales", "adminsales");
 
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1009, 1043, 20, 30, 20, "adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1009, 1044, 54, 30, 20, "adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1009, 1045, 9, 30, 20, "adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1009, 1046, 12, 30, 20, "adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1009, 1047, 6, 30, 20, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1009, 1043, 20, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1009, 1044, 54, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1009, 1045, 9, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1009, 1046, 12, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1009, 1047, 6, "adminsales", "adminsales");
 
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1010, 1048, 1, 30, 20, "adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1010, 1049, 1, 30, 20, "adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1010, 1050, 1, 30, 20, "adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1010, 1051, 1, 30, 20, "adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1010, 1052, 1, 30, 20, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1010, 1048, 1, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1010, 1049, 1, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1010, 1050, 1, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1010, 1051, 1, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1010, 1052, 1, "adminsales", "adminsales");
 
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1011, 1049, 1, 30, 20, "adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1011, 1050, 12, 30, 20, "adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1011, 1051, 3, 30, 20, "adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1011, 1052, 5, 30, 20, "adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1011, 1053, 4, 30, 20, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1011, 1049, 1, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1011, 1050, 12, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1011, 1051, 3, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1011, 1052, 5, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1011, 1053, 4, "adminsales", "adminsales");
 
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1012, 1054, 1, 30, 20, "adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1012, 1055, 2, 30, 20, "adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1012, 1056, 3, 30, 20, "adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1012, 1057, 5, 30, 21, "adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1012, 1058, 5, 30, 22, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1012, 1054, 1, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1012, 1055, 2, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1012, 1056, 3, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1012, 1057, 5, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1012, 1058, 5, "adminsales", "adminsales");
 
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1013, 1059, 5, 30, 23, "adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1013, 1060, 5, 30, 24, "adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1013, 1061, 3, 30, 25, "adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1013, 1062, 5, 30, 26, "adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1013, 1063, 3, 30, 26, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1013, 1059, 5, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1013, 1060, 5, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1013, 1061, 3, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1013, 1062, 5, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1013, 1063, 3, "adminsales", "adminsales");
 
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1014, 1064, 9, 30, 25, "adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1014, 1065, 9, 30, 15, "adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1014, 1066, 9, 30, 15, "adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1014, 1067, 1, 30, 16, "adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1014, 1068, 3, 30, 18, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1014, 1064, 9, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1014, 1065, 9, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1014, 1066, 9, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1014, 1067, 1, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1014, 1068, 3, "adminsales", "adminsales");
 
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1015, 1069, 7, 40, 25, "adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1015, 1070, 7, 40, 25, "adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1015, 1071, 7, 30, 25, "adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1015, 1072, 7, 40, 25, "adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1015, 1073, 7, 30, 25, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1015, 1069, 7, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1015, 1070, 7, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1015, 1071, 7, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1015, 1072, 7, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1015, 1073, 7, "adminsales", "adminsales");
 
 -- December
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1315, 1020, 1, 61, 25, "adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1315, 1021, 7, 62, 25, "adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1315, 1022, 2, 63, 25, "adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1315, 1023, 2, 64, 25, "adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1315, 1024, 2, 65, 25, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1315, 1020, 1, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1315, 1021, 7, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1315, 1022, 2, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1315, 1023, 2, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1315, 1024, 2, "adminsales", "adminsales");
 
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1316, 1025, 8, 33, 25, "adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1316, 1026, 5, 34, 25, "adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1316, 1027, 8, 35, 25, "adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1316, 1007, 7, 36, 25, "adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1316, 1008, 7, 37, 25, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1316, 1025, 8, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1316, 1026, 5, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1316, 1027, 8, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1316, 1007, 7, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1316, 1008, 7, "adminsales", "adminsales");
 
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1317, 1028, 3, 50, 25, "adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1317, 1029, 4, 90, 25, "adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1317, 1030, 3, 60, 25, "adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1317, 1031, 4, 80, 25, "adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1317, 1032, 4, 85, 25, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1317, 1028, 3, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1317, 1029, 4, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1317, 1030, 3, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1317, 1031, 4, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1317, 1032, 4, "adminsales", "adminsales");
 
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1318, 1033, 8, 51, 25, "adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1318, 1034, 2, 52, 25, "adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1318, 1035, 1, 53, 25, "adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1318, 1036, 1, 54, 25, "adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1318, 1037, 5, 55, 25, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1318, 1033, 8, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1318, 1034, 2, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1318, 1035, 1, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1318, 1036, 1, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1318, 1037, 5, "adminsales", "adminsales");
 
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1319, 1038, 4, 66, 25, "adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1319, 1039, 4, 66, 25, "adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1319, 1040, 5, 67, 25, "adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1319, 1041, 6, 68, 25, "adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1319, 1042, 6, 69, 25, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1319, 1038, 4, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1319, 1039, 4, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1319, 1040, 5, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1319, 1041, 6, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1319, 1042, 6, "adminsales", "adminsales");
 
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1320, 1043, 20, 100, 50, "adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1320, 1044, 54, 30, 25, "adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1320, 1045, 9, 100, 30, "adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1320, 1046, 12, 30, 25, "adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1320, 1047, 6, 200, 25, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1320, 1043, 20, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1320, 1044, 54, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1320, 1045, 9, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1320, 1046, 12, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1320, 1047, 6, "adminsales", "adminsales");
 
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1321, 1048, 1, 30, 25, "adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1321, 1049, 1, 30, 25, "adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1321, 1050, 1, 30, 25, "adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1321, 1051, 1, 30, 25, "adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1321, 1052, 1, 30, 25, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1321, 1048, 1, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1321, 1049, 1, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1321, 1050, 1, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1321, 1051, 1, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1321, 1052, 1, "adminsales", "adminsales");
 
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1322, 1049, 1, 30, 25, "adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1322, 1050, 12, 30, 25, "adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1322, 1051, 3, 30, 25, "adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1322, 1052, 5, 30, 25, "adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1322, 1053, 4, 30, 25, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1322, 1049, 1, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1322, 1050, 12, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1322, 1051, 3, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1322, 1052, 5, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1322, 1053, 4, "adminsales", "adminsales");
 
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1323, 1054, 1, 30, 25, "adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1323, 1055, 2, 30, 25, "adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1323, 1056, 3, 30, 25, "adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1323, 1057, 5, 30, 25, "adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1323, 1058, 5, 30, 25, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1323, 1054, 1, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1323, 1055, 2, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1323, 1056, 3, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1323, 1057, 5, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1323, 1058, 5, "adminsales", "adminsales");
 
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1324, 1059, 5, 31, 25, "adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1324, 1060, 5, 32, 25, "adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1324, 1061, 3, 33, 25, "adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1324, 1062, 5, 34, 25, "adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1324, 1063, 3, 35, 25, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1324, 1059, 5, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1324, 1060, 5, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1324, 1061, 3, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1324, 1062, 5, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1324, 1063, 3, "adminsales", "adminsales");
 
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1325, 1064, 9, 36, 25, "adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1325, 1065, 9, 37, 25, "adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1325, 1066, 9, 38, 25, "adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1325, 1067, 1, 39, 25, "adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1325, 1068, 3, 39, 25, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1325, 1064, 9, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1325, 1065, 9, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1325, 1066, 9, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1325, 1067, 1, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1325, 1068, 3, "adminsales", "adminsales");
 
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1326, 1069, 7, 81, 25, "adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1326, 1070, 7, 82, 25, "adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1326, 1071, 7, 83, 25, "adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1326, 1072, 7, 84, 25, "adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1326, 1073, 7, 85, 25, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1326, 1069, 7, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1326, 1070, 7, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1326, 1071, 7, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1326, 1072, 7, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1326, 1073, 7, "adminsales", "adminsales");
 
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1327, 1015, 3, 71, 24,"adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1327, 1016, 2, 72, 24, "adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1327, 1017, 2, 73, 24, "adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1327, 1018, 1, 74, 24, "adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1327, 1019, 5, 75, 24, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1327, 1015, 3,"adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1327, 1016, 2, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1327, 1017, 2, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1327, 1018, 1, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1327, 1019, 5, "adminsales", "adminsales");
 
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1328, 1010, 5, 44, 20, "adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1328, 1011, 5, 43, 21, "adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1328, 1012, 6, 42, 22, "adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1328, 1013, 2, 41, 23, "adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1328, 1014, 1, 40, 24, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1328, 1010, 5, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1328, 1011, 5, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1328, 1012, 6, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1328, 1013, 2, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1328, 1014, 1, "adminsales", "adminsales");
 
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1329, 1005, 6, 14, 7, "adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1329, 1006, 6, 13, 7, "adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1329, 1008, 8, 12, 8, "adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1329, 1008, 11, 11, 9, "adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1329, 1009, 6, 10, 5, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1329, 1005, 6, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1329, 1006, 6, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1329, 1008, 8, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1329, 1008, 11, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1329, 1009, 6, "adminsales", "adminsales");
 
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1330, 1000, 7, 29, 10, "adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1330, 1001, 6, 28, 11, "adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1330, 1002, 4, 26, 12, "adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1330, 1003, 7, 25, 13, "adminsales", "adminsales");
-INSERT INTO sales_products (id_sale, id_product, quantity, sale_price, purchase_price, created_by, updated_by) VALUES (1330, 1004, 9, 30, 15, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1330, 1000, 7, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1330, 1001, 6, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1330, 1002, 4, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1330, 1003, 7, "adminsales", "adminsales");
+INSERT INTO sales_products (id_sale, id_product, quantity, created_by, updated_by) VALUES (1330, 1004, 9, "adminsales", "adminsales");
 
 
 -- product_groups
