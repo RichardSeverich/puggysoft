@@ -23,6 +23,7 @@ import sellerForm from "./spanish/sales/sellerForm"
 import sellerTable from "./spanish/sales/sellerTable"
 import saleStatus from "./spanish/sales/saleStatus"
 import saleTable from "./spanish/sales/saleTable"
+import saleProductTable from "./spanish/sales/saleProductTable"
 // Hospital System
 import doctorUserForm from "./spanish/hospital/doctorUserForm"
 import doctorTable from "./spanish/hospital/doctorTable"
@@ -56,6 +57,7 @@ const i18n = {
   sellerTable,
   saleStatus,
   saleTable,
+  saleProductTable,
   // Hospital System
   doctorUserForm,
   doctorTable,

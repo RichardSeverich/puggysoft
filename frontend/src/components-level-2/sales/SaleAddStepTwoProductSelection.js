@@ -18,8 +18,10 @@ function SaleAddStepTwoProductSelection(props) {
   const history = useHistory();
   const pageSize = 7;
   const numberPagesToShow = 10;
-  const tableTitleAddProductsToSale = i18n.productTable.titleSelectionAddSale;
-  const tableTitleDeleteProductsFromSale = i18n.productTable.titleSelectionDeleteSale;
+  const tableTitleAddProductsToSale = i18n.saleProductTable.titleSelectionAddSaleForSeller;
+  const tableTitleDeleteProductsFromSale = i18n.saleProductTable.titleSelectionDeleteSaleForSeller;
+  const generalTitle = i18n.saleProductTable.titleForSeller;
+
   const { saleData } = history && history.location && history.location.state && history.location.state.data;
   const [isRequestInProgress, setIsRequestInProgress] = useState(false);
 
@@ -88,24 +90,24 @@ function SaleAddStepTwoProductSelection(props) {
   return (
     <div>
       <Card>
-        <Card.Header as='h3'>{"Ventas"}</Card.Header>
+        <Card.Header as='h3'>{generalTitle}</Card.Header>
         <Card.Body>
           <div className="">
             <div className="puggysoft-three-divs-side-by-side-child">
               <Form.Group>
-                <div className={"puggysoft-form-label"}><Form.Label>Cliente</Form.Label></div>
+                <div className={"puggysoft-form-label"}><Form.Label>{i18n.saleProductTable.clientBox}</Form.Label></div>
                 <div className={"puggysoft-form-input"}><Form.Control value={saleData.client} disabled /></div>
               </Form.Group>
             </div>
             <div className="puggysoft-three-divs-side-by-side-child">
               <Form.Group>
-                <div className={"puggysoft-form-label"}><Form.Label>Vendedor</Form.Label></div>
+                <div className={"puggysoft-form-label"}><Form.Label>{i18n.saleProductTable.sellerBox}</Form.Label></div>
                 <div className={"puggysoft-form-input"}><Form.Control value={saleData.createdBy} disabled /></div>
               </Form.Group>
             </div>
             <div className="puggysoft-three-divs-side-by-side-child">
               <Form.Group>
-                <div className={"puggysoft-form-label"}><Form.Label>Fecha de venta</Form.Label></div>
+                <div className={"puggysoft-form-label"}><Form.Label>{i18n.saleProductTable.saleDate}</Form.Label></div>
                 <div className={"puggysoft-form-input"}><Form.Control value={saleData.creationDate} disabled /></div>
               </Form.Group>
             </div>

@@ -1,8 +1,6 @@
 const productTable = {
   title: "Productos",
   titleSelectionToEditDelete: "Tabla Productos (Seleccione para Editar/Eliminar)",
-  titleSelectionAddSale: "Tabla Productos (Agregue productos la compra)",
-  titleSelectionDeleteSale: "Tabla Productos (Elimine productos de la compra)",
   columnId: "Id",
   columnName: "Nombre Producto",
   columnPurchasePrice: "Precio de compra",
