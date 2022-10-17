@@ -1,18 +1,23 @@
 import { useHistory } from "react-router";
+import { useState } from "react";
 import UserTableFilterGenericByRole from "./../generic/UserTableFilterGenericByRole";
 import enumRoles from "./../../models/users/enumRoles"
 import enumSaleStatus from "./../../models/sales/enumSaleStatus"
-import { handleAddRequest } from "../../actions/HandleManager";
+import { handleAddRequest, handleGetRequest } from "../../actions/HandleManager";
 import enumPaths from "./../../models/enumPaths"
 import i18n from "../../i18n/i18n";
+import CommonLoading from '../../components-level-1/CommonLoading';
+
 
 function SaleAddStepOneClientSelection() {
 
   const tableTitle = i18n.clientTable.titleSelectionToSales;
   const roleName = enumRoles.SALES_CLIENT;
   const history = useHistory();
+  const [isRequestInProgress, setIsRequestInProgress] = useState(false);
 
   function handleSelection(clientData) {
+    setIsRequestInProgress(true);
     const username = window.sessionStorage.getItem("username");
     const saleStatus = enumSaleStatus.DONE;
     const bodySale = {
@@ -24,12 +29,16 @@ function SaleAddStepOneClientSelection() {
     function handleAfterCreateSale(saleId) {
       const saleData = bodySale;
       saleData['id'] = saleId;
-      history.push({
-        pathname: enumPaths.SALES_REGISTRATION_STEP_TWO,
-        state: {
-          data: { clientData, saleData },
-        }
-      })
+      function handleGetNewSale(saleDataFromRequest) {
+        saleData['creationDate'] = saleDataFromRequest.creationDate;
+        history.push({
+          pathname: enumPaths.SALES_REGISTRATION_STEP_TWO,
+          state: {
+            data: { saleData },
+          }
+        })
+      }
+      handleGetRequest(`sales/${saleId}`, handleGetNewSale)
     }
     handleAddRequest("sales/", bodySale, handleAfterCreateSale, false);
   }
@@ -41,6 +50,10 @@ function SaleAddStepOneClientSelection() {
       text: i18n.commonTable.selectButton
     }
   ]
+
+  if (isRequestInProgress) {
+    return <CommonLoading />
+  }
 
   return (
     <UserTableFilterGenericByRole

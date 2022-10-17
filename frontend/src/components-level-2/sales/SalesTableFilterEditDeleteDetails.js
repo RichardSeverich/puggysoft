@@ -1,7 +1,7 @@
 import { useHistory } from "react-router";
 import { useState } from "react";
 import TableFilterGeneric from "./../generic/TableFilterGeneric";
-import { handleFilterRequest, handleDeleteRequestNew } from "../../actions/HandleManager";
+import { handleFilterRequest, handleDeleteRequestNew, handleGetRequest } from "../../actions/HandleManager";
 import enumPaths from "./../../models/enumPaths"
 import i18n from "../../i18n/i18n";
 import arrayDataFields from "../../models/sales/arraySaleDataFields";
@@ -38,11 +38,10 @@ function SalesTableFilterEditDeleteDetails() {
   }
 
   function handleDetails(saleData) {
-    const clientData = "";
     history.push({
       pathname: enumPaths.SALES_REGISTRATION_STEP_TWO,
       state: {
-        data: { clientData, saleData },
+        data: { saleData },
       }
     })
   }

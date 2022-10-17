@@ -20,7 +20,7 @@ function SaleAddStepTwoProductSelection(props) {
   const numberPagesToShow = 10;
   const tableTitleAddProductsToSale = i18n.productTable.titleSelectionAddSale;
   const tableTitleDeleteProductsFromSale = i18n.productTable.titleSelectionDeleteSale;
-  const { clientData, saleData } = history && history.location && history.location.state && history.location.state.data;
+  const { saleData } = history && history.location && history.location.state && history.location.state.data;
   const [isRequestInProgress, setIsRequestInProgress] = useState(false);
 
   // functions to add products to a sale.
@@ -94,7 +94,7 @@ function SaleAddStepTwoProductSelection(props) {
             <div className="puggysoft-three-divs-side-by-side-child">
               <Form.Group>
                 <div className={"puggysoft-form-label"}><Form.Label>Cliente</Form.Label></div>
-                <div className={"puggysoft-form-input"}><Form.Control value={clientData.username} disabled /></div>
+                <div className={"puggysoft-form-input"}><Form.Control value={saleData.client} disabled /></div>
               </Form.Group>
             </div>
             <div className="puggysoft-three-divs-side-by-side-child">
@@ -106,7 +106,7 @@ function SaleAddStepTwoProductSelection(props) {
             <div className="puggysoft-three-divs-side-by-side-child">
               <Form.Group>
                 <div className={"puggysoft-form-label"}><Form.Label>Fecha de venta</Form.Label></div>
-                <div className={"puggysoft-form-input"}><Form.Control value={saleData.createdDate} disabled /></div>
+                <div className={"puggysoft-form-input"}><Form.Control value={saleData.creationDate} disabled /></div>
               </Form.Group>
             </div>
           </div>
