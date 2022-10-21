@@ -8,7 +8,6 @@ import useInput from "./../../hooks/useInput";
 import { handleValidation, classNameFormTextNew } from "./../../validations/users/HandleUserFormValidations"
 import { handleEditRequest } from "../../actions/HandleManager";
 import enumSex from "./../../models/users/enumSex"
-import convertFileBytesToUrl from "../../tools/convertFileBytesToUrl"
 
 import "./user-details.css"
 
@@ -133,10 +132,8 @@ function UserDetails(props) {
 
   let imageUrl = 'https://icon-library.com/images/user-png-icon/user-png-icon-16.jpg';
   if (userData.image && userData.image !== null) {
-    imageUrl = convertFileBytesToUrl(userData.image);
+    imageUrl = `data:image/jpeg;base64, ${userData.image}`;
   }
-  // Todo: image show
-  console.log({ imageUrl })
 
   return (
     <div className="puggysoft-user-details">
