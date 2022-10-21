@@ -23,6 +23,11 @@
     padding-right: 4.6rem;
   }
 
+  .puggysoft-form-item-input-file {
+    text-align: center;
+    padding-right: 3.9rem;
+  }
+
   .puggysoft-form-item-input-date {
     text-align: center;
     padding-right: 6rem;

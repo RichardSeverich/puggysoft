@@ -8,6 +8,7 @@ import useInput from "./../../hooks/useInput";
 import { handleValidation, classNameFormTextNew } from "./../../validations/users/HandleUserFormValidations"
 import { handleEditRequest } from "../../actions/HandleManager";
 import enumSex from "./../../models/users/enumSex"
+import convertFileBytesToUrl from "../../tools/convertFileBytesToUrl"
 
 import "./user-details.css"
 
@@ -130,11 +131,18 @@ function UserDetails(props) {
     },
   ]
 
+  let imageUrl = 'https://icon-library.com/images/user-png-icon/user-png-icon-16.jpg';
+  if (userData.image && userData.image !== null) {
+    imageUrl = convertFileBytesToUrl(userData.image);
+  }
+  // Todo: image show
+  console.log({ imageUrl })
+
   return (
     <div className="puggysoft-user-details">
       <Card>
         <Card.Header as='h3'>{i18n.userDetails.title}</Card.Header>
-        <Card.Img variant="top" size='' src="https://icon-library.com/images/user-png-icon/user-png-icon-16.jpg" />
+        <Card.Img variant="top" size='' src={imageUrl} />
         <Card.Body>
           <ListGroup.Item> <Card.Title>{i18n.userDetails.subTitleCredentials}</Card.Title> </ListGroup.Item>
           <ListGroup>

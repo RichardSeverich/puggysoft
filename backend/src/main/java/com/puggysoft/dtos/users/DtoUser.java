@@ -78,7 +78,7 @@ public class DtoUser extends DtoSuperClass {
   @NotNull
   private Boolean active;
 
-  private Blob image;
+  private byte[] image;
 
   /** convert from dto to entity. */
   public EntityUser dtoToEntity() {

@@ -4,6 +4,7 @@ import com.puggysoft.entities.EntitySuperClass;
 import java.sql.Blob;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Lob;
 import javax.persistence.Table;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -49,7 +50,9 @@ public class EntityUser extends EntitySuperClass {
 
   private Boolean active;
 
-  //private byte[] image;
-  private Blob image;
+  @Lob
+  private byte[] image;
+
+  //private Blob image;
 
 }

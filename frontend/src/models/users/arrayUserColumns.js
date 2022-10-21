@@ -1,7 +1,6 @@
 import i18n from "../../i18n/i18n";
 
 const arrayColumns = [
-  i18n.userTable.columnImage,
   i18n.userTable.columnId,
   i18n.userTable.columnUsername,
   i18n.userTable.columnPassword,

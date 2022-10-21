@@ -6,6 +6,7 @@ import handleDeleteRequest from "./HandleDeleteRequest";
 import handleDeleteRequestNew from "./HandleDeleteRequestNew"
 import handleLoginRequest from "./HandleLoginRequest";
 import handleFilterRequest from "./HandleFilterRequest";
+import handleAddFileRequest from "./HandleAddFileRequest";
 
 
 // MOCK
@@ -50,5 +51,6 @@ export {
   handleDeleteRequest,
   handleDeleteRequestNew,
   handleLoginRequest,
-  handleFilterRequest
+  handleFilterRequest,
+  handleAddFileRequest
 }

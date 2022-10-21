@@ -1,7 +1,6 @@
 import enumUserFields from "./enumUserFields";
 
 const arrayDataFields = [
-  enumUserFields.IMAGE,
   enumUserFields.ID,
   enumUserFields.USERNAME,
   enumUserFields.PASSWORD,

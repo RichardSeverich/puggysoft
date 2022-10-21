@@ -1,5 +1,5 @@
 const errorMessages = {
-  successfullyCreated: "Creado exitosamente",
+  successfullyCreated: "Registrado exitosamente",
   successfullyEdited: "Editado exitosamente",
   successfullyDeleted: "Eliminado exitosamente",
   errorStaus400: "Error 400: Solicitud mala",

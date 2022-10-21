@@ -7,7 +7,7 @@ import Card from 'react-bootstrap/Card'
 import i18n from "./../../i18n/i18n";
 import useInput from "./../../hooks/useInput";
 import enumSex from "./../../models/users/enumSex"
-import { handleAddRequest, handleEditRequest } from "../../actions/HandleManager";
+import { handleAddRequest, handleEditRequest, handleAddFileRequest } from "../../actions/HandleManager";
 import { handleValidation, classNameFormTextNew } from "./../../validations/users/HandleUserFormValidations"
 
 import "./../css/all-forms.css"
@@ -63,6 +63,8 @@ function UserForm(props) {
   const { value: valueAddress, onChange: onChangeAddress, setValue: setAddress } = useInput(address);
   const { value: valueEmail, onChange: onChangeEmail, setValue: setEmail } = useInput(email);
   const { value: valueStatus, onChange: onChangeStatus, setValue: setStatus } = useInput(status);
+  const { value: valuePicture, onChange: onChangePicture, setValue: setPicture } = useInput(null);
+  const { value: valuePicturePath, onChange: onChangePicturePath, setValue: setPicturePath } = useInput('');
 
   const handleReset = () => {
     setUsername('');
@@ -79,10 +81,13 @@ function UserForm(props) {
     setTelephone('');
     setAddress('');
     setEmail('');
+    setPicture(null);
+    setPicturePath('');
     setStatus(true);
   }
 
   const handleAfterAdd = function (newUserId) {
+    handleAddImage(newUserId);
     handleReset();
     // afterAdd = add some role to new user.
     if (afterAdd) {
@@ -92,7 +97,15 @@ function UserForm(props) {
     }
   }
 
+  const handleAddImage = (userId) => {
+    //const pictureFile = { ...valuePicture }
+    if (valuePicture !== null) {
+      handleAddFileRequest("users/picture/", valuePicture, userId, null, false)
+    }
+  }
+
   const handleAfterEdit = function () {
+    handleAddImage(id);
     handleReset();
     setIsEdit(undefined);
   }
@@ -141,6 +154,14 @@ function UserForm(props) {
     } else {
       alert(i18n.errorMessages.validationError);
     }
+  }
+
+  const handleUploadPicture = (event) => {
+    // file.name file.size file.type 
+    const file = event.target.files[0]
+    // const fileTypeName = file.constructor.name
+    setPicture(file);
+    onChangePicturePath(event);
   }
 
   useEffect(() => {
@@ -323,6 +344,18 @@ function UserForm(props) {
               </Form.Select></div>
               <Form.Text muted className={classNameFormText.status}>
                 {i18n.userForm.formTextStatus}
+              </Form.Text>
+            </Form.Group>
+            <Form.Group controlId="formFile" className="mb-3 puggysoft-form-item-input-file">
+              <div className={classNameItemLabel}><Form.Label>{i18n.userForm.fieldImage}</Form.Label></div>
+              <div className={classNameItemInput}><Form.Control
+                type="file"
+                onChange={(event) => handleUploadPicture(event)}
+                value={valuePicturePath}
+              />
+              </div>
+              <Form.Text muted>
+                {i18n.userForm.formTextImage}
               </Form.Text>
             </Form.Group>
             <Button
