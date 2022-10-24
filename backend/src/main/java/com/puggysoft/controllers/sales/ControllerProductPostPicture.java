@@ -1,6 +1,6 @@
-package com.puggysoft.controllers.users;
+package com.puggysoft.controllers.sales;
 
-import com.puggysoft.services.users.ServiceUserPicture;
+import com.puggysoft.services.sales.ServiceProductPicture;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -9,14 +9,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 @RestController
-public class ControllerUserPostPicture {
+public class ControllerProductPostPicture {
 
   @Autowired
-  private ServiceUserPicture serviceUserPicture;
+  private ServiceProductPicture serviceProductPicture;
 
-  // id is userId
-  @PostMapping(path = "/api/v1/users/picture")
+  // id is product
+  @PostMapping(path = "/api/v1/products/picture")
   public ResponseEntity<String> post(@RequestParam("file") MultipartFile file,  @RequestParam Long id) {
-    return serviceUserPicture.setPicture(file, id);
+    return serviceProductPicture.setPicture(file, id);
   }
 }

@@ -7,7 +7,7 @@ import Card from 'react-bootstrap/Card'
 import i18n from "./../../i18n/i18n";
 import useInput from "./../../hooks/useInput";
 
-import { handleAddRequest, handleEditRequest } from "../../actions/HandleManager";
+import { handleAddRequest, handleEditRequest, handleAddFileRequest } from "../../actions/HandleManager";
 import { handleValidation, classNameFormTextNew } from "./../../validations/sales/HandleProductFormValidations"
 
 import "./../css/all-forms.css"
@@ -41,6 +41,8 @@ function ProductForm(props) {
   const { value: valueDescription, onChange: onChangeDescription, reset: resetDescription } = useInput(description);
   const { value: valueBarCode, onChange: onChangeBarCode, reset: resetBarCode } = useInput(barCode);
   const { value: valueLocation, onChange: onChangeLocation, reset: resetLocation } = useInput(location);
+  const { value: valuePicture, onChange: onChangePicture, setValue: setPicture } = useInput(null);
+  const { value: valuePicturePath, onChange: onChangePicturePath, setValue: setPicturePath } = useInput('');
 
   const handleReset = () => {
     resetName();
@@ -51,6 +53,8 @@ function ProductForm(props) {
     resetDescription();
     resetBarCode();
     resetLocation();
+    setPicture(null);
+    setPicturePath('');
   }
 
   const getBody = function () {
@@ -70,13 +74,15 @@ function ProductForm(props) {
     return body;
   }
 
-  const handleAfterAdd = function () {
+  const handleAfterAdd = function (newProductId) {
+    handleAddImage(newProductId);
     handleReset();
     const body = getBody();
     handleValidation(body, setClassNameFormText)
   }
 
   const handleAfterEdit = function () {
+    handleAddImage(id);
     handleReset();
     setIsEdit(undefined);
     const body = getBody();
@@ -95,6 +101,21 @@ function ProductForm(props) {
       }
     } else {
       alert(i18n.errorMessages.validationError);
+    }
+  }
+
+  const handleUploadPicture = (event) => {
+    // file.name file.size file.type 
+    const file = event.target.files[0]
+    // const fileTypeName = file.constructor.name
+    setPicture(file);
+    onChangePicturePath(event);
+  }
+
+  const handleAddImage = (productId) => {
+    //const pictureFile = { ...valuePicture }
+    if (valuePicture !== null) {
+      handleAddFileRequest("products/picture/", valuePicture, productId, null, false)
     }
   }
 
@@ -193,6 +214,17 @@ function ProductForm(props) {
                 placeholder={i18n.productForm.fieldLocation} />
               <Form.Text muted className={classNameFormText.location}>
                 {i18n.productForm.formTextLocation}
+              </Form.Text>
+            </Form.Group>
+            <Form.Group controlId="formFile" className="mb-3 puggysoft-form-item-input-file">
+              <Form.Label>{i18n.productForm.fieldImage}</Form.Label>
+              <Form.Control
+                type="file"
+                onChange={(event) => handleUploadPicture(event)}
+                value={valuePicturePath}
+              />
+              <Form.Text muted>
+                {i18n.productForm.formTextImage}
               </Form.Text>
             </Form.Group>
             <Button onClick={handleAdd} variant="primary" type="button">{i18n.productForm.buttonAdd}</Button>

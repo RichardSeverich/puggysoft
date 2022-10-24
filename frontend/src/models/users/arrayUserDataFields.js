@@ -1,6 +1,11 @@
 import enumUserFields from "./enumUserFields";
+import enumTableFieldType from './../enumTableFieldType'
 
 const arrayDataFields = [
+  {
+    value: enumUserFields.IMAGE,
+    type: enumTableFieldType.IMAGE
+  },
   enumUserFields.ID,
   enumUserFields.USERNAME,
   enumUserFields.PASSWORD,

@@ -1,9 +1,10 @@
 package com.puggysoft.entities.sales;
 
 import com.puggysoft.entities.EntitySuperClass;
-import java.sql.Blob;
+// import java.sql.Blob;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Lob;
 import javax.persistence.Table;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -27,7 +28,8 @@ public class EntityProduct extends EntitySuperClass {
 
   private String description;
 
-  private Blob image;
+  @Lob
+  private byte[] image;
 
   @Column(name = "bar_code")
   private String barCode;

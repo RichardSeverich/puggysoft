@@ -33,7 +33,7 @@ public class DtoProduct extends DtoSuperClass {
   @NotNull
   private String description;
 
-  private Blob image;
+  private byte[] image;
 
   private String barCode;
 

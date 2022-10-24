@@ -2,12 +2,13 @@ import Table from 'react-bootstrap/Table'
 import Button from 'react-bootstrap/Button'
 import Card from 'react-bootstrap/Card'
 import Form from 'react-bootstrap/Form'
+import Image from 'react-bootstrap/Image'
 import i18n from "../i18n/i18n";
 
 import "./common-table-styles.css"
 import enumFilterType from "../models/enumFilterType";
 import enumCompareOperators from "../models/enumCompareOperators";
-
+import enumTableFieldType from '../models/enumTableFieldType'
 
 /**
  *  arrayData = [{},{},{},{}]
@@ -130,7 +131,14 @@ function CommonTable(props) {
     return arrayData.map(function (data, rowIndex) {
       const totalRows = <tr key={'row-' + rowIndex}>
         {arrayDataFields.map(function (field, fieldIndex) {
-          const singleRow = <td key={'field-' + fieldIndex}>{data[field]}</td>;
+          let singleRow = ''
+          if (field.type && field.type === enumTableFieldType.IMAGE) {
+            singleRow = <td key={'field-' + fieldIndex}>
+              <Image fluid sice='' src={`data:image/jpeg;base64, ${data[field.value]}`}></Image>
+            </td>;
+          } else {
+            singleRow = <td key={'field-' + fieldIndex}>{data[field]}</td>;
+          }
           return singleRow;
         })}
         {handleEdit && <td key={'field-edit' + rowIndex}>

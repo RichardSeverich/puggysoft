@@ -1,5 +1,10 @@
+import enumTableFieldType from './../enumTableFieldType'
+
 const arrayDataFields = [
-  'image',
+  {
+    value: 'image',
+    type: enumTableFieldType.IMAGE
+  },
   'id',
   'name',
   'purchasePrice',

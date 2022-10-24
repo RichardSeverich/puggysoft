@@ -6,7 +6,7 @@ const productForm = {
   fieldStock: "Stock Disponible",
   fieldMinimumStock: "Stock Minimo",
   fieldDescription: "Descripcion",
-  fieldImage: "Foto",
+  fieldImage: "Foto Producto",
   fieldBarCode: "Codigo de barras",
   fieldLocation: "Localizacion",
   buttonAdd: "Registrar",
@@ -16,7 +16,8 @@ const productForm = {
   formTextStock: "Numero mayor igual a 0",
   formTextMinimumStock: "Numero mayor igual a 0",
   formTextDescription: "Minimo 3, maximo 256 caracteres",
-  formTextLocation: "Minimo 3, maximo 120 caracteres"
+  formTextLocation: "Minimo 3, maximo 120 caracteres",
+  formTextImage: "Seleccione foto del producto",
 };
 
 export default productForm;

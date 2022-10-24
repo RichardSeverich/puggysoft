@@ -1,7 +1,7 @@
 package com.puggysoft.entities.users;
 
 import com.puggysoft.entities.EntitySuperClass;
-import java.sql.Blob;
+// import java.sql.Blob;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Lob;
