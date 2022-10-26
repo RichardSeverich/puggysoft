@@ -55,6 +55,8 @@ public class DtoUserFilter {
   public EnumCompareOperator emailOperator;
   public Boolean activeCriteria;
   public EnumCompareOperator activeOperator;
+  public Boolean emailVerifiedCriteria;
+  public EnumCompareOperator emailVerifiedOperator;
   @Size(max = 20)
   public String createdByCriteria;
   public EnumCompareOperator createdByOperator;

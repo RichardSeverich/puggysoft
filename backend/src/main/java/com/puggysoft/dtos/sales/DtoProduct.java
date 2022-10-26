@@ -41,6 +41,8 @@ public class DtoProduct extends DtoSuperClass {
 
   private Integer minimumStock;
 
+  private String code;
+
   /** convert from dto to entity. */
   public EntityProduct dtoToEntity() {
     EntityProduct entity = new EntityProduct();
@@ -54,6 +56,7 @@ public class DtoProduct extends DtoSuperClass {
     entity.setBarCode(barCode);
     entity.setLocation(location);
     entity.setMinimumStock(minimumStock);
+    entity.setCode(code);
     entity.setCreatedBy(createdBy);
     entity.setUpdatedBy(updatedBy);
     return entity;
@@ -72,6 +75,7 @@ public class DtoProduct extends DtoSuperClass {
     dto.setBarCode(entity.getBarCode());
     dto.setLocation(entity.getLocation());
     dto.setMinimumStock(entity.getMinimumStock());
+    dto.setCode(entity.getCode());
     dto.setCreatedBy(entity.getCreatedBy());
     dto.setUpdatedBy(entity.getUpdatedBy());
     dto.setCreationDate(entity.getCreationDate());

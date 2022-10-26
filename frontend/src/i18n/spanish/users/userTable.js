@@ -18,6 +18,7 @@ const userTable = {
   columnAddress: "Direccion/Domicilio",
   columnEmail: "Correo Electronico",
   columnStatus: "Estado",
+  columnEmailVerified: "Email Verificado",
   columnImage: "Foto",
   columnCreatedBy: "Creado por",
   columnUpdatedBy: "Editado por",

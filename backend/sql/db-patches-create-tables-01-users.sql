@@ -18,6 +18,7 @@ CREATE TABLE users(
    email TEXT NOT NULL,
    active BOOLEAN NOT NULL,
    image LONGBLOB,
+   email_verified BOOLEAN NOT NULL,
    creation_date DATETIME DEFAULT CURRENT_TIMESTAMP,
    update_date DATETIME ON UPDATE CURRENT_TIMESTAMP,
    created_by VARCHAR(30),
@@ -59,7 +60,7 @@ CREATE TABLE users_roles(
 
 
 -- tenant not being used yet
-CREATE TABLE tenant (
+/*CREATE TABLE tenant (
    id BIGINT AUTO_INCREMENT,
    name TEXT NOT NULL,
    description TEXT NOT NULL,
@@ -73,7 +74,7 @@ CREATE TABLE tenant (
    FOREIGN KEY (created_by) REFERENCES users(username),
    FOREIGN KEY (updated_by) REFERENCES users(username),
    PRIMARY KEY (id)
-)AUTO_INCREMENT=1000;
+)AUTO_INCREMENT=1000;*/
 
 
 /*CREATE TABLE tenant_users (

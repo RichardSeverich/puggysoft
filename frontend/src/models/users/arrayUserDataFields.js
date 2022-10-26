@@ -22,6 +22,7 @@ const arrayDataFields = [
   enumUserFields.ADDRESS,
   enumUserFields.EMAIL,
   enumUserFields.ACTIVE,
+  enumUserFields.EMAIL_VERIFIED,
   enumUserFields.CREATED_BY,
   enumUserFields.UPDATED_BY,
   enumUserFields.CREATION_DATE,

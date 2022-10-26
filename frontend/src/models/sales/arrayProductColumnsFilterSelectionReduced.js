@@ -47,6 +47,8 @@ const getColumnsFilterModel = function (
     const filterBody = {
       idCriteria: "",
       idOperator: enumCompareOperators.NONE,
+      codeCriteria: "",
+      codeOperator: enumCompareOperators.NONE,
       nameCriteria: criteriaName,
       nameOperator: operatorName,
       purchasePriceCriteria: "",

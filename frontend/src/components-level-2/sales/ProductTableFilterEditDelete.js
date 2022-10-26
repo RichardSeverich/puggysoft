@@ -53,6 +53,7 @@ function ProductTableFilterEditDelete() {
 
   // CRITERIA OF SEARCH OR FILTER
   const { value: criteriaId, onChange: criteriaOnChangeId, setValue: criteriaSetId } = useInput('');
+  const { value: criteriaCode, onChange: criteriaOnChangeCode, setValue: criteriaSetCode } = useInput('');
   const { value: criteriaName, onChange: criteriaOnChangeName, setValue: criteriaSetName } = useInput('');
   const { value: criteriaPurchasePrice, onChange: criteriaOnChangePurchasePrice, setValue: criteriaSetPurchasePrice } = useInput('');
   const { value: criteriaSalePrice, onChange: criteriaOnChangeSalePrice, setValue: criteriaSetSalePrice } = useInput('');
@@ -68,6 +69,7 @@ function ProductTableFilterEditDelete() {
 
   // FILTER OPERATORS
   const { value: operatorId, onChange: operatorOnChangeId, setValue: operatorSetId } = useInput(enumCompareOperators.TEXT_CONTAINS);
+  const { value: operatorCode, onChange: operatorOnChangeCode, setValue: operatorSetCode } = useInput(enumCompareOperators.TEXT_CONTAINS);
   const { value: operatorName, onChange: operatorOnChangeName, setValue: operatorSetName } = useInput(enumCompareOperators.TEXT_CONTAINS);
   const { value: operatorPurchasePrice, onChange: operatorOnChangePurchasePrice, setValue: operatorSetPurchasePrice } = useInput(enumCompareOperators.NUMBER_EQUALS);
   const { value: operatorSalePrice, onChange: operatorOnChangeSalePrice, setValue: operatorSetSalePrice } = useInput(enumCompareOperators.NUMBER_EQUALS);
@@ -83,6 +85,7 @@ function ProductTableFilterEditDelete() {
 
   const { arrayColumnsFilter, clearFilters, getFilterBody } = getColumnsFilterModel(
     /*ID*/ criteriaId, criteriaOnChangeId, criteriaSetId, operatorId, operatorOnChangeId, operatorSetId,
+    /*CODE*/ criteriaCode, criteriaOnChangeCode, criteriaSetCode, operatorCode, operatorOnChangeCode, operatorSetCode,
     /*NAME*/ criteriaName, criteriaOnChangeName, criteriaSetName, operatorName, operatorOnChangeName, operatorSetName,
     /*PURCHASE PRICE*/criteriaPurchasePrice, criteriaOnChangePurchasePrice, criteriaSetPurchasePrice, operatorPurchasePrice, operatorOnChangePurchasePrice, operatorSetPurchasePrice,
     /*SALE PRICE*/ criteriaSalePrice, criteriaOnChangeSalePrice, criteriaSetSalePrice, operatorSalePrice, operatorOnChangeSalePrice, operatorSetSalePrice,

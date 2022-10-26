@@ -80,6 +80,9 @@ public class DtoUser extends DtoSuperClass {
 
   private byte[] image;
 
+  @NotNull
+  private Boolean emailVerified;
+
   /** convert from dto to entity. */
   public EntityUser dtoToEntity() {
     EntityUser entity = new EntityUser();
@@ -100,6 +103,7 @@ public class DtoUser extends DtoSuperClass {
     entity.setEmail(email);
     entity.setActive(active);
     entity.setImage(image);
+    entity.setEmailVerified(emailVerified);
     entity.setCreatedBy(createdBy);
     entity.setUpdatedBy(updatedBy);
     return entity;
@@ -125,6 +129,7 @@ public class DtoUser extends DtoSuperClass {
     dto.setEmail(entity.getEmail());
     dto.setActive(entity.getActive());
     dto.setImage(entity.getImage());
+    dto.setEmailVerified(entity.getEmailVerified());
     dto.setCreatedBy(entity.getCreatedBy());
     dto.setUpdatedBy(entity.getUpdatedBy());
     dto.setCreationDate(entity.getCreationDate());

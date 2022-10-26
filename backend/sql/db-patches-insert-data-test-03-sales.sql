@@ -1,5 +1,6 @@
 -- Insert products
-INSERT INTO products (name, purchase_price, sale_price, stock, description, image, bar_code, location, minimum_stock) VALUES ("Cocacola 1L", 8, 10, 100, "Cocacola de un litro", null, null, "Estante 3, Nivel 2", null);
+INSERT INTO products (name, purchase_price, sale_price, stock, description, image, bar_code, location, minimum_stock, code) VALUES ("Cocacola 1L", 8, 10, 100, "Cocacola de un litro", null, null, "Estante 3, Nivel 2", null, "coca345");
+INSERT INTO products (name, purchase_price, sale_price, stock, description, image, bar_code, location, minimum_stock, code) VALUES ("Cocacola 1L", 10, 12, 100, "Cocacola de un litro", null, null, "Estante 3, Nivel 2", null, "coca345");
 INSERT INTO products (name, purchase_price, sale_price, stock, description, image, bar_code, location, minimum_stock) VALUES ("Cocacola 2L", 10, 12, 100, "Cocacola de dos litros", null, null, "Estante 3, Nivel 2", null);
 INSERT INTO products (name, purchase_price, sale_price, stock, description, image, bar_code, location, minimum_stock) VALUES ("Cocacola 3L", 12, 14, 100, "Cocacola de tres litros", null, null, "Estante 3, Nivel 2", null);
 INSERT INTO products (name, purchase_price, sale_price, stock, description, image, bar_code, location, minimum_stock) VALUES ("Nescafe Original Negro 200gr", 22, 27, 50, "Nescafe Original Negro de 200 gramos", null, null, "Estante 3, Nivel 2", null);

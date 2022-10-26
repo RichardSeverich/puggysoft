@@ -2,6 +2,7 @@ const productTable = {
   title: "Productos",
   titleSelectionToEditDelete: "Tabla Productos (Seleccione para Editar/Eliminar)",
   columnId: "Id",
+  columnCode: "Codigo",
   columnName: "Nombre Producto",
   columnPurchasePrice: "Precio de compra",
   columnSalePrice: "Precio de venta",

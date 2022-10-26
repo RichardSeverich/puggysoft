@@ -18,6 +18,7 @@ const arrayColumns = [
   i18n.userTable.columnAddress,
   i18n.userTable.columnEmail,
   i18n.userTable.columnStatus,
+  i18n.userTable.columnEmailVerified,
   i18n.userTable.columnCreatedBy,
   i18n.userTable.columnUpdatedBy,
   i18n.userTable.columnCreationDate,

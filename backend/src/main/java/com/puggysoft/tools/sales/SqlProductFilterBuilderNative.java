@@ -23,6 +23,7 @@ public final class SqlProductFilterBuilderNative {
     query = query + SqlFilterBuilder.getFilterQuery("bar_code ", dtoProductFilter.barCodeCriteria, dtoProductFilter.barCodeOperator);
     query = query + SqlFilterBuilder.getFilterQuery("location ", dtoProductFilter.locationCriteria, dtoProductFilter.locationOperator);
     query = query + SqlFilterBuilder.getFilterQuery("minimum_stock ", dtoProductFilter.minimumStockCriteria, dtoProductFilter.minimumStockOperator);
+    query = query + SqlFilterBuilder.getFilterQuery("code", dtoProductFilter.codeCriteria, dtoProductFilter.codeOperator);
     query = query + SqlFilterBuilder.getFilterQuery("created_by", dtoProductFilter.createdByCriteria, dtoProductFilter.createdByOperator);
     query = query + SqlFilterBuilder.getFilterQuery("updated_by", dtoProductFilter.updatedByCriteria, dtoProductFilter.updatedByOperator);
     query = query + SqlFilterBuilder.getFilterQuery("creation_date", dtoProductFilter.creationDateCriteria, dtoProductFilter.creationDateOperator);

@@ -39,4 +39,6 @@ public class EntityProduct extends EntitySuperClass {
   @Column(name = "minimum_stock")
   private Integer minimumStock;
 
+  private String code;
+
 }

@@ -11,6 +11,10 @@ function fixArrayData(arrayData) {
     rowObject['active'] = valueActive
       ? i18n.userStatus.active
       : i18n.userStatus.inactive;
+    let emailVerified = rowObject['emailVerified'];
+    rowObject['emailVerified'] = emailVerified
+      ? i18n.userEmailVerified.verified
+      : i18n.userEmailVerified.noVerified;
     return rowObject;
   });
 }

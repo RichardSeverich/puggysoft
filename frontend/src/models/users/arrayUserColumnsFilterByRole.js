@@ -87,6 +87,8 @@ const getColumnsFilterModel = function (
       emailOperator: enumFilterType.NONE,
       activeCriteria: "",
       activeOperator: enumFilterType.NONE,
+      emailVerifiedCriteria: "",
+      emailVerifiedOperator: enumFilterType.NONE,
       createdByCriteria: "",
       createdByOperator: enumFilterType.NONE,
       updatedByCriteria: "",

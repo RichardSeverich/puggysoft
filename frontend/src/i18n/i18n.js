@@ -10,6 +10,7 @@ import userForm from "./spanish/users/userForm"
 import userDetails from "./spanish/users/userDetails"
 import userSexText from "./spanish/users/userSexText"
 import userStatus from "./spanish/users/userStatus"
+import userEmailVerified from "./spanish/users/userEmailVerified"
 import userRoles from "./spanish/users/userRoles"
 import userRoleTableByRole from "./spanish/users/userRoleTableByRole"
 import userRoleTableByUser from "./spanish/users/userRoleTableByUser"
@@ -48,6 +49,7 @@ const i18n = {
   userRoleTableByUser,
   roleTable,
   userStatus,
+  userEmailVerified,
   // Sales System
   productTable,
   productForm,

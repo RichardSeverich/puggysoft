@@ -53,6 +53,7 @@ public class EntityUser extends EntitySuperClass {
   @Lob
   private byte[] image;
 
-  //private Blob image;
+  @Column(name = "email_verified")
+  private Boolean emailVerified;
 
 }

@@ -23,6 +23,7 @@ function ProductForm(props) {
 
   // Put default values:
   let id = isEdit && isEdit.data.id !== null ? isEdit.data.id : "";
+  let code = isEdit && isEdit.data.code !== null ? isEdit.data.code : "";
   let name = isEdit && isEdit.data.name !== null ? isEdit.data.name : "";
   let purchasePrice = isEdit && isEdit.data.purchasePrice !== null ? isEdit.data.purchasePrice : "";
   let salePrice = isEdit && isEdit.data.salePrice !== null ? isEdit.data.salePrice : "";
@@ -33,6 +34,7 @@ function ProductForm(props) {
   let location = isEdit && isEdit.data.location !== null ? isEdit.data.location : "";
 
   // Use custom hook
+  const { value: valueCode, onChange: onChangeCode, reset: resetCode } = useInput(code);
   const { value: valueName, onChange: onChangeName, reset: resetName } = useInput(name);
   const { value: valuePurchasePrice, onChange: onChangePurchasePrice, reset: resetPurchasePrice } = useInput(purchasePrice);
   const { value: valueSalePrice, onChange: onChangeSalePrice, reset: resetSalePrice } = useInput(salePrice);
@@ -45,6 +47,7 @@ function ProductForm(props) {
   const { value: valuePicturePath, onChange: onChangePicturePath, setValue: setPicturePath } = useInput('');
 
   const handleReset = () => {
+    resetCode();
     resetName();
     resetPurchasePrice();
     resetSalePrice();
@@ -60,6 +63,7 @@ function ProductForm(props) {
   const getBody = function () {
     const username = window.sessionStorage.getItem("username");
     const body = {
+      code: valueCode,
       name: valueName,
       purchasePrice: valuePurchasePrice,
       salePrice: valueSalePrice,
@@ -131,6 +135,14 @@ function ProductForm(props) {
         <Card.Title>{i18n.productForm.title}</Card.Title>
         <Card.Body>
           <Form >
+            <Form.Group className="mb-3" controlId="code">
+              <Form.Label>{i18n.productForm.fieldCode}</Form.Label>
+              <Form.Control
+                onChange={onChangeCode}
+                value={valueCode}
+                type="text"
+                placeholder={i18n.productForm.fieldCode} />
+            </Form.Group>
             <Form.Group className="mb-3" controlId="name">
               <Form.Label>{i18n.productForm.fieldName}</Form.Label>
               <Form.Control

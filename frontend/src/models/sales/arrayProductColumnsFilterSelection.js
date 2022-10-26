@@ -3,6 +3,7 @@ import enumCompareOperators from "./../enumCompareOperators";
 
 const getColumnsFilterModel = function (
     /*ID*/ criteriaId, criteriaOnChangeId, criteriaSetId, operatorId, operatorOnChangeId, operatorSetId,
+    /*CODE*/ criteriaCode, criteriaOnChangeCode, criteriaSetCode, operatorCode, operatorOnChangeCode, operatorSetCode,
     /*NAME*/ criteriaName, criteriaOnChangeName, criteriaSetName, operatorName, operatorOnChangeName, operatorSetName,
     /*PURCHASE PRICE*/criteriaPurchasePrice, criteriaOnChangePurchasePrice, criteriaSetPurchasePrice, operatorPurchasePrice, operatorOnChangePurchasePrice, operatorSetPurchasePrice,
     /*SALE PRICE*/ criteriaSalePrice, criteriaOnChangeSalePrice, criteriaSetSalePrice, operatorSalePrice, operatorOnChangeSalePrice, operatorSetSalePrice,
@@ -27,6 +28,13 @@ const getColumnsFilterModel = function (
       criteriaOnchange: criteriaOnChangeId,
       operatorValue: operatorId,
       operatorOnchange: operatorOnChangeId,
+    },
+    {
+      type: enumFilterType.TEXTBOX,
+      criteriaValue: criteriaCode,
+      criteriaOnchange: criteriaOnChangeCode,
+      operatorValue: operatorCode,
+      operatorOnchange: operatorOnChangeCode,
     },
     {
       type: enumFilterType.TEXTBOX,
@@ -116,6 +124,7 @@ const getColumnsFilterModel = function (
 
   const setOperatorsDefaultValues = function () {
     operatorSetId(enumCompareOperators.TEXT_CONTAINS);
+    operatorSetCode(enumCompareOperators.TEXT_CONTAINS);
     operatorSetName(enumCompareOperators.TEXT_CONTAINS);
     operatorSetPurchasePrice(enumCompareOperators.NUMBER_EQUALS);
     operatorSetSalePrice(enumCompareOperators.NUMBER_EQUALS);
@@ -132,6 +141,7 @@ const getColumnsFilterModel = function (
 
   const clearFilters = function () {
     criteriaSetId("");
+    criteriaSetCode("");
     criteriaSetName("");
     criteriaSetPurchasePrice("");
     criteriaSetSalePrice("");
@@ -167,6 +177,8 @@ const getColumnsFilterModel = function (
       locationOperator: operatorLocation,
       barCodeCriteria: criteriaBarCode,
       barCodeOperator: operatorBarCode,
+      codeCriteria: criteriaCode,
+      codeOperator: operatorCode,
       createdByCriteria: criteriaCreatedBy,
       createdByOperator: operatorCreatedBy,
       updatedByCriteria: criteriaUpdatedBy,

@@ -36,11 +36,14 @@ function UserForm(props) {
   let age = isEdit && isEdit.data.age !== null ? isEdit.data.age : "";
   let sex = enumSex.MALE;
   let status = true;
+  let emailVerified = false;
   if (isEdit && isEdit.data && isEdit.data.sex !== null) {
     const userSex = isEdit.data.sex === i18n.userSexText.male ? enumSex.MALE : enumSex.FEMALE;
     const userStatus = isEdit.data.active === i18n.userStatus.active;
+    const userEmailVerified = isEdit.data.emailVerified === i18n.userEmailVerified.verified
     status = userStatus;
     sex = userSex;
+    emailVerified = userEmailVerified;
   }
   let occupation = isEdit && isEdit.data.occupation !== null ? isEdit.data.occupation : "";
   let telephone = isEdit && isEdit.data.telephone !== null ? isEdit.data.telephone : "";
@@ -128,6 +131,7 @@ function UserForm(props) {
       address: valueAddress,
       email: valueEmail,
       active: valueStatus,
+      emailVerified: emailVerified,
       createdBy: username,
       updatedBy: username,
     }

@@ -19,6 +19,7 @@ public interface IRepositoryProduct extends JpaRepository<EntityProduct, Long> {
   @Query(value = "SELECT "
       + "sales_products.id, "
       + "sales_products.quantity as stock, "
+      + "products.code, "
       + "products.name, "
       + "products.purchase_price, "
       + "products.sale_price, "

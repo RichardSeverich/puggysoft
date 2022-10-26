@@ -1,5 +1,6 @@
 const productForm = {
   title: "Registrar Producto",
+  fieldCode: "Codigo Producto",
   fieldName: "Nombre Producto",
   fieldPurchasePrice: "Precio de compra",
   fieldSalePrice: "Precio de venta",

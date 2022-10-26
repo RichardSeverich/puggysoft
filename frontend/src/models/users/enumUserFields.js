@@ -15,6 +15,7 @@ const TELEPHONE = "telephone"
 const ADDRESS = "address"
 const EMAIL = "email"
 const ACTIVE = "active"
+const EMAIL_VERIFIED = "emailVerified"
 const CREATED_BY = "createdBy"
 const UPDATED_BY = "updatedBy"
 const CREATION_DATE = "creationDate"
@@ -38,6 +39,7 @@ const enumUserFields = {
     ADDRESS,
     EMAIL,
     ACTIVE,
+    EMAIL_VERIFIED,
     CREATED_BY,
     UPDATED_BY,
     CREATION_DATE,

@@ -19,6 +19,7 @@ const getColumnsFilterModel = function (
     /*ADDRESS*/criteriaAddress, criteriaOnChangeAddress, criteriaSetAddress, operatorAddress, operatorOnChangeAddress, operatorSetAddress,
     /*EMAIL*/criteriaEmail, criteriaOnChangeEmail, criteriaSetEmail, operatorEmail, operatorOnChangeEmail, operatorSetEmail,
     /*STATUS*/criteriaStatus, criteriaOnChangeStatus, criteriaSetStatus, operatorStatus, operatorOnChangeStatus, operatorSetStatus,
+    /*EMAIL VERIFIED*/criteriaEmailVerified, criteriaOnChangeEmailVerified, criteriaSetEmailVerified, operatorEmailVerified, operatorOnChangeEmailVerified, operatorSetEmailVerified,
     /*CREATED BY*/criteriaCreatedBy, criteriaOnChangeCreatedBy, criteriaSetCreatedBy, operatorCreatedBy, operatorOnChangeCreatedBy, operatorSetCreatedBy,
     /*UPDATED BY*/criteriaUpdatedBy, criteriaOnChangeUpdatedBy, criteriaSetUpdatedBy, operatorUpdatedBy, operatorOnChangeUpdatedBy, operatorSetUpdatedBy,
     /*CREATED DATE*/criteriaCreatedDate, criteriaOnChangeCreatedDate, criteriaSetCreatedDate, operatorCreatedDate, operatorOnChangeCreatedDate, operatorSetCreatedDate,
@@ -149,6 +150,18 @@ const getColumnsFilterModel = function (
       ]
     },
     {
+      type: enumFilterType.DROPDOWN,
+      criteriaValue: criteriaEmailVerified,
+      criteriaOnchange: criteriaOnChangeEmailVerified,
+      operatorValue: operatorEmailVerified,
+      operatorOnchange: operatorOnChangeEmailVerified,
+      dropdownValues: [
+        { value: "", text: i18n.userEmailVerified.all },
+        { value: true, text: i18n.userEmailVerified.verified },
+        { value: false, text: i18n.userEmailVerified.noVerified }
+      ]
+    },
+    {
       type: enumFilterType.TEXTBOX,
       criteriaValue: criteriaCreatedBy,
       criteriaOnchange: criteriaOnChangeCreatedBy,
@@ -194,6 +207,7 @@ const getColumnsFilterModel = function (
     operatorSetAddress(enumCompareOperators.TEXT_CONTAINS);
     operatorSetEmail(enumCompareOperators.TEXT_CONTAINS);
     operatorSetStatus(enumCompareOperators.BOOLEAN_EQUALS);
+    operatorSetEmailVerified(enumCompareOperators.BOOLEAN_EQUALS);
     operatorSetCreatedBy(enumCompareOperators.TEXT_CONTAINS);
     operatorSetUpdatedBy(enumCompareOperators.TEXT_CONTAINS);
     operatorSetCreatedDate(enumCompareOperators.DATE_EQUALS)
@@ -216,6 +230,7 @@ const getColumnsFilterModel = function (
     criteriaSetAddress("");
     criteriaSetEmail("");
     criteriaSetStatus(""); // Empty means all
+    criteriaSetEmailVerified("");
     criteriaSetCreatedBy("");
     criteriaSetUpdatedBy("");
     criteriaSetCreatedDate("");
@@ -257,6 +272,8 @@ const getColumnsFilterModel = function (
       emailOperator: operatorEmail,
       activeCriteria: criteriaStatus,
       activeOperator: operatorStatus,
+      emailVerifiedCriteria: criteriaEmailVerified,
+      emailVerifiedOperator: operatorEmailVerified,
       createdByCriteria: criteriaCreatedBy,
       createdByOperator: operatorCreatedBy,
       updatedByCriteria: criteriaUpdatedBy,

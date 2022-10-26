@@ -37,6 +37,9 @@ public class DtoProductFilter {
   // MINIMUM STOCK
   public String minimumStockCriteria;
   public EnumCompareOperator minimumStockOperator;
+  // CODE
+  public String codeCriteria;
+  public EnumCompareOperator codeOperator;
   // CREATED BY
   @Size(max = 20)
   public String createdByCriteria;

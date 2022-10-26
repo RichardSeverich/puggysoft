@@ -6,6 +6,7 @@ const arrayDataFields = [
     type: enumTableFieldType.IMAGE
   },
   'id',
+  'code',
   'name',
   'purchasePrice',
   'salePrice',

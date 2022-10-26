@@ -31,6 +31,7 @@ public final class SqlUserFilterBuilderNative {
     query = query + SqlFilterBuilder.getFilterQuery("address", dtoUserFilter.addressCriteria, dtoUserFilter.addressOperator);
     query = query + SqlFilterBuilder.getFilterQuery("email", dtoUserFilter.emailCriteria, dtoUserFilter.emailOperator);
     query = query + SqlFilterBuilderBoolean.getFilterQuery("active", dtoUserFilter.activeCriteria, dtoUserFilter.activeOperator);
+    query = query + SqlFilterBuilderBoolean.getFilterQuery("email_verified", dtoUserFilter.emailVerifiedCriteria, dtoUserFilter.emailVerifiedOperator);
     query = query + SqlFilterBuilder.getFilterQuery("created_by", dtoUserFilter.createdByCriteria, dtoUserFilter.createdByOperator);
     query = query + SqlFilterBuilder.getFilterQuery("updated_by", dtoUserFilter.updatedByCriteria, dtoUserFilter.updatedByOperator);
     query = query + SqlFilterBuilder.getFilterQuery("creation_date", dtoUserFilter.creationDateCriteria, dtoUserFilter.creationDateOperator);
