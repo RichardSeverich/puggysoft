@@ -43,6 +43,8 @@ function SaleAddStepTwoProductSelection(props) {
     let saleQuantity = textboxElement.value;
     if (!saleQuantity || saleQuantity === '' || saleQuantity <= 0) {
       alert(i18n.saleErrorMessages.invalidQuantity);
+    } else if (saleQuantity > productData.stock) {
+      alert(i18n.saleErrorMessages.quantityGreaterThanStock);
     } else {
       setIsRequestInProgress(true);
       const body = {
