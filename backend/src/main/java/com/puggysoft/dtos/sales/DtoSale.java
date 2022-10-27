@@ -3,7 +3,6 @@ package com.puggysoft.dtos.sales;
 import com.puggysoft.dtos.DtoSuperClass;
 import com.puggysoft.entities.sales.EntitySale;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import lombok.Data;
 import lombok.EqualsAndHashCode;

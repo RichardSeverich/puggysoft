@@ -9,6 +9,8 @@ import "./common-table-styles.css"
 import enumFilterType from "../models/enumFilterType";
 import enumCompareOperators from "../models/enumCompareOperators";
 import enumTableFieldType from '../models/enumTableFieldType'
+import enumWebElements from './../models/enumWebElements'
+import { useState } from 'react'
 
 /**
  *  arrayData = [{},{},{},{}]
@@ -155,7 +157,7 @@ function CommonTable(props) {
           >
             {i18n.commonTable.deleteButton}
           </Button> </td>}
-        {getCustomRowButtons(data)}
+        {getCustomRowButtons(data, rowIndex)}
       </tr>
       return totalRows;
     })
@@ -175,16 +177,36 @@ function CommonTable(props) {
     )
   }
 
-  const getCustomRowButtons = (data) => {
+  const getCustomRowButtons = (data, rowIndex) => {
     if (arrayCustomRowButtons) {
-      // dataButton.variant, dataButton.handleCustom, dataButton.text
-      return arrayCustomRowButtons.map(function (dataButton, index) {
-        return <td key={'custom-button' + index}><Button
-          variant={dataButton.variant}
-          onClick={() => dataButton.handleCustom(data)}
-        >
-          {dataButton.text}
-        </Button></td>
+      /* 
+      dataElement.type === BUTTON
+        - dataElement.variant, 
+        - dataElement.handleCustom, 
+        - dataElement.text
+      dataElement.type === NUMBER_FIELD OR TEXT FIELD
+        - dataElement.type: text, number
+        - dataElement.placeholder
+      */
+      return arrayCustomRowButtons.map(function (dataElement, elementIndex) {
+        const textboxId = data.id ? "textbox-" + data.id : "textbox-" + rowIndex;
+        if (dataElement.type === enumWebElements.TEXTBOX) {
+          return <td key={'custom-field' + rowIndex + elementIndex}>
+            <Form.Group className="mb-3">
+              <Form.Control
+                id={textboxId}
+                type={dataElement.formType}
+                placeholder={dataElement.placeholder} />
+            </Form.Group>
+          </td >
+        } else {
+          return <td key={'custom-button' + rowIndex + elementIndex}><Button
+            variant={dataElement.variant}
+            onClick={() => dataElement.handleCustom(data, textboxId)}
+          >
+            {dataElement.text}
+          </Button></td>
+        }
       })
     }
   }

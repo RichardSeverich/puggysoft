@@ -25,6 +25,7 @@ import sellerTable from "./spanish/sales/sellerTable"
 import saleStatus from "./spanish/sales/saleStatus"
 import saleTable from "./spanish/sales/saleTable"
 import saleProductTable from "./spanish/sales/saleProductTable"
+import saleErrorMessages from "./spanish/sales/saleErrorMessages"
 // Hospital System
 import doctorUserForm from "./spanish/hospital/doctorUserForm"
 import doctorTable from "./spanish/hospital/doctorTable"
@@ -60,6 +61,7 @@ const i18n = {
   saleStatus,
   saleTable,
   saleProductTable,
+  saleErrorMessages,
   // Hospital System
   doctorUserForm,
   doctorTable,

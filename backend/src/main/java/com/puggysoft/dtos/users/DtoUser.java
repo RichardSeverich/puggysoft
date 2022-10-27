@@ -2,7 +2,7 @@ package com.puggysoft.dtos.users;
 
 import com.puggysoft.dtos.DtoSuperClass;
 import com.puggysoft.entities.users.EntityUser;
-import java.sql.Blob;
+// import java.sql.Blob;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;

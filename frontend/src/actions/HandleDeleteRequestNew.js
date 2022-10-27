@@ -2,7 +2,7 @@ import requestManager from "./../api/RequestManager"
 import messageManager from "./HandleErrorMessages";
 import i18n from "./../i18n/i18n";
 
-const handleDelete = (endpoint, callbak) => {
+const handleDelete = (endpoint, callbak, callbakOnCancel) => {
   const message = i18n.errorMessages.confirmModal;
   let result = window.confirm(message);
   if (result) {
@@ -12,6 +12,10 @@ const handleDelete = (endpoint, callbak) => {
         callbak(response.data);
       }
     });
+  } else {
+    if (callbakOnCancel) {
+      callbakOnCancel()
+    }
   }
 };
 

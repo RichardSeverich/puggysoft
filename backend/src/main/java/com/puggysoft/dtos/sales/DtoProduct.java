@@ -2,7 +2,6 @@ package com.puggysoft.dtos.sales;
 
 import com.puggysoft.dtos.DtoSuperClass;
 import com.puggysoft.entities.sales.EntityProduct;
-import java.sql.Blob;
 import javax.validation.constraints.NotNull;
 import lombok.Data;
 import lombok.EqualsAndHashCode;

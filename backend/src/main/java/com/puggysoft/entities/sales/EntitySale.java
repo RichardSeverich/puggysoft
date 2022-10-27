@@ -1,7 +1,6 @@
 package com.puggysoft.entities.sales;
 
 import com.puggysoft.entities.EntitySuperClass;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import lombok.Data;

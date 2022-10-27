@@ -1,7 +1,7 @@
 import requestManager from "./../api/RequestManager"
 import messageManager from "./HandleErrorMessages";
 
-const handleAddRequest = (endpoint, body, callback, showMessageOnSuccess = true) => {
+const handleAddRequest = (endpoint, body, callback, showMessageOnSuccess = true, callbackOnFail) => {
   requestManager.post(endpoint, body, (response) => {
     if (response && response.status === 201 && callback) {
       callback(response.data);
@@ -10,6 +10,9 @@ const handleAddRequest = (endpoint, body, callback, showMessageOnSuccess = true)
       }
     } else {
       messageManager.addMessages(response);
+      if (callbackOnFail) {
+        callbackOnFail(response)
+      }
     }
   });
 }

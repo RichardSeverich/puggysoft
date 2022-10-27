@@ -7,6 +7,7 @@ import CommonLoading from '../../components-level-1/CommonLoading';
 import arraySaleProductColumns from "../../models/sales/arraySaleProductColumns";
 import Form from 'react-bootstrap/Form'
 import Card from 'react-bootstrap/Card'
+import enumWebElements from './../../models/enumWebElements'
 
 import "./../css/all-two-divs-side-by-side.css"
 import "./../css/all-three-divs-side-by-side.css"
@@ -33,27 +34,41 @@ function SaleAddStepTwoProductSelection(props) {
     handleFilterRequest(`products/filter/size/${pageSize}`, filterBody, setTotalPages);
   }
 
-  function handleAfterAddProductToSale(salesProducts) {
+  function handleAfterAddProductToSale(salesProductsOrError) {
     setIsRequestInProgress(false);
   }
 
-  function handleAddProductToSale(productData,) {
-    setIsRequestInProgress(true);
-    const body = {
-      idSale: saleData.id,
-      idProduct: productData.id,
-      quantity: 1
+  function handleAddProductToSale(productData, textboxId) {
+    let textboxElement = document.getElementById(textboxId);
+    let saleQuantity = textboxElement.value;
+    if (!saleQuantity || saleQuantity === '' || saleQuantity <= 0) {
+      alert(i18n.saleErrorMessages.invalidQuantity);
+    } else {
+      setIsRequestInProgress(true);
+      const body = {
+        idSale: saleData.id,
+        idProduct: productData.id,
+        quantity: saleQuantity
+      }
+      handleAddRequest(`sales-products`, body, handleAfterAddProductToSale, true, handleAfterAddProductToSale)
     }
-    handleAddRequest(`sales-products`, body, handleAfterAddProductToSale)
   }
 
   const tableArrayCustomRowButtonsAddToSale = [
+    {
+      type: enumWebElements.TEXTBOX,
+      placeholder: "",
+      formType: "number"
+    },
     {
       variant: "primary",
       handleCustom: handleAddProductToSale,
       text: i18n.commonTable.addButton
     },
   ]
+
+  /*- dataElement.onChange
+  - dataElement.value*/
 
   // functions to delete products from a sale.
   function handleGetDataProductsToDelete(activePage, filterBody, updateArrayData) {
@@ -72,7 +87,7 @@ function SaleAddStepTwoProductSelection(props) {
     // NOTE: The STOCK filed of this ${productData} object is the quantity of sales_products.
     setIsRequestInProgress(true);
     const idRelation = productData.id;
-    handleDeleteRequestNew(`sales-products/${idRelation}`, handleAfterDeleteProductFromSale)
+    handleDeleteRequestNew(`sales-products/${idRelation}`, handleAfterDeleteProductFromSale, handleAfterDeleteProductFromSale)
   }
 
   const tableArrayCustomRowButtonsDeleteFromSale = [

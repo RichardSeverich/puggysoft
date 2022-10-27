@@ -36,14 +36,14 @@ public class ServiceProductPicture {
         String idString = String.valueOf(dto.getId());
         return ResponseEntity.status(HttpStatus.OK).body(idString);
       } catch (DataAccessException ex) {
-          String dbException = ex.getMostSpecificCause().getMessage();
-          return ResponseEntity.status(HttpStatus.CONFLICT).body(dbException);
+        String dbException = ex.getMostSpecificCause().getMessage();
+        return ResponseEntity.status(HttpStatus.CONFLICT).body(dbException);
       } catch (IOException ex) {
-          String ioException = ex.getMessage();
-          return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ioException);
+        String ioException = ex.getMessage();
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ioException);
       } catch (Exception ex) {
-          String genericException = ex.getMessage();
-          return ResponseEntity.status(HttpStatus.CONFLICT).body(genericException);
+        String genericException = ex.getMessage();
+        return ResponseEntity.status(HttpStatus.CONFLICT).body(genericException);
       }
     }
     return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
