@@ -12,10 +12,11 @@
 
 0. Install dependencies `npm install`.
 1. Configure: `.env` file
-2. Run app: `npm start`
+2. Run app: `npm start` `http://localhost:3000/`
 3. Run test: `npm test`
 4. Run Eject: `npm run eject`
 5. Build: `npm run build`
+6. Run Storybook: `npm run storybook`  `http://localhost:6006/`
 
 ## Documentation
 - React Bootstrap Documentation
@@ -34,3 +35,7 @@ https://react-icons.github.io/react-icons/
 3. GoogleChrome Zoom: 100%
 
 ## Images
+
+## Notes
+
+1. Initialization of storybook: `npx sb init`
