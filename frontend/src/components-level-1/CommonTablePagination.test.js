@@ -2,6 +2,7 @@ import { render } from '@testing-library/react';
 import CommonTablePagination from './CommonTablePagination';
 
 test('test common pagination table', () => {
+  const tableTitle = 'Common table example';
   const arrayData = [{
     "id": 1000,
     "username": "admin",
@@ -34,6 +35,7 @@ test('test common pagination table', () => {
     console.log("setTotalPages was clicked" + newPage);
   }
   const { container } = render(<CommonTablePagination
+    tableTitle={tableTitle}
     tableArrayData={arrayData}
     tableArrayDataFields={arrayDataFields}
     tableArrayColumns={arrayColumns}

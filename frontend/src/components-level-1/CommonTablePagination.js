@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types'
+
 import CommonPagination from './CommonPagination'
 import CommonTable from './CommonTable'
 
@@ -9,13 +11,15 @@ import CommonTable from './CommonTable'
 function CommonTablePagination(props) {
 
   const {
+    tableTitle,
     tableArrayData,
     tableArrayDataFields,
     tableArrayColumns,
-    tableTitle,
     tableHandleEdit,
     tableHandleDelete,
     tableArrayCustomRowButtons,
+    tableHandleExportExcel,
+    tableHandleExportPdf,
     paginationTotalPages,
     paginationNumberPagesToShow,
     paginationInitialPage,
@@ -39,6 +43,8 @@ function CommonTablePagination(props) {
         arrayCustomRowButtons={tableArrayCustomRowButtons}
         handleEdit={tableHandleEdit}
         handleDelete={tableHandleDelete}
+        handleExportExcel={tableHandleExportExcel}
+        handleExportPdf={tableHandleExportPdf}
         filterArrayColumns={filterArrayColumns}
         filterClear={filterClear}
         filterHandler={filterHandler}
@@ -59,3 +65,54 @@ function CommonTablePagination(props) {
 }
 
 export default CommonTablePagination;
+
+CommonTablePagination.propTypes = {
+  // Table
+  tableTitle: PropTypes.string,
+  tableArrayData: PropTypes.array,
+  tableArrayDataFields: PropTypes.array,
+  tableArrayColumns: PropTypes.array,
+  tableArrayCustomRowButtons: PropTypes.array,
+  tableHandleEdit: PropTypes.func,
+  tableHandleDelete: PropTypes.func,
+  tableHandleExportExcel: PropTypes.func,
+  tableHandleExportPdf: PropTypes.func,
+  // Pagination
+  paginationTotalPages: PropTypes.number,
+  paginationNumberPagesToShow: PropTypes.number,
+  paginationInitialPage: PropTypes.number,
+  paginationActivePage: PropTypes.number,
+  paginationSetArrayData: PropTypes.func,
+  paginationSetTotalPages: PropTypes.func,
+  paginationSetActivePage: PropTypes.func,
+  paginationSetInitialPage: PropTypes.func,
+  // Filter
+  filterArrayColumns: PropTypes.array,
+  filterClear: PropTypes.func,
+  filterHandler: PropTypes.func,
+}
+
+CommonTablePagination.defaultProps = {
+  tableTitle: 'Common pagination table title',
+  tableArrayData: [],
+  tableArrayDataFields: [],
+  tableArrayColumns: [],
+  tableArrayCustomRowButtons: [],
+  tableHandleEdit: undefined,
+  tableHandleDelete: undefined,
+  tableHandleExportExcel: undefined,
+  tableHandleExportPdf: undefined,
+  // Pagination
+  paginationTotalPages: 10,
+  paginationNumberPagesToShow: 10,
+  paginationInitialPage: 1,
+  paginationActivePage: 1,
+  paginationSetArrayData: () => { },
+  paginationSetTotalPages: () => { },
+  paginationSetActivePage: () => { },
+  paginationSetInitialPage: () => { },
+  // Filter
+  filterArrayColumns: [],
+  filterClear: () => { },
+  filterHandler: () => { },
+}

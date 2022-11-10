@@ -1,3 +1,6 @@
+import React from 'react';
+import PropTypes from 'prop-types'
+
 import Table from 'react-bootstrap/Table'
 import Button from 'react-bootstrap/Button'
 import Card from 'react-bootstrap/Card'
@@ -10,7 +13,6 @@ import enumFilterType from "../models/enumFilterType";
 import enumCompareOperators from "../models/enumCompareOperators";
 import enumTableFieldType from '../models/enumTableFieldType'
 import enumWebElements from './../models/enumWebElements'
-import { useState } from 'react'
 
 /**
  *  arrayData = [{},{},{},{}]
@@ -218,8 +220,14 @@ function CommonTable(props) {
         <Card.Body>
           <div className='puggysoft-table-actions'>
             {filterArrayColumns && filterArrayColumns.length > 0 && filterActionButtons()}
-            {handleExportExcel && <Button variant="primary puggysoft-excel-export-button">{i18n.commonTable.excelExportButton}</Button>}
-            {handleExportPdf && <Button variant="success puggysoft-pdf-export-button">{i18n.commonTable.pdfExportButton}</Button>}
+            {handleExportExcel && <Button
+              onClick={handleExportExcel}
+              variant="primary puggysoft-excel-export-button">
+              {i18n.commonTable.excelExportButton}</Button>}
+            {handleExportPdf && <Button
+              onClick={handleExportPdf}
+              variant="success puggysoft-pdf-export-button">
+              {i18n.commonTable.pdfExportButton}</Button>}
           </div>
           <Table striped bordered hover responsive={true}>
             <thead>
@@ -241,3 +249,33 @@ function CommonTable(props) {
 }
 
 export default CommonTable;
+
+CommonTable.propTypes = {
+  tableTitle: PropTypes.string,
+  arrayData: PropTypes.array,
+  arrayColumns: PropTypes.array,
+  arrayDataFields: PropTypes.array,
+  arrayCustomRowButtons: PropTypes.array,
+  handleEdit: PropTypes.func,
+  handleDelete: PropTypes.func,
+  handleExportExcel: PropTypes.func,
+  handleExportPdf: PropTypes.func,
+  filterArrayColumns: PropTypes.array,
+  filterClear: PropTypes.func,
+  filterHandler: PropTypes.func,
+}
+
+CommonTable.defaultProps = {
+  tableTitle: 'Common table title',
+  arrayData: [],
+  arrayColumns: [],
+  arrayDataFields: [],
+  arrayCustomRowButtons: [],
+  handleEdit: undefined,
+  handleDelete: undefined,
+  handleExportExcel: undefined,
+  handleExportPdf: undefined,
+  filterArrayColumns: [],
+  filterClear: () => { },
+  filterHandler: () => { },
+}
