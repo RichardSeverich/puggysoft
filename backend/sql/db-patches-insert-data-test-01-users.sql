@@ -109,8 +109,8 @@ INSERT INTO users_roles (id_user, id_role, created_by) VALUES (1002, 1003, "admi
 INSERT INTO users_roles (id_user, id_role, created_by) VALUES (1003, 1004, "admin"); -- hospital - patient.
 INSERT INTO users_roles (id_user, id_role, created_by) VALUES (1004, 1005, "admin"); -- hospital - tickets admin.
 INSERT INTO users_roles (id_user, id_role, created_by) VALUES (1005, 1006, "admin"); -- Admin sales
-INSERT INTO users_roles (id_user, id_role, created_by) VALUES (1006, 1007, "admin"); -- sales seller
-INSERT INTO users_roles (id_user, id_role, created_by) VALUES (1007, 1008, "admin"); -- sales client
+INSERT INTO users_roles (id_user, id_role, created_by) VALUES (1007, 1007, "admin"); -- sales client
+INSERT INTO users_roles (id_user, id_role, created_by) VALUES (1006, 1008, "admin"); -- sales seller
 
 
 -- HOSPITAL

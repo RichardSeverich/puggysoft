@@ -1,6 +1,6 @@
 import { useHistory } from "react-router";
 import { useState } from "react";
-import UserTableFilterGenericByRole from "./../generic/UserTableFilterGenericByRole";
+import UserTableFilterGenericByRoleReduced from "./../generic/UserTableFilterGenericByRoleReduced";
 import enumRoles from "./../../models/users/enumRoles"
 import enumSaleStatus from "./../../models/sales/enumSaleStatus"
 import { handleAddRequest, handleGetRequest } from "../../actions/HandleManager";
@@ -56,12 +56,12 @@ function SaleAddStepOneClientSelection() {
   }
 
   return (
-    <UserTableFilterGenericByRole
+    <UserTableFilterGenericByRoleReduced
       roleName={roleName}
       tableTitle={tableTitle}
       tableArrayCustomRowButtons={tableArrayCustomRowButtons}
     >
-    </UserTableFilterGenericByRole>
+    </UserTableFilterGenericByRoleReduced>
   )
 }
 
