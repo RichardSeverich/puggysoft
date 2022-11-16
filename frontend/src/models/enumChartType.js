@@ -1,0 +1,9 @@
+const CHART_HORIZONTAL_BAR = "CHART_HORIZONTAL_BAR"
+const CHART_VERTICAL_BAR = "CHART_VERTICAL_BAR"
+
+const enumChartType = {
+  CHART_HORIZONTAL_BAR,
+  CHART_VERTICAL_BAR
+}
+
+export default enumChartType;

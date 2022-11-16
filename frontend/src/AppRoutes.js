@@ -27,6 +27,7 @@ import SellerTableFilterSelectionToDetailsPage from "./components-level-3/sales/
 import SaleTableFilterEditDeleteDetails from "./components-level-3/sales/SaleTableFilterEditDeleteDetails"
 import SaleAddStepOnePage from "./components-level-3/sales/SaleAddStepOnePage"
 import SaleAddStepTwoPage from "./components-level-3/sales/SaleAddStepTwoPage"
+import SaleReportQuantityPage from "./components-level-3/sales/SaleReportQuantityPage"
 
 // Hospital System
 import DoctorUserFormPage from "./components-level-3/hospital/DoctorUserFormPage";
@@ -61,6 +62,7 @@ const AppRoutes = () => (
       <Route exact path={enumPaths.SALES_SALES_TABLE_FILTER_TO_EDIT_DELETE_DETAILS} component={SaleTableFilterEditDeleteDetails} />
       <Route exact path={enumPaths.SALES_REGISTRATION_STEP_ONE} component={SaleAddStepOnePage} />
       <Route exact path={enumPaths.SALES_REGISTRATION_STEP_TWO} component={SaleAddStepTwoPage} />
+      <Route exact path={enumPaths.SALES_REPORT_QUANTITY} component={SaleReportQuantityPage} />
       {/** Hospital System*/}
       <Route exact path={enumPaths.HOSPITAL_DOCTOR_USER_FORM} component={DoctorUserFormPage} />
       <Route exact path={enumPaths.HOSPITAL_DOCTOR_USER_TABLE_TO_DETAILS} component={DoctorUserTableToDetailsPage} />

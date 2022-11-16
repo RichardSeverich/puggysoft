@@ -14,7 +14,13 @@ import {
 } from 'react-icons/fa';
 import { AiOutlineUserAdd, AiOutlineTable, AiOutlineIdcard } from 'react-icons/ai';
 import { GrAddCircle, GrProductHunt, GrDocumentConfig } from 'react-icons/gr';
-import { BsCartCheckFill, BsFillBagCheckFill, BsFillBarChartFill } from 'react-icons/bs';
+import {
+  BsCartCheckFill,
+  BsFillBagCheckFill,
+  BsFillBarChartFill,
+  BsCashCoin,
+  BsCoin,
+} from 'react-icons/bs';
 import { RiLoginCircleLine, RiUser2Fill, RiShieldKeyholeFill } from 'react-icons/ri';
 import { MdOutlineSettingsSuggest, MdAdminPanelSettings } from 'react-icons/md';
 import { GoCalendar } from 'react-icons/go';
@@ -78,6 +84,7 @@ function NavBar() {
   const navigateSellerTableFilter = () => { history.push(enumPaths.SALES_SELLER_TABLE_FILTER_TO_DETAILS); }
   const navigateSalesTableFilter = () => { history.push(enumPaths.SALES_SALES_TABLE_FILTER_TO_EDIT_DELETE_DETAILS); }
   const navigateSalesRegistrationStepOne = () => { history.push(enumPaths.SALES_REGISTRATION_STEP_ONE); }
+  const navigateSalesReportQuantityAnnual = () => { history.push(enumPaths.SALES_REPORT_QUANTITY); }
 
   // ******* ******* ******* HOSPITAL SYSTEM ******* ******* *******
   const navigateDoctorUserForm = () => { history.push(enumPaths.HOSPITAL_DOCTOR_USER_FORM); }
@@ -147,9 +154,18 @@ function NavBar() {
   const salesShowCardLabel = (<><AiOutlineIdcard /> {i18n.navBar.salesShowCard}</>)
   // REPORTS
   const reportAdminLabel = (<><BsFillBarChartFill /> {i18n.navBar.reportAdmin}</>)
-  const reportByWeek = (<><FaChartLine /> {i18n.navBar.reportRevenueAnnual}</>)
-  const reportByMonth = (<><FaChartLine /> {i18n.navBar.reportSalesAnnual}</>)
-  const reportByDate = (<><FaChartLine /> {i18n.navBar.reportRevenueByDate}</>)
+  const reportQuantityAnnual = (<><FaChartLine /> {i18n.navBar.reportQuantityAnnual}</>)
+  const reportQuantityAnnualCompare = (<><FaChartLine /> {i18n.navBar.reportQuantityAnnualCompare}</>)
+  const reportRevenueAnnual = (<><BsCoin /> {i18n.navBar.reportRevenueAnnual}</>)
+  const reportRevenueAnnualCompare = (<><BsCoin /> {i18n.navBar.reportRevenueAnnualCompare}</>)
+  const reportProfitAnnual = (<><BsCashCoin /> {i18n.navBar.reportProfitAnnual}</>)
+  const reportProfitAnnualCompare = (<><BsCashCoin /> {i18n.navBar.reportProfitAnnualCompare}</>)
+  const reportQuantityPerProduct = (<><FaChartLine /> {i18n.navBar.reportQuantityPerProduct}</>)
+  const reportQuantityPerProductCompare = (<><FaChartLine /> {i18n.navBar.reportQuantityPerProductCompare}</>)
+  const reportRevenuePerProduct = (<><BsCoin /> {i18n.navBar.reportRevenuePerProduct}</>)
+  const reportRevenuePerProductCompare = (<><BsCoin /> {i18n.navBar.reportRevenuePerProductCompare}</>)
+  const reportProfitPerProductAnnual = (<><BsCashCoin /> {i18n.navBar.reportProfitPerProductAnnual}</>)
+  const reportProfitPerProductAnnualCompare = (<><BsCashCoin /> {i18n.navBar.reportProfitPerProductAnnualCompare}</>)
 
   // ******* ******* ******* HOSPITAL SYSTEM ******* ******* *******
   // DOCTORS
@@ -192,9 +208,7 @@ function NavBar() {
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="container-fluid">
           {/* ******* ******* ******* USERS SYSTEM ******* ******* ********/}
-          {(userRoles.includes(enumRoles.ADMIN_USERS)
-            || userRoles.includes(enumRoles.HOSPITAL_ADMIN)
-            || userRoles.includes(enumRoles.SALES_ADMIN))
+          {userRoles.includes(enumRoles.ADMIN_USERS)
             && <NavDropdown title={userAdminLabel}>
               <NavDropdown.Item onClick={navigateUsersForm} >{userRegistrationLabel}</NavDropdown.Item>
               <NavDropdown.Item onClick={navigateUsersTableFilterEditDelete}>{userShowTableFilterEditDeleteLabel}</NavDropdown.Item>
@@ -203,18 +217,14 @@ function NavBar() {
               <NavDropdown.Item onClick={navigateUsersTableFilter}>{userShowTableFilterFullDataLabel}</NavDropdown.Item>
               <NavDropdown.Item onClick={navigateGeneric}>{userShowCardLabel}</NavDropdown.Item>
             </NavDropdown>}
-          {(userRoles.includes(enumRoles.ADMIN_USERS)
-            || userRoles.includes(enumRoles.HOSPITAL_ADMIN)
-            || userRoles.includes(enumRoles.SALES_ADMIN))
+          {userRoles.includes(enumRoles.ADMIN_USERS)
             && <NavDropdown title={rolesAdminLabel}>
               {/*<NavDropdown.Item onClick={navigateGeneric}>{roleRegistrationLabel}</NavDropdown.Item>*/}
               <NavDropdown.Item onClick={navigateRolesTable}>{roleShowTableLabel}</NavDropdown.Item>
               <NavDropdown.Item onClick={navigateRolesTableFilter}>{roleShowTableFilterLabel}</NavDropdown.Item>
               <NavDropdown.Item onClick={navigateGeneric}>{roleShowCardLabel}</NavDropdown.Item>
             </NavDropdown>}
-          {(userRoles.includes(enumRoles.ADMIN_USERS)
-            || userRoles.includes(enumRoles.HOSPITAL_ADMIN)
-            || userRoles.includes(enumRoles.SALES_ADMIN))
+          {userRoles.includes(enumRoles.ADMIN_USERS)
             && <NavDropdown title={roleUserAdminLabel}>
               <NavDropdown.Item onClick={navigateRolesTableSelection}>{roleUserCrudByRoleLabel}</NavDropdown.Item>
               <NavDropdown.Item onClick={navigateUserTableSelectionForRoles}>{roleUserCrudByUserLabel}</NavDropdown.Item>
@@ -259,9 +269,18 @@ function NavBar() {
             </NavDropdown>}
           {userRoles.includes(enumRoles.SALES_ADMIN) &&
             <NavDropdown title={reportAdminLabel}>
-              <NavDropdown.Item onClick={navigateGeneric}>{reportByWeek}</NavDropdown.Item>
-              <NavDropdown.Item onClick={navigateGeneric}>{reportByMonth}</NavDropdown.Item>
-              <NavDropdown.Item onClick={navigateGeneric}>{reportByDate}</NavDropdown.Item>
+              <NavDropdown.Item onClick={navigateSalesReportQuantityAnnual}>{reportQuantityAnnual}</NavDropdown.Item>
+              <NavDropdown.Item onClick={navigateGeneric}>{reportQuantityAnnualCompare}</NavDropdown.Item>
+              <NavDropdown.Item onClick={navigateGeneric}>{reportRevenueAnnual}</NavDropdown.Item>
+              <NavDropdown.Item onClick={navigateGeneric}>{reportRevenueAnnualCompare}</NavDropdown.Item>
+              <NavDropdown.Item onClick={navigateGeneric}>{reportProfitAnnual}</NavDropdown.Item>
+              <NavDropdown.Item onClick={navigateGeneric}>{reportProfitAnnualCompare}</NavDropdown.Item>
+              <NavDropdown.Item onClick={navigateGeneric}>{reportQuantityPerProduct}</NavDropdown.Item>
+              <NavDropdown.Item onClick={navigateGeneric}>{reportQuantityPerProductCompare}</NavDropdown.Item>
+              <NavDropdown.Item onClick={navigateGeneric}>{reportRevenuePerProduct}</NavDropdown.Item>
+              <NavDropdown.Item onClick={navigateGeneric}>{reportRevenuePerProductCompare}</NavDropdown.Item>
+              <NavDropdown.Item onClick={navigateGeneric}>{reportProfitPerProductAnnual}</NavDropdown.Item>
+              <NavDropdown.Item onClick={navigateGeneric}>{reportProfitPerProductAnnualCompare}</NavDropdown.Item>
             </NavDropdown>}
 
           {/* ******* ******* ******* HOSPITAL SYSTEM ******* ******* ********/}

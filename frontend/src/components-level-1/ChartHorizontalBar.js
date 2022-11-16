@@ -11,20 +11,22 @@ const ChartVerticalBar = ({
     responsive: true,
     plugins: {
       legend: {
-        position: 'top',
+        position: 'right',
       },
       title: {
         display: true,
         text: title,
       },
     },
+    indexAxis: 'y'
   };
 
   return (
     <ChartBar
-      options={options}
       labels={labels}
-      datasets={datasets} />
+      datasets={datasets}
+      options={options}
+    />
   )
 }
 

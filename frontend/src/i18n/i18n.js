@@ -4,6 +4,8 @@ import navBar from "./spanish/navBar"
 import commonTable from "./spanish/commonTable"
 import errorMessages from "./spanish/errorMessages"
 import trueFalse from "./spanish/trueFalse"
+import commonReport from './spanish/commonReport'
+import commonMonths from './spanish/commonMonths'
 // Users System
 import userTable from "./spanish/users/userTable"
 import userForm from "./spanish/users/userForm"
@@ -40,6 +42,8 @@ const i18n = {
   commonTable,
   errorMessages,
   trueFalse,
+  commonReport,
+  commonMonths,
   // Users System
   userForm,
   userTable,

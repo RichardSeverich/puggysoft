@@ -57,9 +57,20 @@ const navBar = {
   salesShowCard: "Mostrar Ventas (Tarjetas)",
   // Report
   reportAdmin: "Reportes",
-  reportRevenueAnnual: "Reporte de Ingresos anuales",
-  reportSalesAnnual: "Reporte de Ventas anuales",
-  reportRevenueByDate: "Reporte de Ingresos por fecha",
+  // GENERAL
+  reportQuantityAnnual: "Reporte de cantidad de ventas anual",
+  reportQuantityAnnualCompare: "Reporte de cantidad de ventas anual (Comparativo)",
+  reportRevenueAnnual: "Reporte de ingresos brutos de ventas anual",
+  reportRevenueAnnualCompare: "Reporte de ingresos brutos de ventas anual (Comparativo)",
+  reportProfitAnnual: "Reporte de ganancias de ventas anual",
+  reportProfitAnnualCompare: "Reporte de ganancias de ventas anual (Comparativo)",
+  // PER PRODUCT
+  reportQuantityPerProduct: "Reporte de cantidad de ventas anual por producto",
+  reportQuantityPerProductCompare: "Reporte de cantidad de ventas anual por producto (Comparativo)",
+  reportRevenuePerProduct: "Reporte de ingresos brutos de ventas anual por producto",
+  reportRevenuePerProductCompare: "Reporte de ingresos brutos de ventas anual por producto (Comparativo)",
+  reportProfitPerProductAnnual: "Reporte de ganancias de ventas anual por producto",
+  reportProfitPerProductAnnualCompare: "Reporte de ganancias de ventas anual por producto (Comparativo)",
 
   // ******* ******* HOSPITAL SYSTEM ******* *******
   // Doctors
