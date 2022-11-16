@@ -25,6 +25,11 @@ const SALES_SALES_TABLE_FILTER_TO_EDIT_DELETE_DETAILS = "/sales-table-filter-edi
 const SALES_REGISTRATION_STEP_ONE = "/sales-registration-step-one"
 const SALES_REGISTRATION_STEP_TWO = "/sales-registration-step-two"
 const SALES_REPORT_QUANTITY = "/sales-report-quantity"
+const SALES_REPORT_QUANTITY_COMP = "/sales-report-quantity-comparative"
+const SALES_REPORT_REVENUE = "/sales-report-revenue"
+const SALES_REPORT_REVENUE_COMP = "/sales-report-revenue-comparative"
+const SALES_REPORT_PROFIT = "/sales-report-profit"
+const SALES_REPORT_PROFIT_COMP = "/sales-report-profit-comparative"
 
 // HOSPITAL SYSTEM
 const HOSPITAL_DOCTOR_USER_FORM = "/hospital-doctor-user-form"
@@ -60,6 +65,11 @@ const enumPaths = {
   SALES_REGISTRATION_STEP_ONE,
   SALES_REGISTRATION_STEP_TWO,
   SALES_REPORT_QUANTITY,
+  SALES_REPORT_QUANTITY_COMP,
+  SALES_REPORT_REVENUE,
+  SALES_REPORT_REVENUE_COMP,
+  SALES_REPORT_PROFIT,
+  SALES_REPORT_PROFIT_COMP,
   // HOSPITAL SYSTEM
   HOSPITAL_DOCTOR_USER_FORM,
   HOSPITAL_DOCTOR_USER_TABLE,

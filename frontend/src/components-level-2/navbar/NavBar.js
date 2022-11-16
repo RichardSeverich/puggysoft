@@ -85,6 +85,11 @@ function NavBar() {
   const navigateSalesTableFilter = () => { history.push(enumPaths.SALES_SALES_TABLE_FILTER_TO_EDIT_DELETE_DETAILS); }
   const navigateSalesRegistrationStepOne = () => { history.push(enumPaths.SALES_REGISTRATION_STEP_ONE); }
   const navigateSalesReportQuantityAnnual = () => { history.push(enumPaths.SALES_REPORT_QUANTITY); }
+  const navigateSalesReportQuantityAnnualComp = () => { history.push(enumPaths.SALES_REPORT_QUANTITY_COMP); }
+  const navigateSalesReportRevenueAnnual = () => { history.push(enumPaths.SALES_REPORT_REVENUE); }
+  const navigateSalesReportRevenueAnnualComp = () => { history.push(enumPaths.SALES_REPORT_REVENUE_COMP); }
+  const navigateSalesReportProfitAnnual = () => { history.push(enumPaths.SALES_REPORT_PROFIT); }
+  const navigateSalesReportProfitAnnualComp = () => { history.push(enumPaths.SALES_REPORT_PROFIT_COMP); }
 
   // ******* ******* ******* HOSPITAL SYSTEM ******* ******* *******
   const navigateDoctorUserForm = () => { history.push(enumPaths.HOSPITAL_DOCTOR_USER_FORM); }
@@ -270,11 +275,11 @@ function NavBar() {
           {userRoles.includes(enumRoles.SALES_ADMIN) &&
             <NavDropdown title={reportAdminLabel}>
               <NavDropdown.Item onClick={navigateSalesReportQuantityAnnual}>{reportQuantityAnnual}</NavDropdown.Item>
-              <NavDropdown.Item onClick={navigateGeneric}>{reportQuantityAnnualCompare}</NavDropdown.Item>
-              <NavDropdown.Item onClick={navigateGeneric}>{reportRevenueAnnual}</NavDropdown.Item>
-              <NavDropdown.Item onClick={navigateGeneric}>{reportRevenueAnnualCompare}</NavDropdown.Item>
-              <NavDropdown.Item onClick={navigateGeneric}>{reportProfitAnnual}</NavDropdown.Item>
-              <NavDropdown.Item onClick={navigateGeneric}>{reportProfitAnnualCompare}</NavDropdown.Item>
+              <NavDropdown.Item onClick={navigateSalesReportQuantityAnnualComp}>{reportQuantityAnnualCompare}</NavDropdown.Item>
+              <NavDropdown.Item onClick={navigateSalesReportRevenueAnnual}>{reportRevenueAnnual}</NavDropdown.Item>
+              <NavDropdown.Item onClick={navigateSalesReportRevenueAnnualComp}>{reportRevenueAnnualCompare}</NavDropdown.Item>
+              <NavDropdown.Item onClick={navigateSalesReportProfitAnnual}>{reportProfitAnnual}</NavDropdown.Item>
+              <NavDropdown.Item onClick={navigateSalesReportProfitAnnualComp}>{reportProfitAnnualCompare}</NavDropdown.Item>
               <NavDropdown.Item onClick={navigateGeneric}>{reportQuantityPerProduct}</NavDropdown.Item>
               <NavDropdown.Item onClick={navigateGeneric}>{reportQuantityPerProductCompare}</NavDropdown.Item>
               <NavDropdown.Item onClick={navigateGeneric}>{reportRevenuePerProduct}</NavDropdown.Item>

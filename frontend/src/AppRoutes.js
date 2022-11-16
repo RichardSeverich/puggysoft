@@ -28,6 +28,11 @@ import SaleTableFilterEditDeleteDetails from "./components-level-3/sales/SaleTab
 import SaleAddStepOnePage from "./components-level-3/sales/SaleAddStepOnePage"
 import SaleAddStepTwoPage from "./components-level-3/sales/SaleAddStepTwoPage"
 import SaleReportQuantityPage from "./components-level-3/sales/SaleReportQuantityPage"
+import SaleReportQuantityCompPage from "./components-level-3/sales/SaleReportQuantityCompPage"
+import SaleReportRevenuePage from "./components-level-3/sales/SaleReportRevenuePage"
+import SaleReportRevenueCompPage from "./components-level-3/sales/SaleReportRevenueCompPage"
+import SaleReportProfitPage from "./components-level-3/sales/SaleReportProfitPage"
+import SaleReportProfitCompPage from "./components-level-3/sales/SaleReportProfitCompPage"
 
 // Hospital System
 import DoctorUserFormPage from "./components-level-3/hospital/DoctorUserFormPage";
@@ -63,6 +68,11 @@ const AppRoutes = () => (
       <Route exact path={enumPaths.SALES_REGISTRATION_STEP_ONE} component={SaleAddStepOnePage} />
       <Route exact path={enumPaths.SALES_REGISTRATION_STEP_TWO} component={SaleAddStepTwoPage} />
       <Route exact path={enumPaths.SALES_REPORT_QUANTITY} component={SaleReportQuantityPage} />
+      <Route exact path={enumPaths.SALES_REPORT_QUANTITY_COMP} component={SaleReportQuantityCompPage} />
+      <Route exact path={enumPaths.SALES_REPORT_REVENUE} component={SaleReportRevenuePage} />
+      <Route exact path={enumPaths.SALES_REPORT_REVENUE_COMP} component={SaleReportRevenueCompPage} />
+      <Route exact path={enumPaths.SALES_REPORT_PROFIT} component={SaleReportProfitPage} />
+      <Route exact path={enumPaths.SALES_REPORT_PROFIT_COMP} component={SaleReportProfitCompPage} />
       {/** Hospital System*/}
       <Route exact path={enumPaths.HOSPITAL_DOCTOR_USER_FORM} component={DoctorUserFormPage} />
       <Route exact path={enumPaths.HOSPITAL_DOCTOR_USER_TABLE_TO_DETAILS} component={DoctorUserTableToDetailsPage} />

@@ -4,7 +4,7 @@ import SaleReportQuantity from './../../components-level-2/sales/SaleReportQuant
 function SaleReportQuantityPage() {
 
   return (
-    <div className="sales-registration-step-one-page">
+    <div className="sales-report">
       <NavBar></NavBar>
       <SaleReportQuantity></SaleReportQuantity>
     </div>

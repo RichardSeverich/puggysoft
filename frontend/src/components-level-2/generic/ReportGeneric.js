@@ -20,7 +20,7 @@ function ReportGeneric({
 }) {
   const [chartType, setChartType] = useState(enumChartType.CHART_VERTICAL_BAR);
   const [yearOne, setYearOne] = useState(2021);
-  const [yearTwo, setYearTwo] = useState(2022);
+  const [yearTwo, setYearTwo] = useState(enableTwoYears ? 2022 : null);
   const [datasets, setDatasets] = useState([]);
   let datasetAux = [];
   const labels = [
