@@ -12,7 +12,6 @@ import {
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
 
-
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -22,7 +21,7 @@ ChartJS.register(
   Legend
 );
 
-const ChartVerticalBar = ({
+const ChartBar = ({
   options,
   labels,
   datasets
@@ -38,15 +37,15 @@ const ChartVerticalBar = ({
   )
 }
 
-export default ChartVerticalBar;
+export default ChartBar;
 
-ChartVerticalBar.propTypes = {
+ChartBar.propTypes = {
   labels: PropTypes.array,
   datasets: PropTypes.array,
   options: PropTypes.object
 }
 
-ChartVerticalBar.defaultProps = {
+ChartBar.defaultProps = {
   labels: [],
   datasets: [],
   options: {}

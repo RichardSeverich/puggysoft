@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 
 import ChartVerticalBar from "./../../components-level-1/ChartVerticalBar";
 import ChartHorizontalBar from "./../../components-level-1/ChartHorizontalBar";
+import ChartLine from "./../../components-level-1/ChartLine";
 
 import enumChartType from './../../models/enumChartType'
 import i18n from "../../i18n/i18n";
@@ -44,7 +45,8 @@ function ReportGeneric({
         {
           label: i18n.commonReport.year + yearOne,
           data: getData(reportData),
-          backgroundColor: 'rgba(0, 0, 255, 0.6)',
+          borderColor: 'rgb(53, 162, 235)',
+          backgroundColor: 'rgba(53, 162, 235, 0.5)',
         }
       ]
       if (enableTwoYears) {
@@ -62,7 +64,8 @@ function ReportGeneric({
         {
           label: i18n.commonReport.year + yearTwo,
           data: getData(reportData),
-          backgroundColor: 'rgba(54, 162, 235, 0.2)',
+          borderColor: 'rgb(255, 99, 132)',
+          backgroundColor: 'rgba(255, 99, 132, 0.5)',
         }
       ]
       setDatasets([...datasetAux, ...newDatasets]);
@@ -164,6 +167,10 @@ function ReportGeneric({
                     value={enumChartType.CHART_HORIZONTAL_BAR}>
                     {i18n.commonReport.chartHorizontalBar}
                   </option>
+                  <option key='option-line'
+                    value={enumChartType.CHART_LINE}>
+                    {i18n.commonReport.chartLine}
+                  </option>
                 </Form.Select></div>
               </Form.Group>
             </div>
@@ -195,6 +202,15 @@ function ReportGeneric({
           datasets={datasets}
         >
         </ChartVerticalBar>
+      }
+
+      {chartType === enumChartType.CHART_LINE &&
+        <ChartLine
+          title=""
+          labels={labels}
+          datasets={datasets}
+        >
+        </ChartLine>
       }
     </div >
   )

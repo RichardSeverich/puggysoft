@@ -7,6 +7,7 @@ const commonReport = {
   selectChar: "Tipo de grafico",
   chartVerticallBar: "Barras Vertical",
   chartHorizontalBar: "Barras Horizontal",
+  chartLine: "Lineas",
 };
 
 export default commonReport;
