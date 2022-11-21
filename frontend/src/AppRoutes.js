@@ -33,6 +33,18 @@ import SaleReportRevenuePage from "./components-level-3/sales/SaleReportRevenueP
 import SaleReportRevenueCompPage from "./components-level-3/sales/SaleReportRevenueCompPage"
 import SaleReportProfitPage from "./components-level-3/sales/SaleReportProfitPage"
 import SaleReportProfitCompPage from "./components-level-3/sales/SaleReportProfitCompPage"
+import ProductTableToQuantityReportPage from "./components-level-3/sales/ProductTableToQuantityReportPage"
+import ProductTableToQuantityComparativeReportPage from "./components-level-3/sales/ProductTableToQuantityComparativeReportPage"
+import ProductTableToRevenueReportPage from "./components-level-3/sales/ProductTableToRevenueReportPage"
+import ProductTableToRevenueComparativeReportPage from "./components-level-3/sales/ProductTableToRevenueComparativeReportPage"
+import ProductTableToProfitReportPage from "./components-level-3/sales/ProductTableToProfitReportPage"
+import ProductTableToProfitComparativeReportPage from "./components-level-3/sales/ProductTableToProfitComparativeReportPage"
+import SaleReportQuantityByProductPage from "./components-level-3/sales/SaleReportQuantityByProductPage"
+import SaleReportQuantityComparativeByProductPage from "./components-level-3/sales/SaleReportQuantityComparativeByProductPage"
+import SaleReportRevenueByProductPage from "./components-level-3/sales/SaleReportRevenueByProductPage"
+import SaleReportRevenueComparativeByProductPage from "./components-level-3/sales/SaleReportRevenueComparativeByProductPage"
+import SaleReportProfitByProductPage from "./components-level-3/sales/SaleReportProfitByProductPage"
+import SaleReportProfitComparativeByProductPage from "./components-level-3/sales/SaleReportProfitComparativeByProductPage"
 
 // Hospital System
 import DoctorUserFormPage from "./components-level-3/hospital/DoctorUserFormPage";
@@ -73,6 +85,18 @@ const AppRoutes = () => (
       <Route exact path={enumPaths.SALES_REPORT_REVENUE_COMP} component={SaleReportRevenueCompPage} />
       <Route exact path={enumPaths.SALES_REPORT_PROFIT} component={SaleReportProfitPage} />
       <Route exact path={enumPaths.SALES_REPORT_PROFIT_COMP} component={SaleReportProfitCompPage} />
+      <Route exact path={enumPaths.SALES_PRODUCTS_TABLE_TO_QUANTITY_BY_PRODUCT} component={ProductTableToQuantityReportPage} />
+      <Route exact path={enumPaths.SALES_PRODUCTS_TABLE_TO_QUANTITY_BY_PRODUCT_COMP} component={ProductTableToQuantityComparativeReportPage} />
+      <Route exact path={enumPaths.SALES_PRODUCTS_TABLE_TO_REVENUE_BY_PRODUCT} component={ProductTableToRevenueReportPage} />
+      <Route exact path={enumPaths.SALES_PRODUCTS_TABLE_TO_REVENUE_BY_PRODUCT_COMP} component={ProductTableToRevenueComparativeReportPage} />
+      <Route exact path={enumPaths.SALES_PRODUCTS_TABLE_TO_PROFIT_BY_PRODUCT} component={ProductTableToProfitReportPage} />
+      <Route exact path={enumPaths.SALES_PRODUCTS_TABLE_TO_PROFIT_BY_PRODUCT_COMP} component={ProductTableToProfitComparativeReportPage} />
+      <Route exact path={enumPaths.SALES_REPORT_QUANTITY_BY_PRODUCT} component={SaleReportQuantityByProductPage} />
+      <Route exact path={enumPaths.SALES_REPORT_QUANTITY_COMP_BY_PRODUCT} component={SaleReportQuantityComparativeByProductPage} />
+      <Route exact path={enumPaths.SALES_REPORT_REVENUE_BY_PRODUCT} component={SaleReportRevenueByProductPage} />
+      <Route exact path={enumPaths.SALES_REPORT_REVENUE_COMP_BY_PRODUCT} component={SaleReportRevenueComparativeByProductPage} />
+      <Route exact path={enumPaths.SALES_REPORT_PROFIT_BY_PRODUCT} component={SaleReportProfitByProductPage} />
+      <Route exact path={enumPaths.SALES_REPORT_PROFIT_COMP_BY_PRODUCT} component={SaleReportProfitComparativeByProductPage} />
       {/** Hospital System*/}
       <Route exact path={enumPaths.HOSPITAL_DOCTOR_USER_FORM} component={DoctorUserFormPage} />
       <Route exact path={enumPaths.HOSPITAL_DOCTOR_USER_TABLE_TO_DETAILS} component={DoctorUserTableToDetailsPage} />

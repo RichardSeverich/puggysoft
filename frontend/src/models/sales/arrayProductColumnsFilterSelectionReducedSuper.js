@@ -2,24 +2,14 @@ import enumFilterType from "../enumFilterType";
 import enumCompareOperators from "./../enumCompareOperators";
 
 const getColumnsFilterModel = function (
-    /*CODE*/ criteriaCode, criteriaOnChangeCode, criteriaSetCode, operatorCode, operatorOnChangeCode, operatorSetCode,
     /*NAME*/ criteriaName, criteriaOnChangeName, criteriaSetName, operatorName, operatorOnChangeName, operatorSetName,
-    /*PURCHASE PRICE*/criteriaPurchasePrice, criteriaOnChangePurchasePrice, criteriaSetPurchasePrice, operatorPurchasePrice, operatorOnChangePurchasePrice, operatorSetPurchasePrice,
     /*SALE PRICE*/ criteriaSalePrice, criteriaOnChangeSalePrice, criteriaSetSalePrice, operatorSalePrice, operatorOnChangeSalePrice, operatorSetSalePrice,
     /*STOCK*/criteriaStock, criteriaOnChangeStock, criteriaSetStock, operatorStock, operatorOnChangeStock, operatorSetStock,
-    /*MINIMUM STOCK*/criteriaMinimumStock, criteriaOnChangeMinimumStock, criteriaSetMinimumStock, operatorMinimumStock, operatorOnChangeMinimumStock, operatorSetMinimumStock
 ) {
 
   const arrayColumnsFilter = [
     {
       type: enumFilterType.NONE,
-    },
-    {
-      type: enumFilterType.TEXTBOX,
-      criteriaValue: criteriaCode,
-      criteriaOnchange: criteriaOnChangeCode,
-      operatorValue: operatorCode,
-      operatorOnchange: operatorOnChangeCode,
     },
     {
       type: enumFilterType.TEXTBOX,
@@ -30,82 +20,58 @@ const getColumnsFilterModel = function (
     },
     {
       type: enumFilterType.NUMBER,
-      criteriaValue: criteriaPurchasePrice,
-      criteriaOnchange: criteriaOnChangePurchasePrice,
-      operatorValue: operatorPurchasePrice,
-      operatorOnchange: operatorOnChangePurchasePrice,
-    },
-    {
-      type: enumFilterType.NUMBER,
       criteriaValue: criteriaSalePrice,
       criteriaOnchange: criteriaOnChangeSalePrice,
       operatorValue: operatorSalePrice,
       operatorOnchange: operatorOnChangeSalePrice,
     },
     {
-      type: enumFilterType.NUMBER,
-      criteriaValue: criteriaStock,
-      criteriaOnchange: criteriaOnChangeStock,
-      operatorValue: operatorStock,
-      operatorOnchange: operatorOnChangeStock,
+      type: enumFilterType.NONE,
     },
-    {
-      type: enumFilterType.NUMBER,
-      criteriaValue: criteriaMinimumStock,
-      criteriaOnchange: criteriaOnChangeMinimumStock,
-      operatorValue: operatorMinimumStock,
-      operatorOnchange: operatorOnChangeMinimumStock,
-    }
   ];
 
   const setOperatorsDefaultValues = function () {
-    operatorSetCode(enumCompareOperators.TEXT_CONTAINS);
     operatorSetName(enumCompareOperators.TEXT_CONTAINS);
-    operatorSetPurchasePrice(enumCompareOperators.NUMBER_EQUALS);
     operatorSetSalePrice(enumCompareOperators.NUMBER_EQUALS);
     operatorSetStock(enumCompareOperators.NUMBER_EQUALS);
-    operatorSetMinimumStock(enumCompareOperators.NUMBER_EQUALS);
   }
 
   const clearFilters = function () {
-    criteriaSetCode("");
     criteriaSetName("");
-    criteriaSetPurchasePrice("");
     criteriaSetSalePrice("");
     criteriaSetStock("");
-    criteriaSetMinimumStock("");
     setOperatorsDefaultValues();
   }
 
   const getFilterBody = () => {
     const filterBody = {
-      idCriteria: '',
+      idCriteria: "",
       idOperator: enumCompareOperators.NONE,
+      codeCriteria: "",
+      codeOperator: enumCompareOperators.NONE,
       nameCriteria: criteriaName,
       nameOperator: operatorName,
-      purchasePriceCriteria: criteriaPurchasePrice,
-      purchasePriceOperator: operatorPurchasePrice,
+      purchasePriceCriteria: "",
+      purchasePriceOperator: enumCompareOperators.NONE,
       salePriceCriteria: criteriaSalePrice,
       salePriceOperator: operatorSalePrice,
-      stockCriteria: criteriaStock,
-      stockOperator: operatorStock,
-      minimumStockCriteria: criteriaMinimumStock,
-      minimumStockOperator: operatorMinimumStock,
-      descriptionCriteria: '',
+      stockCriteria: "",
+      stockOperator: enumCompareOperators.NONE,
+      minimumStockCriteria: "",
+      minimumStockOperator: enumCompareOperators.NONE,
+      descriptionCriteria: "",
       descriptionOperator: enumCompareOperators.NONE,
-      locationCriteria: '',
+      locationCriteria: "",
       locationOperator: enumCompareOperators.NONE,
-      barCodeCriteria: '',
+      barCodeCriteria: "",
       barCodeOperator: enumCompareOperators.NONE,
-      codeCriteria: '',
-      codeOperator: enumCompareOperators.NONE,
-      createdByCriteria: '',
+      createdByCriteria: "",
       createdByOperator: enumCompareOperators.NONE,
-      updatedByCriteria: '',
+      updatedByCriteria: "",
       updatedByOperator: enumCompareOperators.NONE,
-      creationDateCriteria: '',
+      creationDateCriteria: "",
       creationDateOperator: enumCompareOperators.NONE,
-      updateDateCriteria: '',
+      updateDateCriteria: "",
       updateDateOperator: enumCompareOperators.NONE
     }
     return filterBody;

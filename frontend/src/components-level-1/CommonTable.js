@@ -24,6 +24,7 @@ function CommonTable(props) {
 
   const {
     tableTitle,
+    tableSubTitle,
     arrayData,
     arrayColumns,
     arrayDataFields,
@@ -217,6 +218,7 @@ function CommonTable(props) {
     <div className="puggysoft-common-table" >
       <Card>
         <Card.Header as='h3'>{tableTitle}</Card.Header>
+        {tableSubTitle && <Card.Header as='h6'>{tableSubTitle}</Card.Header>}
         <Card.Body>
           <div className='puggysoft-table-actions'>
             {filterArrayColumns && filterArrayColumns.length > 0 && filterActionButtons()}
@@ -252,6 +254,7 @@ export default CommonTable;
 
 CommonTable.propTypes = {
   tableTitle: PropTypes.string,
+  tableSubTitle: PropTypes.string,
   arrayData: PropTypes.array,
   arrayColumns: PropTypes.array,
   arrayDataFields: PropTypes.array,
@@ -267,6 +270,7 @@ CommonTable.propTypes = {
 
 CommonTable.defaultProps = {
   tableTitle: 'Common table title',
+  tableSubTitle: undefined,
   arrayData: [],
   arrayColumns: [],
   arrayDataFields: [],

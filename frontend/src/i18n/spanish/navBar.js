@@ -58,19 +58,20 @@ const navBar = {
   // Report
   reportAdmin: "Reportes",
   // GENERAL
-  reportQuantityAnnual: "Reporte de cantidad de ventas anual",
-  reportQuantityAnnualCompare: "Reporte de cantidad de ventas anual (Comparativo)",
-  reportRevenueAnnual: "Reporte de ingresos brutos de ventas anual",
-  reportRevenueAnnualCompare: "Reporte de ingresos brutos de ventas anual (Comparativo)",
-  reportProfitAnnual: "Reporte de ganancias de ventas anual",
-  reportProfitAnnualCompare: "Reporte de ganancias de ventas anual (Comparativo)",
+  reportOf: "Reporte de ",
+  reportQuantityAnnual: "Cantidad de ventas anual",
+  reportQuantityAnnualCompare: "Cantidad de ventas anual (Comparar 2 años)",
+  reportRevenueAnnual: "Ingresos de ventas anual",
+  reportRevenueAnnualCompare: "Ingresos de ventas anual (Comparar 2 años)",
+  reportProfitAnnual: "Ganancias de ventas anual",
+  reportProfitAnnualCompare: "Ganancias de ventas anual (Comparar 2 años)",
   // PER PRODUCT
-  reportQuantityPerProduct: "Reporte de cantidad de ventas anual por producto",
-  reportQuantityPerProductCompare: "Reporte de cantidad de ventas anual por producto (Comparativo)",
-  reportRevenuePerProduct: "Reporte de ingresos brutos de ventas anual por producto",
-  reportRevenuePerProductCompare: "Reporte de ingresos brutos de ventas anual por producto (Comparativo)",
-  reportProfitPerProductAnnual: "Reporte de ganancias de ventas anual por producto",
-  reportProfitPerProductAnnualCompare: "Reporte de ganancias de ventas anual por producto (Comparativo)",
+  reportQuantityPerProduct: "Cantidad de ventas anual por producto",
+  reportQuantityPerProductCompare: "Cantidad de ventas anual por producto (Comparar 2 años)",
+  reportRevenuePerProduct: "Ingresos de ventas anual por producto",
+  reportRevenuePerProductCompare: "Ingresos de ventas anual por producto (Comparar 2 años)",
+  reportProfitPerProductAnnual: "Ganancias de ventas anual por producto",
+  reportProfitPerProductAnnualCompare: "Ganancias de ventas anual por producto (Comparar 2 años)",
 
   // ******* ******* HOSPITAL SYSTEM ******* *******
   // Doctors

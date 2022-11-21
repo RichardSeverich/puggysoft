@@ -12,6 +12,7 @@ function CommonTablePagination(props) {
 
   const {
     tableTitle,
+    tableSubTitle,
     tableArrayData,
     tableArrayDataFields,
     tableArrayColumns,
@@ -37,6 +38,7 @@ function CommonTablePagination(props) {
     <div className="puggysoft-common-table-pagination" >
       <CommonTable
         tableTitle={tableTitle}
+        tableSubTitle={tableSubTitle}
         arrayData={tableArrayData}
         arrayDataFields={tableArrayDataFields}
         arrayColumns={tableArrayColumns}
@@ -69,6 +71,7 @@ export default CommonTablePagination;
 CommonTablePagination.propTypes = {
   // Table
   tableTitle: PropTypes.string,
+  tableSubTitle: PropTypes.string,
   tableArrayData: PropTypes.array,
   tableArrayDataFields: PropTypes.array,
   tableArrayColumns: PropTypes.array,
@@ -94,6 +97,7 @@ CommonTablePagination.propTypes = {
 
 CommonTablePagination.defaultProps = {
   tableTitle: 'Common pagination table title',
+  tableSubTitle: undefined,
   tableArrayData: [],
   tableArrayDataFields: [],
   tableArrayColumns: [],

@@ -1,7 +1,7 @@
 import { useHistory } from "react-router";
 import { useState } from "react";
 import { handleFilterRequest, handleAddRequest, handleDeleteRequestNew } from "../../actions/HandleManager";
-import ProductTableGeneric from "./ProductTableGeneric";
+import ProductTableSuperReducedGeneric from "./ProductTableSuperReducedGeneric";
 import i18n from "../../i18n/i18n";
 import CommonLoading from '../../components-level-1/CommonLoading';
 import arraySaleProductColumns from "../../models/sales/arraySaleProductColumns";
@@ -23,7 +23,13 @@ function SaleAddStepTwoProductSelection(props) {
   const tableTitleDeleteProductsFromSale = i18n.saleProductTable.titleSelectionDeleteSaleForSeller;
   const generalTitle = i18n.saleProductTable.titleForSeller;
 
-  const { saleData } = history && history.location && history.location.state && history.location.state.data;
+  const { saleData } = history
+    && history.location !== undefined
+    && history.location.state !== undefined
+    && history.location.state.data !== undefined
+    ? history.location.state.data
+    : { saleData: undefined };
+
   const [isRequestInProgress, setIsRequestInProgress] = useState(false);
 
   // functions to add products to a sale.
@@ -100,7 +106,7 @@ function SaleAddStepTwoProductSelection(props) {
     },
   ]
 
-  if (isRequestInProgress) {
+  if (isRequestInProgress || !saleData) {
     return <CommonLoading />
   }
 
@@ -134,17 +140,17 @@ function SaleAddStepTwoProductSelection(props) {
 
       <div>
         <div className="puggysoft-two-divs-side-by-side-child">
-          <ProductTableGeneric
+          <ProductTableSuperReducedGeneric
             tableTitle={tableTitleAddProductsToSale}
             handleGetData={handleGetDataProductsAddToSale}
             handleGetSize={handleGetSizeProductsAddToSale}
             tableArrayCustomRowButtons={tableArrayCustomRowButtonsAddToSale}
             numberPagesToShow={numberPagesToShow}
           >
-          </ProductTableGeneric>
+          </ProductTableSuperReducedGeneric>
         </div>
         <div className="puggysoft-two-divs-side-by-side-child">
-          <ProductTableGeneric
+          <ProductTableSuperReducedGeneric
             tableTitle={tableTitleDeleteProductsFromSale}
             handleGetData={handleGetDataProductsToDelete}
             handleGetSize={handleGetSizeProductsToDelete}
@@ -152,7 +158,7 @@ function SaleAddStepTwoProductSelection(props) {
             numberPagesToShow={numberPagesToShow}
             arrayColumns={arraySaleProductColumns}
           >
-          </ProductTableGeneric>
+          </ProductTableSuperReducedGeneric>
         </div>
       </div >
     </div>

@@ -1,12 +1,12 @@
 import TableFilterGeneric from "./../generic/TableFilterGeneric";
-import arrayDataFields from "../../models/sales/arrayProductDataFieldsReduced";
-import arrayColumnsDefault from "../../models/sales/arrayProductColumnsReduced";
+import arrayDataFields from "../../models/sales/arrayProductDataFieldsReducedSuper";
+import arrayColumnsDefault from "../../models/sales/arrayProductColumnsReducedSuper";
 import enumCompareOperators from "./../../models/enumCompareOperators";
 import useInput from "./../../hooks/useInput";
-import getColumnsFilterModel from "../../models/sales/arrayProductColumnsFilterSelectionReduced";
+import getColumnsFilterModel from "../../models/sales/arrayProductColumnsFilterSelectionReducedSuper";
 
 
-function ProductTableGeneric(props) {
+function ProductTableSuperReducedGeneric(props) {
 
   const { numberPagesToShow, tableTitle, handleGetData, handleGetSize, tableArrayCustomRowButtons } = props
   const arrayColumns = props.arrayColumns ? props.arrayColumns : arrayColumnsDefault;
@@ -44,4 +44,4 @@ function ProductTableGeneric(props) {
   )
 }
 
-export default ProductTableGeneric;
+export default ProductTableSuperReducedGeneric;

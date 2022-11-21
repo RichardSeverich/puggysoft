@@ -30,6 +30,18 @@ const SALES_REPORT_REVENUE = "/sales-report-revenue"
 const SALES_REPORT_REVENUE_COMP = "/sales-report-revenue-comparative"
 const SALES_REPORT_PROFIT = "/sales-report-profit"
 const SALES_REPORT_PROFIT_COMP = "/sales-report-profit-comparative"
+const SALES_REPORT_QUANTITY_BY_PRODUCT = "/sales-report-quantity-by-product"
+const SALES_REPORT_QUANTITY_COMP_BY_PRODUCT = "/sales-report-quantity-comparative-by-product"
+const SALES_REPORT_REVENUE_BY_PRODUCT = "/sales-report-revenue-by-product"
+const SALES_REPORT_REVENUE_COMP_BY_PRODUCT = "/sales-report-revenue-comparative-by-product"
+const SALES_REPORT_PROFIT_BY_PRODUCT = "/sales-report-profit-by-product"
+const SALES_REPORT_PROFIT_COMP_BY_PRODUCT = "/sales-report-profit-comparative-by-product"
+const SALES_PRODUCTS_TABLE_TO_QUANTITY_BY_PRODUCT = "/sales-products-table-to-quantity-report"
+const SALES_PRODUCTS_TABLE_TO_QUANTITY_BY_PRODUCT_COMP = "/sales-products-table-to-quantity-comp-report"
+const SALES_PRODUCTS_TABLE_TO_REVENUE_BY_PRODUCT = "/sales-products-table-to-revenue-report"
+const SALES_PRODUCTS_TABLE_TO_REVENUE_BY_PRODUCT_COMP = "/sales-products-table-to-revenue-comp-report"
+const SALES_PRODUCTS_TABLE_TO_PROFIT_BY_PRODUCT = "/sales-products-table-to-profit-report"
+const SALES_PRODUCTS_TABLE_TO_PROFIT_BY_PRODUCT_COMP = "/sales-products-table-to-profit-comp-report"
 
 // HOSPITAL SYSTEM
 const HOSPITAL_DOCTOR_USER_FORM = "/hospital-doctor-user-form"
@@ -70,6 +82,18 @@ const enumPaths = {
   SALES_REPORT_REVENUE_COMP,
   SALES_REPORT_PROFIT,
   SALES_REPORT_PROFIT_COMP,
+  SALES_REPORT_QUANTITY_BY_PRODUCT,
+  SALES_REPORT_QUANTITY_COMP_BY_PRODUCT,
+  SALES_REPORT_REVENUE_BY_PRODUCT,
+  SALES_REPORT_REVENUE_COMP_BY_PRODUCT,
+  SALES_REPORT_PROFIT_BY_PRODUCT,
+  SALES_REPORT_PROFIT_COMP_BY_PRODUCT,
+  SALES_PRODUCTS_TABLE_TO_QUANTITY_BY_PRODUCT,
+  SALES_PRODUCTS_TABLE_TO_QUANTITY_BY_PRODUCT_COMP,
+  SALES_PRODUCTS_TABLE_TO_REVENUE_BY_PRODUCT,
+  SALES_PRODUCTS_TABLE_TO_REVENUE_BY_PRODUCT_COMP,
+  SALES_PRODUCTS_TABLE_TO_PROFIT_BY_PRODUCT,
+  SALES_PRODUCTS_TABLE_TO_PROFIT_BY_PRODUCT_COMP,
   // HOSPITAL SYSTEM
   HOSPITAL_DOCTOR_USER_FORM,
   HOSPITAL_DOCTOR_USER_TABLE,

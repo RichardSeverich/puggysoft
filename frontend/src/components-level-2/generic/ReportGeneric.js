@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 import ChartVerticalBar from "./../../components-level-1/ChartVerticalBar";
 import ChartHorizontalBar from "./../../components-level-1/ChartHorizontalBar";
@@ -17,7 +17,8 @@ import "./../css/all-forms-inline-block.css"
 function ReportGeneric({
   handleUpdateData,
   reportTitle,
-  enableTwoYears
+  enableTwoYears,
+  productData
 }) {
   const [chartType, setChartType] = useState(enumChartType.CHART_VERTICAL_BAR);
   const [yearOne, setYearOne] = useState(2021);
@@ -113,6 +114,7 @@ function ReportGeneric({
     <div>
       <Card>
         <Card.Header as='h3'>{reportTitle}</Card.Header>
+        {productData && <Card.Header as='h6'>{i18n.saleReport.productName} : {productData.name}</Card.Header>}
         <Card.Body>
           <div className="">
             <div className="puggysoft-four-divs-side-by-side-child ">

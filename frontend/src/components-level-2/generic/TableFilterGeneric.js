@@ -10,6 +10,7 @@ function TablePaginationFilterGeneric(props) {
     handleGetData,
     handleGetSize,
     tableTitle,
+    tableSubTitle,
     tableArrayCustomRowButtons,
     numberPagesToShow,
     arrayColumnsFilter,
@@ -56,24 +57,27 @@ function TablePaginationFilterGeneric(props) {
   }
 
   return (
-    <CommonTablePagination
-      tableTitle={tableTitle}
-      tableArrayData={arrayData}
-      tableArrayDataFields={arrayDataFields}
-      tableArrayColumns={arrayColumns}
-      tableArrayCustomRowButtons={tableArrayCustomRowButtons}
-      paginationTotalPages={totalPages}
-      paginationNumberPagesToShow={numberPagesToShow}
-      paginationInitialPage={initialPage}
-      paginationActivePage={activePage}
-      paginationSetArrayData={setArrayData}
-      paginationSetTotalPages={setTotalPages}
-      paginationSetActivePage={setActivePage}
-      paginationSetInitialPage={setInitialPage}
-      filterArrayColumns={arrayColumnsFilter}
-      filterClear={clearFilters}
-      filterHandler={handleFilter}
-    ></CommonTablePagination>
+    <div className='puggysoft-center-reduced-table'>
+      <CommonTablePagination
+        tableTitle={tableTitle}
+        tableSubTitle={tableSubTitle}
+        tableArrayData={arrayData}
+        tableArrayDataFields={arrayDataFields}
+        tableArrayColumns={arrayColumns}
+        tableArrayCustomRowButtons={tableArrayCustomRowButtons}
+        paginationTotalPages={totalPages}
+        paginationNumberPagesToShow={numberPagesToShow}
+        paginationInitialPage={initialPage}
+        paginationActivePage={activePage}
+        paginationSetArrayData={setArrayData}
+        paginationSetTotalPages={setTotalPages}
+        paginationSetActivePage={setActivePage}
+        paginationSetInitialPage={setInitialPage}
+        filterArrayColumns={arrayColumnsFilter}
+        filterClear={clearFilters}
+        filterHandler={handleFilter}
+      ></CommonTablePagination>
+    </div>
   );
 }
 
