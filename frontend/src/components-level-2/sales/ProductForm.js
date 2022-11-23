@@ -132,7 +132,7 @@ function ProductForm(props) {
   return (
     <div className="puggysoft-product-form" >
       <Card>
-        <Card.Title>{i18n.productForm.title}</Card.Title>
+        <Card.Header as='h3'>{i18n.productForm.title}</Card.Header>
         <Card.Body>
           <Form >
             <Form.Group className="mb-3" controlId="code">

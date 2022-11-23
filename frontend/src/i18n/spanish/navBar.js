@@ -1,4 +1,8 @@
 const navBar = {
+  // ******* ******* SYSTEM PROPERTIES ******* *******
+  systemPropertiesAdmin: 'Adm. Propiedades del Sistema',
+  systemPropertiesTable: "Mostrar Propiedades del Sistema",
+
   // ******* ******* USERS SYSTEM ******* *******
   // Users
   userAdmin: "Adm. Usuarios",

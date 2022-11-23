@@ -6,6 +6,9 @@ import enumPaths from "./models/enumPaths"
 import App from "./App";
 import LoginPage from "./components-level-3/LoginPage";
 import DashboardPage from "./components-level-3/DashboardPage";
+import SystemPropertiesFormPage from "./components-level-3/system/SystemPropertiesFormPage";
+import SystemPropertiesTablePage from "./components-level-3/system/SystemPropertiesTablePage";
+
 // Users System
 import UsersFormPage from "./components-level-3/users/UserFormPage";
 import UserTableBasicPage from "./components-level-3/users/UserTableBasicPage";
@@ -57,6 +60,9 @@ const AppRoutes = () => (
   <App>
     <Switch>
       <Route exact path={enumPaths.DASHBOARD} component={DashboardPage} />
+      {/** System Properties*/}
+      <Route exact path={enumPaths.SYSTEM_PROPERTIES_FORM} component={SystemPropertiesFormPage} />
+      <Route exact path={enumPaths.SYSTEM_PROPERTIES_TABLE} component={SystemPropertiesTablePage} />
       {/** Users System*/}
       <Route exact path={enumPaths.USERS_FORM} component={UsersFormPage} />
       <Route exact path={enumPaths.USERS_TABLE} component={UserTableBasicPage} />

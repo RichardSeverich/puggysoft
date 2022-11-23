@@ -1,7 +1,8 @@
 // ALL SYSTEMS
 const LOGIN = "/login"
 const DASHBOARD = "/dashboard"
-
+const SYSTEM_PROPERTIES_TABLE = "/system-properties-table"
+const SYSTEM_PROPERTIES_FORM = "/system-properties-form"
 // USERS SYSTEM
 const USERS_FORM = "/users-form"
 const USERS_TABLE = "/users-table"
@@ -54,6 +55,8 @@ const HOSPITAL_PATIENT_USER_TABLE_TO_DETAILS = "/hospital-patient-user-table-to-
 const enumPaths = {
   DASHBOARD,
   LOGIN,
+  SYSTEM_PROPERTIES_TABLE,
+  SYSTEM_PROPERTIES_FORM,
   // USERS SYSTEM
   USERS_FORM,
   USERS_TABLE,

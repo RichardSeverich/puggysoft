@@ -6,6 +6,8 @@ import errorMessages from "./spanish/errorMessages"
 import trueFalse from "./spanish/trueFalse"
 import commonReport from './spanish/commonReport'
 import commonMonths from './spanish/commonMonths'
+import systemPropertiesTable from "./spanish/system/systemPropertiesTable"
+import systemPropertiesForm from "./spanish/system/systemPropertiesForm"
 // Users System
 import userTable from "./spanish/users/userTable"
 import userForm from "./spanish/users/userForm"
@@ -45,6 +47,8 @@ const i18n = {
   trueFalse,
   commonReport,
   commonMonths,
+  systemPropertiesTable,
+  systemPropertiesForm,
   // Users System
   userForm,
   userTable,

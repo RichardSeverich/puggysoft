@@ -13,7 +13,8 @@ import {
   FaUser,
 } from 'react-icons/fa';
 import { AiOutlineUserAdd, AiOutlineTable, AiOutlineIdcard } from 'react-icons/ai';
-import { GrAddCircle, GrProductHunt, GrDocumentConfig } from 'react-icons/gr';
+import { GrAddCircle, GrProductHunt } from 'react-icons/gr';
+import { CgOptions } from 'react-icons/cg';
 import {
   BsCartCheckFill,
   BsFillBagCheckFill,
@@ -44,11 +45,15 @@ function NavBar() {
     })
   }
 
+  // ******* ******* ******* SYSTEM PROPERTIES ******* ******* *******
+  const navigateSystemPropertiesForm = () => { history.push(enumPaths.SYSTEM_PROPERTIES_FORM); }
+  const navigateSystemPropertiesTable = () => { history.push(enumPaths.SYSTEM_PROPERTIES_TABLE); }
+
   // ******* ******* ******* USERS SYSTEM ******* ******* *******
 
   const navigateToLogout = () => { history.push({ pathname: enumPaths.LOGIN, state: { "logout": "", } }) }
   const navigateUsersForm = () => { history.push(enumPaths.USERS_FORM); }
-  const navigateUsersTable = () => { history.push(enumPaths.USERS_TABLE); }
+  // const navigateUsersTable = () => { history.push(enumPaths.USERS_TABLE); }
   const navigateUsersTableFilter = () => { history.push(enumPaths.USERS_TABLE_FILTER); }
   const navigateUsersTableFilterEditDelete = () => { history.push(enumPaths.USERS_TABLE_FILTER_EDIT_DELETE); }
   const navigateRolesTable = () => { history.push(enumPaths.ROLES_TABLE); }
@@ -110,6 +115,10 @@ function NavBar() {
 
   const NavbarBackground = 'dark'; // dark, light, primary
   const NavbarVariant = 'dark puggysoft-navbar'; // dark, light
+
+  // ******* ******* ******* SYSTEM PROPERTIES ******* ******* *******
+  const systemPropertiesAdminLabel = (<><MdOutlineSettingsSuggest /> {i18n.navBar.systemPropertiesAdmin}</>)
+  const systemPropertiesTableLabel = (<><AiOutlineTable /> {i18n.navBar.systemPropertiesTable}</>)
 
   // ******* ******* ******* USERS SYSTEM ******* ******* *******
   // USERS
@@ -209,8 +218,7 @@ function NavBar() {
 
   // ******* ******* ******* ALL SYSTEMS ******* ******* *******
   // CONFIG
-  const configAdminLabel = (<><MdOutlineSettingsSuggest /> {i18n.navBar.configAdmin}</>)
-  const configSystem = (<><GrDocumentConfig /> {i18n.navBar.configSystem}</>)
+  const configAdminLabel = (<><CgOptions /> {i18n.navBar.configAdmin}</>)
   const configLogout = (<><RiLoginCircleLine /> {i18n.navBar.configLogout}</>)
 
   return (
@@ -242,6 +250,12 @@ function NavBar() {
             && <NavDropdown title={roleUserAdminLabel}>
               <NavDropdown.Item onClick={navigateRolesTableSelection}>{roleUserCrudByRoleLabel}</NavDropdown.Item>
               <NavDropdown.Item onClick={navigateUserTableSelectionForRoles}>{roleUserCrudByUserLabel}</NavDropdown.Item>
+            </NavDropdown>}
+
+          {/* ******* ******* ******* SYSTEM PROPERTIES ******* ******* ********/}
+          {userRoles.includes(enumRoles.ADMIN_USERS)
+            && <NavDropdown title={systemPropertiesAdminLabel}>
+              <NavDropdown.Item onClick={navigateSystemPropertiesTable}>{systemPropertiesTableLabel}</NavDropdown.Item>
             </NavDropdown>}
 
           {/* ******* ******* ******* SALES SYSTEM ******* ******* ********/}
@@ -329,7 +343,6 @@ function NavBar() {
         {/* ******* ******* ******* ALL SYSTEM ******* ******* ********/}
         <Nav variant={'puggysoft-nav-config'}>
           <NavDropdown align="end" title={configAdminLabel}>
-            {/*<NavDropdown.Item onClick={navigateGeneric}>{configSystem}</NavDropdown.Item>*/}
             <NavDropdown.Item onClick={navigateToLogout}>{configLogout}</NavDropdown.Item>
           </NavDropdown>
         </Nav>

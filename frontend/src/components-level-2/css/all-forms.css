@@ -1,3 +1,12 @@
 .puggysoft-red-text {
     color: red !important;
 }
+
+/* Only applies for resolutions greater than 1080px */
+@media (min-width:1080px) {
+    .puggysoft-form-thirty-with {
+        margin: auto;
+        width: 30%;
+        padding-top: 1rem;
+    }
+}
