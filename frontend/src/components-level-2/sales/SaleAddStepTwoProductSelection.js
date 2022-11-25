@@ -10,7 +10,7 @@ import Card from 'react-bootstrap/Card'
 import enumWebElements from './../../models/enumWebElements'
 
 import "./../css/all-two-divs-side-by-side.css"
-import "./../css/all-three-divs-side-by-side.css"
+import "./../css/all-six-divs-side-by-side.css"
 import "./../css/all-forms-inline-block.css"
 
 
@@ -22,6 +22,9 @@ function SaleAddStepTwoProductSelection(props) {
   const tableTitleAddProductsToSale = i18n.saleProductTable.titleSelectionAddSaleForSeller;
   const tableTitleDeleteProductsFromSale = i18n.saleProductTable.titleSelectionDeleteSaleForSeller;
   const generalTitle = i18n.saleProductTable.titleForSeller;
+  const [totalToPay, setTotalToPay] = useState(0);
+  const [clientCash, setClientCash] = useState(0);
+  const [clientCashChange, setClientCashChange] = useState(0);
 
   const { saleData } = history
     && history.location !== undefined
@@ -98,6 +101,20 @@ function SaleAddStepTwoProductSelection(props) {
     handleDeleteRequestNew(`sales-products/${idRelation}`, handleAfterDeleteProductFromSale, handleAfterDeleteProductFromSale)
   }
 
+  function fixArrayData(arrayProducts) {
+    let totalToPayNew = 0;
+    arrayProducts.forEach((product) => {
+      totalToPayNew = totalToPayNew + Number(product.salePrice) * Number(product.stock);
+    })
+    setTotalToPay(totalToPayNew);
+    return arrayProducts;
+  }
+
+  function onChangeClientCash(clientCash) {
+    setClientCashChange(clientCash - totalToPay)
+    setClientCash(clientCash)
+  }
+
   const tableArrayCustomRowButtonsDeleteFromSale = [
     {
       variant: "danger",
@@ -116,22 +133,43 @@ function SaleAddStepTwoProductSelection(props) {
         <Card.Header as='h3'>{generalTitle}</Card.Header>
         <Card.Body>
           <div className="">
-            <div className="puggysoft-three-divs-side-by-side-child">
+            <div className="puggysoft-six-divs-side-by-side-child">
               <Form.Group>
                 <div className={"puggysoft-form-label"}><Form.Label>{i18n.saleProductTable.clientBox}</Form.Label></div>
                 <div className={"puggysoft-form-input"}><Form.Control value={saleData.client} disabled /></div>
               </Form.Group>
             </div>
-            <div className="puggysoft-three-divs-side-by-side-child">
+            <div className="puggysoft-six-divs-side-by-side-child">
               <Form.Group>
                 <div className={"puggysoft-form-label"}><Form.Label>{i18n.saleProductTable.sellerBox}</Form.Label></div>
                 <div className={"puggysoft-form-input"}><Form.Control value={saleData.createdBy} disabled /></div>
               </Form.Group>
             </div>
-            <div className="puggysoft-three-divs-side-by-side-child">
+            <div className="puggysoft-six-divs-side-by-side-child">
               <Form.Group>
                 <div className={"puggysoft-form-label"}><Form.Label>{i18n.saleProductTable.saleDate}</Form.Label></div>
                 <div className={"puggysoft-form-input"}><Form.Control value={saleData.creationDate} disabled /></div>
+              </Form.Group>
+            </div>
+            <div className="puggysoft-six-divs-side-by-side-child">
+              <Form.Group>
+                <div className={"puggysoft-form-label"}><Form.Label>{i18n.saleProductTable.saleTotalToPay}</Form.Label></div>
+                <div className={"puggysoft-form-input"}><Form.Control value={totalToPay} disabled /></div>
+              </Form.Group>
+            </div>
+            <div className="puggysoft-six-divs-side-by-side-child">
+              <Form.Group>
+                <div className={"puggysoft-form-label"}><Form.Label>{i18n.saleProductTable.clientCashToPay}</Form.Label></div>
+                <div className={"puggysoft-form-input"}><Form.Control
+                  value={clientCash}
+                  onChange={(event) => { onChangeClientCash(event.target.value); }}
+                /></div>
+              </Form.Group>
+            </div>
+            <div className="puggysoft-six-divs-side-by-side-child">
+              <Form.Group>
+                <div className={"puggysoft-form-label"}><Form.Label>{i18n.saleProductTable.clientCashChange}</Form.Label></div>
+                <div className={"puggysoft-form-input"}><Form.Control value={clientCashChange} disabled /></div>
               </Form.Group>
             </div>
           </div>
@@ -157,6 +195,7 @@ function SaleAddStepTwoProductSelection(props) {
             tableArrayCustomRowButtons={tableArrayCustomRowButtonsDeleteFromSale}
             numberPagesToShow={numberPagesToShow}
             arrayColumns={arraySaleProductColumns}
+            fixArrayData={fixArrayData}
           >
           </ProductTableSuperReducedGeneric>
         </div>

@@ -7,6 +7,7 @@ INSERT INTO users (username, password, dni, name, second_name, last_name, second
 INSERT INTO users (username, password, dni, name, second_name, last_name, second_last_name, birth_date, age, sex, occupation, telephone, address, email, active, image, created_by, email_verified) VALUES ("adminsales", "admin123", "454879118", "N/A", "adminsales", "adminsales", "adminsales", "1990-10-10", 50, 'MALE', 'Ing. Mecanica', "76487888", "Av. B. Galindo", "adminsales@gmail.com", true, null, "admin", false);
 INSERT INTO users (username, password, dni, name, second_name, last_name, second_last_name, birth_date, age, sex, occupation, telephone, address, email, active, image, created_by, email_verified) VALUES ("salesseller", "salesseller", "45511447", "N/A", "salesseller", "salesseller", "salesseller", "1990-10-10", 50, 'FEMALE', 'Ing. ventas', "76487888", "Av. B. Galindo", "salesseller@gmail.com", true, null, "admin", false);
 INSERT INTO users (username, password, dni, name, second_name, last_name, second_last_name, birth_date, age, sex, occupation, telephone, address, email, active, image, created_by, email_verified) VALUES ("salesclient", "salesclient", "441188877", "N/A", "salesclient", "salesclient", "salesclient", "1990-10-10", 50, 'FEMALE', 'Empresaria', "76487888", "Av. B. Galindo", "salesclient@gmail.com", true, null, "admin", false);
+INSERT INTO users (username, password, dni, name, second_name, last_name, second_last_name, birth_date, age, sex, occupation, telephone, address, email, active, image, created_by, email_verified) VALUES ("adminsalesrestaurant", "admin123", "59254455", "N/A", "adminsalesrestaurant", "adminsalesrestaurant", "adminsalesrestaurant", "1990-10-10", 50, 'MALE', 'Vendedor', "76478999", "Av. B. Galindo", "adminsalesrestaurant@gmail.com", true, null, "admin", false);
 INSERT INTO users (username, password, dni, name, second_name, last_name, second_last_name, birth_date, age, sex, occupation, telephone, address, email, active, image, created_by, email_verified) VALUES ("rseveric", "secret123", "5928025", "Richard", "Michael", "Severich",  "Zuares", "1994-05-26", 25, 'MALE', 'Ing. Sistemas', "7008088", "Av. Blanco km-5", "Richard.Severich@gmail.com", true, null, "admin", false);
 INSERT INTO users (username, password, dni, name, second_name, last_name, second_last_name, birth_date, age, sex, occupation, telephone, address, email, active, image, created_by, email_verified) VALUES ("cluza", "pass123",  "2365874", "Cory", "N/A", "Luza", "Ander", "1994-10-28", 28, 'MALE', 'Ing. Sistemas', "700684700", "Av. Rojo km-10", "Cory.Luza@gmail.com", true, null, "admin", false);
 INSERT INTO users (username, password, dni, name, second_name, last_name, second_last_name, birth_date, age, sex, occupation, telephone, address, email, active, image, created_by, email_verified) VALUES ("mjacson", "secret255", "5123659", "Michael", "N/A", "Jackson", "Muller", "1984-02-15", 25, 'MALE', 'Ing. Sistemas', "74600788", "Av. Azul km-11", "Michael.Jackson@gmail.com", true, null, "admin", false);
@@ -100,6 +101,7 @@ INSERT INTO roles (name, created_by) VALUES ("HOSPITAL_TICKETS_ADMIN", "admin");
 INSERT INTO roles (name, created_by) VALUES ("SALES_ADMIN", "admin"); -- 1006
 INSERT INTO roles (name, created_by) VALUES ("SALES_CLIENT", "admin"); -- 1007
 INSERT INTO roles (name, created_by) VALUES ("SALES_SELLER", "admin"); -- 1008
+INSERT INTO roles (name, created_by) VALUES ("SALES_ADMIN_RESTAURANT", "admin"); -- 1009
 
 -- Insert data (User-Roles).
 INSERT INTO users_roles (id_user, id_role, created_by) VALUES (1000, 1000, "admin"); -- Admin Full.
@@ -111,7 +113,7 @@ INSERT INTO users_roles (id_user, id_role, created_by) VALUES (1004, 1005, "admi
 INSERT INTO users_roles (id_user, id_role, created_by) VALUES (1005, 1006, "admin"); -- Admin sales
 INSERT INTO users_roles (id_user, id_role, created_by) VALUES (1007, 1007, "admin"); -- sales client
 INSERT INTO users_roles (id_user, id_role, created_by) VALUES (1006, 1008, "admin"); -- sales seller
-
+INSERT INTO users_roles (id_user, id_role, created_by) VALUES (1008, 1009, "admin"); -- admin sales restaurant
 
 -- HOSPITAL
 -- HOSPITAL DOCTORS

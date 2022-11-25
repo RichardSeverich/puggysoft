@@ -7,7 +7,10 @@ const saleProductTable = {
   titleSelectionDeleteSaleForClient: "Tabla Productos (Elimine productos de la compra)",
   clientBox: "cliente",
   sellerBox: "Vendedor",
-  saleDate: "Fecha de venta"
+  saleDate: "Fecha de venta",
+  saleTotalToPay: "Total pagar",
+  clientCashToPay: "Efectivo",
+  clientCashChange: "Cambio",
 };
 
 export default saleProductTable;

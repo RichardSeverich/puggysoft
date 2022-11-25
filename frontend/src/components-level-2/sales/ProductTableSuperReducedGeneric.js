@@ -8,7 +8,14 @@ import getColumnsFilterModel from "../../models/sales/arrayProductColumnsFilterS
 
 function ProductTableSuperReducedGeneric(props) {
 
-  const { numberPagesToShow, tableTitle, handleGetData, handleGetSize, tableArrayCustomRowButtons } = props
+  const {
+    numberPagesToShow,
+    tableTitle,
+    handleGetData,
+    handleGetSize,
+    tableArrayCustomRowButtons,
+    fixArrayData
+  } = props
   const arrayColumns = props.arrayColumns ? props.arrayColumns : arrayColumnsDefault;
 
   // CRITERIA OF SEARCH OR FILTER
@@ -39,6 +46,7 @@ function ProductTableSuperReducedGeneric(props) {
       arrayColumnsFilter={arrayColumnsFilter}
       clearFilters={clearFilters}
       getFilterBody={getFilterBody}
+      fixArrayData={fixArrayData}
     >
     </TableFilterGeneric>
   )

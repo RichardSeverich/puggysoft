@@ -23,7 +23,7 @@ import {
   BsCoin,
 } from 'react-icons/bs';
 import { RiLoginCircleLine, RiUser2Fill, RiShieldKeyholeFill } from 'react-icons/ri';
-import { MdOutlineSettingsSuggest, MdAdminPanelSettings } from 'react-icons/md';
+import { MdOutlineSettingsSuggest } from 'react-icons/md';
 import { GoCalendar } from 'react-icons/go';
 import enumRoles from "./../../models/users/enumRoles";
 import enumTableType from "./../../models/enumTableType"
@@ -46,7 +46,6 @@ function NavBar() {
   }
 
   // ******* ******* ******* SYSTEM PROPERTIES ******* ******* *******
-  const navigateSystemPropertiesForm = () => { history.push(enumPaths.SYSTEM_PROPERTIES_FORM); }
   const navigateSystemPropertiesTable = () => { history.push(enumPaths.SYSTEM_PROPERTIES_TABLE); }
 
   // ******* ******* ******* USERS SYSTEM ******* ******* *******
@@ -237,14 +236,14 @@ function NavBar() {
               <NavDropdown.Item onClick={navigateUserTableSelectionForDetails}>{userShowTableFilterDetailsLabel}</NavDropdown.Item>
               {/*<NavDropdown.Item onClick={navigateUsersTable}>{userShowTableFullDataLabel}</NavDropdown.Item>*/}
               <NavDropdown.Item onClick={navigateUsersTableFilter}>{userShowTableFilterFullDataLabel}</NavDropdown.Item>
-              <NavDropdown.Item onClick={navigateGeneric}>{userShowCardLabel}</NavDropdown.Item>
+              {/*<NavDropdown.Item onClick={navigateGeneric}>{userShowCardLabel}</NavDropdown.Item>*/}
             </NavDropdown>}
           {userRoles.includes(enumRoles.ADMIN_USERS)
             && <NavDropdown title={rolesAdminLabel}>
               {/*<NavDropdown.Item onClick={navigateGeneric}>{roleRegistrationLabel}</NavDropdown.Item>*/}
               <NavDropdown.Item onClick={navigateRolesTable}>{roleShowTableLabel}</NavDropdown.Item>
               <NavDropdown.Item onClick={navigateRolesTableFilter}>{roleShowTableFilterLabel}</NavDropdown.Item>
-              <NavDropdown.Item onClick={navigateGeneric}>{roleShowCardLabel}</NavDropdown.Item>
+              {/*<NavDropdown.Item onClick={navigateGeneric}>{roleShowCardLabel}</NavDropdown.Item>*/}
             </NavDropdown>}
           {userRoles.includes(enumRoles.ADMIN_USERS)
             && <NavDropdown title={roleUserAdminLabel}>
@@ -253,47 +252,51 @@ function NavBar() {
             </NavDropdown>}
 
           {/* ******* ******* ******* SYSTEM PROPERTIES ******* ******* ********/}
-          {userRoles.includes(enumRoles.ADMIN_USERS)
+          {userRoles.includes(enumRoles.ADMIN)
             && <NavDropdown title={systemPropertiesAdminLabel}>
               <NavDropdown.Item onClick={navigateSystemPropertiesTable}>{systemPropertiesTableLabel}</NavDropdown.Item>
             </NavDropdown>}
 
           {/* ******* ******* ******* SALES SYSTEM ******* ******* ********/}
-          {userRoles.includes(enumRoles.SALES_ADMIN) &&
+          {(userRoles.includes(enumRoles.SALES_ADMIN)
+            || userRoles.includes(enumRoles.SALES_ADMIN_RESTAURANT)) &&
             <NavDropdown title={sellerAdminLabel}>
               <NavDropdown.Item onClick={navigateSellerForm}>{sellerRegistrationLabel}</NavDropdown.Item>
               <NavDropdown.Item onClick={navigateSellerTableFilter}>{sellerShowTableFilterLabel}</NavDropdown.Item>
-              <NavDropdown.Item onClick={navigateGeneric}>{sellerShowCardLabel}</NavDropdown.Item>
+              {/*<NavDropdown.Item onClick={navigateGeneric}>{sellerShowCardLabel}</NavDropdown.Item>*/}
             </NavDropdown>}
-          {userRoles.includes(enumRoles.SALES_ADMIN) &&
+          {(userRoles.includes(enumRoles.SALES_ADMIN)
+            || userRoles.includes(enumRoles.SALES_ADMIN_RESTAURANT)) &&
             <NavDropdown title={clientAdminLabel}>
               <NavDropdown.Item onClick={navigateClientForm}>{clientRegistrationLabel}</NavDropdown.Item>
               <NavDropdown.Item onClick={navigateClientTableFilter}>{clientShowTableFilterLabel}</NavDropdown.Item>
-              <NavDropdown.Item onClick={navigateGeneric}>{clientShowCardLabel}</NavDropdown.Item>
+              {/*<NavDropdown.Item onClick={navigateGeneric}>{clientShowCardLabel}</NavDropdown.Item>*/}
             </NavDropdown>}
-          {userRoles.includes(enumRoles.SALES_ADMIN) &&
+          {(userRoles.includes(enumRoles.SALES_ADMIN)
+            || userRoles.includes(enumRoles.SALES_ADMIN_RESTAURANT)) &&
             <NavDropdown title={productAdminLabel}>
               <NavDropdown.Item onClick={navigateProductsForm}>{productRegistrationLabel}</NavDropdown.Item>
               <NavDropdown.Item onClick={navigateProductsTableFilter}>{productShowTableFilterLabel}</NavDropdown.Item>
-              <NavDropdown.Item onClick={navigateGeneric}>{productShowCardLabel}</NavDropdown.Item>
+              {/*<NavDropdown.Item onClick={navigateGeneric}>{productShowCardLabel}</NavDropdown.Item>*/}
             </NavDropdown>}
-          {/*userRoles.includes(enumRoles.SALES_ADMIN) &&
+          {userRoles.includes(enumRoles.SALES_ADMIN_RESTAURANT) &&
             <NavDropdown title={orderAdminLabel}>
               <NavDropdown.Item onClick={navigateGeneric}>{orderRegistrationLabel}</NavDropdown.Item>
               <NavDropdown.Item onClick={navigateGeneric}>{orderShowTableLabel}</NavDropdown.Item>
-              <NavDropdown.Item onClick={navigateGeneric}>{orderShowCardLabel}</NavDropdown.Item>
-          </NavDropdown>*/}
-          {/*userRoles.includes(enumRoles.SALES_ADMIN) &&
+              {/*<NavDropdown.Item onClick={navigateGeneric}>{orderShowCardLabel}</NavDropdown.Item>*/}
+            </NavDropdown>}
+          {userRoles.includes(enumRoles.SALES_ADMIN_RESTAURANT) &&
             <NavDropdown title={dispatchAdminLabel}>
               <NavDropdown.Item onClick={navigateGeneric}>{dispatchRegistrationLabel}</NavDropdown.Item>
               <NavDropdown.Item onClick={navigateGeneric}>{dispatchShowTableLabel}</NavDropdown.Item>
-              <NavDropdown.Item onClick={navigateGeneric}>{dispatchShowCardLabel}</NavDropdown.Item>
-        </NavDropdown>*/}
-          {userRoles.includes(enumRoles.SALES_ADMIN) &&
+              {/*<NavDropdown.Item onClick={navigateGeneric}>{dispatchShowCardLabel}</NavDropdown.Item>*/}
+            </NavDropdown>}
+          {(userRoles.includes(enumRoles.SALES_ADMIN)
+            || userRoles.includes(enumRoles.SALES_ADMIN_RESTAURANT)) &&
             <NavDropdown title={salesAdminLabel}>
               <NavDropdown.Item onClick={navigateSalesRegistrationStepOne}>{salesRegistrationLabel}</NavDropdown.Item>
               <NavDropdown.Item onClick={navigateSalesTableFilter}>{salesShowTableLabel}</NavDropdown.Item>
-              <NavDropdown.Item onClick={navigateGeneric}>{salesShowCardLabel}</NavDropdown.Item>
+              {/*<NavDropdown.Item onClick={navigateGeneric}>{salesShowCardLabel}</NavDropdown.Item>*/}
             </NavDropdown>}
           {userRoles.includes(enumRoles.SALES_ADMIN) &&
             <NavDropdown title={reportAdminLabel}>
