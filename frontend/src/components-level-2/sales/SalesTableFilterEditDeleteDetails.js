@@ -1,7 +1,7 @@
 import { useHistory } from "react-router";
 import { useState } from "react";
 import TableFilterGeneric from "./../generic/TableFilterGeneric";
-import { handleFilterRequest, handleDeleteRequestNew, handleGetRequest } from "../../actions/HandleManager";
+import { handleFilterRequest, handleDeleteRequestNew } from "../../actions/HandleManager";
 import enumPaths from "./../../models/enumPaths"
 import i18n from "../../i18n/i18n";
 import arrayDataFields from "../../models/sales/arraySaleDataFields";
@@ -10,6 +10,7 @@ import enumCompareOperators from "./../../models/enumCompareOperators";
 import useInput from "./../../hooks/useInput";
 import getColumnsFilterModel from "../../models/sales/arraySaleColumnsFilterSelection";
 import CommonLoading from '../../components-level-1/CommonLoading';
+import fixArrayDataSales from "./../../tools/sales/fixArrayDataSales";
 
 
 function SalesTableFilterEditDeleteDetails() {
@@ -87,6 +88,11 @@ function SalesTableFilterEditDeleteDetails() {
     /*UPDATED DATE*/criteriaUpdatedDate, criteriaOnChangeUpdatedDate, criteriaSetUpdatedDate, operatorUpdatedDate, operatorOnChangeUpdatedDate, operatorSetUpdatedDate
   );
 
+  function fixArrayData(arraySales) {
+    const arraySalesFixed = fixArrayDataSales(arraySales)
+    return arraySalesFixed
+  }
+
   if (isRequestInProgress) {
     return <CommonLoading />
   }
@@ -103,6 +109,7 @@ function SalesTableFilterEditDeleteDetails() {
       arrayColumnsFilter={arrayColumnsFilter}
       clearFilters={clearFilters}
       getFilterBody={getFilterBody}
+      fixArrayData={fixArrayData}
     >
     </TableFilterGeneric>
   )
