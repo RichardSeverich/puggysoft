@@ -47,11 +47,11 @@ function CommonTable(props) {
   const tableFilters = () => {
     const result = filterArrayColumns.map(function (filter, index) {
       if (enumFilterType.NONE === filter.type) {
-        return <th key={'filter-' + index}>
+        return <th key={'filter-none-' + index}>
           <Form.Control disabled placeholder="" />
         </th>
       } else if (enumFilterType.TEXTBOX === filter.type) {
-        return <><th key={'filter-' + index}>
+        return <th key={'filter-textbox-' + index}>
           <Form.Control
             value={filter.criteriaValue}
             onChange={filter.criteriaOnchange}
@@ -65,9 +65,9 @@ function CommonTable(props) {
             <option value={enumCompareOperators.TEXT_START_WITH}>{i18n.commonTable.filterTextStartWith}</option>
             <option value={enumCompareOperators.TEXT_END_WITH}>{i18n.commonTable.filterTextEndWith}</option>
           </Form.Select>
-        </th></>
+        </th>
       } else if (enumFilterType.DATE === filter.type) {
-        return <th key={'filter-' + index}>
+        return <th key={'filter-date-' + index}>
           <Form.Control
             value={filter.criteriaValue}
             onChange={filter.criteriaOnchange}
@@ -84,7 +84,7 @@ function CommonTable(props) {
           </Form.Select>
         </th>
       } else if (enumFilterType.DATE_RANGE === filter.type) {
-        return <th key={'filter-' + index}>
+        return <th key={'filter-date-range-' + index}>
           <Form.Control
             value={filter.criteriaValueStartDate}
             onChange={filter.criteriaOnchangeStartDate}
@@ -95,7 +95,7 @@ function CommonTable(props) {
             type="date" placeholder="" />
         </th>
       } else if (enumFilterType.DROPDOWN === filter.type) {
-        return <th key={'filter-' + index}>
+        return <th key={'filter-dropdown-' + index}>
           <Form.Select
             value={filter.criteriaValue}
             onChange={filter.criteriaOnchange}
@@ -108,7 +108,7 @@ function CommonTable(props) {
           </Form.Select>
         </th>
       } else if (enumFilterType.NUMBER === filter.type) {
-        return <><th key={'filter-' + index}>
+        return <th key={'filter-number-' + index}>
           <Form.Control
             value={filter.criteriaValue}
             onChange={filter.criteriaOnchange}
@@ -124,7 +124,7 @@ function CommonTable(props) {
             <option value={enumCompareOperators.NUMBER_SMALLER_EQUALS_THAN}>{i18n.commonTable.filterNumberSmallerEqualsThan}</option>
             <option value={enumCompareOperators.NUMBER_SMALLER_THAN}>{i18n.commonTable.filterNumberSmallerThan}</option>
           </Form.Select>
-        </th></>
+        </th>
       } else {
         return <th key={'filter-' + index}><Form.Control disabled placeholder="" /></th>
       }
@@ -137,12 +137,13 @@ function CommonTable(props) {
       const totalRows = <tr key={'row-' + rowIndex}>
         {arrayDataFields.map(function (field, fieldIndex) {
           let singleRow = ''
+          const fieldKey = 'field-' + rowIndex + fieldIndex;
           if (field.type && field.type === enumTableFieldType.IMAGE) {
-            singleRow = <td key={'field-' + fieldIndex}>
-              <Image fluid sice='' src={`data:image/jpeg;base64, ${data[field.value]}`}></Image>
+            singleRow = <td key={fieldKey}>
+              <Image key={'image-' + fieldKey} fluid sice='' src={`data:image/jpeg;base64, ${data[field.value]}`}></Image>
             </td>;
           } else {
-            singleRow = <td key={'field-' + fieldIndex}>{data[field]}</td>;
+            singleRow = <td key={fieldKey}>{data[field]}</td>;
           }
           return singleRow;
         })}
@@ -232,15 +233,15 @@ function CommonTable(props) {
               {i18n.commonTable.pdfExportButton}</Button>}
           </div>
           <Table striped bordered hover responsive={true}>
-            <thead>
-              <tr>
+            <thead key='thead'>
+              <tr key={'table-columns'}>
                 {tableColumns()}
               </tr>
-              <tr>
+              <tr key={'table-columns-filters'}>
                 {filterArrayColumns && filterArrayColumns.length > 0 && tableFilters()}
               </tr>
             </thead>
-            <tbody>
+            <tbody key="tbody">
               {tableRows()}
             </tbody>
           </Table>

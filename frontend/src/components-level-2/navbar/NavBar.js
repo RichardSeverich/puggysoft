@@ -12,7 +12,7 @@ import {
   FaUserMd,
   FaUser,
 } from 'react-icons/fa';
-import { AiOutlineUserAdd, AiOutlineTable, AiOutlineIdcard } from 'react-icons/ai';
+import { AiOutlineUserAdd, AiOutlineTable, /*AiOutlineIdcard*/ } from 'react-icons/ai';
 import { GrAddCircle, GrProductHunt } from 'react-icons/gr';
 import { CgOptions } from 'react-icons/cg';
 import {
@@ -125,15 +125,15 @@ function NavBar() {
   const userRegistrationLabel = (<><AiOutlineUserAdd /> {i18n.navBar.userRegistration}</>)
   const userShowTableFilterEditDeleteLabel = (<><AiOutlineTable /> {i18n.navBar.userShowTableFilterEditDelete}</>)
   const userShowTableFilterDetailsLabel = (<><AiOutlineTable /> {i18n.navBar.userShowTableFilterDetails}</>)
-  const userShowTableFullDataLabel = (<><AiOutlineTable /> {i18n.navBar.userShowTableFullData}</>)
+  // const userShowTableFullDataLabel = (<><AiOutlineTable /> {i18n.navBar.userShowTableFullData}</>)
   const userShowTableFilterFullDataLabel = (<><AiOutlineTable /> {i18n.navBar.userShowTableFilterFullData}</>)
-  const userShowCardLabel = (<><AiOutlineIdcard /> {i18n.navBar.userShowCard}</>)
+  // const userShowCardLabel = (<><AiOutlineIdcard /> {i18n.navBar.userShowCard}</>)
   // ROLES
   const rolesAdminLabel = (<><RiShieldKeyholeFill /> {i18n.navBar.roleAdmin}</>)
   //const roleRegistrationLabel = (<><GrAddCircle /> {i18n.navBar.roleRegistration}</>)
   const roleShowTableLabel = (<><AiOutlineTable /> {i18n.navBar.roleShowTable}</>)
   const roleShowTableFilterLabel = (<><AiOutlineTable /> {i18n.navBar.roleShowTableFilter}</>)
-  const roleShowCardLabel = (<><AiOutlineIdcard /> {i18n.navBar.roleShowCard}</>)
+  // const roleShowCardLabel = (<><AiOutlineIdcard /> {i18n.navBar.roleShowCard}</>)
 
   // ROLES - USER
   const roleUserAdminLabel = (<><FaUsersCog /> {i18n.navBar.roleUserAdmin}</>)
@@ -144,36 +144,36 @@ function NavBar() {
   // SELLER
   const sellerAdminLabel = (<><RiUser2Fill /> {i18n.navBar.sellertAdmin}</>)
   const sellerRegistrationLabel = (<><GrAddCircle /> {i18n.navBar.sellerRegistration}</>)
-  const sellerShowTableLabel = (<><AiOutlineTable /> {i18n.navBar.sellerShowTable}</>)
+  // const sellerShowTableLabel = (<><AiOutlineTable /> {i18n.navBar.sellerShowTable}</>)
   const sellerShowTableFilterLabel = (<><AiOutlineTable /> {i18n.navBar.sellerShowTableFilter}</>)
-  const sellerShowCardLabel = (<><AiOutlineIdcard /> {i18n.navBar.sellerShowCard}</>)
+  // const sellerShowCardLabel = (<><AiOutlineIdcard /> {i18n.navBar.sellerShowCard}</>)
   // CLIENT
   const clientAdminLabel = (<><FaUser /> {i18n.navBar.clientAdmin}</>)
   const clientRegistrationLabel = (<><GrAddCircle /> {i18n.navBar.clientRegistration}</>)
-  const clientShowTableLabel = (<><AiOutlineTable /> {i18n.navBar.clientShowTable}</>)
+  // const clientShowTableLabel = (<><AiOutlineTable /> {i18n.navBar.clientShowTable}</>)
   const clientShowTableFilterLabel = (<><AiOutlineTable /> {i18n.navBar.clientShowTableFilter}</>)
-  const clientShowCardLabel = (<><AiOutlineIdcard /> {i18n.navBar.clientShowCard}</>)
+  // const clientShowCardLabel = (<><AiOutlineIdcard /> {i18n.navBar.clientShowCard}</>)
   // PRODUCTS
   const productAdminLabel = (<><GrProductHunt /> {i18n.navBar.productAdmin}</>)
   const productRegistrationLabel = (<><GrAddCircle /> {i18n.navBar.productRegistration}</>)
-  const productShowTableLabel = (<><AiOutlineTable /> {i18n.navBar.productShowTable}</>)
+  // const productShowTableLabel = (<><AiOutlineTable /> {i18n.navBar.productShowTable}</>)
   const productShowTableFilterLabel = (<><AiOutlineTable /> {i18n.navBar.productShowTableFilter}</>)
-  const productShowCardLabel = (<><AiOutlineIdcard /> {i18n.navBar.productShowCard}</>)
+  // const productShowCardLabel = (<><AiOutlineIdcard /> {i18n.navBar.productShowCard}</>)
   // ORDERS
   const orderAdminLabel = (<><FaTicketAlt /> {i18n.navBar.orderAdmin}</>)
   const orderRegistrationLabel = (<><GrAddCircle /> {i18n.navBar.orderRegistration}</>)
   const orderShowTableLabel = (<><AiOutlineTable /> {i18n.navBar.orderShowTable}</>)
-  const orderShowCardLabel = (<><AiOutlineIdcard /> {i18n.navBar.orderShowCard}</>)
+  // const orderShowCardLabel = (<><AiOutlineIdcard /> {i18n.navBar.orderShowCard}</>)
   // DISPATCH
   const dispatchAdminLabel = (<><BsFillBagCheckFill /> {i18n.navBar.dispatchAdmin}</>)
   const dispatchRegistrationLabel = (<><GrAddCircle /> {i18n.navBar.dispatchRegistration}</>)
   const dispatchShowTableLabel = (<><AiOutlineTable /> {i18n.navBar.dispatchShowTable}</>)
-  const dispatchShowCardLabel = (<><AiOutlineIdcard /> {i18n.navBar.dispatchShowCard}</>)
+  // const dispatchShowCardLabel = (<><AiOutlineIdcard /> {i18n.navBar.dispatchShowCard}</>)
   // SALES
   const salesAdminLabel = (<><BsCartCheckFill /> {i18n.navBar.salesAdmin}</>)
   const salesRegistrationLabel = (<><GrAddCircle /> {i18n.navBar.salesRegistration}</>)
   const salesShowTableLabel = (<><AiOutlineTable /> {i18n.navBar.salesShowTable}</>)
-  const salesShowCardLabel = (<><AiOutlineIdcard /> {i18n.navBar.salesShowCard}</>)
+  // const salesShowCardLabel = (<><AiOutlineIdcard /> {i18n.navBar.salesShowCard}</>)
   // REPORTS
   const reportAdminLabel = (<><BsFillBarChartFill /> {i18n.navBar.reportAdmin}</>)
   const reportQuantityAnnual = (<><FaChartLine /> {i18n.navBar.reportQuantityAnnual}</>)
@@ -195,25 +195,25 @@ function NavBar() {
   const doctorRegistrationLabel = (<><GrAddCircle /> {i18n.navBar.doctorRegistration}</>)
   // const doctorShowTableLabel = (<><AiOutlineTable /> {i18n.navBar.doctorShowTable}</>) No use more
   const doctorShowTableFilterLabel = (<><AiOutlineTable /> {i18n.navBar.doctorShowTableFilter}</>)
-  const doctorShowCardLabel = (<><AiOutlineIdcard /> {i18n.navBar.doctorShowCard}</>)
+  // const doctorShowCardLabel = (<><AiOutlineIdcard /> {i18n.navBar.doctorShowCard}</>)
   // PATIENTS
   const patientAdminLabel = (<><FaUserInjured /> {i18n.navBar.patientAdmin}</>)
   const patientRegistrationLabel = (<><GrAddCircle /> {i18n.navBar.patientRegistration}</>)
   // const patientShowTableLabel = (<><AiOutlineTable /> {i18n.navBar.patientShowTable}</>) No use more
   const patientShowTableFilterLabel = (<><AiOutlineTable /> {i18n.navBar.patientShowTableFilter}</>)
-  const patientShowCardLabel = (<><AiOutlineIdcard /> {i18n.navBar.patientShowCard}</>)
+  // const patientShowCardLabel = (<><AiOutlineIdcard /> {i18n.navBar.patientShowCard}</>)
   // SCHEDULE
   const scheduleAdminLabel = (<><GoCalendar /> {i18n.navBar.scheduleAdmin}</>)
   const scheduleRegistrationLabel = (<><GrAddCircle /> {i18n.navBar.scheduleRegistration}</>)
   const scheduleShowTableLabel = (<><AiOutlineTable /> {i18n.navBar.scheduleShowTable}</>)
   const scheduleShowTableFilterLabel = (<><AiOutlineTable /> {i18n.navBar.scheduleShowTableFilter}</>)
-  const scheduleShowCardLabel = (<><AiOutlineIdcard /> {i18n.navBar.scheduleShowCard}</>)
+  // const scheduleShowCardLabel = (<><AiOutlineIdcard /> {i18n.navBar.scheduleShowCard}</>)
   // BOOKINGS
   const bookingAdminLabel = (<><FaTicketAlt /> {i18n.navBar.bookingAdmin}</>)
   const bookingRegistrationLabel = (<><GrAddCircle /> {i18n.navBar.bookingRegistration}</>)
   const bookingShowTableLabel = (<><AiOutlineTable /> {i18n.navBar.bookingShowTable}</>)
   const bookingShowTableFilterLabel = (<><AiOutlineTable /> {i18n.navBar.bookingShowTableFilter}</>)
-  const bookingShowCardLabel = (<><AiOutlineIdcard /> {i18n.navBar.bookingShowCard}</>)
+  // const bookingShowCardLabel = (<><AiOutlineIdcard /> {i18n.navBar.bookingShowCard}</>)
 
   // ******* ******* ******* ALL SYSTEMS ******* ******* *******
   // CONFIG
@@ -319,27 +319,27 @@ function NavBar() {
             <NavDropdown title={doctorAdminLabel}>
               <NavDropdown.Item onClick={navigateDoctorUserForm}>{doctorRegistrationLabel}</NavDropdown.Item>
               <NavDropdown.Item onClick={navigateDoctorUserTableToDetails}>{doctorShowTableFilterLabel}</NavDropdown.Item>
-              <NavDropdown.Item onClick={navigateGeneric}>{doctorShowCardLabel}</NavDropdown.Item>
+              {/*<NavDropdown.Item onClick={navigateGeneric}>{doctorShowCardLabel}</NavDropdown.Item>*/}
             </NavDropdown>}
           {userRoles.includes(enumRoles.HOSPITAL_ADMIN) &&
             <NavDropdown title={patientAdminLabel}>
               <NavDropdown.Item onClick={navigatePatientUserForm}>{patientRegistrationLabel}</NavDropdown.Item>
               <NavDropdown.Item onClick={navigatePatientUserTableToDetails}>{patientShowTableFilterLabel}</NavDropdown.Item>
-              <NavDropdown.Item onClick={navigateGeneric}>{patientShowCardLabel}</NavDropdown.Item>
+              {/*<NavDropdown.Item onClick={navigateGeneric}>{patientShowCardLabel}</NavDropdown.Item>*/}
             </NavDropdown>}
           {userRoles.includes(enumRoles.HOSPITAL_ADMIN) &&
             <NavDropdown title={scheduleAdminLabel}>
               <NavDropdown.Item onClick={navigateGeneric}>{scheduleRegistrationLabel}</NavDropdown.Item>
               <NavDropdown.Item onClick={navigateGeneric}>{scheduleShowTableLabel}</NavDropdown.Item>
               <NavDropdown.Item onClick={navigateGeneric}>{scheduleShowTableFilterLabel}</NavDropdown.Item>
-              <NavDropdown.Item onClick={navigateGeneric}>{scheduleShowCardLabel}</NavDropdown.Item>
+              {/*<NavDropdown.Item onClick={navigateGeneric}>{scheduleShowCardLabel}</NavDropdown.Item>*/}
             </NavDropdown>}
           {userRoles.includes(enumRoles.HOSPITAL_ADMIN) &&
             <NavDropdown title={bookingAdminLabel}>
               <NavDropdown.Item onClick={navigateGeneric}>{bookingRegistrationLabel}</NavDropdown.Item>
               <NavDropdown.Item onClick={navigateGeneric}>{bookingShowTableLabel}</NavDropdown.Item>
               <NavDropdown.Item onClick={navigateGeneric}>{bookingShowTableFilterLabel}</NavDropdown.Item>
-              <NavDropdown.Item onClick={navigateGeneric}>{bookingShowCardLabel}</NavDropdown.Item>
+              {/*<NavDropdown.Item onClick={navigateGeneric}>{bookingShowCardLabel}</NavDropdown.Item>*/}
             </NavDropdown>}
         </Nav>
 
