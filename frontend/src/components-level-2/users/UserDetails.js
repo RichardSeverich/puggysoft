@@ -7,7 +7,7 @@ import CommonTextbox from "../../components-level-1/CommonTextbox";
 import i18n from "../../i18n/i18n";
 import useInput from "./../../hooks/useInput";
 import { handleValidation, classNameFormTextNew } from "./../../validations/users/HandleUserFormValidations";
-import { handleEditRequest } from "../../actions/HandleManager";
+import { handleEditRequest, handleAddFileRequest } from "../../actions/HandleManager";
 import enumSex from "./../../models/users/enumSex";
 
 import "./user-details.css";
@@ -45,6 +45,10 @@ function UserDetails (props) {
   const { value: valueUpdatedBy } = useInput(userData.updatedBy);
   const { value: valueCreationDate } = useInput(userData.creationDate?.substring(0, 10));
   const { value: valueUpdateDate } = useInput(userData.updateDate?.substring(0, 10));
+  const { value: valuePicturePath, setValue: setValuePicturePath } = useInput("");
+  const { value: valuePicture, setValue: setValuePicture } = useInput();
+  const { value: valuePictureToShow, setValue: setValuePictureToShow } = useInput(userData.image);
+  const valueEmailVerified = userData.emailVerified === i18n.userEmailVerified.verified;
 
   const resetValues = function () {
     setValueUsername(userData.username);
@@ -62,6 +66,9 @@ function UserDetails (props) {
     setValueAddress(userData.address);
     setValueEmail(userData.email);
     setValueStatus(isActive);
+    setValuePicture(null);
+    setValuePicturePath("");
+    setValuePictureToShow(userData.image);
   };
 
   const getBody = function () {
@@ -83,9 +90,26 @@ function UserDetails (props) {
       email: valueEmail,
       active: valueStatus,
       createdBy: valueCreatedBy,
-      updatedBy: username
+      updatedBy: username,
+      emailVerified: valueEmailVerified
     };
     return body;
+  };
+
+  const handleOnChangePicture = (event) => {
+    // file.name file.size file.type
+    const file = event.target.files[0];
+    // const fileTypeName = file.constructor.name
+    setValuePicture(file);
+    setValuePicturePath(event.target.value);
+    // blob:http://localhost:3000/b44075bf-9255-4a62-97ef-922e3663a768
+    setValuePictureToShow(URL.createObjectURL(file));
+  };
+
+  const handleAddImage = () => {
+    if (valuePicture !== null) {
+      handleAddFileRequest("users/picture/", valuePicture, userData.id, null, true);
+    }
   };
 
   const handleAfterEdit = (response) => {
@@ -131,9 +155,13 @@ function UserDetails (props) {
     }
   ];
 
-  let imageUrl = "https://icon-library.com/images/user-png-icon/user-png-icon-16.jpg";
-  if (userData.image && userData.image !== null) {
-    imageUrl = `data:image/jpeg;base64, ${userData.image}`;
+  let imageUrl = "http://localhost:3000/user-default.jpg";
+  if (valuePictureToShow && valuePictureToShow !== null) {
+    if (valuePictureToShow.includes("blob:")) {
+      imageUrl = valuePictureToShow;
+    } else {
+      imageUrl = `data:image/jpeg;base64, ${valuePictureToShow}`;
+    }
   }
 
   return (
@@ -141,6 +169,17 @@ function UserDetails (props) {
       <Card>
         <Card.Header as="h3">{i18n.userDetails.title}</Card.Header>
         <Card.Img variant="top" size="" src={imageUrl} />
+        <div className="puggysoft-textbox-item">
+          <CommonTextbox
+            textboxLabel={i18n.userForm.fieldImage}
+            textboxReadOnly={false}
+            textboxType={"file"}
+            textboxOnSave={handleAddImage}
+            textboxOnchange={(event) => handleOnChangePicture(event)}
+            textboxValue={valuePicturePath}
+          >
+          </CommonTextbox>
+        </div>
         <Card.Body>
           <ListGroup.Item> <Card.Title>{i18n.userDetails.subTitleCredentials}</Card.Title> </ListGroup.Item>
           <ListGroup>
@@ -167,6 +206,19 @@ function UserDetails (props) {
                 >
                 </CommonTextbox>
               </div>
+              <div className="puggysoft-textbox-item">
+                <CommonTextbox
+                  textboxLabel={i18n.userTable.columnEmailVerified}
+                  textboxReadOnly={true}
+                  textboxType={"text"}
+                  textboxOnSave={() => { }}
+                  textboxOnchange={() => { }}
+                  textboxValue={userData.emailVerified}
+                >
+                </CommonTextbox>
+              </div>
+            </ListGroup.Item>
+            <ListGroup.Item>
               <div className="puggysoft-textbox-item">
                 <CommonTextbox
                   textboxLabel={i18n.userTable.columnUsername}

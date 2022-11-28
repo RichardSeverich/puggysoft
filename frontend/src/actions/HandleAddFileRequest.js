@@ -8,10 +8,10 @@ const handleAddFileRequest = (endpoint, file, id, callback, showMessageOnSuccess
         callback(response.data);
       }
       if (showMessageOnSuccess) {
-        messageManager.addMessages(response);
+        messageManager.editMessages(response);
       }
     } else {
-      messageManager.addMessages(response);
+      messageManager.editMessages(response);
     }
   });
 };

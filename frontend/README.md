@@ -4,7 +4,10 @@
 
 1. Install Windows 10
 2. Install ```node version:  14.17.3```
-3. Install ```npm version: 6.14.13``
+3. Install ```npm version: 6.14.13```
+4. Install ```Visual studio code```
+5. Install ```Visual studio code plugin: ESLint```
+6. Install ```Visual studio code plugin: GitLens — Git supercharged```
 
 ## Deploy 🚀
 

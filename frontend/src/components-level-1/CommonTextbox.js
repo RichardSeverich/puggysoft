@@ -10,7 +10,7 @@ function CommonTextbox (props) {
   const {
     textboxLabel,
     textboxReadOnly, // boolean isDisabledEdit true
-    textboxType, // text, number, email, date
+    textboxType, // text, number, email, date, file
     textboxOnSave,
     textboxOnchange,
     textboxValue,
