@@ -1,8 +1,8 @@
-import NavBar from './../../components-level-2/navbar/NavBar'
-import UserForm from './../../components-level-2/users/UserForm';
+import React from "react";
+import NavBar from "./../../components-level-2/navbar/NavBar";
+import UserForm from "./../../components-level-2/users/UserForm";
 
-function UserFormPage() {
-
+function UserFormPage () {
   return (
     <div className="product-form-page">
       <NavBar></NavBar>

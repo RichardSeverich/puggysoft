@@ -10,7 +10,7 @@ const saleProductTable = {
   saleDate: "Fecha de venta",
   saleTotalToPay: "Total pagar",
   clientCashToPay: "Efectivo",
-  clientCashChange: "Cambio",
+  clientCashChange: "Cambio"
 };
 
 export default saleProductTable;

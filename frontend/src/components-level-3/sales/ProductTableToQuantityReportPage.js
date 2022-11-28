@@ -1,8 +1,8 @@
-import NavBar from './../../components-level-2/navbar/NavBar'
-import ProductTableToQuantityReport from './../../components-level-2/sales/ProductTableToQuantityReport';
+import React from "react";
+import NavBar from "./../../components-level-2/navbar/NavBar";
+import ProductTableToQuantityReport from "./../../components-level-2/sales/ProductTableToQuantityReport";
 
-function ProductTableToQuantityReportPage() {
-
+function ProductTableToQuantityReportPage () {
   return (
     <div className="sales-product-table">
       <NavBar></NavBar>

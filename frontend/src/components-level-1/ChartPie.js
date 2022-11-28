@@ -1,9 +1,7 @@
-import React from 'react';
-import PropTypes from 'prop-types'
-
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
-import { Pie } from 'react-chartjs-2';
-
+import React from "react";
+import PropTypes from "prop-types";
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
+import { Pie } from "react-chartjs-2";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -18,21 +16,21 @@ const ChartPie = ({
   borderWidth
 }) => {
   const chartData = {
-    labels: labels,
+    labels,
     datasets: [
       {
-        label: label,
-        data: data,
-        backgroundColor: backgroundColor,
-        borderColor: borderColor,
-        borderWidth: borderWidth,
-      },
-    ],
+        label,
+        data,
+        backgroundColor,
+        borderColor,
+        borderWidth
+      }
+    ]
   };
   return (
     <Pie data={chartData} />
-  )
-}
+  );
+};
 
 export default ChartPie;
 
@@ -43,13 +41,13 @@ ChartPie.propTypes = {
   backgroundColor: PropTypes.array,
   borderColor: PropTypes.array,
   borderWidth: PropTypes.number
-}
+};
 
 ChartPie.defaultProps = {
-  label: '',
+  label: "",
   labels: [],
   data: [],
   backgroundColor: [],
   borderColor: [],
   borderWidth: 0
-}
+};

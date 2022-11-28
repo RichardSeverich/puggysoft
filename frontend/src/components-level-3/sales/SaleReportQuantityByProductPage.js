@@ -1,8 +1,8 @@
-import NavBar from './../../components-level-2/navbar/NavBar'
-import SaleReportQuantityByProduct from './../../components-level-2/sales/SaleReportQuantityByProduct';
+import React from "react";
+import NavBar from "./../../components-level-2/navbar/NavBar";
+import SaleReportQuantityByProduct from "./../../components-level-2/sales/SaleReportQuantityByProduct";
 
-function SaleReportQuantityByProductPage() {
-
+function SaleReportQuantityByProductPage () {
   return (
     <div className="sales-report">
       <NavBar></NavBar>

@@ -34,6 +34,6 @@ const enumCompareOperators = {
   NUMBER_SMALLER_EQUALS_THAN,
   NUMBER_SMALLER_THAN,
   BOOLEAN_EQUALS
-}
+};
 
 export default enumCompareOperators;

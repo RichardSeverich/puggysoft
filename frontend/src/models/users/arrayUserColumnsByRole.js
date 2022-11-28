@@ -4,7 +4,7 @@ const arrayColumns = [
   i18n.userTable.columnUsername,
   i18n.userTable.columnDni,
   i18n.userTable.columnName,
-  i18n.userTable.columnLastName,
+  i18n.userTable.columnLastName
 ];
 
 export default arrayColumns;

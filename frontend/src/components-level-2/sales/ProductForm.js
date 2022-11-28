@@ -1,37 +1,35 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router";
 
-import Form from 'react-bootstrap/Form'
-import Button from 'react-bootstrap/Button'
-import Card from 'react-bootstrap/Card'
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
+import Card from "react-bootstrap/Card";
 import i18n from "./../../i18n/i18n";
 import useInput from "./../../hooks/useInput";
 
 import { handleAddRequest, handleEditRequest, handleAddFileRequest } from "../../actions/HandleManager";
-import { handleValidation, classNameFormTextNew } from "./../../validations/sales/HandleProductFormValidations"
+import { handleValidation, classNameFormTextNew } from "./../../validations/sales/HandleProductFormValidations";
 
-import "./../css/all-forms.css"
-import "./product-form-styles.css"
+import "./../css/all-forms.css";
+import "./product-form-styles.css";
 
-
-function ProductForm(props) {
-
+function ProductForm (props) {
   const history = useHistory();
   const isEditDefaultValue = history && history.location && history.location.state;
   const [isEdit, setIsEdit] = useState(isEditDefaultValue);
   const [classNameFormText, setClassNameFormText] = useState(classNameFormTextNew);
 
   // Put default values:
-  let id = isEdit && isEdit.data.id !== null ? isEdit.data.id : "";
-  let code = isEdit && isEdit.data.code !== null ? isEdit.data.code : "";
-  let name = isEdit && isEdit.data.name !== null ? isEdit.data.name : "";
-  let purchasePrice = isEdit && isEdit.data.purchasePrice !== null ? isEdit.data.purchasePrice : "";
-  let salePrice = isEdit && isEdit.data.salePrice !== null ? isEdit.data.salePrice : "";
-  let stock = isEdit && isEdit.data.stock !== null ? isEdit.data.stock : "";
-  let minimumStock = isEdit && isEdit.data.minimumStock !== null ? isEdit.data.minimumStock : "";
-  let description = isEdit && isEdit.data.description !== null ? isEdit.data.description : "";
-  let barCode = isEdit && isEdit.data.barCode !== null ? isEdit.data.barCode : "";
-  let location = isEdit && isEdit.data.location !== null ? isEdit.data.location : "";
+  const id = isEdit && isEdit.data.id !== null ? isEdit.data.id : "";
+  const code = isEdit && isEdit.data.code !== null ? isEdit.data.code : "";
+  const name = isEdit && isEdit.data.name !== null ? isEdit.data.name : "";
+  const purchasePrice = isEdit && isEdit.data.purchasePrice !== null ? isEdit.data.purchasePrice : "";
+  const salePrice = isEdit && isEdit.data.salePrice !== null ? isEdit.data.salePrice : "";
+  const stock = isEdit && isEdit.data.stock !== null ? isEdit.data.stock : "";
+  const minimumStock = isEdit && isEdit.data.minimumStock !== null ? isEdit.data.minimumStock : "";
+  const description = isEdit && isEdit.data.description !== null ? isEdit.data.description : "";
+  const barCode = isEdit && isEdit.data.barCode !== null ? isEdit.data.barCode : "";
+  const location = isEdit && isEdit.data.location !== null ? isEdit.data.location : "";
 
   // Use custom hook
   const { value: valueCode, onChange: onChangeCode, reset: resetCode } = useInput(code);
@@ -43,8 +41,8 @@ function ProductForm(props) {
   const { value: valueDescription, onChange: onChangeDescription, reset: resetDescription } = useInput(description);
   const { value: valueBarCode, onChange: onChangeBarCode, reset: resetBarCode } = useInput(barCode);
   const { value: valueLocation, onChange: onChangeLocation, reset: resetLocation } = useInput(location);
-  const { value: valuePicture, onChange: onChangePicture, setValue: setPicture } = useInput(null);
-  const { value: valuePicturePath, onChange: onChangePicturePath, setValue: setPicturePath } = useInput('');
+  const { value: valuePicture, setValue: setPicture } = useInput(null);
+  const { value: valuePicturePath, onChange: onChangePicturePath, setValue: setPicturePath } = useInput("");
 
   const handleReset = () => {
     resetCode();
@@ -57,8 +55,8 @@ function ProductForm(props) {
     resetBarCode();
     resetLocation();
     setPicture(null);
-    setPicturePath('');
-  }
+    setPicturePath("");
+  };
 
   const getBody = function () {
     const username = window.sessionStorage.getItem("username");
@@ -73,25 +71,25 @@ function ProductForm(props) {
       location: valueLocation,
       minimumStock: valueMinimumStock,
       createdBy: username,
-      updatedBy: username,
-    }
+      updatedBy: username
+    };
     return body;
-  }
+  };
 
   const handleAfterAdd = function (newProductId) {
     handleAddImage(newProductId);
     handleReset();
     const body = getBody();
-    handleValidation(body, setClassNameFormText)
-  }
+    handleValidation(body, setClassNameFormText);
+  };
 
   const handleAfterEdit = function () {
     handleAddImage(id);
     handleReset();
     setIsEdit(undefined);
     const body = getBody();
-    handleValidation(body, setClassNameFormText)
-  }
+    handleValidation(body, setClassNameFormText);
+  };
 
   const handleAdd = (event) => {
     event.preventDefault();
@@ -99,33 +97,33 @@ function ProductForm(props) {
     const isValid = handleValidation(body, setClassNameFormText);
     if (isValid) {
       if (isEdit) {
-        handleEditRequest("products/", body, id, handleAfterEdit)
+        handleEditRequest("products/", body, id, handleAfterEdit);
       } else {
         handleAddRequest("products/", body, handleAfterAdd);
       }
     } else {
       alert(i18n.errorMessages.validationError);
     }
-  }
+  };
 
   const handleUploadPicture = (event) => {
-    // file.name file.size file.type 
-    const file = event.target.files[0]
+    // file.name file.size file.type
+    const file = event.target.files[0];
     // const fileTypeName = file.constructor.name
     setPicture(file);
     onChangePicturePath(event);
-  }
+  };
 
   const handleAddImage = (productId) => {
-    //const pictureFile = { ...valuePicture }
+    // const pictureFile = { ...valuePicture }
     if (valuePicture !== null) {
-      handleAddFileRequest("products/picture/", valuePicture, productId, null, false)
+      handleAddFileRequest("products/picture/", valuePicture, productId, null, false);
     }
-  }
+  };
 
   useEffect(() => {
     const body = getBody();
-    handleValidation(body, setClassNameFormText)
+    handleValidation(body, setClassNameFormText);
   }, [valueName, valuePurchasePrice, valueSalePrice, valueStock,
     valueDescription, valueLocation, valueMinimumStock]);
 
@@ -244,7 +242,7 @@ function ProductForm(props) {
         </Card.Body>
       </Card>
     </div>
-  )
+  );
 }
 
 export default ProductForm;

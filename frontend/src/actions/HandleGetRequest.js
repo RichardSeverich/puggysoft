@@ -1,4 +1,4 @@
-import requestManager from "./../api/RequestManager"
+import requestManager from "./../api/RequestManager";
 import messageManager from "./HandleErrorMessages";
 
 const handleGetRequest = (endpoint, callback) => {

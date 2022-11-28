@@ -1,5 +1,5 @@
-import axios from './ApiConnector';
-import getConfig from "./ApiConfig"
+import axios from "./ApiConnector";
+import getConfig from "./ApiConfig";
 import getEndpoint from "./ApiEndpointBuilder";
 
 const remove = (endpoint, callback) => {
@@ -12,14 +12,14 @@ const remove = (endpoint, callback) => {
     })
     .catch(error => {
       console.log("*** ERROR RESPONSE ***");
-      if(error.response){
-        console.log(error.response)
+      if (error.response) {
+        console.log(error.response);
         callback(error.response);
       } else {
-        console.log(error)
+        console.log(error);
         callback(error);
       }
-  })
+    });
 };
 
 export default remove;

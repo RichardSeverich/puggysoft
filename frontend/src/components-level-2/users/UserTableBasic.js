@@ -1,26 +1,26 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router";
-import CommonTablePagination from '../../components-level-1/CommonTablePagination';
-import CommonLoading from '../../components-level-1/CommonLoading';
+import CommonTablePagination from "../../components-level-1/CommonTablePagination";
+import CommonLoading from "../../components-level-1/CommonLoading";
 import { handleGetRequest, handleDeleteRequest } from "../../actions/HandleManager";
 import i18n from "../../i18n/i18n";
 import arrayDataFields from "../../models/users/arrayUserDataFields";
 import arrayColumns from "../../models/users/arrayUserColumns";
-import fixArrayData from "../../tools/users/fixArrayData"
-import enumPaths from "./../../models/enumPaths"
+import fixArrayData from "../../tools/users/fixArrayData";
+import enumPaths from "./../../models/enumPaths";
 
 const pageSize = 10;
 const numberPagesToShow = 10;
 
-function UserTableBasic() {
+function UserTableBasic () {
   const [arrayData, setArrayData] = useState(null);
   const [totalPages, setTotalPages] = useState(null);
   const [activePage, setActivePage] = useState(1);
   const [initialPage, setInitialPage] = useState(1);
   const history = useHistory();
 
-  function updateArrayData(arrayData) {
-    let arrayFixed = fixArrayData(arrayData);
+  function updateArrayData (arrayData) {
+    const arrayFixed = fixArrayData(arrayData);
     setArrayData(arrayFixed);
   }
 
@@ -36,18 +36,18 @@ function UserTableBasic() {
     return <CommonLoading></CommonLoading>;
   }
 
-  function handleEdit(data) {
+  function handleEdit (data) {
     history.push({
       pathname: enumPaths.USERS_FORM,
       state: {
-        data: data,
+        data,
         edit: true
       }
-    })
+    });
   }
 
-  function handleDelete(data) {
-    handleDeleteRequest("users/", data.id)
+  function handleDelete (data) {
+    handleDeleteRequest("users/", data.id);
   }
 
   return (

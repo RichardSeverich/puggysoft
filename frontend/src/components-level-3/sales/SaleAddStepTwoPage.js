@@ -1,8 +1,8 @@
-import NavBar from './../../components-level-2/navbar/NavBar'
-import SaleAddStepTwoProductSelection from './../../components-level-2/sales/SaleAddStepTwoProductSelection';
+import React from "react";
+import NavBar from "./../../components-level-2/navbar/NavBar";
+import SaleAddStepTwoProductSelection from "./../../components-level-2/sales/SaleAddStepTwoProductSelection";
 
-function SaleAddStepTwoPage() {
-
+function SaleAddStepTwoPage () {
   return (
     <div className="sales-registration-step-one-page">
       <NavBar></NavBar>

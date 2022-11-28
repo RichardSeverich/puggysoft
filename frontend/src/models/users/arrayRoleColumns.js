@@ -6,7 +6,7 @@ const arrayColumns = [
   i18n.roleTable.columnCreatedBy,
   i18n.roleTable.columnUpdatedBy,
   i18n.roleTable.columnCreationDate,
-  i18n.roleTable.columnUpdateDate,
+  i18n.roleTable.columnUpdateDate
 ];
 
 export default arrayColumns;

@@ -1,8 +1,8 @@
-import NavBar from './../../components-level-2/navbar/NavBar'
-import SaleReportQuantityComparative from './../../components-level-2/sales/SaleReportQuantityComparative';
+import React from "react";
+import NavBar from "./../../components-level-2/navbar/NavBar";
+import SaleReportQuantityComparative from "./../../components-level-2/sales/SaleReportQuantityComparative";
 
-function SaleReportQuantityCompPage() {
-
+function SaleReportQuantityCompPage () {
   return (
     <div className="sales-report">
       <NavBar></NavBar>

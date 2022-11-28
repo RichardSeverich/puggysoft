@@ -1,40 +1,38 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useHistory } from "react-router";
 
-import Form from 'react-bootstrap/Form'
-import Button from 'react-bootstrap/Button'
-import Card from 'react-bootstrap/Card'
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
+import Card from "react-bootstrap/Card";
 import i18n from "./../../i18n/i18n";
 import useInput from "./../../hooks/useInput";
 
 import { handleEditRequest } from "../../actions/HandleManager";
-import systemPropertiesNames from './../../models/system/systemPropertiesNames'
-import systemPropertiesValues from './../../models/system/systemPropertiesValues'
-import enumPaths from "./../../models/enumPaths"
+import systemPropertiesNames from "./../../models/system/systemPropertiesNames";
+import systemPropertiesValues from "./../../models/system/systemPropertiesValues";
+import enumPaths from "./../../models/enumPaths";
 
-import "./../css/all-forms.css"
+import "./../css/all-forms.css";
 
-
-function SystemPropertiesForm() {
-
+function SystemPropertiesForm () {
   const history = useHistory();
 
-  const systemPropertyData = history !== undefined
-    && history.location !== undefined
-    && history.location.state !== undefined
-    && history.location.state.systemPropertyData !== undefined
+  const systemPropertyData = history !== undefined &&
+    history.location !== undefined &&
+    history.location.state !== undefined &&
+    history.location.state.systemPropertyData !== undefined
     ? history.location.state.systemPropertyData
-    : { id: '', name: '', value: '', };
+    : { id: "", name: "", value: "" };
 
   // Use custom hook
   const { value: valueName, onChange: onChangeName, reset: resetName } = useInput(systemPropertyData.name);
   const { value: valueValue, onChange: onChangeValue, reset: resetValue } = useInput(systemPropertyData.value);
 
   const handleReset = () => {
-    systemPropertyData.id = '';
+    systemPropertyData.id = "";
     resetName();
     resetValue();
-  }
+  };
 
   const getBody = function () {
     const username = window.sessionStorage.getItem("username");
@@ -42,29 +40,29 @@ function SystemPropertiesForm() {
       name: valueName,
       value: valueValue,
       createdBy: username,
-      updatedBy: username,
-    }
+      updatedBy: username
+    };
     return body;
-  }
+  };
 
   const handleAfterEdit = function () {
     handleReset();
     history.push({
-      pathname: enumPaths.SYSTEM_PROPERTIES_TABLE,
-    })
-  }
+      pathname: enumPaths.SYSTEM_PROPERTIES_TABLE
+    });
+  };
 
   const handleAdd = (event) => {
     event.preventDefault();
     const body = getBody();
-    if (systemPropertyData.id === '') {
+    if (systemPropertyData.id === "") {
       alert(i18n.systemPropertiesForm.errorPropertieNoSelected);
     } else {
-      handleEditRequest("system-properties/", body, systemPropertyData.id, handleAfterEdit)
+      handleEditRequest("system-properties/", body, systemPropertyData.id, handleAfterEdit);
     }
-  }
+  };
 
-  function getOptions() {
+  function getOptions () {
     if (valueName === systemPropertiesNames.SYS_SALE_TYPE) {
       return <>
         <option key='option-generic'
@@ -75,7 +73,7 @@ function SystemPropertiesForm() {
           value={systemPropertiesValues.SYS_SALE_TYPE.RESTAURANT}>
           {i18n.systemPropertiesForm.fieldValueTypeRestaurant}
         </option>
-      </>
+      </>;
     } else if (valueName === systemPropertiesNames.SYS_AUTO_USER_REG_BO) {
       return <>
         <option
@@ -88,7 +86,7 @@ function SystemPropertiesForm() {
           value={systemPropertiesValues.SYS_AUTO_USER_REG_BO.FALSE}>
           {i18n.trueFalse.false}
         </option>
-      </>
+      </>;
     }
   }
 
@@ -120,8 +118,7 @@ function SystemPropertiesForm() {
         </Card.Body>
       </Card>
     </div>
-  )
-
+  );
 }
 
 export default SystemPropertiesForm;

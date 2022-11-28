@@ -1,14 +1,13 @@
-import enumTableFieldType from './../enumTableFieldType'
+import enumTableFieldType from "./../enumTableFieldType";
 
 const arrayDataFields = [
   {
-    value: 'image',
+    value: "image",
     type: enumTableFieldType.IMAGE
   },
-  'name',
-  'salePrice',
-  'stock',
+  "name",
+  "salePrice",
+  "stock"
 ];
-
 
 export default arrayDataFields;

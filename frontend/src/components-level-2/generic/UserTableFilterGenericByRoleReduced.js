@@ -1,12 +1,12 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
+import PropTypes from "prop-types";
 import UserTableFilterGenericReduced from "./../users/UserTableFilterGenericReduced";
-import CommonLoading from '../../components-level-1/CommonLoading';
+import CommonLoading from "../../components-level-1/CommonLoading";
 import { handleFilterRequest, handleGetRequest } from "../../actions/HandleManager";
 
-import './../css/table-center.css'
+import "./../css/table-center.css";
 
-function UserTableFilterGenericByRoleReduced(props) {
-
+function UserTableFilterGenericByRoleReduced (props) {
   const pageSize = 10;
   const numberPagesToShow = 10;
   const [role, setRole] = useState(null);
@@ -18,11 +18,11 @@ function UserTableFilterGenericByRoleReduced(props) {
     handleGetRequest(`role?roleName=${roleName}`, setRole);
   }, []);
 
-  function handleGetData(activePage, filterBody, updateArrayData) {
+  function handleGetData (activePage, filterBody, updateArrayData) {
     handleFilterRequest(`users/filter/with-roles?page=${activePage - 1}&size=${pageSize}&idRole=${role.id}`, filterBody, updateArrayData);
   }
 
-  function handleGetSize(filterBody, setTotalPages) {
+  function handleGetSize (filterBody, setTotalPages) {
     handleFilterRequest(`users/filter/with-roles/size?&pageSize=${pageSize}&idRole=${role.id}`, filterBody, setTotalPages);
   }
 
@@ -42,7 +42,19 @@ function UserTableFilterGenericByRoleReduced(props) {
       >
       </UserTableFilterGenericReduced>
     </div>
-  )
+  );
 }
 
 export default UserTableFilterGenericByRoleReduced;
+
+UserTableFilterGenericByRoleReduced.propTypes = {
+  roleName: PropTypes.string,
+  tableTitle: PropTypes.string,
+  tableArrayCustomRowButtons: PropTypes.array
+};
+
+UserTableFilterGenericByRoleReduced.defaultProps = {
+  roleName: "",
+  tableTitle: "",
+  tableArrayCustomRowButtons: []
+};

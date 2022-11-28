@@ -1,11 +1,11 @@
-const MALE = "MALE"
-const FEMALE = "FEMALE"
-const ALL = "ALL"
+const MALE = "MALE";
+const FEMALE = "FEMALE";
+const ALL = "ALL";
 
 const enumSex = {
   MALE,
   FEMALE,
-  ALL,
-}
+  ALL
+};
 
 export default enumSex;

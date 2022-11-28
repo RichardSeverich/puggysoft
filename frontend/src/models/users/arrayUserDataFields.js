@@ -1,5 +1,5 @@
 import enumUserFields from "./enumUserFields";
-import enumTableFieldType from './../enumTableFieldType'
+import enumTableFieldType from "./../enumTableFieldType";
 
 const arrayDataFields = [
   {

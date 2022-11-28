@@ -1,24 +1,24 @@
-import ChartBar from "./ChartBar"
-import PropTypes from 'prop-types'
+import React from "react";
+import ChartBar from "./ChartBar";
+import PropTypes from "prop-types";
 
 const ChartVerticalBar = ({
   title,
   labels,
   datasets
 }) => {
-
   const options = {
     responsive: true,
     plugins: {
       legend: {
-        position: 'right',
+        position: "right"
       },
       title: {
         display: true,
-        text: title,
-      },
+        text: title
+      }
     },
-    indexAxis: 'y'
+    indexAxis: "y"
   };
 
   return (
@@ -27,19 +27,19 @@ const ChartVerticalBar = ({
       datasets={datasets}
       options={options}
     />
-  )
-}
+  );
+};
 
 export default ChartVerticalBar;
 
 ChartVerticalBar.propTypes = {
   title: PropTypes.string,
   labels: PropTypes.array,
-  datasets: PropTypes.array,
-}
+  datasets: PropTypes.array
+};
 
 ChartVerticalBar.defaultProps = {
-  title: 'Default title',
+  title: "Default title",
   labels: [],
-  datasets: [],
-}
+  datasets: []
+};

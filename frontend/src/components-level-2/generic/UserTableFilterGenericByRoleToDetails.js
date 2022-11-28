@@ -1,21 +1,21 @@
-import { useHistory } from "react-router";
+import React, { useHistory } from "react-router";
+import PropTypes from "prop-types";
 import UserTableFilterGenericByRole from "./UserTableFilterGenericByRole";
-import enumPaths from "./../../models/enumPaths"
+import enumPaths from "./../../models/enumPaths";
 import i18n from "../../i18n/i18n";
 
-function UserTableFilterGenericByRoleToDetails(props) {
-
+function UserTableFilterGenericByRoleToDetails (props) {
   const history = useHistory();
 
   const { tableTitle, roleName } = props;
 
-  function handleSelection(userData) {
+  function handleSelection (userData) {
     history.push({
       pathname: enumPaths.USERS_DETAILS,
       state: {
-        data: userData,
+        data: userData
       }
-    })
+    });
   }
 
   const tableArrayCustomRowButtons = [
@@ -24,7 +24,7 @@ function UserTableFilterGenericByRoleToDetails(props) {
       handleCustom: handleSelection,
       text: i18n.roleTable.selectButton
     }
-  ]
+  ];
 
   return (
     <UserTableFilterGenericByRole
@@ -33,7 +33,19 @@ function UserTableFilterGenericByRoleToDetails(props) {
       tableTitle={tableTitle}
     >
     </UserTableFilterGenericByRole>
-  )
+  );
 }
 
 export default UserTableFilterGenericByRoleToDetails;
+
+UserTableFilterGenericByRoleToDetails.propTypes = {
+  roleName: PropTypes.string,
+  tableTitle: PropTypes.string,
+  tableArrayCustomRowButtons: PropTypes.array
+};
+
+UserTableFilterGenericByRoleToDetails.defaultProps = {
+  roleName: "",
+  tableTitle: "",
+  tableArrayCustomRowButtons: []
+};

@@ -1,35 +1,34 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router";
-import Form from 'react-bootstrap/Form'
-import Button from 'react-bootstrap/Button'
-import Card from 'react-bootstrap/Card'
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
+import Card from "react-bootstrap/Card";
 import i18n from "./../../i18n/i18n";
 import useInput from "./../../hooks/useInput";
 import { handleLoginRequest, handleGetRequest } from "../../actions/HandleManager";
-import enumPaths from "./../../models/enumPaths"
+import enumPaths from "./../../models/enumPaths";
 
-import "./styles.css"
+import "./styles.css";
 
-function Login() {
-
+function Login () {
   const history = useHistory();
-  const { value: valueUsername, onChange: onChangeUsername, reset: resetUsername } = useInput("");
-  const { value: valuePassword, onChange: onChangePassword, reset: resetPassword } = useInput("");
+  const { value: valueUsername, onChange: onChangeUsername } = useInput("");
+  const { value: valuePassword, onChange: onChangePassword } = useInput("");
   const [isValidCredentials, setIsValidCredentials] = useState(false);
   const routerProps = history && history.location && history.location.state;
 
   if (routerProps && routerProps.logout) {
-    window.localStorage.removeItem('token');
-    window.localStorage.removeItem('username');
-    window.localStorage.removeItem('roles');
-    window.sessionStorage.clear()
+    window.localStorage.removeItem("token");
+    window.localStorage.removeItem("username");
+    window.localStorage.removeItem("roles");
+    window.sessionStorage.clear();
   }
 
   const handleLogin = () => {
     const body = {
       username: valueUsername,
       password: valuePassword
-    }
+    };
     handleLoginRequest("login", body, (responseAuth) => {
       if (responseAuth.status === 200) {
         window.sessionStorage.setItem("token", responseAuth.data.token);
@@ -44,7 +43,7 @@ function Login() {
         });
       }
     });
-  }
+  };
 
   useEffect(() => {
     if (isValidCredentials) {
@@ -56,7 +55,7 @@ function Login() {
     <div className="puggysoft-login-form" >
       <Card>
         <Card.Header as='h3'>{i18n.login.title}</Card.Header>
-        {/*<Card.Title><img src="/logo192.png" className="app-logo" alt="logo" /></Card.Title>*/}
+        {/* <Card.Title><img src="/logo192.png" className="app-logo" alt="logo" /></Card.Title> */}
         <Card.Body>
           <Form>
             <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -85,7 +84,7 @@ function Login() {
         </Card.Body>
       </Card>
     </div>
-  )
+  );
 }
 
 export default Login;

@@ -1,18 +1,18 @@
-import { useState, useEffect } from "react";
+import React, { useState } from "react";
+import PropTypes from "prop-types";
 import { useHistory } from "react-router";
-import Card from 'react-bootstrap/Card';
-import ListGroup from 'react-bootstrap/ListGroup';
-import CommonTextbox from '../../components-level-1/CommonTextbox'
+import Card from "react-bootstrap/Card";
+import ListGroup from "react-bootstrap/ListGroup";
+import CommonTextbox from "../../components-level-1/CommonTextbox";
 import i18n from "../../i18n/i18n";
 import useInput from "./../../hooks/useInput";
-import { handleValidation, classNameFormTextNew } from "./../../validations/users/HandleUserFormValidations"
+import { handleValidation, classNameFormTextNew } from "./../../validations/users/HandleUserFormValidations";
 import { handleEditRequest } from "../../actions/HandleManager";
-import enumSex from "./../../models/users/enumSex"
+import enumSex from "./../../models/users/enumSex";
 
-import "./user-details.css"
+import "./user-details.css";
 
-function UserDetails(props) {
-
+function UserDetails (props) {
   const history = useHistory();
   const routerProps = history && history.location && history.location.state;
   const userData = routerProps.data;
@@ -20,7 +20,8 @@ function UserDetails(props) {
   const { children } = props;
 
   const [classNameFormText, setClassNameFormText] = useState(classNameFormTextNew);
-  const [isProgressRequest, setIsProgressRequest] = useState(false);
+  console.log(classNameFormText);
+  // const [isProgressRequest, setIsProgressRequest] = useState(false);
 
   // Use custom hook
   const { value: valueUsername, onChange: onChangeUsername, setValue: setValueUsername } = useInput(userData.username);
@@ -61,7 +62,7 @@ function UserDetails(props) {
     setValueAddress(userData.address);
     setValueEmail(userData.email);
     setValueStatus(isActive);
-  }
+  };
 
   const getBody = function () {
     const username = window.sessionStorage.getItem("username");
@@ -82,55 +83,55 @@ function UserDetails(props) {
       email: valueEmail,
       active: valueStatus,
       createdBy: valueCreatedBy,
-      updatedBy: username,
-    }
+      updatedBy: username
+    };
     return body;
-  }
+  };
 
   const handleAfterEdit = (response) => {
     if (response.data && response.data.error) {
       resetValues();
     }
-  }
+  };
 
   const handleAdd = () => {
     const body = getBody();
-    let isValid = handleValidation(body, setClassNameFormText);
+    const isValid = handleValidation(body, setClassNameFormText);
     if (isValid) {
-      handleEditRequest("users/", body, userData.id, handleAfterEdit)
+      handleEditRequest("users/", body, userData.id, handleAfterEdit);
     } else {
       resetValues();
       alert(i18n.errorMessages.validationError);
     }
-  }
+  };
 
   const selectOptionSex = [
     {
       value: enumSex.MALE,
       text: i18n.userSexText.male,
-      key: 'option-male'
+      key: "option-male"
     },
     {
       value: enumSex.FEMALE,
       text: i18n.userSexText.female,
-      key: 'option-female'
-    },
-  ]
+      key: "option-female"
+    }
+  ];
 
   const selectOptionStatus = [
     {
       value: true,
       text: i18n.userStatus.active,
-      key: 'option-true'
+      key: "option-true"
     },
     {
       value: false,
       text: i18n.userStatus.inactive,
-      key: 'option-false'
-    },
-  ]
+      key: "option-false"
+    }
+  ];
 
-  let imageUrl = 'https://icon-library.com/images/user-png-icon/user-png-icon-16.jpg';
+  let imageUrl = "https://icon-library.com/images/user-png-icon/user-png-icon-16.jpg";
   if (userData.image && userData.image !== null) {
     imageUrl = `data:image/jpeg;base64, ${userData.image}`;
   }
@@ -138,50 +139,50 @@ function UserDetails(props) {
   return (
     <div className="puggysoft-user-details">
       <Card>
-        <Card.Header as='h3'>{i18n.userDetails.title}</Card.Header>
-        <Card.Img variant="top" size='' src={imageUrl} />
+        <Card.Header as="h3">{i18n.userDetails.title}</Card.Header>
+        <Card.Img variant="top" size="" src={imageUrl} />
         <Card.Body>
           <ListGroup.Item> <Card.Title>{i18n.userDetails.subTitleCredentials}</Card.Title> </ListGroup.Item>
           <ListGroup>
             <ListGroup.Item>
-              <div className='puggysoft-textbox-item'>
+              <div className="puggysoft-textbox-item">
                 <CommonTextbox
                   textboxLabel={i18n.userTable.columnId}
                   textboxReadOnly={true}
-                  textboxType={'text'}
+                  textboxType={"text"}
                   textboxOnSave={() => { }}
                   textboxOnchange={() => { }}
                   textboxValue={userData.id}
                 >
                 </CommonTextbox>
               </div>
-              <div className='puggysoft-textbox-item'>
+              <div className="puggysoft-textbox-item">
                 <CommonTextbox
                   textboxLabel={i18n.userTable.columnDni}
                   textboxReadOnly={false}
-                  textboxType={'text'}
+                  textboxType={"text"}
                   textboxOnSave={handleAdd}
                   textboxOnchange={onChangeDni}
                   textboxValue={valueDni}
                 >
                 </CommonTextbox>
               </div>
-              <div className='puggysoft-textbox-item'>
+              <div className="puggysoft-textbox-item">
                 <CommonTextbox
                   textboxLabel={i18n.userTable.columnUsername}
                   textboxReadOnly={false}
-                  textboxType={'text'}
+                  textboxType={"text"}
                   textboxOnSave={handleAdd}
                   textboxOnchange={onChangeUsername}
                   textboxValue={valueUsername}
                 >
                 </CommonTextbox>
               </div>
-              <div className='puggysoft-textbox-item'>
+              <div className="puggysoft-textbox-item">
                 <CommonTextbox
                   textboxLabel={i18n.userTable.columnPassword}
                   textboxReadOnly={false}
-                  textboxType={'text'}
+                  textboxType={"text"}
                   textboxOnSave={handleAdd}
                   textboxOnchange={onChangePassword}
                   textboxValue={valuePassword}
@@ -191,44 +192,44 @@ function UserDetails(props) {
             </ListGroup.Item>
             <ListGroup.Item> <Card.Title>{i18n.userDetails.subTitleGeneralData}</Card.Title> </ListGroup.Item>
             <ListGroup.Item>
-              <div className='puggysoft-textbox-item'>
+              <div className="puggysoft-textbox-item">
                 <CommonTextbox
                   textboxLabel={i18n.userTable.columnName}
                   textboxReadOnly={false}
-                  textboxType={'text'}
+                  textboxType={"text"}
                   textboxOnSave={handleAdd}
                   textboxOnchange={onChangeName}
                   textboxValue={valueName}
                 >
                 </CommonTextbox>
               </div>
-              <div className='puggysoft-textbox-item'>
+              <div className="puggysoft-textbox-item">
                 <CommonTextbox
                   textboxLabel={i18n.userTable.columnSecondName}
                   textboxReadOnly={false}
-                  textboxType={'text'}
+                  textboxType={"text"}
                   textboxOnSave={handleAdd}
                   textboxOnchange={onChangeSecondName}
                   textboxValue={valueSecondName}
                 >
                 </CommonTextbox>
               </div>
-              <div className='puggysoft-textbox-item'>
+              <div className="puggysoft-textbox-item">
                 <CommonTextbox
                   textboxLabel={i18n.userTable.columnLastName}
                   textboxReadOnly={false}
-                  textboxType={'text'}
+                  textboxType={"text"}
                   textboxOnSave={handleAdd}
                   textboxOnchange={onChangeLastName}
                   textboxValue={valueLastName}
                 >
                 </CommonTextbox>
               </div>
-              <div className='puggysoft-textbox-item'>
+              <div className="puggysoft-textbox-item">
                 <CommonTextbox
                   textboxLabel={i18n.userTable.columnSecondLastName}
                   textboxReadOnly={false}
-                  textboxType={'text'}
+                  textboxType={"text"}
                   textboxOnSave={handleAdd}
                   textboxOnchange={onChangeSecondLastName}
                   textboxValue={valueSecondLastName}
@@ -237,33 +238,33 @@ function UserDetails(props) {
               </div>
             </ListGroup.Item>
             <ListGroup.Item>
-              <div className='puggysoft-textbox-item'>
+              <div className="puggysoft-textbox-item">
                 <CommonTextbox
                   textboxLabel={i18n.userTable.columnBirthDate}
                   textboxReadOnly={false}
-                  textboxType={'date'}
+                  textboxType={"date"}
                   textboxOnSave={handleAdd}
                   textboxOnchange={onChangeBirthDate}
                   textboxValue={valueBirthDate}
                 >
                 </CommonTextbox>
               </div>
-              <div className='puggysoft-textbox-item'>
+              <div className="puggysoft-textbox-item">
                 <CommonTextbox
                   textboxLabel={i18n.userTable.columndAge}
                   textboxReadOnly={false}
-                  textboxType={'number'}
+                  textboxType={"number"}
                   textboxOnSave={handleAdd}
                   textboxOnchange={onChangeAge}
                   textboxValue={valueAge}
                 >
                 </CommonTextbox>
               </div>
-              <div className='puggysoft-textbox-item'>
+              <div className="puggysoft-textbox-item">
                 <CommonTextbox
                   textboxLabel={i18n.userTable.columndSex}
                   textboxReadOnly={false}
-                  textboxType={'select'}
+                  textboxType={"select"}
                   textboxOnSave={handleAdd}
                   textboxOnchange={onChangeSex}
                   textboxValue={valueSex}
@@ -271,11 +272,11 @@ function UserDetails(props) {
                 >
                 </CommonTextbox>
               </div>
-              <div className='puggysoft-textbox-item'>
+              <div className="puggysoft-textbox-item">
                 <CommonTextbox
                   textboxLabel={i18n.userTable.columnOccupation}
                   textboxReadOnly={false}
-                  textboxType={'text'}
+                  textboxType={"text"}
                   textboxOnSave={handleAdd}
                   textboxOnchange={onChangeOccupation}
                   textboxValue={valueOccupation}
@@ -285,44 +286,44 @@ function UserDetails(props) {
             </ListGroup.Item>
             <ListGroup.Item> <Card.Title>{i18n.userDetails.subTitleContactData}</Card.Title> </ListGroup.Item>
             <ListGroup.Item>
-              <div className='puggysoft-textbox-item'>
+              <div className="puggysoft-textbox-item">
                 <CommonTextbox
                   textboxLabel={i18n.userTable.columnTelephone}
                   textboxReadOnly={false}
-                  textboxType={'number'}
+                  textboxType={"number"}
                   textboxOnSave={handleAdd}
                   textboxOnchange={onChangeTelephone}
                   textboxValue={valueTelephone}
                 >
                 </CommonTextbox>
               </div>
-              <div className='puggysoft-textbox-item'>
+              <div className="puggysoft-textbox-item">
                 <CommonTextbox
                   textboxLabel={i18n.userTable.columnAddress}
                   textboxReadOnly={false}
-                  textboxType={'text'}
+                  textboxType={"text"}
                   textboxOnSave={handleAdd}
                   textboxOnchange={onChangeAddress}
                   textboxValue={valueAddress}
                 >
                 </CommonTextbox>
               </div>
-              <div className='puggysoft-textbox-item'>
+              <div className="puggysoft-textbox-item">
                 <CommonTextbox
                   textboxLabel={i18n.userTable.columnEmail}
                   textboxReadOnly={false}
-                  textboxType={'email'}
+                  textboxType={"email"}
                   textboxOnSave={handleAdd}
                   textboxOnchange={onChangeEmail}
                   textboxValue={valueEmail}
                 >
                 </CommonTextbox>
               </div>
-              <div className='puggysoft-textbox-item'>
+              <div className="puggysoft-textbox-item">
                 <CommonTextbox
                   textboxLabel={i18n.userTable.columnStatus}
                   textboxReadOnly={false}
-                  textboxType={'select'}
+                  textboxType={"select"}
                   textboxOnSave={handleAdd}
                   textboxOnchange={onChangeStatus}
                   textboxValue={valueStatus}
@@ -333,44 +334,44 @@ function UserDetails(props) {
             </ListGroup.Item>
             <ListGroup.Item> <Card.Title>{i18n.userDetails.subTitleInformationData}</Card.Title> </ListGroup.Item>
             <ListGroup.Item>
-              <div className='puggysoft-textbox-item'>
+              <div className="puggysoft-textbox-item">
                 <CommonTextbox
                   textboxLabel={i18n.userTable.columnCreatedBy}
                   textboxReadOnly={true}
-                  textboxType={'text'}
+                  textboxType={"text"}
                   textboxOnSave={() => { }}
                   textboxOnchange={() => { }}
                   textboxValue={valueCreatedBy}
                 >
                 </CommonTextbox>
               </div>
-              <div className='puggysoft-textbox-item'>
+              <div className="puggysoft-textbox-item">
                 <CommonTextbox
                   textboxLabel={i18n.userTable.columnUpdatedBy}
                   textboxReadOnly={true}
-                  textboxType={'text'}
+                  textboxType={"text"}
                   textboxOnSave={() => { }}
                   textboxOnchange={() => { }}
                   textboxValue={valueUpdatedBy}
                 >
                 </CommonTextbox>
               </div>
-              <div className='puggysoft-textbox-item'>
+              <div className="puggysoft-textbox-item">
                 <CommonTextbox
                   textboxLabel={i18n.userTable.columnCreationDate}
                   textboxReadOnly={true}
-                  textboxType={'date'}
+                  textboxType={"date"}
                   textboxOnSave={() => { }}
                   textboxOnchange={() => { }}
                   textboxValue={valueCreationDate}
                 >
                 </CommonTextbox>
               </div>
-              <div className='puggysoft-textbox-item'>
+              <div className="puggysoft-textbox-item">
                 <CommonTextbox
                   textboxLabel={i18n.userTable.columnStatus}
                   textboxReadOnly={true}
-                  textboxType={'date'}
+                  textboxType={"date"}
                   textboxOnSave={() => { }}
                   textboxOnchange={() => { }}
                   textboxValue={valueUpdateDate}
@@ -387,3 +388,11 @@ function UserDetails(props) {
 }
 
 export default UserDetails;
+
+UserDetails.propTypes = {
+  children: PropTypes.node
+};
+
+UserDetails.defaultProps = {
+  children: <></>
+};

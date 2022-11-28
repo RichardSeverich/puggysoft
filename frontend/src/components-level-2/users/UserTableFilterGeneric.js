@@ -1,15 +1,15 @@
-import { useState, useEffect } from "react";
-import CommonTablePagination from '../../components-level-1/CommonTablePagination';
-import CommonLoading from '../../components-level-1/CommonLoading';
-import arrayDataFields from "../../models/users/arrayUserDataFieldsSelection"
+import React, { useState, useEffect } from "react";
+import PropTypes from "prop-types";
+import CommonTablePagination from "../../components-level-1/CommonTablePagination";
+import CommonLoading from "../../components-level-1/CommonLoading";
+import arrayDataFields from "../../models/users/arrayUserDataFieldsSelection";
 import arrayColumns from "../../models/users/arrayUserColumnsSelection";
 import getColumnsFilterModel from "../../models/users/arrayUserColumnsFilterSelection";
 import useInput from "./../../hooks/useInput";
 import enumCompareOperators from "./../../models/enumCompareOperators";
-import fixArrayData from "../../tools/users/fixArrayData"
+import fixArrayData from "../../tools/users/fixArrayData";
 
-function UserTableFilterGeneric(props) {
-
+function UserTableFilterGeneric (props) {
   const {
     handleGetData,
     handleGetSize,
@@ -24,18 +24,18 @@ function UserTableFilterGeneric(props) {
   const [initialPage, setInitialPage] = useState(1);
 
   // CRITERIA OF SEARCH OR FILTER
-  const { value: criteriaId, onChange: criteriaOnChangeId, setValue: criteriaSetId } = useInput('');
-  const { value: criteriaUsername, onChange: criteriaOnChangeUsername, setValue: criteriaSetUsername } = useInput('');
-  const { value: criteriaDni, onChange: criteriaOnChangeDni, setValue: criteriaSetDni } = useInput('');
-  const { value: criteriaName, onChange: criteriaOnChangeName, setValue: criteriaSetName } = useInput('');
-  const { value: criteriaSecondName, onChange: criteriaOnChangeSecondName, setValue: criteriaSetSecondName } = useInput('');
-  const { value: criteriaLastName, onChange: criteriaOnChangeLastName, setValue: criteriaSetLastName } = useInput('');
-  const { value: criteriaSecondLastName, onChange: criteriaOnChangeSecondLastName, setValue: criteriaSetSecondLastName } = useInput('');
-  const { value: criteriaBirthDate, onChange: criteriaOnChangeBirthDate, setValue: criteriaSetBirthDate } = useInput('');
-  const { value: criteriaAge, onChange: criteriaOnChangeAge, setValue: criteriaSetAge } = useInput('');
-  const { value: criteriaSex, onChange: criteriaOnChangeSex, setValue: criteriaSetSex } = useInput('');
-  const { value: criteriaEmail, onChange: criteriaOnChangeEmail, setValue: criteriaSetEmail } = useInput('');
-  const { value: criteriaStatus, onChange: criteriaOnChangeStatus, setValue: criteriaSetStatus } = useInput('');
+  const { value: criteriaId, onChange: criteriaOnChangeId, setValue: criteriaSetId } = useInput("");
+  const { value: criteriaUsername, onChange: criteriaOnChangeUsername, setValue: criteriaSetUsername } = useInput("");
+  const { value: criteriaDni, onChange: criteriaOnChangeDni, setValue: criteriaSetDni } = useInput("");
+  const { value: criteriaName, onChange: criteriaOnChangeName, setValue: criteriaSetName } = useInput("");
+  const { value: criteriaSecondName, onChange: criteriaOnChangeSecondName, setValue: criteriaSetSecondName } = useInput("");
+  const { value: criteriaLastName, onChange: criteriaOnChangeLastName, setValue: criteriaSetLastName } = useInput("");
+  const { value: criteriaSecondLastName, onChange: criteriaOnChangeSecondLastName, setValue: criteriaSetSecondLastName } = useInput("");
+  const { value: criteriaBirthDate, onChange: criteriaOnChangeBirthDate, setValue: criteriaSetBirthDate } = useInput("");
+  const { value: criteriaAge, onChange: criteriaOnChangeAge, setValue: criteriaSetAge } = useInput("");
+  const { value: criteriaSex, onChange: criteriaOnChangeSex, setValue: criteriaSetSex } = useInput("");
+  const { value: criteriaEmail, onChange: criteriaOnChangeEmail, setValue: criteriaSetEmail } = useInput("");
+  const { value: criteriaStatus, onChange: criteriaOnChangeStatus, setValue: criteriaSetStatus } = useInput("");
   // FILTER OPERATORS
   const { value: operatorId, onChange: operatorOnChangeId, setValue: operatorSetId } = useInput(enumCompareOperators.TEXT_CONTAINS);
   const { value: operatorUsername, onChange: operatorOnChangeUsername, setValue: operatorSetUsername } = useInput(enumCompareOperators.TEXT_CONTAINS);
@@ -51,22 +51,22 @@ function UserTableFilterGeneric(props) {
   const { value: operatorStatus, onChange: operatorOnChangeStatus, setValue: operatorSetStatus } = useInput(enumCompareOperators.BOOLEAN_EQUALS);
 
   const { arrayColumnsFilter, clearFilters, getFilterBody } = getColumnsFilterModel(
-    /*ID*/ criteriaId, criteriaOnChangeId, criteriaSetId, operatorId, operatorOnChangeId, operatorSetId,
-    /*USERNAME*/ criteriaUsername, criteriaOnChangeUsername, criteriaSetUsername, operatorUsername, operatorOnChangeUsername, operatorSetUsername,
-    /*DNI*/ criteriaDni, criteriaOnChangeDni, criteriaSetDni, operatorDni, operatorOnChangeDni, operatorSetDni,
-    /*NAME*/ criteriaName, criteriaOnChangeName, criteriaSetName, operatorName, operatorOnChangeName, operatorSetName,
-    /*SECOND NAME*/criteriaSecondName, criteriaOnChangeSecondName, criteriaSetSecondName, operatorSecondName, operatorOnChangeSecondName, operatorSetSecondName,
-    /*LAST NAME*/ criteriaLastName, criteriaOnChangeLastName, criteriaSetLastName, operatorLastName, operatorOnChangeLastName, operatorSetLastName,
-    /*SECOND LAST NAME*/criteriaSecondLastName, criteriaOnChangeSecondLastName, criteriaSetSecondLastName, operatorSecondLastName, operatorOnChangeSecondLastName, operatorSetSecondLastName,
-    /*BIRTHDATE*/criteriaBirthDate, criteriaOnChangeBirthDate, criteriaSetBirthDate, operatorBirthDate, operatorOnChangeBirthDate, operatorSetBirthDate,
-    /*AGE*/criteriaAge, criteriaOnChangeAge, criteriaSetAge, operatorAge, operatorOnChangeAge, operatorSetAge,
-    /*SEX*/criteriaSex, criteriaOnChangeSex, criteriaSetSex, operatorSex, operatorOnChangeSex, operatorSetSex,
-    /*EMAIL*/criteriaEmail, criteriaOnChangeEmail, criteriaSetEmail, operatorEmail, operatorOnChangeEmail, operatorSetEmail,
-    /*STATUS*/criteriaStatus, criteriaOnChangeStatus, criteriaSetStatus, operatorStatus, operatorOnChangeStatus, operatorSetStatus
+    /* ID */ criteriaId, criteriaOnChangeId, criteriaSetId, operatorId, operatorOnChangeId, operatorSetId,
+    /* USERNAME */ criteriaUsername, criteriaOnChangeUsername, criteriaSetUsername, operatorUsername, operatorOnChangeUsername, operatorSetUsername,
+    /* DNI */ criteriaDni, criteriaOnChangeDni, criteriaSetDni, operatorDni, operatorOnChangeDni, operatorSetDni,
+    /* NAME */ criteriaName, criteriaOnChangeName, criteriaSetName, operatorName, operatorOnChangeName, operatorSetName,
+    /* SECOND NAME */criteriaSecondName, criteriaOnChangeSecondName, criteriaSetSecondName, operatorSecondName, operatorOnChangeSecondName, operatorSetSecondName,
+    /* LAST NAME */ criteriaLastName, criteriaOnChangeLastName, criteriaSetLastName, operatorLastName, operatorOnChangeLastName, operatorSetLastName,
+    /* SECOND LAST NAME */criteriaSecondLastName, criteriaOnChangeSecondLastName, criteriaSetSecondLastName, operatorSecondLastName, operatorOnChangeSecondLastName, operatorSetSecondLastName,
+    /* BIRTHDATE */criteriaBirthDate, criteriaOnChangeBirthDate, criteriaSetBirthDate, operatorBirthDate, operatorOnChangeBirthDate, operatorSetBirthDate,
+    /* AGE */criteriaAge, criteriaOnChangeAge, criteriaSetAge, operatorAge, operatorOnChangeAge, operatorSetAge,
+    /* SEX */criteriaSex, criteriaOnChangeSex, criteriaSetSex, operatorSex, operatorOnChangeSex, operatorSetSex,
+    /* EMAIL */criteriaEmail, criteriaOnChangeEmail, criteriaSetEmail, operatorEmail, operatorOnChangeEmail, operatorSetEmail,
+    /* STATUS */criteriaStatus, criteriaOnChangeStatus, criteriaSetStatus, operatorStatus, operatorOnChangeStatus, operatorSetStatus
   );
 
-  function updateArrayData(arrayData) {
-    let arrayFixed = fixArrayData(arrayData);
+  function updateArrayData (arrayData) {
+    const arrayFixed = fixArrayData(arrayData);
     setArrayData(arrayFixed);
   }
 
@@ -81,13 +81,13 @@ function UserTableFilterGeneric(props) {
   }, [activePage]);
 
   const handleFilter = () => {
-    setActivePage(1)
+    setActivePage(1);
     const filterBody = getFilterBody();
     setArrayData(null);
     setTotalPages(null);
     handleGetData(activePage, filterBody, updateArrayData);
     handleGetSize(filterBody, setTotalPages);
-  }
+  };
 
   if (arrayData === null || totalPages === null) {
     return <CommonLoading></CommonLoading>;
@@ -116,3 +116,19 @@ function UserTableFilterGeneric(props) {
 }
 
 export default UserTableFilterGeneric;
+
+UserTableFilterGeneric.propTypes = {
+  handleGetData: PropTypes.func,
+  handleGetSize: PropTypes.func,
+  tableTitle: PropTypes.string,
+  tableArrayCustomRowButtons: PropTypes.array,
+  numberPagesToShow: PropTypes.number
+};
+
+UserTableFilterGeneric.defaultProps = {
+  handleGetData: () => { },
+  handleGetSize: () => { },
+  tableTitle: "",
+  tableArrayCustomRowButtons: [],
+  numberPagesToShow: 0
+};

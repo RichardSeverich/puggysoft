@@ -1,5 +1,5 @@
 const sellerForm = {
-    title: "Registrar Vendedor",
+  title: "Registrar Vendedor"
 };
 
 export default sellerForm;

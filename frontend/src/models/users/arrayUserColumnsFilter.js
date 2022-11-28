@@ -4,45 +4,44 @@ import enumSex from "./../users/enumSex";
 import i18n from "../../i18n/i18n";
 
 const getColumnsFilterModel = function (
-    /*ID*/ criteriaId, criteriaOnChangeId, criteriaSetId, operatorId, operatorOnChangeId, operatorSetId,
-    /*USERNAME*/ criteriaUsername, criteriaOnChangeUsername, criteriaSetUsername, operatorUsername, operatorOnChangeUsername, operatorSetUsername,
-    /*DNI*/ criteriaDni, criteriaOnChangeDni, criteriaSetDni, operatorDni, operatorOnChangeDni, operatorSetDni,
-    /*NAME*/ criteriaName, criteriaOnChangeName, criteriaSetName, operatorName, operatorOnChangeName, operatorSetName,
-    /*SECOND NAME*/criteriaSecondName, criteriaOnChangeSecondName, criteriaSetSecondName, operatorSecondName, operatorOnChangeSecondName, operatorSetSecondName,
-    /*LAST NAME*/ criteriaLastName, criteriaOnChangeLastName, criteriaSetLastName, operatorLastName, operatorOnChangeLastName, operatorSetLastName,
-    /*SECOND LAST NAME*/criteriaSecondLastName, criteriaOnChangeSecondLastName, criteriaSetSecondLastName, operatorSecondLastName, operatorOnChangeSecondLastName, operatorSetSecondLastName,
-    /*BIRTHDATE*/criteriaBirthDate, criteriaOnChangeBirthDate, criteriaSetBirthDate, operatorBirthDate, operatorOnChangeBirthDate, operatorSetBirthDate,
-    /*AGE*/criteriaAge, criteriaOnChangeAge, criteriaSetAge, operatorAge, operatorOnChangeAge, operatorSetAge,
-    /*SEX*/criteriaSex, criteriaOnChangeSex, criteriaSetSex, operatorSex, operatorOnChangeSex, operatorSetSex,
-    /*OCCUPATION*/criteriaOccupation, criteriaOnChangeOccupation, criteriaSetOccupation, operatorOccupation, operatorOnChangeOccupation, operatorSetOccupation,
-    /*TELEPHONE*/criteriaTelephone, criteriaOnChangeTelephone, criteriaSetTelephone, operatorTelephone, operatorOnChangeTelephone, operatorSetTelephone,
-    /*ADDRESS*/criteriaAddress, criteriaOnChangeAddress, criteriaSetAddress, operatorAddress, operatorOnChangeAddress, operatorSetAddress,
-    /*EMAIL*/criteriaEmail, criteriaOnChangeEmail, criteriaSetEmail, operatorEmail, operatorOnChangeEmail, operatorSetEmail,
-    /*STATUS*/criteriaStatus, criteriaOnChangeStatus, criteriaSetStatus, operatorStatus, operatorOnChangeStatus, operatorSetStatus,
-    /*EMAIL VERIFIED*/criteriaEmailVerified, criteriaOnChangeEmailVerified, criteriaSetEmailVerified, operatorEmailVerified, operatorOnChangeEmailVerified, operatorSetEmailVerified,
-    /*CREATED BY*/criteriaCreatedBy, criteriaOnChangeCreatedBy, criteriaSetCreatedBy, operatorCreatedBy, operatorOnChangeCreatedBy, operatorSetCreatedBy,
-    /*UPDATED BY*/criteriaUpdatedBy, criteriaOnChangeUpdatedBy, criteriaSetUpdatedBy, operatorUpdatedBy, operatorOnChangeUpdatedBy, operatorSetUpdatedBy,
-    /*CREATED DATE*/criteriaCreatedDate, criteriaOnChangeCreatedDate, criteriaSetCreatedDate, operatorCreatedDate, operatorOnChangeCreatedDate, operatorSetCreatedDate,
-    /*UPDATED DATE*/criteriaUpdatedDate, criteriaOnChangeUpdatedDate, criteriaSetUpdatedDate, operatorUpdatedDate, operatorOnChangeUpdatedDate, operatorSetUpdatedDate
+  /* ID */ criteriaId, criteriaOnChangeId, criteriaSetId, operatorId, operatorOnChangeId, operatorSetId,
+  /* USERNAME */ criteriaUsername, criteriaOnChangeUsername, criteriaSetUsername, operatorUsername, operatorOnChangeUsername, operatorSetUsername,
+  /* DNI */ criteriaDni, criteriaOnChangeDni, criteriaSetDni, operatorDni, operatorOnChangeDni, operatorSetDni,
+  /* NAME */ criteriaName, criteriaOnChangeName, criteriaSetName, operatorName, operatorOnChangeName, operatorSetName,
+  /* SECOND NAME */criteriaSecondName, criteriaOnChangeSecondName, criteriaSetSecondName, operatorSecondName, operatorOnChangeSecondName, operatorSetSecondName,
+  /* LAST NAME */ criteriaLastName, criteriaOnChangeLastName, criteriaSetLastName, operatorLastName, operatorOnChangeLastName, operatorSetLastName,
+  /* SECOND LAST NAME */criteriaSecondLastName, criteriaOnChangeSecondLastName, criteriaSetSecondLastName, operatorSecondLastName, operatorOnChangeSecondLastName, operatorSetSecondLastName,
+  /* BIRTHDATE */criteriaBirthDate, criteriaOnChangeBirthDate, criteriaSetBirthDate, operatorBirthDate, operatorOnChangeBirthDate, operatorSetBirthDate,
+  /* AGE */criteriaAge, criteriaOnChangeAge, criteriaSetAge, operatorAge, operatorOnChangeAge, operatorSetAge,
+  /* SEX */criteriaSex, criteriaOnChangeSex, criteriaSetSex, operatorSex, operatorOnChangeSex, operatorSetSex,
+  /* OCCUPATION */criteriaOccupation, criteriaOnChangeOccupation, criteriaSetOccupation, operatorOccupation, operatorOnChangeOccupation, operatorSetOccupation,
+  /* TELEPHONE */criteriaTelephone, criteriaOnChangeTelephone, criteriaSetTelephone, operatorTelephone, operatorOnChangeTelephone, operatorSetTelephone,
+  /* ADDRESS */criteriaAddress, criteriaOnChangeAddress, criteriaSetAddress, operatorAddress, operatorOnChangeAddress, operatorSetAddress,
+  /* EMAIL */criteriaEmail, criteriaOnChangeEmail, criteriaSetEmail, operatorEmail, operatorOnChangeEmail, operatorSetEmail,
+  /* STATUS */criteriaStatus, criteriaOnChangeStatus, criteriaSetStatus, operatorStatus, operatorOnChangeStatus, operatorSetStatus,
+  /* EMAIL VERIFIED */criteriaEmailVerified, criteriaOnChangeEmailVerified, criteriaSetEmailVerified, operatorEmailVerified, operatorOnChangeEmailVerified, operatorSetEmailVerified,
+  /* CREATED BY */criteriaCreatedBy, criteriaOnChangeCreatedBy, criteriaSetCreatedBy, operatorCreatedBy, operatorOnChangeCreatedBy, operatorSetCreatedBy,
+  /* UPDATED BY */criteriaUpdatedBy, criteriaOnChangeUpdatedBy, criteriaSetUpdatedBy, operatorUpdatedBy, operatorOnChangeUpdatedBy, operatorSetUpdatedBy,
+  /* CREATED DATE */criteriaCreatedDate, criteriaOnChangeCreatedDate, criteriaSetCreatedDate, operatorCreatedDate, operatorOnChangeCreatedDate, operatorSetCreatedDate,
+  /* UPDATED DATE */criteriaUpdatedDate, criteriaOnChangeUpdatedDate, criteriaSetUpdatedDate, operatorUpdatedDate, operatorOnChangeUpdatedDate, operatorSetUpdatedDate
 ) {
-
   const arrayColumnsFilter = [
     {
-      type: enumFilterType.NONE,
+      type: enumFilterType.NONE
     },
     {
       type: enumFilterType.TEXTBOX,
       criteriaValue: criteriaId,
       criteriaOnchange: criteriaOnChangeId,
       operatorValue: operatorId,
-      operatorOnchange: operatorOnChangeId,
+      operatorOnchange: operatorOnChangeId
     },
     {
       type: enumFilterType.TEXTBOX,
       criteriaValue: criteriaUsername,
       criteriaOnchange: criteriaOnChangeUsername,
       operatorValue: operatorUsername,
-      operatorOnchange: operatorOnChangeUsername,
+      operatorOnchange: operatorOnChangeUsername
     },
     {
       type: enumFilterType.NONE
@@ -52,49 +51,49 @@ const getColumnsFilterModel = function (
       criteriaValue: criteriaDni,
       criteriaOnchange: criteriaOnChangeDni,
       operatorValue: operatorDni,
-      operatorOnchange: operatorOnChangeDni,
+      operatorOnchange: operatorOnChangeDni
     },
     {
       type: enumFilterType.TEXTBOX,
       criteriaValue: criteriaName,
       criteriaOnchange: criteriaOnChangeName,
       operatorValue: operatorName,
-      operatorOnchange: operatorOnChangeName,
+      operatorOnchange: operatorOnChangeName
     },
     {
       type: enumFilterType.TEXTBOX,
       criteriaValue: criteriaSecondName,
       criteriaOnchange: criteriaOnChangeSecondName,
       operatorValue: operatorSecondName,
-      operatorOnchange: operatorOnChangeSecondName,
+      operatorOnchange: operatorOnChangeSecondName
     },
     {
       type: enumFilterType.TEXTBOX,
       criteriaValue: criteriaLastName,
       criteriaOnchange: criteriaOnChangeLastName,
       operatorValue: operatorLastName,
-      operatorOnchange: operatorOnChangeLastName,
+      operatorOnchange: operatorOnChangeLastName
     },
     {
       type: enumFilterType.TEXTBOX,
       criteriaValue: criteriaSecondLastName,
       criteriaOnchange: criteriaOnChangeSecondLastName,
       operatorValue: operatorSecondLastName,
-      operatorOnchange: operatorOnChangeSecondLastName,
+      operatorOnchange: operatorOnChangeSecondLastName
     },
     {
       type: enumFilterType.DATE,
       criteriaValue: criteriaBirthDate,
       criteriaOnchange: criteriaOnChangeBirthDate,
       operatorValue: operatorBirthDate,
-      operatorOnchange: operatorOnChangeBirthDate,
+      operatorOnchange: operatorOnChangeBirthDate
     },
     {
       type: enumFilterType.NUMBER,
       criteriaValue: criteriaAge,
       criteriaOnchange: criteriaOnChangeAge,
       operatorValue: operatorAge,
-      operatorOnchange: operatorOnChangeAge,
+      operatorOnchange: operatorOnChangeAge
     },
     {
       type: enumFilterType.DROPDOWN,
@@ -113,14 +112,14 @@ const getColumnsFilterModel = function (
       criteriaValue: criteriaOccupation,
       criteriaOnchange: criteriaOnChangeOccupation,
       operatorValue: operatorOccupation,
-      operatorOnchange: operatorOnChangeOccupation,
+      operatorOnchange: operatorOnChangeOccupation
     },
     {
       type: enumFilterType.TEXTBOX,
       criteriaValue: criteriaTelephone,
       criteriaOnchange: criteriaOnChangeTelephone,
       operatorValue: operatorTelephone,
-      operatorOnchange: operatorOnChangeTelephone,
+      operatorOnchange: operatorOnChangeTelephone
     },
 
     {
@@ -128,14 +127,14 @@ const getColumnsFilterModel = function (
       criteriaValue: criteriaAddress,
       criteriaOnchange: criteriaOnChangeAddress,
       operatorValue: operatorAddress,
-      operatorOnchange: operatorOnChangeAddress,
+      operatorOnchange: operatorOnChangeAddress
     },
     {
       type: enumFilterType.TEXTBOX,
       criteriaValue: criteriaEmail,
       criteriaOnchange: criteriaOnChangeEmail,
       operatorValue: operatorEmail,
-      operatorOnchange: operatorOnChangeEmail,
+      operatorOnchange: operatorOnChangeEmail
     },
     {
       type: enumFilterType.DROPDOWN,
@@ -166,29 +165,29 @@ const getColumnsFilterModel = function (
       criteriaValue: criteriaCreatedBy,
       criteriaOnchange: criteriaOnChangeCreatedBy,
       operatorValue: operatorCreatedBy,
-      operatorOnchange: operatorOnChangeCreatedBy,
+      operatorOnchange: operatorOnChangeCreatedBy
     },
     {
       type: enumFilterType.TEXTBOX,
       criteriaValue: criteriaUpdatedBy,
       criteriaOnchange: criteriaOnChangeUpdatedBy,
       operatorValue: operatorUpdatedBy,
-      operatorOnchange: operatorOnChangeUpdatedBy,
+      operatorOnchange: operatorOnChangeUpdatedBy
     },
     {
       type: enumFilterType.DATE,
       criteriaValue: criteriaCreatedDate,
       criteriaOnchange: criteriaOnChangeCreatedDate,
       operatorValue: operatorCreatedDate,
-      operatorOnchange: operatorOnChangeCreatedDate,
+      operatorOnchange: operatorOnChangeCreatedDate
     },
     {
       type: enumFilterType.DATE,
       criteriaValue: criteriaUpdatedDate,
       criteriaOnchange: criteriaOnChangeUpdatedDate,
       operatorValue: operatorUpdatedDate,
-      operatorOnchange: operatorOnChangeUpdatedDate,
-    },
+      operatorOnchange: operatorOnChangeUpdatedDate
+    }
   ];
 
   const setOperatorsDefaultValues = function () {
@@ -210,9 +209,9 @@ const getColumnsFilterModel = function (
     operatorSetEmailVerified(enumCompareOperators.BOOLEAN_EQUALS);
     operatorSetCreatedBy(enumCompareOperators.TEXT_CONTAINS);
     operatorSetUpdatedBy(enumCompareOperators.TEXT_CONTAINS);
-    operatorSetCreatedDate(enumCompareOperators.DATE_EQUALS)
+    operatorSetCreatedDate(enumCompareOperators.DATE_EQUALS);
     operatorSetUpdatedDate(enumCompareOperators.DATE_EQUALS);
-  }
+  };
 
   const clearFilters = function () {
     criteriaSetId("");
@@ -236,7 +235,7 @@ const getColumnsFilterModel = function (
     criteriaSetCreatedDate("");
     criteriaSetUpdatedDate("");
     setOperatorsDefaultValues();
-  }
+  };
 
   const getFilterBody = () => {
     const filterBody = {
@@ -282,17 +281,16 @@ const getColumnsFilterModel = function (
       creationDateOperator: operatorCreatedDate,
       updateDateCriteria: criteriaUpdatedDate,
       updateDateOperator: operatorUpdatedDate
-    }
+    };
     return filterBody;
-  }
+  };
 
   return {
     arrayColumnsFilter,
     clearFilters,
     getFilterBody,
     setOperatorsDefaultValues
-  }
-
-}
+  };
+};
 
 export default getColumnsFilterModel;

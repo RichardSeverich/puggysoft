@@ -1,5 +1,5 @@
 const saleReport = {
-    productName: "Nombre Producto"
+  productName: "Nombre Producto"
 };
 
 export default saleReport;

@@ -2,16 +2,15 @@ import enumFilterType from "../enumFilterType";
 import enumCompareOperators from "./../enumCompareOperators";
 
 const getColumnsFilterModel = function (
-    /*ID*/ criteriaId, criteriaOnChangeId, criteriaSetId, operatorId, operatorOnChangeId, operatorSetId
+  /* ID */ criteriaId, criteriaOnChangeId, criteriaSetId, operatorId, operatorOnChangeId, operatorSetId
 ) {
-
   const arrayColumnsFilter = [
     {
       type: enumFilterType.TEXTBOX,
       criteriaValue: criteriaId,
       criteriaOnchange: criteriaOnChangeId,
       operatorValue: operatorId,
-      operatorOnchange: operatorOnChangeId,
+      operatorOnchange: operatorOnChangeId
     },
     {
       type: enumFilterType.NONE
@@ -20,12 +19,12 @@ const getColumnsFilterModel = function (
 
   const setOperatorsDefaultValues = function () {
     operatorSetId(enumCompareOperators.TEXT_CONTAINS);
-  }
+  };
 
   const clearFilters = function () {
     criteriaSetId("");
     setOperatorsDefaultValues("");
-  }
+  };
 
   const getFilterBody = () => {
     const filterBody = {
@@ -40,18 +39,17 @@ const getColumnsFilterModel = function (
       creationDateCriteria: "",
       creationDateOperator: enumFilterType.NONE,
       updateDateCriteria: "",
-      updateDateOperator: enumFilterType.NONE,
-    }
+      updateDateOperator: enumFilterType.NONE
+    };
     return filterBody;
-  }
+  };
 
   return {
     arrayColumnsFilter,
     clearFilters,
     getFilterBody,
     setOperatorsDefaultValues
-  }
-
-}
+  };
+};
 
 export default getColumnsFilterModel;

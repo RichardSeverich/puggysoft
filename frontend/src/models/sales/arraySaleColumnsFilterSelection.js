@@ -5,29 +5,28 @@ import enumSaleStatus from "./enumSaleStatus";
 import i18n from "../../i18n/i18n";
 
 const getColumnsFilterModel = function (
-    /*ID*/ criteriaId, criteriaOnChangeId, criteriaSetId, operatorId, operatorOnChangeId, operatorSetId,
-    /*CLIENT*/ criteriaClient, criteriaOnChangeClient, criteriaSetClient, operatorClient, operatorOnChangeClient, operatorSetClient,
-    /*STATUS*/ criteriaStatus, criteriaOnChangeStatus, criteriaSetStatus, operatorStatus, operatorOnChangeStatus, operatorSetStatus,
-    /*CREATED BY*/criteriaCreatedBy, criteriaOnChangeCreatedBy, criteriaSetCreatedBy, operatorCreatedBy, operatorOnChangeCreatedBy, operatorSetCreatedBy,
-    /*UPDATED BY*/criteriaUpdatedBy, criteriaOnChangeUpdatedBy, criteriaSetUpdatedBy, operatorUpdatedBy, operatorOnChangeUpdatedBy, operatorSetUpdatedBy,
-    /*CREATED DATE*/criteriaCreatedDate, criteriaOnChangeCreatedDate, criteriaSetCreatedDate, operatorCreatedDate, operatorOnChangeCreatedDate, operatorSetCreatedDate,
-    /*UPDATED DATE*/criteriaUpdatedDate, criteriaOnChangeUpdatedDate, criteriaSetUpdatedDate, operatorUpdatedDate, operatorOnChangeUpdatedDate, operatorSetUpdatedDate
+  /* ID */ criteriaId, criteriaOnChangeId, criteriaSetId, operatorId, operatorOnChangeId, operatorSetId,
+  /* CLIENT */ criteriaClient, criteriaOnChangeClient, criteriaSetClient, operatorClient, operatorOnChangeClient, operatorSetClient,
+  /* STATUS */ criteriaStatus, criteriaOnChangeStatus, criteriaSetStatus, operatorStatus, operatorOnChangeStatus, operatorSetStatus,
+  /* CREATED BY */criteriaCreatedBy, criteriaOnChangeCreatedBy, criteriaSetCreatedBy, operatorCreatedBy, operatorOnChangeCreatedBy, operatorSetCreatedBy,
+  /* UPDATED BY */criteriaUpdatedBy, criteriaOnChangeUpdatedBy, criteriaSetUpdatedBy, operatorUpdatedBy, operatorOnChangeUpdatedBy, operatorSetUpdatedBy,
+  /* CREATED DATE */criteriaCreatedDate, criteriaOnChangeCreatedDate, criteriaSetCreatedDate, operatorCreatedDate, operatorOnChangeCreatedDate, operatorSetCreatedDate,
+  /* UPDATED DATE */criteriaUpdatedDate, criteriaOnChangeUpdatedDate, criteriaSetUpdatedDate, operatorUpdatedDate, operatorOnChangeUpdatedDate, operatorSetUpdatedDate
 ) {
-
   const arrayColumnsFilter = [
     {
       type: enumFilterType.TEXTBOX,
       criteriaValue: criteriaId,
       criteriaOnchange: criteriaOnChangeId,
       operatorValue: operatorId,
-      operatorOnchange: operatorOnChangeId,
+      operatorOnchange: operatorOnChangeId
     },
     {
       type: enumFilterType.TEXTBOX,
       criteriaValue: criteriaClient,
       criteriaOnchange: criteriaOnChangeClient,
       operatorValue: operatorClient,
-      operatorOnchange: operatorOnChangeClient,
+      operatorOnchange: operatorOnChangeClient
     },
     {
       type: enumFilterType.DROPDOWN,
@@ -47,29 +46,29 @@ const getColumnsFilterModel = function (
       criteriaValue: criteriaCreatedBy,
       criteriaOnchange: criteriaOnChangeCreatedBy,
       operatorValue: operatorCreatedBy,
-      operatorOnchange: operatorOnChangeCreatedBy,
+      operatorOnchange: operatorOnChangeCreatedBy
     },
     {
       type: enumFilterType.TEXTBOX,
       criteriaValue: criteriaUpdatedBy,
       criteriaOnchange: criteriaOnChangeUpdatedBy,
       operatorValue: operatorUpdatedBy,
-      operatorOnchange: operatorOnChangeUpdatedBy,
+      operatorOnchange: operatorOnChangeUpdatedBy
     },
     {
       type: enumFilterType.DATE,
       criteriaValue: criteriaCreatedDate,
       criteriaOnchange: criteriaOnChangeCreatedDate,
       operatorValue: operatorCreatedDate,
-      operatorOnchange: operatorOnChangeCreatedDate,
+      operatorOnchange: operatorOnChangeCreatedDate
     },
     {
       type: enumFilterType.DATE,
       criteriaValue: criteriaUpdatedDate,
       criteriaOnchange: criteriaOnChangeUpdatedDate,
       operatorValue: operatorUpdatedDate,
-      operatorOnchange: operatorOnChangeUpdatedDate,
-    },
+      operatorOnchange: operatorOnChangeUpdatedDate
+    }
   ];
 
   const setOperatorsDefaultValues = function () {
@@ -78,9 +77,9 @@ const getColumnsFilterModel = function (
     operatorSetStatus(enumCompareOperators.TEXT_EQUALS);
     operatorSetCreatedBy(enumCompareOperators.TEXT_CONTAINS);
     operatorSetUpdatedBy(enumCompareOperators.TEXT_CONTAINS);
-    operatorSetCreatedDate(enumCompareOperators.DATE_EQUALS)
+    operatorSetCreatedDate(enumCompareOperators.DATE_EQUALS);
     operatorSetUpdatedDate(enumCompareOperators.DATE_EQUALS);
-  }
+  };
 
   const clearFilters = function () {
     criteriaSetId("");
@@ -91,7 +90,7 @@ const getColumnsFilterModel = function (
     criteriaSetCreatedDate("");
     criteriaSetUpdatedDate("");
     setOperatorsDefaultValues();
-  }
+  };
 
   const getFilterBody = () => {
     const filterBody = {
@@ -109,17 +108,16 @@ const getColumnsFilterModel = function (
       creationDateOperator: operatorCreatedDate,
       updateDateCriteria: criteriaUpdatedDate,
       updateDateOperator: operatorUpdatedDate
-    }
+    };
     return filterBody;
-  }
+  };
 
   return {
     arrayColumnsFilter,
     clearFilters,
     getFilterBody,
     setOperatorsDefaultValues
-  }
-
-}
+  };
+};
 
 export default getColumnsFilterModel;

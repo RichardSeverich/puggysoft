@@ -1,27 +1,26 @@
-import React from 'react';
-import PropTypes from 'prop-types'
+import React from "react";
+import PropTypes from "prop-types";
 
-import Table from 'react-bootstrap/Table'
-import Button from 'react-bootstrap/Button'
-import Card from 'react-bootstrap/Card'
-import Form from 'react-bootstrap/Form'
-import Image from 'react-bootstrap/Image'
-import i18n from "../i18n/i18n";
-
-import "./common-table-styles.css"
 import enumFilterType from "../models/enumFilterType";
 import enumCompareOperators from "../models/enumCompareOperators";
-import enumTableFieldType from '../models/enumTableFieldType'
-import enumWebElements from './../models/enumWebElements'
+import enumTableFieldType from "../models/enumTableFieldType";
+import enumWebElements from "./../models/enumWebElements";
+
+import Table from "react-bootstrap/Table";
+import Button from "react-bootstrap/Button";
+import Card from "react-bootstrap/Card";
+import Form from "react-bootstrap/Form";
+import Image from "react-bootstrap/Image";
+import i18n from "../i18n/i18n";
+import "./common-table-styles.css";
 
 /**
  *  arrayData = [{},{},{},{}]
- *  arrayDataFields = ['field1', 'field2', 'field3']
- *  arrayColumns = ['column1', 'column2', 'column3']
- *  className = 'some-class-name'
+ *  arrayDataFields = ["field1", "field2", "field3"]
+ *  arrayColumns = ["column1", "column2", "column3"]
+ *  className = "some-class-name"
  */
-function CommonTable(props) {
-
+function CommonTable (props) {
   const {
     tableTitle,
     tableSubTitle,
@@ -35,23 +34,22 @@ function CommonTable(props) {
     handleExportPdf,
     filterArrayColumns,
     filterClear,
-    filterHandler,
+    filterHandler
   } = props;
-
   const tableColumns = () => {
     return arrayColumns.map(function (data, index) {
-      return <th key={'column-' + index}>{data}</th>
-    })
-  }
+      return <th key={"column-" + index}>{data}</th>;
+    });
+  };
 
   const tableFilters = () => {
     const result = filterArrayColumns.map(function (filter, index) {
       if (enumFilterType.NONE === filter.type) {
-        return <th key={'filter-none-' + index}>
+        return <th key={"filter-none-" + index}>
           <Form.Control disabled placeholder="" />
-        </th>
+        </th>;
       } else if (enumFilterType.TEXTBOX === filter.type) {
-        return <th key={'filter-textbox-' + index}>
+        return <th key={"filter-textbox-" + index}>
           <Form.Control
             value={filter.criteriaValue}
             onChange={filter.criteriaOnchange}
@@ -65,9 +63,9 @@ function CommonTable(props) {
             <option value={enumCompareOperators.TEXT_START_WITH}>{i18n.commonTable.filterTextStartWith}</option>
             <option value={enumCompareOperators.TEXT_END_WITH}>{i18n.commonTable.filterTextEndWith}</option>
           </Form.Select>
-        </th>
+        </th>;
       } else if (enumFilterType.DATE === filter.type) {
-        return <th key={'filter-date-' + index}>
+        return <th key={"filter-date-" + index}>
           <Form.Control
             value={filter.criteriaValue}
             onChange={filter.criteriaOnchange}
@@ -82,9 +80,9 @@ function CommonTable(props) {
             <option value={enumCompareOperators.DATE_SMALLER_EQUALS_THAN}>{i18n.commonTable.filterDateSmallerEqualsThan}</option>
             <option value={enumCompareOperators.DATE_SMALLER_THAN}>{i18n.commonTable.filterDateSmallerThan}</option>
           </Form.Select>
-        </th>
+        </th>;
       } else if (enumFilterType.DATE_RANGE === filter.type) {
-        return <th key={'filter-date-range-' + index}>
+        return <th key={"filter-date-range-" + index}>
           <Form.Control
             value={filter.criteriaValueStartDate}
             onChange={filter.criteriaOnchangeStartDate}
@@ -93,22 +91,22 @@ function CommonTable(props) {
             value={filter.criteriaValueStartEnd}
             onChange={filter.criteriaOnchangeStartEnd}
             type="date" placeholder="" />
-        </th>
+        </th>;
       } else if (enumFilterType.DROPDOWN === filter.type) {
-        return <th key={'filter-dropdown-' + index}>
+        return <th key={"filter-dropdown-" + index}>
           <Form.Select
             value={filter.criteriaValue}
             onChange={filter.criteriaOnchange}
           >
             {
               filter.dropdownValues.map(function (item, index) {
-                return <option key={'option-' + index} value={item.value}>{item.text}</option>
+                return <option key={"option-" + index} value={item.value}>{item.text}</option>;
               })
             }
           </Form.Select>
-        </th>
+        </th>;
       } else if (enumFilterType.NUMBER === filter.type) {
-        return <th key={'filter-number-' + index}>
+        return <th key={"filter-number-" + index}>
           <Form.Control
             value={filter.criteriaValue}
             onChange={filter.criteriaOnchange}
@@ -124,37 +122,37 @@ function CommonTable(props) {
             <option value={enumCompareOperators.NUMBER_SMALLER_EQUALS_THAN}>{i18n.commonTable.filterNumberSmallerEqualsThan}</option>
             <option value={enumCompareOperators.NUMBER_SMALLER_THAN}>{i18n.commonTable.filterNumberSmallerThan}</option>
           </Form.Select>
-        </th>
+        </th>;
       } else {
-        return <th key={'filter-' + index}><Form.Control disabled placeholder="" /></th>
+        return <th key={"filter-" + index}><Form.Control disabled placeholder="" /></th>;
       }
-    })
+    });
     return result;
-  }
+  };
 
   const tableRows = () => {
     return arrayData.map(function (data, rowIndex) {
-      const totalRows = <tr key={'row-' + rowIndex}>
+      const totalRows = <tr key={"row-" + rowIndex}>
         {arrayDataFields.map(function (field, fieldIndex) {
-          let singleRow = ''
-          const fieldKey = 'field-' + rowIndex + fieldIndex;
+          let singleRow = "";
+          const fieldKey = "field-" + rowIndex + fieldIndex;
           if (field.type && field.type === enumTableFieldType.IMAGE) {
             singleRow = <td key={fieldKey}>
-              <Image key={'image-' + fieldKey} fluid sice='' src={`data:image/jpeg;base64, ${data[field.value]}`}></Image>
+              <Image key={"image-" + fieldKey} fluid sice="" src={`data:image/jpeg;base64, ${data[field.value]}`}></Image>
             </td>;
           } else {
             singleRow = <td key={fieldKey}>{data[field]}</td>;
           }
           return singleRow;
         })}
-        {handleEdit && <td key={'field-edit' + rowIndex}>
+        {handleEdit && <td key={"field-edit" + rowIndex}>
           <Button
             variant="warning"
             onClick={() => handleEdit(data)}
           >
             {i18n.commonTable.editButton}
           </Button> </td>}
-        {handleDelete && <td key={'field-delete' + rowIndex}>
+        {handleDelete && <td key={"field-delete" + rowIndex}>
           <Button
             variant="danger"
             onClick={() => handleDelete(data)}
@@ -162,10 +160,10 @@ function CommonTable(props) {
             {i18n.commonTable.deleteButton}
           </Button> </td>}
         {getCustomRowButtons(data, rowIndex)}
-      </tr>
+      </tr>;
       return totalRows;
-    })
-  }
+    });
+  };
 
   const filterActionButtons = () => {
     return (
@@ -178,15 +176,15 @@ function CommonTable(props) {
           variant="secondary puggysoft-clean-button"
         >{i18n.commonTable.cleanButton}</Button>
       </>
-    )
-  }
+    );
+  };
 
   const getCustomRowButtons = (data, rowIndex) => {
     if (arrayCustomRowButtons) {
-      /* 
+      /*
       dataElement.type === BUTTON
-        - dataElement.variant, 
-        - dataElement.handleCustom, 
+        - dataElement.variant,
+        - dataElement.handleCustom,
         - dataElement.text
       dataElement.type === NUMBER_FIELD OR TEXT FIELD
         - dataElement.type: text, number
@@ -195,33 +193,33 @@ function CommonTable(props) {
       return arrayCustomRowButtons.map(function (dataElement, elementIndex) {
         const textboxId = data.id ? "textbox-" + data.id : "textbox-" + rowIndex;
         if (dataElement.type === enumWebElements.TEXTBOX) {
-          return <td key={'custom-field' + rowIndex + elementIndex}>
+          return <td key={"custom-field" + rowIndex + elementIndex}>
             <Form.Group className="mb-3">
               <Form.Control
                 id={textboxId}
                 type={dataElement.formType}
                 placeholder={dataElement.placeholder} />
             </Form.Group>
-          </td >
+          </td>;
         } else {
-          return <td key={'custom-button' + rowIndex + elementIndex}><Button
+          return <td key={"custom-button" + rowIndex + elementIndex}><Button
             variant={dataElement.variant}
             onClick={() => dataElement.handleCustom(data, textboxId)}
           >
             {dataElement.text}
-          </Button></td>
+          </Button></td>;
         }
-      })
+      });
     }
-  }
+  };
 
   return (
     <div className="puggysoft-common-table" >
       <Card>
-        <Card.Header as='h3'>{tableTitle}</Card.Header>
-        {tableSubTitle && <Card.Header as='h6'>{tableSubTitle}</Card.Header>}
+        <Card.Header as="h3">{tableTitle}</Card.Header>
+        {tableSubTitle && <Card.Header as="h6">{tableSubTitle}</Card.Header>}
         <Card.Body>
-          <div className='puggysoft-table-actions'>
+          <div className="puggysoft-table-actions">
             {filterArrayColumns && filterArrayColumns.length > 0 && filterActionButtons()}
             {handleExportExcel && <Button
               onClick={handleExportExcel}
@@ -233,11 +231,11 @@ function CommonTable(props) {
               {i18n.commonTable.pdfExportButton}</Button>}
           </div>
           <Table striped bordered hover responsive={true}>
-            <thead key='thead'>
-              <tr key={'table-columns'}>
+            <thead key="thead">
+              <tr key={"table-columns"}>
                 {tableColumns()}
               </tr>
-              <tr key={'table-columns-filters'}>
+              <tr key={"table-columns-filters"}>
                 {filterArrayColumns && filterArrayColumns.length > 0 && tableFilters()}
               </tr>
             </thead>
@@ -248,7 +246,7 @@ function CommonTable(props) {
         </Card.Body>
       </Card>
     </div>
-  )
+  );
 }
 
 export default CommonTable;
@@ -266,11 +264,11 @@ CommonTable.propTypes = {
   handleExportPdf: PropTypes.func,
   filterArrayColumns: PropTypes.array,
   filterClear: PropTypes.func,
-  filterHandler: PropTypes.func,
-}
+  filterHandler: PropTypes.func
+};
 
 CommonTable.defaultProps = {
-  tableTitle: 'Common table title',
+  tableTitle: "Common table title",
   tableSubTitle: undefined,
   arrayData: [],
   arrayColumns: [],
@@ -282,5 +280,5 @@ CommonTable.defaultProps = {
   handleExportPdf: undefined,
   filterArrayColumns: [],
   filterClear: () => { },
-  filterHandler: () => { },
-}
+  filterHandler: () => { }
+};

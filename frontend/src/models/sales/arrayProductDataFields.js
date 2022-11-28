@@ -1,25 +1,24 @@
-import enumTableFieldType from './../enumTableFieldType'
+import enumTableFieldType from "./../enumTableFieldType";
 
 const arrayDataFields = [
   {
-    value: 'image',
+    value: "image",
     type: enumTableFieldType.IMAGE
   },
-  'id',
-  'code',
-  'name',
-  'purchasePrice',
-  'salePrice',
-  'stock',
-  'minimumStock',
-  'description',
-  'location',
-  'barCode',
-  'createdBy',
-  'updatedBy',
-  'creationDate',
-  'updateDate'
+  "id",
+  "code",
+  "name",
+  "purchasePrice",
+  "salePrice",
+  "stock",
+  "minimumStock",
+  "description",
+  "location",
+  "barCode",
+  "createdBy",
+  "updatedBy",
+  "creationDate",
+  "updateDate"
 ];
-
 
 export default arrayDataFields;

@@ -1,3 +1,5 @@
+import React from "react";
+import PropTypes from "prop-types";
 import TableFilterGeneric from "./../generic/TableFilterGeneric";
 import arrayDataFields from "../../models/sales/arrayProductDataFieldsReducedSuper";
 import arrayColumnsDefault from "../../models/sales/arrayProductColumnsReducedSuper";
@@ -5,9 +7,7 @@ import enumCompareOperators from "./../../models/enumCompareOperators";
 import useInput from "./../../hooks/useInput";
 import getColumnsFilterModel from "../../models/sales/arrayProductColumnsFilterSelectionReducedSuper";
 
-
-function ProductTableSuperReducedGeneric(props) {
-
+function ProductTableSuperReducedGeneric (props) {
   const {
     numberPagesToShow,
     tableTitle,
@@ -15,13 +15,13 @@ function ProductTableSuperReducedGeneric(props) {
     handleGetSize,
     tableArrayCustomRowButtons,
     fixArrayData
-  } = props
+  } = props;
   const arrayColumns = props.arrayColumns ? props.arrayColumns : arrayColumnsDefault;
 
   // CRITERIA OF SEARCH OR FILTER
-  const { value: criteriaName, onChange: criteriaOnChangeName, setValue: criteriaSetName } = useInput('');
-  const { value: criteriaSalePrice, onChange: criteriaOnChangeSalePrice, setValue: criteriaSetSalePrice } = useInput('');
-  const { value: criteriaStock, onChange: criteriaOnChangeStock, setValue: criteriaSetStock } = useInput('');
+  const { value: criteriaName, onChange: criteriaOnChangeName, setValue: criteriaSetName } = useInput("");
+  const { value: criteriaSalePrice, onChange: criteriaOnChangeSalePrice, setValue: criteriaSetSalePrice } = useInput("");
+  const { value: criteriaStock, onChange: criteriaOnChangeStock, setValue: criteriaSetStock } = useInput("");
 
   // FILTER OPERATORS
   const { value: operatorName, onChange: operatorOnChangeName, setValue: operatorSetName } = useInput(enumCompareOperators.TEXT_CONTAINS);
@@ -29,9 +29,9 @@ function ProductTableSuperReducedGeneric(props) {
   const { value: operatorStock, onChange: operatorOnChangeStock, setValue: operatorSetStock } = useInput(enumCompareOperators.NUMBER_EQUALS);
 
   const { arrayColumnsFilter, clearFilters, getFilterBody } = getColumnsFilterModel(
-    /*NAME*/ criteriaName, criteriaOnChangeName, criteriaSetName, operatorName, operatorOnChangeName, operatorSetName,
-    /*SALE PRICE*/ criteriaSalePrice, criteriaOnChangeSalePrice, criteriaSetSalePrice, operatorSalePrice, operatorOnChangeSalePrice, operatorSetSalePrice,
-    /*STOCK*/criteriaStock, criteriaOnChangeStock, criteriaSetStock, operatorStock, operatorOnChangeStock, operatorSetStock,
+    /* NAME */ criteriaName, criteriaOnChangeName, criteriaSetName, operatorName, operatorOnChangeName, operatorSetName,
+    /* SALE PRICE */ criteriaSalePrice, criteriaOnChangeSalePrice, criteriaSetSalePrice, operatorSalePrice, operatorOnChangeSalePrice, operatorSetSalePrice,
+    /* STOCK */criteriaStock, criteriaOnChangeStock, criteriaSetStock, operatorStock, operatorOnChangeStock, operatorSetStock
   );
 
   return (
@@ -49,7 +49,27 @@ function ProductTableSuperReducedGeneric(props) {
       fixArrayData={fixArrayData}
     >
     </TableFilterGeneric>
-  )
+  );
 }
 
 export default ProductTableSuperReducedGeneric;
+
+ProductTableSuperReducedGeneric.propTypes = {
+  handleGetData: PropTypes.func,
+  handleGetSize: PropTypes.func,
+  tableTitle: PropTypes.string,
+  tableArrayCustomRowButtons: PropTypes.array,
+  numberPagesToShow: PropTypes.number,
+  fixArrayData: PropTypes.func,
+  arrayColumns: PropTypes.array
+};
+
+ProductTableSuperReducedGeneric.defaultProps = {
+  handleGetData: () => { },
+  handleGetSize: () => { },
+  tableTitle: "",
+  tableArrayCustomRowButtons: [],
+  numberPagesToShow: 0,
+  fixArrayData: undefined,
+  arrayColumns: []
+};

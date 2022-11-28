@@ -1,20 +1,17 @@
-import { useState } from "react";
-
+import React, { useState } from "react";
+import PropTypes from "prop-types";
 import ChartVerticalBar from "./../../components-level-1/ChartVerticalBar";
 import ChartHorizontalBar from "./../../components-level-1/ChartHorizontalBar";
 import ChartLine from "./../../components-level-1/ChartLine";
-
-import enumChartType from './../../models/enumChartType'
+import enumChartType from "./../../models/enumChartType";
 import i18n from "../../i18n/i18n";
+import Button from "react-bootstrap/Button";
+import Card from "react-bootstrap/Card";
+import Form from "react-bootstrap/Form";
+import "./../css/all-four-divs-side-by-side.css";
+import "./../css/all-forms-inline-block.css";
 
-import Button from 'react-bootstrap/Button'
-import Card from 'react-bootstrap/Card'
-import Form from 'react-bootstrap/Form'
-
-import "./../css/all-four-divs-side-by-side.css"
-import "./../css/all-forms-inline-block.css"
-
-function ReportGeneric({
+function ReportGeneric ({
   handleUpdateData,
   reportTitle,
   enableTwoYears,
@@ -38,18 +35,18 @@ function ReportGeneric({
     i18n.commonMonths.october,
     i18n.commonMonths.november,
     i18n.commonMonths.december
-  ]
+  ];
 
-  function updateReportOne(reportData) {
+  function updateReportOne (reportData) {
     if (reportData) {
       const newDatasets = [
         {
           label: i18n.commonReport.year + yearOne,
           data: getData(reportData),
-          borderColor: 'rgb(53, 162, 235)',
-          backgroundColor: 'rgba(53, 162, 235, 0.5)',
+          borderColor: "rgb(53, 162, 235)",
+          backgroundColor: "rgba(53, 162, 235, 0.5)"
         }
-      ]
+      ];
       if (enableTwoYears) {
         handleUpdateData(yearTwo, updateReportTwo);
         datasetAux = newDatasets;
@@ -59,21 +56,21 @@ function ReportGeneric({
     }
   }
 
-  function updateReportTwo(reportData) {
+  function updateReportTwo (reportData) {
     if (reportData) {
       const newDatasets = [
         {
           label: i18n.commonReport.year + yearTwo,
           data: getData(reportData),
-          borderColor: 'rgb(255, 99, 132)',
-          backgroundColor: 'rgba(255, 99, 132, 0.5)',
+          borderColor: "rgb(255, 99, 132)",
+          backgroundColor: "rgba(255, 99, 132, 0.5)"
         }
-      ]
+      ];
       setDatasets([...datasetAux, ...newDatasets]);
     }
   }
 
-  function getData(reportData) {
+  function getData (reportData) {
     const data = [
       reportData.january,
       reportData.february,
@@ -87,23 +84,23 @@ function ReportGeneric({
       reportData.october,
       reportData.november,
       reportData.december
-    ]
+    ];
     return data;
   }
 
-  function handleUpdateReportData() {
+  function handleUpdateReportData () {
     if (enableTwoYears) {
-      if (yearOne < 1900
-        || yearOne > 3000
-        || yearTwo < 1900
-        || yearTwo > 3000) {
-        alert(i18n.commonReport.yearValidation)
+      if (yearOne < 1900 ||
+        yearOne > 3000 ||
+        yearTwo < 1900 ||
+        yearTwo > 3000) {
+        alert(i18n.commonReport.yearValidation);
       } else {
         handleUpdateData(yearOne, updateReportOne);
       }
     } else {
       if (yearOne < 1900 || yearOne > 3000) {
-        alert(i18n.commonReport.yearValidation)
+        alert(i18n.commonReport.yearValidation);
       } else {
         handleUpdateData(yearOne, updateReportOne);
       }
@@ -128,7 +125,9 @@ function ReportGeneric({
                     type="number"
                     min="1900"
                     max="3000"
-                    onChange={(event) => { setYearOne(event.target.value) }}
+                    onChange={(event) => {
+                      setYearOne(event.target.value);
+                    }}
                   />
                 </div>
               </Form.Group>
@@ -145,7 +144,9 @@ function ReportGeneric({
                     type="number"
                     min="1900"
                     max="3000"
-                    onChange={(event) => { setYearTwo(event.target.value) }}
+                    onChange={(event) => {
+                      setYearTwo(event.target.value);
+                    }}
                   />
                 </div>
               </Form.Group>
@@ -158,7 +159,9 @@ function ReportGeneric({
                   </Form.Label>
                 </div>
                 <div className={"puggysoft-form-input"}><Form.Select
-                  onChange={(event) => { setChartType(event.target.value) }}
+                  onChange={(event) => {
+                    setChartType(event.target.value);
+                  }}
                   value={chartType}
                 >
                   <option key='option-vertical-bar'
@@ -215,7 +218,20 @@ function ReportGeneric({
         </ChartLine>
       }
     </div >
-  )
+  );
 }
 
 export default ReportGeneric;
+ReportGeneric.propTypes = {
+  handleUpdateData: PropTypes.func,
+  reportTitle: PropTypes.string,
+  enableTwoYears: PropTypes.bool,
+  productData: PropTypes.object
+};
+
+ReportGeneric.defaultProps = {
+  handleUpdateData: () => { },
+  reportTitle: "Some title",
+  enableTwoYears: false,
+  productData: {}
+};

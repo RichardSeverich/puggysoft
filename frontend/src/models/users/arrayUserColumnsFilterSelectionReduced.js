@@ -1,59 +1,56 @@
 import enumFilterType from "../enumFilterType";
 import enumCompareOperators from "./../enumCompareOperators";
-import enumSex from "./../users/enumSex";
-import i18n from "../../i18n/i18n";
 
 const getColumnsFilterModel = function (
-    /*USERNAME*/ criteriaUsername, criteriaOnChangeUsername, criteriaSetUsername, operatorUsername, operatorOnChangeUsername, operatorSetUsername,
-    /*DNI*/ criteriaDni, criteriaOnChangeDni, criteriaSetDni, operatorDni, operatorOnChangeDni, operatorSetDni,
-    /*NAME*/ criteriaName, criteriaOnChangeName, criteriaSetName, operatorName, operatorOnChangeName, operatorSetName,
-    /*SECOND NAME*/criteriaSecondName, criteriaOnChangeSecondName, criteriaSetSecondName, operatorSecondName, operatorOnChangeSecondName, operatorSetSecondName,
-    /*LAST NAME*/ criteriaLastName, criteriaOnChangeLastName, criteriaSetLastName, operatorLastName, operatorOnChangeLastName, operatorSetLastName,
-    /*SECOND LAST NAME*/criteriaSecondLastName, criteriaOnChangeSecondLastName, criteriaSetSecondLastName, operatorSecondLastName, operatorOnChangeSecondLastName, operatorSetSecondLastName
+  /* USERNAME */ criteriaUsername, criteriaOnChangeUsername, criteriaSetUsername, operatorUsername, operatorOnChangeUsername, operatorSetUsername,
+  /* DNI */ criteriaDni, criteriaOnChangeDni, criteriaSetDni, operatorDni, operatorOnChangeDni, operatorSetDni,
+  /* NAME */ criteriaName, criteriaOnChangeName, criteriaSetName, operatorName, operatorOnChangeName, operatorSetName,
+  /* SECOND NAME */criteriaSecondName, criteriaOnChangeSecondName, criteriaSetSecondName, operatorSecondName, operatorOnChangeSecondName, operatorSetSecondName,
+  /* LAST NAME */ criteriaLastName, criteriaOnChangeLastName, criteriaSetLastName, operatorLastName, operatorOnChangeLastName, operatorSetLastName,
+  /* SECOND LAST NAME */criteriaSecondLastName, criteriaOnChangeSecondLastName, criteriaSetSecondLastName, operatorSecondLastName, operatorOnChangeSecondLastName, operatorSetSecondLastName
 ) {
-
   const arrayColumnsFilter = [
     {
       type: enumFilterType.TEXTBOX,
       criteriaValue: criteriaUsername,
       criteriaOnchange: criteriaOnChangeUsername,
       operatorValue: operatorUsername,
-      operatorOnchange: operatorOnChangeUsername,
+      operatorOnchange: operatorOnChangeUsername
     },
     {
       type: enumFilterType.TEXTBOX,
       criteriaValue: criteriaDni,
       criteriaOnchange: criteriaOnChangeDni,
       operatorValue: operatorDni,
-      operatorOnchange: operatorOnChangeDni,
+      operatorOnchange: operatorOnChangeDni
     },
     {
       type: enumFilterType.TEXTBOX,
       criteriaValue: criteriaName,
       criteriaOnchange: criteriaOnChangeName,
       operatorValue: operatorName,
-      operatorOnchange: operatorOnChangeName,
+      operatorOnchange: operatorOnChangeName
     },
     {
       type: enumFilterType.TEXTBOX,
       criteriaValue: criteriaSecondName,
       criteriaOnchange: criteriaOnChangeSecondName,
       operatorValue: operatorSecondName,
-      operatorOnchange: operatorOnChangeSecondName,
+      operatorOnchange: operatorOnChangeSecondName
     },
     {
       type: enumFilterType.TEXTBOX,
       criteriaValue: criteriaLastName,
       criteriaOnchange: criteriaOnChangeLastName,
       operatorValue: operatorLastName,
-      operatorOnchange: operatorOnChangeLastName,
+      operatorOnchange: operatorOnChangeLastName
     },
     {
       type: enumFilterType.TEXTBOX,
       criteriaValue: criteriaSecondLastName,
       criteriaOnchange: criteriaOnChangeSecondLastName,
       operatorValue: operatorSecondLastName,
-      operatorOnchange: operatorOnChangeSecondLastName,
+      operatorOnchange: operatorOnChangeSecondLastName
     }
   ];
 
@@ -64,7 +61,7 @@ const getColumnsFilterModel = function (
     operatorSetSecondName(enumCompareOperators.TEXT_CONTAINS);
     operatorSetLastName(enumCompareOperators.TEXT_CONTAINS);
     operatorSetSecondLastName(enumCompareOperators.TEXT_CONTAINS);
-  }
+  };
 
   const clearFilters = function () {
     criteriaSetUsername("");
@@ -74,7 +71,7 @@ const getColumnsFilterModel = function (
     criteriaSetLastName("");
     criteriaSetSecondLastName("");
     setOperatorsDefaultValues("");
-  }
+  };
 
   const getFilterBody = () => {
     const filterBody = {
@@ -120,17 +117,16 @@ const getColumnsFilterModel = function (
       creationDateOperator: enumFilterType.NONE,
       updateDateCriteria: "",
       updateDateOperator: enumFilterType.NONE
-    }
+    };
     return filterBody;
-  }
+  };
 
   return {
     arrayColumnsFilter,
     clearFilters,
     getFilterBody,
     setOperatorsDefaultValues
-  }
-
-}
+  };
+};
 
 export default getColumnsFilterModel;

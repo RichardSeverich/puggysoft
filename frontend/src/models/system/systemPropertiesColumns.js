@@ -7,7 +7,7 @@ const arrayColumns = [
   i18n.systemPropertiesTable.columnCreatedBy,
   i18n.systemPropertiesTable.columnUpdatedBy,
   i18n.systemPropertiesTable.columnCreationDate,
-  i18n.systemPropertiesTable.columnUpdateDate,
+  i18n.systemPropertiesTable.columnUpdateDate
 ];
 
 export default arrayColumns;

@@ -1,6 +1,6 @@
 const navBar = {
   // ******* ******* SYSTEM PROPERTIES ******* *******
-  systemPropertiesAdmin: 'Adm. Propiedades del Sistema',
+  systemPropertiesAdmin: "Adm. Propiedades del Sistema",
   systemPropertiesTable: "Mostrar Propiedades del Sistema",
 
   // ******* ******* USERS SYSTEM ******* *******
@@ -85,14 +85,14 @@ const navBar = {
   doctorShowTableFilter: "Mostrar Doctores (Tabla, Detalle)",
   doctorShowCard: "Mostrar Doctores (Tarjetas)",
 
-  // Patients 
+  // Patients
   patientAdmin: "Adm. Pacientes ",
   patientRegistration: "Registrar Pacientes ",
   patientShowTable: "Mostrar Pacientes  (Tabla)",
   patientShowTableFilter: "Mostrar Pacientes  (Tabla, Detalle)",
   patientShowCard: "Mostrar Pacientes  (Tarjetas)",
 
-  // Doctor Schedule 
+  // Doctor Schedule
   scheduleAdmin: "Adm. Calendario/Turnos ",
   scheduleRegistration: "Registrar Calendario/Turnos ",
   scheduleShowTable: "Mostrar Calendario/Turnos  (Tabla)",

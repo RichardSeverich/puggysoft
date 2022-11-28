@@ -1,8 +1,8 @@
 /* Only applies for resolutions greater than 1080px */
 @media (min-width:1600px) {
-    .puggysoft-six-divs-side-by-side-child {
-        width: 15%;
-        float: left;
-        margin-left: 1.5rem;
-    }
+  .puggysoft-six-divs-side-by-side-child {
+    width: 15%;
+    float: left;
+    margin-left: 1.5rem;
+  }
 }

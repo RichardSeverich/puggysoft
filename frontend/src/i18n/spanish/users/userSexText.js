@@ -1,7 +1,7 @@
 const userSexText = {
   all: "TODOS",
   male: "MASCULINO",
-  female: "FEMENINO",
-}
+  female: "FEMENINO"
+};
 
 export default userSexText;

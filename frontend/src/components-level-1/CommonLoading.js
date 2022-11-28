@@ -1,6 +1,7 @@
-import Spinner from 'react-bootstrap/Spinner'
+import React from "react";
+import Spinner from "react-bootstrap/Spinner";
 
-function Loading() {
+function Loading () {
   return (
     <div className="puggysoft-loading" >
       <>
@@ -13,7 +14,7 @@ function Loading() {
         <Spinner animation="grow" variant="dark" />
       </>
     </div>
-  )
+  );
 }
 
 export default Loading;

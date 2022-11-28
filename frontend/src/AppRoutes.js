@@ -1,6 +1,6 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
-import enumPaths from "./models/enumPaths"
+import enumPaths from "./models/enumPaths";
 
 // Components
 import App from "./App";
@@ -15,7 +15,7 @@ import UserTableBasicPage from "./components-level-3/users/UserTableBasicPage";
 import UserTableFilterFullDataPage from "./components-level-3/users/UserTableFilterFullDataPage";
 import UserTableFilterByRolePage from "./components-level-3/users/UserTableFilterByRolePage";
 import UserTableFilterSelectionToDetailsPage from "./components-level-3/users/UserTableFilterSelectionToDetailsPage";
-import UserTableFilterEditDeletePage from "./components-level-3/users/UserTableFilterEditDeletePage"
+import UserTableFilterEditDeletePage from "./components-level-3/users/UserTableFilterEditDeletePage";
 import UserDetailsPage from "./components-level-3/users/UserDetailsPage";
 import RoleTablePage from "./components-level-3/users/RoleTablePage";
 import RoleTableFilterPage from "./components-level-3/users/RoleTableFilterPage";
@@ -27,27 +27,27 @@ import ClientFormPage from "./components-level-3/sales/ClientFormPage";
 import ClientTableFilterSelectionToDetailsPage from "./components-level-3/sales/ClientTableFilterSelectionToDetailsPage";
 import SellerFormPage from "./components-level-3/sales/SellerFormPage";
 import SellerTableFilterSelectionToDetailsPage from "./components-level-3/sales/SellerTableFilterSelectionToDetailsPage";
-import SaleTableFilterEditDeleteDetails from "./components-level-3/sales/SaleTableFilterEditDeleteDetails"
-import SaleAddStepOnePage from "./components-level-3/sales/SaleAddStepOnePage"
-import SaleAddStepTwoPage from "./components-level-3/sales/SaleAddStepTwoPage"
-import SaleReportQuantityPage from "./components-level-3/sales/SaleReportQuantityPage"
-import SaleReportQuantityCompPage from "./components-level-3/sales/SaleReportQuantityCompPage"
-import SaleReportRevenuePage from "./components-level-3/sales/SaleReportRevenuePage"
-import SaleReportRevenueCompPage from "./components-level-3/sales/SaleReportRevenueCompPage"
-import SaleReportProfitPage from "./components-level-3/sales/SaleReportProfitPage"
-import SaleReportProfitCompPage from "./components-level-3/sales/SaleReportProfitCompPage"
-import ProductTableToQuantityReportPage from "./components-level-3/sales/ProductTableToQuantityReportPage"
-import ProductTableToQuantityComparativeReportPage from "./components-level-3/sales/ProductTableToQuantityComparativeReportPage"
-import ProductTableToRevenueReportPage from "./components-level-3/sales/ProductTableToRevenueReportPage"
-import ProductTableToRevenueComparativeReportPage from "./components-level-3/sales/ProductTableToRevenueComparativeReportPage"
-import ProductTableToProfitReportPage from "./components-level-3/sales/ProductTableToProfitReportPage"
-import ProductTableToProfitComparativeReportPage from "./components-level-3/sales/ProductTableToProfitComparativeReportPage"
-import SaleReportQuantityByProductPage from "./components-level-3/sales/SaleReportQuantityByProductPage"
-import SaleReportQuantityComparativeByProductPage from "./components-level-3/sales/SaleReportQuantityComparativeByProductPage"
-import SaleReportRevenueByProductPage from "./components-level-3/sales/SaleReportRevenueByProductPage"
-import SaleReportRevenueComparativeByProductPage from "./components-level-3/sales/SaleReportRevenueComparativeByProductPage"
-import SaleReportProfitByProductPage from "./components-level-3/sales/SaleReportProfitByProductPage"
-import SaleReportProfitComparativeByProductPage from "./components-level-3/sales/SaleReportProfitComparativeByProductPage"
+import SaleTableFilterEditDeleteDetails from "./components-level-3/sales/SaleTableFilterEditDeleteDetails";
+import SaleAddStepOnePage from "./components-level-3/sales/SaleAddStepOnePage";
+import SaleAddStepTwoPage from "./components-level-3/sales/SaleAddStepTwoPage";
+import SaleReportQuantityPage from "./components-level-3/sales/SaleReportQuantityPage";
+import SaleReportQuantityCompPage from "./components-level-3/sales/SaleReportQuantityCompPage";
+import SaleReportRevenuePage from "./components-level-3/sales/SaleReportRevenuePage";
+import SaleReportRevenueCompPage from "./components-level-3/sales/SaleReportRevenueCompPage";
+import SaleReportProfitPage from "./components-level-3/sales/SaleReportProfitPage";
+import SaleReportProfitCompPage from "./components-level-3/sales/SaleReportProfitCompPage";
+import ProductTableToQuantityReportPage from "./components-level-3/sales/ProductTableToQuantityReportPage";
+import ProductTableToQuantityComparativeReportPage from "./components-level-3/sales/ProductTableToQuantityComparativeReportPage";
+import ProductTableToRevenueReportPage from "./components-level-3/sales/ProductTableToRevenueReportPage";
+import ProductTableToRevenueComparativeReportPage from "./components-level-3/sales/ProductTableToRevenueComparativeReportPage";
+import ProductTableToProfitReportPage from "./components-level-3/sales/ProductTableToProfitReportPage";
+import ProductTableToProfitComparativeReportPage from "./components-level-3/sales/ProductTableToProfitComparativeReportPage";
+import SaleReportQuantityByProductPage from "./components-level-3/sales/SaleReportQuantityByProductPage";
+import SaleReportQuantityComparativeByProductPage from "./components-level-3/sales/SaleReportQuantityComparativeByProductPage";
+import SaleReportRevenueByProductPage from "./components-level-3/sales/SaleReportRevenueByProductPage";
+import SaleReportRevenueComparativeByProductPage from "./components-level-3/sales/SaleReportRevenueComparativeByProductPage";
+import SaleReportProfitByProductPage from "./components-level-3/sales/SaleReportProfitByProductPage";
+import SaleReportProfitComparativeByProductPage from "./components-level-3/sales/SaleReportProfitComparativeByProductPage";
 
 // Hospital System
 import DoctorUserFormPage from "./components-level-3/hospital/DoctorUserFormPage";
@@ -55,15 +55,14 @@ import DoctorUserTableToDetailsPage from "./components-level-3/hospital/DoctorUs
 import PatientUserFormPage from "./components-level-3/hospital/PatientUserFormPage";
 import PatientUserTableToDetailsPage from "./components-level-3/hospital/PatientUserTableToDetailsPage";
 
-
 const AppRoutes = () => (
   <App>
     <Switch>
       <Route exact path={enumPaths.DASHBOARD} component={DashboardPage} />
-      {/** System Properties*/}
+      {/** System Properties */}
       <Route exact path={enumPaths.SYSTEM_PROPERTIES_FORM} component={SystemPropertiesFormPage} />
       <Route exact path={enumPaths.SYSTEM_PROPERTIES_TABLE} component={SystemPropertiesTablePage} />
-      {/** Users System*/}
+      {/** Users System */}
       <Route exact path={enumPaths.USERS_FORM} component={UsersFormPage} />
       <Route exact path={enumPaths.USERS_TABLE} component={UserTableBasicPage} />
       <Route exact path={enumPaths.USERS_TABLE_FILTER} component={UserTableFilterFullDataPage} />
@@ -75,7 +74,7 @@ const AppRoutes = () => (
       <Route exact path={enumPaths.ROLES_TABLE_FILTER} component={RoleTableFilterPage} />
       <Route exact path={enumPaths.ROLES_TABLE_FILTER_BY_USER} component={RoleTablePageByUserPage} />
       <Route exact path={enumPaths.ROLES_TABLE_SELECTION} component={RoleTablePage} />
-      {/** Sales System*/}
+      {/** Sales System */}
       <Route exact path={enumPaths.SALES_PRODUCTS_FORM} component={ProductFormPage} />
       <Route exact path={enumPaths.SALES_PRODUCTS_TABLE_FILTER} component={ProductTableFilterEditDeletePage} />
       <Route exact path={enumPaths.SALES_CLIENT_FORM} component={ClientFormPage} />
@@ -103,7 +102,7 @@ const AppRoutes = () => (
       <Route exact path={enumPaths.SALES_REPORT_REVENUE_COMP_BY_PRODUCT} component={SaleReportRevenueComparativeByProductPage} />
       <Route exact path={enumPaths.SALES_REPORT_PROFIT_BY_PRODUCT} component={SaleReportProfitByProductPage} />
       <Route exact path={enumPaths.SALES_REPORT_PROFIT_COMP_BY_PRODUCT} component={SaleReportProfitComparativeByProductPage} />
-      {/** Hospital System*/}
+      {/** Hospital System */}
       <Route exact path={enumPaths.HOSPITAL_DOCTOR_USER_FORM} component={DoctorUserFormPage} />
       <Route exact path={enumPaths.HOSPITAL_DOCTOR_USER_TABLE_TO_DETAILS} component={DoctorUserTableToDetailsPage} />
       <Route exact path={enumPaths.HOSPITAL_PATIENT_USER_FORM} component={PatientUserFormPage} />

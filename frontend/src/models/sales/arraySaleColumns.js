@@ -7,7 +7,7 @@ const arrayColumns = [
   i18n.saleTable.columnCreatedBy,
   i18n.saleTable.columnUpdatedBy,
   i18n.saleTable.columnCreationDate,
-  i18n.saleTable.columnUpdateDate,
+  i18n.saleTable.columnUpdateDate
 ];
 
 export default arrayColumns;

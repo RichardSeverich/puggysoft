@@ -39,3 +39,4 @@ https://react-icons.github.io/react-icons/
 ## Notes
 
 1. Initialization of storybook: `npx sb init`
+2. Initialization of eslit: `npx eslint --init`

@@ -1,15 +1,15 @@
-import enumSaleStatus from './../../models/sales/enumSaleStatus'
-import i18n from '../../i18n/i18n';
+import enumSaleStatus from "./../../models/sales/enumSaleStatus";
+import i18n from "../../i18n/i18n";
 
-function fixArrayData(arrayData) {
+function fixArrayData (arrayData) {
   return arrayData.map((rowObject) => {
-    let currentValue = rowObject['status'];
+    const currentValue = rowObject.status;
     if (currentValue === enumSaleStatus.TODO) {
-      rowObject['status'] = i18n.saleStatus.todo
+      rowObject.status = i18n.saleStatus.todo;
     } else if (currentValue === enumSaleStatus.IN_PROGRESS) {
-      rowObject['status'] = i18n.saleStatus.inProgress
+      rowObject.status = i18n.saleStatus.inProgress;
     } else {
-      rowObject['status'] = i18n.saleStatus.done
+      rowObject.status = i18n.saleStatus.done;
     }
     return rowObject;
   });

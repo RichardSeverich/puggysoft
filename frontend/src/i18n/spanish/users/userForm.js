@@ -32,7 +32,7 @@ const userForm = {
   formTextAddress: "Minimo 3, maximo 60 caracteres",
   formTextEmail: "Minimo 7, maximo 60 caracteres",
   formTextStatus: "Seleccione el estado",
-  formTextImage: "Seleccione foto de perfil",
+  formTextImage: "Seleccione foto de perfil"
 };
 
 export default userForm;

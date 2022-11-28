@@ -22,7 +22,7 @@ const arrayColumns = [
   i18n.userTable.columnCreatedBy,
   i18n.userTable.columnUpdatedBy,
   i18n.userTable.columnCreationDate,
-  i18n.userTable.columnUpdateDate,
+  i18n.userTable.columnUpdateDate
 ];
 
 export default arrayColumns;

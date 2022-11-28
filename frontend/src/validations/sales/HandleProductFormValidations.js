@@ -7,11 +7,10 @@ const classNameFormTextNew = {
   description: classNameRed,
   barCode: classNameRed,
   location: classNameRed,
-  minimumStock: classNameRed,
-}
+  minimumStock: classNameRed
+};
 
 const handleValidation = (data, setClassNameFormText) => {
-
   let isValid = true;
   if (!(data.name.length >= 3 && data.name.length <= 60)) {
     isValid = false;
@@ -52,6 +51,5 @@ const handleValidation = (data, setClassNameFormText) => {
   setClassNameFormText({ ...classNameFormTextNew });
   return isValid;
 };
-
 
 export { handleValidation, classNameFormTextNew };

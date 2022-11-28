@@ -1,9 +1,9 @@
-import { useState, useEffect } from "react";
-import CommonTablePagination from '../../components-level-1/CommonTablePagination';
-import CommonLoading from '../../components-level-1/CommonLoading';
+import React, { useState, useEffect } from "react";
+import PropTypes from "prop-types";
+import CommonTablePagination from "../../components-level-1/CommonTablePagination";
+import CommonLoading from "../../components-level-1/CommonLoading";
 
-function TablePaginationFilterGeneric(props) {
-
+function TablePaginationFilterGeneric (props) {
   const {
     arrayDataFields,
     arrayColumns,
@@ -24,9 +24,9 @@ function TablePaginationFilterGeneric(props) {
   const [activePage, setActivePage] = useState(1);
   const [initialPage, setInitialPage] = useState(1);
 
-  function updateArrayData(arrayData) {
+  function updateArrayData (arrayData) {
     if (fixArrayData) {
-      let arrayFixed = fixArrayData(arrayData);
+      const arrayFixed = fixArrayData(arrayData);
       setArrayData(arrayFixed);
     } else {
       setArrayData(arrayData);
@@ -44,13 +44,13 @@ function TablePaginationFilterGeneric(props) {
   }, [activePage]);
 
   const handleFilter = () => {
-    setActivePage(1)
+    setActivePage(1);
     const filterBody = getFilterBody();
     setArrayData(null);
     setTotalPages(null);
     handleGetData(activePage, filterBody, updateArrayData);
     handleGetSize(filterBody, setTotalPages);
-  }
+  };
 
   if (arrayData === null || totalPages === null) {
     return <CommonLoading></CommonLoading>;
@@ -82,3 +82,33 @@ function TablePaginationFilterGeneric(props) {
 }
 
 export default TablePaginationFilterGeneric;
+
+TablePaginationFilterGeneric.propTypes = {
+  arrayDataFields: PropTypes.array,
+  arrayColumns: PropTypes.array,
+  handleGetData: PropTypes.func,
+  handleGetSize: PropTypes.func,
+  tableTitle: PropTypes.string,
+  tableSubTitle: PropTypes.string,
+  tableArrayCustomRowButtons: PropTypes.array,
+  numberPagesToShow: PropTypes.number,
+  arrayColumnsFilter: PropTypes.array,
+  clearFilters: PropTypes.func,
+  getFilterBody: PropTypes.func,
+  fixArrayData: PropTypes.func
+};
+
+TablePaginationFilterGeneric.defaultProps = {
+  arrayDataFields: [],
+  arrayColumns: [],
+  handleGetData: () => { },
+  handleGetSize: () => { },
+  tableTitle: "",
+  tableSubTitle: "",
+  tableArrayCustomRowButtons: [],
+  numberPagesToShow: 0,
+  arrayColumnsFilter: [],
+  clearFilters: () => { },
+  getFilterBody: () => { },
+  fixArrayData: undefined
+};

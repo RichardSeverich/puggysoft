@@ -7,7 +7,7 @@ const arrayColumns = [
   i18n.productTable.columnPurchasePrice,
   i18n.productTable.columnSalePrice,
   i18n.productTable.columnStock,
-  i18n.productTable.columnMinimumStock,
+  i18n.productTable.columnMinimumStock
 ];
 
 export default arrayColumns;

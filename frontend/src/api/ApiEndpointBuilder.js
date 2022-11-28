@@ -13,7 +13,7 @@ endPointBase = endPointBase.concat(REACT_APP_BACKEND_VERSION);
 endPointBase = endPointBase.concat("/");
 
 const getEndpoint = (endpoint) => {
-    return endPointBase.concat(endpoint);
+  return endPointBase.concat(endpoint);
 };
 
 export default getEndpoint;

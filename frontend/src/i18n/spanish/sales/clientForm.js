@@ -1,5 +1,5 @@
 const clientForm = {
-    title: "Registrar Cliente",
+  title: "Registrar Cliente"
 };
 
 export default clientForm;

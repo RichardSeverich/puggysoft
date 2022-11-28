@@ -1,5 +1,5 @@
-import axios from './ApiConnector';
-import getConfig from "./ApiConfig"
+import axios from "./ApiConnector";
+import getConfig from "./ApiConfig";
 import getEndpoint from "./ApiEndpointBuilder";
 
 const put = (endpoint, body, callback) => {
@@ -15,14 +15,14 @@ const put = (endpoint, body, callback) => {
     })
     .catch(error => {
       console.log("*** RESPONSE ***");
-      if(error.response){
-        console.log(error.response)
+      if (error.response) {
+        console.log(error.response);
         callback(error.response);
       } else {
-        console.log(error)
+        console.log(error);
         callback(error);
       }
-  })
+    });
 };
 
 export default put;

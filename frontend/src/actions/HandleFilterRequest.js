@@ -1,4 +1,4 @@
-import requestManager from "./../api/RequestManager"
+import requestManager from "./../api/RequestManager";
 import messageManager from "./HandleErrorMessages";
 
 const handleFilterRequest = (endpoint, body, callback) => {
@@ -9,6 +9,6 @@ const handleFilterRequest = (endpoint, body, callback) => {
       messageManager.commonMessages(response);
     }
   });
-}
+};
 
 export default handleFilterRequest;

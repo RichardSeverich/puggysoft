@@ -1,9 +1,9 @@
 import React from "react";
-import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css'
+import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 
-function App(props) {
-
+function App (props) {
+  // eslint-disable-next-line
   const { children } = props;
   return (
     <div className="App">
@@ -11,5 +11,4 @@ function App(props) {
     </div>
   );
 }
-
 export default App;

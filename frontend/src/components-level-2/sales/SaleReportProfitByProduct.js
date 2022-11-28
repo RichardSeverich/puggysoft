@@ -1,3 +1,4 @@
+import React from "react";
 import { useHistory } from "react-router";
 
 import ReportGeneric from "./../generic/ReportGeneric";
@@ -5,18 +6,16 @@ import ReportGeneric from "./../generic/ReportGeneric";
 import { handleGetRequest } from "../../actions/HandleManager";
 import i18n from "../../i18n/i18n";
 
-
-function SaleReportProfit() {
-
+function SaleReportProfit () {
   const history = useHistory();
-  const productData = history !== undefined
-    && history.location !== undefined
-    && history.location.state !== undefined
-    && history.location.state.productData !== undefined
+  const productData = history !== undefined &&
+    history.location !== undefined &&
+    history.location.state !== undefined &&
+    history.location.state.productData !== undefined
     ? history.location.state.productData
     : undefined;
 
-  function handleUpdateData(year, setReportData) {
+  function handleUpdateData (year, setReportData) {
     if (productData && productData.id) {
       handleGetRequest(`sales-report/profit-by-product?year=${year}&idProduct=${productData.id}`, setReportData);
     } else {
@@ -32,7 +31,7 @@ function SaleReportProfit() {
       productData={productData}
     >
     </ReportGeneric>
-  )
+  );
 }
 
 export default SaleReportProfit;

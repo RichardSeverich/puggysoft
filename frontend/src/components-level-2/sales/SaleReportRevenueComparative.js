@@ -1,12 +1,11 @@
+import React from "react";
 import ReportGeneric from "./../generic/ReportGeneric";
 
 import { handleGetRequest } from "../../actions/HandleManager";
 import i18n from "../../i18n/i18n";
 
-
-function SaleReportRevenueComparative() {
-
-  function handleUpdateData(year, setReportData) {
+function SaleReportRevenueComparative () {
+  function handleUpdateData (year, setReportData) {
     handleGetRequest(`sales-report/revenue?year=${year}`, setReportData);
   }
 
@@ -17,7 +16,7 @@ function SaleReportRevenueComparative() {
       enableTwoYears={true}
     >
     </ReportGeneric>
-  )
+  );
 }
 
 export default SaleReportRevenueComparative;

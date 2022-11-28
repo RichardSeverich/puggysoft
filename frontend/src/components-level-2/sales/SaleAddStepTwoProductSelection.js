@@ -1,21 +1,20 @@
+import React, { useState } from "react";
 import { useHistory } from "react-router";
-import { useState } from "react";
+
 import { handleFilterRequest, handleAddRequest, handleDeleteRequestNew } from "../../actions/HandleManager";
 import ProductTableSuperReducedGeneric from "./ProductTableSuperReducedGeneric";
 import i18n from "../../i18n/i18n";
-import CommonLoading from '../../components-level-1/CommonLoading';
+import CommonLoading from "../../components-level-1/CommonLoading";
 import arraySaleProductColumns from "../../models/sales/arraySaleProductColumns";
-import Form from 'react-bootstrap/Form'
-import Card from 'react-bootstrap/Card'
-import enumWebElements from './../../models/enumWebElements'
+import Form from "react-bootstrap/Form";
+import Card from "react-bootstrap/Card";
+import enumWebElements from "./../../models/enumWebElements";
 
-import "./../css/all-two-divs-side-by-side.css"
-import "./../css/all-six-divs-side-by-side.css"
-import "./../css/all-forms-inline-block.css"
+import "./../css/all-two-divs-side-by-side.css";
+import "./../css/all-six-divs-side-by-side.css";
+import "./../css/all-forms-inline-block.css";
 
-
-function SaleAddStepTwoProductSelection(props) {
-
+function SaleAddStepTwoProductSelection () {
   const history = useHistory();
   const pageSize = 7;
   const numberPagesToShow = 10;
@@ -26,31 +25,31 @@ function SaleAddStepTwoProductSelection(props) {
   const [clientCash, setClientCash] = useState(0);
   const [clientCashChange, setClientCashChange] = useState(0);
 
-  const { saleData } = history
-    && history.location !== undefined
-    && history.location.state !== undefined
-    && history.location.state.data !== undefined
+  const { saleData } = history &&
+    history.location !== undefined &&
+    history.location.state !== undefined &&
+    history.location.state.data !== undefined
     ? history.location.state.data
     : { saleData: undefined };
 
   const [isRequestInProgress, setIsRequestInProgress] = useState(false);
 
   // functions to add products to a sale.
-  function handleGetDataProductsAddToSale(activePage, filterBody, updateArrayData) {
+  function handleGetDataProductsAddToSale (activePage, filterBody, updateArrayData) {
     handleFilterRequest(`products/filter?page=${activePage - 1}&size=${pageSize}`, filterBody, updateArrayData);
   }
-  function handleGetSizeProductsAddToSale(filterBody, setTotalPages) {
+  function handleGetSizeProductsAddToSale (filterBody, setTotalPages) {
     handleFilterRequest(`products/filter/size/${pageSize}`, filterBody, setTotalPages);
   }
 
-  function handleAfterAddProductToSale(salesProductsOrError) {
+  function handleAfterAddProductToSale (salesProductsOrError) {
     setIsRequestInProgress(false);
   }
 
-  function handleAddProductToSale(productData, textboxId) {
-    let textboxElement = document.getElementById(textboxId);
-    let saleQuantity = textboxElement.value;
-    if (!saleQuantity || saleQuantity === '' || saleQuantity <= 0) {
+  function handleAddProductToSale (productData, textboxId) {
+    const textboxElement = document.getElementById(textboxId);
+    const saleQuantity = textboxElement.value;
+    if (!saleQuantity || saleQuantity === "" || saleQuantity <= 0) {
       alert(i18n.saleErrorMessages.invalidQuantity);
     } else if (saleQuantity > productData.stock) {
       alert(i18n.saleErrorMessages.quantityGreaterThanStock);
@@ -60,8 +59,8 @@ function SaleAddStepTwoProductSelection(props) {
         idSale: saleData.id,
         idProduct: productData.id,
         quantity: saleQuantity
-      }
-      handleAddRequest(`sales-products`, body, handleAfterAddProductToSale, true, handleAfterAddProductToSale)
+      };
+      handleAddRequest("sales-products", body, handleAfterAddProductToSale, true, handleAfterAddProductToSale);
     }
   }
 
@@ -75,44 +74,44 @@ function SaleAddStepTwoProductSelection(props) {
       variant: "primary",
       handleCustom: handleAddProductToSale,
       text: i18n.commonTable.addButton
-    },
-  ]
+    }
+  ];
 
-  /*- dataElement.onChange
-  - dataElement.value*/
+  /* - dataElement.onChange
+  - dataElement.value */
 
   // functions to delete products from a sale.
-  function handleGetDataProductsToDelete(activePage, filterBody, updateArrayData) {
+  function handleGetDataProductsToDelete (activePage, filterBody, updateArrayData) {
     handleFilterRequest(`products/filter-by-sale-id?page=${activePage - 1}&size=${pageSize}&saleId=${saleData.id}`, filterBody, updateArrayData);
   }
-  function handleGetSizeProductsToDelete(filterBody, setTotalPages) {
+  function handleGetSizeProductsToDelete (filterBody, setTotalPages) {
     handleFilterRequest(`products/filter/size-by-sale-id?pageSize=${pageSize}&saleId=${saleData.id}`, filterBody, setTotalPages);
   }
 
-  function handleAfterDeleteProductFromSale() {
+  function handleAfterDeleteProductFromSale () {
     setIsRequestInProgress(false);
   }
 
-  function handleDeleteSaleProductRelation(productData) {
+  function handleDeleteSaleProductRelation (productData) {
     // NOTE: The ID field of this ${productData} object is the relation ID. sales_products.id
     // NOTE: The STOCK filed of this ${productData} object is the quantity of sales_products.
     setIsRequestInProgress(true);
     const idRelation = productData.id;
-    handleDeleteRequestNew(`sales-products/${idRelation}`, handleAfterDeleteProductFromSale, handleAfterDeleteProductFromSale)
+    handleDeleteRequestNew(`sales-products/${idRelation}`, handleAfterDeleteProductFromSale, handleAfterDeleteProductFromSale);
   }
 
-  function fixArrayData(arrayProducts) {
+  function fixArrayData (arrayProducts) {
     let totalToPayNew = 0;
     arrayProducts.forEach((product) => {
       totalToPayNew = totalToPayNew + Number(product.salePrice) * Number(product.stock);
-    })
+    });
     setTotalToPay(totalToPayNew);
     return arrayProducts;
   }
 
-  function onChangeClientCash(clientCash) {
-    setClientCashChange(clientCash - totalToPay)
-    setClientCash(clientCash)
+  function onChangeClientCash (clientCash) {
+    setClientCashChange(clientCash - totalToPay);
+    setClientCash(clientCash);
   }
 
   const tableArrayCustomRowButtonsDeleteFromSale = [
@@ -120,11 +119,11 @@ function SaleAddStepTwoProductSelection(props) {
       variant: "danger",
       handleCustom: handleDeleteSaleProductRelation,
       text: i18n.commonTable.deleteButton
-    },
-  ]
+    }
+  ];
 
   if (isRequestInProgress || !saleData) {
-    return <CommonLoading />
+    return <CommonLoading />;
   }
 
   return (
@@ -162,7 +161,9 @@ function SaleAddStepTwoProductSelection(props) {
                 <div className={"puggysoft-form-label"}><Form.Label>{i18n.saleProductTable.clientCashToPay}</Form.Label></div>
                 <div className={"puggysoft-form-input"}><Form.Control
                   value={clientCash}
-                  onChange={(event) => { onChangeClientCash(event.target.value); }}
+                  onChange={(event) => {
+                    onChangeClientCash(event.target.value);
+                  }}
                 /></div>
               </Form.Group>
             </div>
@@ -201,7 +202,7 @@ function SaleAddStepTwoProductSelection(props) {
         </div>
       </div >
     </div>
-  )
+  );
 }
 
 export default SaleAddStepTwoProductSelection;

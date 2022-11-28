@@ -1,7 +1,8 @@
-import NavBar from './../../components-level-2/navbar/NavBar'
-import SalesTableFilterEditDeleteDetails from './../../components-level-2/sales/SalesTableFilterEditDeleteDetails';
+import React from "react";
+import NavBar from "./../../components-level-2/navbar/NavBar";
+import SalesTableFilterEditDeleteDetails from "./../../components-level-2/sales/SalesTableFilterEditDeleteDetails";
 
-function SaleTableFilterEditDeleteDetails() {
+function SaleTableFilterEditDeleteDetails () {
   return (
     <div className="sale-table-page">
       <NavBar></NavBar>

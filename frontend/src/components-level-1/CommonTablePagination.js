@@ -1,15 +1,14 @@
-import PropTypes from 'prop-types'
-
-import CommonPagination from './CommonPagination'
-import CommonTable from './CommonTable'
+import React from "react";
+import PropTypes from "prop-types";
+import CommonPagination from "./CommonPagination";
+import CommonTable from "./CommonTable";
 
 /**
  *  tableArrayData = [{},{},{},{}]
- *  tableArrayDataFields = ['field1', 'field2', 'field3']
- *  tableArrayColumns = ['column1', 'column2', 'column3']
+ *  tableArrayDataFields = ["field1", "field2", "field3"]
+ *  tableArrayColumns = ["column1", "column2", "column3"]
  */
-function CommonTablePagination(props) {
-
+function CommonTablePagination (props) {
   const {
     tableTitle,
     tableSubTitle,
@@ -31,9 +30,8 @@ function CommonTablePagination(props) {
     paginationSetInitialPage,
     filterArrayColumns,
     filterClear,
-    filterHandler,
+    filterHandler
   } = props;
-
   return (
     <div className="puggysoft-common-table-pagination" >
       <CommonTable
@@ -63,7 +61,7 @@ function CommonTablePagination(props) {
         setInitialPage={paginationSetInitialPage}
       ></CommonPagination>
     </div>
-  )
+  );
 }
 
 export default CommonTablePagination;
@@ -92,11 +90,11 @@ CommonTablePagination.propTypes = {
   // Filter
   filterArrayColumns: PropTypes.array,
   filterClear: PropTypes.func,
-  filterHandler: PropTypes.func,
-}
+  filterHandler: PropTypes.func
+};
 
 CommonTablePagination.defaultProps = {
-  tableTitle: 'Common pagination table title',
+  tableTitle: "Common pagination table title",
   tableSubTitle: undefined,
   tableArrayData: [],
   tableArrayDataFields: [],
@@ -118,5 +116,5 @@ CommonTablePagination.defaultProps = {
   // Filter
   filterArrayColumns: [],
   filterClear: () => { },
-  filterHandler: () => { },
-}
+  filterHandler: () => { }
+};

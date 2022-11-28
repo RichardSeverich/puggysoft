@@ -2,59 +2,58 @@ import enumFilterType from "../enumFilterType";
 import enumCompareOperators from "./../enumCompareOperators";
 
 const getColumnsFilterModel = function (
-    /*CODE*/ criteriaCode, criteriaOnChangeCode, criteriaSetCode, operatorCode, operatorOnChangeCode, operatorSetCode,
-    /*NAME*/ criteriaName, criteriaOnChangeName, criteriaSetName, operatorName, operatorOnChangeName, operatorSetName,
-    /*PURCHASE PRICE*/criteriaPurchasePrice, criteriaOnChangePurchasePrice, criteriaSetPurchasePrice, operatorPurchasePrice, operatorOnChangePurchasePrice, operatorSetPurchasePrice,
-    /*SALE PRICE*/ criteriaSalePrice, criteriaOnChangeSalePrice, criteriaSetSalePrice, operatorSalePrice, operatorOnChangeSalePrice, operatorSetSalePrice,
-    /*STOCK*/criteriaStock, criteriaOnChangeStock, criteriaSetStock, operatorStock, operatorOnChangeStock, operatorSetStock,
-    /*MINIMUM STOCK*/criteriaMinimumStock, criteriaOnChangeMinimumStock, criteriaSetMinimumStock, operatorMinimumStock, operatorOnChangeMinimumStock, operatorSetMinimumStock
+  /* CODE */ criteriaCode, criteriaOnChangeCode, criteriaSetCode, operatorCode, operatorOnChangeCode, operatorSetCode,
+  /* NAME */ criteriaName, criteriaOnChangeName, criteriaSetName, operatorName, operatorOnChangeName, operatorSetName,
+  /* PURCHASE PRICE */criteriaPurchasePrice, criteriaOnChangePurchasePrice, criteriaSetPurchasePrice, operatorPurchasePrice, operatorOnChangePurchasePrice, operatorSetPurchasePrice,
+  /* SALE PRICE */ criteriaSalePrice, criteriaOnChangeSalePrice, criteriaSetSalePrice, operatorSalePrice, operatorOnChangeSalePrice, operatorSetSalePrice,
+  /* STOCK */criteriaStock, criteriaOnChangeStock, criteriaSetStock, operatorStock, operatorOnChangeStock, operatorSetStock,
+  /* MINIMUM STOCK */criteriaMinimumStock, criteriaOnChangeMinimumStock, criteriaSetMinimumStock, operatorMinimumStock, operatorOnChangeMinimumStock, operatorSetMinimumStock
 ) {
-
   const arrayColumnsFilter = [
     {
-      type: enumFilterType.NONE,
+      type: enumFilterType.NONE
     },
     {
       type: enumFilterType.TEXTBOX,
       criteriaValue: criteriaCode,
       criteriaOnchange: criteriaOnChangeCode,
       operatorValue: operatorCode,
-      operatorOnchange: operatorOnChangeCode,
+      operatorOnchange: operatorOnChangeCode
     },
     {
       type: enumFilterType.TEXTBOX,
       criteriaValue: criteriaName,
       criteriaOnchange: criteriaOnChangeName,
       operatorValue: operatorName,
-      operatorOnchange: operatorOnChangeName,
+      operatorOnchange: operatorOnChangeName
     },
     {
       type: enumFilterType.NUMBER,
       criteriaValue: criteriaPurchasePrice,
       criteriaOnchange: criteriaOnChangePurchasePrice,
       operatorValue: operatorPurchasePrice,
-      operatorOnchange: operatorOnChangePurchasePrice,
+      operatorOnchange: operatorOnChangePurchasePrice
     },
     {
       type: enumFilterType.NUMBER,
       criteriaValue: criteriaSalePrice,
       criteriaOnchange: criteriaOnChangeSalePrice,
       operatorValue: operatorSalePrice,
-      operatorOnchange: operatorOnChangeSalePrice,
+      operatorOnchange: operatorOnChangeSalePrice
     },
     {
       type: enumFilterType.NUMBER,
       criteriaValue: criteriaStock,
       criteriaOnchange: criteriaOnChangeStock,
       operatorValue: operatorStock,
-      operatorOnchange: operatorOnChangeStock,
+      operatorOnchange: operatorOnChangeStock
     },
     {
       type: enumFilterType.NUMBER,
       criteriaValue: criteriaMinimumStock,
       criteriaOnchange: criteriaOnChangeMinimumStock,
       operatorValue: operatorMinimumStock,
-      operatorOnchange: operatorOnChangeMinimumStock,
+      operatorOnchange: operatorOnChangeMinimumStock
     }
   ];
 
@@ -65,7 +64,7 @@ const getColumnsFilterModel = function (
     operatorSetSalePrice(enumCompareOperators.NUMBER_EQUALS);
     operatorSetStock(enumCompareOperators.NUMBER_EQUALS);
     operatorSetMinimumStock(enumCompareOperators.NUMBER_EQUALS);
-  }
+  };
 
   const clearFilters = function () {
     criteriaSetCode("");
@@ -75,11 +74,11 @@ const getColumnsFilterModel = function (
     criteriaSetStock("");
     criteriaSetMinimumStock("");
     setOperatorsDefaultValues();
-  }
+  };
 
   const getFilterBody = () => {
     const filterBody = {
-      idCriteria: '',
+      idCriteria: "",
       idOperator: enumCompareOperators.NONE,
       nameCriteria: criteriaName,
       nameOperator: operatorName,
@@ -91,33 +90,32 @@ const getColumnsFilterModel = function (
       stockOperator: operatorStock,
       minimumStockCriteria: criteriaMinimumStock,
       minimumStockOperator: operatorMinimumStock,
-      descriptionCriteria: '',
+      descriptionCriteria: "",
       descriptionOperator: enumCompareOperators.NONE,
-      locationCriteria: '',
+      locationCriteria: "",
       locationOperator: enumCompareOperators.NONE,
-      barCodeCriteria: '',
+      barCodeCriteria: "",
       barCodeOperator: enumCompareOperators.NONE,
-      codeCriteria: '',
+      codeCriteria: "",
       codeOperator: enumCompareOperators.NONE,
-      createdByCriteria: '',
+      createdByCriteria: "",
       createdByOperator: enumCompareOperators.NONE,
-      updatedByCriteria: '',
+      updatedByCriteria: "",
       updatedByOperator: enumCompareOperators.NONE,
-      creationDateCriteria: '',
+      creationDateCriteria: "",
       creationDateOperator: enumCompareOperators.NONE,
-      updateDateCriteria: '',
+      updateDateCriteria: "",
       updateDateOperator: enumCompareOperators.NONE
-    }
+    };
     return filterBody;
-  }
+  };
 
   return {
     arrayColumnsFilter,
     clearFilters,
     getFilterBody,
     setOperatorsDefaultValues
-  }
-
-}
+  };
+};
 
 export default getColumnsFilterModel;

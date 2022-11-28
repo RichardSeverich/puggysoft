@@ -1,4 +1,4 @@
-import requestManager from "./../api/RequestManager"
+import requestManager from "./../api/RequestManager";
 import messageManager from "./HandleErrorMessages";
 
 const handleAddFileRequest = (endpoint, file, id, callback, showMessageOnSuccess = true) => {
@@ -14,6 +14,6 @@ const handleAddFileRequest = (endpoint, file, id, callback, showMessageOnSuccess
       messageManager.addMessages(response);
     }
   });
-}
+};
 
 export default handleAddFileRequest;

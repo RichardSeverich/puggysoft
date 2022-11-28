@@ -1,12 +1,12 @@
-import { useState } from "react";
-import Form from 'react-bootstrap/Form'
-import { FaPencilAlt } from 'react-icons/fa';
-import { GrStatusGood } from 'react-icons/gr';
-import { AiOutlineCloseCircle } from 'react-icons/ai';
-import "./commonTextbox.css"
+import React, { useState } from "react";
+import PropTypes from "prop-types";
+import Form from "react-bootstrap/Form";
+import { FaPencilAlt } from "react-icons/fa";
+import { GrStatusGood } from "react-icons/gr";
+import { AiOutlineCloseCircle } from "react-icons/ai";
+import "./commonTextbox.css";
 
-function CommonTextbox(props) {
-
+function CommonTextbox (props) {
   const {
     textboxLabel,
     textboxReadOnly, // boolean isDisabledEdit true
@@ -17,63 +17,63 @@ function CommonTextbox(props) {
     textboxSelectOption
   } = props;
 
-  const classNameSection = 'puggysoft-common-textbox-section'
-  const classNameSectionHidden = 'puggysoft-common-textbox-section-hidden';
-  const classNameSectionCursor = 'puggysoft-common-textbox-section-cursor';
-  const classNameSectionPadding = 'puggysoft-common-textbox-section-padding';
+  const classNameSection = "puggysoft-common-textbox-section";
+  const classNameSectionHidden = "puggysoft-common-textbox-section-hidden";
+  const classNameSectionCursor = "puggysoft-common-textbox-section-cursor";
+  const classNameSectionPadding = "puggysoft-common-textbox-section-padding";
   const classNameSectionILabel = "puggysoft-common-textbox-label";
-  const classNameIcon = classNameSection + ' ' + classNameSectionPadding + ' ' + classNameSectionCursor;
+  const classNameIcon = classNameSection + " " + classNameSectionPadding + " " + classNameSectionCursor;
 
   const [isDisabledEdit, setIsDisabledEdit] = useState(true);
 
-  const [classNameEditButton, setClassNameEditButton]
-    = useState(
+  const [classNameEditButton, setClassNameEditButton] =
+    useState(
       textboxReadOnly
-        ? classNameIcon + ' ' + classNameSectionHidden
+        ? classNameIcon + " " + classNameSectionHidden
         : classNameIcon
     );
-  const [classNameActionsButtons, setClassNameActionsButtons]
-    = useState(classNameIcon + ' ' + classNameSectionHidden);
+  const [classNameActionsButtons, setClassNameActionsButtons] =
+    useState(classNameIcon + " " + classNameSectionHidden);
 
   const changeEnableActionsButtons = function () {
     setIsDisabledEdit(false);
-    setClassNameEditButton(classNameIcon + ' ' + classNameSectionHidden);
+    setClassNameEditButton(classNameIcon + " " + classNameSectionHidden);
     setClassNameActionsButtons(classNameIcon);
-  }
+  };
 
   const changeDisableActionsButtons = function () {
     setIsDisabledEdit(true);
     setClassNameEditButton(classNameIcon);
-    setClassNameActionsButtons(classNameSection + ' ' + classNameSectionHidden);
-  }
+    setClassNameActionsButtons(classNameSection + " " + classNameSectionHidden);
+  };
 
   const handleEdit = function () {
     changeDisableActionsButtons();
     textboxOnSave();
-  }
+  };
 
   return (
-    <div className='puggysoft-common-textbox' >
+    <div className="puggysoft-common-textbox" >
       <div className={classNameSectionILabel}>{textboxLabel}</div>
       <div className={classNameEditButton}
-        onClick={changeEnableActionsButtons}><FaPencilAlt size={'1.5rem'} />
+        onClick={changeEnableActionsButtons}><FaPencilAlt size={"1.5rem"} />
       </div>
       <div
         className={classNameActionsButtons}
-        onClick={handleEdit}><GrStatusGood size={'1.5rem'} />
+        onClick={handleEdit}><GrStatusGood size={"1.5rem"} />
       </div>
       <div
         className={classNameActionsButtons}
-        onClick={changeDisableActionsButtons} ><AiOutlineCloseCircle size={'1.5rem'} />
+        onClick={changeDisableActionsButtons} ><AiOutlineCloseCircle size={"1.5rem"} />
       </div>
-      <div className={classNameSection + ' ' + classNameSectionPadding}>
-        {textboxType === 'select'
+      <div className={classNameSection + " " + classNameSectionPadding}>
+        {textboxType === "select"
           ? <Form.Select
             disabled={isDisabledEdit}
             onChange={textboxOnchange}
             value={textboxValue} >
             {textboxSelectOption.map(function (item) {
-              return <option key={item.key} value={item.value}>{item.text}</option>
+              return <option key={item.key} value={item.value}>{item.text}</option>;
             })}
           </Form.Select>
           : <Form.Control
@@ -84,7 +84,27 @@ function CommonTextbox(props) {
           />}
       </div>
     </div>
-  )
+  );
 }
 
 export default CommonTextbox;
+
+CommonTextbox.propTypes = {
+  textboxLabel: PropTypes.string,
+  textboxReadOnly: PropTypes.bool,
+  textboxType: PropTypes.string, // text, number, email, date
+  textboxOnSave: PropTypes.func,
+  textboxOnchange: PropTypes.func,
+  textboxValue: PropTypes.string,
+  textboxSelectOption: PropTypes.array
+};
+
+CommonTextbox.defaultProps = {
+  textboxLabel: "Example",
+  textboxReadOnly: true,
+  textboxType: "text",
+  textboxOnSave: () => { },
+  textboxOnchange: () => { },
+  textboxValue: "Some value",
+  textboxSelectOption: []
+};

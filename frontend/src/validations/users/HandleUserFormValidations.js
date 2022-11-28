@@ -14,8 +14,8 @@ const classNameFormTextNew = {
   telephone: classNameRed,
   address: classNameRed,
   email: classNameRed,
-  active: classNameRed,
-}
+  active: classNameRed
+};
 
 const handleValidation = (data, setClassNameFormText) => {
   let isValid = true;
@@ -102,6 +102,5 @@ const handleValidation = (data, setClassNameFormText) => {
   setClassNameFormText({ ...classNameFormTextNew });
   return isValid;
 };
-
 
 export { handleValidation, classNameFormTextNew };

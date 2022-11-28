@@ -2,41 +2,40 @@ import enumFilterType from "../enumFilterType";
 import enumCompareOperators from "./../enumCompareOperators";
 
 const getColumnsFilterModel = function (
-    /*USERNAME*/ criteriaUsername, criteriaOnChangeUsername, criteriaSetUsername, operatorUsername, operatorOnChangeUsername, operatorSetUsername,
-    /*DNI*/ criteriaDni, criteriaOnChangeDni, criteriaSetDni, operatorDni, operatorOnChangeDni, operatorSetDni,
-    /*NAME*/ criteriaName, criteriaOnChangeName, criteriaSetName, operatorName, operatorOnChangeName, operatorSetName,
-    /*LAST NAME*/ criteriaLastName, criteriaOnChangeLastName, criteriaSetLastName, operatorLastName, operatorOnChangeLastName, operatorSetLastName,
+  /* USERNAME */ criteriaUsername, criteriaOnChangeUsername, criteriaSetUsername, operatorUsername, operatorOnChangeUsername, operatorSetUsername,
+  /* DNI */ criteriaDni, criteriaOnChangeDni, criteriaSetDni, operatorDni, operatorOnChangeDni, operatorSetDni,
+  /* NAME */ criteriaName, criteriaOnChangeName, criteriaSetName, operatorName, operatorOnChangeName, operatorSetName,
+  /* LAST NAME */ criteriaLastName, criteriaOnChangeLastName, criteriaSetLastName, operatorLastName, operatorOnChangeLastName, operatorSetLastName
 ) {
-
   const arrayColumnsFilter = [
     {
       type: enumFilterType.TEXTBOX,
       criteriaValue: criteriaUsername,
       criteriaOnchange: criteriaOnChangeUsername,
       operatorValue: operatorUsername,
-      operatorOnchange: operatorOnChangeUsername,
+      operatorOnchange: operatorOnChangeUsername
     },
     {
       type: enumFilterType.TEXTBOX,
       criteriaValue: criteriaDni,
       criteriaOnchange: criteriaOnChangeDni,
       operatorValue: operatorDni,
-      operatorOnchange: operatorOnChangeDni,
+      operatorOnchange: operatorOnChangeDni
     },
     {
       type: enumFilterType.TEXTBOX,
       criteriaValue: criteriaName,
       criteriaOnchange: criteriaOnChangeName,
       operatorValue: operatorName,
-      operatorOnchange: operatorOnChangeName,
+      operatorOnchange: operatorOnChangeName
     },
     {
       type: enumFilterType.TEXTBOX,
       criteriaValue: criteriaLastName,
       criteriaOnchange: criteriaOnChangeLastName,
       operatorValue: operatorLastName,
-      operatorOnchange: operatorOnChangeLastName,
-    },
+      operatorOnchange: operatorOnChangeLastName
+    }
   ];
 
   const setOperatorsDefaultValues = function () {
@@ -44,14 +43,14 @@ const getColumnsFilterModel = function (
     operatorSetDni(enumCompareOperators.TEXT_CONTAINS);
     operatorSetName(enumCompareOperators.TEXT_CONTAINS);
     operatorSetLastName(enumCompareOperators.TEXT_CONTAINS);
-  }
+  };
 
   const clearFilters = function () {
     criteriaSetUsername("");
     criteriaSetDni("");
     criteriaSetName("");
     criteriaSetLastName("");
-  }
+  };
 
   const getFilterBody = () => {
     const filterBody = {
@@ -97,17 +96,16 @@ const getColumnsFilterModel = function (
       creationDateOperator: enumFilterType.NONE,
       updateDateCriteria: "",
       updateDateOperator: enumFilterType.NONE
-    }
+    };
     return filterBody;
-  }
+  };
 
   return {
     arrayColumnsFilter,
     clearFilters,
     getFilterBody,
     setOperatorsDefaultValues
-  }
-
-}
+  };
+};
 
 export default getColumnsFilterModel;

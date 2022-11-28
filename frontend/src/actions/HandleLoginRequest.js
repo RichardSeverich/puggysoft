@@ -1,4 +1,4 @@
-import requestManager from "./../api/RequestManager"
+import requestManager from "./../api/RequestManager";
 import messageManager from "./HandleErrorMessages";
 
 const handleLoginRequest = (endpoint, body, callback) => {
@@ -9,6 +9,6 @@ const handleLoginRequest = (endpoint, body, callback) => {
       messageManager.loginMessages(response);
     }
   });
-}
+};
 
 export default handleLoginRequest;

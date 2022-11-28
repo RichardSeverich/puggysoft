@@ -1,10 +1,10 @@
-import { useState, useEffect } from "react";
-import Card from 'react-bootstrap/Card';
-import ListGroup from 'react-bootstrap/ListGroup';
+import React from "react";
+import Card from "react-bootstrap/Card";
+import ListGroup from "react-bootstrap/ListGroup";
 import i18n from "../../i18n/i18n";
 
-function UserDetails(props) {
-
+function UserDetails (props) {
+  const routerProps = {};
   const userData = routerProps.data;
 
   // TODO: aca se tiene que hacer el llamado a la tabla de

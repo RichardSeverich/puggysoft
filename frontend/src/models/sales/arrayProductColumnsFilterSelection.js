@@ -2,124 +2,123 @@ import enumFilterType from "../enumFilterType";
 import enumCompareOperators from "./../enumCompareOperators";
 
 const getColumnsFilterModel = function (
-    /*ID*/ criteriaId, criteriaOnChangeId, criteriaSetId, operatorId, operatorOnChangeId, operatorSetId,
-    /*CODE*/ criteriaCode, criteriaOnChangeCode, criteriaSetCode, operatorCode, operatorOnChangeCode, operatorSetCode,
-    /*NAME*/ criteriaName, criteriaOnChangeName, criteriaSetName, operatorName, operatorOnChangeName, operatorSetName,
-    /*PURCHASE PRICE*/criteriaPurchasePrice, criteriaOnChangePurchasePrice, criteriaSetPurchasePrice, operatorPurchasePrice, operatorOnChangePurchasePrice, operatorSetPurchasePrice,
-    /*SALE PRICE*/ criteriaSalePrice, criteriaOnChangeSalePrice, criteriaSetSalePrice, operatorSalePrice, operatorOnChangeSalePrice, operatorSetSalePrice,
-    /*STOCK*/criteriaStock, criteriaOnChangeStock, criteriaSetStock, operatorStock, operatorOnChangeStock, operatorSetStock,
-    /*MINIMUM STOCK*/criteriaMinimumStock, criteriaOnChangeMinimumStock, criteriaSetMinimumStock, operatorMinimumStock, operatorOnChangeMinimumStock, operatorSetMinimumStock,
-    /*DESCRIPTION*/criteriaDescription, criteriaOnChangeDescription, criteriaSetDescription, operatorDescription, operatorOnChangeDescription, operatorSetDescription,
-    /*LOCATION*/criteriaLocation, criteriaOnChangeLocation, criteriaSetLocation, operatorLocation, operatorOnChangeLocation, operatorSetLocation,
-    /*BARCODE*/criteriaBarCode, criteriaOnChangeBarCode, criteriaSetBarCode, operatorBarCode, operatorOnChangeBarCode, operatorSetBarCode,
-    /*CREATED BY*/criteriaCreatedBy, criteriaOnChangeCreatedBy, criteriaSetCreatedBy, operatorCreatedBy, operatorOnChangeCreatedBy, operatorSetCreatedBy,
-    /*UPDATED BY*/criteriaUpdatedBy, criteriaOnChangeUpdatedBy, criteriaSetUpdatedBy, operatorUpdatedBy, operatorOnChangeUpdatedBy, operatorSetUpdatedBy,
-    /*CREATED DATE*/criteriaCreatedDate, criteriaOnChangeCreatedDate, criteriaSetCreatedDate, operatorCreatedDate, operatorOnChangeCreatedDate, operatorSetCreatedDate,
-    /*UPDATED DATE*/criteriaUpdatedDate, criteriaOnChangeUpdatedDate, criteriaSetUpdatedDate, operatorUpdatedDate, operatorOnChangeUpdatedDate, operatorSetUpdatedDate
+  /* ID */ criteriaId, criteriaOnChangeId, criteriaSetId, operatorId, operatorOnChangeId, operatorSetId,
+  /* CODE */ criteriaCode, criteriaOnChangeCode, criteriaSetCode, operatorCode, operatorOnChangeCode, operatorSetCode,
+  /* NAME */ criteriaName, criteriaOnChangeName, criteriaSetName, operatorName, operatorOnChangeName, operatorSetName,
+  /* PURCHASE PRICE */criteriaPurchasePrice, criteriaOnChangePurchasePrice, criteriaSetPurchasePrice, operatorPurchasePrice, operatorOnChangePurchasePrice, operatorSetPurchasePrice,
+  /* SALE PRICE */ criteriaSalePrice, criteriaOnChangeSalePrice, criteriaSetSalePrice, operatorSalePrice, operatorOnChangeSalePrice, operatorSetSalePrice,
+  /* STOCK */criteriaStock, criteriaOnChangeStock, criteriaSetStock, operatorStock, operatorOnChangeStock, operatorSetStock,
+  /* MINIMUM STOCK */criteriaMinimumStock, criteriaOnChangeMinimumStock, criteriaSetMinimumStock, operatorMinimumStock, operatorOnChangeMinimumStock, operatorSetMinimumStock,
+  /* DESCRIPTION */criteriaDescription, criteriaOnChangeDescription, criteriaSetDescription, operatorDescription, operatorOnChangeDescription, operatorSetDescription,
+  /* LOCATION */criteriaLocation, criteriaOnChangeLocation, criteriaSetLocation, operatorLocation, operatorOnChangeLocation, operatorSetLocation,
+  /* BARCODE */criteriaBarCode, criteriaOnChangeBarCode, criteriaSetBarCode, operatorBarCode, operatorOnChangeBarCode, operatorSetBarCode,
+  /* CREATED BY */criteriaCreatedBy, criteriaOnChangeCreatedBy, criteriaSetCreatedBy, operatorCreatedBy, operatorOnChangeCreatedBy, operatorSetCreatedBy,
+  /* UPDATED BY */criteriaUpdatedBy, criteriaOnChangeUpdatedBy, criteriaSetUpdatedBy, operatorUpdatedBy, operatorOnChangeUpdatedBy, operatorSetUpdatedBy,
+  /* CREATED DATE */criteriaCreatedDate, criteriaOnChangeCreatedDate, criteriaSetCreatedDate, operatorCreatedDate, operatorOnChangeCreatedDate, operatorSetCreatedDate,
+  /* UPDATED DATE */criteriaUpdatedDate, criteriaOnChangeUpdatedDate, criteriaSetUpdatedDate, operatorUpdatedDate, operatorOnChangeUpdatedDate, operatorSetUpdatedDate
 ) {
-
   const arrayColumnsFilter = [
     {
-      type: enumFilterType.NONE,
+      type: enumFilterType.NONE
     },
     {
       type: enumFilterType.TEXTBOX,
       criteriaValue: criteriaId,
       criteriaOnchange: criteriaOnChangeId,
       operatorValue: operatorId,
-      operatorOnchange: operatorOnChangeId,
+      operatorOnchange: operatorOnChangeId
     },
     {
       type: enumFilterType.TEXTBOX,
       criteriaValue: criteriaCode,
       criteriaOnchange: criteriaOnChangeCode,
       operatorValue: operatorCode,
-      operatorOnchange: operatorOnChangeCode,
+      operatorOnchange: operatorOnChangeCode
     },
     {
       type: enumFilterType.TEXTBOX,
       criteriaValue: criteriaName,
       criteriaOnchange: criteriaOnChangeName,
       operatorValue: operatorName,
-      operatorOnchange: operatorOnChangeName,
+      operatorOnchange: operatorOnChangeName
     },
     {
       type: enumFilterType.NUMBER,
       criteriaValue: criteriaPurchasePrice,
       criteriaOnchange: criteriaOnChangePurchasePrice,
       operatorValue: operatorPurchasePrice,
-      operatorOnchange: operatorOnChangePurchasePrice,
+      operatorOnchange: operatorOnChangePurchasePrice
     },
     {
       type: enumFilterType.NUMBER,
       criteriaValue: criteriaSalePrice,
       criteriaOnchange: criteriaOnChangeSalePrice,
       operatorValue: operatorSalePrice,
-      operatorOnchange: operatorOnChangeSalePrice,
+      operatorOnchange: operatorOnChangeSalePrice
     },
     {
       type: enumFilterType.NUMBER,
       criteriaValue: criteriaStock,
       criteriaOnchange: criteriaOnChangeStock,
       operatorValue: operatorStock,
-      operatorOnchange: operatorOnChangeStock,
+      operatorOnchange: operatorOnChangeStock
     },
     {
       type: enumFilterType.NUMBER,
       criteriaValue: criteriaMinimumStock,
       criteriaOnchange: criteriaOnChangeMinimumStock,
       operatorValue: operatorMinimumStock,
-      operatorOnchange: operatorOnChangeMinimumStock,
+      operatorOnchange: operatorOnChangeMinimumStock
     },
     {
       type: enumFilterType.TEXTBOX,
       criteriaValue: criteriaDescription,
       criteriaOnchange: criteriaOnChangeDescription,
       operatorValue: operatorDescription,
-      operatorOnchange: operatorOnChangeDescription,
+      operatorOnchange: operatorOnChangeDescription
     },
     {
       type: enumFilterType.TEXTBOX,
       criteriaValue: criteriaLocation,
       criteriaOnchange: criteriaOnChangeLocation,
       operatorValue: operatorLocation,
-      operatorOnchange: operatorOnChangeLocation,
+      operatorOnchange: operatorOnChangeLocation
     },
     {
       type: enumFilterType.TEXTBOX,
       criteriaValue: criteriaBarCode,
       criteriaOnchange: criteriaOnChangeBarCode,
       operatorValue: operatorBarCode,
-      operatorOnchange: operatorOnChangeBarCode,
+      operatorOnchange: operatorOnChangeBarCode
     },
     {
       type: enumFilterType.TEXTBOX,
       criteriaValue: criteriaCreatedBy,
       criteriaOnchange: criteriaOnChangeCreatedBy,
       operatorValue: operatorCreatedBy,
-      operatorOnchange: operatorOnChangeCreatedBy,
+      operatorOnchange: operatorOnChangeCreatedBy
     },
     {
       type: enumFilterType.TEXTBOX,
       criteriaValue: criteriaUpdatedBy,
       criteriaOnchange: criteriaOnChangeUpdatedBy,
       operatorValue: operatorUpdatedBy,
-      operatorOnchange: operatorOnChangeUpdatedBy,
+      operatorOnchange: operatorOnChangeUpdatedBy
     },
     {
       type: enumFilterType.DATE,
       criteriaValue: criteriaCreatedDate,
       criteriaOnchange: criteriaOnChangeCreatedDate,
       operatorValue: operatorCreatedDate,
-      operatorOnchange: operatorOnChangeCreatedDate,
+      operatorOnchange: operatorOnChangeCreatedDate
     },
     {
       type: enumFilterType.DATE,
       criteriaValue: criteriaUpdatedDate,
       criteriaOnchange: criteriaOnChangeUpdatedDate,
       operatorValue: operatorUpdatedDate,
-      operatorOnchange: operatorOnChangeUpdatedDate,
-    },
+      operatorOnchange: operatorOnChangeUpdatedDate
+    }
   ];
 
   const setOperatorsDefaultValues = function () {
@@ -135,9 +134,9 @@ const getColumnsFilterModel = function (
     operatorSetBarCode(enumCompareOperators.TEXT_CONTAINS);
     operatorSetCreatedBy(enumCompareOperators.TEXT_CONTAINS);
     operatorSetUpdatedBy(enumCompareOperators.TEXT_CONTAINS);
-    operatorSetCreatedDate(enumCompareOperators.DATE_EQUALS)
+    operatorSetCreatedDate(enumCompareOperators.DATE_EQUALS);
     operatorSetUpdatedDate(enumCompareOperators.DATE_EQUALS);
-  }
+  };
 
   const clearFilters = function () {
     criteriaSetId("");
@@ -155,7 +154,7 @@ const getColumnsFilterModel = function (
     criteriaSetCreatedDate("");
     criteriaSetUpdatedDate("");
     setOperatorsDefaultValues();
-  }
+  };
 
   const getFilterBody = () => {
     const filterBody = {
@@ -187,17 +186,16 @@ const getColumnsFilterModel = function (
       creationDateOperator: operatorCreatedDate,
       updateDateCriteria: criteriaUpdatedDate,
       updateDateOperator: operatorUpdatedDate
-    }
+    };
     return filterBody;
-  }
+  };
 
   return {
     arrayColumnsFilter,
     clearFilters,
     getFilterBody,
     setOperatorsDefaultValues
-  }
-
-}
+  };
+};
 
 export default getColumnsFilterModel;

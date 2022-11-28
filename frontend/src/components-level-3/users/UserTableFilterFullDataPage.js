@@ -1,7 +1,8 @@
-import NavBar from './../../components-level-2/navbar/NavBar'
-import UserTableFilterFullData from './../../components-level-2/users/UserTableFilterFullData';
+import React from "react";
+import NavBar from "./../../components-level-2/navbar/NavBar";
+import UserTableFilterFullData from "./../../components-level-2/users/UserTableFilterFullData";
 
-function UserTableFilterFullDataPage() {
+function UserTableFilterFullDataPage () {
   return (
     <div className="users-table-page">
       <NavBar></NavBar>

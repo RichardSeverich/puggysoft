@@ -1,7 +1,7 @@
 /* Only applies for resolutions greater than 1080px */
 @media (min-width:1080px) {
-    .puggysoft-two-divs-side-by-side-child {
-        width: 50%;
-        float: left;
-    }
+  .puggysoft-two-divs-side-by-side-child {
+    width: 50%;
+    float: left;
+  }
 }

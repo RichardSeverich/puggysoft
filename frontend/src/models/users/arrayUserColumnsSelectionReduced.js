@@ -6,7 +6,7 @@ const arrayColumns = [
   i18n.userTable.columnName,
   i18n.userTable.columnSecondName,
   i18n.userTable.columnLastName,
-  i18n.userTable.columnSecondLastName,
+  i18n.userTable.columnSecondLastName
 ];
 
 export default arrayColumns;

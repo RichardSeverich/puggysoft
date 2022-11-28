@@ -1,21 +1,20 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router";
-import CommonTablePagination from '../../components-level-1/CommonTablePagination';
-import CommonLoading from '../../components-level-1/CommonLoading';
-import { handleGetRequest, handleDeleteRequest } from "../../actions/HandleManager";
+import CommonTablePagination from "../../components-level-1/CommonTablePagination";
+import CommonLoading from "../../components-level-1/CommonLoading";
+import { handleGetRequest } from "../../actions/HandleManager";
 import i18n from "../../i18n/i18n";
 import arrayDataFields from "../../models/users/arrayRoleDataFields";
 import arrayColumns from "../../models/users/arrayRoleColumns";
 import enumTableType from "../../models/enumTableType";
-import fixArrayData from "../../tools/users/fixArrayDataRoles"
-import enumPaths from "./../../models/enumPaths"
-
-import "./role-table-styles.css"
+import fixArrayData from "../../tools/users/fixArrayDataRoles";
+import enumPaths from "./../../models/enumPaths";
+import "./role-table-styles.css";
 
 const pageSize = 10;
 const numberPagesToShow = 10;
 
-function RoleTable() {
+function RoleTable () {
   const [arrayData, setArrayData] = useState(null);
   const [totalPages, setTotalPages] = useState(null);
   const [activePage, setActivePage] = useState(1);
@@ -23,8 +22,8 @@ function RoleTable() {
   const history = useHistory();
   const routerProps = history && history.location && history.location.state;
 
-  function updateArrayData(arrayData) {
-    let arrayFixed = fixArrayData(arrayData);
+  function updateArrayData (arrayData) {
+    const arrayFixed = fixArrayData(arrayData);
     setArrayData(arrayFixed);
   }
 
@@ -36,7 +35,7 @@ function RoleTable() {
     handleGetRequest(`roles/pagination/size/${pageSize}`, setTotalPages);
   }, [activePage]);
 
-  let tableArrayCustomRowButtons = undefined;
+  let tableArrayCustomRowButtons;
   if (routerProps && routerProps.tableType === enumTableType.TABLE_SELECTION) {
     tableArrayCustomRowButtons = [
       {
@@ -44,16 +43,16 @@ function RoleTable() {
         handleCustom: handleNavigate,
         text: i18n.roleTable.selectButton
       }
-    ]
+    ];
   }
 
-  function handleNavigate(data) {
+  function handleNavigate (data) {
     history.push({
       pathname: enumPaths.USERS_TABLE_FILTER_BY_ROLE,
       state: {
-        data: data
+        data
       }
-    })
+    });
   }
 
   if (arrayData == null || totalPages == null) {

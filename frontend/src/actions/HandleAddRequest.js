@@ -1,4 +1,4 @@
-import requestManager from "./../api/RequestManager"
+import requestManager from "./../api/RequestManager";
 import messageManager from "./HandleErrorMessages";
 
 const handleAddRequest = (endpoint, body, callback, showMessageOnSuccess = true, callbackOnFail) => {
@@ -11,10 +11,10 @@ const handleAddRequest = (endpoint, body, callback, showMessageOnSuccess = true,
     } else {
       messageManager.addMessages(response);
       if (callbackOnFail) {
-        callbackOnFail(response)
+        callbackOnFail(response);
       }
     }
   });
-}
+};
 
 export default handleAddRequest;

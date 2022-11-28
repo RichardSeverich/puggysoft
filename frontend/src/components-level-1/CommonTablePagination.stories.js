@@ -1,63 +1,60 @@
-import React from 'react'
-
-import CommonTablePagination from './CommonTablePagination'
+import React from "react";
+import CommonTablePagination from "./CommonTablePagination";
 import enumFilterType from "./../models/enumFilterType";
 
 export default {
-  title: 'CommonTablePagination',
+  title: "CommonTablePagination",
   component: CommonTablePagination
-}
+};
 
-const Template = (args) => <CommonTablePagination {...args} />
-
+const Template = (args) => <CommonTablePagination {...args} />;
 
 const arrayData = [
   {
-    name: 'Gerard',
-    lastName: 'Nicson',
+    name: "Gerard",
+    lastName: "Nicson",
     age: 45,
-    sex: 'male',
-    birthdate: '1985-02-16'
+    sex: "male",
+    birthdate: "1985-02-16"
   },
   {
-    name: 'Jhon',
-    lastName: 'Doe',
+    name: "Jhon",
+    lastName: "Doe",
     age: 40,
-    sex: 'male',
-    birthdate: '1990-03-15'
+    sex: "male",
+    birthdate: "1990-03-15"
   },
   {
-    name: 'Jimy',
-    lastName: 'Sebuc',
+    name: "Jimy",
+    lastName: "Sebuc",
     age: 34,
-    sex: 'male',
-    birthdate: '1996-07-15'
+    sex: "male",
+    birthdate: "1996-07-15"
   },
   {
-    name: 'Jenny',
-    lastName: 'Dugs',
+    name: "Jenny",
+    lastName: "Dugs",
     age: 25,
-    sex: 'female',
-    birthdate: '2002-07-15'
+    sex: "female",
+    birthdate: "2002-07-15"
   },
   {
-    name: 'Kimberly',
-    lastName: 'Siggu',
+    name: "Kimberly",
+    lastName: "Siggu",
     age: 20,
-    sex: 'female',
-    birthdate: '1999-08-21'
+    sex: "female",
+    birthdate: "1999-08-21"
   }
-]
-
+];
 
 // TABLE
-export const Example1 = Template.bind({})
+export const Example1 = Template.bind({});
 
 Example1.args = {
-  tableTitle: 'Common table example 1',
+  tableTitle: "Common table example 1",
   tableArrayData: arrayData,
-  tableArrayColumns: ['Name', 'Last Name', 'Age', 'Sex', 'Birthdate'],
-  tableArrayDataFields: ['name', 'lastName', 'age', 'sex', 'birthdate'],
+  tableArrayColumns: ["Name", "Last Name", "Age", "Sex", "Birthdate"],
+  tableArrayDataFields: ["name", "lastName", "age", "sex", "birthdate"],
   tableArrayCustomRowButtons: undefined,
   tableHandleEdit: () => { },
   tableHandleDelete: () => { },
@@ -65,17 +62,17 @@ Example1.args = {
   tableHandleExportPdf: () => { },
   filterArrayColumns: undefined,
   filterClear: undefined,
-  filterHandler: undefined,
-}
+  filterHandler: undefined
+};
 
 // TABLE
-export const Example2 = Template.bind({})
+export const Example2 = Template.bind({});
 
 Example2.args = {
-  tableTitle: 'Common table example 2',
+  tableTitle: "Common table example 2",
   tableArrayData: arrayData,
-  tableArrayColumns: ['Name', 'Last Name', 'Age', 'Sex', 'Birthdate'],
-  tableArrayDataFields: ['name', 'lastName', 'age', 'sex', 'birthdate'],
+  tableArrayColumns: ["Name", "Last Name", "Age", "Sex", "Birthdate"],
+  tableArrayDataFields: ["name", "lastName", "age", "sex", "birthdate"],
   tableArrayCustomRowButtons: undefined,
   tableHandleEdit: undefined,
   tableHandleDelete: undefined,
@@ -91,18 +88,17 @@ Example2.args = {
   paginationSetArrayData: () => { },
   paginationSetTotalPages: () => { },
   paginationSetActivePage: () => { },
-  paginationSetInitialPage: () => { },
-}
-
+  paginationSetInitialPage: () => { }
+};
 
 // TABLE
-export const Example3 = Template.bind({})
+export const Example3 = Template.bind({});
 
 Example3.args = {
-  tableTitle: 'Common table example 3',
+  tableTitle: "Common table example 3",
   tableArrayData: arrayData,
-  tableArrayColumns: ['Name', 'Last Name', 'Age', 'Sex', 'Birthdate'],
-  tableArrayDataFields: ['name', 'lastName', 'age', 'sex', 'birthdate'],
+  tableArrayColumns: ["Name", "Last Name", "Age", "Sex", "Birthdate"],
+  tableArrayDataFields: ["name", "lastName", "age", "sex", "birthdate"],
   tableArrayCustomRowButtons: undefined,
   tableHandleEdit: () => { },
   tableHandleDelete: () => { },
@@ -111,44 +107,44 @@ Example3.args = {
   filterArrayColumns: [
     {
       type: enumFilterType.TEXTBOX,
-      criteriaValue: '',
+      criteriaValue: "",
       criteriaOnchange: () => { },
-      operatorValue: '',
-      operatorOnchange: () => { },
+      operatorValue: "",
+      operatorOnchange: () => { }
     },
     {
       type: enumFilterType.TEXTBOX,
-      criteriaValue: '',
+      criteriaValue: "",
       criteriaOnchange: () => { },
-      operatorValue: '',
-      operatorOnchange: () => { },
+      operatorValue: "",
+      operatorOnchange: () => { }
     },
     {
       type: enumFilterType.NUMBER,
-      criteriaValue: '',
+      criteriaValue: "",
       criteriaOnchange: () => { },
-      operatorValue: '',
-      operatorOnchange: () => { },
+      operatorValue: "",
+      operatorOnchange: () => { }
     },
     {
       type: enumFilterType.DROPDOWN,
-      criteriaValue: '',
+      criteriaValue: "",
       criteriaOnchange: () => { },
-      operatorValue: '',
+      operatorValue: "",
       operatorOnchange: () => { },
       dropdownValues: [
-        { value: "", text: 'All' },
-        { value: 'MALE', text: 'MALE' },
-        { value: 'FEMALE', text: 'FEMALE' }
-      ],
+        { value: "", text: "All" },
+        { value: "MALE", text: "MALE" },
+        { value: "FEMALE", text: "FEMALE" }
+      ]
     },
     {
       type: enumFilterType.DATE,
-      criteriaValue: '',
+      criteriaValue: "",
       criteriaOnchange: () => { },
-      operatorValue: '',
-      operatorOnchange: () => { },
-    },
+      operatorValue: "",
+      operatorOnchange: () => { }
+    }
   ],
   filterClear: () => { },
   filterHandler: () => { },
@@ -159,9 +155,8 @@ Example3.args = {
   paginationSetArrayData: () => { },
   paginationSetTotalPages: () => { },
   paginationSetActivePage: () => { },
-  paginationSetInitialPage: () => { },
-}
+  paginationSetInitialPage: () => { }
+};
 
 // TABLE
-export const ExampleEmpty = Template.bind({})
-
+export const ExampleEmpty = Template.bind({});

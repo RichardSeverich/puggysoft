@@ -1,5 +1,5 @@
 const patientUserForm = {
-    title: "Registrar Pacientes",
+  title: "Registrar Pacientes"
 };
 
 export default patientUserForm;

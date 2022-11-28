@@ -6,7 +6,7 @@ const arrayDataFields = [
   enumUserFields.NAME,
   enumUserFields.SECOND_NAME,
   enumUserFields.LAST_NAME,
-  enumUserFields.SECOND_LASTNAME,
+  enumUserFields.SECOND_LASTNAME
 ];
 
 export default arrayDataFields;

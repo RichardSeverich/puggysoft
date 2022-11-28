@@ -1,9 +1,9 @@
-const BUTTON = "BUTTON"
-const TEXTBOX = "TEXTBOX"
+const BUTTON = "BUTTON";
+const TEXTBOX = "TEXTBOX";
 
 const enumWebElements = {
   BUTTON,
-  TEXTBOX,
-}
+  TEXTBOX
+};
 
 export default enumWebElements;

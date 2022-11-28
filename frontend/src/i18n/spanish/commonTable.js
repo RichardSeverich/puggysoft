@@ -21,7 +21,7 @@ const commonTable = {
   filterNumberGreaterEqualsThan: "Mayor/Igual que",
   filterNumberGreaterThan: "Mayor que",
   filterNumberSmallerEqualsThan: "Menor/Igual que",
-  filterNumberSmallerThan: "Menor que",
+  filterNumberSmallerThan: "Menor que"
 };
 
 export default commonTable;

@@ -1,7 +1,8 @@
-import NavBar from './../../components-level-2/navbar/NavBar'
-import DoctorUserTableSelectionToDetails from './../../components-level-2/hospital/DoctorUserTableSelectionToDetails';
+import React from "react";
+import NavBar from "./../../components-level-2/navbar/NavBar";
+import DoctorUserTableSelectionToDetails from "./../../components-level-2/hospital/DoctorUserTableSelectionToDetails";
 
-function DoctorUserTableToDetailsPage() {
+function DoctorUserTableToDetailsPage () {
   return (
     <div className="doctor-table-page">
       <NavBar></NavBar>

@@ -12,7 +12,7 @@ const arrayColumns = [
   i18n.userTable.columndAge,
   i18n.userTable.columndSex,
   i18n.userTable.columnEmail,
-  i18n.userTable.columnStatus,
+  i18n.userTable.columnStatus
 ];
 
 export default arrayColumns;

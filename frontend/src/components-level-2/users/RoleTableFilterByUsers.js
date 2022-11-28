@@ -1,23 +1,22 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router";
-import CommonTablePagination from '../../components-level-1/CommonTablePagination';
-import CommonLoading from '../../components-level-1/CommonLoading';
+import CommonTablePagination from "../../components-level-1/CommonTablePagination";
+import CommonLoading from "../../components-level-1/CommonLoading";
 import { handleFilterRequest, handleAddRequest, handleDeleteRequestNew } from "../../actions/HandleManager";
 import i18n from "../../i18n/i18n";
-import arrayDataFields from "../../models/users/arrayRoleDataFieldsByUser"
+import arrayDataFields from "../../models/users/arrayRoleDataFieldsByUser";
 import arrayColumns from "../../models/users/arrayRoleColumnsByUser";
 import getColumnsFilterModel from "../../models/users/arrayRoleColumnsFilterByUser";
 import useInput from "./../../hooks/useInput";
 import enumCompareOperators from "./../../models/enumCompareOperators";
-import fixArrayData from "../../tools/users/fixArrayDataRoles"
+import fixArrayData from "../../tools/users/fixArrayDataRoles";
 
-import "./role-table-filter-by-user.css"
+import "./role-table-filter-by-user.css";
 
 const pageSize = 10;
 const numberPagesToShow = 10;
 
-function RoleTableFilterByUsers() {
-
+function RoleTableFilterByUsers () {
   const [arrayData, setArrayData] = useState(null);
   const [totalPages, setTotalPages] = useState(null);
   const [activePage, setActivePage] = useState(1);
@@ -34,28 +33,28 @@ function RoleTableFilterByUsers() {
   const userSelected = routerProps.data;
 
   // CRITERIA OF SEARCH OR FILTER
-  const { value: criteriaId, onChange: criteriaOnChangeId, setValue: criteriaSetId } = useInput('');
-  const { value: criteriaId2, onChange: criteriaOnChangeId2, setValue: criteriaSetId2 } = useInput('');
+  const { value: criteriaId, onChange: criteriaOnChangeId, setValue: criteriaSetId } = useInput("");
+  const { value: criteriaId2, onChange: criteriaOnChangeId2, setValue: criteriaSetId2 } = useInput("");
 
   // FILTER OPERATORS
   const { value: operatorId, onChange: operatorOnChangeId, setValue: operatorSetId } = useInput(enumCompareOperators.TEXT_CONTAINS);
   const { value: operatorId2, onChange: operatorOnChangeId2, setValue: operatorSetId2 } = useInput(enumCompareOperators.TEXT_CONTAINS);
- 
+
   const { arrayColumnsFilter, clearFilters, getFilterBody } = getColumnsFilterModel(
-    /*ID*/ criteriaId, criteriaOnChangeId, criteriaSetId, operatorId, operatorOnChangeId, operatorSetId,
+    /* ID */ criteriaId, criteriaOnChangeId, criteriaSetId, operatorId, operatorOnChangeId, operatorSetId
   );
 
   const columnsFilterModel = getColumnsFilterModel(
-    /*ID*/ criteriaId2, criteriaOnChangeId2, criteriaSetId2, operatorId2, operatorOnChangeId2, operatorSetId2,
+    /* ID */ criteriaId2, criteriaOnChangeId2, criteriaSetId2, operatorId2, operatorOnChangeId2, operatorSetId2
   );
 
-  function updateArrayData(arrayData) {
-    let arrayFixed = fixArrayData(arrayData);
+  function updateArrayData (arrayData) {
+    const arrayFixed = fixArrayData(arrayData);
     setArrayData(arrayFixed);
   }
 
-  function updateArrayDat2(arrayData) {
-    let arrayFixed = fixArrayData(arrayData);
+  function updateArrayDat2 (arrayData) {
+    const arrayFixed = fixArrayData(arrayData);
     setArrayData2(arrayFixed);
   }
 
@@ -69,32 +68,32 @@ function RoleTableFilterByUsers() {
     const filterBody2 = columnsFilterModel.getFilterBody();
     handleFilterRequest(`roles/filter/with-users?page=${activePage2 - 1}&size=${pageSize}&idUser=${userSelected.id}`, filterBody2, updateArrayDat2);
     handleFilterRequest(`roles/filter/with-users/size?&pageSize=${pageSize}&idUser=${userSelected.id}`, filterBody2, setTotalPages2);
-  }, [activePage]);
+  }, [activePage2]);
 
   const handleFilter = () => {
     const filterBody = getFilterBody();
-    setActivePage(1)
+    setActivePage(1);
     setArrayData(null);
     setTotalPages(null);
     handleFilterRequest(`roles/filter/without-users?page=${activePage - 1}&size=${pageSize}&idUser=${userSelected.id}`, filterBody, updateArrayData);
     handleFilterRequest(`roles/filter/without-users/size?&pageSize=${pageSize}&idUser=${userSelected.id}`, filterBody, setTotalPages);
-  }
+  };
 
   const handleFilter2 = () => {
-    setActivePage2(1)
+    setActivePage2(1);
     setArrayData2(null);
     setTotalPages2(null);
     const filterBody2 = columnsFilterModel.getFilterBody();
     handleFilterRequest(`roles/filter/with-users?page=${activePage2 - 1}&size=${pageSize}&idUser=${userSelected.id}`, filterBody2, updateArrayDat2);
     handleFilterRequest(`roles/filter/with-users/size?&pageSize=${pageSize}&idUser=${userSelected.id}`, filterBody2, setTotalPages2);
-  }
+  };
 
-  function afterCreateUserRole() {
+  function afterCreateUserRole () {
     handleFilter();
     handleFilter2();
   }
 
-  function afterDeleteUserRole() {
+  function afterDeleteUserRole () {
     handleFilter();
     handleFilter2();
   }
@@ -103,13 +102,13 @@ function RoleTableFilterByUsers() {
     const body = {
       idRole: roleData.id,
       idUser: userSelected.id
-    }
-    handleAddRequest('users-roles', body, afterCreateUserRole)
-  }
+    };
+    handleAddRequest("users-roles", body, afterCreateUserRole);
+  };
 
   const handleRemoveUserRole = function (roleData) {
     handleDeleteRequestNew(`users-roles?idUser=${userSelected.id}&idRole=${roleData.id}`, afterDeleteUserRole);
-  }
+  };
 
   const tableArrayCustomRowButtons = [
     {
@@ -117,7 +116,7 @@ function RoleTableFilterByUsers() {
       handleCustom: handleAddUserRole,
       text: i18n.userRoleTableByUser.addButton
     }
-  ]
+  ];
 
   const tableArrayCustomRowButtons2 = [
     {
@@ -125,7 +124,7 @@ function RoleTableFilterByUsers() {
       handleCustom: handleRemoveUserRole,
       text: i18n.userRoleTableByUser.removeButton
     }
-  ]
+  ];
 
   return (
     <div className="puggysoft-role-table-by-user-container">

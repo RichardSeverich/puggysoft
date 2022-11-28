@@ -1,21 +1,20 @@
 import React, { useEffect, useState } from "react";
+import PropTypes from "prop-types";
 import { useHistory } from "react-router";
 
-import Form from 'react-bootstrap/Form'
-import Button from 'react-bootstrap/Button'
-import Card from 'react-bootstrap/Card'
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
+import Card from "react-bootstrap/Card";
 import i18n from "./../../i18n/i18n";
 import useInput from "./../../hooks/useInput";
-import enumSex from "./../../models/users/enumSex"
+import enumSex from "./../../models/users/enumSex";
 import { handleAddRequest, handleEditRequest, handleAddFileRequest } from "../../actions/HandleManager";
-import { handleValidation, classNameFormTextNew } from "./../../validations/users/HandleUserFormValidations"
+import { handleValidation, classNameFormTextNew } from "./../../validations/users/HandleUserFormValidations";
 
-import "./../css/all-forms.css"
-import "./user-form-styles.css"
+import "./../css/all-forms.css";
+import "./user-form-styles.css";
 
-
-function UserForm(props) {
-
+function UserForm (props) {
   const history = useHistory();
   const isEditDefaultValue = history && history.location && history.location.state;
   const [isEdit, setIsEdit] = useState(isEditDefaultValue);
@@ -24,31 +23,31 @@ function UserForm(props) {
   const { beforeAdd, afterAdd, showMessageOnSuccess } = props;
 
   // Put default values:
-  let id = isEdit && isEdit.data.id !== null ? isEdit.data.id : "";
-  let username = isEdit && isEdit.data.username !== null ? isEdit.data.username : "";
-  let password = isEdit && isEdit.data.password !== null ? isEdit.data.password : "";
-  let dni = isEdit && isEdit.data.dni !== null ? isEdit.data.dni : "";
-  let name = isEdit && isEdit.data.name !== null ? isEdit.data.name : "";
-  let secondName = isEdit && isEdit.data.secondName !== null ? isEdit.data.secondName : "";
-  let lastName = isEdit && isEdit.data.lastName !== null ? isEdit.data.lastName : "";
-  let secondLastName = isEdit && isEdit.data.secondLastName !== null ? isEdit.data.secondLastName : "";
-  let birthDate = isEdit && isEdit.data.birthDate !== null ? isEdit.data.birthDate : "";
-  let age = isEdit && isEdit.data.age !== null ? isEdit.data.age : "";
+  const id = isEdit && isEdit.data.id !== null ? isEdit.data.id : "";
+  const username = isEdit && isEdit.data.username !== null ? isEdit.data.username : "";
+  const password = isEdit && isEdit.data.password !== null ? isEdit.data.password : "";
+  const dni = isEdit && isEdit.data.dni !== null ? isEdit.data.dni : "";
+  const name = isEdit && isEdit.data.name !== null ? isEdit.data.name : "";
+  const secondName = isEdit && isEdit.data.secondName !== null ? isEdit.data.secondName : "";
+  const lastName = isEdit && isEdit.data.lastName !== null ? isEdit.data.lastName : "";
+  const secondLastName = isEdit && isEdit.data.secondLastName !== null ? isEdit.data.secondLastName : "";
+  const birthDate = isEdit && isEdit.data.birthDate !== null ? isEdit.data.birthDate : "";
+  const age = isEdit && isEdit.data.age !== null ? isEdit.data.age : "";
   let sex = enumSex.MALE;
   let status = true;
   let emailVerified = false;
   if (isEdit && isEdit.data && isEdit.data.sex !== null) {
     const userSex = isEdit.data.sex === i18n.userSexText.male ? enumSex.MALE : enumSex.FEMALE;
     const userStatus = isEdit.data.active === i18n.userStatus.active;
-    const userEmailVerified = isEdit.data.emailVerified === i18n.userEmailVerified.verified
+    const userEmailVerified = isEdit.data.emailVerified === i18n.userEmailVerified.verified;
     status = userStatus;
     sex = userSex;
     emailVerified = userEmailVerified;
   }
-  let occupation = isEdit && isEdit.data.occupation !== null ? isEdit.data.occupation : "";
-  let telephone = isEdit && isEdit.data.telephone !== null ? isEdit.data.telephone : "";
-  let address = isEdit && isEdit.data.address !== null ? isEdit.data.address : "";
-  let email = isEdit && isEdit.data.email !== null ? isEdit.data.email : "";
+  const occupation = isEdit && isEdit.data.occupation !== null ? isEdit.data.occupation : "";
+  const telephone = isEdit && isEdit.data.telephone !== null ? isEdit.data.telephone : "";
+  const address = isEdit && isEdit.data.address !== null ? isEdit.data.address : "";
+  const email = isEdit && isEdit.data.email !== null ? isEdit.data.email : "";
 
   // Use custom hook
   const { value: valueUsername, onChange: onChangeUsername, setValue: setUsername } = useInput(username);
@@ -66,28 +65,28 @@ function UserForm(props) {
   const { value: valueAddress, onChange: onChangeAddress, setValue: setAddress } = useInput(address);
   const { value: valueEmail, onChange: onChangeEmail, setValue: setEmail } = useInput(email);
   const { value: valueStatus, onChange: onChangeStatus, setValue: setStatus } = useInput(status);
-  const { value: valuePicture, onChange: onChangePicture, setValue: setPicture } = useInput(null);
-  const { value: valuePicturePath, onChange: onChangePicturePath, setValue: setPicturePath } = useInput('');
+  const { value: valuePicture, setValue: setPicture } = useInput(null);
+  const { value: valuePicturePath, onChange: onChangePicturePath, setValue: setPicturePath } = useInput("");
 
   const handleReset = () => {
-    setUsername('');
-    setPassword('');
-    setDni('');
-    setName('');
-    setSecondName('');
-    setLastName('');
-    setSecondLastName('');
-    setBirthDate('');
-    setAge('');
+    setUsername("");
+    setPassword("");
+    setDni("");
+    setName("");
+    setSecondName("");
+    setLastName("");
+    setSecondLastName("");
+    setBirthDate("");
+    setAge("");
     setSex(enumSex.MALE);
-    setOccupation('');
-    setTelephone('');
-    setAddress('');
-    setEmail('');
+    setOccupation("");
+    setTelephone("");
+    setAddress("");
+    setEmail("");
     setPicture(null);
-    setPicturePath('');
+    setPicturePath("");
     setStatus(true);
-  }
+  };
 
   const handleAfterAdd = function (newUserId) {
     handleAddImage(newUserId);
@@ -95,23 +94,23 @@ function UserForm(props) {
     // afterAdd = add some role to new user.
     if (afterAdd) {
       const newUser = getBody();
-      newUser['id'] = newUserId;
+      newUser.id = newUserId;
       afterAdd(newUser);
     }
-  }
+  };
 
   const handleAddImage = (userId) => {
-    //const pictureFile = { ...valuePicture }
+    // const pictureFile = { ...valuePicture }
     if (valuePicture !== null) {
-      handleAddFileRequest("users/picture/", valuePicture, userId, null, false)
+      handleAddFileRequest("users/picture/", valuePicture, userId, null, false);
     }
-  }
+  };
 
   const handleAfterEdit = function () {
     handleAddImage(id);
     handleReset();
     setIsEdit(undefined);
-  }
+  };
 
   const getBody = function () {
     const username = window.sessionStorage.getItem("username");
@@ -131,25 +130,25 @@ function UserForm(props) {
       address: valueAddress,
       email: valueEmail,
       active: valueStatus,
-      emailVerified: emailVerified,
+      emailVerified,
       createdBy: username,
-      updatedBy: username,
-    }
+      updatedBy: username
+    };
     return body;
-  }
+  };
 
   const handleAdd = (event) => {
     event.preventDefault();
     const body = getBody();
-    let isValid = handleValidation(body, setClassNameFormText);
+    const isValid = handleValidation(body, setClassNameFormText);
     if (isValid) {
       if (isEdit) {
-        handleEditRequest("users/", body, id, handleAfterEdit)
+        handleEditRequest("users/", body, id, handleAfterEdit);
       } else {
         if (beforeAdd) {
-          beforeAdd()
+          beforeAdd();
         }
-        if (showMessageOnSuccess === undefined) {
+        if (showMessageOnSuccess === undefined) { // true
           handleAddRequest("users/", body, handleAfterAdd);
         } else {
           handleAddRequest("users/", body, handleAfterAdd, showMessageOnSuccess);
@@ -158,29 +157,29 @@ function UserForm(props) {
     } else {
       alert(i18n.errorMessages.validationError);
     }
-  }
+  };
 
   const handleUploadPicture = (event) => {
-    // file.name file.size file.type 
-    const file = event.target.files[0]
+    // file.name file.size file.type
+    const file = event.target.files[0];
     // const fileTypeName = file.constructor.name
     setPicture(file);
     onChangePicturePath(event);
-  }
+  };
 
   useEffect(() => {
     const body = getBody();
-    handleValidation(body, setClassNameFormText)
+    handleValidation(body, setClassNameFormText);
   }, [valueUsername, valuePassword, valueDni, valueName, valueSecondName, valueLastName, valueSecondLastName, valueAge,
     valueSex, valueOccupation, valueBirthDate, valueTelephone, valueAddress, valueEmail, valueStatus]);
 
-  const classNameItemLabel = 'puggysoft-form-item-label';
-  const classNameItemInput = 'puggysoft-form-item-input';
+  const classNameItemLabel = "puggysoft-form-item-label";
+  const classNameItemInput = "puggysoft-form-item-input";
 
   return (
     <div className="puggysoft-user-form" >
       <Card>
-        <Card.Header as='h3'>{title}</Card.Header>
+        <Card.Header as="h3">{title}</Card.Header>
         <Card.Body>
           <Form>
             <Form.Group className="mb-3" controlId="username">
@@ -287,8 +286,8 @@ function UserForm(props) {
               <div className={classNameItemInput}><Form.Select
                 onChange={onChangeSex}
                 value={valueSex} >
-                <option key='option-male' value={enumSex.MALE}>{i18n.userSexText.male}</option>
-                <option key='option-female' value={enumSex.FEMALE}>{i18n.userSexText.female}</option>
+                <option key="option-male" value={enumSex.MALE}>{i18n.userSexText.male}</option>
+                <option key="option-female" value={enumSex.FEMALE}>{i18n.userSexText.female}</option>
               </Form.Select></div>
               <Form.Text muted className={classNameFormText.sex}>
                 {i18n.userForm.formTextSex}
@@ -343,8 +342,8 @@ function UserForm(props) {
               <div className={classNameItemInput}><Form.Select
                 onChange={onChangeStatus}
                 value={valueStatus} >
-                <option key='option-true' value={true}>{i18n.userStatus.active}</option>
-                <option key='option-false' value={false}>{i18n.userStatus.inactive}</option>
+                <option key="option-true" value={true}>{i18n.userStatus.active}</option>
+                <option key="option-false" value={false}>{i18n.userStatus.inactive}</option>
               </Form.Select></div>
               <Form.Text muted className={classNameFormText.status}>
                 {i18n.userForm.formTextStatus}
@@ -370,7 +369,21 @@ function UserForm(props) {
         </Card.Body>
       </Card>
     </div >
-  )
+  );
 }
 
 export default UserForm;
+
+UserForm.propTypes = {
+  title: PropTypes.string,
+  beforeAdd: PropTypes.func,
+  afterAdd: PropTypes.func,
+  showMessageOnSuccess: PropTypes.bool
+};
+
+UserForm.defaultProps = {
+  title: "",
+  beforeAdd: () => { },
+  afterAdd: () => { },
+  showMessageOnSuccess: undefined
+};

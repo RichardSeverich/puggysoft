@@ -18,7 +18,7 @@ const productForm = {
   formTextMinimumStock: "Numero mayor igual a 0",
   formTextDescription: "Minimo 3, maximo 256 caracteres",
   formTextLocation: "Minimo 3, maximo 120 caracteres",
-  formTextImage: "Seleccione foto del producto",
+  formTextImage: "Seleccione foto del producto"
 };
 
 export default productForm;
