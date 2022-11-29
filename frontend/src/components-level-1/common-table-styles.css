@@ -34,3 +34,9 @@
     float: left;
   }*/
 }
+
+@media (max-width:1080px) {
+  .row-image {
+    max-width: 100% !important
+  }
+}

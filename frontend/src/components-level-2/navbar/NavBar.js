@@ -360,7 +360,8 @@ function NavBar () {
               <NavDropdown.Item onClick={navigateSalesTableFilter}>{salesShowTableLabel}</NavDropdown.Item>
               {/* <NavDropdown.Item onClick={navigateGeneric}>{salesShowCardLabel}</NavDropdown.Item> */}
             </NavDropdown>}
-          {userRoles.includes(enumRoles.SALES_ADMIN) &&
+          {(userRoles.includes(enumRoles.SALES_ADMIN) ||
+            userRoles.includes(enumRoles.SALES_ADMIN_RESTAURANT)) &&
             <NavDropdown title={reportAdminLabel}>
               <NavDropdown.Item onClick={navigateSalesReportQuantityAnnual}>{reportQuantityAnnual}</NavDropdown.Item>
               <NavDropdown.Item onClick={navigateSalesReportQuantityAnnualComp}>{reportQuantityAnnualCompare}</NavDropdown.Item>

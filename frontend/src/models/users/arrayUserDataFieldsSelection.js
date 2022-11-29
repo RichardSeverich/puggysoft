@@ -1,11 +1,17 @@
 import enumUserFields from "./enumUserFields";
 import enumTableFieldType from "./../enumTableFieldType";
+import appUrlConfig from "./../../tools/appUrlConfig";
+
+const fileName = "user-default.jpg";
+const imageUrl = `${appUrlConfig.URL}/${fileName}`;
 
 const arrayDataFields = [
   {
     value: enumUserFields.IMAGE,
     type: enumTableFieldType.IMAGE,
-    maxWidth: "40%"
+    imageMaxWidth: "50%",
+    tdWidth: "5%",
+    defaultImageUrl: imageUrl
   },
   enumUserFields.ID,
   enumUserFields.USERNAME,

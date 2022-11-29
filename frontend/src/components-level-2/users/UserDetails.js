@@ -10,6 +10,7 @@ import { handleValidation, classNameFormTextNew } from "./../../validations/user
 import { handleEditRequest, handleAddFileRequest } from "../../actions/HandleManager";
 import enumSex from "./../../models/users/enumSex";
 import enumInputType from "./../../models/enumInputType";
+import appUrlConfig from "./../../tools/appUrlConfig";
 
 import "./user-details.css";
 
@@ -160,7 +161,8 @@ function UserDetails (props) {
     }
   ];
 
-  let imageUrl = "http://localhost:3000/user-default.jpg";
+  const fileName = "user-default.jpg";
+  let imageUrl = `${appUrlConfig.PROTOCOL}//${appUrlConfig.HOSTNAME}:${appUrlConfig.PORT}/${fileName}`;
   if (valuePictureToShow && valuePictureToShow !== null) {
     if (valuePictureToShow.includes("blob:")) {
       imageUrl = valuePictureToShow;
