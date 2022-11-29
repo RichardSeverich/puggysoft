@@ -19,6 +19,9 @@ const getColumnsFilterModel = function (
 ) {
   const arrayColumnsFilter = [
     {
+      type: enumFilterType.NONE
+    },
+    {
       type: enumFilterType.TEXTBOX,
       criteriaValue: criteriaId,
       criteriaOnchange: criteriaOnChangeId,

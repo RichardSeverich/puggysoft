@@ -4,6 +4,7 @@ import Form from "react-bootstrap/Form";
 import { FaPencilAlt } from "react-icons/fa";
 import { GrStatusGood } from "react-icons/gr";
 import { AiOutlineCloseCircle } from "react-icons/ai";
+import enumInputType from "./../models/enumInputType";
 import "./commonTextbox.css";
 
 function CommonTextbox (props) {
@@ -92,10 +93,21 @@ export default CommonTextbox;
 CommonTextbox.propTypes = {
   textboxLabel: PropTypes.string,
   textboxReadOnly: PropTypes.bool,
-  textboxType: PropTypes.string, // text, number, email, date
+  textboxType: PropTypes.oneOf([
+    enumInputType.TEXT,
+    enumInputType.NUMBER,
+    enumInputType.EMAIL,
+    enumInputType.DATE,
+    enumInputType.SELECT,
+    enumInputType.FILE
+  ]),
   textboxOnSave: PropTypes.func,
   textboxOnchange: PropTypes.func,
-  textboxValue: PropTypes.string,
+  textboxValue: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+    PropTypes.bool
+  ]),
   textboxSelectOption: PropTypes.array
 };
 

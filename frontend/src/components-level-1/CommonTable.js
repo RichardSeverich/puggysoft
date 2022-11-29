@@ -138,7 +138,13 @@ function CommonTable (props) {
           const fieldKey = "field-" + rowIndex + fieldIndex;
           if (field.type && field.type === enumTableFieldType.IMAGE) {
             singleRow = <td key={fieldKey}>
-              <Image key={"image-" + fieldKey} fluid sice="" src={`data:image/jpeg;base64, ${data[field.value]}`}></Image>
+              <Image
+                key={"image-" + fieldKey}
+                fluid
+                size=""
+                style={{ maxWidth: field.maxWidth }}
+                src={`data:image/jpeg;base64, ${data[field.value]}`}>
+              </Image>
             </td>;
           } else {
             singleRow = <td key={fieldKey}>{data[field]}</td>;

@@ -9,12 +9,15 @@ import useInput from "./../../hooks/useInput";
 import { handleValidation, classNameFormTextNew } from "./../../validations/users/HandleUserFormValidations";
 import { handleEditRequest, handleAddFileRequest } from "../../actions/HandleManager";
 import enumSex from "./../../models/users/enumSex";
+import enumInputType from "./../../models/enumInputType";
 
 import "./user-details.css";
 
 function UserDetails (props) {
   const history = useHistory();
-  const routerProps = history && history.location && history.location.state;
+  const routerProps = history && history.location && history.location.state
+    ? history.location.state
+    : { data: {} };
   const userData = routerProps.data;
 
   const { children } = props;
@@ -41,12 +44,12 @@ function UserDetails (props) {
   const { value: valueEmail, onChange: onChangeEmail, setValue: setValueEmail } = useInput(userData.email);
   const isActive = userData.active === i18n.userStatus.active;
   const { value: valueStatus, onChange: onChangeStatus, setValue: setValueStatus } = useInput(isActive);
-  const { value: valueCreatedBy } = useInput(userData.createdBy);
-  const { value: valueUpdatedBy } = useInput(userData.updatedBy);
+  const { value: valueCreatedBy } = useInput(userData.createdBy ? userData.createdBy : "");
+  const { value: valueUpdatedBy } = useInput(userData.updatedBy ? userData.updatedBy : "");
   const { value: valueCreationDate } = useInput(userData.creationDate?.substring(0, 10));
   const { value: valueUpdateDate } = useInput(userData.updateDate?.substring(0, 10));
   const { value: valuePicturePath, setValue: setValuePicturePath } = useInput("");
-  const { value: valuePicture, setValue: setValuePicture } = useInput();
+  const { value: valuePicture, setValue: setValuePicture } = useInput(null);
   const { value: valuePictureToShow, setValue: setValuePictureToShow } = useInput(userData.image);
   const valueEmailVerified = userData.emailVerified === i18n.userEmailVerified.verified;
 
@@ -119,13 +122,15 @@ function UserDetails (props) {
   };
 
   const handleAdd = () => {
-    const body = getBody();
-    const isValid = handleValidation(body, setClassNameFormText);
-    if (isValid) {
-      handleEditRequest("users/", body, userData.id, handleAfterEdit);
-    } else {
-      resetValues();
-      alert(i18n.errorMessages.validationError);
+    if (userData && userData.id) {
+      const body = getBody();
+      const isValid = handleValidation(body, setClassNameFormText);
+      if (isValid) {
+        handleEditRequest("users/", body, userData.id, handleAfterEdit);
+      } else {
+        resetValues();
+        alert(i18n.errorMessages.validationError);
+      }
     }
   };
 
@@ -173,7 +178,7 @@ function UserDetails (props) {
           <CommonTextbox
             textboxLabel={i18n.userForm.fieldImage}
             textboxReadOnly={false}
-            textboxType={"file"}
+            textboxType={enumInputType.FILE}
             textboxOnSave={handleAddImage}
             textboxOnchange={(event) => handleOnChangePicture(event)}
             textboxValue={valuePicturePath}
@@ -188,7 +193,7 @@ function UserDetails (props) {
                 <CommonTextbox
                   textboxLabel={i18n.userTable.columnId}
                   textboxReadOnly={true}
-                  textboxType={"text"}
+                  textboxType={enumInputType.TEXT}
                   textboxOnSave={() => { }}
                   textboxOnchange={() => { }}
                   textboxValue={userData.id}
@@ -199,7 +204,7 @@ function UserDetails (props) {
                 <CommonTextbox
                   textboxLabel={i18n.userTable.columnDni}
                   textboxReadOnly={false}
-                  textboxType={"text"}
+                  textboxType={enumInputType.TEXT}
                   textboxOnSave={handleAdd}
                   textboxOnchange={onChangeDni}
                   textboxValue={valueDni}
@@ -210,7 +215,7 @@ function UserDetails (props) {
                 <CommonTextbox
                   textboxLabel={i18n.userTable.columnEmailVerified}
                   textboxReadOnly={true}
-                  textboxType={"text"}
+                  textboxType={enumInputType.TEXT}
                   textboxOnSave={() => { }}
                   textboxOnchange={() => { }}
                   textboxValue={userData.emailVerified}
@@ -223,7 +228,7 @@ function UserDetails (props) {
                 <CommonTextbox
                   textboxLabel={i18n.userTable.columnUsername}
                   textboxReadOnly={false}
-                  textboxType={"text"}
+                  textboxType={enumInputType.TEXT}
                   textboxOnSave={handleAdd}
                   textboxOnchange={onChangeUsername}
                   textboxValue={valueUsername}
@@ -234,7 +239,7 @@ function UserDetails (props) {
                 <CommonTextbox
                   textboxLabel={i18n.userTable.columnPassword}
                   textboxReadOnly={false}
-                  textboxType={"text"}
+                  textboxType={enumInputType.TEXT}
                   textboxOnSave={handleAdd}
                   textboxOnchange={onChangePassword}
                   textboxValue={valuePassword}
@@ -248,7 +253,7 @@ function UserDetails (props) {
                 <CommonTextbox
                   textboxLabel={i18n.userTable.columnName}
                   textboxReadOnly={false}
-                  textboxType={"text"}
+                  textboxType={enumInputType.TEXT}
                   textboxOnSave={handleAdd}
                   textboxOnchange={onChangeName}
                   textboxValue={valueName}
@@ -259,7 +264,7 @@ function UserDetails (props) {
                 <CommonTextbox
                   textboxLabel={i18n.userTable.columnSecondName}
                   textboxReadOnly={false}
-                  textboxType={"text"}
+                  textboxType={enumInputType.TEXT}
                   textboxOnSave={handleAdd}
                   textboxOnchange={onChangeSecondName}
                   textboxValue={valueSecondName}
@@ -270,7 +275,7 @@ function UserDetails (props) {
                 <CommonTextbox
                   textboxLabel={i18n.userTable.columnLastName}
                   textboxReadOnly={false}
-                  textboxType={"text"}
+                  textboxType={enumInputType.TEXT}
                   textboxOnSave={handleAdd}
                   textboxOnchange={onChangeLastName}
                   textboxValue={valueLastName}
@@ -281,7 +286,7 @@ function UserDetails (props) {
                 <CommonTextbox
                   textboxLabel={i18n.userTable.columnSecondLastName}
                   textboxReadOnly={false}
-                  textboxType={"text"}
+                  textboxType={enumInputType.TEXT}
                   textboxOnSave={handleAdd}
                   textboxOnchange={onChangeSecondLastName}
                   textboxValue={valueSecondLastName}
@@ -294,7 +299,7 @@ function UserDetails (props) {
                 <CommonTextbox
                   textboxLabel={i18n.userTable.columnBirthDate}
                   textboxReadOnly={false}
-                  textboxType={"date"}
+                  textboxType={enumInputType.DATE}
                   textboxOnSave={handleAdd}
                   textboxOnchange={onChangeBirthDate}
                   textboxValue={valueBirthDate}
@@ -305,7 +310,7 @@ function UserDetails (props) {
                 <CommonTextbox
                   textboxLabel={i18n.userTable.columndAge}
                   textboxReadOnly={false}
-                  textboxType={"number"}
+                  textboxType={enumInputType.NUMBER}
                   textboxOnSave={handleAdd}
                   textboxOnchange={onChangeAge}
                   textboxValue={valueAge}
@@ -316,7 +321,7 @@ function UserDetails (props) {
                 <CommonTextbox
                   textboxLabel={i18n.userTable.columndSex}
                   textboxReadOnly={false}
-                  textboxType={"select"}
+                  textboxType={enumInputType.SELECT}
                   textboxOnSave={handleAdd}
                   textboxOnchange={onChangeSex}
                   textboxValue={valueSex}
@@ -328,7 +333,7 @@ function UserDetails (props) {
                 <CommonTextbox
                   textboxLabel={i18n.userTable.columnOccupation}
                   textboxReadOnly={false}
-                  textboxType={"text"}
+                  textboxType={enumInputType.TEXT}
                   textboxOnSave={handleAdd}
                   textboxOnchange={onChangeOccupation}
                   textboxValue={valueOccupation}
@@ -342,7 +347,7 @@ function UserDetails (props) {
                 <CommonTextbox
                   textboxLabel={i18n.userTable.columnTelephone}
                   textboxReadOnly={false}
-                  textboxType={"number"}
+                  textboxType={enumInputType.NUMBER}
                   textboxOnSave={handleAdd}
                   textboxOnchange={onChangeTelephone}
                   textboxValue={valueTelephone}
@@ -353,7 +358,7 @@ function UserDetails (props) {
                 <CommonTextbox
                   textboxLabel={i18n.userTable.columnAddress}
                   textboxReadOnly={false}
-                  textboxType={"text"}
+                  textboxType={enumInputType.TEXT}
                   textboxOnSave={handleAdd}
                   textboxOnchange={onChangeAddress}
                   textboxValue={valueAddress}
@@ -364,7 +369,7 @@ function UserDetails (props) {
                 <CommonTextbox
                   textboxLabel={i18n.userTable.columnEmail}
                   textboxReadOnly={false}
-                  textboxType={"email"}
+                  textboxType={enumInputType.EMAIL}
                   textboxOnSave={handleAdd}
                   textboxOnchange={onChangeEmail}
                   textboxValue={valueEmail}
@@ -375,7 +380,7 @@ function UserDetails (props) {
                 <CommonTextbox
                   textboxLabel={i18n.userTable.columnStatus}
                   textboxReadOnly={false}
-                  textboxType={"select"}
+                  textboxType={enumInputType.SELECT}
                   textboxOnSave={handleAdd}
                   textboxOnchange={onChangeStatus}
                   textboxValue={valueStatus}
@@ -390,7 +395,7 @@ function UserDetails (props) {
                 <CommonTextbox
                   textboxLabel={i18n.userTable.columnCreatedBy}
                   textboxReadOnly={true}
-                  textboxType={"text"}
+                  textboxType={enumInputType.TEXT}
                   textboxOnSave={() => { }}
                   textboxOnchange={() => { }}
                   textboxValue={valueCreatedBy}
@@ -401,7 +406,7 @@ function UserDetails (props) {
                 <CommonTextbox
                   textboxLabel={i18n.userTable.columnUpdatedBy}
                   textboxReadOnly={true}
-                  textboxType={"text"}
+                  textboxType={enumInputType.TEXT}
                   textboxOnSave={() => { }}
                   textboxOnchange={() => { }}
                   textboxValue={valueUpdatedBy}
@@ -412,7 +417,7 @@ function UserDetails (props) {
                 <CommonTextbox
                   textboxLabel={i18n.userTable.columnCreationDate}
                   textboxReadOnly={true}
-                  textboxType={"date"}
+                  textboxType={enumInputType.DATE}
                   textboxOnSave={() => { }}
                   textboxOnchange={() => { }}
                   textboxValue={valueCreationDate}
@@ -423,7 +428,7 @@ function UserDetails (props) {
                 <CommonTextbox
                   textboxLabel={i18n.userTable.columnStatus}
                   textboxReadOnly={true}
-                  textboxType={"date"}
+                  textboxType={enumInputType.DATE}
                   textboxOnSave={() => { }}
                   textboxOnchange={() => { }}
                   textboxValue={valueUpdateDate}
