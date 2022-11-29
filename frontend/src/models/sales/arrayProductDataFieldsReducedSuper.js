@@ -3,7 +3,8 @@ import enumTableFieldType from "./../enumTableFieldType";
 const arrayDataFields = [
   {
     value: "image",
-    type: enumTableFieldType.IMAGE
+    type: enumTableFieldType.IMAGE,
+    maxWidth: "40%"
   },
   "name",
   "salePrice",
