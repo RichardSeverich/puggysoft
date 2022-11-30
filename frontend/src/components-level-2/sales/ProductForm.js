@@ -6,7 +6,7 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import i18n from "./../../i18n/i18n";
 import useInput from "./../../hooks/useInput";
-
+import appUrlConfig from "./../../tools/appUrlConfig";
 import { handleAddRequest, handleEditRequest, handleAddFileRequest } from "../../actions/HandleManager";
 import { handleValidation, classNameFormTextNew } from "./../../validations/sales/HandleProductFormValidations";
 
@@ -18,6 +18,26 @@ function ProductForm (props) {
   const isEditDefaultValue = history && history.location && history.location.state;
   const [isEdit, setIsEdit] = useState(isEditDefaultValue);
   const [classNameFormText, setClassNameFormText] = useState(classNameFormTextNew);
+
+  // CONFIGURE IMAGE
+  const fileName = "products-default.jpg";
+  const imageUrlInit = `${appUrlConfig.PROTOCOL}//${appUrlConfig.HOSTNAME}:${appUrlConfig.PORT}/${fileName}`;
+  let imageUrlInitAux = imageUrlInit;
+  const productImage =
+  isEdit &&
+  isEdit.data &&
+  isEdit.data.image &&
+  isEdit.data.image !== null
+    ? isEdit.data.image
+    : null;
+  if (productImage && productImage !== null) {
+    if (productImage.includes("blob:")) {
+      imageUrlInitAux = productImage;
+    } else {
+      imageUrlInitAux = `data:image/jpeg;base64, ${productImage}`;
+    }
+  }
+  const { value: valuePictureToShow, setValue: setValuePictureToShow } = useInput(imageUrlInitAux);
 
   // Put default values:
   const id = isEdit && isEdit.data.id !== null ? isEdit.data.id : "";
@@ -56,6 +76,7 @@ function ProductForm (props) {
     resetLocation();
     setPicture(null);
     setPicturePath("");
+    setValuePictureToShow(imageUrlInit);
   };
 
   const getBody = function () {
@@ -73,6 +94,9 @@ function ProductForm (props) {
       createdBy: username,
       updatedBy: username
     };
+    if (productImage !== null) {
+      body.image = productImage;
+    }
     return body;
   };
 
@@ -112,6 +136,7 @@ function ProductForm (props) {
     // const fileTypeName = file.constructor.name
     setPicture(file);
     onChangePicturePath(event);
+    setValuePictureToShow(URL.createObjectURL(file));
   };
 
   const handleAddImage = (productId) => {
@@ -226,6 +251,7 @@ function ProductForm (props) {
                 {i18n.productForm.formTextLocation}
               </Form.Text>
             </Form.Group>
+            <Card.Img variant="top product-image" size="" src={valuePictureToShow} />
             <Form.Group controlId="formFile" className="mb-3 puggysoft-form-item-input-file">
               <Form.Label>{i18n.productForm.fieldImage}</Form.Label>
               <Form.Control

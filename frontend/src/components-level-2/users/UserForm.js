@@ -10,6 +10,7 @@ import useInput from "./../../hooks/useInput";
 import enumSex from "./../../models/users/enumSex";
 import { handleAddRequest, handleEditRequest, handleAddFileRequest } from "../../actions/HandleManager";
 import { handleValidation, classNameFormTextNew } from "./../../validations/users/HandleUserFormValidations";
+import appUrlConfig from "./../../tools/appUrlConfig";
 
 import "./../css/all-forms.css";
 import "./user-form-styles.css";
@@ -49,6 +50,26 @@ function UserForm (props) {
   const address = isEdit && isEdit.data.address !== null ? isEdit.data.address : "";
   const email = isEdit && isEdit.data.email !== null ? isEdit.data.email : "";
 
+  // CONFIGURE IMAGE
+  const fileName = "user-default.jpg";
+  const imageUrlInit = `${appUrlConfig.PROTOCOL}//${appUrlConfig.HOSTNAME}:${appUrlConfig.PORT}/${fileName}`;
+  let imageUrlInitAux = imageUrlInit;
+  const userImage =
+    isEdit &&
+    isEdit.data &&
+    isEdit.data.image &&
+    isEdit.data.image !== null
+      ? isEdit.data.image
+      : null;
+  if (userImage && userImage !== null) {
+    if (userImage.includes("blob:")) {
+      imageUrlInitAux = userImage;
+    } else {
+      imageUrlInitAux = `data:image/jpeg;base64, ${userImage}`;
+    }
+  }
+  const { value: valuePictureToShow, setValue: setValuePictureToShow } = useInput(imageUrlInitAux);
+
   // Use custom hook
   const { value: valueUsername, onChange: onChangeUsername, setValue: setUsername } = useInput(username);
   const { value: valuePassword, onChange: onChangePassword, setValue: setPassword } = useInput(password);
@@ -86,6 +107,7 @@ function UserForm (props) {
     setPicture(null);
     setPicturePath("");
     setStatus(true);
+    setValuePictureToShow(imageUrlInit);
   };
 
   const handleAfterAdd = function (newUserId) {
@@ -134,6 +156,9 @@ function UserForm (props) {
       createdBy: username,
       updatedBy: username
     };
+    if (userImage !== null) {
+      body.image = userImage;
+    }
     return body;
   };
 
@@ -165,6 +190,7 @@ function UserForm (props) {
     // const fileTypeName = file.constructor.name
     setPicture(file);
     onChangePicturePath(event);
+    setValuePictureToShow(URL.createObjectURL(file));
   };
 
   useEffect(() => {
@@ -349,6 +375,7 @@ function UserForm (props) {
                 {i18n.userForm.formTextStatus}
               </Form.Text>
             </Form.Group>
+            <Card.Img variant="top user-image" size="" src={valuePictureToShow} />
             <Form.Group controlId="formFile" className="mb-3 puggysoft-form-item-input-file">
               <div className={classNameItemLabel}><Form.Label>{i18n.userForm.fieldImage}</Form.Label></div>
               <div className={classNameItemInput}><Form.Control
