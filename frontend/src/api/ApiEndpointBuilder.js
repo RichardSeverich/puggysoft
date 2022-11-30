@@ -16,4 +16,8 @@ const getEndpoint = (endpoint) => {
   return endPointBase.concat(endpoint);
 };
 
-export default getEndpoint;
+const apiEndpointBuilder = {
+  getEndpoint
+};
+
+export default apiEndpointBuilder;

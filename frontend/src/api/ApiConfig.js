@@ -1,9 +1,10 @@
-const getConfig = () => {
-  const token = window.sessionStorage.getItem("token");
-  const config = {
-    headers: { Authorization: token }
-  };
-  return config;
+const token = window.sessionStorage.getItem("token");
+const config = {
+  headers: { Authorization: token }
 };
 
-export default getConfig;
+const apiConfig = {
+  config
+};
+
+export default apiConfig;

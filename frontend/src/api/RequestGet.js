@@ -1,12 +1,12 @@
-import axios from "./ApiConnector";
-import getConfig from "./ApiConfig";
-import getEndpoint from "./ApiEndpointBuilder";
+import apiConnector from "./ApiConnector";
+import apiConfig from "./ApiConfig";
+import apiEndpointBuilder from "./ApiEndpointBuilder";
 
 const get = (endpoint, callback) => {
-  const url = getEndpoint(endpoint);
+  const url = apiEndpointBuilder.getEndpoint(endpoint);
   console.log("*** GET REQUEST ***");
   console.log(url);
-  axios.get(url, getConfig())
+  apiConnector.axios.get(url, apiConfig.config)
     .then(response => {
       console.log("*** RESPONSE ***");
       console.log(response);

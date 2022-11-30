@@ -1,12 +1,12 @@
-import axios from "./ApiConnector";
-import getConfig from "./ApiConfig";
-import getEndpoint from "./ApiEndpointBuilder";
+import apiConnector from "./ApiConnector";
+import apiConfig from "./ApiConfig";
+import apiEndpointBuilder from "./ApiEndpointBuilder";
 
 const remove = (endpoint, callback) => {
-  const url = getEndpoint(endpoint);
+  const url = apiEndpointBuilder.getEndpoint(endpoint);
   console.log("*** DELETE REQUEST ***");
   console.log(url);
-  axios.delete(url, getConfig())
+  apiConnector.axios.delete(url, apiConfig.config)
     .then(response => {
       callback(response);
     })

@@ -1,9 +1,9 @@
-import axios from "./ApiConnector";
+import apiConnector from "./ApiConnector";
 import getConfig from "./ApiConfig";
-import getEndpoint from "./ApiEndpointBuilder";
+import apiEndpointBuilder from "./ApiEndpointBuilder";
 
 const post = (endpoint, file, id, callback) => {
-  const url = getEndpoint(endpoint);
+  const url = apiEndpointBuilder.getEndpoint(endpoint);
   const bodyFormData = new FormData();
   const token = window.sessionStorage.getItem("token");
   bodyFormData.append("file", file);
@@ -11,7 +11,7 @@ const post = (endpoint, file, id, callback) => {
   console.log("*** POST REQUEST ***");
   console.log(url);
   console.log(bodyFormData);
-  axios(
+  apiConnector.axios(
     {
       method: "post",
       url,
