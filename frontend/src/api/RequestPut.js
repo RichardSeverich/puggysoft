@@ -7,7 +7,7 @@ const put = (endpoint, body, callback) => {
   console.log("*** PUT REQUEST ***");
   console.log(url);
   console.log(body);
-  apiConnector.axios.put(url, body, apiConfig.config)
+  apiConnector.axios.put(url, body, apiConfig.getConfig())
     .then(response => {
       console.log("*** RESPONSE ***");
       console.log(response);

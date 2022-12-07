@@ -6,7 +6,7 @@ const get = (endpoint, callback) => {
   const url = apiEndpointBuilder.getEndpoint(endpoint);
   console.log("*** GET REQUEST ***");
   console.log(url);
-  apiConnector.axios.get(url, apiConfig.config)
+  apiConnector.axios.get(url, apiConfig.getConfig())
     .then(response => {
       console.log("*** RESPONSE ***");
       console.log(response);

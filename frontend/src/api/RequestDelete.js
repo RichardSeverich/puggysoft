@@ -6,7 +6,7 @@ const remove = (endpoint, callback) => {
   const url = apiEndpointBuilder.getEndpoint(endpoint);
   console.log("*** DELETE REQUEST ***");
   console.log(url);
-  apiConnector.axios.delete(url, apiConfig.config)
+  apiConnector.axios.delete(url, apiConfig.getConfig())
     .then(response => {
       callback(response);
     })

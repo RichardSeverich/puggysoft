@@ -7,7 +7,7 @@ const post = (endpoint, body, callback) => {
   console.log("*** POST REQUEST ***");
   console.log(url);
   console.log(body);
-  apiConnector.axios.post(url, body, apiConfig.config)
+  apiConnector.axios.post(url, body, apiConfig.getConfig())
     .then(response => {
       console.log("*** RESPONSE ***");
       console.log(response);

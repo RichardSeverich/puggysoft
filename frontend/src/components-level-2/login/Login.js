@@ -18,9 +18,9 @@ function Login () {
   const routerProps = history && history.location && history.location.state;
 
   if (routerProps && routerProps.logout) {
-    window.localStorage.removeItem("token");
-    window.localStorage.removeItem("username");
-    window.localStorage.removeItem("roles");
+    window.sessionStorage.removeItem("token");
+    window.sessionStorage.removeItem("username");
+    window.sessionStorage.removeItem("roles");
     window.sessionStorage.clear();
   }
 

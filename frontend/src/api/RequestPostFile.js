@@ -1,5 +1,4 @@
 import apiConnector from "./ApiConnector";
-import getConfig from "./ApiConfig";
 import apiEndpointBuilder from "./ApiEndpointBuilder";
 
 const post = (endpoint, file, id, callback) => {
@@ -16,7 +15,6 @@ const post = (endpoint, file, id, callback) => {
       method: "post",
       url,
       data: bodyFormData,
-      getConfig,
       headers: {
         "Content-Type": "multipart/form-data",
         Authorization: token

@@ -24,7 +24,7 @@ const handleValidation = (data, setClassNameFormText) => {
     classNameFormTextNew.username = classNameRed;
   } else {
     classNameFormTextNew.username = "";
-  } if (!(data.password.length >= 3 && data.password.length <= 10)) {
+  } if (!(data.password.length >= 3 && data.password.length <= 30)) {
     isValid = false;
     classNameFormTextNew.password = classNameRed;
   } else {
