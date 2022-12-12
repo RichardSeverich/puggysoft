@@ -4965,3 +4965,32 @@ INSERT INTO product_groups_products (id_product, id_product_group, created_by, u
 INSERT INTO product_groups_products (id_product, id_product_group, created_by, updated_by) VALUES (1048, 1005, "adminsales", "adminsales");
 INSERT INTO product_groups_products (id_product, id_product_group, created_by, updated_by) VALUES (1049, 1005, "adminsales", "adminsales");
 INSERT INTO product_groups_products (id_product, id_product_group, created_by, updated_by) VALUES (1050, 1005, "adminsales", "adminsales");
+
+
+-- SALES
+-- IN PROGRESS
+INSERT INTO sales (client, creation_date, status, created_by, updated_by) VALUES ("salesclient", "2021-01-01", "IN_PROGRESS", "salesseller", "adminsales");
+INSERT INTO sales (client, creation_date, status, created_by, updated_by) VALUES ("salesclient", "2021-02-02", "IN_PROGRESS", "salesseller", "adminsales");
+INSERT INTO sales (client, creation_date, status, created_by, updated_by) VALUES ("salesclient", "2021-03-03", "IN_PROGRESS", "salesseller", "adminsales");
+INSERT INTO sales (client, creation_date, status, created_by, updated_by) VALUES ("salesclient", "2021-04-04", "IN_PROGRESS", "salesseller", "adminsales");
+INSERT INTO sales (client, creation_date, status, created_by, updated_by) VALUES ("salesclient", "2021-05-05", "IN_PROGRESS", "salesseller", "adminsales");
+INSERT INTO sales (client, creation_date, status, created_by, updated_by) VALUES ("salesclient", "2021-06-06", "IN_PROGRESS", "salesseller", "adminsales");
+INSERT INTO sales (client, creation_date, status, created_by, updated_by) VALUES ("salesclient", "2021-07-07", "IN_PROGRESS", "salesseller", "adminsales");
+INSERT INTO sales (client, creation_date, status, created_by, updated_by) VALUES ("salesclient", "2021-08-08", "IN_PROGRESS", "salesseller", "adminsales");
+INSERT INTO sales (client, creation_date, status, created_by, updated_by) VALUES ("salesclient", "2021-09-09", "IN_PROGRESS", "salesseller", "adminsales");
+INSERT INTO sales (client, creation_date, status, created_by, updated_by) VALUES ("salesclient", "2021-10-10", "IN_PROGRESS", "salesseller", "adminsales");
+INSERT INTO sales (client, creation_date, status, created_by, updated_by) VALUES ("salesclient", "2021-11-11", "IN_PROGRESS", "salesseller", "adminsales");
+INSERT INTO sales (client, creation_date, status, created_by, updated_by) VALUES ("salesclient", "2021-12-12", "IN_PROGRESS", "salesseller", "adminsales");
+-- TODO
+INSERT INTO sales (client, creation_date, status, created_by, updated_by) VALUES ("salesclient", "2022-01-14", "TODO", "salesseller", "adminsales");
+INSERT INTO sales (client, creation_date, status, created_by, updated_by) VALUES ("salesclient", "2022-02-15", "TODO", "salesseller", "adminsales");
+INSERT INTO sales (client, creation_date, status, created_by, updated_by) VALUES ("salesclient", "2022-03-16", "TODO", "salesseller", "adminsales");
+INSERT INTO sales (client, creation_date, status, created_by, updated_by) VALUES ("salesclient", "2022-04-17", "TODO", "salesseller", "adminsales");
+INSERT INTO sales (client, creation_date, status, created_by, updated_by) VALUES ("salesclient", "2022-05-18", "TODO", "salesseller", "adminsales");
+INSERT INTO sales (client, creation_date, status, created_by, updated_by) VALUES ("salesclient", "2022-06-19", "TODO", "salesseller", "adminsales");
+INSERT INTO sales (client, creation_date, status, created_by, updated_by) VALUES ("salesclient", "2022-07-20", "TODO", "salesseller", "adminsales");
+INSERT INTO sales (client, creation_date, status, created_by, updated_by) VALUES ("salesclient", "2022-08-21", "TODO", "salesseller", "adminsales");
+INSERT INTO sales (client, creation_date, status, created_by, updated_by) VALUES ("salesclient", "2022-09-22", "TODO", "salesseller", "adminsales");
+INSERT INTO sales (client, creation_date, status, created_by, updated_by) VALUES ("salesclient", "2022-10-23", "TODO", "salesseller", "adminsales");
+INSERT INTO sales (client, creation_date, status, created_by, updated_by) VALUES ("salesclient", "2022-11-24", "TODO", "salesseller", "adminsales");
+INSERT INTO sales (client, creation_date, status, created_by, updated_by) VALUES ("salesclient", "2022-12-25", "TODO", "salesseller", "adminsales");

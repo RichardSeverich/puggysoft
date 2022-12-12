@@ -1,24 +1,23 @@
-import React, { useState } from "react";
-import { useHistory } from "react-router";
+import React from "react";
+import PropTypes from "prop-types";
 
 import TableFilterGeneric from "./../generic/TableFilterGeneric";
-import { handleFilterRequest, handleDeleteRequestNew } from "../../actions/HandleManager";
-import enumPaths from "./../../models/enumPaths";
-import i18n from "../../i18n/i18n";
+import { handleFilterRequest } from "../../actions/HandleManager";
 import arrayDataFields from "../../models/sales/arraySaleDataFields";
 import arrayColumns from "../../models/sales/arraySaleColumns";
 import enumCompareOperators from "./../../models/enumCompareOperators";
 import useInput from "./../../hooks/useInput";
 import getColumnsFilterModel from "../../models/sales/arraySaleColumnsFilterSelection";
-import CommonLoading from "../../components-level-1/CommonLoading";
 import fixArrayDataSales from "./../../tools/sales/fixArrayDataSales";
+import enumSaleStatus from "./../../models/sales/enumSaleStatus";
 
-function SalesTableFilterEditDeleteDetails () {
+function SalesTableFilterGeneric ({
+  tableArrayCustomRowButtons,
+  tableFilterSaleStatusCriteria,
+  tableTitle
+}) {
   const pageSize = 10;
   const numberPagesToShow = 10;
-  const tableTitle = i18n.saleTable.titleSelectionToEditDelete;
-  const history = useHistory();
-  const [isRequestInProgress, setIsRequestInProgress] = useState(false);
 
   function handleGetData (activePage, filterBody, updateArrayData) {
     handleFilterRequest(`sales/filter?page=${activePage - 1}&size=${pageSize}`, filterBody, updateArrayData);
@@ -28,41 +27,16 @@ function SalesTableFilterEditDeleteDetails () {
     handleFilterRequest(`sales/filter/size/${pageSize}`, filterBody, setTotalPages);
   }
 
-  function handleAfterDelete (responseData) {
-    setIsRequestInProgress(false);
-  }
-
-  function handleDelete (data) {
-    setIsRequestInProgress(true);
-    handleDeleteRequestNew(`sales/${data.id}`, handleAfterDelete);
-  }
-
-  function handleDetails (saleData) {
-    history.push({
-      pathname: enumPaths.SALES_REGISTRATION_STEP_TWO,
-      state: {
-        data: { saleData }
-      }
-    });
-  }
-
-  const tableArrayCustomRowButtons = [
-    {
-      variant: "success",
-      handleCustom: handleDetails,
-      text: i18n.commonTable.detailsButton
-    },
-    {
-      variant: "danger",
-      handleCustom: handleDelete,
-      text: i18n.commonTable.deleteButton
-    }
-  ];
-
   // CRITERIA OF SEARCH OR FILTER
   const { value: criteriaId, onChange: criteriaOnChangeId, setValue: criteriaSetId } = useInput("");
   const { value: criteriaClient, onChange: criteriaOnChangeClient, setValue: criteriaSetClient } = useInput("");
-  const { value: criteriaStatus, onChange: criteriaOnChangeStatus, setValue: criteriaSetStatus } = useInput("");
+  let criteriaStatusDefault = "";
+  if (tableFilterSaleStatusCriteria === enumSaleStatus.TODO) {
+    criteriaStatusDefault = enumSaleStatus.TODO;
+  } else if (tableFilterSaleStatusCriteria === enumSaleStatus.IN_PROGRESS) {
+    criteriaStatusDefault = enumSaleStatus.IN_PROGRESS;
+  }
+  const { value: criteriaStatus, onChange: criteriaOnChangeStatus, setValue: criteriaSetStatus } = useInput(criteriaStatusDefault);
   const { value: criteriaCreatedBy, onChange: criteriaOnChangeCreatedBy, setValue: criteriaSetCreatedBy } = useInput("");
   const { value: criteriaUpdatedBy, onChange: criteriaOnChangeUpdatedBy, setValue: criteriaSetUpdatedBy } = useInput("");
   const { value: criteriaCreatedDate, onChange: criteriaOnChangeCreatedDate, setValue: criteriaSetCreatedDate } = useInput("");
@@ -84,16 +58,13 @@ function SalesTableFilterEditDeleteDetails () {
     /* CREATED BY */criteriaCreatedBy, criteriaOnChangeCreatedBy, criteriaSetCreatedBy, operatorCreatedBy, operatorOnChangeCreatedBy, operatorSetCreatedBy,
     /* UPDATED BY */criteriaUpdatedBy, criteriaOnChangeUpdatedBy, criteriaSetUpdatedBy, operatorUpdatedBy, operatorOnChangeUpdatedBy, operatorSetUpdatedBy,
     /* CREATED DATE */criteriaCreatedDate, criteriaOnChangeCreatedDate, criteriaSetCreatedDate, operatorCreatedDate, operatorOnChangeCreatedDate, operatorSetCreatedDate,
-    /* UPDATED DATE */criteriaUpdatedDate, criteriaOnChangeUpdatedDate, criteriaSetUpdatedDate, operatorUpdatedDate, operatorOnChangeUpdatedDate, operatorSetUpdatedDate
+    /* UPDATED DATE */criteriaUpdatedDate, criteriaOnChangeUpdatedDate, criteriaSetUpdatedDate, operatorUpdatedDate, operatorOnChangeUpdatedDate, operatorSetUpdatedDate,
+    criteriaStatusDefault
   );
 
   function fixArrayData (arraySales) {
     const arraySalesFixed = fixArrayDataSales(arraySales);
     return arraySalesFixed;
-  }
-
-  if (isRequestInProgress) {
-    return <CommonLoading />;
   }
 
   return (
@@ -114,4 +85,20 @@ function SalesTableFilterEditDeleteDetails () {
   );
 }
 
-export default SalesTableFilterEditDeleteDetails;
+export default SalesTableFilterGeneric;
+
+SalesTableFilterGeneric.propTypes = {
+  tableTitle: PropTypes.string,
+  tableArrayCustomRowButtons: PropTypes.array,
+  tableFilterSaleStatusCriteria: PropTypes.oneOf([
+    enumSaleStatus.DONE,
+    enumSaleStatus.IN_PROGRESS,
+    enumSaleStatus.TODO
+  ])
+};
+
+SalesTableFilterGeneric.defaultProps = {
+  tableTitle: "Default Sales Title",
+  tableArrayCustomRowButtons: [],
+  tableFilterSaleStatusCriteria: enumSaleStatus.DONE
+};

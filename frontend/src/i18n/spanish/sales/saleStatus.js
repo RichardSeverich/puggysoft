@@ -1,6 +1,6 @@
 const saleStatus = {
   all: "TODOS",
-  todo: "POR HACER",
+  todo: "PEDIDO",
   inProgress: "EN PROGRESO",
   done: "TERMINADO"
 };

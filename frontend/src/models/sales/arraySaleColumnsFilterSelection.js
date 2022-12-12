@@ -11,8 +11,33 @@ const getColumnsFilterModel = function (
   /* CREATED BY */criteriaCreatedBy, criteriaOnChangeCreatedBy, criteriaSetCreatedBy, operatorCreatedBy, operatorOnChangeCreatedBy, operatorSetCreatedBy,
   /* UPDATED BY */criteriaUpdatedBy, criteriaOnChangeUpdatedBy, criteriaSetUpdatedBy, operatorUpdatedBy, operatorOnChangeUpdatedBy, operatorSetUpdatedBy,
   /* CREATED DATE */criteriaCreatedDate, criteriaOnChangeCreatedDate, criteriaSetCreatedDate, operatorCreatedDate, operatorOnChangeCreatedDate, operatorSetCreatedDate,
-  /* UPDATED DATE */criteriaUpdatedDate, criteriaOnChangeUpdatedDate, criteriaSetUpdatedDate, operatorUpdatedDate, operatorOnChangeUpdatedDate, operatorSetUpdatedDate
+  /* UPDATED DATE */criteriaUpdatedDate, criteriaOnChangeUpdatedDate, criteriaSetUpdatedDate, operatorUpdatedDate, operatorOnChangeUpdatedDate, operatorSetUpdatedDate,
+  criteriaStatusDefault
 ) {
+  let filterObjectSaleStatus = {
+    type: enumFilterType.DROPDOWN,
+    criteriaValue: criteriaStatus,
+    criteriaOnchange: criteriaOnChangeStatus,
+    operatorValue: operatorStatus,
+    operatorOnchange: operatorOnChangeStatus,
+    dropdownValues: [
+      { value: "", text: i18n.saleStatus.all },
+      { value: enumSaleStatus.TODO, text: i18n.saleStatus.todo },
+      { value: enumSaleStatus.IN_PROGRESS, text: i18n.saleStatus.inProgress },
+      { value: enumSaleStatus.DONE, text: i18n.saleStatus.done }
+    ]
+  };
+
+  if (criteriaStatusDefault === enumSaleStatus.TODO) {
+    filterObjectSaleStatus = {
+      type: enumFilterType.NONE
+    };
+  } else if (criteriaStatusDefault === enumSaleStatus.IN_PROGRESS) {
+    filterObjectSaleStatus = {
+      type: enumFilterType.NONE
+    };
+  }
+
   const arrayColumnsFilter = [
     {
       type: enumFilterType.TEXTBOX,
@@ -28,19 +53,7 @@ const getColumnsFilterModel = function (
       operatorValue: operatorClient,
       operatorOnchange: operatorOnChangeClient
     },
-    {
-      type: enumFilterType.DROPDOWN,
-      criteriaValue: criteriaStatus,
-      criteriaOnchange: criteriaOnChangeStatus,
-      operatorValue: operatorStatus,
-      operatorOnchange: operatorOnChangeStatus,
-      dropdownValues: [
-        { value: "", text: i18n.saleStatus.all },
-        { value: enumSaleStatus.TODO, text: i18n.saleStatus.todo },
-        { value: enumSaleStatus.IN_PROGRESS, text: i18n.saleStatus.inProgress },
-        { value: enumSaleStatus.DONE, text: i18n.saleStatus.done }
-      ]
-    },
+    filterObjectSaleStatus,
     {
       type: enumFilterType.TEXTBOX,
       criteriaValue: criteriaCreatedBy,
@@ -84,7 +97,7 @@ const getColumnsFilterModel = function (
   const clearFilters = function () {
     criteriaSetId("");
     criteriaSetClient("");
-    criteriaSetStatus(""); // Empty means all
+    criteriaSetStatus(criteriaStatusDefault); // Empty means all
     criteriaSetCreatedBy("");
     criteriaSetUpdatedBy("");
     criteriaSetCreatedDate("");

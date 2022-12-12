@@ -18,7 +18,7 @@ public class DtoSale extends DtoSuperClass {
   private String client;
 
   @NotNull
-  // TODO, IN-PROGRESS, DONE.
+  // TODO, IN_PROGRESS, DONE.
   private String status;
 
   /** convert from dto to entity. */

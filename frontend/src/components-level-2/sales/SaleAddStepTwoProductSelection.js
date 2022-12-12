@@ -5,7 +5,8 @@ import { handleFilterRequest, handleAddRequest, handleDeleteRequestNew } from ".
 import ProductTableSuperReducedGeneric from "./ProductTableSuperReducedGeneric";
 import i18n from "../../i18n/i18n";
 import CommonLoading from "../../components-level-1/CommonLoading";
-import arraySaleProductColumns from "../../models/sales/arraySaleProductColumns";
+import arraySaleProductColumnsOne from "../../models/sales/arrayProductColumnsReducedSuperOne";
+import arraySaleProductColumnsTwo from "../../models/sales/arrayProductColumnsReducedSuperTwo";
 import Form from "react-bootstrap/Form";
 import Card from "react-bootstrap/Card";
 import enumWebElements from "./../../models/enumWebElements";
@@ -184,6 +185,7 @@ function SaleAddStepTwoProductSelection () {
             handleGetData={handleGetDataProductsAddToSale}
             handleGetSize={handleGetSizeProductsAddToSale}
             tableArrayCustomRowButtons={tableArrayCustomRowButtonsAddToSale}
+            arrayColumns={arraySaleProductColumnsOne}
             numberPagesToShow={numberPagesToShow}
           >
           </ProductTableSuperReducedGeneric>
@@ -195,7 +197,7 @@ function SaleAddStepTwoProductSelection () {
             handleGetSize={handleGetSizeProductsToDelete}
             tableArrayCustomRowButtons={tableArrayCustomRowButtonsDeleteFromSale}
             numberPagesToShow={numberPagesToShow}
-            arrayColumns={arraySaleProductColumns}
+            arrayColumns={arraySaleProductColumnsTwo}
             fixArrayData={fixArrayData}
           >
           </ProductTableSuperReducedGeneric>

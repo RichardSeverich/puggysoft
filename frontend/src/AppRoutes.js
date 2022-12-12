@@ -27,7 +27,9 @@ import ClientFormPage from "./components-level-3/sales/ClientFormPage";
 import ClientTableFilterSelectionToDetailsPage from "./components-level-3/sales/ClientTableFilterSelectionToDetailsPage";
 import SellerFormPage from "./components-level-3/sales/SellerFormPage";
 import SellerTableFilterSelectionToDetailsPage from "./components-level-3/sales/SellerTableFilterSelectionToDetailsPage";
-import SaleTableFilterEditDeleteDetails from "./components-level-3/sales/SaleTableFilterEditDeleteDetails";
+import SalesTableFilterAllPage from "./components-level-3/sales/SalesTableFilterAllPage";
+import SalesTableFilterTodoPage from "./components-level-3/sales/SalesTableFilterTodoPage";
+import SalesTableFilterInProgressPage from "./components-level-3/sales/SalesTableFilterInProgressPage";
 import SaleAddStepOnePage from "./components-level-3/sales/SaleAddStepOnePage";
 import SaleAddStepTwoPage from "./components-level-3/sales/SaleAddStepTwoPage";
 import SaleReportQuantityPage from "./components-level-3/sales/SaleReportQuantityPage";
@@ -81,7 +83,9 @@ const AppRoutes = () => (
       <Route exact path={enumPaths.SALES_CLIENT_TABLE_FILTER_TO_DETAILS} component={ClientTableFilterSelectionToDetailsPage} />
       <Route exact path={enumPaths.SALES_SELLER_FORM} component={SellerFormPage} />
       <Route exact path={enumPaths.SALES_SELLER_TABLE_FILTER_TO_DETAILS} component={SellerTableFilterSelectionToDetailsPage} />
-      <Route exact path={enumPaths.SALES_SALES_TABLE_FILTER_TO_EDIT_DELETE_DETAILS} component={SaleTableFilterEditDeleteDetails} />
+      <Route exact path={enumPaths.SALES_SALES_TABLE_FILTER_TO_EDIT_DELETE_DETAILS} component={SalesTableFilterAllPage} />
+      <Route exact path={enumPaths.SALES_SALES_TABLE_FILTER_TO_EDIT_DELETE_DETAILS_TODO} component={SalesTableFilterTodoPage} />
+      <Route exact path={enumPaths.SALES_SALES_TABLE_FILTER_TO_EDIT_DELETE_DETAILS_IN_PROGRESS} component={SalesTableFilterInProgressPage} />
       <Route exact path={enumPaths.SALES_REGISTRATION_STEP_ONE} component={SaleAddStepOnePage} />
       <Route exact path={enumPaths.SALES_REGISTRATION_STEP_TWO} component={SaleAddStepTwoPage} />
       <Route exact path={enumPaths.SALES_REPORT_QUANTITY} component={SaleReportQuantityPage} />

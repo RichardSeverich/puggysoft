@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import TableFilterGeneric from "./../generic/TableFilterGeneric";
 import arrayDataFields from "../../models/sales/arrayProductDataFieldsReducedSuper";
-import arrayColumnsDefault from "../../models/sales/arrayProductColumnsReducedSuper";
+import arrayColumnsDefault from "../../models/sales/arrayProductColumnsReducedSuperOne";
 import enumCompareOperators from "./../../models/enumCompareOperators";
 import useInput from "./../../hooks/useInput";
 import getColumnsFilterModel from "../../models/sales/arrayProductColumnsFilterSelectionReducedSuper";

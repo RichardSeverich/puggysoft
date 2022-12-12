@@ -116,6 +116,12 @@ function NavBar () {
   const navigateSalesTableFilter = () => {
     history.push(enumPaths.SALES_SALES_TABLE_FILTER_TO_EDIT_DELETE_DETAILS);
   };
+  const navigateSalesTableFilterTodo = () => {
+    history.push(enumPaths.SALES_SALES_TABLE_FILTER_TO_EDIT_DELETE_DETAILS_TODO);
+  };
+  const navigateSalesTableFilterInProgress = () => {
+    history.push(enumPaths.SALES_SALES_TABLE_FILTER_TO_EDIT_DELETE_DETAILS_IN_PROGRESS);
+  };
   const navigateSalesRegistrationStepOne = () => {
     history.push(enumPaths.SALES_REGISTRATION_STEP_ONE);
   };
@@ -344,13 +350,13 @@ function NavBar () {
           {userRoles.includes(enumRoles.SALES_ADMIN_RESTAURANT) &&
             <NavDropdown title={orderAdminLabel}>
               <NavDropdown.Item onClick={navigateGeneric}>{orderRegistrationLabel}</NavDropdown.Item>
-              <NavDropdown.Item onClick={navigateGeneric}>{orderShowTableLabel}</NavDropdown.Item>
+              <NavDropdown.Item onClick={navigateSalesTableFilterTodo}>{orderShowTableLabel}</NavDropdown.Item>
               {/* <NavDropdown.Item onClick={navigateGeneric}>{orderShowCardLabel}</NavDropdown.Item> */}
             </NavDropdown>}
           {userRoles.includes(enumRoles.SALES_ADMIN_RESTAURANT) &&
             <NavDropdown title={dispatchAdminLabel}>
               <NavDropdown.Item onClick={navigateGeneric}>{dispatchRegistrationLabel}</NavDropdown.Item>
-              <NavDropdown.Item onClick={navigateGeneric}>{dispatchShowTableLabel}</NavDropdown.Item>
+              <NavDropdown.Item onClick={navigateSalesTableFilterInProgress}>{dispatchShowTableLabel}</NavDropdown.Item>
               {/* <NavDropdown.Item onClick={navigateGeneric}>{dispatchShowCardLabel}</NavDropdown.Item> */}
             </NavDropdown>}
           {(userRoles.includes(enumRoles.SALES_ADMIN) ||
