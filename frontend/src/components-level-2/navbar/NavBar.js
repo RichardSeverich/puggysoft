@@ -128,38 +128,20 @@ function NavBar () {
   const navigateSalesReportQuantityAnnual = () => {
     history.push(enumPaths.SALES_REPORT_QUANTITY);
   };
-  const navigateSalesReportQuantityAnnualComp = () => {
-    history.push(enumPaths.SALES_REPORT_QUANTITY_COMP);
-  };
   const navigateSalesReportRevenueAnnual = () => {
     history.push(enumPaths.SALES_REPORT_REVENUE);
-  };
-  const navigateSalesReportRevenueAnnualComp = () => {
-    history.push(enumPaths.SALES_REPORT_REVENUE_COMP);
   };
   const navigateSalesReportProfitAnnual = () => {
     history.push(enumPaths.SALES_REPORT_PROFIT);
   };
-  const navigateSalesReportProfitAnnualComp = () => {
-    history.push(enumPaths.SALES_REPORT_PROFIT_COMP);
-  };
   const navigateSalesReportQuantityAnnualByProduct = () => {
     history.push(enumPaths.SALES_PRODUCTS_TABLE_TO_QUANTITY_BY_PRODUCT);
-  };
-  const navigateSalesReportQuantityAnnualCompByProduct = () => {
-    history.push(enumPaths.SALES_PRODUCTS_TABLE_TO_QUANTITY_BY_PRODUCT_COMP);
   };
   const navigateSalesReportRevenueAnnualByProduct = () => {
     history.push(enumPaths.SALES_PRODUCTS_TABLE_TO_REVENUE_BY_PRODUCT);
   };
-  const navigateSalesReportRevenueAnnualCompByProduct = () => {
-    history.push(enumPaths.SALES_PRODUCTS_TABLE_TO_REVENUE_BY_PRODUCT_COMP);
-  };
   const navigateSalesReportProfitAnnualByProduct = () => {
     history.push(enumPaths.SALES_PRODUCTS_TABLE_TO_PROFIT_BY_PRODUCT);
-  };
-  const navigateSalesReportProfitAnnualCompByProduct = () => {
-    history.push(enumPaths.SALES_PRODUCTS_TABLE_TO_PROFIT_BY_PRODUCT_COMP);
   };
 
   // ******* ******* ******* HOSPITAL SYSTEM ******* ******* *******
@@ -245,17 +227,11 @@ function NavBar () {
   // REPORTS
   const reportAdminLabel = (<><BsFillBarChartFill /> {i18n.navBar.reportAdmin}</>);
   const reportQuantityAnnual = (<><FaChartLine /> {i18n.navBar.reportQuantityAnnual}</>);
-  const reportQuantityAnnualCompare = (<><FaChartLine /> {i18n.navBar.reportQuantityAnnualCompare}</>);
   const reportRevenueAnnual = (<><BsCoin /> {i18n.navBar.reportRevenueAnnual}</>);
-  const reportRevenueAnnualCompare = (<><BsCoin /> {i18n.navBar.reportRevenueAnnualCompare}</>);
   const reportProfitAnnual = (<><BsCashCoin /> {i18n.navBar.reportProfitAnnual}</>);
-  const reportProfitAnnualCompare = (<><BsCashCoin /> {i18n.navBar.reportProfitAnnualCompare}</>);
   const reportQuantityPerProduct = (<><FaChartLine /> {i18n.navBar.reportQuantityPerProduct}</>);
-  const reportQuantityPerProductCompare = (<><FaChartLine /> {i18n.navBar.reportQuantityPerProductCompare}</>);
   const reportRevenuePerProduct = (<><BsCoin /> {i18n.navBar.reportRevenuePerProduct}</>);
-  const reportRevenuePerProductCompare = (<><BsCoin /> {i18n.navBar.reportRevenuePerProductCompare}</>);
   const reportProfitPerProductAnnual = (<><BsCashCoin /> {i18n.navBar.reportProfitPerProductAnnual}</>);
-  const reportProfitPerProductAnnualCompare = (<><BsCashCoin /> {i18n.navBar.reportProfitPerProductAnnualCompare}</>);
 
   // ******* ******* ******* HOSPITAL SYSTEM ******* ******* *******
   // DOCTORS
@@ -370,17 +346,11 @@ function NavBar () {
             userRoles.includes(enumRoles.SALES_ADMIN_RESTAURANT)) &&
             <NavDropdown title={reportAdminLabel}>
               <NavDropdown.Item onClick={navigateSalesReportQuantityAnnual}>{reportQuantityAnnual}</NavDropdown.Item>
-              <NavDropdown.Item onClick={navigateSalesReportQuantityAnnualComp}>{reportQuantityAnnualCompare}</NavDropdown.Item>
               <NavDropdown.Item onClick={navigateSalesReportRevenueAnnual}>{reportRevenueAnnual}</NavDropdown.Item>
-              <NavDropdown.Item onClick={navigateSalesReportRevenueAnnualComp}>{reportRevenueAnnualCompare}</NavDropdown.Item>
               <NavDropdown.Item onClick={navigateSalesReportProfitAnnual}>{reportProfitAnnual}</NavDropdown.Item>
-              <NavDropdown.Item onClick={navigateSalesReportProfitAnnualComp}>{reportProfitAnnualCompare}</NavDropdown.Item>
               <NavDropdown.Item onClick={navigateSalesReportQuantityAnnualByProduct}>{reportQuantityPerProduct}</NavDropdown.Item>
-              <NavDropdown.Item onClick={navigateSalesReportQuantityAnnualCompByProduct}>{reportQuantityPerProductCompare}</NavDropdown.Item>
               <NavDropdown.Item onClick={navigateSalesReportRevenueAnnualByProduct}>{reportRevenuePerProduct}</NavDropdown.Item>
-              <NavDropdown.Item onClick={navigateSalesReportRevenueAnnualCompByProduct}>{reportRevenuePerProductCompare}</NavDropdown.Item>
               <NavDropdown.Item onClick={navigateSalesReportProfitAnnualByProduct}>{reportProfitPerProductAnnual}</NavDropdown.Item>
-              <NavDropdown.Item onClick={navigateSalesReportProfitAnnualCompByProduct}>{reportProfitPerProductAnnualCompare}</NavDropdown.Item>
             </NavDropdown>}
 
           {/* ******* ******* ******* HOSPITAL SYSTEM ******* ******* ********/}

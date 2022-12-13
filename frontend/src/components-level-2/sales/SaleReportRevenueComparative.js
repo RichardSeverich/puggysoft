@@ -3,6 +3,7 @@ import ReportGeneric from "./../generic/ReportGeneric";
 
 import { handleGetRequest } from "../../actions/HandleManager";
 import i18n from "../../i18n/i18n";
+import enumPaths from "./../../models/enumPaths";
 
 function SaleReportRevenueComparative () {
   function handleUpdateData (year, setReportData) {
@@ -14,6 +15,7 @@ function SaleReportRevenueComparative () {
       reportTitle={i18n.navBar.reportRevenueAnnualCompare}
       handleUpdateData={handleUpdateData}
       enableTwoYears={true}
+      pathNameOneOrTwoYears={enumPaths.SALES_REPORT_REVENUE}
     >
     </ReportGeneric>
   );

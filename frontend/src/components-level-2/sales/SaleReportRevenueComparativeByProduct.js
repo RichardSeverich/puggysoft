@@ -5,6 +5,7 @@ import ReportGeneric from "./../generic/ReportGeneric";
 
 import { handleGetRequest } from "../../actions/HandleManager";
 import i18n from "../../i18n/i18n";
+import enumPaths from "./../../models/enumPaths";
 
 function SaleReportRevenueComparativeByProduct () {
   const history = useHistory();
@@ -29,6 +30,7 @@ function SaleReportRevenueComparativeByProduct () {
       handleUpdateData={handleUpdateData}
       enableTwoYears={true}
       productData={productData}
+      pathNameOneOrTwoYears={enumPaths.SALES_REPORT_REVENUE_BY_PRODUCT}
     >
     </ReportGeneric>
   );

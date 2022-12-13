@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router";
 import PropTypes from "prop-types";
 import ChartVerticalBar from "./../../components-level-1/ChartVerticalBar";
 import ChartHorizontalBar from "./../../components-level-1/ChartHorizontalBar";
@@ -8,15 +9,18 @@ import i18n from "../../i18n/i18n";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import Form from "react-bootstrap/Form";
-import "./../css/all-four-divs-side-by-side.css";
+import "./../css/all-five-divs-side-by-side.css";
 import "./../css/all-forms-inline-block.css";
+import "./report-generic.css";
 
 function ReportGeneric ({
   handleUpdateData,
   reportTitle,
   enableTwoYears,
-  productData
+  productData,
+  pathNameOneOrTwoYears
 }) {
+  const history = useHistory();
   const [chartType, setChartType] = useState(enumChartType.CHART_VERTICAL_BAR);
   const [yearOne, setYearOne] = useState(2021);
   const [yearTwo, setYearTwo] = useState(enableTwoYears ? 2022 : null);
@@ -107,14 +111,27 @@ function ReportGeneric ({
     }
   }
 
+  function handleEnableDisableTwoYears () {
+    const message = enableTwoYears
+      ? i18n.commonReport.disableTwoYearsConfirmationMessage
+      : i18n.commonReport.enableTwoYearsConfirmationMessage;
+    const result = window.confirm(message);
+    if (result && pathNameOneOrTwoYears && pathNameOneOrTwoYears !== "") {
+      history.push({
+        pathname: pathNameOneOrTwoYears,
+        state: { productData: productData || undefined }
+      });
+    }
+  }
+
   return (
     <div>
       <Card>
         <Card.Header as='h3'>{reportTitle}</Card.Header>
-        {productData && <Card.Header as='h6'>{i18n.saleReport.productName} : {productData.name}</Card.Header>}
+        {productData !== null && <Card.Header as='h6'>{i18n.saleReport.productName} : {productData.name}</Card.Header>}
         <Card.Body>
           <div className="">
-            <div className="puggysoft-four-divs-side-by-side-child ">
+            <div className="puggysoft-five-divs-side-by-side-child ">
               <Form.Group>
                 <div className={"puggysoft-form-label"}>
                   <Form.Label>{i18n.commonReport.yearSelectionOne}</Form.Label>
@@ -132,7 +149,7 @@ function ReportGeneric ({
                 </div>
               </Form.Group>
             </div>
-            <div className="puggysoft-four-divs-side-by-side-child ">
+            <div className="puggysoft-five-divs-side-by-side-child ">
               <Form.Group>
                 <div className={"puggysoft-form-label"}>
                   <Form.Label>{i18n.commonReport.yearSelectionTwo}</Form.Label>
@@ -151,7 +168,7 @@ function ReportGeneric ({
                 </div>
               </Form.Group>
             </div>
-            <div className="puggysoft-four-divs-side-by-side-child ">
+            <div className="puggysoft-five-divs-side-by-side-child ">
               <Form.Group>
                 <div className={"puggysoft-form-label"}>
                   <Form.Label>
@@ -179,10 +196,24 @@ function ReportGeneric ({
                 </Form.Select></div>
               </Form.Group>
             </div>
-            <div className="puggysoft-four-divs-side-by-side-child ">
+            <div className="puggysoft-five-divs-side-by-side-child ">
+              <Form.Label></Form.Label>
+              <Form.Group>
+                <Button
+                  onClick={handleEnableDisableTwoYears}
+                  className={"enable-disable-two-years-button"}
+                  variant={enableTwoYears ? "danger" : "info"}
+                  type="button">
+                  {enableTwoYears ? i18n.commonReport.buttonDisableTwoYears : i18n.commonReport.buttonEnableTwoYears}
+                </Button>
+              </Form.Group>
+            </div>
+            <div className="puggysoft-five-divs-side-by-side-child ">
+              <Form.Label></Form.Label>
               <Form.Group>
                 <Button
                   onClick={handleUpdateReportData}
+                  className={"update-report-button"}
                   variant="primary"
                   type="button">
                   {i18n.commonReport.updateCharButton}
@@ -226,12 +257,14 @@ ReportGeneric.propTypes = {
   handleUpdateData: PropTypes.func,
   reportTitle: PropTypes.string,
   enableTwoYears: PropTypes.bool,
-  productData: PropTypes.object
+  productData: PropTypes.object,
+  pathNameOneOrTwoYears: PropTypes.string
 };
 
 ReportGeneric.defaultProps = {
   handleUpdateData: () => { },
   reportTitle: "Some title",
   enableTwoYears: false,
-  productData: {}
+  productData: null,
+  pathNameOneOrTwoYears: ""
 };
