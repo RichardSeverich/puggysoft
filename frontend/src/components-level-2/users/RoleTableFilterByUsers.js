@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router";
 import CommonTablePagination from "../../components-level-1/CommonTablePagination";
 import CommonLoading from "../../components-level-1/CommonLoading";
-import { handleFilterRequest, handleAddRequest, handleDeleteRequestNew } from "../../actions/HandleManager";
+import { handleFilterRequest, handleAddRequest, handleDeleteRequest } from "../../actions/HandleManager";
 import i18n from "../../i18n/i18n";
 import arrayDataFields from "../../models/users/arrayRoleDataFieldsByUser";
 import arrayColumns from "../../models/users/arrayRoleColumnsByUser";
@@ -107,7 +107,7 @@ function RoleTableFilterByUsers () {
   };
 
   const handleRemoveUserRole = function (roleData) {
-    handleDeleteRequestNew(`users-roles?idUser=${userSelected.id}&idRole=${roleData.id}`, afterDeleteUserRole);
+    handleDeleteRequest(`users-roles?idUser=${userSelected.id}&idRole=${roleData.id}`, afterDeleteUserRole);
   };
 
   const tableArrayCustomRowButtons = [

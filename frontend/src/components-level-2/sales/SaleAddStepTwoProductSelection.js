@@ -4,7 +4,7 @@ import { useHistory } from "react-router";
 import Button from "react-bootstrap/Button";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
-import { handleFilterRequest, handleAddRequest, handleDeleteRequestNew } from "../../actions/HandleManager";
+import { handleFilterRequest, handleAddRequest, handleDeleteRequest } from "../../actions/HandleManager";
 import ProductTableSuperReducedGeneric from "./ProductTableSuperReducedGeneric";
 import i18n from "../../i18n/i18n";
 import CommonLoading from "../../components-level-1/CommonLoading";
@@ -104,7 +104,7 @@ function SaleAddStepTwoProductSelection () {
     // NOTE: The STOCK filed of this ${productData} object is the quantity of sales_products.
     setIsRequestInProgress(true);
     const idRelation = productData.id;
-    handleDeleteRequestNew(`sales-products/${idRelation}`, handleAfterDeleteProductFromSale, handleAfterDeleteProductFromSale);
+    handleDeleteRequest(`sales-products/${idRelation}`, handleAfterDeleteProductFromSale, handleAfterDeleteProductFromSale);
   }
 
   function fixArrayData (arrayProducts) {
@@ -146,7 +146,7 @@ function SaleAddStepTwoProductSelection () {
 
   function handleDelete () {
     setIsRequestInProgress(true);
-    handleDeleteRequestNew(`sales/${saleData.id}`,
+    handleDeleteRequest(`sales/${saleData.id}`,
       handleAfterDeleteOnSuccess,
       handleAfterDeleteOnFail,
       handleAfterDeleteOnFail);

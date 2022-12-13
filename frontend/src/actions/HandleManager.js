@@ -3,7 +3,6 @@ import handleGetRequest from "./HandleGetRequest";
 import handleAddRequest from "./HandleAddRequest";
 import handleEditRequest from "./HandleEditRequest";
 import handleDeleteRequest from "./HandleDeleteRequest";
-import handleDeleteRequestNew from "./HandleDeleteRequestNew";
 import handleLoginRequest from "./HandleLoginRequest";
 import handleFilterRequest from "./HandleFilterRequest";
 import handleAddFileRequest from "./HandleAddFileRequest";
@@ -48,7 +47,6 @@ export {
   handleAddRequest,
   handleEditRequest,
   handleDeleteRequest,
-  handleDeleteRequestNew,
   handleLoginRequest,
   handleFilterRequest,
   handleAddFileRequest

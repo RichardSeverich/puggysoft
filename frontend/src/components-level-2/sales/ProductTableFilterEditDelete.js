@@ -35,7 +35,7 @@ function ProductTableFilterEditDelete () {
   }
 
   function handleDelete (data) {
-    handleDeleteRequest("products/", data.id);
+    handleDeleteRequest(`products/${data.id}`, undefined, undefined, undefined, true);
   }
 
   const tableArrayCustomRowButtons = [

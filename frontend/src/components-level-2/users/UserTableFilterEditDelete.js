@@ -29,7 +29,7 @@ function UserTableFilterEditDelete () {
   }
 
   function handleDelete (data) {
-    handleDeleteRequest("users/", data.id);
+    handleDeleteRequest(`users/${data.id}`, undefined, undefined, undefined, true);
   }
 
   const tableArrayCustomRowButtons = [

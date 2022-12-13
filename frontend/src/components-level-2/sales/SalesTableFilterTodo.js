@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useHistory } from "react-router";
 
 import SalesTableFilterGeneric from "./SalesTableFilterGeneric";
-import { handleDeleteRequestNew } from "../../actions/HandleManager";
+import { handleDeleteRequest } from "../../actions/HandleManager";
 import enumPaths from "./../../models/enumPaths";
 import i18n from "../../i18n/i18n";
 import enumSaleStatus from "./../../models/sales/enumSaleStatus";
@@ -20,7 +20,7 @@ function SalesTableFilterTodo () {
 
   function handleDelete (data) {
     setIsRequestInProgress(true);
-    handleDeleteRequestNew(`sales/${data.id}`, handleAfterDelete, handleAfterDelete);
+    handleDeleteRequest(`sales/${data.id}`, handleAfterDelete, handleAfterDelete);
   }
 
   function handleDetails (saleData) {
