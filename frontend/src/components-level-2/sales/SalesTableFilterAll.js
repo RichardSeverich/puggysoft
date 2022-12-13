@@ -7,6 +7,7 @@ import enumPaths from "./../../models/enumPaths";
 import i18n from "../../i18n/i18n";
 import enumSaleStatus from "./../../models/sales/enumSaleStatus";
 import CommonLoading from "../../components-level-1/CommonLoading";
+import enumSaleTableViewType from "./../../models/sales/enumSaleTableViewType";
 
 function SalesTableFilterAll () {
   const tableTitle = i18n.saleTable.titleSelectionToEditDelete;
@@ -26,7 +27,7 @@ function SalesTableFilterAll () {
     history.push({
       pathname: enumPaths.SALES_REGISTRATION_STEP_TWO,
       state: {
-        data: { saleData }
+        data: { saleData, saleTableViewType: enumSaleTableViewType.FOR_SELLER }
       }
     });
   }

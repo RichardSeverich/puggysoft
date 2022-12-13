@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router";
 
+import Button from "react-bootstrap/Button";
+import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+import Tooltip from "react-bootstrap/Tooltip";
 import { handleFilterRequest, handleAddRequest, handleDeleteRequestNew } from "../../actions/HandleManager";
 import ProductTableSuperReducedGeneric from "./ProductTableSuperReducedGeneric";
 import i18n from "../../i18n/i18n";
@@ -10,10 +13,13 @@ import arraySaleProductColumnsTwo from "../../models/sales/arrayProductColumnsRe
 import Form from "react-bootstrap/Form";
 import Card from "react-bootstrap/Card";
 import enumWebElements from "./../../models/enumWebElements";
+import enumSaleTableViewType from "../../models/sales/enumSaleTableViewType";
+import enumPaths from "./../../models/enumPaths";
 
 import "./../css/all-two-divs-side-by-side.css";
 import "./../css/all-six-divs-side-by-side.css";
 import "./../css/all-forms-inline-block.css";
+import "./sale-add-step-two-product-selection.css";
 
 function SaleAddStepTwoProductSelection () {
   const history = useHistory();
@@ -26,12 +32,12 @@ function SaleAddStepTwoProductSelection () {
   const [clientCash, setClientCash] = useState(0);
   const [clientCashChange, setClientCashChange] = useState(0);
 
-  const { saleData } = history &&
+  const { saleData, saleTableViewType } = history &&
     history.location !== undefined &&
     history.location.state !== undefined &&
     history.location.state.data !== undefined
     ? history.location.state.data
-    : { saleData: undefined };
+    : { saleData: undefined, saleTableViewType: undefined };
 
   const [isRequestInProgress, setIsRequestInProgress] = useState(false);
 
@@ -123,6 +129,29 @@ function SaleAddStepTwoProductSelection () {
     }
   ];
 
+  function handleAfterDeleteOnSuccess (responseData) {
+    let pathName = enumPaths.SALES_SALES_TABLE_FILTER_TO_EDIT_DELETE_DETAILS;
+    if (saleTableViewType === enumSaleTableViewType.FOR_CASHIER) {
+      pathName = enumPaths.SALES_SALES_TABLE_FILTER_TO_EDIT_DELETE_DETAILS_TODO;
+    } else if (saleTableViewType === enumSaleTableViewType.FOR_DISPATCHER) {
+      pathName = enumPaths.SALES_SALES_TABLE_FILTER_TO_EDIT_DELETE_DETAILS_IN_PROGRESS;
+    }
+    history.push({
+      pathname: pathName
+    });
+  }
+  function handleAfterDeleteOnFail (response) {
+    setIsRequestInProgress(false);
+  }
+
+  function handleDelete () {
+    setIsRequestInProgress(true);
+    handleDeleteRequestNew(`sales/${saleData.id}`,
+      handleAfterDeleteOnSuccess,
+      handleAfterDeleteOnFail,
+      handleAfterDeleteOnFail);
+  }
+
   if (isRequestInProgress || !saleData) {
     return <CommonLoading />;
   }
@@ -130,8 +159,8 @@ function SaleAddStepTwoProductSelection () {
   return (
     <div>
       <Card>
-        <Card.Header as='h3'>{generalTitle}</Card.Header>
-        <Card.Body>
+        <Card.Header as='h3'>{generalTitle} : {saleData.id}</Card.Header>
+        <Card.Body className="sale-section-one">
           <div className="">
             <div className="puggysoft-six-divs-side-by-side-child">
               <Form.Group>
@@ -173,6 +202,46 @@ function SaleAddStepTwoProductSelection () {
                 <div className={"puggysoft-form-label"}><Form.Label>{i18n.saleProductTable.clientCashChange}</Form.Label></div>
                 <div className={"puggysoft-form-input"}><Form.Control value={clientCashChange} disabled /></div>
               </Form.Group>
+            </div>
+          </div>
+        </Card.Body>
+        <Card.Body className="sale-section-two">
+          <div className="">
+            <div className="puggysoft-six-divs-side-by-side-child">
+              <Button
+                variant="danger sale-button"
+                type="button"
+                onClick={handleDelete}
+              >
+                {i18n.saleProductTable.buttonDeleteSale}</Button>
+            </div>
+            <div className="puggysoft-six-divs-side-by-side-child">
+              {saleTableViewType !== enumSaleTableViewType.FOR_SELLER &&
+                <Button
+                  variant="success sale-button"
+                  type="button"
+                >{i18n.saleProductTable.buttonGenerateTicket}</Button>
+              }
+            </div>
+            <div className="puggysoft-six-divs-side-by-side-child">
+              {saleTableViewType !== enumSaleTableViewType.FOR_SELLER &&
+                <OverlayTrigger
+                  placement="bottom"
+                  delay={{ show: 60, hide: 256 }}
+                  overlay={<Tooltip id="button-tooltip">
+                    {i18n.saleProductTable.buttonChangeSaleStateToolTip}: {saleData.status}
+                  </Tooltip>}
+                >
+                  <Button variant="info sale-button" type="button">{i18n.saleProductTable.buttonChangeSaleState}</Button>
+                </OverlayTrigger>
+              }
+            </div>
+            <div className="puggysoft-six-divs-side-by-side-child">
+              {/* <Button variant="secondary sale-button" type="button">{i18n.saleProductTable.buttonGenerateBill}</Button> */}
+            </div>
+            <div className="puggysoft-six-divs-side-by-side-child">
+            </div>
+            <div className="puggysoft-six-divs-side-by-side-child">
             </div>
           </div>
         </Card.Body>
