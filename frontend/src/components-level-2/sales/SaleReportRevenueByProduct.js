@@ -16,9 +16,9 @@ function SaleReportRevenueByProduct () {
     ? history.location.state.productData
     : undefined;
 
-  function handleUpdateData (year, setReportData) {
+  function handleUpdateData (year, setReportData, onRequestFail) {
     if (productData && productData.id) {
-      handleGetRequest(`sales-report/revenue-by-product?year=${year}&idProduct=${productData.id}`, setReportData);
+      handleGetRequest(`sales-report/revenue-by-product?year=${year}&idProduct=${productData.id}`, setReportData, onRequestFail);
     } else {
       alert(i18n.saleErrorMessages.productNotSelected);
     }

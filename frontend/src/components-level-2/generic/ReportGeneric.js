@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router";
 import PropTypes from "prop-types";
+import CommonLoading from "../../components-level-1/CommonLoading";
 import ChartVerticalBar from "./../../components-level-1/ChartVerticalBar";
 import ChartHorizontalBar from "./../../components-level-1/ChartHorizontalBar";
 import ChartLine from "./../../components-level-1/ChartLine";
@@ -52,12 +53,16 @@ function ReportGeneric ({
         }
       ];
       if (enableTwoYears) {
-        handleUpdateData(yearTwo, updateReportTwo);
+        handleUpdateData(yearTwo, updateReportTwo, onRequestFail);
         datasetAux = newDatasets;
       } else {
         setDatasets(newDatasets);
       }
     }
+  }
+
+  function onRequestFail () {
+    setDatasets([]);
   }
 
   function updateReportTwo (reportData) {
@@ -100,13 +105,15 @@ function ReportGeneric ({
         yearTwo > 3000) {
         alert(i18n.commonReport.yearValidation);
       } else {
-        handleUpdateData(yearOne, updateReportOne);
+        setDatasets(null);
+        handleUpdateData(yearOne, updateReportOne, onRequestFail);
       }
     } else {
       if (yearOne < 1900 || yearOne > 3000) {
         alert(i18n.commonReport.yearValidation);
       } else {
-        handleUpdateData(yearOne, updateReportOne);
+        setDatasets(null);
+        handleUpdateData(yearOne, updateReportOne, onRequestFail);
       }
     }
   }
@@ -122,6 +129,10 @@ function ReportGeneric ({
         state: { productData: productData || undefined }
       });
     }
+  }
+
+  if (datasets === null) {
+    return <CommonLoading />;
   }
 
   return (
