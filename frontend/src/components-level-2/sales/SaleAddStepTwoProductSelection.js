@@ -154,13 +154,15 @@ function SaleAddStepTwoProductSelection () {
   }
 
   function handleChangeSaleStatus () {
-    setIsRequestInProgress(true);
     const message = i18n.saleProductTable.buttonChangeSaleStatusQuestion;
     const newSaleData = { ...saleData };
+    const username = window.sessionStorage.getItem("username");
+    newSaleData.updatedBy = username;
     const result = window.confirm(message);
     if (result &&
       (saleData.status === i18n.saleStatus.todo ||
         saleData.status === i18n.saleStatus.inProgress)) {
+      setIsRequestInProgress(true);
       if (saleData.status === i18n.saleStatus.todo) {
         newSaleData.status = enumSaleStatus.IN_PROGRESS;
       } else if (saleData.status === i18n.saleStatus.inProgress) {
@@ -171,6 +173,10 @@ function SaleAddStepTwoProductSelection () {
         saleData.id,
         handleAfterOnSuccess);
     }
+  }
+
+  function handleGenerateTicket () {
+    console.log("Generate Ticket");
   }
 
   if (isRequestInProgress || !saleData) {
@@ -241,6 +247,7 @@ function SaleAddStepTwoProductSelection () {
                 <Button
                   variant="success sale-button"
                   type="button"
+                  onClick={handleGenerateTicket}
                 >{i18n.saleProductTable.buttonGenerateTicket}</Button>
               }
             </div>
@@ -250,7 +257,10 @@ function SaleAddStepTwoProductSelection () {
                   placement="bottom"
                   delay={{ show: 60, hide: 256 }}
                   overlay={<Tooltip id="button-tooltip">
-                    {i18n.saleProductTable.buttonChangeSaleStateToolTip}: {saleData.status}
+                    <div className='new-line'>{i18n.saleProductTable.buttonChangeSaleStateToolTip}: {saleData.status}</div>
+                    <div className='new-line'>{i18n.saleProductTable.buttonChangeSaleStateToolTipNext}: {
+                      saleData.status === i18n.saleStatus.todo ? i18n.saleStatus.inProgress : i18n.saleStatus.done}
+                    </div>
                   </Tooltip>}
                 >
                   <Button

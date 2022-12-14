@@ -16,6 +16,7 @@ const saleProductTable = {
   buttonGenerateTicket: "Generar ficha",
   buttonChangeSaleState: "Cambiar estado",
   buttonChangeSaleStateToolTip: "Estado actual",
+  buttonChangeSaleStateToolTipNext: "Estado proximo",
   buttonChangeSaleStatusQuestion: "Esta seguro que quiere cambiar el estado de la venta",
   buttonGenerateBill: "Generar factura"
 };
