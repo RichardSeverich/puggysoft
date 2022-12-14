@@ -1,10 +1,12 @@
 import requestManager from "./../api/RequestManager";
 import messageManager from "./HandleErrorMessages";
 
-const handleFilterRequest = (endpoint, body, callback) => {
+const handleFilterRequest = (endpoint, body, callbakOnSuccess) => {
   requestManager.post(endpoint, body, (response) => {
     if (response && response.status === 200) {
-      callback(response.data);
+      if (callbakOnSuccess && typeof callbakOnSuccess === "function") {
+        callbakOnSuccess(response.data);
+      }
     } else {
       messageManager.commonMessages(response);
     }

@@ -7,10 +7,11 @@ import CommonTextbox from "../../components-level-1/CommonTextbox";
 import i18n from "../../i18n/i18n";
 import useInput from "./../../hooks/useInput";
 import { handleValidation, classNameFormTextNew } from "./../../validations/users/HandleUserFormValidations";
-import { handleEditRequest, handleAddFileRequest } from "../../actions/HandleManager";
+import { handleGetRequest, handleEditRequest, handleAddFileRequest } from "../../actions/HandleManager";
 import enumSex from "./../../models/users/enumSex";
 import enumInputType from "./../../models/enumInputType";
 import appUrlConfig from "./../../tools/appUrlConfig";
+import CommonLoading from "./../../components-level-1/CommonLoading";
 
 import "./user-details.css";
 
@@ -24,6 +25,7 @@ function UserDetails (props) {
   const { children } = props;
 
   const [classNameFormText, setClassNameFormText] = useState(classNameFormTextNew);
+  const [isRequestInProgress, setIsRequestInProgress] = useState(false);
   console.log(classNameFormText);
   // const [isProgressRequest, setIsProgressRequest] = useState(false);
 
@@ -95,10 +97,18 @@ function UserDetails (props) {
       active: valueStatus,
       createdBy: valueCreatedBy,
       updatedBy: username,
-      emailVerified: valueEmailVerified
+      emailVerified: valueEmailVerified,
+      image: null
     };
+    if (valuePictureToShow !== null) { // means that we have image.
+      body.image = valuePictureToShow;
+    }
     return body;
   };
+
+  function finishLoading () {
+    setIsRequestInProgress(false);
+  }
 
   const handleOnChangePicture = (event) => {
     // file.name file.size file.type
@@ -111,23 +121,56 @@ function UserDetails (props) {
   };
 
   const handleAddImage = () => {
+    setIsRequestInProgress(true);
     if (valuePicture !== null) {
-      handleAddFileRequest("users/picture/", valuePicture, userData.id, null, true);
+      handleAddFileRequest(
+        "users/picture/",
+        valuePicture,
+        userData.id,
+        handleAfterUpdatePictureOnSuccess,
+        true,
+        handleAfterEditOnFail);
     }
   };
 
-  const handleAfterEdit = (response) => {
-    if (response.data && response.data.error) {
-      resetValues();
-    }
+  const handleAfterEditOnFail = (response) => {
+    resetValues();
+  };
+
+  const handleAfterUpdatePictureOnSuccess = function () {
+    handleGetRequest(`users/${userData.id}`, updateNewValues);
+  };
+
+  const updateNewValues = function (newUserData) {
+    setValueUsername(newUserData.username);
+    setValuePassword(newUserData.password);
+    setValueDni(newUserData.dni);
+    setValueName(newUserData.name);
+    setValueSecondName(newUserData.secondName);
+    setValueLastName(newUserData.lastName);
+    setValueSecondLastName(newUserData.secondLastName);
+    setValueBirthDate(newUserData.birthDate);
+    setValueAge(newUserData.age);
+    setValueSex(newUserData.sex);
+    setValueOccupation(newUserData.occupation);
+    setValueTelephone(newUserData.telephone);
+    setValueAddress(newUserData.address);
+    setValueEmail(newUserData.email);
+    setValueStatus(newUserData.active);
+    setValuePicture(null);
+    setValuePicturePath("");
+    setValuePictureToShow(newUserData.image);
+    userData.image = newUserData.image;
+    finishLoading();
   };
 
   const handleAdd = () => {
     if (userData && userData.id) {
+      setIsRequestInProgress(true);
       const body = getBody();
       const isValid = handleValidation(body, setClassNameFormText);
       if (isValid) {
-        handleEditRequest("users/", body, userData.id, handleAfterEdit);
+        handleEditRequest("users/", body, userData.id, finishLoading, handleAfterEditOnFail);
       } else {
         resetValues();
         alert(i18n.errorMessages.validationError);
@@ -164,11 +207,15 @@ function UserDetails (props) {
   const fileName = "user-default.jpg";
   let imageUrl = `${appUrlConfig.PROTOCOL}//${appUrlConfig.HOSTNAME}:${appUrlConfig.PORT}/${fileName}`;
   if (valuePictureToShow && valuePictureToShow !== null) {
-    if (valuePictureToShow.includes("blob:")) {
+    if (valuePictureToShow.includes("blob:")) { // means that the image was changed.
       imageUrl = valuePictureToShow;
     } else {
-      imageUrl = `data:image/jpeg;base64, ${valuePictureToShow}`;
+      imageUrl = `data:image/jpeg;base64, ${valuePictureToShow}`; // means that we have image.
     }
+  }
+
+  if (isRequestInProgress) {
+    return <CommonLoading></CommonLoading>;
   }
 
   return (

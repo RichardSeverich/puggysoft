@@ -4,7 +4,7 @@ import { useHistory } from "react-router";
 import Button from "react-bootstrap/Button";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
-import { handleFilterRequest, handleAddRequest, handleDeleteRequest } from "../../actions/HandleManager";
+import { handleFilterRequest, handleAddRequest, handleDeleteRequest, handleEditRequest } from "../../actions/HandleManager";
 import ProductTableSuperReducedGeneric from "./ProductTableSuperReducedGeneric";
 import i18n from "../../i18n/i18n";
 import CommonLoading from "../../components-level-1/CommonLoading";
@@ -14,6 +14,7 @@ import Form from "react-bootstrap/Form";
 import Card from "react-bootstrap/Card";
 import enumWebElements from "./../../models/enumWebElements";
 import enumSaleTableViewType from "../../models/sales/enumSaleTableViewType";
+import enumSaleStatus from "../../models/sales/enumSaleStatus";
 import enumPaths from "./../../models/enumPaths";
 
 import "./../css/all-two-divs-side-by-side.css";
@@ -129,7 +130,7 @@ function SaleAddStepTwoProductSelection () {
     }
   ];
 
-  function handleAfterDeleteOnSuccess (responseData) {
+  function handleAfterOnSuccess (responseData) {
     let pathName = enumPaths.SALES_SALES_TABLE_FILTER_TO_EDIT_DELETE_DETAILS;
     if (saleTableViewType === enumSaleTableViewType.FOR_CASHIER) {
       pathName = enumPaths.SALES_SALES_TABLE_FILTER_TO_EDIT_DELETE_DETAILS_TODO;
@@ -140,16 +141,36 @@ function SaleAddStepTwoProductSelection () {
       pathname: pathName
     });
   }
-  function handleAfterDeleteOnFail (response) {
+  function handleAfterOnFail (response) {
     setIsRequestInProgress(false);
   }
 
   function handleDelete () {
     setIsRequestInProgress(true);
     handleDeleteRequest(`sales/${saleData.id}`,
-      handleAfterDeleteOnSuccess,
-      handleAfterDeleteOnFail,
-      handleAfterDeleteOnFail);
+      handleAfterOnSuccess,
+      handleAfterOnFail,
+      handleAfterOnFail);
+  }
+
+  function handleChangeSaleStatus () {
+    setIsRequestInProgress(true);
+    const message = i18n.saleProductTable.buttonChangeSaleStatusQuestion;
+    const newSaleData = { ...saleData };
+    const result = window.confirm(message);
+    if (result &&
+      (saleData.status === i18n.saleStatus.todo ||
+        saleData.status === i18n.saleStatus.inProgress)) {
+      if (saleData.status === i18n.saleStatus.todo) {
+        newSaleData.status = enumSaleStatus.IN_PROGRESS;
+      } else if (saleData.status === i18n.saleStatus.inProgress) {
+        newSaleData.status = enumSaleStatus.DONE;
+      }
+      handleEditRequest("sales/",
+        newSaleData,
+        saleData.id,
+        handleAfterOnSuccess);
+    }
   }
 
   if (isRequestInProgress || !saleData) {
@@ -232,7 +253,13 @@ function SaleAddStepTwoProductSelection () {
                     {i18n.saleProductTable.buttonChangeSaleStateToolTip}: {saleData.status}
                   </Tooltip>}
                 >
-                  <Button variant="info sale-button" type="button">{i18n.saleProductTable.buttonChangeSaleState}</Button>
+                  <Button
+                    variant="info sale-button"
+                    type="button"
+                    onClick={handleChangeSaleStatus}
+                  >
+                    {i18n.saleProductTable.buttonChangeSaleState}
+                  </Button>
                 </OverlayTrigger>
               }
             </div>

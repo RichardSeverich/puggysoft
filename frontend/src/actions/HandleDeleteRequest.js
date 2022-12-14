@@ -14,14 +14,14 @@ const handleDelete = (
     requestManager.remove(endpoint, (response) => {
       messageManager.deleteMessages(response);
       if (response && response.status === 200) {
-        if (callbakOnSuccess) {
+        if (callbakOnSuccess && typeof callbakOnSuccess === "function") {
           callbakOnSuccess(response.data);
         }
         if (reloadOnSucess) {
           window.location.reload();
         }
       } else {
-        if (callbackOnFail) {
+        if (callbackOnFail && typeof callbackOnFail === "function") {
           callbackOnFail(response);
         }
       }

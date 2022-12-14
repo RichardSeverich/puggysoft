@@ -4,6 +4,7 @@ import { useHistory } from "react-router";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
+import CommonLoading from "./../../components-level-1/CommonLoading";
 import i18n from "./../../i18n/i18n";
 import useInput from "./../../hooks/useInput";
 import appUrlConfig from "./../../tools/appUrlConfig";
@@ -18,6 +19,7 @@ function ProductForm (props) {
   const isEditDefaultValue = history && history.location && history.location.state;
   const [isEdit, setIsEdit] = useState(isEditDefaultValue);
   const [classNameFormText, setClassNameFormText] = useState(classNameFormTextNew);
+  const [isRequestInProgress, setIsRequestInProgress] = useState(false);
 
   // CONFIGURE IMAGE
   const fileName = "products-default.jpg";
@@ -100,6 +102,10 @@ function ProductForm (props) {
     return body;
   };
 
+  function finishLoading () {
+    setIsRequestInProgress(false);
+  }
+
   const handleAfterAdd = function (newProductId) {
     handleAddImage(newProductId);
     handleReset();
@@ -120,6 +126,7 @@ function ProductForm (props) {
     const body = getBody();
     const isValid = handleValidation(body, setClassNameFormText);
     if (isValid) {
+      setIsRequestInProgress(true);
       if (isEdit) {
         handleEditRequest("products/", body, id, handleAfterEdit);
       } else {
@@ -142,7 +149,14 @@ function ProductForm (props) {
   const handleAddImage = (productId) => {
     // const pictureFile = { ...valuePicture }
     if (valuePicture !== null) {
-      handleAddFileRequest("products/picture/", valuePicture, productId, null, false);
+      handleAddFileRequest("products/picture/",
+        valuePicture,
+        productId,
+        finishLoading,
+        false,
+        finishLoading);
+    } else {
+      finishLoading();
     }
   };
 
@@ -151,6 +165,10 @@ function ProductForm (props) {
     handleValidation(body, setClassNameFormText);
   }, [valueName, valuePurchasePrice, valueSalePrice, valueStock,
     valueDescription, valueLocation, valueMinimumStock]);
+
+  if (isRequestInProgress) {
+    return <CommonLoading></CommonLoading>;
+  }
 
   return (
     <div className="puggysoft-product-form" >

@@ -11,6 +11,7 @@ import enumSex from "./../../models/users/enumSex";
 import { handleAddRequest, handleEditRequest, handleAddFileRequest } from "../../actions/HandleManager";
 import { handleValidation, classNameFormTextNew } from "./../../validations/users/HandleUserFormValidations";
 import appUrlConfig from "./../../tools/appUrlConfig";
+import CommonLoading from "./../../components-level-1/CommonLoading";
 
 import "./../css/all-forms.css";
 import "./user-form-styles.css";
@@ -22,6 +23,7 @@ function UserForm (props) {
   const [classNameFormText, setClassNameFormText] = useState(classNameFormTextNew);
   const title = props && props.title ? props.title : i18n.userForm.title;
   const { beforeAdd, afterAdd, showMessageOnSuccess } = props;
+  const [isRequestInProgress, setIsRequestInProgress] = useState(false);
 
   // Put default values:
   const id = isEdit && isEdit.data.id !== null ? isEdit.data.id : "";
@@ -124,7 +126,9 @@ function UserForm (props) {
   const handleAddImage = (userId) => {
     // const pictureFile = { ...valuePicture }
     if (valuePicture !== null) {
-      handleAddFileRequest("users/picture/", valuePicture, userId, null, false);
+      handleAddFileRequest("users/picture/", valuePicture, userId, finishLoading, false, finishLoading);
+    } else {
+      finishLoading();
     }
   };
 
@@ -154,7 +158,8 @@ function UserForm (props) {
       active: valueStatus,
       emailVerified,
       createdBy: username,
-      updatedBy: username
+      updatedBy: username,
+      image: null
     };
     if (userImage !== null) {
       body.image = userImage;
@@ -167,6 +172,7 @@ function UserForm (props) {
     const body = getBody();
     const isValid = handleValidation(body, setClassNameFormText);
     if (isValid) {
+      setIsRequestInProgress(true);
       if (isEdit) {
         handleEditRequest("users/", body, id, handleAfterEdit);
       } else {
@@ -183,6 +189,10 @@ function UserForm (props) {
       alert(i18n.errorMessages.validationError);
     }
   };
+
+  function finishLoading () {
+    setIsRequestInProgress(false);
+  }
 
   const handleUploadPicture = (event) => {
     // file.name file.size file.type
@@ -201,6 +211,10 @@ function UserForm (props) {
 
   const classNameItemLabel = "puggysoft-form-item-label";
   const classNameItemInput = "puggysoft-form-item-input";
+
+  if (isRequestInProgress) {
+    return <CommonLoading></CommonLoading>;
+  }
 
   return (
     <div className="puggysoft-user-form" >
