@@ -41,6 +41,14 @@ function SaleAddStepTwoProductSelection () {
     ? history.location.state.data
     : { saleData: undefined, saleTableViewType: undefined };
 
+  if (saleData && saleData.status && saleData.status === i18n.saleStatus.todo) {
+    saleData.status = enumSaleStatus.TODO;
+  } else if (saleData && saleData.status && saleData.status === i18n.saleStatus.inProgress) {
+    saleData.status = enumSaleStatus.IN_PROGRESS;
+  } else if (saleData && saleData.status && saleData.status === i18n.saleStatus.done) {
+    saleData.status = enumSaleStatus.DONE;
+  }
+
   const [isRequestInProgress, setIsRequestInProgress] = useState(false);
 
   // functions to add products to a sale.
@@ -164,15 +172,9 @@ function SaleAddStepTwoProductSelection () {
     const username = window.sessionStorage.getItem("username");
     newSaleData.updatedBy = username;
     const result = window.confirm(message);
-    if (result &&
-      (saleData.status === i18n.saleStatus.todo ||
-        saleData.status === i18n.saleStatus.inProgress)) {
+    if (result) {
       setIsRequestInProgress(true);
-      if (saleData.status === i18n.saleStatus.todo) {
-        newSaleData.status = enumSaleStatus.IN_PROGRESS;
-      } else if (saleData.status === i18n.saleStatus.inProgress) {
-        newSaleData.status = enumSaleStatus.DONE;
-      }
+      newSaleData.status = getSaleStatusToRequestNext(newSaleData.status);
       handleEditRequest("sales/",
         newSaleData,
         saleData.id,
@@ -186,6 +188,42 @@ function SaleAddStepTwoProductSelection () {
 
   if (isRequestInProgress || !saleData) {
     return <CommonLoading />;
+  }
+
+  function getSaleStatusToShow (someSaleStatus) {
+    if (someSaleStatus === enumSaleStatus.TODO) {
+      return i18n.saleStatus.todo;
+    } else if (someSaleStatus === enumSaleStatus.IN_PROGRESS) {
+      return i18n.saleStatus.inProgress;
+    } else if (someSaleStatus === enumSaleStatus.DONE) {
+      return i18n.saleStatus.done;
+    } else {
+      return someSaleStatus;
+    }
+  }
+
+  function getSaleStatusToShowNext (someSaleStatus) {
+    if (someSaleStatus === enumSaleStatus.TODO) {
+      return i18n.saleStatus.inProgress;
+    } else if (someSaleStatus === enumSaleStatus.IN_PROGRESS) {
+      return i18n.saleStatus.done;
+    } else if (someSaleStatus === enumSaleStatus.DONE) {
+      return i18n.saleStatus.todo;
+    } else {
+      return someSaleStatus;
+    }
+  }
+
+  function getSaleStatusToRequestNext (someSaleStatus) {
+    if (someSaleStatus === enumSaleStatus.TODO) {
+      return enumSaleStatus.IN_PROGRESS;
+    } else if (someSaleStatus === enumSaleStatus.IN_PROGRESS) {
+      return enumSaleStatus.DONE;
+    } else if (someSaleStatus === enumSaleStatus.DONE) {
+      return i18n.saleStatus.TODO;
+    } else {
+      return someSaleStatus;
+    }
   }
 
   return (
@@ -239,16 +277,20 @@ function SaleAddStepTwoProductSelection () {
         </Card.Body>
         <Card.Body className="sale-section-two">
           <div className="">
+            {(saleTableViewType === enumSaleTableViewType.FOR_CASHIER ||
+              saleTableViewType === enumSaleTableViewType.FOR_SELLER) &&
+              <div className="puggysoft-six-divs-side-by-side-child">
+                <Button
+                  variant="danger sale-button"
+                  type="button"
+                  onClick={handleDelete}
+                >
+                  {i18n.saleProductTable.buttonDeleteSale}</Button>
+              </div>}
             <div className="puggysoft-six-divs-side-by-side-child">
-              <Button
-                variant="danger sale-button"
-                type="button"
-                onClick={handleDelete}
-              >
-                {i18n.saleProductTable.buttonDeleteSale}</Button>
-            </div>
-            <div className="puggysoft-six-divs-side-by-side-child">
-              {saleTableViewType !== enumSaleTableViewType.FOR_SELLER &&
+              {(saleTableViewType === enumSaleTableViewType.FOR_CASHIER ||
+                saleTableViewType === enumSaleTableViewType.FOR_DISPATCHER
+              ) &&
                 <Button
                   variant="success sale-button"
                   type="button"
@@ -257,14 +299,18 @@ function SaleAddStepTwoProductSelection () {
               }
             </div>
             <div className="puggysoft-six-divs-side-by-side-child">
-              {saleTableViewType !== enumSaleTableViewType.FOR_SELLER &&
+              {(saleTableViewType === enumSaleTableViewType.FOR_CASHIER ||
+                saleTableViewType === enumSaleTableViewType.FOR_DISPATCHER
+              ) &&
                 <OverlayTrigger
                   placement="bottom"
                   delay={{ show: 60, hide: 256 }}
                   overlay={<Tooltip id="button-tooltip">
-                    <div className='new-line'>{i18n.saleProductTable.buttonChangeSaleStateToolTip}: {saleData.status}</div>
-                    <div className='new-line'>{i18n.saleProductTable.buttonChangeSaleStateToolTipNext}: {
-                      saleData.status === i18n.saleStatus.todo ? i18n.saleStatus.inProgress : i18n.saleStatus.done}
+                    <div className='new-line'>
+                      {i18n.saleProductTable.buttonChangeSaleStateToolTip}: {getSaleStatusToShow(saleData.status)}
+                    </div>
+                    <div className='new-line'>
+                      {i18n.saleProductTable.buttonChangeSaleStateToolTipNext}: {getSaleStatusToShowNext(saleData.status)}
                     </div>
                   </Tooltip>}
                 >

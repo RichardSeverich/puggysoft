@@ -47,6 +47,7 @@ const navBar = {
   // Orders
   orderAdmin: "Adm. Pedidos",
   orderRegistration: "Registrar Pedido",
+  orderRegistrationClient: "Registrar Pedido Cliente",
   orderShowTable: "Mostrar Pedidos (Tabla)",
   orderShowCard: "Mostrar Pedidos (Tarjetas)",
   // Dispatch

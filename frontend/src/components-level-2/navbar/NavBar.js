@@ -122,8 +122,11 @@ function NavBar () {
   const navigateSalesTableFilterInProgress = () => {
     history.push(enumPaths.SALES_SALES_TABLE_FILTER_TO_EDIT_DELETE_DETAILS_IN_PROGRESS);
   };
-  const navigateSalesRegistrationStepOne = () => {
-    history.push(enumPaths.SALES_REGISTRATION_STEP_ONE);
+  const navigateSalesRegistrationStepOneSeller = () => {
+    history.push(enumPaths.SALES_REGISTRATION_STEP_ONE_SELLER);
+  };
+  const navigateSalesRegistrationStepOneCashier = () => {
+    history.push(enumPaths.SALES_REGISTRATION_STEP_ONE_CASHIER);
   };
   const navigateSalesReportQuantityAnnual = () => {
     history.push(enumPaths.SALES_REPORT_QUANTITY);
@@ -325,7 +328,7 @@ function NavBar () {
             </NavDropdown>}
           {userRoles.includes(enumRoles.SALES_ADMIN_RESTAURANT) &&
             <NavDropdown title={orderAdminLabel}>
-              <NavDropdown.Item onClick={navigateGeneric}>{orderRegistrationLabel}</NavDropdown.Item>
+              <NavDropdown.Item onClick={navigateSalesRegistrationStepOneCashier}>{orderRegistrationLabel}</NavDropdown.Item>
               <NavDropdown.Item onClick={navigateSalesTableFilterTodo}>{orderShowTableLabel}</NavDropdown.Item>
               {/* <NavDropdown.Item onClick={navigateGeneric}>{orderShowCardLabel}</NavDropdown.Item> */}
             </NavDropdown>}
@@ -337,7 +340,7 @@ function NavBar () {
           {(userRoles.includes(enumRoles.SALES_ADMIN) ||
             userRoles.includes(enumRoles.SALES_ADMIN_RESTAURANT)) &&
             <NavDropdown title={salesAdminLabel}>
-              <NavDropdown.Item onClick={navigateSalesRegistrationStepOne}>{salesRegistrationLabel}</NavDropdown.Item>
+              <NavDropdown.Item onClick={navigateSalesRegistrationStepOneSeller}>{salesRegistrationLabel}</NavDropdown.Item>
               <NavDropdown.Item onClick={navigateSalesTableFilter}>{salesShowTableLabel}</NavDropdown.Item>
               {/* <NavDropdown.Item onClick={navigateGeneric}>{salesShowCardLabel}</NavDropdown.Item> */}
             </NavDropdown>}

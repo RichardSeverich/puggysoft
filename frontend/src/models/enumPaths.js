@@ -25,7 +25,8 @@ const SALES_SELLER_TABLE_FILTER_TO_DETAILS = "/sales-seller-user-table-filter-to
 const SALES_SALES_TABLE_FILTER_TO_EDIT_DELETE_DETAILS = "/sales-table-filter-edit-delete-details";
 const SALES_SALES_TABLE_FILTER_TO_EDIT_DELETE_DETAILS_TODO = "/sales-table-filter-edit-delete-details-todo";
 const SALES_SALES_TABLE_FILTER_TO_EDIT_DELETE_DETAILS_IN_PROGRESS = "/sales-table-filter-edit-delete-details-in-progress";
-const SALES_REGISTRATION_STEP_ONE = "/sales-registration-step-one";
+const SALES_REGISTRATION_STEP_ONE_SELLER = "/sales-registration-step-one-seller";
+const SALES_REGISTRATION_STEP_ONE_CASHIER = "/sales-registration-step-one-cashier";
 const SALES_REGISTRATION_STEP_TWO = "/sales-registration-step-two";
 const SALES_REPORT_QUANTITY = "/sales-report-quantity";
 const SALES_REPORT_QUANTITY_COMP = "/sales-report-quantity-comparative";
@@ -80,7 +81,8 @@ const enumPaths = {
   SALES_SALES_TABLE_FILTER_TO_EDIT_DELETE_DETAILS,
   SALES_SALES_TABLE_FILTER_TO_EDIT_DELETE_DETAILS_TODO,
   SALES_SALES_TABLE_FILTER_TO_EDIT_DELETE_DETAILS_IN_PROGRESS,
-  SALES_REGISTRATION_STEP_ONE,
+  SALES_REGISTRATION_STEP_ONE_SELLER,
+  SALES_REGISTRATION_STEP_ONE_CASHIER,
   SALES_REGISTRATION_STEP_TWO,
   SALES_REPORT_QUANTITY,
   SALES_REPORT_QUANTITY_COMP,

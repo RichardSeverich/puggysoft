@@ -30,7 +30,8 @@ import SellerTableFilterSelectionToDetailsPage from "./components-level-3/sales/
 import SalesTableFilterAllPage from "./components-level-3/sales/SalesTableFilterAllPage";
 import SalesTableFilterTodoPage from "./components-level-3/sales/SalesTableFilterTodoPage";
 import SalesTableFilterInProgressPage from "./components-level-3/sales/SalesTableFilterInProgressPage";
-import SaleAddStepOnePage from "./components-level-3/sales/SaleAddStepOnePage";
+import SaleAddStepOnePageForSeller from "./components-level-3/sales/SaleAddStepOnePageForSeller";
+import SaleAddStepOnePageForCashier from "./components-level-3/sales/SaleAddStepOnePageForCashier";
 import SaleAddStepTwoPage from "./components-level-3/sales/SaleAddStepTwoPage";
 import SaleReportQuantityPage from "./components-level-3/sales/SaleReportQuantityPage";
 import SaleReportQuantityCompPage from "./components-level-3/sales/SaleReportQuantityCompPage";
@@ -86,7 +87,8 @@ const AppRoutes = () => (
       <Route exact path={enumPaths.SALES_SALES_TABLE_FILTER_TO_EDIT_DELETE_DETAILS} component={SalesTableFilterAllPage} />
       <Route exact path={enumPaths.SALES_SALES_TABLE_FILTER_TO_EDIT_DELETE_DETAILS_TODO} component={SalesTableFilterTodoPage} />
       <Route exact path={enumPaths.SALES_SALES_TABLE_FILTER_TO_EDIT_DELETE_DETAILS_IN_PROGRESS} component={SalesTableFilterInProgressPage} />
-      <Route exact path={enumPaths.SALES_REGISTRATION_STEP_ONE} component={SaleAddStepOnePage} />
+      <Route exact path={enumPaths.SALES_REGISTRATION_STEP_ONE_SELLER} component={SaleAddStepOnePageForSeller} />
+      <Route exact path={enumPaths.SALES_REGISTRATION_STEP_ONE_CASHIER} component={SaleAddStepOnePageForCashier} />
       <Route exact path={enumPaths.SALES_REGISTRATION_STEP_TWO} component={SaleAddStepTwoPage} />
       <Route exact path={enumPaths.SALES_REPORT_QUANTITY} component={SaleReportQuantityPage} />
       <Route exact path={enumPaths.SALES_REPORT_QUANTITY_COMP} component={SaleReportQuantityCompPage} />

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router";
+import PropTypes from "prop-types";
 
 import UserTableFilterGenericByRoleReduced from "./../generic/UserTableFilterGenericByRoleReduced";
 import enumRoles from "./../../models/users/enumRoles";
@@ -8,8 +9,11 @@ import { handleAddRequest, handleGetRequest } from "../../actions/HandleManager"
 import enumPaths from "./../../models/enumPaths";
 import i18n from "../../i18n/i18n";
 import CommonLoading from "../../components-level-1/CommonLoading";
+import enumSaleTableViewType from "../../models/sales/enumSaleTableViewType";
 
-function SaleAddStepOneClientSelection () {
+function SaleAddStepOneClientSelection ({
+  saleTableViewType
+}) {
   const tableTitle = i18n.clientTable.titleSelectionToSales;
   const roleName = enumRoles.SALES_CLIENT;
   const history = useHistory();
@@ -18,7 +22,10 @@ function SaleAddStepOneClientSelection () {
   function handleSelection (clientData) {
     setIsRequestInProgress(true);
     const username = window.sessionStorage.getItem("username");
-    const saleStatus = enumSaleStatus.DONE;
+    let saleStatus = enumSaleStatus.DONE;
+    if (saleTableViewType && saleTableViewType === enumSaleTableViewType.FOR_CASHIER) {
+      saleStatus = enumSaleStatus.TODO;
+    }
     const bodySale = {
       client: clientData.username,
       status: saleStatus,
@@ -33,7 +40,7 @@ function SaleAddStepOneClientSelection () {
         history.push({
           pathname: enumPaths.SALES_REGISTRATION_STEP_TWO,
           state: {
-            data: { saleData }
+            data: { saleData, saleTableViewType }
           }
         });
       }
@@ -65,3 +72,14 @@ function SaleAddStepOneClientSelection () {
 }
 
 export default SaleAddStepOneClientSelection;
+
+SaleAddStepOneClientSelection.propTypes = {
+  saleTableViewType: PropTypes.oneOf([
+    enumSaleTableViewType.FOR_CASHIER,
+    enumSaleTableViewType.FOR_SELLER
+  ])
+};
+
+SaleAddStepOneClientSelection.defaultProps = {
+  saleTableViewType: undefined
+};
