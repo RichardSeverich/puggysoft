@@ -5,6 +5,7 @@ import enumFilterType from "../models/enumFilterType";
 import enumCompareOperators from "../models/enumCompareOperators";
 import enumTableFieldType from "../models/enumTableFieldType";
 import enumWebElements from "./../models/enumWebElements";
+import fixDate from "./../tools/fixDate";
 
 import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
@@ -154,7 +155,11 @@ function CommonTable (props) {
               </Image>
             </td>;
           } else {
-            singleRow = <td key={fieldKey}>{data[field]}</td>;
+            let rowDataValue = data[field];
+            if (field === "updateDate" || field === "creationDate") {
+              rowDataValue = fixDate(rowDataValue);
+            }
+            singleRow = <td key={fieldKey}>{rowDataValue}</td>;
           }
           return singleRow;
         })}

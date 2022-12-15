@@ -48,9 +48,9 @@ function UserDetails (props) {
   const isActive = userData.active === i18n.userStatus.active;
   const { value: valueStatus, onChange: onChangeStatus, setValue: setValueStatus } = useInput(isActive);
   const { value: valueCreatedBy } = useInput(userData.createdBy ? userData.createdBy : "");
-  const { value: valueUpdatedBy } = useInput(userData.updatedBy ? userData.updatedBy : "");
+  const { value: valueUpdatedBy, setValue: setValueUpdatedBy } = useInput(userData.updatedBy ? userData.updatedBy : "");
   const { value: valueCreationDate } = useInput(userData.creationDate?.substring(0, 10));
-  const { value: valueUpdateDate } = useInput(userData.updateDate?.substring(0, 10));
+  const { value: valueUpdateDate, setValue: setValueUpdateDate } = useInput(userData.updateDate?.substring(0, 10));
   const { value: valuePicturePath, setValue: setValuePicturePath } = useInput("");
   const { value: valuePicture, setValue: setValuePicture } = useInput(null);
   const { value: valuePictureToShow, setValue: setValuePictureToShow } = useInput(userData.image);
@@ -75,6 +75,7 @@ function UserDetails (props) {
     setValuePicture(null);
     setValuePicturePath("");
     setValuePictureToShow(userData.image);
+    setIsRequestInProgress(false);
   };
 
   const getBody = function () {
@@ -106,10 +107,6 @@ function UserDetails (props) {
     return body;
   };
 
-  function finishLoading () {
-    setIsRequestInProgress(false);
-  }
-
   const handleOnChangePicture = (event) => {
     // file.name file.size file.type
     const file = event.target.files[0];
@@ -127,7 +124,7 @@ function UserDetails (props) {
         "users/picture/",
         valuePicture,
         userData.id,
-        handleAfterUpdatePictureOnSuccess,
+        handleAfterUpdateOnSuccess,
         true,
         handleAfterEditOnFail);
     }
@@ -137,7 +134,7 @@ function UserDetails (props) {
     resetValues();
   };
 
-  const handleAfterUpdatePictureOnSuccess = function () {
+  const handleAfterUpdateOnSuccess = function () {
     handleGetRequest(`users/${userData.id}`, updateNewValues);
   };
 
@@ -157,11 +154,13 @@ function UserDetails (props) {
     setValueAddress(newUserData.address);
     setValueEmail(newUserData.email);
     setValueStatus(newUserData.active);
+    setValueUpdateDate(newUserData.updateDate?.substring(0, 10));
+    setValueUpdatedBy(newUserData.updatedBy);
     setValuePicture(null);
     setValuePicturePath("");
     setValuePictureToShow(newUserData.image);
     userData.image = newUserData.image;
-    finishLoading();
+    setIsRequestInProgress(false);
   };
 
   const handleAdd = () => {
@@ -170,7 +169,7 @@ function UserDetails (props) {
       const body = getBody();
       const isValid = handleValidation(body, setClassNameFormText);
       if (isValid) {
-        handleEditRequest("users/", body, userData.id, finishLoading, handleAfterEditOnFail);
+        handleEditRequest("users/", body, userData.id, handleAfterUpdateOnSuccess, handleAfterEditOnFail);
       } else {
         resetValues();
         alert(i18n.errorMessages.validationError);
@@ -475,7 +474,7 @@ function UserDetails (props) {
               </div>
               <div className="puggysoft-textbox-item">
                 <CommonTextbox
-                  textboxLabel={i18n.userTable.columnStatus}
+                  textboxLabel={i18n.userTable.columnUpdateDate}
                   textboxReadOnly={true}
                   textboxType={enumInputType.DATE}
                   textboxOnSave={() => { }}

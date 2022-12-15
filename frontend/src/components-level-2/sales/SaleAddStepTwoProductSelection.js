@@ -16,6 +16,7 @@ import enumWebElements from "./../../models/enumWebElements";
 import enumSaleTableViewType from "../../models/sales/enumSaleTableViewType";
 import enumSaleStatus from "../../models/sales/enumSaleStatus";
 import enumPaths from "./../../models/enumPaths";
+import fixDate from "./../../tools/fixDate";
 
 import "./../css/all-two-divs-side-by-side.css";
 import "./../css/all-six-divs-side-by-side.css";
@@ -63,6 +64,8 @@ function SaleAddStepTwoProductSelection () {
       alert(i18n.saleErrorMessages.quantityGreaterThanStock);
     } else {
       setIsRequestInProgress(true);
+      setClientCash(0);
+      setClientCashChange(0);
       const body = {
         idSale: saleData.id,
         idProduct: productData.id,
@@ -104,6 +107,8 @@ function SaleAddStepTwoProductSelection () {
     // NOTE: The ID field of this ${productData} object is the relation ID. sales_products.id
     // NOTE: The STOCK filed of this ${productData} object is the quantity of sales_products.
     setIsRequestInProgress(true);
+    setClientCash(0);
+    setClientCashChange(0);
     const idRelation = productData.id;
     handleDeleteRequest(`sales-products/${idRelation}`, handleAfterDeleteProductFromSale, handleAfterDeleteProductFromSale);
   }
@@ -204,7 +209,7 @@ function SaleAddStepTwoProductSelection () {
             <div className="puggysoft-six-divs-side-by-side-child">
               <Form.Group>
                 <div className={"puggysoft-form-label"}><Form.Label>{i18n.saleProductTable.saleDate}</Form.Label></div>
-                <div className={"puggysoft-form-input"}><Form.Control value={saleData.creationDate} disabled /></div>
+                <div className={"puggysoft-form-input"}><Form.Control value={fixDate(saleData.creationDate)} disabled /></div>
               </Form.Group>
             </div>
             <div className="puggysoft-six-divs-side-by-side-child">
