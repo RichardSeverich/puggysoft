@@ -31,6 +31,7 @@ import saleTable from "./spanish/sales/saleTable";
 import saleProductTable from "./spanish/sales/saleProductTable";
 import saleErrorMessages from "./spanish/sales/saleErrorMessages";
 import saleReport from "./spanish/sales/saleReport";
+import saleTicket from "./spanish/sales/saleTicket";
 // Hospital System
 import doctorUserForm from "./spanish/hospital/doctorUserForm";
 import doctorTable from "./spanish/hospital/doctorTable";
@@ -71,6 +72,7 @@ const i18n = {
   saleProductTable,
   saleErrorMessages,
   saleReport,
+  saleTicket,
   // Hospital System
   doctorUserForm,
   doctorTable,

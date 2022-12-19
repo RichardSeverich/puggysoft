@@ -17,6 +17,7 @@ import enumSaleTableViewType from "../../models/sales/enumSaleTableViewType";
 import enumSaleStatus from "../../models/sales/enumSaleStatus";
 import enumPaths from "./../../models/enumPaths";
 import fixDate from "./../../tools/fixDate";
+import pdfBuilderTicket from "./../../tools/pdfBuilderTicket";
 
 import "./../css/all-two-divs-side-by-side.css";
 import "./../css/all-six-divs-side-by-side.css";
@@ -33,6 +34,7 @@ function SaleAddStepTwoProductSelection () {
   const [totalToPay, setTotalToPay] = useState(0);
   const [clientCash, setClientCash] = useState(0);
   const [clientCashChange, setClientCashChange] = useState(0);
+  const [arrayOfProductsFromSale, setArrayOfProductsFromSale] = useState([]);
 
   const { saleData, saleTableViewType } = history &&
     history.location !== undefined &&
@@ -127,6 +129,7 @@ function SaleAddStepTwoProductSelection () {
       totalToPayNew = totalToPayNew + Number(product.salePrice) * Number(product.stock);
     });
     setTotalToPay(totalToPayNew);
+    setArrayOfProductsFromSale(arrayProducts);
     return arrayProducts;
   }
 
@@ -183,7 +186,11 @@ function SaleAddStepTwoProductSelection () {
   }
 
   function handleGenerateTicket () {
-    console.log("Generate Ticket");
+    if (arrayOfProductsFromSale.length === 0) {
+      alert(i18n.saleTicket.ticketWithoutProductError);
+    } else {
+      pdfBuilderTicket(saleData, totalToPay, arrayOfProductsFromSale);
+    }
   }
 
   if (isRequestInProgress || !saleData) {
