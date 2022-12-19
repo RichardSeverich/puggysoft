@@ -161,5 +161,5 @@ INSERT INTO users_roles (id_user, id_role, created_by) VALUES (1055, 1007, "admi
 
 -- SYSTEM PROPERTIES
 -- SYS_SALE_TYPE = GENERIC / RESTAURANT
-INSERT INTO system_properties (name, value, created_by) VALUES ("SYS_SALE_TYPE", "GENERIC", "admin");
 INSERT INTO system_properties (name, value, created_by) VALUES ("SYS_AUTO_USER_REG", "FALSE", "admin");
+INSERT INTO system_properties (name, value, created_by) VALUES ("SYS_SALE_BILLING", "FALSE", "admin");

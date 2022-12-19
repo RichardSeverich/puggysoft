@@ -63,28 +63,19 @@ function SystemPropertiesForm () {
   };
 
   function getOptions () {
-    if (valueName === systemPropertiesNames.SYS_SALE_TYPE) {
-      return <>
-        <option key='option-generic'
-          value={systemPropertiesValues.SYS_SALE_TYPE.GENERIC}>
-          {i18n.systemPropertiesForm.fieldValueTypeGeneric}
-        </option>
-        <option key='option-restaurant'
-          value={systemPropertiesValues.SYS_SALE_TYPE.RESTAURANT}>
-          {i18n.systemPropertiesForm.fieldValueTypeRestaurant}
-        </option>
-      </>;
-    } else if (valueName === systemPropertiesNames.SYS_AUTO_USER_REG_BO) {
+    if (valueName === systemPropertiesNames.SYS_AUTO_USER_REG ||
+      valueName === systemPropertiesNames.SYS_SALE_BILLING
+    ) {
       return <>
         <option
           key='option-true'
-          value={systemPropertiesValues.SYS_AUTO_USER_REG_BO.TRUE}>
-          {i18n.trueFalse.true}
+          value={systemPropertiesValues.SYS_TRUE_FALSE.TRUE}>
+          {systemPropertiesValues.SYS_TRUE_FALSE.TRUE}
         </option>
         <option
           key='option-false'
-          value={systemPropertiesValues.SYS_AUTO_USER_REG_BO.FALSE}>
-          {i18n.trueFalse.false}
+          value={systemPropertiesValues.SYS_TRUE_FALSE.FALSE}>
+          {systemPropertiesValues.SYS_TRUE_FALSE.FALSE}
         </option>
       </>;
     }
