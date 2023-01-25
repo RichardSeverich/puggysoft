@@ -27,8 +27,21 @@
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public",
-    "eslint": "node node_modules/eslint/bin/eslint.js ./src/**",
-    "lint": "eslint src --ext .js,.jsx,.ts,.tsx"
+    "eslint": "node node_modules/eslint/bin/eslint.js config.eslintrc.json ./src/**",
+    "lint": "eslint -c config.eslintrc.json src --ext .js,.jsx,.ts,.tsx"
+  },
+  "eslintConfig": {
+    "extends": [],
+    "overrides": [
+      {
+        "files": [
+          "**/*.stories.*"
+        ],
+        "rules": {
+          "import/no-anonymous-default-export": "off"
+        }
+      }
+    ]
   },
   "browserslist": {
     "production": [
