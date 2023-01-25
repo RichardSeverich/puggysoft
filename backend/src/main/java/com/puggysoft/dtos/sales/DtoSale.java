@@ -21,12 +21,15 @@ public class DtoSale extends DtoSuperClass {
   // TODO, IN_PROGRESS, DONE.
   private String status;
 
+  private String note;
+
   /** convert from dto to entity. */
   public EntitySale dtoToEntity() {
     EntitySale entity = new EntitySale();
     entity.setId(id);
     entity.setClient(client);
     entity.setStatus(status);
+    entity.setNote(note);
     entity.setCreatedBy(createdBy);
     entity.setUpdatedBy(updatedBy);
     return entity;
@@ -38,6 +41,7 @@ public class DtoSale extends DtoSuperClass {
     dto.setId(entity.getId());
     dto.setClient(entity.getClient());
     dto.setStatus(entity.getStatus());
+    dto.setNote(entity.getNote());
     dto.setCreatedBy(entity.getCreatedBy());
     dto.setUpdatedBy(entity.getUpdatedBy());
     dto.setCreationDate(entity.getCreationDate());

@@ -27,23 +27,8 @@
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public",
-    "eslint": "node node_modules/eslint/bin/eslint.js ./src/**"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ],
-    "overrides": [
-      {
-        "files": [
-          "**/*.stories.*"
-        ],
-        "rules": {
-          "import/no-anonymous-default-export": "off"
-        }
-      }
-    ]
+    "eslint": "node node_modules/eslint/bin/eslint.js ./src/**",
+    "lint": "eslint src --ext .js,.jsx,.ts,.tsx"
   },
   "browserslist": {
     "production": [
@@ -76,7 +61,6 @@
     "eslint-plugin-promise": "6.1.1",
     "eslint-plugin-react": "7.31.11",
     "eslint-plugin-react-hooks": "4.6.0",
-    "prop-types": "15.8.1",
-    "webpack": "5.74.0"
+    "prop-types": "15.8.1"
   }
 }

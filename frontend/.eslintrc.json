@@ -28,5 +28,10 @@
     "camelcase": ["error", {"properties": "always"}],
     "brace-style": ["error", "1tbs"], // no space after funcName function funcName()
     "space-before-function-paren": ["error", "always"] // space before function parent
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
   }
 }

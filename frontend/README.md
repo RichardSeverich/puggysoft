@@ -4,7 +4,10 @@
 
 1. Install Windows 10
 2. Install ```node version:  14.17.3```
-3. Install ```npm version: 6.14.13```
+  * install nvm: ```nvm version 1.1.7```
+  * install node and npm: ```nvm install 14.17.3```
+  * use version: ```nvm use 14.17.3```
+3. Install ```npm version: 6.14.13``
 4. Install ```Visual studio code```
 5. Install ```Visual studio code plugin: ESLint```
 6. Install ```Visual studio code plugin: GitLens — Git supercharged```
@@ -19,6 +22,7 @@
 3. Run test: `npm test`
 4. Run Eject: `npm run eject`
 5. Build: `npm run build`
+ * delete ".eslintrc.json" file to avoid "react" was conflicted between ".eslintrc.json".
 6. Run Storybook: `npm run storybook`  `http://localhost:6006/`
 
 ## Documentation

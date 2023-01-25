@@ -18,4 +18,6 @@ public class EntitySale extends EntitySuperClass {
   // IN-PROGRESS, DONE.
   private String status;
 
+  private String note;
+
 }
