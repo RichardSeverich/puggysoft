@@ -18,7 +18,10 @@ const saleProductTable = {
   buttonChangeSaleStateToolTip: "Estado actual",
   buttonChangeSaleStateToolTipNext: "Estado proximo",
   buttonChangeSaleStatusQuestion: "Esta seguro que quiere cambiar el estado de la venta",
-  buttonGenerateBill: "Generar factura"
+  buttonSaveNoteQuestion: "Esta seguro que quiere guardar nota/comentario",
+  buttonGenerateBill: "Generar factura",
+  buttonSaveNote: "Guardar Nota/Comentario",
+  noteBox: "Nota/Comentario"
 };
 
 export default saleProductTable;

@@ -18,6 +18,7 @@ import enumSaleStatus from "../../models/sales/enumSaleStatus";
 import enumPaths from "./../../models/enumPaths";
 import fixDate from "./../../tools/fixDate";
 import pdfBuilderTicket from "./../../tools/pdfBuilderTicket";
+import useInput from "./../../hooks/useInput";
 
 import "./../css/all-two-divs-side-by-side.css";
 import "./../css/all-six-divs-side-by-side.css";
@@ -43,6 +44,10 @@ function SaleAddStepTwoProductSelection () {
     ? history.location.state.data
     : { saleData: undefined, saleTableViewType: undefined };
 
+  const { value: valueNote, onChange: onChangeNote } = useInput(
+    saleData && saleData.note
+      ? saleData.note
+      : "");
   if (saleData && saleData.status && saleData.status === i18n.saleStatus.todo) {
     saleData.status = enumSaleStatus.TODO;
   } else if (saleData && saleData.status && saleData.status === i18n.saleStatus.inProgress) {
@@ -169,6 +174,27 @@ function SaleAddStepTwoProductSelection () {
       handleAfterOnFail);
   }
 
+  function handleAfterOnSuccessSaveNote () {
+    saleData.note = valueNote;
+    setIsRequestInProgress(false);
+  }
+
+  function handleSaveNote () {
+    const message = i18n.saleProductTable.buttonSaveNoteQuestion;
+    const newSaleData = { ...saleData };
+    newSaleData.note = valueNote;
+    const username = window.sessionStorage.getItem("username");
+    newSaleData.updatedBy = username;
+    const result = window.confirm(message);
+    if (result) {
+      setIsRequestInProgress(true);
+      handleEditRequest("sales/",
+        newSaleData,
+        saleData.id,
+        handleAfterOnSuccessSaveNote);
+    }
+  }
+
   function handleChangeSaleStatus () {
     const message = i18n.saleProductTable.buttonChangeSaleStatusQuestion;
     const newSaleData = { ...saleData };
@@ -266,18 +292,23 @@ function SaleAddStepTwoProductSelection () {
             <div className="puggysoft-six-divs-side-by-side-child">
               <Form.Group>
                 <div className={"puggysoft-form-label"}><Form.Label>{i18n.saleProductTable.clientCashToPay}</Form.Label></div>
-                <div className={"puggysoft-form-input"}><Form.Control
-                  value={clientCash}
-                  onChange={(event) => {
-                    onChangeClientCash(event.target.value);
-                  }}
-                /></div>
+                <div className={"puggysoft-form-input"}>
+                  <Form.Control
+                    type="number"
+                    value={clientCash}
+                    onChange={(event) => {
+                      onChangeClientCash(event.target.value);
+                    }}
+                  />
+                </div>
               </Form.Group>
             </div>
             <div className="puggysoft-six-divs-side-by-side-child">
               <Form.Group>
                 <div className={"puggysoft-form-label"}><Form.Label>{i18n.saleProductTable.clientCashChange}</Form.Label></div>
-                <div className={"puggysoft-form-input"}><Form.Control value={clientCashChange} disabled /></div>
+                <div className={"puggysoft-form-input"}>
+                  <Form.Control value={clientCashChange} disabled />
+                </div>
               </Form.Group>
             </div>
           </div>
@@ -332,11 +363,25 @@ function SaleAddStepTwoProductSelection () {
               }
             </div>
             <div className="puggysoft-six-divs-side-by-side-child">
+              <Form.Group>
+                <div><Form.Control
+                  value={valueNote}
+                  onChange={onChangeNote}
+                  as="textarea"
+                  placeholder={i18n.saleProductTable.noteBox}
+                />
+                </div>
+              </Form.Group>
+            </div>
+            <div className="puggysoft-six-divs-side-by-side-child">
+              <Button
+                variant="primary sale-button"
+                type="button"
+                onClick={handleSaveNote}
+              >{i18n.saleProductTable.buttonSaveNote}</Button>
+            </div>
+            <div className="puggysoft-six-divs-side-by-side-child">
               {/* <Button variant="secondary sale-button" type="button">{i18n.saleProductTable.buttonGenerateBill}</Button> */}
-            </div>
-            <div className="puggysoft-six-divs-side-by-side-child">
-            </div>
-            <div className="puggysoft-six-divs-side-by-side-child">
             </div>
           </div>
         </Card.Body>
