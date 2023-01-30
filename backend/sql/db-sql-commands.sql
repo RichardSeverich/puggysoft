@@ -169,3 +169,25 @@ SELECT SUM((products.sale_price - products.purchase_price) * sales_products.quan
 FROM sales_products
 INNER JOIN products ON products.id=sales_products.id_product
 WHERE YEAR(sales_products.creation_date) = 2022 AND MONTH(sales_products.creation_date) = 11 AND products.id =1001;
+
+-- get all records from a specific year and month
+SELECT * FROM sales_products WHERE YEAR(creation_date) = 2022 AND MONTH(creation_date) = 1;
+
+-- get all records from a specific date.
+SELECT * FROM sales_products WHERE DATE(`creation_date`) = '2021-01-25';
+SELECT * FROM sales_products WHERE YEAR(creation_date) = 2022 AND MONTH(creation_date) = 1 AND DAY(creation_date) = 1;
+
+-- get sum quantity from a specific date. (Quantity of products sold per day)
+SELECT SUM(quantity)  FROM sales_products WHERE DATE(sales_products.creation_date) = '2021-01-01'
+
+-- get sum quantity * product_price from a specific date. (Revenue of products sold per day)
+SELECT SUM(products.sale_price * sales_products.quantity)
+FROM sales_products
+INNER JOIN products ON products.id=sales_products.id_product
+WHERE DATE(sales_products.creation_date) = '2021-01-01'
+
+-- get sum quantity * product purchase price from a specific date. (Profit of products sold per day)
+SELECT SUM((products.sale_price - products.purchase_price) * sales_products.quantity)
+FROM sales_products
+INNER JOIN products ON products.id=sales_products.id_product
+WHERE DATE(sales_products.creation_date) = '2021-01-01'

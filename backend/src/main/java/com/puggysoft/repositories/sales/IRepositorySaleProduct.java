@@ -61,4 +61,45 @@ public interface IRepositorySaleProduct extends JpaRepository<EntitySaleProduct,
       + "AND products.id =?3", nativeQuery = true)
   Double getProfitPerMonthByProduct(Integer year, Integer month, Long idProduct);
 
+  // REPORTS BY SPECIFIC DATE
+  // Date must be in format: YYYY-MM-DD, for example: 2021-01-28.
+  @Query(value = "SELECT SUM(quantity)  FROM sales_products "
+      + "WHERE DATE(sales_products.creation_date) = ?1 ", nativeQuery = true)
+  Long getQuantityPerDay(String date);
+
+  @Query(value = "SELECT SUM(products.sale_price * sales_products.quantity) "
+      + "FROM sales_products "
+      + "INNER JOIN products ON products.id=sales_products.id_product "
+      + "WHERE DATE(sales_products.creation_date) = ?1 ", nativeQuery = true)
+  Double getRevenuePerDay(String date);
+
+  @Query(value = "SELECT "
+      + "SUM((products.sale_price - products.purchase_price) * sales_products.quantity) "
+      + "FROM sales_products "
+      + "INNER JOIN products ON products.id=sales_products.id_product "
+      + "WHERE DATE(sales_products.creation_date) = ?1 ", nativeQuery = true)
+  Double getProfitPerDay(String date);
+
+  // REPORTS BY SPECIFIC DATE AND PER PRODUCT
+  @Query(value = "SELECT SUM(quantity)  FROM sales_products "
+      + "INNER JOIN products ON products.id=sales_products.id_product "
+      + "WHERE DATE(sales_products.creation_date) = ?1 "
+      + "AND products.id =?2", nativeQuery = true)
+  Long getQuantityPerDayByProduct(String date, Long idProduct);
+
+  @Query(value = "SELECT SUM(products.sale_price * sales_products.quantity) "
+      + "FROM sales_products "
+      + "INNER JOIN products ON products.id=sales_products.id_product "
+      + "WHERE DATE(sales_products.creation_date) = ?1 "
+      + "AND products.id =?2", nativeQuery = true)
+  Double getRevenuePerDayByProduct(String date, Long idProduct);
+
+  @Query(value = "SELECT "
+      + "SUM((products.sale_price - products.purchase_price) * sales_products.quantity) "
+      + "FROM sales_products "
+      + "INNER JOIN products ON products.id=sales_products.id_product "
+      + "WHERE DATE(sales_products.creation_date) = ?1 "
+      + "AND products.id =?2", nativeQuery = true)
+  Double getProfitPerDayByProduct(String date, Long idProduct);
+
 }
