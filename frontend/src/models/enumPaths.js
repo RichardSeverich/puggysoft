@@ -3,6 +3,7 @@ const LOGIN = "/login";
 const DASHBOARD = "/dashboard";
 const SYSTEM_PROPERTIES_TABLE = "/system-properties-table";
 const SYSTEM_PROPERTIES_FORM = "/system-properties-form";
+const IN_PROGRESS_PAGE = "/in-progress-page";
 // USERS SYSTEM
 const USERS_FORM = "/users-form";
 const USERS_TABLE = "/users-table";
@@ -30,22 +31,40 @@ const SALES_REGISTRATION_STEP_ONE_CASHIER = "/sales-registration-step-one-cashie
 const SALES_REGISTRATION_STEP_TWO = "/sales-registration-step-two";
 const SALES_REPORT_QUANTITY = "/sales-report-quantity";
 const SALES_REPORT_QUANTITY_COMP = "/sales-report-quantity-comparative";
+const SALES_REPORT_QUANTITY_MONTH = "/sales-report-quantity-month";
+const SALES_REPORT_QUANTITY_MONTH_COMP = "/sales-report-quantity-month-comparative";
 const SALES_REPORT_REVENUE = "/sales-report-revenue";
 const SALES_REPORT_REVENUE_COMP = "/sales-report-revenue-comparative";
+const SALES_REPORT_REVENUE_MONTH = "/sales-report-revenue-month";
+const SALES_REPORT_REVENUE_MONTH_COMP = "/sales-report-revenue-month-comparative";
 const SALES_REPORT_PROFIT = "/sales-report-profit";
 const SALES_REPORT_PROFIT_COMP = "/sales-report-profit-comparative";
+const SALES_REPORT_PROFIT_MONTH = "/sales-report-profit-month";
+const SALES_REPORT_PROFIT_MONTH_COMP = "/sales-report-profit-month-comparative";
 const SALES_REPORT_QUANTITY_BY_PRODUCT = "/sales-report-quantity-by-product";
 const SALES_REPORT_QUANTITY_COMP_BY_PRODUCT = "/sales-report-quantity-comparative-by-product";
+const SALES_REPORT_QUANTITY_MONTH_BY_PRODUCT = "/sales-report-quantity-month-by-product";
+const SALES_REPORT_QUANTITY_MONTH_COMP_BY_PRODUCT = "/sales-report-quantity-month-comparative-by-product";
 const SALES_REPORT_REVENUE_BY_PRODUCT = "/sales-report-revenue-by-product";
 const SALES_REPORT_REVENUE_COMP_BY_PRODUCT = "/sales-report-revenue-comparative-by-product";
+const SALES_REPORT_REVENUE_MONTH_BY_PRODUCT = "/sales-report-revenue-month-by-product";
+const SALES_REPORT_REVENUE_MONTH_COMP_BY_PRODUCT = "/sales-report-revenue-month-comparative-by-product";
 const SALES_REPORT_PROFIT_BY_PRODUCT = "/sales-report-profit-by-product";
 const SALES_REPORT_PROFIT_COMP_BY_PRODUCT = "/sales-report-profit-comparative-by-product";
+const SALES_REPORT_PROFIT_MONTH_BY_PRODUCT = "/sales-report-profit-month-by-product";
+const SALES_REPORT_PROFIT_MONTH_COMP_BY_PRODUCT = "/sales-report-profit-month-comparative-by-product";
 const SALES_PRODUCTS_TABLE_TO_QUANTITY_BY_PRODUCT = "/sales-products-table-to-quantity-report";
 const SALES_PRODUCTS_TABLE_TO_QUANTITY_BY_PRODUCT_COMP = "/sales-products-table-to-quantity-comp-report";
+const SALES_PRODUCTS_TABLE_TO_QUANTITY_MONTH_BY_PRODUCT = "/sales-products-table-to-quantity-month-report";
+const SALES_PRODUCTS_TABLE_TO_QUANTITY_MONTH_BY_PRODUCT_COMP = "/sales-products-table-to-quantity-month-comp-report";
 const SALES_PRODUCTS_TABLE_TO_REVENUE_BY_PRODUCT = "/sales-products-table-to-revenue-report";
 const SALES_PRODUCTS_TABLE_TO_REVENUE_BY_PRODUCT_COMP = "/sales-products-table-to-revenue-comp-report";
+const SALES_PRODUCTS_TABLE_TO_REVENUE_MONTH_BY_PRODUCT = "/sales-products-table-to-revenue-month-report";
+const SALES_PRODUCTS_TABLE_TO_REVENUE_MONTH_BY_PRODUCT_COMP = "/sales-products-table-to-revenue-month-comp-report";
 const SALES_PRODUCTS_TABLE_TO_PROFIT_BY_PRODUCT = "/sales-products-table-to-profit-report";
 const SALES_PRODUCTS_TABLE_TO_PROFIT_BY_PRODUCT_COMP = "/sales-products-table-to-profit-comp-report";
+const SALES_PRODUCTS_TABLE_TO_PROFIT_MONTH_BY_PRODUCT = "/sales-products-table-to-profit-month-report";
+const SALES_PRODUCTS_TABLE_TO_PROFIT_MONTH_BY_PRODUCT_COMP = "/sales-products-table-to-profit-month-comp-report";
 
 // HOSPITAL SYSTEM
 const HOSPITAL_DOCTOR_USER_FORM = "/hospital-doctor-user-form";
@@ -59,6 +78,7 @@ const enumPaths = {
   LOGIN,
   SYSTEM_PROPERTIES_TABLE,
   SYSTEM_PROPERTIES_FORM,
+  IN_PROGRESS_PAGE,
   // USERS SYSTEM
   USERS_FORM,
   USERS_TABLE,
@@ -86,22 +106,40 @@ const enumPaths = {
   SALES_REGISTRATION_STEP_TWO,
   SALES_REPORT_QUANTITY,
   SALES_REPORT_QUANTITY_COMP,
+  SALES_REPORT_QUANTITY_MONTH,
+  SALES_REPORT_QUANTITY_MONTH_COMP,
   SALES_REPORT_REVENUE,
   SALES_REPORT_REVENUE_COMP,
+  SALES_REPORT_REVENUE_MONTH,
+  SALES_REPORT_REVENUE_MONTH_COMP,
   SALES_REPORT_PROFIT,
   SALES_REPORT_PROFIT_COMP,
+  SALES_REPORT_PROFIT_MONTH,
+  SALES_REPORT_PROFIT_MONTH_COMP,
   SALES_REPORT_QUANTITY_BY_PRODUCT,
   SALES_REPORT_QUANTITY_COMP_BY_PRODUCT,
+  SALES_REPORT_QUANTITY_MONTH_BY_PRODUCT,
+  SALES_REPORT_QUANTITY_MONTH_COMP_BY_PRODUCT,
   SALES_REPORT_REVENUE_BY_PRODUCT,
   SALES_REPORT_REVENUE_COMP_BY_PRODUCT,
+  SALES_REPORT_REVENUE_MONTH_BY_PRODUCT,
+  SALES_REPORT_REVENUE_MONTH_COMP_BY_PRODUCT,
   SALES_REPORT_PROFIT_BY_PRODUCT,
   SALES_REPORT_PROFIT_COMP_BY_PRODUCT,
+  SALES_REPORT_PROFIT_MONTH_BY_PRODUCT,
+  SALES_REPORT_PROFIT_MONTH_COMP_BY_PRODUCT,
   SALES_PRODUCTS_TABLE_TO_QUANTITY_BY_PRODUCT,
   SALES_PRODUCTS_TABLE_TO_QUANTITY_BY_PRODUCT_COMP,
+  SALES_PRODUCTS_TABLE_TO_QUANTITY_MONTH_BY_PRODUCT,
+  SALES_PRODUCTS_TABLE_TO_QUANTITY_MONTH_BY_PRODUCT_COMP,
   SALES_PRODUCTS_TABLE_TO_REVENUE_BY_PRODUCT,
   SALES_PRODUCTS_TABLE_TO_REVENUE_BY_PRODUCT_COMP,
+  SALES_PRODUCTS_TABLE_TO_REVENUE_MONTH_BY_PRODUCT,
+  SALES_PRODUCTS_TABLE_TO_REVENUE_MONTH_BY_PRODUCT_COMP,
   SALES_PRODUCTS_TABLE_TO_PROFIT_BY_PRODUCT,
   SALES_PRODUCTS_TABLE_TO_PROFIT_BY_PRODUCT_COMP,
+  SALES_PRODUCTS_TABLE_TO_PROFIT_MONTH_BY_PRODUCT,
+  SALES_PRODUCTS_TABLE_TO_PROFIT_MONTH_BY_PRODUCT_COMP,
   // HOSPITAL SYSTEM
   HOSPITAL_DOCTOR_USER_FORM,
   HOSPITAL_DOCTOR_USER_TABLE,

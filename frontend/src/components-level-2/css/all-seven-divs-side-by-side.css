@@ -1,0 +1,8 @@
+/* Only applies for resolutions greater than 1080px */
+@media (min-width:1600px) {
+  .puggysoft-seven-divs-side-by-side-child {
+    width: 13%;
+    float: left;
+    margin-left: 0.7rem;
+  }
+}

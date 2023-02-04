@@ -131,20 +131,41 @@ function NavBar () {
   const navigateSalesReportQuantityAnnual = () => {
     history.push(enumPaths.SALES_REPORT_QUANTITY);
   };
+  const navigateSalesReportQuantityMonth = () => {
+    history.push(enumPaths.SALES_REPORT_QUANTITY_MONTH);
+  };
   const navigateSalesReportRevenueAnnual = () => {
     history.push(enumPaths.SALES_REPORT_REVENUE);
+  };
+  const navigateSalesReportRevenueMonth = () => {
+    history.push(enumPaths.SALES_REPORT_REVENUE_MONTH);
   };
   const navigateSalesReportProfitAnnual = () => {
     history.push(enumPaths.SALES_REPORT_PROFIT);
   };
+  const navigateSalesReportProfitMonth = () => {
+    history.push(enumPaths.SALES_REPORT_PROFIT_MONTH);
+  };
   const navigateSalesReportQuantityAnnualByProduct = () => {
     history.push(enumPaths.SALES_PRODUCTS_TABLE_TO_QUANTITY_BY_PRODUCT);
+  };
+  const navigateSalesReportQuantityMonthByProduct = () => {
+    history.push(enumPaths.IN_PROGRESS_PAGE);
+    // history.push(enumPaths.SALES_PRODUCTS_TABLE_TO_QUANTITY_MONTH_BY_PRODUCT);
   };
   const navigateSalesReportRevenueAnnualByProduct = () => {
     history.push(enumPaths.SALES_PRODUCTS_TABLE_TO_REVENUE_BY_PRODUCT);
   };
+  const navigateSalesReportRevenueMonthByProduct = () => {
+    history.push(enumPaths.IN_PROGRESS_PAGE);
+    // history.push(enumPaths.SALES_PRODUCTS_TABLE_TO_REVENUE_MONTH_BY_PRODUCT);
+  };
   const navigateSalesReportProfitAnnualByProduct = () => {
     history.push(enumPaths.SALES_PRODUCTS_TABLE_TO_PROFIT_BY_PRODUCT);
+  };
+  const navigateSalesReportProfitMonthByProduct = () => {
+    history.push(enumPaths.IN_PROGRESS_PAGE);
+    // history.push(enumPaths.SALES_PRODUCTS_TABLE_TO_PROFIT_MONTH_BY_PRODUCT);
   };
 
   // ******* ******* ******* HOSPITAL SYSTEM ******* ******* *******
@@ -163,6 +184,7 @@ function NavBar () {
 
   function navigateGeneric (event) {
     console.log({ event });
+    history.push(enumPaths.IN_PROGRESS_PAGE);
   }
 
   const NavbarBackground = "dark"; // dark, light, primary
@@ -230,11 +252,17 @@ function NavBar () {
   // REPORTS
   const reportAdminLabel = (<><BsFillBarChartFill /> {i18n.navBar.reportAdmin}</>);
   const reportQuantityAnnual = (<><FaChartLine /> {i18n.navBar.reportQuantityAnnual}</>);
+  const reportQuantityMonth = (<><FaChartLine /> {i18n.navBar.reportQuantityMonth}</>);
   const reportRevenueAnnual = (<><BsCoin /> {i18n.navBar.reportRevenueAnnual}</>);
+  const reportRevenueMonth = (<><BsCoin /> {i18n.navBar.reportRevenueMonth}</>);
   const reportProfitAnnual = (<><BsCashCoin /> {i18n.navBar.reportProfitAnnual}</>);
+  const reportProfitMonth = (<><BsCashCoin /> {i18n.navBar.reportProfitMonth}</>);
   const reportQuantityPerProduct = (<><FaChartLine /> {i18n.navBar.reportQuantityPerProduct}</>);
+  const reportQuantityMonthPerProduct = (<><FaChartLine /> {i18n.navBar.reportQuantityMonthPerProduct}</>);
   const reportRevenuePerProduct = (<><BsCoin /> {i18n.navBar.reportRevenuePerProduct}</>);
+  const reportRevenueMonthPerProduct = (<><BsCoin /> {i18n.navBar.reportRevenueMonthPerProduct}</>);
   const reportProfitPerProductAnnual = (<><BsCashCoin /> {i18n.navBar.reportProfitPerProductAnnual}</>);
+  const reportProfitMonthPerProduct = (<><BsCashCoin /> {i18n.navBar.reportProfitMonthPerProduct}</>);
 
   // ******* ******* ******* HOSPITAL SYSTEM ******* ******* *******
   // DOCTORS
@@ -347,6 +375,13 @@ function NavBar () {
           {(userRoles.includes(enumRoles.SALES_ADMIN) ||
             userRoles.includes(enumRoles.SALES_ADMIN_RESTAURANT)) &&
             <NavDropdown title={reportAdminLabel}>
+              <NavDropdown.Item onClick={navigateSalesReportQuantityMonth}>{reportQuantityMonth}</NavDropdown.Item>
+              <NavDropdown.Item onClick={navigateSalesReportRevenueMonth}>{reportRevenueMonth}</NavDropdown.Item>
+              <NavDropdown.Item onClick={navigateSalesReportProfitMonth}>{reportProfitMonth}</NavDropdown.Item>
+              <NavDropdown.Item onClick={navigateSalesReportQuantityMonthByProduct}>{reportQuantityMonthPerProduct}</NavDropdown.Item>
+              <NavDropdown.Item onClick={navigateSalesReportRevenueMonthByProduct}>{reportRevenueMonthPerProduct}</NavDropdown.Item>
+              <NavDropdown.Item onClick={navigateSalesReportProfitMonthByProduct}>{reportProfitMonthPerProduct}</NavDropdown.Item>
+              <NavDropdown.Divider />
               <NavDropdown.Item onClick={navigateSalesReportQuantityAnnual}>{reportQuantityAnnual}</NavDropdown.Item>
               <NavDropdown.Item onClick={navigateSalesReportRevenueAnnual}>{reportRevenueAnnual}</NavDropdown.Item>
               <NavDropdown.Item onClick={navigateSalesReportProfitAnnual}>{reportProfitAnnual}</NavDropdown.Item>

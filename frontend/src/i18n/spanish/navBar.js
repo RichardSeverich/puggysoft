@@ -62,7 +62,7 @@ const navBar = {
   salesShowCard: "Mostrar Ventas (Tarjetas)",
   // Report
   reportAdmin: "Reportes",
-  // GENERAL
+  // GENERAL PER YEAR
   reportOf: "Reporte de ",
   reportQuantityAnnual: "Cantidad de ventas anual",
   reportQuantityAnnualCompare: "Cantidad de ventas anual (Comparar 2 años)",
@@ -70,6 +70,13 @@ const navBar = {
   reportRevenueAnnualCompare: "Ingresos de ventas anual (Comparar 2 años)",
   reportProfitAnnual: "Ganancias de ventas anual",
   reportProfitAnnualCompare: "Ganancias de ventas anual (Comparar 2 años)",
+  // GENERAL PER MONTH
+  reportQuantityMonth: "Cantidad de ventas mensuales",
+  reportQuantityMonthCompare: "Cantidad de ventas mensual (Comparar 2 meses)",
+  reportRevenueMonth: "Ingresos de ventas mensuales",
+  reportRevenueMonthCompare: "Ingresos de ventas mensual (Comparar 2 meses)",
+  reportProfitMonth: "Ganancias de ventas mensuales",
+  reportProfitMonthCompare: "Ganancias de ventas mensual (Comparar 2 meses)",
   // PER PRODUCT
   reportQuantityPerProduct: "Cantidad de ventas anual por producto",
   reportQuantityPerProductCompare: "Cantidad de ventas anual por producto (Comparar 2 años)",
@@ -77,6 +84,13 @@ const navBar = {
   reportRevenuePerProductCompare: "Ingresos de ventas anual por producto (Comparar 2 años)",
   reportProfitPerProductAnnual: "Ganancias de ventas anual por producto",
   reportProfitPerProductAnnualCompare: "Ganancias de ventas anual por producto (Comparar 2 años)",
+  // PER PRODUCT
+  reportQuantityMonthPerProduct: "Cantidad de ventas mensual por producto",
+  reportQuantityMonthPerProductCompare: "Cantidad de ventas mensual por producto (Comparar 2 meses)",
+  reportRevenueMonthPerProduct: "Ingresos de ventas mensual por producto",
+  reportRevenueMonthPerProductCompare: "Ingresos de ventas mensual por producto (Comparar 2 meses)",
+  reportProfitMonthPerProduct: "Ganancias de ventas mensual por producto",
+  reportProfitMonthPerProductCompare: "Ganancias de ventas mensual por producto (Comparar 2 meses)",
 
   // ******* ******* HOSPITAL SYSTEM ******* *******
   // Doctors

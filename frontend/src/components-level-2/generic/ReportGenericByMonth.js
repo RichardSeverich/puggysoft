@@ -10,8 +10,10 @@ import i18n from "../../i18n/i18n";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import Form from "react-bootstrap/Form";
-import "./../css/all-five-divs-side-by-side.css";
+import converterMonthNumToLabel from "./../../tools/converterMonthNumToLabel";
+import "./../css/all-seven-divs-side-by-side.css";
 import "./../css/all-forms-inline-block.css";
+import "./report-generic-month.css";
 import "./report-generic.css";
 
 function ReportGeneric ({
@@ -24,36 +26,32 @@ function ReportGeneric ({
   const history = useHistory();
   const [chartType, setChartType] = useState(enumChartType.CHART_VERTICAL_BAR);
   const [yearOne, setYearOne] = useState(2021);
+  const [monthOne, setMonthOne] = useState(1);
   const [yearTwo, setYearTwo] = useState(enableTwoYears ? 2022 : null);
+  const [monthTwo, setMonthTwo] = useState(1);
   const [datasets, setDatasets] = useState([]);
+  const [labels, setLabels] = useState([]);
   let datasetAux = [];
-  const labels = [
-    i18n.commonMonths.january,
-    i18n.commonMonths.february,
-    i18n.commonMonths.march,
-    i18n.commonMonths.april,
-    i18n.commonMonths.may,
-    i18n.commonMonths.june,
-    i18n.commonMonths.july,
-    i18n.commonMonths.august,
-    i18n.commonMonths.september,
-    i18n.commonMonths.october,
-    i18n.commonMonths.november,
-    i18n.commonMonths.december
-  ];
 
   function updateReportOne (reportData) {
+    const aux = [];
+    for (let day = 1; day <= reportData.length; day++) {
+      aux.push(`${i18n.commonReport.day} ${day}`);
+    }
+    setLabels(aux);
     if (reportData) {
+      const labelMonth = converterMonthNumToLabel(monthOne);
+      const datasetLabel = `${i18n.commonReport.year} ${yearOne}, ${i18n.commonReport.month} ${labelMonth}`;
       const newDatasets = [
         {
-          label: `${i18n.commonReport.year} ${yearOne}`,
-          data: getData(reportData),
+          label: datasetLabel,
+          data: reportData,
           borderColor: "rgb(53, 162, 235)",
           backgroundColor: "rgba(53, 162, 235, 0.5)"
         }
       ];
       if (enableTwoYears) {
-        handleUpdateData(yearTwo, updateReportTwo, onRequestFail);
+        handleUpdateData(yearTwo, monthTwo, updateReportTwo, onRequestFail);
         datasetAux = newDatasets;
       } else {
         setDatasets(newDatasets);
@@ -67,34 +65,18 @@ function ReportGeneric ({
 
   function updateReportTwo (reportData) {
     if (reportData) {
+      const labelMonth = converterMonthNumToLabel(monthTwo);
+      const datasetLabel = `${i18n.commonReport.year} ${yearTwo}, ${i18n.commonReport.month} ${labelMonth}`;
       const newDatasets = [
         {
-          label: `${i18n.commonReport.year} ${yearTwo}`,
-          data: getData(reportData),
+          label: datasetLabel,
+          data: reportData,
           borderColor: "rgb(255, 99, 132)",
           backgroundColor: "rgba(255, 99, 132, 0.5)"
         }
       ];
       setDatasets([...datasetAux, ...newDatasets]);
     }
-  }
-
-  function getData (reportData) {
-    const data = [
-      reportData.january,
-      reportData.february,
-      reportData.march,
-      reportData.april,
-      reportData.may,
-      reportData.june,
-      reportData.july,
-      reportData.august,
-      reportData.september,
-      reportData.october,
-      reportData.november,
-      reportData.december
-    ];
-    return data;
   }
 
   function handleUpdateReportData () {
@@ -106,14 +88,14 @@ function ReportGeneric ({
         alert(i18n.commonReport.yearValidation);
       } else {
         setDatasets(null);
-        handleUpdateData(yearOne, updateReportOne, onRequestFail);
+        handleUpdateData(yearOne, monthOne, updateReportOne, onRequestFail);
       }
     } else {
       if (yearOne < 1900 || yearOne > 3000) {
         alert(i18n.commonReport.yearValidation);
       } else {
         setDatasets(null);
-        handleUpdateData(yearOne, updateReportOne, onRequestFail);
+        handleUpdateData(yearOne, monthOne, updateReportOne, onRequestFail);
       }
     }
   }
@@ -142,7 +124,7 @@ function ReportGeneric ({
         {productData !== null && <Card.Header as='h6'>{i18n.saleReport.productName} : {productData.name}</Card.Header>}
         <Card.Body>
           <div className="">
-            <div className="puggysoft-five-divs-side-by-side-child ">
+            <div className="puggysoft-seven-divs-side-by-side-child ">
               <Form.Group>
                 <div className={"puggysoft-form-label"}>
                   <Form.Label>{i18n.commonReport.yearSelectionOne}</Form.Label>
@@ -160,7 +142,34 @@ function ReportGeneric ({
                 </div>
               </Form.Group>
             </div>
-            <div className="puggysoft-five-divs-side-by-side-child ">
+            <div className="puggysoft-seven-divs-side-by-side-child ">
+              <Form.Group>
+                <div className={"puggysoft-form-label"}>
+                  <Form.Label>{i18n.commonReport.monthSelectionOne}</Form.Label>
+                </div>
+                <div className={"puggysoft-form-select-month"}>
+                  <Form.Select
+                    onChange={(event) => {
+                      setMonthOne(event.target.value);
+                    }}
+                    value={monthOne} >
+                    <option key="1" value={1}>{i18n.commonMonths.january}</option>
+                    <option key="2" value={2}>{i18n.commonMonths.february}</option>
+                    <option key="3" value={3}>{i18n.commonMonths.march}</option>
+                    <option key="4" value={4}>{i18n.commonMonths.april}</option>
+                    <option key="5" value={5}>{i18n.commonMonths.may}</option>
+                    <option key="6" value={6}>{i18n.commonMonths.june}</option>
+                    <option key="7" value={7}>{i18n.commonMonths.july}</option>
+                    <option key="8" value={8}>{i18n.commonMonths.august}</option>
+                    <option key="9" value={9}>{i18n.commonMonths.september}</option>
+                    <option key="10" value={10}>{i18n.commonMonths.october}</option>
+                    <option key="11" value={11}>{i18n.commonMonths.november}</option>
+                    <option key="12" value={12}>{i18n.commonMonths.december}</option>
+                  </Form.Select>
+                </div>
+              </Form.Group>
+            </div>
+            <div className="puggysoft-seven-divs-side-by-side-child ">
               <Form.Group>
                 <div className={"puggysoft-form-label"}>
                   <Form.Label>{i18n.commonReport.yearSelectionTwo}</Form.Label>
@@ -179,35 +188,65 @@ function ReportGeneric ({
                 </div>
               </Form.Group>
             </div>
-            <div className="puggysoft-five-divs-side-by-side-child ">
+            <div className="puggysoft-seven-divs-side-by-side-child ">
+              <Form.Group>
+                <div className={"puggysoft-form-label"}>
+                  <Form.Label>{i18n.commonReport.monthSelectionTwo}</Form.Label>
+                </div>
+                <div className={"puggysoft-form-select-month"}>
+                  <Form.Select
+                    disabled={!enableTwoYears}
+                    onChange={(event) => {
+                      setMonthTwo(event.target.value);
+                    }}
+                    value={monthTwo} >
+                    <option key="1" value={1}>{i18n.commonMonths.january}</option>
+                    <option key="2" value={2}>{i18n.commonMonths.february}</option>
+                    <option key="3" value={3}>{i18n.commonMonths.march}</option>
+                    <option key="4" value={4}>{i18n.commonMonths.april}</option>
+                    <option key="5" value={5}>{i18n.commonMonths.may}</option>
+                    <option key="6" value={6}>{i18n.commonMonths.june}</option>
+                    <option key="7" value={7}>{i18n.commonMonths.july}</option>
+                    <option key="8" value={8}>{i18n.commonMonths.august}</option>
+                    <option key="9" value={9}>{i18n.commonMonths.september}</option>
+                    <option key="10" value={10}>{i18n.commonMonths.october}</option>
+                    <option key="11" value={11}>{i18n.commonMonths.november}</option>
+                    <option key="12" value={12}>{i18n.commonMonths.december}</option>
+                  </Form.Select>
+                </div>
+              </Form.Group>
+            </div>
+            <div className="puggysoft-seven-divs-side-by-side-child ">
               <Form.Group>
                 <div className={"puggysoft-form-label"}>
                   <Form.Label>
                     {i18n.commonReport.selectChar}
                   </Form.Label>
                 </div>
-                <div className={"puggysoft-form-input"}><Form.Select
-                  onChange={(event) => {
-                    setChartType(event.target.value);
-                  }}
-                  value={chartType}
-                >
-                  <option key='option-vertical-bar'
-                    value={enumChartType.CHART_VERTICAL_BAR}>
-                    {i18n.commonReport.chartVerticallBar}
-                  </option>
-                  <option key='option-horizontal-bar'
-                    value={enumChartType.CHART_HORIZONTAL_BAR}>
-                    {i18n.commonReport.chartHorizontalBar}
-                  </option>
-                  <option key='option-line'
-                    value={enumChartType.CHART_LINE}>
-                    {i18n.commonReport.chartLine}
-                  </option>
-                </Form.Select></div>
+                <div className={"puggysoft-form-select-chart"}>
+                  <Form.Select
+                    onChange={(event) => {
+                      setChartType(event.target.value);
+                    }}
+                    value={chartType}
+                  >
+                    <option key='option-vertical-bar'
+                      value={enumChartType.CHART_VERTICAL_BAR}>
+                      {i18n.commonReport.chartVerticallBar}
+                    </option>
+                    <option key='option-horizontal-bar'
+                      value={enumChartType.CHART_HORIZONTAL_BAR}>
+                      {i18n.commonReport.chartHorizontalBar}
+                    </option>
+                    <option key='option-line'
+                      value={enumChartType.CHART_LINE}>
+                      {i18n.commonReport.chartLine}
+                    </option>
+                  </Form.Select>
+                </div>
               </Form.Group>
             </div>
-            <div className="puggysoft-five-divs-side-by-side-child ">
+            <div className="puggysoft-seven-divs-side-by-side-child ">
               <Form.Label></Form.Label>
               <Form.Group>
                 <Button
@@ -219,7 +258,7 @@ function ReportGeneric ({
                 </Button>
               </Form.Group>
             </div>
-            <div className="puggysoft-five-divs-side-by-side-child ">
+            <div className="puggysoft-seven-divs-side-by-side-child ">
               <Form.Label></Form.Label>
               <Form.Group>
                 <Button

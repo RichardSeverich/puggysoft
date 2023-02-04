@@ -1,0 +1,11 @@
+.puggysoft-form-input input.form-control {
+  width: 80%;
+}
+
+.puggysoft-form-select-month select.form-select {
+  width: 90%;
+}
+
+.puggysoft-form-select-chart select.form-select {
+  width: 90%;
+}

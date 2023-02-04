@@ -8,6 +8,7 @@ import commonReport from "./spanish/commonReport";
 import commonMonths from "./spanish/commonMonths";
 import systemPropertiesTable from "./spanish/system/systemPropertiesTable";
 import systemPropertiesForm from "./spanish/system/systemPropertiesForm";
+import commonInProgress from "./spanish/commonInProgress";
 // Users System
 import userTable from "./spanish/users/userTable";
 import userForm from "./spanish/users/userForm";
@@ -49,6 +50,7 @@ const i18n = {
   commonMonths,
   systemPropertiesTable,
   systemPropertiesForm,
+  commonInProgress,
   // Users System
   userForm,
   userTable,
