@@ -1,7 +1,21 @@
 .enable-disable-two-years-button {
   width: 80%;
+  margin-top: 7px;
 }
 
 .update-report-button {
   width: 80%;
+  margin-top: 7px;
+}
+
+.puggysoft-form-label {
+  display: flex;
+  margin: auto;
+}
+
+@media (min-width:1080px) {
+  .puggysoft-form-input {
+    display: inline-block;
+    width: 16rem;
+  }
 }

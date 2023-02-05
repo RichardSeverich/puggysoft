@@ -150,22 +150,19 @@ function NavBar () {
     history.push(enumPaths.SALES_PRODUCTS_TABLE_TO_QUANTITY_BY_PRODUCT);
   };
   const navigateSalesReportQuantityMonthByProduct = () => {
-    history.push(enumPaths.IN_PROGRESS_PAGE);
-    // history.push(enumPaths.SALES_PRODUCTS_TABLE_TO_QUANTITY_MONTH_BY_PRODUCT);
+    history.push(enumPaths.SALES_PRODUCTS_TABLE_TO_QUANTITY_MONTH_BY_PRODUCT);
   };
   const navigateSalesReportRevenueAnnualByProduct = () => {
     history.push(enumPaths.SALES_PRODUCTS_TABLE_TO_REVENUE_BY_PRODUCT);
   };
   const navigateSalesReportRevenueMonthByProduct = () => {
-    history.push(enumPaths.IN_PROGRESS_PAGE);
-    // history.push(enumPaths.SALES_PRODUCTS_TABLE_TO_REVENUE_MONTH_BY_PRODUCT);
+    history.push(enumPaths.SALES_PRODUCTS_TABLE_TO_REVENUE_MONTH_BY_PRODUCT);
   };
   const navigateSalesReportProfitAnnualByProduct = () => {
     history.push(enumPaths.SALES_PRODUCTS_TABLE_TO_PROFIT_BY_PRODUCT);
   };
   const navigateSalesReportProfitMonthByProduct = () => {
-    history.push(enumPaths.IN_PROGRESS_PAGE);
-    // history.push(enumPaths.SALES_PRODUCTS_TABLE_TO_PROFIT_MONTH_BY_PRODUCT);
+    history.push(enumPaths.SALES_PRODUCTS_TABLE_TO_PROFIT_MONTH_BY_PRODUCT);
   };
 
   // ******* ******* ******* HOSPITAL SYSTEM ******* ******* *******

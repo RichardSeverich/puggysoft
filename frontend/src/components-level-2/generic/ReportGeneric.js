@@ -11,7 +11,6 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import Form from "react-bootstrap/Form";
 import "./../css/all-five-divs-side-by-side.css";
-import "./../css/all-forms-inline-block.css";
 import "./report-generic.css";
 
 function ReportGeneric ({

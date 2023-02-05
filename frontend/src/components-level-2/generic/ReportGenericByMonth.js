@@ -12,7 +12,6 @@ import Card from "react-bootstrap/Card";
 import Form from "react-bootstrap/Form";
 import converterMonthNumToLabel from "./../../tools/converterMonthNumToLabel";
 import "./../css/all-seven-divs-side-by-side.css";
-import "./../css/all-forms-inline-block.css";
 import "./report-generic-month.css";
 import "./report-generic.css";
 
@@ -129,7 +128,7 @@ function ReportGeneric ({
                 <div className={"puggysoft-form-label"}>
                   <Form.Label>{i18n.commonReport.yearSelectionOne}</Form.Label>
                 </div>
-                <div className={"puggysoft-form-input"}>
+                <div className={"puggysoft-form-input-month"}>
                   <Form.Control
                     value={yearOne}
                     type="number"
@@ -174,7 +173,7 @@ function ReportGeneric ({
                 <div className={"puggysoft-form-label"}>
                   <Form.Label>{i18n.commonReport.yearSelectionTwo}</Form.Label>
                 </div>
-                <div className={"puggysoft-form-input"}>
+                <div className={"puggysoft-form-input-month"}>
                   <Form.Control
                     disabled={!enableTwoYears}
                     value={yearTwo}

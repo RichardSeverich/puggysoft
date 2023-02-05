@@ -36,14 +36,20 @@ import SaleAddStepOnePageForCashier from "./components-level-3/sales/SaleAddStep
 import SaleAddStepTwoPage from "./components-level-3/sales/SaleAddStepTwoPage";
 import SaleReportQuantityPage from "./components-level-3/sales/SaleReportQuantityPage";
 import SaleReportQuantityCompPage from "./components-level-3/sales/SaleReportQuantityCompPage";
+import SaleReportQuantityMonthByProductPage from "./components-level-3/sales/SaleReportQuantityMonthByProductPage";
+import SaleReportQuantityMonthCompByProductPage from "./components-level-3/sales/SaleReportQuantityMonthCompByProductPage";
 import SaleReportQuantityMonthPage from "./components-level-3/sales/SaleReportQuantityMonthPage";
 import SaleReportQuantityMonthCompPage from "./components-level-3/sales/SaleReportQuantityMonthCompPage";
 import SaleReportRevenuePage from "./components-level-3/sales/SaleReportRevenuePage";
 import SaleReportRevenueCompPage from "./components-level-3/sales/SaleReportRevenueCompPage";
+import SaleReportRevenueMonthByProductPage from "./components-level-3/sales/SaleReportRevenueMonthByProductPage";
+import SaleReportRevenueMonthCompByProductPage from "./components-level-3/sales/SaleReportRevenueMonthCompByProductPage";
 import SaleReportRevenueMonthPage from "./components-level-3/sales/SaleReportRevenueMonthPage";
 import SaleReportRevenueMonthCompPage from "./components-level-3/sales/SaleReportRevenueMonthCompPage";
 import SaleReportProfitPage from "./components-level-3/sales/SaleReportProfitPage";
 import SaleReportProfitCompPage from "./components-level-3/sales/SaleReportProfitCompPage";
+import SaleReportProfitMonthByProductPage from "./components-level-3/sales/SaleReportProfitMonthByProductPage";
+import SaleReportProfitMonthCompByProductPage from "./components-level-3/sales/SaleReportProfitMonthCompByProductPage";
 import SaleReportProfitMonthPage from "./components-level-3/sales/SaleReportProfitMonthPage";
 import SaleReportProfitMonthCompPage from "./components-level-3/sales/SaleReportProfitMonthCompPage";
 import ProductTableToQuantityReportPage from "./components-level-3/sales/ProductTableToQuantityReportPage";
@@ -52,6 +58,12 @@ import ProductTableToRevenueReportPage from "./components-level-3/sales/ProductT
 import ProductTableToRevenueComparativeReportPage from "./components-level-3/sales/ProductTableToRevenueComparativeReportPage";
 import ProductTableToProfitReportPage from "./components-level-3/sales/ProductTableToProfitReportPage";
 import ProductTableToProfitComparativeReportPage from "./components-level-3/sales/ProductTableToProfitComparativeReportPage";
+import ProductTableToProfitMonthCompReportPage from "./components-level-3/sales/ProductTableToProfitMonthCompReportPage";
+import ProductTableToProfitMonthReportPage from "./components-level-3/sales/ProductTableToProfitMonthReportPage";
+import ProductTableToQuantityMonthCompReportPage from "./components-level-3/sales/ProductTableToQuantityMonthCompReportPage";
+import ProductTableToQuantityMonthReportPage from "./components-level-3/sales/ProductTableToQuantityMonthReportPage";
+import ProductTableToRevenueMonthCompReportPage from "./components-level-3/sales/ProductTableToRevenueMonthCompReportPage";
+import ProductTableToRevenueMonthReportPage from "./components-level-3/sales/ProductTableToRevenueMonthReportPage";
 import SaleReportQuantityByProductPage from "./components-level-3/sales/SaleReportQuantityByProductPage";
 import SaleReportQuantityComparativeByProductPage from "./components-level-3/sales/SaleReportQuantityComparativeByProductPage";
 import SaleReportRevenueByProductPage from "./components-level-3/sales/SaleReportRevenueByProductPage";
@@ -116,12 +128,24 @@ const AppRoutes = () => (
       <Route exact path={enumPaths.SALES_PRODUCTS_TABLE_TO_REVENUE_BY_PRODUCT_COMP} component={ProductTableToRevenueComparativeReportPage} />
       <Route exact path={enumPaths.SALES_PRODUCTS_TABLE_TO_PROFIT_BY_PRODUCT} component={ProductTableToProfitReportPage} />
       <Route exact path={enumPaths.SALES_PRODUCTS_TABLE_TO_PROFIT_BY_PRODUCT_COMP} component={ProductTableToProfitComparativeReportPage} />
+      <Route exact path={enumPaths.SALES_PRODUCTS_TABLE_TO_QUANTITY_MONTH_BY_PRODUCT} component={ProductTableToQuantityMonthReportPage} />
+      <Route exact path={enumPaths.SALES_PRODUCTS_TABLE_TO_QUANTITY_MONTH_BY_PRODUCT_COMP} component={ProductTableToQuantityMonthCompReportPage} />
+      <Route exact path={enumPaths.SALES_PRODUCTS_TABLE_TO_REVENUE_MONTH_BY_PRODUCT} component={ProductTableToRevenueMonthReportPage} />
+      <Route exact path={enumPaths.SALES_PRODUCTS_TABLE_TO_REVENUE_MONTH_BY_PRODUCT_COMP} component={ProductTableToRevenueMonthCompReportPage} />
+      <Route exact path={enumPaths.SALES_PRODUCTS_TABLE_TO_PROFIT_MONTH_BY_PRODUCT} component={ProductTableToProfitMonthReportPage} />
+      <Route exact path={enumPaths.SALES_PRODUCTS_TABLE_TO_PROFIT_MONTH_BY_PRODUCT_COMP} component={ProductTableToProfitMonthCompReportPage} />
       <Route exact path={enumPaths.SALES_REPORT_QUANTITY_BY_PRODUCT} component={SaleReportQuantityByProductPage} />
       <Route exact path={enumPaths.SALES_REPORT_QUANTITY_COMP_BY_PRODUCT} component={SaleReportQuantityComparativeByProductPage} />
+      <Route exact path={enumPaths.SALES_REPORT_QUANTITY_MONTH_BY_PRODUCT} component={SaleReportQuantityMonthByProductPage} />
+      <Route exact path={enumPaths.SALES_REPORT_QUANTITY_MONTH_COMP_BY_PRODUCT} component={SaleReportQuantityMonthCompByProductPage} />
       <Route exact path={enumPaths.SALES_REPORT_REVENUE_BY_PRODUCT} component={SaleReportRevenueByProductPage} />
       <Route exact path={enumPaths.SALES_REPORT_REVENUE_COMP_BY_PRODUCT} component={SaleReportRevenueComparativeByProductPage} />
+      <Route exact path={enumPaths.SALES_REPORT_REVENUE_MONTH_BY_PRODUCT} component={SaleReportRevenueMonthByProductPage} />
+      <Route exact path={enumPaths.SALES_REPORT_REVENUE_MONTH_COMP_BY_PRODUCT} component={SaleReportRevenueMonthCompByProductPage} />
       <Route exact path={enumPaths.SALES_REPORT_PROFIT_BY_PRODUCT} component={SaleReportProfitByProductPage} />
       <Route exact path={enumPaths.SALES_REPORT_PROFIT_COMP_BY_PRODUCT} component={SaleReportProfitComparativeByProductPage} />
+      <Route exact path={enumPaths.SALES_REPORT_PROFIT_MONTH_BY_PRODUCT} component={SaleReportProfitMonthByProductPage} />
+      <Route exact path={enumPaths.SALES_REPORT_PROFIT_MONTH_COMP_BY_PRODUCT} component={SaleReportProfitMonthCompByProductPage} />
       {/** Hospital System */}
       <Route exact path={enumPaths.HOSPITAL_DOCTOR_USER_FORM} component={DoctorUserFormPage} />
       <Route exact path={enumPaths.HOSPITAL_DOCTOR_USER_TABLE_TO_DETAILS} component={DoctorUserTableToDetailsPage} />
