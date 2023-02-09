@@ -12,6 +12,7 @@ import enumSex from "./../../models/users/enumSex";
 import enumInputType from "./../../models/enumInputType";
 import appUrlConfig from "./../../tools/appUrlConfig";
 import CommonLoading from "./../../components-level-1/CommonLoading";
+import CommonMessage from "./../../components-level-1/CommonMessage";
 
 import "./user-details.css";
 
@@ -28,6 +29,10 @@ function UserDetails (props) {
   const [isRequestInProgress, setIsRequestInProgress] = useState(false);
   console.log(classNameFormText);
   // const [isProgressRequest, setIsProgressRequest] = useState(false);
+  // Message states
+  const [isMessageVisible, setIsMessageVisible] = useState(false);
+  const [messageTitle, setMessageTitle] = useState("");
+  const [messageText, setMessageText] = useState("");
 
   // Use custom hook
   const { value: valueUsername, onChange: onChangeUsername, setValue: setValueUsername } = useInput(userData.username);
@@ -172,7 +177,9 @@ function UserDetails (props) {
         handleEditRequest("users/", body, userData.id, handleAfterUpdateOnSuccess, handleAfterEditOnFail);
       } else {
         resetValues();
-        alert(i18n.errorMessages.validationError);
+        setMessageTitle(i18n.errorMessages.validationErrorTitle);
+        setMessageText(i18n.errorMessages.validationError);
+        setIsMessageVisible(true);
       }
     }
   };
@@ -219,6 +226,13 @@ function UserDetails (props) {
 
   return (
     <div className="puggysoft-user-details">
+      <CommonMessage
+        isVisible={isMessageVisible}
+        setIsVisible={setIsMessageVisible}
+        titleText={messageTitle}
+        bodyText={messageText}
+        variant="danger"
+      />
       <Card>
         <Card.Header as="h3">{i18n.userDetails.title}</Card.Header>
         <Card.Img variant="top" size="" src={imageUrl} />

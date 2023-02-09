@@ -1,0 +1,38 @@
+.puggysoft-message-primary .modal-header {
+    background: #0069d9;
+}
+.puggysoft-message-secondary .modal-header {
+    background: #6c757d;
+}
+
+.puggysoft-message-success .modal-header {
+    background: #218838;
+}
+
+.puggysoft-message-danger .modal-header {
+    background: #c82333;
+}
+
+.puggysoft-message-warning .modal-header {
+    background: #e0a800;
+}
+
+.puggysoft-message-info .modal-header {
+    background: #17a2b8;
+}
+
+.puggysoft-message-light .modal-header {
+    background: #17a2b8;
+}
+
+.puggysoft-message-dark .modal-header {
+    background: #23272b;
+}
+
+div[class*="puggysoft-message"] .modal-title.h4 {
+    color: #fff;
+}
+
+.puggysoft-message-light .modal-title.h4 {
+    color: #212529;
+}

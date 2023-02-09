@@ -9,6 +9,7 @@ import { handleFilterRequest, handleAddRequest, handleDeleteRequest, handleEditR
 import ProductTableSuperReducedGeneric from "./ProductTableSuperReducedGeneric";
 import i18n from "../../i18n/i18n";
 import CommonLoading from "../../components-level-1/CommonLoading";
+import CommonMessage from "./../../components-level-1/CommonMessage";
 import arraySaleProductColumnsOne from "../../models/sales/arrayProductColumnsReducedSuperOne";
 import arraySaleProductColumnsTwo from "../../models/sales/arrayProductColumnsReducedSuperTwo";
 import Form from "react-bootstrap/Form";
@@ -37,6 +38,10 @@ function SaleAddStepTwoProductSelection () {
   const [clientCash, setClientCash] = useState(0);
   const [clientCashChange, setClientCashChange] = useState(0);
   const [arrayOfProductsFromSale, setArrayOfProductsFromSale] = useState([]);
+  // Message states.
+  const [isMessageVisible, setIsMessageVisible] = useState(false);
+  const [messageTitle, setMessageTitle] = useState("");
+  const [messageText, setMessageText] = useState("");
 
   const { saleData, saleTableViewType } = history &&
     history.location !== undefined &&
@@ -75,9 +80,13 @@ function SaleAddStepTwoProductSelection () {
     const textboxElement = document.getElementById(textboxId);
     const saleQuantity = textboxElement.value;
     if (!saleQuantity || saleQuantity === "" || saleQuantity <= 0) {
-      alert(i18n.saleErrorMessages.invalidQuantity);
+      setMessageTitle(i18n.errorMessages.errorTitle);
+      setMessageText(i18n.saleErrorMessages.invalidQuantity);
+      setIsMessageVisible(true);
     } else if (saleQuantity > productData.stock) {
-      alert(i18n.saleErrorMessages.quantityGreaterThanStock);
+      setMessageTitle(i18n.errorMessages.errorTitle);
+      setMessageText(i18n.saleErrorMessages.quantityGreaterThanStock);
+      setIsMessageVisible(true);
     } else {
       setIsRequestInProgress(true);
       setClientCash(0);
@@ -214,7 +223,9 @@ function SaleAddStepTwoProductSelection () {
 
   function handleGenerateTicket () {
     if (arrayOfProductsFromSale.length === 0) {
-      alert(i18n.saleTicket.ticketWithoutProductError);
+      setMessageTitle(i18n.errorMessages.errorTitle);
+      setMessageText(i18n.saleTicket.ticketWithoutProductError);
+      setIsMessageVisible(true);
     } else {
       pdfBuilderTicket(saleData, totalToPay, arrayOfProductsFromSale);
     }
@@ -298,6 +309,13 @@ function SaleAddStepTwoProductSelection () {
 
   return (
     <div>
+      <CommonMessage
+        isVisible={isMessageVisible}
+        setIsVisible={setIsMessageVisible}
+        titleText={messageTitle}
+        bodyText={messageText}
+        variant="danger"
+      />
       <Card>
         <Card.Header as='h3'>{generalTitle} : {saleData.id}</Card.Header>
         <Card.Body className="sale-section-one">

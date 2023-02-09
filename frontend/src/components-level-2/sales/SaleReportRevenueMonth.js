@@ -16,8 +16,7 @@ function SaleReportRevenueMonth () {
       handleUpdateData={handleUpdateData}
       enableTwoYears={false}
       pathNameOneOrTwoYears={enumPaths.SALES_REPORT_REVENUE_MONTH_COMP}
-    >
-    </ReportGenericByMonth>
+    />
   );
 }
 

@@ -16,8 +16,7 @@ function SaleReportQuantityMonthComp () {
       handleUpdateData={handleUpdateData}
       enableTwoYears={true}
       pathNameOneOrTwoYears={enumPaths.SALES_REPORT_QUANTITY_MONTH}
-    >
-    </ReportGenericByMonth>
+    />
   );
 }
 

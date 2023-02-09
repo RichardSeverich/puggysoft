@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { useHistory } from "react-router";
 
 import ReportGeneric from "./../generic/ReportGeneric";
+import CommonMessage from "./../../components-level-1/CommonMessage";
 
 import { handleGetRequest } from "../../actions/HandleManager";
 import i18n from "../../i18n/i18n";
@@ -16,23 +17,37 @@ function SaleReportQuantity () {
     ? history.location.state.productData
     : undefined;
 
+  const [isMessageVisible, setIsMessageVisible] = useState(false);
+  const [messageTitle, setMessageTitle] = useState("");
+  const [messageText, setMessageText] = useState("");
+
   function handleUpdateData (year, setReportData, onRequestFail) {
     if (productData && productData.id) {
       handleGetRequest(`sales-report/quantity-by-product?year=${year}&idProduct=${productData.id}`, setReportData, onRequestFail);
     } else {
-      alert(i18n.saleErrorMessages.productNotSelected);
+      setMessageTitle(i18n.errorMessages.errorTitle);
+      setMessageText(i18n.saleErrorMessages.productNotSelected);
+      setIsMessageVisible(true);
     }
   }
 
   return (
-    <ReportGeneric
-      reportTitle={i18n.navBar.reportQuantityAnnual}
-      handleUpdateData={handleUpdateData}
-      enableTwoYears={false}
-      productData={productData}
-      pathNameOneOrTwoYears={enumPaths.SALES_REPORT_QUANTITY_COMP_BY_PRODUCT}
-    >
-    </ReportGeneric>
+    <>
+      <CommonMessage
+        isVisible={isMessageVisible}
+        setIsVisible={setIsMessageVisible}
+        titleText={messageTitle}
+        bodyText={messageText}
+        variant="danger"
+      />
+      <ReportGeneric
+        reportTitle={i18n.navBar.reportQuantityAnnual}
+        handleUpdateData={handleUpdateData}
+        enableTwoYears={false}
+        productData={productData}
+        pathNameOneOrTwoYears={enumPaths.SALES_REPORT_QUANTITY_COMP_BY_PRODUCT}
+      />
+    </>
   );
 }
 

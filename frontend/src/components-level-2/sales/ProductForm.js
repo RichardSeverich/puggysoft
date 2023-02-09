@@ -10,6 +10,7 @@ import useInput from "./../../hooks/useInput";
 import appUrlConfig from "./../../tools/appUrlConfig";
 import { handleAddRequest, handleEditRequest, handleAddFileRequest } from "../../actions/HandleManager";
 import { handleValidation, classNameFormTextNew } from "./../../validations/sales/HandleProductFormValidations";
+import CommonMessage from "./../../components-level-1/CommonMessage";
 
 import "./../css/all-forms.css";
 import "./product-form-styles.css";
@@ -20,6 +21,10 @@ function ProductForm (props) {
   const [isEdit, setIsEdit] = useState(isEditDefaultValue);
   const [classNameFormText, setClassNameFormText] = useState(classNameFormTextNew);
   const [isRequestInProgress, setIsRequestInProgress] = useState(false);
+  // Message states
+  const [isMessageVisible, setIsMessageVisible] = useState(false);
+  const [messageTitle, setMessageTitle] = useState("");
+  const [messageText, setMessageText] = useState("");
 
   // CONFIGURE IMAGE
   const fileName = "products-default.jpg";
@@ -133,7 +138,9 @@ function ProductForm (props) {
         handleAddRequest("products/", body, handleAfterAdd);
       }
     } else {
-      alert(i18n.errorMessages.validationError);
+      setMessageTitle(i18n.errorMessages.validationErrorTitle);
+      setMessageText(i18n.errorMessages.validationError);
+      setIsMessageVisible(true);
     }
   };
 
@@ -172,6 +179,13 @@ function ProductForm (props) {
 
   return (
     <div className="puggysoft-product-form" >
+      <CommonMessage
+        isVisible={isMessageVisible}
+        setIsVisible={setIsMessageVisible}
+        titleText={messageTitle}
+        bodyText={messageText}
+        variant="danger"
+      />
       <Card>
         <Card.Header as='h3'>{i18n.productForm.title}</Card.Header>
         <Card.Body>

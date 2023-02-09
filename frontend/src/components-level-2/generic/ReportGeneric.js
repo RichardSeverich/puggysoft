@@ -10,6 +10,7 @@ import i18n from "../../i18n/i18n";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import Form from "react-bootstrap/Form";
+import CommonMessage from "./../../components-level-1/CommonMessage";
 import "./../css/all-five-divs-side-by-side.css";
 import "./report-generic.css";
 
@@ -25,6 +26,9 @@ function ReportGeneric ({
   const [yearOne, setYearOne] = useState(2021);
   const [yearTwo, setYearTwo] = useState(enableTwoYears ? 2022 : null);
   const [datasets, setDatasets] = useState([]);
+  const [isMessageVisible, setIsMessageVisible] = useState(false);
+  const [messageTitle, setMessageTitle] = useState("");
+  const [messageText, setMessageText] = useState("");
   let datasetAux = [];
   const labels = [
     i18n.commonMonths.january,
@@ -102,14 +106,18 @@ function ReportGeneric ({
         yearOne > 3000 ||
         yearTwo < 1900 ||
         yearTwo > 3000) {
-        alert(i18n.commonReport.yearValidation);
+        setMessageTitle(i18n.errorMessages.validationErrorTitle);
+        setMessageText(i18n.commonReport.yearValidation);
+        setIsMessageVisible(true);
       } else {
         setDatasets(null);
         handleUpdateData(yearOne, updateReportOne, onRequestFail);
       }
     } else {
       if (yearOne < 1900 || yearOne > 3000) {
-        alert(i18n.commonReport.yearValidation);
+        setMessageTitle(i18n.errorMessages.validationErrorTitle);
+        setMessageText(i18n.commonReport.yearValidation);
+        setIsMessageVisible(true);
       } else {
         setDatasets(null);
         handleUpdateData(yearOne, updateReportOne, onRequestFail);
@@ -136,6 +144,13 @@ function ReportGeneric ({
 
   return (
     <div>
+      <CommonMessage
+        isVisible={isMessageVisible}
+        setIsVisible={setIsMessageVisible}
+        titleText={messageTitle}
+        bodyText={messageText}
+        variant="danger"
+      />
       <Card>
         <Card.Header as='h3'>{reportTitle}</Card.Header>
         {productData !== null && <Card.Header as='h6'>{i18n.saleReport.productName} : {productData.name}</Card.Header>}

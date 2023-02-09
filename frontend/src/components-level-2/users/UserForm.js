@@ -12,6 +12,7 @@ import { handleAddRequest, handleEditRequest, handleAddFileRequest } from "../..
 import { handleValidation, classNameFormTextNew } from "./../../validations/users/HandleUserFormValidations";
 import appUrlConfig from "./../../tools/appUrlConfig";
 import CommonLoading from "./../../components-level-1/CommonLoading";
+import CommonMessage from "./../../components-level-1/CommonMessage";
 
 import "./../css/all-forms.css";
 import "./user-form-styles.css";
@@ -24,7 +25,9 @@ function UserForm (props) {
   const title = props && props.title ? props.title : i18n.userForm.title;
   const { beforeAdd, afterAdd, showMessageOnSuccess } = props;
   const [isRequestInProgress, setIsRequestInProgress] = useState(false);
-
+  const [isMessageVisible, setIsMessageVisible] = useState(false);
+  const [messageTitle, setMessageTitle] = useState("");
+  const [messageText, setMessageText] = useState("");
   // Put default values:
   const id = isEdit && isEdit.data.id !== null ? isEdit.data.id : "";
   const username = isEdit && isEdit.data.username !== null ? isEdit.data.username : "";
@@ -181,9 +184,13 @@ function UserForm (props) {
     const isValid = handleValidation(body, setClassNameFormText);
     const isValidPassRepeat = isValidRepeatPassword();
     if (!isValid) {
-      alert(i18n.errorMessages.validationError);
+      setMessageTitle(i18n.errorMessages.validationErrorTitle);
+      setMessageText(i18n.errorMessages.validationError);
+      setIsMessageVisible(true);
     } else if (!isValidPassRepeat) {
-      alert(i18n.userForm.passwordRepeatErrorMessage);
+      setMessageTitle(i18n.errorMessages.validationErrorTitle);
+      setMessageText(i18n.userForm.passwordRepeatErrorMessage);
+      setIsMessageVisible(true);
       return;
     }
     if (isValid && isValidPassRepeat) {
@@ -232,6 +239,13 @@ function UserForm (props) {
 
   return (
     <div className="puggysoft-user-form" >
+      <CommonMessage
+        isVisible={isMessageVisible}
+        setIsVisible={setIsMessageVisible}
+        titleText={messageTitle}
+        bodyText={messageText}
+        variant="danger"
+      />
       <Card>
         <Card.Header as="h3">{title}</Card.Header>
         <Card.Body>

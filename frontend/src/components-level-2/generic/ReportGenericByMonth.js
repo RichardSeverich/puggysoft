@@ -11,6 +11,7 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import Form from "react-bootstrap/Form";
 import converterMonthNumToLabel from "./../../tools/converterMonthNumToLabel";
+import CommonMessage from "./../../components-level-1/CommonMessage";
 import "./../css/all-seven-divs-side-by-side.css";
 import "./report-generic-month.css";
 import "./report-generic.css";
@@ -31,6 +32,9 @@ function ReportGeneric ({
   const [datasets, setDatasets] = useState([]);
   const [labels, setLabels] = useState([]);
   let datasetAux = [];
+  const [isMessageVisible, setIsMessageVisible] = useState(false);
+  const [messageTitle, setMessageTitle] = useState("");
+  const [messageText, setMessageText] = useState("");
 
   function updateReportOne (reportData) {
     const aux = [];
@@ -84,14 +88,18 @@ function ReportGeneric ({
         yearOne > 3000 ||
         yearTwo < 1900 ||
         yearTwo > 3000) {
-        alert(i18n.commonReport.yearValidation);
+        setMessageTitle(i18n.errorMessages.validationErrorTitle);
+        setMessageText(i18n.commonReport.yearValidation);
+        setIsMessageVisible(true);
       } else {
         setDatasets(null);
         handleUpdateData(yearOne, monthOne, updateReportOne, onRequestFail);
       }
     } else {
       if (yearOne < 1900 || yearOne > 3000) {
-        alert(i18n.commonReport.yearValidation);
+        setMessageTitle(i18n.errorMessages.validationErrorTitle);
+        setMessageText(i18n.commonReport.yearValidation);
+        setIsMessageVisible(true);
       } else {
         setDatasets(null);
         handleUpdateData(yearOne, monthOne, updateReportOne, onRequestFail);
@@ -118,6 +126,13 @@ function ReportGeneric ({
 
   return (
     <div>
+      <CommonMessage
+        isVisible={isMessageVisible}
+        setIsVisible={setIsMessageVisible}
+        titleText={messageTitle}
+        bodyText={messageText}
+        variant="danger"
+      />
       <Card>
         <Card.Header as='h3'>{reportTitle}</Card.Header>
         {productData !== null && <Card.Header as='h6'>{i18n.saleReport.productName} : {productData.name}</Card.Header>}

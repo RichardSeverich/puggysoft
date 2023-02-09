@@ -5,6 +5,7 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import i18n from "./../../i18n/i18n";
 import useInput from "./../../hooks/useInput";
+import CommonMessage from "./../../components-level-1/CommonMessage";
 import { handleLoginRequest, handleGetRequest } from "../../actions/HandleManager";
 import enumPaths from "./../../models/enumPaths";
 
@@ -16,6 +17,10 @@ function Login () {
   const { value: valuePassword, onChange: onChangePassword } = useInput("");
   const [isValidCredentials, setIsValidCredentials] = useState(false);
   const routerProps = history && history.location && history.location.state;
+  // Message states.
+  const [isMessageVisible, setIsMessageVisible] = useState(false);
+  const [messageTitle, setMessageTitle] = useState("");
+  const [messageText, setMessageText] = useState("");
 
   if (routerProps && routerProps.logout) {
     window.sessionStorage.removeItem("token");
@@ -38,7 +43,9 @@ function Login () {
             window.sessionStorage.setItem("roles", JSON.stringify(roles));
             setIsValidCredentials(true);
           } else {
-            alert(i18n.errorMessages.userNoRoles);
+            setMessageTitle(i18n.errorMessages.errorTitle);
+            setMessageText(i18n.errorMessages.userNoRoles);
+            setIsMessageVisible(true);
           }
         });
       }
@@ -53,6 +60,13 @@ function Login () {
 
   return (
     <div className="puggysoft-login-form" >
+      <CommonMessage
+        isVisible={isMessageVisible}
+        setIsVisible={setIsMessageVisible}
+        titleText={messageTitle}
+        bodyText={messageText}
+        variant="danger"
+      />
       <Card>
         <Card.Header as='h3'>{i18n.login.title}</Card.Header>
         {/* <Card.Title><img src="/logo192.png" className="app-logo" alt="logo" /></Card.Title> */}

@@ -9,8 +9,11 @@ const errorMessages = {
   unknownError: "Error no conocido: Contacte con su administrador",
   invalidCredentials: "Usuario o Contrasena Incorrecto",
   confirmModal: "Esta seguro que desea realizar esta accion ?",
-  userNoRoles: "El usuario no tiene roles asignado",
-  validationError: "Error de validacion porfavor llene corretamente el formulario"
+  userNoRoles: "El usuario no tiene roles asignados",
+  validationErrorTitle: "Error de validacion",
+  errorTitle: "Error",
+  validationError: "Error de validacion, porfavor llene corretamente el formulario",
+  okButton: "Aceptar"
 };
 
 export default errorMessages;
