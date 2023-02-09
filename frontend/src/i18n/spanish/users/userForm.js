@@ -2,6 +2,7 @@ const userForm = {
   title: "Registrar Usuarios",
   fieldUsername: "Username",
   fieldPassword: "Contrasena",
+  fieldPasswordRepeat: "Repetir Contrasena",
   fieldDni: "Dni",
   fieldName: "Primer Nombre",
   fieldSecondName: "Segundo Nombre",
@@ -32,7 +33,8 @@ const userForm = {
   formTextAddress: "Minimo 3, maximo 60 caracteres",
   formTextEmail: "Minimo 7, maximo 60 caracteres",
   formTextStatus: "Seleccione el estado",
-  formTextImage: "Seleccione foto de perfil"
+  formTextImage: "Seleccione foto de perfil",
+  passwordRepeatErrorMessage: "Las contrasenas deben ser iguales"
 };
 
 export default userForm;

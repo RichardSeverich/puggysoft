@@ -58,9 +58,9 @@ function UserForm (props) {
   let imageUrlInitAux = imageUrlInit;
   const userImage =
     isEdit &&
-    isEdit.data &&
-    isEdit.data.image &&
-    isEdit.data.image !== null
+      isEdit.data &&
+      isEdit.data.image &&
+      isEdit.data.image !== null
       ? isEdit.data.image
       : null;
   if (userImage && userImage !== null) {
@@ -75,6 +75,7 @@ function UserForm (props) {
   // Use custom hook
   const { value: valueUsername, onChange: onChangeUsername, setValue: setUsername } = useInput(username);
   const { value: valuePassword, onChange: onChangePassword, setValue: setPassword } = useInput(password);
+  const { value: valuePasswordRepeat, onChange: onChangePasswordRepeat, setValue: setPasswordRepeat } = useInput(password);
   const { value: valueDni, onChange: onChangeDni, setValue: setDni } = useInput(dni);
   const { value: valueName, onChange: onChangeName, setValue: setName } = useInput(name);
   const { value: valueSecondName, onChange: onChangeSecondName, setValue: setSecondName } = useInput(secondName);
@@ -94,6 +95,7 @@ function UserForm (props) {
   const handleReset = () => {
     setUsername("");
     setPassword("");
+    setPasswordRepeat("");
     setDni("");
     setName("");
     setSecondName("");
@@ -118,6 +120,7 @@ function UserForm (props) {
     // afterAdd = add some role to new user.
     if (afterAdd) {
       const newUser = getBody();
+      delete newUser.passwordRepead;
       newUser.id = newUserId;
       afterAdd(newUser);
     }
@@ -143,6 +146,7 @@ function UserForm (props) {
     const body = {
       username: valueUsername,
       password: valuePassword,
+      passwordRepead: valuePasswordRepeat,
       dni: valueDni,
       name: valueName,
       secondName: valueSecondName,
@@ -167,11 +171,23 @@ function UserForm (props) {
     return body;
   };
 
+  const isValidRepeatPassword = () => {
+    return valuePassword === valuePasswordRepeat;
+  };
+
   const handleAdd = (event) => {
     event.preventDefault();
     const body = getBody();
     const isValid = handleValidation(body, setClassNameFormText);
-    if (isValid) {
+    const isValidPassRepeat = isValidRepeatPassword();
+    if (!isValid) {
+      alert(i18n.errorMessages.validationError);
+    } else if (!isValidPassRepeat) {
+      alert(i18n.userForm.passwordRepeatErrorMessage);
+      return;
+    }
+    if (isValid && isValidPassRepeat) {
+      delete body.passwordRepead;
       setIsRequestInProgress(true);
       if (isEdit) {
         handleEditRequest("users/", body, id, handleAfterEdit);
@@ -185,8 +201,6 @@ function UserForm (props) {
           handleAddRequest("users/", body, handleAfterAdd, showMessageOnSuccess);
         }
       }
-    } else {
-      alert(i18n.errorMessages.validationError);
     }
   };
 
@@ -207,7 +221,7 @@ function UserForm (props) {
     const body = getBody();
     handleValidation(body, setClassNameFormText);
   }, [valueUsername, valuePassword, valueDni, valueName, valueSecondName, valueLastName, valueSecondLastName, valueAge,
-    valueSex, valueOccupation, valueBirthDate, valueTelephone, valueAddress, valueEmail, valueStatus]);
+    valueSex, valueOccupation, valueBirthDate, valueTelephone, valueAddress, valueEmail, valueStatus, valuePasswordRepeat]);
 
   const classNameItemLabel = "puggysoft-form-item-label";
   const classNameItemInput = "puggysoft-form-item-input";
@@ -241,6 +255,17 @@ function UserForm (props) {
                 type="password"
                 placeholder={i18n.userForm.fieldPassword} /></div>
               <Form.Text muted className={classNameFormText.password}>
+                {i18n.userForm.formTextPassword}
+              </Form.Text>
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="password">
+              <div className={classNameItemLabel}><Form.Label>{i18n.userForm.fieldPasswordRepeat}</Form.Label></div>
+              <div className={classNameItemInput} ><Form.Control
+                onChange={onChangePasswordRepeat}
+                value={valuePasswordRepeat}
+                type="password"
+                placeholder={i18n.userForm.fieldPassword} /></div>
+              <Form.Text muted className={classNameFormText.passwordRepead}>
                 {i18n.userForm.formTextPassword}
               </Form.Text>
             </Form.Group>

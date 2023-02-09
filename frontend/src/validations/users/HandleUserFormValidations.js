@@ -2,6 +2,7 @@ const classNameRed = "puggysoft-red-text";
 const classNameFormTextNew = {
   username: classNameRed,
   password: classNameRed,
+  passwordRepead: classNameRed,
   dni: classNameRed,
   name: classNameRed,
   secondName: classNameRed,
@@ -29,6 +30,11 @@ const handleValidation = (data, setClassNameFormText) => {
     classNameFormTextNew.password = classNameRed;
   } else {
     classNameFormTextNew.password = "";
+  } if (data.passwordRepead && !(data.passwordRepead.length >= 3 && data.passwordRepead.length <= 30)) {
+    isValid = false;
+    classNameFormTextNew.passwordRepead = classNameRed;
+  } else {
+    classNameFormTextNew.passwordRepead = "";
   } if (!(data.dni.length >= 3 && data.dni.length <= 10)) {
     isValid = false;
     classNameFormTextNew.dni = classNameRed;
