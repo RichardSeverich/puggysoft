@@ -2,6 +2,7 @@ import React, { useHistory } from "react-router";
 
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
+import CommonLabel from "./../../components-level-1/CommonLabel";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import {
   FaUsers,
@@ -12,7 +13,10 @@ import {
   FaUserMd,
   FaUser
 } from "react-icons/fa";
-import { AiOutlineUserAdd, AiOutlineTable /* AiOutlineIdcard */ } from "react-icons/ai";
+import {
+  AiOutlineUserAdd,
+  AiOutlineTable
+  /* AiOutlineIdcard */ } from "react-icons/ai";
 import { GrAddCircle, GrProductHunt } from "react-icons/gr";
 import { CgOptions } from "react-icons/cg";
 import {
@@ -248,19 +252,78 @@ function NavBar () {
   // const salesShowCardLabel = (<><AiOutlineIdcard /> {i18n.navBar.salesShowCard}</>)
   // REPORTS
   const reportAdminLabel = (<><BsFillBarChartFill /> {i18n.navBar.reportAdmin}</>);
-  const reportQuantityAnnual = (<><FaChartLine /> {i18n.navBar.reportQuantityAnnual}</>);
-  const reportQuantityMonth = (<><FaChartLine /> {i18n.navBar.reportQuantityMonth}</>);
-  const reportRevenueAnnual = (<><BsCoin /> {i18n.navBar.reportRevenueAnnual}</>);
-  const reportRevenueMonth = (<><BsCoin /> {i18n.navBar.reportRevenueMonth}</>);
-  const reportProfitAnnual = (<><BsCashCoin /> {i18n.navBar.reportProfitAnnual}</>);
-  const reportProfitMonth = (<><BsCashCoin /> {i18n.navBar.reportProfitMonth}</>);
-  const reportQuantityPerProduct = (<><FaChartLine /> {i18n.navBar.reportQuantityPerProduct}</>);
-  const reportQuantityMonthPerProduct = (<><FaChartLine /> {i18n.navBar.reportQuantityMonthPerProduct}</>);
-  const reportRevenuePerProduct = (<><BsCoin /> {i18n.navBar.reportRevenuePerProduct}</>);
-  const reportRevenueMonthPerProduct = (<><BsCoin /> {i18n.navBar.reportRevenueMonthPerProduct}</>);
-  const reportProfitPerProductAnnual = (<><BsCashCoin /> {i18n.navBar.reportProfitPerProductAnnual}</>);
-  const reportProfitMonthPerProduct = (<><BsCashCoin /> {i18n.navBar.reportProfitMonthPerProduct}</>);
-
+  const reportQuantityAnnual = (<CommonLabel
+    leftIcon={<FaChartLine />}
+    label={i18n.navBar.reportQuantityAnnual}
+    questionMarkEnable
+    questionMarkTooltipLabel={i18n.saleReport.infoReportQuantityAnnual}
+  />);
+  const reportQuantityMonth = (<CommonLabel
+    leftIcon={<FaChartLine />}
+    label={i18n.navBar.reportQuantityMonth}
+    questionMarkEnable
+    questionMarkTooltipLabel={i18n.saleReport.infoReportQuantityMonth}
+  />);
+  const reportRevenueAnnual = (<CommonLabel
+    leftIcon={<BsCoin />}
+    label={i18n.navBar.reportRevenueAnnual}
+    questionMarkEnable
+    questionMarkTooltipLabel={i18n.saleReport.infoReportRevenueAnnual}
+  />);
+  const reportRevenueMonth = (<CommonLabel
+    leftIcon={<BsCoin />}
+    label={i18n.navBar.reportRevenueMonth}
+    questionMarkEnable
+    questionMarkTooltipLabel={i18n.saleReport.infoReportRevenueMonth}
+  />);
+  const reportProfitAnnual = (<CommonLabel
+    leftIcon={<BsCashCoin />}
+    label={i18n.navBar.reportProfitAnnual}
+    questionMarkEnable
+    questionMarkTooltipLabel={i18n.saleReport.infoReportProfitAnnual}
+  />);
+  const reportProfitMonth = (<CommonLabel
+    leftIcon={<BsCashCoin />}
+    label={i18n.navBar.reportProfitMonth}
+    questionMarkEnable
+    questionMarkTooltipLabel={i18n.saleReport.infoReportProfitMonth}
+  />);
+  const reportQuantityPerProduct = (<CommonLabel
+    leftIcon={<FaChartLine />}
+    label={i18n.navBar.reportQuantityPerProduct}
+    questionMarkEnable
+    questionMarkTooltipLabel={i18n.saleReport.infoReportQuantityPerProduct}
+  />);
+  const reportQuantityMonthPerProduct = (<CommonLabel
+    leftIcon={<FaChartLine />}
+    label={i18n.navBar.reportQuantityMonthPerProduct}
+    questionMarkEnable
+    questionMarkTooltipLabel={i18n.saleReport.infoReportQuantityMonthPerProduct}
+  />);
+  const reportRevenuePerProduct = (<CommonLabel
+    leftIcon={<BsCoin />}
+    label={i18n.navBar.reportRevenuePerProduct}
+    questionMarkEnable
+    questionMarkTooltipLabel={i18n.saleReport.infoReportRevenuePerProduct}
+  />);
+  const reportRevenueMonthPerProduct = (<CommonLabel
+    leftIcon={<BsCoin />}
+    label={i18n.navBar.reportRevenueMonthPerProduct}
+    questionMarkEnable
+    questionMarkTooltipLabel={i18n.saleReport.infoReportRevenueMonthPerProduct}
+  />);
+  const reportProfitPerProductAnnual = (<CommonLabel
+    leftIcon={<BsCashCoin />}
+    label={i18n.navBar.reportProfitPerProductAnnual}
+    questionMarkEnable
+    questionMarkTooltipLabel={i18n.saleReport.infoReportProfitPerProduct}
+  />);
+  const reportProfitMonthPerProduct = (<CommonLabel
+    leftIcon={<BsCashCoin />}
+    label={i18n.navBar.reportProfitMonthPerProduct}
+    questionMarkEnable
+    questionMarkTooltipLabel={i18n.saleReport.infoReportProfitMonthPerProduct}
+  />);
   // ******* ******* ******* HOSPITAL SYSTEM ******* ******* *******
   // DOCTORS
   const doctorAdminLabel = (<><FaUserMd /> {i18n.navBar.doctorAdmin}</>);

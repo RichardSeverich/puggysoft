@@ -10,7 +10,6 @@
 
 .puggysoft-form-label {
   display: flex;
-  margin: auto;
 }
 
 @media (min-width:1080px) {

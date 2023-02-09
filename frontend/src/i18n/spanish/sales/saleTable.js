@@ -3,8 +3,6 @@ const saleTable = {
   titleSelectionToEditDelete: "Tabla Ventas (Seleccione para Editar/Eliminar)",
   titleTodoSales: "Tabla de Pedidos (Seleccionar para: Editar/Eliminar)",
   titleInProgressSales: "Tabla de Despachos (Seleccionar para: Editar/Eliminar)",
-  buttonChangeSaleState: "Cambiar estado",
-  buttonGenerateTicket: "Generar Ficha",
   columnId: "Id",
   columnClient: "Cliente",
   columnStatus: "Estado de Venta",

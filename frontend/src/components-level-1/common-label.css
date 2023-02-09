@@ -1,0 +1,11 @@
+.puggysoft-common-label{
+    display: flex;
+}
+
+.puggysoft-common-label-question-mark {
+ margin-left: 0.3rem;
+}
+
+.puggysoft-common-label-section-left-icon{
+    margin-right: 0.3rem;
+}

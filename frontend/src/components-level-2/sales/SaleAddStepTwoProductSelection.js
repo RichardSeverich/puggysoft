@@ -4,6 +4,7 @@ import { useHistory } from "react-router";
 import Button from "react-bootstrap/Button";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
+import { AiFillQuestionCircle } from "react-icons/ai";
 import { handleFilterRequest, handleAddRequest, handleDeleteRequest, handleEditRequest } from "../../actions/HandleManager";
 import ProductTableSuperReducedGeneric from "./ProductTableSuperReducedGeneric";
 import i18n from "../../i18n/i18n";
@@ -259,6 +260,42 @@ function SaleAddStepTwoProductSelection () {
     }
   }
 
+  const renderTooltipClient = (props) => (
+    <Tooltip id="tooltip-sales" {...props}>
+      {i18n.saleProductTable.informationClient}
+    </Tooltip>
+  );
+
+  const renderTooltipSeller = (props) => (
+    <Tooltip id="tooltip-sales" {...props}>
+      {i18n.saleProductTable.informationSeller}
+    </Tooltip>
+  );
+
+  const renderTooltipSaleDate = (props) => (
+    <Tooltip id="tooltip-sales" {...props}>
+      {i18n.saleProductTable.informationSaleDate}
+    </Tooltip>
+  );
+
+  const renderTooltipTotalToPay = (props) => (
+    <Tooltip id="tooltip-sales" {...props}>
+      {i18n.saleProductTable.informationTotalToPay}
+    </Tooltip>
+  );
+
+  const renderTooltipClientCash = (props) => (
+    <Tooltip id="tooltip-sales" {...props}>
+      {i18n.saleProductTable.informationClientTotalCash}
+    </Tooltip>
+  );
+
+  const renderTooltipClientChange = (props) => (
+    <Tooltip id="tooltip-sales" {...props}>
+      {i18n.saleProductTable.informationClientChange}
+    </Tooltip>
+  );
+
   return (
     <div>
       <Card>
@@ -267,31 +304,87 @@ function SaleAddStepTwoProductSelection () {
           <div className="">
             <div className="puggysoft-six-divs-side-by-side-child">
               <Form.Group>
-                <div className={"puggysoft-form-label"}><Form.Label>{i18n.saleProductTable.clientBox}</Form.Label></div>
+                <div className="puggysoft-form-label">
+                  <Form.Label>{i18n.saleProductTable.clientBox}</Form.Label>
+                  <OverlayTrigger
+                    placement="right"
+                    delay={{ show: 60, hide: 256 }}
+                    overlay={renderTooltipClient}
+                  >
+                    <div className="question-mark-sales">
+                      <AiFillQuestionCircle />
+                    </div>
+                  </OverlayTrigger>
+                </div>
                 <div className={"puggysoft-form-input"}><Form.Control value={saleData.client} disabled /></div>
               </Form.Group>
             </div>
             <div className="puggysoft-six-divs-side-by-side-child">
               <Form.Group>
-                <div className={"puggysoft-form-label"}><Form.Label>{i18n.saleProductTable.sellerBox}</Form.Label></div>
+                <div className={"puggysoft-form-label"}>
+                  <Form.Label>{i18n.saleProductTable.sellerBox}</Form.Label>
+                  <OverlayTrigger
+                    placement="right"
+                    delay={{ show: 60, hide: 256 }}
+                    overlay={renderTooltipSeller}
+                  >
+                    <div className="question-mark-sales">
+                      <AiFillQuestionCircle />
+                    </div>
+                  </OverlayTrigger>
+                </div>
                 <div className={"puggysoft-form-input"}><Form.Control value={saleData.createdBy} disabled /></div>
               </Form.Group>
             </div>
             <div className="puggysoft-six-divs-side-by-side-child">
               <Form.Group>
-                <div className={"puggysoft-form-label"}><Form.Label>{i18n.saleProductTable.saleDate}</Form.Label></div>
+                <div className={"puggysoft-form-label"}>
+                  <Form.Label>{i18n.saleProductTable.saleDate}</Form.Label>
+                  <OverlayTrigger
+                    placement="right"
+                    delay={{ show: 60, hide: 256 }}
+                    overlay={renderTooltipSaleDate}
+                  >
+                    <div className="question-mark-sales">
+                      <AiFillQuestionCircle />
+                    </div>
+                  </OverlayTrigger>
+
+                </div>
                 <div className={"puggysoft-form-input"}><Form.Control value={fixDate(saleData.creationDate)} disabled /></div>
               </Form.Group>
             </div>
             <div className="puggysoft-six-divs-side-by-side-child">
               <Form.Group>
-                <div className={"puggysoft-form-label"}><Form.Label>{i18n.saleProductTable.saleTotalToPay}</Form.Label></div>
+                <div className={"puggysoft-form-label"}>
+                  <Form.Label>{i18n.saleProductTable.saleTotalToPay}</Form.Label>
+                  <OverlayTrigger
+                    placement="right"
+                    delay={{ show: 60, hide: 256 }}
+                    overlay={renderTooltipTotalToPay}
+                  >
+                    <div className="question-mark-sales">
+                      <AiFillQuestionCircle />
+                    </div>
+                  </OverlayTrigger>
+                </div>
                 <div className={"puggysoft-form-input"}><Form.Control value={totalToPay} disabled /></div>
               </Form.Group>
             </div>
             <div className="puggysoft-six-divs-side-by-side-child">
               <Form.Group>
-                <div className={"puggysoft-form-label"}><Form.Label>{i18n.saleProductTable.clientCashToPay}</Form.Label></div>
+                <div className={"puggysoft-form-label"}>
+                  <Form.Label>{i18n.saleProductTable.clientCashToPay}</Form.Label>
+                  <OverlayTrigger
+                    placement="right"
+                    delay={{ show: 60, hide: 256 }}
+                    overlay={renderTooltipClientCash}
+                  >
+                    <div className="question-mark-sales">
+                      <AiFillQuestionCircle />
+                    </div>
+                  </OverlayTrigger>
+                </div>
                 <div className={"puggysoft-form-input"}>
                   <Form.Control
                     type="number"
@@ -305,7 +398,18 @@ function SaleAddStepTwoProductSelection () {
             </div>
             <div className="puggysoft-six-divs-side-by-side-child">
               <Form.Group>
-                <div className={"puggysoft-form-label"}><Form.Label>{i18n.saleProductTable.clientCashChange}</Form.Label></div>
+                <div className={"puggysoft-form-label"}>
+                  <Form.Label>{i18n.saleProductTable.clientCashChange}</Form.Label>
+                  <OverlayTrigger
+                    placement="top"
+                    delay={{ show: 60, hide: 256 }}
+                    overlay={renderTooltipClientChange}
+                  >
+                    <div className="question-mark-sales">
+                      <AiFillQuestionCircle />
+                    </div>
+                  </OverlayTrigger>
+                </div>
                 <div className={"puggysoft-form-input"}>
                   <Form.Control value={clientCashChange} disabled />
                 </div>

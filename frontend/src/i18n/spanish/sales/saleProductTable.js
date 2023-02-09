@@ -21,7 +21,13 @@ const saleProductTable = {
   buttonSaveNoteQuestion: "Esta seguro que quiere guardar nota/comentario",
   buttonGenerateBill: "Generar factura",
   buttonSaveNote: "Guardar Nota/Comentario",
-  noteBox: "Nota/Comentario"
+  noteBox: "Nota/Comentario",
+  informationClient: "Este campo muestra el 'username', del cliente seleccionado.",
+  informationSeller: "Este campo muestra el 'username', del vendedor actual.",
+  informationSaleDate: "Este campo muestra la fecha en la que se realizo la venta, formato (YYYY-MM-DD)",
+  informationTotalToPay: "Este campo muestra el monto total que el cliente debe pagar.",
+  informationClientTotalCash: "Este campo muestra el monto total que el cliente debe pagar.",
+  informationClientChange: "Este campo muestra el monto que se le debe devolver al cliente como cambio."
 };
 
 export default saleProductTable;
