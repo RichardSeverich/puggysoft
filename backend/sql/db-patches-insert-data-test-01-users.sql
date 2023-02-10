@@ -89,7 +89,16 @@ INSERT INTO users (username, password, dni, name, second_name, last_name, second
 INSERT INTO users (username, password, dni, name, second_name, last_name, second_last_name, birth_date, age, sex, occupation, telephone, address, email, active, image, created_by, email_verified) VALUES ("ALFONSO_ORIHUELA", "secret123", "27885556", "ALFONSO", "N/A", "ORIHUELA", "N/A", "1995-06-19", 33, 'MALE', 'Estudiante', "76478775", "Av. B. Galindo", "ALFONSO_ORIHUELA@example.com", true, null, "admin", false);
 INSERT INTO users (username, password, dni, name, second_name, last_name, second_last_name, birth_date, age, sex, occupation, telephone, address, email, active, image, created_by, email_verified) VALUES ("RICARDO_VILLAFAN", "secret123", "27885557", "RICARDO", "N/A", "VILLAFAN", "N/A", "1995-06-20", 33, 'MALE', 'Estudiante', "76478775", "Av. B. Galindo", "RICARDO_VILLAFAN@example.com", true, null, "admin", false);
 
-
+INSERT INTO users (username, password, dni, name, second_name, last_name, second_last_name, birth_date, age, sex, occupation, telephone, address, email, active, image, created_by, email_verified) VALUES
+("SysAdmin", "admin123", "1000001", "N/A", "N/A", "N/A", "N/A", "1990-01-01", 27, 'MALE', 'Ing. Sistemas', "60795090", "Av. Wiracocha", "SysAdmin@puggysoft.com", true, null, null, false),
+("SysUsersAdmin", "admin123", "1000002", "N/A", "N/A", "N/A", "N/A", "1990-01-01", 27, 'MALE', 'Ing. Sistemas', "60795090", "Av. Wiracocha", "SysUsersAdmin@puggysoft.com", true, null, "SysAdmin", false),
+("SysVentasAdmin", "admin123", "1000003", "N/A", "N/A", "N/A", "N/A", "1990-01-01", 27, 'MALE', 'Ing. Sistemas', "60795090", "Av. Wiracocha", "SysVentasAdmin@puggysoft.com", true, null, "SysAdmin", false),
+("SysVentasVendedor", "admin123", "1000004", "N/A", "N/A", "N/A", "N/A", "1990-01-01", 27, 'MALE', 'Ing. Sistemas', "60795090", "Av. Wiracocha", "SysVentasVendedor@puggysoft.com", true, null, "SysAdmin", false),
+("SysVentasCliente", "admin123", "1000005", "N/A", "N/A", "N/A", "N/A", "1990-01-01", 27, 'MALE', 'Ing. Sistemas', "60795090", "Av. Wiracocha", "SysVentasCliente@puggysoft.com", true, null, "SysAdmin", false),
+("SysVentasRestAdmin", "admin123", "1000006", "N/A", "N/A", "N/A", "N/A", "1990-01-01", 27, 'MALE', 'Ing. Sistemas', "60795090", "Av. Wiracocha", "SysVentasRestAdmin@puggysoft.com", true, null, "SysAdmin",  false),
+("SysVentasRestVendedor", "admin123", "1000007", "N/A", "N/A", "N/A", "N/A", "1990-01-01", 27, 'MALE', 'Ing. Sistemas', "60795090", "Av. Wiracocha", "SysVentasRestVendedor@puggysoft.com", true, null, "SysAdmin",  false),
+("SysVentasRestCliente", "admin123", "1000008", "N/A", "N/A", "N/A", "N/A", "1990-01-01", 27, 'MALE', 'Ing. Sistemas', "60795090", "Av. Wiracocha", "SysVentasRestCliente@puggysoft.com", true, null, "SysAdmin",  false),
+("SysReservasAdmin", "admin123", "1000009", "N/A", "N/A", "N/A", "N/A", "1990-01-01", 27, 'MALE', 'Ing. Sistemas', "60795090", "Av. Wiracocha", "SysReservasAdmin@puggysoft.com", true, null, "SysAdmin",  false);
 
 -- Insert data (Roles).
 INSERT INTO roles (name, created_by) VALUES ("ADMIN", "admin"); -- 1000
@@ -102,6 +111,20 @@ INSERT INTO roles (name, created_by) VALUES ("SALES_ADMIN", "admin"); -- 1006
 INSERT INTO roles (name, created_by) VALUES ("SALES_CLIENT", "admin"); -- 1007
 INSERT INTO roles (name, created_by) VALUES ("SALES_SELLER", "admin"); -- 1008
 INSERT INTO roles (name, created_by) VALUES ("SALES_ADMIN_RESTAURANT", "admin"); -- 1009
+INSERT INTO roles (name, created_by) VALUES ("SALES_SELLER_RESTAURANT", "admin");
+INSERT INTO roles (name, created_by) VALUES ("SALES_CLIENT_RESTAURANT", "admin");
+INSERT INTO roles (name, created_by) VALUES ("RESERVATION_ADMIN", "admin");
+
+INSERT INTO users_roles (id_user, id_role, created_by) VALUES 
+((select id from users where username='SysAdmin'), (select id from roles where name='ADMIN'), "SysAdmin"),
+((select id from users where username='SysUsersAdmin'), (select id from roles where name='ADMIN_USERS'), "SysAdmin"),
+((select id from users where username='SysVentasAdmin'), (select id from roles where name='SALES_ADMIN'), "SysAdmin"),
+((select id from users where username='SysVentasVendedor'), (select id from roles where name='SALES_SELLER'), "SysAdmin"),
+((select id from users where username='SysVentasCliente'), (select id from roles where name='SALES_CLIENT'), "SysAdmin"),
+((select id from users where username='SysVentasRestAdmin'), (select id from roles where name='SALES_ADMIN_RESTAURANT'), "SysAdmin"),
+((select id from users where username='SysVentasRestVendedor'), (select id from roles where name='SALES_SELLER_RESTAURANT'), "SysAdmin"),
+((select id from users where username='SysVentasRestCliente'), (select id from roles where name='SALES_CLIENT_RESTAURANT'), "SysAdmin"),
+((select id from users where username='SysReservasAdmin'), (select id from roles where name='RESERVATION_ADMIN'), "SysAdmin");
 
 -- Insert data (User-Roles).
 INSERT INTO users_roles (id_user, id_role, created_by) VALUES (1000, 1000, "admin"); -- Admin Full.
