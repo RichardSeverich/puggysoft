@@ -9,6 +9,7 @@ import commonMonths from "./spanish/commonMonths";
 import systemPropertiesTable from "./spanish/system/systemPropertiesTable";
 import systemPropertiesForm from "./spanish/system/systemPropertiesForm";
 import commonInProgress from "./spanish/commonInProgress";
+import commonDaysOfWeek from "./spanish/commonDaysOfWeek";
 // Users System
 import userTable from "./spanish/users/userTable";
 import userForm from "./spanish/users/userForm";
@@ -38,6 +39,8 @@ import doctorUserForm from "./spanish/hospital/doctorUserForm";
 import doctorTable from "./spanish/hospital/doctorTable";
 import patientUserForm from "./spanish/hospital/patientUserForm";
 import patientTable from "./spanish/hospital/patientTable";
+// Reservation System
+import reservationCalendar from "./spanish/reservation/reservationCalendar";
 
 const i18n = {
   // Common
@@ -51,6 +54,7 @@ const i18n = {
   systemPropertiesTable,
   systemPropertiesForm,
   commonInProgress,
+  commonDaysOfWeek,
   // Users System
   userForm,
   userTable,
@@ -79,7 +83,9 @@ const i18n = {
   doctorUserForm,
   doctorTable,
   patientUserForm,
-  patientTable
+  patientTable,
+  // Reservation System
+  reservationCalendar
 };
 
 export default i18n;
