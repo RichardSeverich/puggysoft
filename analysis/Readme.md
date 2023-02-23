@@ -62,6 +62,7 @@
 - https://soliventas.pag-bo.com/
 - Video de un sistema con lector de codigo barras: https://www.youtube.com/watch?v=k6nOugSZJAg
 - https://www.facebook.com/marketplace/item/296380665741266/?ref=search&referral_code=marketplace_search&referral_story_type=post&tracking=browse_serp%3A5679898d-92f9-4420-88ac-b6468d4b0440
+- https://www.youtube.com/@alfasolutec2190
 
 #### Costos
 
