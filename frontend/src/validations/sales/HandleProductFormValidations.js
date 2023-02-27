@@ -17,7 +17,7 @@ const handleValidation = (data, setClassNameFormText) => {
     classNameFormTextNew.name = classNameRed;
   } else {
     classNameFormTextNew.name = "";
-  } if (data.purchasePrice === "" || data.stock.purchasePrice === 0 || data.purchasePrice < 0) {
+  } if (data.purchasePrice === "" || data.purchasePrice === 0 || data.purchasePrice < 0) {
     isValid = false;
     classNameFormTextNew.purchasePrice = classNameRed;
   } else {

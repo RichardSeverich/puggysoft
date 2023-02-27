@@ -15,9 +15,15 @@ import {
 } from "react-icons/fa";
 import {
   AiOutlineUserAdd,
-  AiOutlineTable
-  /* AiOutlineIdcard */ } from "react-icons/ai";
-import { GrAddCircle, GrProductHunt } from "react-icons/gr";
+  AiOutlineTable,
+  AiOutlineSchedule,
+  AiOutlineCalendar
+  /* AiOutlineIdcard */
+} from "react-icons/ai";
+import {
+  GrAddCircle,
+  GrProductHunt
+} from "react-icons/gr";
 import { CgOptions } from "react-icons/cg";
 import {
   BsCartCheckFill,
@@ -29,6 +35,8 @@ import {
 import { RiLoginCircleLine, RiUser2Fill, RiShieldKeyholeFill } from "react-icons/ri";
 import { MdOutlineSettingsSuggest } from "react-icons/md";
 import { GoCalendar } from "react-icons/go";
+import { GiGoldBar } from "react-icons/gi";
+import { IoMdTimer } from "react-icons/io";
 import enumRoles from "./../../models/users/enumRoles";
 import enumTableType from "./../../models/enumTableType";
 import enumPaths from "./../../models/enumPaths";
@@ -187,6 +195,17 @@ function NavBar () {
     console.log({ event });
     history.push(enumPaths.IN_PROGRESS_PAGE);
   }
+
+  // ******* ******* ******* RESERVATION SYSTEM ******* ******* *******
+  const navigateResourcesForm = () => {
+    history.push(enumPaths.RESERVATION_RESOURCES_FORM);
+  };
+  const navigateScheduleForm = () => {
+    history.push(enumPaths.RESERVATION_SCHEDULE_FORM);
+  };
+  const navigateIntervalTimeForm = () => {
+    history.push(enumPaths.RESERVATION_INTERVAL_TIME_FORM);
+  };
 
   const NavbarBackground = "dark"; // dark, light, primary
   const NavbarVariant = "dark puggysoft-navbar"; // dark, light
@@ -350,6 +369,26 @@ function NavBar () {
   const bookingShowTableFilterLabel = (<><AiOutlineTable /> {i18n.navBar.bookingShowTableFilter}</>);
   // const bookingShowCardLabel = (<><AiOutlineIdcard /> {i18n.navBar.bookingShowCard}</>)
 
+  // ******* ******* ******* RESERVATION SYSTEM ******* ******* *******
+  // RESOURCES
+  const resourcesAdminLabel = (<><GiGoldBar /> {i18n.navBar.resResourceAdmin}</>);
+  const resResourceFormLabel = (<><GrAddCircle /> {i18n.navBar.resResourceForm}</>);
+  const resResourceTableLabel = (<><AiOutlineTable /> {i18n.navBar.resResourceTable}</>);
+  const resResourceScheduleByResocurceLabel = (<><GrAddCircle /> {i18n.navBar.resResourceScheduleByResocurce}</>);
+  // SCHEDULES
+  const resScheduleAdminLabel = (<><AiOutlineCalendar /> {i18n.navBar.resScheduleAdmin}</>);
+  const resScheduleFormLabel = (<><GrAddCircle /> {i18n.navBar.resScheduleForm}</>);
+  const resScheduleTableLabel = (<><AiOutlineTable /> {i18n.navBar.resScheduleTable}</>);
+  const resResourceScheduleByScheduleLabel = (<><GrAddCircle /> {i18n.navBar.resResourceScheduleBySchedule}</>);
+  // INTERVAL TIME
+  const resIntervalTimeAdminLabel = (<><IoMdTimer /> {i18n.navBar.resIntervalTimeAdmin}</>);
+  const resIntervalTimeFormLabel = (<><GrAddCircle /> {i18n.navBar.resIntervalTimeForm}</>);
+  const resIntervalTimeTableLabel = (<><AiOutlineTable /> {i18n.navBar.resIntervalTimeTable}</>);
+  // BOOKINGS
+  const resBookingsAdminLabel = (<><AiOutlineSchedule /> {i18n.navBar.resBookingsAdmin}</>);
+  const resBookingsFormLabel = (<><GrAddCircle /> {i18n.navBar.resBookingsForm}</>);
+  const resBookingsTableLabel = (<><AiOutlineTable /> {i18n.navBar.resBookingsTable}</>);
+
   // ******* ******* ******* ALL SYSTEMS ******* ******* *******
   // CONFIG
   const configAdminLabel = (<><CgOptions /> {i18n.navBar.configAdmin}</>);
@@ -477,8 +516,31 @@ function NavBar () {
               <NavDropdown.Item onClick={navigateGeneric}>{bookingShowTableFilterLabel}</NavDropdown.Item>
               {/* <NavDropdown.Item onClick={navigateGeneric}>{bookingShowCardLabel}</NavDropdown.Item> */}
             </NavDropdown>}
-        </Nav>
 
+          {/* ******* ******* ******* RESERVATION SYSTEM ******* ******* ********/}
+          {userRoles.includes(enumRoles.RESERVATION_ADMIN) &&
+            <NavDropdown title={resourcesAdminLabel}>
+              <NavDropdown.Item onClick={navigateResourcesForm}>{resResourceFormLabel}</NavDropdown.Item>
+              <NavDropdown.Item onClick={navigateGeneric}>{resResourceTableLabel}</NavDropdown.Item>
+              <NavDropdown.Item onClick={navigateGeneric}>{resResourceScheduleByResocurceLabel}</NavDropdown.Item>
+            </NavDropdown>}
+          {userRoles.includes(enumRoles.RESERVATION_ADMIN) &&
+            <NavDropdown title={resScheduleAdminLabel}>
+              <NavDropdown.Item onClick={navigateScheduleForm}>{resScheduleFormLabel}</NavDropdown.Item>
+              <NavDropdown.Item onClick={navigateGeneric}>{resScheduleTableLabel}</NavDropdown.Item>
+              <NavDropdown.Item onClick={navigateGeneric}>{resResourceScheduleByScheduleLabel}</NavDropdown.Item>
+            </NavDropdown>}
+          {userRoles.includes(enumRoles.RESERVATION_ADMIN) &&
+            <NavDropdown title={resIntervalTimeAdminLabel}>
+              <NavDropdown.Item onClick={navigateIntervalTimeForm}>{resIntervalTimeFormLabel}</NavDropdown.Item>
+              <NavDropdown.Item onClick={navigateGeneric}>{resIntervalTimeTableLabel}</NavDropdown.Item>
+            </NavDropdown>}
+          {userRoles.includes(enumRoles.RESERVATION_ADMIN) &&
+            <NavDropdown title={resBookingsAdminLabel}>
+              <NavDropdown.Item onClick={navigateGeneric}>{resBookingsFormLabel}</NavDropdown.Item>
+              <NavDropdown.Item onClick={navigateGeneric}>{resBookingsTableLabel}</NavDropdown.Item>
+            </NavDropdown>}
+        </Nav>
         {/* ******* ******* ******* ALL SYSTEM ******* ******* ********/}
         <Nav variant={"puggysoft-nav-config"}>
           <NavDropdown align="end" title={configAdminLabel}>

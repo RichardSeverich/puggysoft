@@ -77,6 +77,11 @@ import DoctorUserTableToDetailsPage from "./components-level-3/hospital/DoctorUs
 import PatientUserFormPage from "./components-level-3/hospital/PatientUserFormPage";
 import PatientUserTableToDetailsPage from "./components-level-3/hospital/PatientUserTableToDetailsPage";
 
+// Reservation System
+import ResourceFormPage from "./components-level-3/reservation/ResourceFormPage";
+import ScheduleFormPage from "./components-level-3/reservation/ScheduleFormPage";
+import IntervalTimeFormPage from "./components-level-3/reservation/IntervalTimeFormPage";
+
 const AppRoutes = () => (
   <App>
     <Switch>
@@ -151,6 +156,10 @@ const AppRoutes = () => (
       <Route exact path={enumPaths.HOSPITAL_DOCTOR_USER_TABLE_TO_DETAILS} component={DoctorUserTableToDetailsPage} />
       <Route exact path={enumPaths.HOSPITAL_PATIENT_USER_FORM} component={PatientUserFormPage} />
       <Route exact path={enumPaths.HOSPITAL_PATIENT_USER_TABLE_TO_DETAILS} component={PatientUserTableToDetailsPage} />
+      {/** Reservation System */}
+      <Route exact path={enumPaths.RESERVATION_RESOURCES_FORM} component={ResourceFormPage } />
+      <Route exact path={enumPaths.RESERVATION_SCHEDULE_FORM} component={ScheduleFormPage } />
+      <Route exact path={enumPaths.RESERVATION_INTERVAL_TIME_FORM} component={IntervalTimeFormPage } />
       <Route exact path={enumPaths.LOGIN} component={LoginPage} />
       <Route exact path="/" component={LoginPage} />
       <Route component={LoginPage} />

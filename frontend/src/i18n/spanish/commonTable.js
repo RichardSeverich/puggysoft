@@ -21,7 +21,13 @@ const commonTable = {
   filterNumberGreaterEqualsThan: "Mayor/Igual que",
   filterNumberGreaterThan: "Mayor que",
   filterNumberSmallerEqualsThan: "Menor/Igual que",
-  filterNumberSmallerThan: "Menor que"
+  filterNumberSmallerThan: "Menor que",
+  columnImage: "Foto",
+  columnCreatedBy: "Creado por",
+  columnUpdatedBy: "Editado por",
+  columnCreationDate: "Fecha de creacion",
+  columnUpdateDate: "Fecha de edicion",
+  columnId: "Id"
 };
 
 export default commonTable;

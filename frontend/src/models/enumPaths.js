@@ -73,6 +73,14 @@ const HOSPITAL_PATIENT_USER_FORM = "/hospital-patient-user-form";
 const HOSPITAL_DOCTOR_USER_TABLE_TO_DETAILS = "/hospital-doctor-user-table-to-details";
 const HOSPITAL_PATIENT_USER_TABLE_TO_DETAILS = "/hospital-patient-user-table-to-details";
 
+// RESERVATION SYSTEM
+const RESERVATION_RESOURCES_FORM = "/reservation-resource-form";
+const RESERVATION_RESOURCES_TABLE = "/reservation-resource-table";
+const RESERVATION_SCHEDULE_FORM = "/reservation-schedule-form";
+const RESERVATION_SCHEDULE_TABLE = "/reservation-schedule-table";
+const RESERVATION_INTERVAL_TIME_FORM = "/reservation-interval-time-form";
+const RESERVATION_INTERVAL_TIME_TABLE = "/reservation-interval-time-table";
+
 const enumPaths = {
   DASHBOARD,
   LOGIN,
@@ -145,7 +153,14 @@ const enumPaths = {
   HOSPITAL_DOCTOR_USER_TABLE,
   HOSPITAL_PATIENT_USER_FORM,
   HOSPITAL_DOCTOR_USER_TABLE_TO_DETAILS,
-  HOSPITAL_PATIENT_USER_TABLE_TO_DETAILS
+  HOSPITAL_PATIENT_USER_TABLE_TO_DETAILS,
+  // RESERVATION SYSTEM
+  RESERVATION_RESOURCES_FORM,
+  RESERVATION_RESOURCES_TABLE,
+  RESERVATION_SCHEDULE_FORM,
+  RESERVATION_SCHEDULE_TABLE,
+  RESERVATION_INTERVAL_TIME_FORM,
+  RESERVATION_INTERVAL_TIME_TABLE
 };
 
 export default enumPaths;

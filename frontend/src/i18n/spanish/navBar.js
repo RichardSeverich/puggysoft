@@ -121,6 +121,29 @@ const navBar = {
   bookingShowTableFilter: "Mostrar Reservas/Fichas (Tabla, Filtro)",
   bookingShowCard: "Mostrar Reservas/Fichas (Tarjetas)",
 
+  // ******* ******* RESERVATION SYSTEM ******* *******
+  // Resources
+  resResourceAdmin: "Adm. Recursos",
+  resResourceForm: "Registrar Recurso",
+  resResourceTable: "Mostrar Recursos (Tabla)",
+  // Schedules
+  resScheduleAdmin: "Adm. Cronogramas",
+  resScheduleForm: "Registrar Cronograma",
+  resScheduleTable: "Mostrar Cronogramas (Tabla)",
+  // Resources - Schedules
+  resResourceScheduleAdmin: "Adm. Recursos/Cronogramas",
+  resResourceScheduleByResocurce: "Asignacion de Cronogramas a Recursos",
+  resResourceScheduleBySchedule: "Asignacion de Recursos a Cronogramas",
+  // Interval Time
+  resIntervalTimeAdmin: "Adm. Horarios",
+  resIntervalTimeForm: "Registrar Horario",
+  resIntervalTimeTable: "Mostrar Horarios (Tabla)",
+  // Reservations
+  resBookingsAdmin: "Adm. Reservas",
+  resBookingsForm: "Registrar Reserva",
+  resBookingsTable: "Mostrar Reservas (Tabla)",
+  resBookingsOwnTable: "Mostrar Mis Reservas (Tabla)",
+
   // Config
   configAdmin: "Config",
   configSystem: "Parametros del sistema",
