@@ -5,6 +5,7 @@ CREATE TABLE res_resources(
    price_interval TEXT NOT NULL,
    image LONGBLOB,
    description TEXT NOT NULL,
+   aux TEXT,
    creation_date DATETIME DEFAULT CURRENT_TIMESTAMP,
    update_date DATETIME ON UPDATE CURRENT_TIMESTAMP,
    created_by VARCHAR(30),
