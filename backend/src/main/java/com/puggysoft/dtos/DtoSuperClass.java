@@ -9,10 +9,10 @@ public abstract class DtoSuperClass {
 
   protected Long id;
 
-  @Size(min = 3, max = 20)
+  @Size(min = 3, max = 30)
   protected String createdBy;
 
-  @Size(min = 3, max = 20)
+  @Size(min = 3, max = 30)
   protected String updatedBy;
 
   protected Date creationDate;
