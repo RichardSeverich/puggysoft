@@ -50,6 +50,7 @@ function ScheduleForm (props) {
   const name = isEdit && isEdit.data.name !== null ? isEdit.data.name : "";
   const priceInterval = isEdit && isEdit.data.priceInterval !== null ? isEdit.data.priceInterval : "";
   const description = isEdit && isEdit.data.description !== null ? isEdit.data.description : "";
+  const valueAux = isEdit && isEdit.data.aux !== null ? isEdit.data.aux : "";
 
   // Use custom hook
   const { value: valueName, onChange: onChangeName, reset: resetName } = useInput(name);
@@ -73,6 +74,7 @@ function ScheduleForm (props) {
       name: valueName,
       priceInterval: valuePriceInterval,
       description: valueDescription,
+      aux: valueAux,
       createdBy: username,
       updatedBy: username
     };
@@ -80,7 +82,7 @@ function ScheduleForm (props) {
       body.image = entityImage;
     }
     return body;
-  }, [entityImage, valueName, valuePriceInterval, valueDescription]);
+  }, [entityImage, valueName, valuePriceInterval, valueDescription, valueAux]);
 
   function finishLoading () {
     setIsRequestInProgress(false);
@@ -108,9 +110,9 @@ function ScheduleForm (props) {
     if (isValid) {
       setIsRequestInProgress(true);
       if (isEdit) {
-        handleEditRequest("reservation-resources/", body, id, handleAfterEdit);
+        handleEditRequest("reservations-resources/", body, id, handleAfterEdit);
       } else {
-        handleAddRequest("reservation-resources/", body, handleAfterAdd);
+        handleAddRequest("reservations-resources/", body, handleAfterAdd);
       }
     } else {
       setMessageTitle(i18n.errorMessages.validationErrorTitle);

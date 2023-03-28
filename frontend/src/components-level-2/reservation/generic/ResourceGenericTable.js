@@ -1,10 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
-import TableFilterGeneric from "./../generic/TableFilterGeneric";
-import useInput from "./../../hooks/useInput";
-import enumCompareOperators from "./../../models/enumCompareOperators";
-import enumTableColumnsToShow from "./../../models/enumTableColumnsToShow";
-import resourcesTableModels from "../../models/reservation/resourcesTableModels";
+import TableFilterGeneric from "./../../generic/TableFilterGeneric";
+import useInput from "./../../../hooks/useInput";
+import enumCompareOperators from "./../../../models/enumCompareOperators";
+import enumTableColumnsToShow from "./../../../models/enumTableColumnsToShow";
+import resourcesTableModels from "../../../models/reservation/resourcesTableModels";
 
 function ResourceGenericTable (props) {
   const {

@@ -80,6 +80,10 @@ const RESERVATION_SCHEDULE_FORM = "/reservation-schedule-form";
 const RESERVATION_SCHEDULE_TABLE = "/reservation-schedule-table";
 const RESERVATION_INTERVAL_TIME_FORM = "/reservation-interval-time-form";
 const RESERVATION_INTERVAL_TIME_TABLE = "/reservation-interval-time-table";
+const RESERVATION_RESOURCES_TABLE_TO_ADD_SCHEDULES = "/reservation-resource-table-to-add-schedules";
+const RESERVATION_SCHEDULES_TABLE_TO_ADD_RESOURCES = "/reservation-schedule-table-to-add-resources";
+const RESERVATION_RESOURCES_SCHEDULES_BY_RESOURCE = "/reservation-resource-schedules-table-by-resource";
+const RESERVATION_RESOURCES_SCHEDULES_BY_SCHEDULE = "/reservation-resource-schedules-table-by-schedule";
 
 const enumPaths = {
   DASHBOARD,
@@ -160,7 +164,11 @@ const enumPaths = {
   RESERVATION_SCHEDULE_FORM,
   RESERVATION_SCHEDULE_TABLE,
   RESERVATION_INTERVAL_TIME_FORM,
-  RESERVATION_INTERVAL_TIME_TABLE
+  RESERVATION_INTERVAL_TIME_TABLE,
+  RESERVATION_RESOURCES_TABLE_TO_ADD_SCHEDULES,
+  RESERVATION_SCHEDULES_TABLE_TO_ADD_RESOURCES,
+  RESERVATION_RESOURCES_SCHEDULES_BY_RESOURCE,
+  RESERVATION_RESOURCES_SCHEDULES_BY_SCHEDULE
 };
 
 export default enumPaths;

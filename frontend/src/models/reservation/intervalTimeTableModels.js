@@ -4,12 +4,12 @@ import arrayDataFields from "./resourceDataFields";
 import arrayColumnsLabels from "./resourcesColumnsLabels";
 import resourcesColumnsFilter from "./resourcesColumnsFilter";
 
-const resourcesTableModels = function (
+const intervalTimeTableModels = function (
   tableColumnsToShow,
   /* ID */ criteriaId, criteriaOnChangeId, criteriaSetId, operatorId, operatorOnChangeId, operatorSetId,
   /* NAME */ criteriaName, criteriaOnChangeName, criteriaSetName, operatorName, operatorOnChangeName, operatorSetName,
-  /* INTERVAL TIME */criteriaPriceInterval, criteriaOnChangePriceInterval, criteriaSetPriceInterval, operatorPriceInterval, operatorOnChangePriceInterval, operatorSetPriceInterval,
-  /* DESCRIPTION */ criteriaDescription, criteriaOnChangeDescription, criteriaSetDescription, operatorDescription, operatorOnChangeDescription, operatorSetDescription,
+  /* START TIME */criteriaStartTime, criteriaOnChangeStartTime, criteriaSetStartTime, operatorStartTime, operatorOnChangeStartTime, operatorSetStartTime,
+  /* END TIME */ criteriaEndTime, criteriaOnChangeEndTime, criteriaSetEndTime, operatorEndTime, operatorOnChangeEndTime, operatorSetEndTime,
   /* CREATED BY */criteriaCreatedBy, criteriaOnChangeCreatedBy, criteriaSetCreatedBy, operatorCreatedBy, operatorOnChangeCreatedBy, operatorSetCreatedBy,
   /* UPDATED BY */criteriaUpdatedBy, criteriaOnChangeUpdatedBy, criteriaSetUpdatedBy, operatorUpdatedBy, operatorOnChangeUpdatedBy, operatorSetUpdatedBy,
   /* CREATED DATE */criteriaCreatedDate, criteriaOnChangeCreatedDate, criteriaSetCreatedDate, operatorCreatedDate, operatorOnChangeCreatedDate, operatorSetCreatedDate,
@@ -18,8 +18,8 @@ const resourcesTableModels = function (
   const arrayColumnsFilter = resourcesColumnsFilter(
     /* ID */ criteriaId, criteriaOnChangeId, operatorId, operatorOnChangeId,
     /* NAME */ criteriaName, criteriaOnChangeName, operatorName, operatorOnChangeName,
-    /* INTERVAL TIME */criteriaPriceInterval, criteriaOnChangePriceInterval, operatorPriceInterval, operatorOnChangePriceInterval,
-    /* DESCRIPTION */ criteriaDescription, criteriaOnChangeDescription, operatorDescription, operatorOnChangeDescription,
+    /* START TIME */criteriaStartTime, criteriaOnChangeStartTime, operatorStartTime, operatorOnChangeStartTime,
+    /* END TIME */ criteriaEndTime, criteriaOnChangeEndTime, operatorEndTime, operatorOnChangeEndTime,
     /* CREATED BY */criteriaCreatedBy, criteriaOnChangeCreatedBy, operatorCreatedBy, operatorOnChangeCreatedBy,
     /* UPDATED BY */criteriaUpdatedBy, criteriaOnChangeUpdatedBy, operatorUpdatedBy, operatorOnChangeUpdatedBy,
     /* CREATED DATE */criteriaCreatedDate, criteriaOnChangeCreatedDate, operatorCreatedDate, operatorOnChangeCreatedDate,
@@ -28,8 +28,8 @@ const resourcesTableModels = function (
   const setOperatorsDefaultValues = function () {
     operatorSetId(enumCompareOperators.NUMBER_EQUALS);
     operatorSetName(enumCompareOperators.TEXT_CONTAINS);
-    operatorSetPriceInterval(enumCompareOperators.NUMBER_EQUALS);
-    operatorSetDescription(enumCompareOperators.TEXT_CONTAINS);
+    operatorSetStartTime(enumCompareOperators.TEXT_CONTAINS);
+    operatorSetEndTime(enumCompareOperators.TEXT_CONTAINS);
     operatorSetCreatedBy(enumCompareOperators.TEXT_CONTAINS);
     operatorSetUpdatedBy(enumCompareOperators.TEXT_CONTAINS);
     operatorSetCreatedDate(enumCompareOperators.DATE_EQUALS);
@@ -39,8 +39,8 @@ const resourcesTableModels = function (
   const clearFilters = function () {
     criteriaSetId("");
     criteriaSetName("");
-    criteriaSetPriceInterval("");
-    criteriaSetDescription("");
+    criteriaSetStartTime("");
+    criteriaSetEndTime("");
     criteriaSetCreatedBy("");
     criteriaSetUpdatedBy("");
     criteriaSetCreatedDate("");
@@ -50,15 +50,10 @@ const resourcesTableModels = function (
 
   const isMedium = tableColumnsToShow === enumTableColumnsToShow.MENDIUM;
   const isMinimum = tableColumnsToShow === enumTableColumnsToShow.MINIMUM;
-
-  if (isMedium) {
+  if (isMedium || isMinimum) {
     arrayColumnsFilter.slice(0, arrayColumnsFilter.length - 4);
     arrayColumnsLabels.slice(0, arrayColumnsFilter.length - 4);
     arrayDataFields.slice(0, arrayColumnsFilter.length - 4);
-  } else if (isMinimum) {
-    arrayColumnsFilter.slice(0, arrayColumnsFilter.length - 5);
-    arrayColumnsLabels.slice(0, arrayColumnsFilter.length - 5);
-    arrayDataFields.slice(0, arrayColumnsFilter.length - 5);
   }
 
   const getFilterBody = () => {
@@ -67,10 +62,10 @@ const resourcesTableModels = function (
       idOperator: operatorId,
       nameCriteria: criteriaName,
       nameOperator: operatorName,
-      priceIntervalTimeCriteria: criteriaPriceInterval,
-      priceIntervaTimelOperator: operatorPriceInterval,
-      descriptionCriteria: "",
-      descriptionOperator: enumCompareOperators.NONE,
+      startTimeCriteria: criteriaStartTime,
+      startTimeOperator: operatorStartTime,
+      endTimeCriteria: criteriaEndTime,
+      endTimeOperator: operatorEndTime,
       createdByCriteria: criteriaCreatedBy,
       createdByOperator: operatorCreatedBy,
       updatedByCriteria: criteriaUpdatedBy,
@@ -93,4 +88,4 @@ const resourcesTableModels = function (
   };
 };
 
-export default resourcesTableModels;
+export default intervalTimeTableModels;

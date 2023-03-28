@@ -3,26 +3,26 @@ import { useHistory } from "react-router";
 import i18n from "../../i18n/i18n";
 import enumPaths from "./../../models/enumPaths";
 import { handleFilterRequest, handleDeleteRequest } from "../../actions/HandleManager";
-import ResourceGenericTable from "./ResourceGenericTable";
+import ResourceGenericTable from "./generic/ResourceGenericTable";
 import enumTableColumnsToShow from "./../../models/enumTableColumnsToShow";
 
 function ResourceGenericEditDelete () {
-  const tableTitle = "";
+  const tableTitle = i18n.resourceTable.title;
   const pageSize = 10;
   const numberPagesToShow = 10;
 
   const history = useHistory();
 
   function handleGetData (activePage, filterBody, updateArrayData) {
-    handleFilterRequest(`reservation-resource/filter?page=${activePage - 1}&size=${pageSize}`, filterBody, updateArrayData);
+    handleFilterRequest(`reservations-resources/filter?page=${activePage - 1}&size=${pageSize}`, filterBody, updateArrayData);
   }
 
   function handleGetSize (filterBody, setTotalPages) {
-    handleFilterRequest(`reservation-resource/filter/size/${pageSize}`, filterBody, setTotalPages);
+    handleFilterRequest(`reservations-resources/filter/size/${pageSize}`, filterBody, setTotalPages);
   }
 
   function handleDelete (data) {
-    handleDeleteRequest(`reservation-resource/${data.id}`, undefined, undefined, undefined, true);
+    handleDeleteRequest(`reservations-resources/${data.id}`, undefined, undefined, undefined, true);
   }
 
   function handleEdit (data) {

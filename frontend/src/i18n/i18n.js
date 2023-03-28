@@ -46,6 +46,7 @@ import resourceForm from "./spanish/reservation/resourceForm";
 import scheduleForm from "./spanish/reservation/scheduleForm";
 import intervalTimeForm from "./spanish/reservation/intervalTimeForm";
 import resourceTable from "./spanish/reservation/resourceTable";
+import intervalTimeTable from "./spanish/reservation/intervalTimeTable";
 
 const i18n = {
   // Common
@@ -95,7 +96,8 @@ const i18n = {
   resourceForm,
   scheduleForm,
   intervalTimeForm,
-  resourceTable
+  resourceTable,
+  intervalTimeTable
 };
 
 export default i18n;

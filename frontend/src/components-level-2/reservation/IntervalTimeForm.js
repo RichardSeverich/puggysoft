@@ -73,9 +73,9 @@ function IntervalTimeForm (props) {
     if (isValid) {
       setIsRequestInProgress(true);
       if (isEdit) {
-        handleEditRequest("reservation-interval-time/", body, id, handleAfterEdit);
+        handleEditRequest("reservations-intervals-times/", body, id, handleAfterEdit);
       } else {
-        handleAddRequest("reservation-interval-time/", body, handleAfterAdd);
+        handleAddRequest("reservations-intervals-times/", body, handleAfterAdd);
       }
     } else {
       setMessageTitle(i18n.errorMessages.validationErrorTitle);

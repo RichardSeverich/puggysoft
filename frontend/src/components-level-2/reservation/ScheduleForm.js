@@ -65,9 +65,9 @@ function ScheduleForm (props) {
     if (isValid) {
       setIsRequestInProgress(true);
       if (isEdit) {
-        handleEditRequest("reservation-schedule/", body, id, handleAfterEdit);
+        handleEditRequest("reservations-schedules/", body, id, handleAfterEdit);
       } else {
-        handleAddRequest("reservation-schedule/", body, handleAfterAdd);
+        handleAddRequest("reservations-schedules/", body, handleAfterAdd);
       }
     } else {
       setMessageTitle(i18n.errorMessages.validationErrorTitle);
