@@ -68,6 +68,8 @@
 
 - Lector de codigo de barras:
 - Impresora de tickets:
+- Impresora facturas:
+- Lector de huella digital USB.
 - Computadora: 
 
 #### Notas
@@ -104,3 +106,9 @@ Convertir a Base64 String imagenes
 - Reglamentos.
 - bolivia almacen normativa.
 - https://www.youtube.com/channel/UCLgEZ3yXJ1GnJiZVd_tS3HA/videos
+
+
+#### Notas Tecnologias
+
+- Facturacion computarizada
+- https://www.jc-mouse.net/proyectos/facturacion-electronica-el-codigo-de-control
