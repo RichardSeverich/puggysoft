@@ -64,6 +64,9 @@
 - https://www.facebook.com/marketplace/item/296380665741266/?ref=search&referral_code=marketplace_search&referral_story_type=post&tracking=browse_serp%3A5679898d-92f9-4420-88ac-b6468d4b0440
 - https://www.youtube.com/@alfasolutec2190
 
+* Propaganta 1 min ejemplo:
+- https://www.youtube.com/watch?v=ToWZlIrur2k
+
 #### Costos
 
 - Lector de codigo de barras:
