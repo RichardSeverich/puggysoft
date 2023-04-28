@@ -60,9 +60,9 @@ CREATE TABLE users_roles(
 
 
 -- tenant not being used yet
-/*CREATE TABLE tenant (
+CREATE TABLE tenants (
    id BIGINT AUTO_INCREMENT,
-   name TEXT NOT NULL,
+   name VARCHAR(30) UNIQUE NOT NULL,
    description TEXT NOT NULL,
    telephone TEXT NOT NULL,
    address TEXT NOT NULL,
@@ -74,10 +74,10 @@ CREATE TABLE users_roles(
    FOREIGN KEY (created_by) REFERENCES users(username),
    FOREIGN KEY (updated_by) REFERENCES users(username),
    PRIMARY KEY (id)
-)AUTO_INCREMENT=1000;*/
+)AUTO_INCREMENT=1000;
 
 
-/*CREATE TABLE tenant_users (
+CREATE TABLE tenants_users (
    id BIGINT AUTO_INCREMENT,
    id_tenant BIGINT NOT NULL,
    id_user BIGINT NOT NULL,
@@ -87,11 +87,11 @@ CREATE TABLE users_roles(
    update_date DATETIME ON UPDATE CURRENT_TIMESTAMP,
    FOREIGN KEY (created_by) REFERENCES users(username),
    FOREIGN KEY (updated_by) REFERENCES users(username),
-   FOREIGN KEY (id_tenant) REFERENCES tenant(id),
+   FOREIGN KEY (id_tenant) REFERENCES tenants(id),
    FOREIGN KEY (id_user) REFERENCES users(id),
-   UNIQUE (id_user, id_role),
+   UNIQUE (id_user, id_tenant),
    PRIMARY KEY (id)
-)AUTO_INCREMENT=1000;*/
+)AUTO_INCREMENT=1000;
 
 
 CREATE TABLE system_properties (
