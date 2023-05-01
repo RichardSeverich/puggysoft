@@ -50,7 +50,7 @@ CREATE TABLE res_resources_schedule (
 
 CREATE TABLE res_interval_time (
    id BIGINT AUTO_INCREMENT,
-   name VARCHAR(12) NOT NULL,
+   name VARCHAR(60) NOT NULL,
    start_time TIME NOT NULL,
    end_time TIME NOT NULL,
    creation_date DATETIME DEFAULT CURRENT_TIMESTAMP,

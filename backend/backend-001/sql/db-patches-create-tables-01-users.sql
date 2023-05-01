@@ -62,10 +62,11 @@ CREATE TABLE users_roles(
 -- tenant not being used yet
 CREATE TABLE tenants (
    id BIGINT AUTO_INCREMENT,
-   name VARCHAR(30) UNIQUE NOT NULL,
-   description TEXT NOT NULL,
-   telephone TEXT NOT NULL,
-   address TEXT NOT NULL,
+   name VARCHAR(64) NOT NULL UNIQUE,
+   short_name VARCHAR(30) NOT NULL UNIQUE,
+   description TEXT,
+   telephone TEXT,
+   address TEXT,
    image LONGBLOB,
    created_by VARCHAR(30),
    updated_by VARCHAR(30),
@@ -79,17 +80,17 @@ CREATE TABLE tenants (
 
 CREATE TABLE tenants_users (
    id BIGINT AUTO_INCREMENT,
-   id_tenant BIGINT NOT NULL,
-   id_user BIGINT NOT NULL,
+   username VARCHAR(30) NOT NULL,
+   tenant VARCHAR(30) NOT NULL,
    created_by VARCHAR(30),
    updated_by VARCHAR(30),
    creation_date DATETIME DEFAULT CURRENT_TIMESTAMP,
    update_date DATETIME ON UPDATE CURRENT_TIMESTAMP,
    FOREIGN KEY (created_by) REFERENCES users(username),
    FOREIGN KEY (updated_by) REFERENCES users(username),
-   FOREIGN KEY (id_tenant) REFERENCES tenants(id),
-   FOREIGN KEY (id_user) REFERENCES users(id),
-   UNIQUE (id_user, id_tenant),
+   FOREIGN KEY (tenant) REFERENCES tenants(short_name),
+   FOREIGN KEY (username) REFERENCES users(username),
+   UNIQUE (username, tenant),
    PRIMARY KEY (id)
 )AUTO_INCREMENT=1000;
 
@@ -104,5 +105,21 @@ CREATE TABLE system_properties (
    update_date DATETIME ON UPDATE CURRENT_TIMESTAMP,
    FOREIGN KEY (created_by) REFERENCES users(username),
    FOREIGN KEY (updated_by) REFERENCES users(username),
+   PRIMARY KEY (id)
+)AUTO_INCREMENT=1000;
+
+
+CREATE TABLE app_files(
+   id BIGINT AUTO_INCREMENT,
+   archive LONGBLOB,
+   aux TEXT NOT NULL,
+   tenant VARCHAR(30) NOT NULL,
+   creation_date DATETIME DEFAULT CURRENT_TIMESTAMP,
+   update_date DATETIME ON UPDATE CURRENT_TIMESTAMP,
+   created_by VARCHAR(30),
+   updated_by VARCHAR(30),
+   FOREIGN KEY (created_by) REFERENCES users(username),
+   FOREIGN KEY (updated_by) REFERENCES users(username),
+   FOREIGN KEY (tenant) REFERENCES tenants(short_name),
    PRIMARY KEY (id)
 )AUTO_INCREMENT=1000;

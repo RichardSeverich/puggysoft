@@ -29,7 +29,7 @@ CREATE TABLE hospital_doctors_details(
 -- Patients:
 CREATE TABLE hospital_patients_details(
    id_user BIGINT NOT NULL UNIQUE,
-   sus_code text NOT NULL UNIQUE,
+   sus_code VARCHAR(60) NOT NULL UNIQUE,
    creation_date DATETIME DEFAULT CURRENT_TIMESTAMP,
    update_date DATETIME ON UPDATE CURRENT_TIMESTAMP,
    created_by VARCHAR(30),
