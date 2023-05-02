@@ -19,7 +19,10 @@ public class ControllerSaleReportRevenue {
   * Returns the revenue of all products sold, divided by month of the selected year.
   */
   @GetMapping(path = "/api/v1/sales-report/revenue")
-  public ResponseEntity<DtoSaleReport> getReport(@RequestParam Integer year) {
-    return servicesSaleReportRevenue.getReport(year);
+  public ResponseEntity<DtoSaleReport> getReport(
+      @RequestParam Integer year,
+      @RequestParam String tenant
+  ) {
+    return servicesSaleReportRevenue.getReport(year, tenant);
   }
 }

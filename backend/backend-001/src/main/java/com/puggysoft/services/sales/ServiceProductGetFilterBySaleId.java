@@ -50,6 +50,7 @@ public class ServiceProductGetFilterBySaleId {
           + "products.image, "
           + "products.bar_code, "
           + "products.location, "
+          + "products.tenant, "
           + "products.created_by, "
           + "products.creation_date, "
           + "products.updated_by, "

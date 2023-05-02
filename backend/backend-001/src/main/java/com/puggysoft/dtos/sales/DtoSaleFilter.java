@@ -20,6 +20,9 @@ public class DtoSaleFilter {
   // STATUS: TODO, IN-PROGRESS, DONE.
   public String statusCriteria;
   public EnumCompareOperator statusOperator;
+  // TENANT
+  public String tenantCriteria;
+  public EnumCompareOperator tenantOperator;
   // CREATED BY
   @Size(max = 20)
   public String createdByCriteria;

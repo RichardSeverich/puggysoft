@@ -83,7 +83,10 @@ function ProductTableFilterEditDelete () {
   const { value: operatorCreatedDate, onChange: operatorOnChangeCreatedDate, setValue: operatorSetCreatedDate } = useInput(enumCompareOperators.DATE_EQUALS);
   const { value: operatorUpdatedDate, onChange: operatorOnChangeUpdatedDate, setValue: operatorSetUpdatedDate } = useInput(enumCompareOperators.DATE_EQUALS);
 
+  const criteriaTenant = window.sessionStorage.getItem("tenant");
+  const operatorTenant = enumCompareOperators.TEXT_EQUALS;
   const { arrayColumnsFilter, clearFilters, getFilterBody } = getColumnsFilterModel(
+    /* TENANT */ criteriaTenant, operatorTenant,
     /* ID */ criteriaId, criteriaOnChangeId, criteriaSetId, operatorId, operatorOnChangeId, operatorSetId,
     /* CODE */ criteriaCode, criteriaOnChangeCode, criteriaSetCode, operatorCode, operatorOnChangeCode, operatorSetCode,
     /* NAME */ criteriaName, criteriaOnChangeName, criteriaSetName, operatorName, operatorOnChangeName, operatorSetName,

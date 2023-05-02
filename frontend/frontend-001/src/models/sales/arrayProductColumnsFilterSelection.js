@@ -2,6 +2,7 @@ import enumFilterType from "../enumFilterType";
 import enumCompareOperators from "./../enumCompareOperators";
 
 const getColumnsFilterModel = function (
+  /* TENANT */ criteriaTenant, operatorTenant,
   /* ID */ criteriaId, criteriaOnChangeId, criteriaSetId, operatorId, operatorOnChangeId, operatorSetId,
   /* CODE */ criteriaCode, criteriaOnChangeCode, criteriaSetCode, operatorCode, operatorOnChangeCode, operatorSetCode,
   /* NAME */ criteriaName, criteriaOnChangeName, criteriaSetName, operatorName, operatorOnChangeName, operatorSetName,
@@ -178,6 +179,8 @@ const getColumnsFilterModel = function (
       barCodeOperator: operatorBarCode,
       codeCriteria: criteriaCode,
       codeOperator: operatorCode,
+      tenantCriteria: criteriaTenant,
+      tenantOperator: operatorTenant,
       createdByCriteria: criteriaCreatedBy,
       createdByOperator: operatorCreatedBy,
       updatedByCriteria: criteriaUpdatedBy,

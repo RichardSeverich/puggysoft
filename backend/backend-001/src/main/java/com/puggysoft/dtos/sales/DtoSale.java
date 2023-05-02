@@ -23,6 +23,10 @@ public class DtoSale extends DtoSuperClass {
 
   private String note;
 
+  @Size(min = 3, max = 30)
+  @NotNull
+  private String tenant;
+
   /** convert from dto to entity. */
   public EntitySale dtoToEntity() {
     EntitySale entity = new EntitySale();
@@ -30,6 +34,7 @@ public class DtoSale extends DtoSuperClass {
     entity.setClient(client);
     entity.setStatus(status);
     entity.setNote(note);
+    entity.setTenant(tenant);
     entity.setCreatedBy(createdBy);
     entity.setUpdatedBy(updatedBy);
     return entity;
@@ -42,6 +47,7 @@ public class DtoSale extends DtoSuperClass {
     dto.setClient(entity.getClient());
     dto.setStatus(entity.getStatus());
     dto.setNote(entity.getNote());
+    dto.setTenant(entity.getTenant());
     dto.setCreatedBy(entity.getCreatedBy());
     dto.setUpdatedBy(entity.getUpdatedBy());
     dto.setCreationDate(entity.getCreationDate());

@@ -22,6 +22,7 @@ function SaleAddStepOneClientSelection ({
   function handleSelection (clientData) {
     setIsRequestInProgress(true);
     const username = window.sessionStorage.getItem("username");
+    const tenant = window.sessionStorage.getItem("tenant");
     let saleStatus = enumSaleStatus.DONE;
     if (saleTableViewType && saleTableViewType === enumSaleTableViewType.FOR_CASHIER) {
       saleStatus = enumSaleStatus.TODO;
@@ -30,7 +31,8 @@ function SaleAddStepOneClientSelection ({
       client: clientData.username,
       status: saleStatus,
       createdBy: username,
-      updatedBy: username
+      updatedBy: username,
+      tenant
     };
     function handleAfterCreateSale (saleId) {
       const saleData = bodySale;

@@ -23,7 +23,8 @@ function SaleReportRevenueMonthCompByProduct () {
 
   function handleUpdateData (year, month, setReportData, onRequestFail) {
     if (productData && productData.id) {
-      handleGetRequest(`sales-report/revenue-month-by-product?year=${year}&month=${month}&idProduct=${productData.id}`,
+      const tenant = window.sessionStorage.getItem("tenant");
+      handleGetRequest(`sales-report/revenue-month-by-product?year=${year}&month=${month}&idProduct=${productData.id}&tenant=${tenant}`,
         setReportData,
         onRequestFail);
     } else {

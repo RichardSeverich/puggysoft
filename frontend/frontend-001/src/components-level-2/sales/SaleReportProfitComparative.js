@@ -7,7 +7,8 @@ import enumPaths from "./../../models/enumPaths";
 
 function SaleReportProfitComparative () {
   function handleUpdateData (year, setReportData, onRequestFail) {
-    handleGetRequest(`sales-report/profit?year=${year}`, setReportData, onRequestFail);
+    const tenant = window.sessionStorage.getItem("tenant");
+    handleGetRequest(`sales-report/profit?year=${year}&tenant=${tenant}`, setReportData, onRequestFail);
   }
 
   return (

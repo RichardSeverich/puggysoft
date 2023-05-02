@@ -19,13 +19,13 @@ public class ServicesSaleReportProfitMonth {
   private IRepositorySaleProduct repositorySaleProduct;
 
   /** method for retrive. */
-  public ResponseEntity<ArrayList<Double>> getReport(Integer year, Integer month) {
+  public ResponseEntity<ArrayList<Double>> getReport(Integer year, Integer month, String tenant) {
     YearMonth yearMonthObject = YearMonth.of(year, month);
     int daysInMonth = yearMonthObject.lengthOfMonth();
     ArrayList<Double> arrayDays = new ArrayList<>();
     for (int day = 1; day <= daysInMonth; day++) {
       String date = year + "-" + month + "-" + day;
-      Double sumDay = repositorySaleProduct.getProfitPerDay(date);
+      Double sumDay = repositorySaleProduct.getProfitPerDay(date, tenant);
       sumDay = sumDay == null ? 0 : sumDay;
       arrayDays.add(sumDay);
     }

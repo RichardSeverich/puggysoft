@@ -16,19 +16,19 @@ public class ServicesSaleReportQuantityByProduct {
   private IRepositorySaleProduct repositorySaleProduct;
 
   /** method for retrive. */
-  public ResponseEntity<DtoSaleReport> getReport(Integer year, Long idProduct) {
-    Long january = repositorySaleProduct.getQuantityPerMonthByProduct(year, 1, idProduct);
-    Long february = repositorySaleProduct.getQuantityPerMonthByProduct(year, 2, idProduct);
-    Long march = repositorySaleProduct.getQuantityPerMonthByProduct(year, 3, idProduct);
-    Long april = repositorySaleProduct.getQuantityPerMonthByProduct(year, 4, idProduct);
-    Long may = repositorySaleProduct.getQuantityPerMonthByProduct(year, 5, idProduct);
-    Long june = repositorySaleProduct.getQuantityPerMonthByProduct(year, 6, idProduct);
-    Long july = repositorySaleProduct.getQuantityPerMonthByProduct(year, 7, idProduct);
-    Long august = repositorySaleProduct.getQuantityPerMonthByProduct(year, 8, idProduct);
-    Long september = repositorySaleProduct.getQuantityPerMonthByProduct(year, 9, idProduct);
-    Long october = repositorySaleProduct.getQuantityPerMonthByProduct(year, 10, idProduct);
-    Long november = repositorySaleProduct.getQuantityPerMonthByProduct(year, 11, idProduct);
-    Long december = repositorySaleProduct.getQuantityPerMonthByProduct(year, 12, idProduct);
+  public ResponseEntity<DtoSaleReport> getReport(Integer year, Long idProduct, String tenant) {
+    Long january = repositorySaleProduct.getQuantityPerMonthByProduct(year, 1, idProduct, tenant);
+    Long february = repositorySaleProduct.getQuantityPerMonthByProduct(year, 2, idProduct, tenant);
+    Long march = repositorySaleProduct.getQuantityPerMonthByProduct(year, 3, idProduct, tenant);
+    Long april = repositorySaleProduct.getQuantityPerMonthByProduct(year, 4, idProduct, tenant);
+    Long may = repositorySaleProduct.getQuantityPerMonthByProduct(year, 5, idProduct, tenant);
+    Long june = repositorySaleProduct.getQuantityPerMonthByProduct(year, 6, idProduct, tenant);
+    Long july = repositorySaleProduct.getQuantityPerMonthByProduct(year, 7, idProduct, tenant);
+    Long august = repositorySaleProduct.getQuantityPerMonthByProduct(year, 8, idProduct, tenant);
+    Long september = repositorySaleProduct.getQuantityPerMonthByProduct(year, 9, idProduct, tenant);
+    Long october = repositorySaleProduct.getQuantityPerMonthByProduct(year, 10, idProduct, tenant);
+    Long november = repositorySaleProduct.getQuantityPerMonthByProduct(year, 11, idProduct, tenant);
+    Long december = repositorySaleProduct.getQuantityPerMonthByProduct(year, 12, idProduct, tenant);
     january = january == null ? 0 : january;
     february = february == null ? 0 : february;
     march = march == null ? 0 : march;

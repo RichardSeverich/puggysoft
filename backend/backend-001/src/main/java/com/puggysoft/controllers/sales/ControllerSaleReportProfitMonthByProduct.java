@@ -24,7 +24,9 @@ public class ControllerSaleReportProfitMonthByProduct {
   public ResponseEntity<ArrayList<Double>> getReport(
       @RequestParam Integer year,
       @RequestParam Integer month,
-      @RequestParam Long idProduct) {
-    return servicesSaleReportProfitMonthByProduct.getReport(year, month, idProduct);
+      @RequestParam Long idProduct,
+      @RequestParam String tenant
+  ) {
+    return servicesSaleReportProfitMonthByProduct.getReport(year, month, idProduct, tenant);
   }
 }

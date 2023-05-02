@@ -22,4 +22,6 @@ public class EntitySaleProduct extends EntitySuperClass {
 
   private Integer quantity;
 
+  private String tenant;
+
 }

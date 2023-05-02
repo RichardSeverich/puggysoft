@@ -23,7 +23,9 @@ public class ControllerSaleReportProfitMonth {
   @GetMapping(path = "/api/v1/sales-report/profit-month")
   public ResponseEntity<ArrayList<Double>> getReport(
       @RequestParam Integer year,
-      @RequestParam Integer month) {
-    return servicesSaleReportProfitMonth.getReport(year, month);
+      @RequestParam Integer month,
+      @RequestParam String tenant
+  ) {
+    return servicesSaleReportProfitMonth.getReport(year, month, tenant);
   }
 }

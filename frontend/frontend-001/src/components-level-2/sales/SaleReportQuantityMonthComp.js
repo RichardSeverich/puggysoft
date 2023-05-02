@@ -7,7 +7,9 @@ import i18n from "../../i18n/i18n";
 
 function SaleReportQuantityMonthComp () {
   function handleUpdateData (year, month, setReportData, onRequestFail) {
-    handleGetRequest(`sales-report/quantity-month?year=${year}&month=${month}`, setReportData, onRequestFail);
+    const tenant = window.sessionStorage.getItem("tenant");
+    handleGetRequest(`sales-report/quantity-month?year=${year}&month=${month}&tenant=${tenant}`,
+      setReportData, onRequestFail);
   }
 
   return (
