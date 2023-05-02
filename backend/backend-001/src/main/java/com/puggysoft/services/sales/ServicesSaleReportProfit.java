@@ -16,19 +16,19 @@ public class ServicesSaleReportProfit {
   private IRepositorySaleProduct repositorySaleProduct;
 
   /** method for retrive. */
-  public ResponseEntity<DtoSaleReport> getReport(Integer year) {
-    Double january = repositorySaleProduct.getProfitPerMonth(year, 1);
-    Double february = repositorySaleProduct.getProfitPerMonth(year, 2);
-    Double march = repositorySaleProduct.getProfitPerMonth(year, 3);
-    Double april = repositorySaleProduct.getProfitPerMonth(year, 4);
-    Double may = repositorySaleProduct.getProfitPerMonth(year, 5);
-    Double june = repositorySaleProduct.getProfitPerMonth(year, 6);
-    Double july = repositorySaleProduct.getProfitPerMonth(year, 7);
-    Double august = repositorySaleProduct.getProfitPerMonth(year, 8);
-    Double september = repositorySaleProduct.getProfitPerMonth(year, 9);
-    Double october = repositorySaleProduct.getProfitPerMonth(year, 10);
-    Double november = repositorySaleProduct.getProfitPerMonth(year, 11);
-    Double december = repositorySaleProduct.getProfitPerMonth(year, 12);
+  public ResponseEntity<DtoSaleReport> getReport(Integer year, String tenant) {
+    Double january = repositorySaleProduct.getProfitPerMonth(year, 1, tenant);
+    Double february = repositorySaleProduct.getProfitPerMonth(year, 2, tenant);
+    Double march = repositorySaleProduct.getProfitPerMonth(year, 3, tenant);
+    Double april = repositorySaleProduct.getProfitPerMonth(year, 4, tenant);
+    Double may = repositorySaleProduct.getProfitPerMonth(year, 5, tenant);
+    Double june = repositorySaleProduct.getProfitPerMonth(year, 6, tenant);
+    Double july = repositorySaleProduct.getProfitPerMonth(year, 7, tenant);
+    Double august = repositorySaleProduct.getProfitPerMonth(year, 8, tenant);
+    Double september = repositorySaleProduct.getProfitPerMonth(year, 9, tenant);
+    Double october = repositorySaleProduct.getProfitPerMonth(year, 10, tenant);
+    Double november = repositorySaleProduct.getProfitPerMonth(year, 11, tenant);
+    Double december = repositorySaleProduct.getProfitPerMonth(year, 12, tenant);
     january = january == null ? 0 : january;
     february = february == null ? 0 : february;
     march = march == null ? 0 : march;

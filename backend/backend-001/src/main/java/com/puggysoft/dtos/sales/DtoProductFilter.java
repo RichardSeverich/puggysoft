@@ -40,6 +40,9 @@ public class DtoProductFilter {
   // CODE
   public String codeCriteria;
   public EnumCompareOperator codeOperator;
+  // TENANT
+  public String tenantCriteria;
+  public EnumCompareOperator tenantOperator;
   // CREATED BY
   @Size(max = 20)
   public String createdByCriteria;

@@ -88,6 +88,7 @@ function ProductForm (props) {
 
   const getBody = function () {
     const username = window.sessionStorage.getItem("username");
+    const tenant = window.sessionStorage.getItem("tenant");
     const body = {
       code: valueCode,
       name: valueName,
@@ -99,7 +100,8 @@ function ProductForm (props) {
       location: valueLocation,
       minimumStock: valueMinimumStock,
       createdBy: username,
-      updatedBy: username
+      updatedBy: username,
+      tenant
     };
     if (productImage !== null) {
       body.image = productImage;

@@ -21,8 +21,9 @@ public class ControllerSaleReportQuantityByProduct {
   @GetMapping(path = "/api/v1/sales-report/quantity-by-product")
   public ResponseEntity<DtoSaleReport> getReport(
       @RequestParam Integer year,
-      @RequestParam Long idProduct
+      @RequestParam Long idProduct,
+      @RequestParam String tenant
   ) {
-    return servicesSaleReportQuantityByProduct.getReport(year, idProduct);
+    return servicesSaleReportQuantityByProduct.getReport(year, idProduct, tenant);
   }
 }

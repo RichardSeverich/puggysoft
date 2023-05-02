@@ -28,7 +28,10 @@ function ProductTableSuperReducedGeneric (props) {
   const { value: operatorSalePrice, onChange: operatorOnChangeSalePrice, setValue: operatorSetSalePrice } = useInput(enumCompareOperators.NUMBER_EQUALS);
   const { value: operatorStock, onChange: operatorOnChangeStock, setValue: operatorSetStock } = useInput(enumCompareOperators.NUMBER_EQUALS);
 
+  const criteriaTenant = window.sessionStorage.getItem("tenant");
+  const operatorTenant = enumCompareOperators.TEXT_EQUALS;
   const { arrayColumnsFilter, clearFilters, getFilterBody } = getColumnsFilterModel(
+    /* TENANT */ criteriaTenant, operatorTenant,
     /* NAME */ criteriaName, criteriaOnChangeName, criteriaSetName, operatorName, operatorOnChangeName, operatorSetName,
     /* SALE PRICE */ criteriaSalePrice, criteriaOnChangeSalePrice, criteriaSetSalePrice, operatorSalePrice, operatorOnChangeSalePrice, operatorSetSalePrice,
     /* STOCK */criteriaStock, criteriaOnChangeStock, criteriaSetStock, operatorStock, operatorOnChangeStock, operatorSetStock

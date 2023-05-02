@@ -20,4 +20,6 @@ public class EntitySale extends EntitySuperClass {
 
   private String note;
 
+  private String tenant;
+
 }

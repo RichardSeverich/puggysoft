@@ -41,4 +41,6 @@ public class EntityProduct extends EntitySuperClass {
 
   private String code;
 
+  private String tenant;
+
 }

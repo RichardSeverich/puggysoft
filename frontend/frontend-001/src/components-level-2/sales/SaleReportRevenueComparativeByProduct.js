@@ -22,7 +22,9 @@ function SaleReportRevenueComparativeByProduct () {
 
   function handleUpdateData (year, setReportData, onRequestFail) {
     if (productData && productData.id) {
-      handleGetRequest(`sales-report/revenue-by-product?year=${year}&idProduct=${productData.id}`, setReportData, onRequestFail);
+      const tenant = window.sessionStorage.getItem("tenant");
+      handleGetRequest(`sales-report/revenue-by-product?year=${year}&idProduct=${productData.id}&tenant=${tenant}`,
+        setReportData, onRequestFail);
     } else {
       setMessageTitle(i18n.errorMessages.errorTitle);
       setMessageText(i18n.saleErrorMessages.productNotSelected);

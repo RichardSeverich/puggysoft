@@ -7,7 +7,8 @@ import enumPaths from "./../../models/enumPaths";
 
 function SaleReportRevenue () {
   function handleUpdateData (year, setReportData, onRequestFail) {
-    handleGetRequest(`sales-report/revenue?year=${year}`, setReportData, onRequestFail);
+    const tenant = window.sessionStorage.getItem("tenant");
+    handleGetRequest(`sales-report/revenue?year=${year}&tenant=${tenant}`, setReportData, onRequestFail);
   }
 
   return (

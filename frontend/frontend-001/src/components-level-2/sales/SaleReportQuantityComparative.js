@@ -7,7 +7,8 @@ import i18n from "../../i18n/i18n";
 
 function SaleReportQuantityComparative () {
   function handleUpdateData (year, setReportData, onRequestFail) {
-    handleGetRequest(`sales-report/quantity?year=${year}`, setReportData, onRequestFail);
+    const tenant = window.sessionStorage.getItem("tenant");
+    handleGetRequest(`sales-report/quantity?year=${year}&tenant=${tenant}`, setReportData, onRequestFail);
   }
 
   return (

@@ -19,7 +19,10 @@ public class ControllerSaleReportQuantity {
   * Returns the quantity of all products sold, divided by month of the selected year.
   */
   @GetMapping(path = "/api/v1/sales-report/quantity")
-  public ResponseEntity<DtoSaleReport> getReport(@RequestParam Integer year) {
-    return servicesSaleReportQuantity.getReport(year);
+  public ResponseEntity<DtoSaleReport> getReport(
+      @RequestParam Integer year,
+      @RequestParam String tenant
+  ) {
+    return servicesSaleReportQuantity.getReport(year, tenant);
   }
 }

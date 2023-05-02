@@ -5,6 +5,7 @@ import enumSaleStatus from "./enumSaleStatus";
 import i18n from "../../i18n/i18n";
 
 const getColumnsFilterModel = function (
+  /* TENANT */ criteriaTenant, operatorTenant,
   /* ID */ criteriaId, criteriaOnChangeId, criteriaSetId, operatorId, operatorOnChangeId, operatorSetId,
   /* CLIENT */ criteriaClient, criteriaOnChangeClient, criteriaSetClient, operatorClient, operatorOnChangeClient, operatorSetClient,
   /* STATUS */ criteriaStatus, criteriaOnChangeStatus, criteriaSetStatus, operatorStatus, operatorOnChangeStatus, operatorSetStatus,
@@ -113,6 +114,8 @@ const getColumnsFilterModel = function (
       clientOperator: operatorClient,
       statusCriteria: criteriaStatus,
       statusOperator: operatorStatus,
+      tenantCriteria: criteriaTenant,
+      tenantOperator: operatorTenant,
       createdByCriteria: criteriaCreatedBy,
       createdByOperator: operatorCreatedBy,
       updatedByCriteria: criteriaUpdatedBy,

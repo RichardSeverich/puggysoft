@@ -3,6 +3,7 @@ package com.puggysoft.dtos.sales;
 import com.puggysoft.dtos.DtoSuperClass;
 import com.puggysoft.entities.sales.EntitySaleProduct;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -22,6 +23,10 @@ public class DtoSaleProduct extends DtoSuperClass {
   @NotNull
   private Integer quantity;
 
+  @Size(min = 3, max = 30)
+  @NotNull
+  private String tenant;
+
   /** convert from dto to entity. */
   public EntitySaleProduct dtoToEntity() {
     EntitySaleProduct entity = new EntitySaleProduct();
@@ -29,6 +34,7 @@ public class DtoSaleProduct extends DtoSuperClass {
     entity.setIdSale(idSale);
     entity.setIdProduct(idProduct);
     entity.setQuantity(quantity);
+    entity.setTenant(tenant);
     entity.setCreatedBy(createdBy);
     entity.setUpdatedBy(updatedBy);
     return entity;
@@ -41,6 +47,7 @@ public class DtoSaleProduct extends DtoSuperClass {
     dto.setIdSale(entity.getIdSale());
     dto.setIdProduct(entity.getIdProduct());
     dto.setQuantity(entity.getQuantity());
+    dto.setTenant(entity.getTenant());
     dto.setCreatedBy(entity.getCreatedBy());
     dto.setUpdatedBy(entity.getUpdatedBy());
     dto.setCreationDate(entity.getCreationDate());

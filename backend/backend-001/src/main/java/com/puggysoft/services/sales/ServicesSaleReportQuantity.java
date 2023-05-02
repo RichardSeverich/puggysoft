@@ -16,19 +16,19 @@ public class ServicesSaleReportQuantity {
   private IRepositorySaleProduct repositorySaleProduct;
 
   /** method for retrive. */
-  public ResponseEntity<DtoSaleReport> getReport(Integer year) {
-    Long january = repositorySaleProduct.getQuantityPerMonth(year, 1);
-    Long february = repositorySaleProduct.getQuantityPerMonth(year, 2);
-    Long march = repositorySaleProduct.getQuantityPerMonth(year, 3);
-    Long april = repositorySaleProduct.getQuantityPerMonth(year, 4);
-    Long may = repositorySaleProduct.getQuantityPerMonth(year, 5);
-    Long june = repositorySaleProduct.getQuantityPerMonth(year, 6);
-    Long july = repositorySaleProduct.getQuantityPerMonth(year, 7);
-    Long august = repositorySaleProduct.getQuantityPerMonth(year, 8);
-    Long september = repositorySaleProduct.getQuantityPerMonth(year, 9);
-    Long october = repositorySaleProduct.getQuantityPerMonth(year, 10);
-    Long november = repositorySaleProduct.getQuantityPerMonth(year, 11);
-    Long december = repositorySaleProduct.getQuantityPerMonth(year, 12);
+  public ResponseEntity<DtoSaleReport> getReport(Integer year, String tenant) {
+    Long january = repositorySaleProduct.getQuantityPerMonth(year, 1, tenant);
+    Long february = repositorySaleProduct.getQuantityPerMonth(year, 2, tenant);
+    Long march = repositorySaleProduct.getQuantityPerMonth(year, 3, tenant);
+    Long april = repositorySaleProduct.getQuantityPerMonth(year, 4, tenant);
+    Long may = repositorySaleProduct.getQuantityPerMonth(year, 5, tenant);
+    Long june = repositorySaleProduct.getQuantityPerMonth(year, 6, tenant);
+    Long july = repositorySaleProduct.getQuantityPerMonth(year, 7, tenant);
+    Long august = repositorySaleProduct.getQuantityPerMonth(year, 8, tenant);
+    Long september = repositorySaleProduct.getQuantityPerMonth(year, 9, tenant);
+    Long october = repositorySaleProduct.getQuantityPerMonth(year, 10, tenant);
+    Long november = repositorySaleProduct.getQuantityPerMonth(year, 11, tenant);
+    Long december = repositorySaleProduct.getQuantityPerMonth(year, 12, tenant);
     january = january == null ? 0 : january;
     february = february == null ? 0 : february;
     march = march == null ? 0 : march;

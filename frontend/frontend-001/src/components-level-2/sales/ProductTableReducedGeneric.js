@@ -33,7 +33,10 @@ function ProductTableReducedGeneric (props) {
   const { value: operatorStock, onChange: operatorOnChangeStock, setValue: operatorSetStock } = useInput(enumCompareOperators.NUMBER_EQUALS);
   const { value: operatorMinimumStock, onChange: operatorOnChangeMinimumStock, setValue: operatorSetMinimumStock } = useInput(enumCompareOperators.NUMBER_EQUALS);
 
+  const criteriaTenant = window.sessionStorage.getItem("tenant");
+  const operatorTenant = enumCompareOperators.TEXT_EQUALS;
   const { arrayColumnsFilter, clearFilters, getFilterBody } = getColumnsFilterModel(
+    /* TENANT */ criteriaTenant, operatorTenant,
     /* CODE */ criteriaCode, criteriaOnChangeCode, criteriaSetCode, operatorCode, operatorOnChangeCode, operatorSetCode,
     /* NAME */ criteriaName, criteriaOnChangeName, criteriaSetName, operatorName, operatorOnChangeName, operatorSetName,
     /* PURCHASE PRICE */criteriaPurchasePrice, criteriaOnChangePurchasePrice, criteriaSetPurchasePrice, operatorPurchasePrice, operatorOnChangePurchasePrice, operatorSetPurchasePrice,

@@ -91,10 +91,12 @@ function SaleAddStepTwoProductSelection () {
       setIsRequestInProgress(true);
       setClientCash(0);
       setClientCashChange(0);
+      const tenant = window.sessionStorage.getItem("tenant");
       const body = {
         idSale: saleData.id,
         idProduct: productData.id,
-        quantity: saleQuantity
+        quantity: saleQuantity,
+        tenant
       };
       handleAddRequest("sales-products", body, handleAfterAddProductToSale, true, handleAfterAddProductToSale);
     }

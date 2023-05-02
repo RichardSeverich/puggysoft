@@ -16,19 +16,19 @@ public class ServicesSaleReportRevenueByProduct {
   private IRepositorySaleProduct repositorySaleProduct;
 
   /** method for retrive. */
-  public ResponseEntity<DtoSaleReport> getReport(Integer year, Long idProduct) {
-    Double january = repositorySaleProduct.getRevenuePerMonthByProduct(year, 1, idProduct);
-    Double february = repositorySaleProduct.getRevenuePerMonthByProduct(year, 2, idProduct);
-    Double march = repositorySaleProduct.getRevenuePerMonthByProduct(year, 3, idProduct);
-    Double april = repositorySaleProduct.getRevenuePerMonthByProduct(year, 4, idProduct);
-    Double may = repositorySaleProduct.getRevenuePerMonthByProduct(year, 5, idProduct);
-    Double june = repositorySaleProduct.getRevenuePerMonthByProduct(year, 6, idProduct);
-    Double july = repositorySaleProduct.getRevenuePerMonthByProduct(year, 7, idProduct);
-    Double august = repositorySaleProduct.getRevenuePerMonthByProduct(year, 8, idProduct);
-    Double september = repositorySaleProduct.getRevenuePerMonthByProduct(year, 9, idProduct);
-    Double october = repositorySaleProduct.getRevenuePerMonthByProduct(year, 10, idProduct);
-    Double november = repositorySaleProduct.getRevenuePerMonthByProduct(year, 11, idProduct);
-    Double december = repositorySaleProduct.getRevenuePerMonthByProduct(year, 12, idProduct);
+  public ResponseEntity<DtoSaleReport> getReport(Integer year, Long idProduct, String tenant) {
+    Double january = repositorySaleProduct.getRevenuePerMonthByProduct(year, 1, idProduct, tenant);
+    Double february = repositorySaleProduct.getRevenuePerMonthByProduct(year, 2, idProduct, tenant);
+    Double march = repositorySaleProduct.getRevenuePerMonthByProduct(year, 3, idProduct, tenant);
+    Double april = repositorySaleProduct.getRevenuePerMonthByProduct(year, 4, idProduct, tenant);
+    Double may = repositorySaleProduct.getRevenuePerMonthByProduct(year, 5, idProduct, tenant);
+    Double june = repositorySaleProduct.getRevenuePerMonthByProduct(year, 6, idProduct, tenant);
+    Double july = repositorySaleProduct.getRevenuePerMonthByProduct(year, 7, idProduct, tenant);
+    Double august = repositorySaleProduct.getRevenuePerMonthByProduct(year, 8, idProduct, tenant);
+    Double september = repositorySaleProduct.getRevenuePerMonthByProduct(year, 9, idProduct, tenant);
+    Double october = repositorySaleProduct.getRevenuePerMonthByProduct(year, 10, idProduct, tenant);
+    Double november = repositorySaleProduct.getRevenuePerMonthByProduct(year, 11, idProduct, tenant);
+    Double december = repositorySaleProduct.getRevenuePerMonthByProduct(year, 12, idProduct, tenant);
     january = january == null ? 0 : january;
     february = february == null ? 0 : february;
     march = march == null ? 0 : march;
