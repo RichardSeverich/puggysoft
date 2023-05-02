@@ -14,17 +14,17 @@ import lombok.EqualsAndHashCode;
 public class DtoTenantUser extends DtoSuperClass {
 
   @NotNull
-  private Long idTenant;
+  private String tenant;
 
   @NotNull
-  private Long idUser;
+  private String username;
 
   /** convert from dto to entity. */
   public EntityTenantUser dtoToEntity() {
     EntityTenantUser entity = new EntityTenantUser();
     entity.setId(id);
-    entity.setIdTenant(idTenant);
-    entity.setIdUser(idUser);
+    entity.setTenant(tenant);
+    entity.setUsername(username);
     entity.setCreatedBy(createdBy);
     entity.setUpdatedBy(updatedBy);
     return entity;
@@ -34,8 +34,8 @@ public class DtoTenantUser extends DtoSuperClass {
   public static DtoTenantUser entityToDto(EntityTenantUser entity) {
     DtoTenantUser dto = new DtoTenantUser();
     dto.setId(entity.getId());
-    dto.setIdUser(entity.getIdUser());
-    dto.setIdTenant(entity.getIdTenant());
+    dto.setUsername(entity.getUsername());
+    dto.setTenant(entity.getTenant());
     dto.setCreatedBy(entity.getCreatedBy());
     dto.setUpdatedBy(entity.getUpdatedBy());
     dto.setCreationDate(entity.getCreationDate());

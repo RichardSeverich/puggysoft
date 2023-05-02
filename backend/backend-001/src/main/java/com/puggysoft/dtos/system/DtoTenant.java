@@ -4,6 +4,8 @@ import com.puggysoft.dtos.DtoSuperClass;
 import com.puggysoft.entities.system.EntityTenant;
 
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -16,6 +18,10 @@ public class DtoTenant extends DtoSuperClass {
 
   @NotNull
   private String name;
+
+  @NotNull
+  @Size(min = 3, max = 30)
+  private String shortName;
 
   @NotNull
   private String description;
@@ -33,6 +39,7 @@ public class DtoTenant extends DtoSuperClass {
     EntityTenant entity = new EntityTenant();
     entity.setId(id);
     entity.setName(name);
+    entity.setShortName(shortName);
     entity.setDescription(description);
     entity.setTelephone(telephone);
     entity.setAddress(address);
@@ -47,6 +54,7 @@ public class DtoTenant extends DtoSuperClass {
     DtoTenant dto = new DtoTenant();
     dto.setId(entity.getId());
     dto.setName(entity.getName());
+    dto.setShortName(entity.getShortName());
     dto.setDescription(entity.getDescription());
     dto.setTelephone(entity.getTelephone());
     dto.setAddress(entity.getAddress());

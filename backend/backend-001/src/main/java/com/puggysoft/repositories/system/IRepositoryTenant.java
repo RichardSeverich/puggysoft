@@ -15,6 +15,6 @@ public interface IRepositoryTenant extends JpaRepository<EntityTenant, Long> {
   Long findSize();
 
   @Query(value = "SELECT * FROM tenants LIMIT ?1, ?2", nativeQuery = true)
-  List<EntityTenant> findProductsByPagination(int off, int size);
+  List<EntityTenant> findTenantsByPagination(int off, int size);
 
 }
