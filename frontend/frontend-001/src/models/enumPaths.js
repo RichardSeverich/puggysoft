@@ -3,6 +3,7 @@ const LOGIN = "/login";
 const DASHBOARD = "/dashboard";
 const SYSTEM_PROPERTIES_TABLE = "/system-properties-table";
 const SYSTEM_PROPERTIES_FORM = "/system-properties-form";
+const TENANTS_FORM = "/tenants-form";
 const IN_PROGRESS_PAGE = "/in-progress-page";
 // USERS SYSTEM
 const USERS_FORM = "/users-form";
@@ -90,6 +91,7 @@ const enumPaths = {
   LOGIN,
   SYSTEM_PROPERTIES_TABLE,
   SYSTEM_PROPERTIES_FORM,
+  TENANTS_FORM,
   IN_PROGRESS_PAGE,
   // USERS SYSTEM
   USERS_FORM,

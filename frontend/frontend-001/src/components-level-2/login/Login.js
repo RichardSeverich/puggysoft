@@ -8,6 +8,8 @@ import useInput from "./../../hooks/useInput";
 import CommonMessage from "./../../components-level-1/CommonMessage";
 import { handleLoginRequest, handleGetRequest } from "../../actions/HandleManager";
 import enumPaths from "./../../models/enumPaths";
+import CommonLoading from "../../components-level-1/CommonLoading";
+import CommonModalForm from "../../components-level-1/CommonModalForm";
 
 import "./styles.css";
 
@@ -22,6 +24,8 @@ function Login () {
   const [messageTitle, setMessageTitle] = useState("");
   const [messageText, setMessageText] = useState("");
 
+  const [loading, setLoading] = useState(false);
+
   if (routerProps && routerProps.logout) {
     window.sessionStorage.removeItem("token");
     window.sessionStorage.removeItem("username");
@@ -29,7 +33,9 @@ function Login () {
     window.sessionStorage.clear();
   }
 
-  const handleLogin = () => {
+  const handleLogin = (event) => {
+    event.preventDefault();
+    setLoading(true);
     const body = {
       username: valueUsername,
       password: valuePassword
@@ -38,6 +44,7 @@ function Login () {
       if (responseAuth.status === 200) {
         window.sessionStorage.setItem("token", responseAuth.data.token);
         window.sessionStorage.setItem("username", responseAuth.data.username);
+        window.sessionStorage.setItem("tenant", "EMPRESA_1");
         handleGetRequest(`roles/user-username/${valueUsername}`, (roles) => {
           if (roles.length > 0) {
             window.sessionStorage.setItem("roles", JSON.stringify(roles));
@@ -47,7 +54,14 @@ function Login () {
             setMessageText(i18n.errorMessages.userNoRoles);
             setIsMessageVisible(true);
           }
+          setLoading(false);
         });
+      } else {
+        setLoading(false);
+        setMessageTitle(i18n.errorMessages.errorTitle);
+        if (responseAuth.status === 400 || responseAuth.status === 404) setMessageText(i18n.errorMessages.invalidCredentials);
+        else setMessageText(i18n.errorMessages.unknownError);
+        setIsMessageVisible(true);
       }
     });
   };
@@ -58,6 +72,10 @@ function Login () {
     }
   }, [isValidCredentials]);
 
+  if (loading === true) {
+    return <CommonLoading></CommonLoading>;
+  }
+
   return (
     <div className="puggysoft-login-form" >
       <CommonMessage
@@ -67,11 +85,12 @@ function Login () {
         bodyText={messageText}
         variant="danger"
       />
+      <CommonModalForm/>
       <Card>
         <Card.Header as='h3'>{i18n.login.title}</Card.Header>
         {/* <Card.Title><img src="/logo192.png" className="app-logo" alt="logo" /></Card.Title> */}
         <Card.Body>
-          <Form>
+          <Form onSubmit={handleLogin}>
             <Form.Group className="mb-3" controlId="formBasicEmail">
               <Form.Label>{i18n.login.labelUsername}</Form.Label>
               <Form.Control
@@ -90,9 +109,8 @@ function Login () {
             <Form.Group className="mb-3" controlId="formBasicCheckbox">
             </Form.Group>
             <Button
-              onClick={handleLogin}
               variant="primary"
-              type="button">{i18n.login.loginButton}
+              type="submit">{i18n.login.loginButton}
             </Button>
           </Form>
         </Card.Body>

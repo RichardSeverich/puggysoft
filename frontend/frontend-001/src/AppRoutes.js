@@ -8,6 +8,7 @@ import LoginPage from "./components-level-3/LoginPage";
 import DashboardPage from "./components-level-3/DashboardPage";
 import SystemPropertiesFormPage from "./components-level-3/system/SystemPropertiesFormPage";
 import SystemPropertiesTablePage from "./components-level-3/system/SystemPropertiesTablePage";
+import TenantFormPage from "./components-level-3/system/TenantFormPage";
 import InProgressPage from "./components-level-3/system/InProgressPage";
 
 // Users System
@@ -90,6 +91,7 @@ const AppRoutes = () => (
       {/** System Properties */}
       <Route exact path={enumPaths.SYSTEM_PROPERTIES_FORM} component={SystemPropertiesFormPage} />
       <Route exact path={enumPaths.SYSTEM_PROPERTIES_TABLE} component={SystemPropertiesTablePage} />
+      <Route exact path={enumPaths.TENANTS_FORM} component={TenantFormPage} />
       {/** Users System */}
       <Route exact path={enumPaths.USERS_FORM} component={UsersFormPage} />
       <Route exact path={enumPaths.USERS_TABLE} component={UserTableBasicPage} />

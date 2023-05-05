@@ -24,9 +24,6 @@ const errorStaus409 = () => {
 const errorStaus409EntityHasRelation = () => {
   alert(i18n.errorMessages.errorStaus409EntityHasRelation);
 };
-const invalidCredentials = () => {
-  alert(i18n.errorMessages.invalidCredentials);
-};
 const customMessage = (message) => {
   alert(message);
 };
@@ -83,25 +80,11 @@ const deleteMessages = (response) => {
   response && response.status === 200 ? successfullyDeleted() : commonMessages(response);
 };
 
-const loginMessages = (response) => {
-  if (response.status === 400) {
-    // invalid user and password
-    invalidCredentials();
-  } else if (response.status === 404) {
-    // user and pass does not exist
-    invalidCredentials();
-  } else {
-    unknownError();
-  }
-};
-
 const messageManager = {
-  loginMessages,
   addMessages,
   editMessages,
   deleteMessages,
-  commonMessages,
-  invalidCredentials
+  commonMessages
 };
 
 export default messageManager;

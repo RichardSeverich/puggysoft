@@ -2,6 +2,8 @@ const navBar = {
   // ******* ******* SYSTEM PROPERTIES ******* *******
   systemPropertiesAdmin: "Adm. Propiedades del Sistema",
   systemPropertiesTable: "Mostrar Propiedades del Sistema",
+  tenantAdmin: "Adm. Tenants",
+  tenantRegistration: "Registrar Tenants",
 
   // ******* ******* USERS SYSTEM ******* *******
   // Users

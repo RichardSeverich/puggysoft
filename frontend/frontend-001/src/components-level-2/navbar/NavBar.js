@@ -26,6 +26,8 @@ import {
 } from "react-icons/gr";
 import { CgOptions } from "react-icons/cg";
 import {
+  BsBuildingFillGear,
+  BsBuildingFillAdd,
   BsCartCheckFill,
   BsFillBagCheckFill,
   BsFillBarChartFill,
@@ -59,6 +61,9 @@ function NavBar () {
   // ******* ******* ******* SYSTEM PROPERTIES ******* ******* *******
   const navigateSystemPropertiesTable = () => {
     history.push(enumPaths.SYSTEM_PROPERTIES_TABLE);
+  };
+  const navigateTenantsForm = () => {
+    history.push(enumPaths.TENANTS_FORM);
   };
 
   // ******* ******* ******* USERS SYSTEM ******* ******* *******
@@ -213,6 +218,8 @@ function NavBar () {
   // ******* ******* ******* SYSTEM PROPERTIES ******* ******* *******
   const systemPropertiesAdminLabel = (<><MdOutlineSettingsSuggest /> {i18n.navBar.systemPropertiesAdmin}</>);
   const systemPropertiesTableLabel = (<><AiOutlineTable /> {i18n.navBar.systemPropertiesTable}</>);
+  const tenantAdminLabel = (<><BsBuildingFillGear /> {i18n.navBar.tenantAdmin}</>);
+  const tenantRegistrationLabel = (<><BsBuildingFillAdd /> {i18n.navBar.tenantRegistration}</>);
 
   // ******* ******* ******* USERS SYSTEM ******* ******* *******
   // USERS
@@ -403,6 +410,10 @@ function NavBar () {
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="container-fluid">
           {/* ******* ******* ******* USERS SYSTEM ******* ******* ********/}
+          {userRoles.includes(enumRoles.ADMIN) &&
+            <NavDropdown title={tenantAdminLabel}>
+              <NavDropdown.Item onClick={navigateTenantsForm} >{tenantRegistrationLabel}</NavDropdown.Item>
+            </NavDropdown>}
           {userRoles.includes(enumRoles.ADMIN_USERS) &&
             <NavDropdown title={userAdminLabel}>
               <NavDropdown.Item onClick={navigateUsersForm} >{userRegistrationLabel}</NavDropdown.Item>
