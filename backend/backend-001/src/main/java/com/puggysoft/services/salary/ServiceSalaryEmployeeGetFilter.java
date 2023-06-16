@@ -24,6 +24,10 @@ public class ServiceSalaryEmployeeGetFilter {
   @PersistenceContext
   private EntityManager entityManager;
 
+  /**
+   * Method to filter the salary employees.
+   * @return a list of salary employees.
+   */
   public ResponseEntity<List<DtoSalaryEmployee>> filter(DtoSalaryEmployeeFilter dtoSalaryEmployeeFilter, int page,
       int size) {
 
@@ -37,7 +41,6 @@ public class ServiceSalaryEmployeeGetFilter {
       query = query.substring(0, query.length() - 4);
       String fullQuery = "SELECT sueldos_detalle_contratacion.* FROM sueldos_detalle_contratacion WHERE "
           + query + " LIMIT " + off + "," + size;
-      // JQPL (createQuery) and Native (createNativeQuery)
       Query filterQuery = entityManager.createNativeQuery(fullQuery, EntitySalaryEmployee.class);
       listEntities = (List<EntitySalaryEmployee>) filterQuery.getResultList();
 

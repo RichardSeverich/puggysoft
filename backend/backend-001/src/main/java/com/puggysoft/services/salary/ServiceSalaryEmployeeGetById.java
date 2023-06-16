@@ -15,7 +15,10 @@ public class ServiceSalaryEmployeeGetById {
   @Autowired
   private IRepositorySalaryEmployee repositorySalaryEmployee;
 
-  /** method for retrive. */
+  /**
+   * Method to retrieve a salary employee.
+   * @return the salary employee data.
+   */
   public ResponseEntity<DtoSalaryEmployee> getById(Long id) {
     Optional<EntitySalaryEmployee> optionalEntity = repositorySalaryEmployee.findById(id);
     if (optionalEntity.isPresent()) {

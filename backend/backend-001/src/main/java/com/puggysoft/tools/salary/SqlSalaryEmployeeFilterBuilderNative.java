@@ -7,6 +7,10 @@ public final class SqlSalaryEmployeeFilterBuilderNative {
 
   private SqlSalaryEmployeeFilterBuilderNative(){}
 
+  /**
+   * Method to build the filter salary employee query.
+   * @return the salary employee query.
+   */
   public static String build(DtoSalaryEmployeeFilter dtoSalaryEmployeeFilter) {
     String query = "";
     query = query + SqlFilterBuilder.getFilterQuery("empleado", dtoSalaryEmployeeFilter.empleadoCriteria, dtoSalaryEmployeeFilter.empleadoOperator);
