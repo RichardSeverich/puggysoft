@@ -21,7 +21,7 @@ public final class SqlUrbanismoEstadosFilterBuilderNative {
         dtoUrbanismoEstadosFilter.nombreOperator);
     query = query + SqlFilterBuilder.getFilterQuery("alc_urb_estados.nombre_corto",
         dtoUrbanismoEstadosFilter.nombreCortoCriteria,
-        dtoUrbanismoEstadosFilter.nombreCortoOperator);    
+        dtoUrbanismoEstadosFilter.nombreCortoOperator);
     query = query + SqlFilterBuilder.getFilterQuery("alc_urb_estados.tenant ",
         dtoUrbanismoEstadosFilter.tenantCriteria,
         dtoUrbanismoEstadosFilter.tenantOperator);

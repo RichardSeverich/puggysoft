@@ -2,12 +2,13 @@ import React from "react";
 import { useHistory } from "react-router";
 import i18n from "../../i18n/i18n";
 import enumPaths from "../../models/enumPaths";
-import { handleFilterRequest, handleDeleteRequest } from "../../actions/HandleManager";
+import { handleFilterRequest } from "../../actions/HandleManager";
 import UrbanismoTramiteGenericTable from "./generic/UrbanismoTramiteGenericTable";
 import enumTableColumnsToShow from "../../models/enumTableColumnsToShow";
 
-function UrbanismoTramiteTableEditDelete () {
+function UrbanismoTramiteRequisitosStepOne () {
   const tableTitle = i18n.urbanismoTramiteTable.title;
+  const tableSubTitle = i18n.urbanismoTramiteTable.subTitleSelection;
   const pageSize = 10;
   const numberPagesToShow = 10;
 
@@ -21,44 +22,35 @@ function UrbanismoTramiteTableEditDelete () {
     handleFilterRequest(`urbanismo-tramite/filter/size/${pageSize}`, filterBody, setTotalPages);
   }
 
-  function handleDelete (data) {
-    handleDeleteRequest(`urbanismo-tramite/${data.id}`, undefined, undefined, undefined, true);
-  }
-
-  function handleEdit (data) {
+  function handleSelection (selectedData) {
     history.push({
-      pathname: enumPaths.URBANISMO_TRAMITE_FORM,
+      pathname: enumPaths.URBANISMO_TRAMITE_REQUISITOS_STEP_TWO,
       state: {
-        data,
-        edit: true
+        data: selectedData
       }
     });
   }
 
   const tableArrayCustomRowButtons = [
     {
-      variant: "warning",
-      handleCustom: handleEdit,
-      text: i18n.commonTable.editButton
-    },
-    {
-      variant: "danger",
-      handleCustom: handleDelete,
-      text: i18n.commonTable.deleteButton
+      variant: "info",
+      handleCustom: handleSelection,
+      text: i18n.commonTable.selectButton
     }
   ];
 
   return (
     <UrbanismoTramiteGenericTable
       tableTitle={tableTitle}
+      tableSubTitle={tableSubTitle}
       numberPagesToShow={numberPagesToShow}
       handleGetData={handleGetData}
       handleGetSize={handleGetSize}
       tableArrayCustomRowButtons={tableArrayCustomRowButtons}
-      columnsToShow={enumTableColumnsToShow.FULL}
+      columnsToShow={enumTableColumnsToShow.MEDIUM}
     >
     </UrbanismoTramiteGenericTable>
   );
 }
 
-export default UrbanismoTramiteTableEditDelete;
+export default UrbanismoTramiteRequisitosStepOne;

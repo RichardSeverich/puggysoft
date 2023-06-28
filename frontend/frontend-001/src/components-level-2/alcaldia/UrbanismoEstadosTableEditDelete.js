@@ -8,8 +8,8 @@ import enumTableColumnsToShow from "../../models/enumTableColumnsToShow";
 
 function UrbanismoEstadosTableEditDelete () {
   const tableTitle = i18n.urbanismoEstadosTable.title;
-  const pageSize = 7;
-  const numberPagesToShow = 7;
+  const pageSize = 10;
+  const numberPagesToShow = 10;
 
   const history = useHistory();
 

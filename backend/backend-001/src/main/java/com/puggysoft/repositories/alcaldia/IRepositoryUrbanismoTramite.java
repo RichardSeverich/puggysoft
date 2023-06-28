@@ -14,5 +14,5 @@ public interface IRepositoryUrbanismoTramite extends JpaRepository<EntityUrbanis
 
   @Query(value = "SELECT * FROM alc_urb_tramite LIMIT ?1, ?2", nativeQuery = true)
   List<EntityUrbanismoTramite> findUrbanismoTramiteByPagination(int off, int size);
-  
+
 }

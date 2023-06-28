@@ -182,7 +182,9 @@ const navBar = {
   // Urbanismo Estados
   urbanismoEstadosAdmin: "Adm. Estados",
   urbanismoEstadosForm: "Registrar Estados",
-  urbanismoEstadosTable: "Mostrar Estados"
+  urbanismoEstadosTable: "Mostrar Estados",
+  // Urbanismo Tramite Requisitos
+  urbanismoTramiteRequisitosStepOne: "Asignar requisitos"
 };
 
 export default navBar;

@@ -14,7 +14,7 @@ import lombok.EqualsAndHashCode;
 public class EntityTenantRole extends EntitySuperClass {
 
   private String role;
-  
+
   private String tenant;
 
 }

@@ -109,6 +109,8 @@ const URBANISMO_REQUISITOS_FORM = "/urbanismo-requisitos-form";
 const URBANISMO_REQUISITOS_TABLE = "/urbanismo-requisitos-table";
 const URBANISMO_ESTADOS_FORM = "/urbanismo-estados-form";
 const URBANISMO_ESTADOS_TABLE = "/urbanismo-estados-table";
+const URBANISMO_TRAMITE_REQUISITOS_STEP_ONE = "/urbanismo-tramites-requisitos-step-one";
+const URBANISMO_TRAMITE_REQUISITOS_STEP_TWO = "/urbanismo-tramites-requisitos-step-two";
 
 const enumPaths = {
   DASHBOARD,
@@ -216,7 +218,9 @@ const enumPaths = {
   URBANISMO_REQUISITOS_FORM,
   URBANISMO_REQUISITOS_TABLE,
   URBANISMO_ESTADOS_FORM,
-  URBANISMO_ESTADOS_TABLE
+  URBANISMO_ESTADOS_TABLE,
+  URBANISMO_TRAMITE_REQUISITOS_STEP_ONE,
+  URBANISMO_TRAMITE_REQUISITOS_STEP_TWO
 };
 
 export default enumPaths;

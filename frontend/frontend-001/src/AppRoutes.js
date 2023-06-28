@@ -109,6 +109,8 @@ import UrbanismoRequisitosFormPage from "./components-level-3/alcaldia/Urbanismo
 import UrbanismoRequisitosTablePage from "./components-level-3/alcaldia/UrbanismoRequisitosTablePage";
 import UrbanismoEstadosFormPage from "./components-level-3/alcaldia/UrbanismoEstadosFormPage";
 import UrbanismoEstadosTablePage from "./components-level-3/alcaldia/UrbanismoEstadosTablePage";
+import UrbanismoTramiteRequisitosStepOnePage from "./components-level-3/alcaldia/UrbanismoTramiteRequisitosStepOnePage";
+import UrbanismoTramiteRequisitosStepTwoPage from "./components-level-3/alcaldia/UrbanismoTramiteRequisitosStepTwoPage";
 
 const AppRoutes = () => (
   <App>
@@ -215,6 +217,8 @@ const AppRoutes = () => (
       <Route exact path={enumPaths.URBANISMO_REQUISITOS_TABLE} component={UrbanismoRequisitosTablePage} />
       <Route exact path={enumPaths.URBANISMO_ESTADOS_FORM} component={UrbanismoEstadosFormPage} />
       <Route exact path={enumPaths.URBANISMO_ESTADOS_TABLE} component={UrbanismoEstadosTablePage} />
+      <Route exact path={enumPaths.URBANISMO_TRAMITE_REQUISITOS_STEP_ONE} component={UrbanismoTramiteRequisitosStepOnePage} />
+      <Route exact path={enumPaths.URBANISMO_TRAMITE_REQUISITOS_STEP_TWO} component={UrbanismoTramiteRequisitosStepTwoPage} />
       <Route exact path="/" component={LoginPage} />
       <Route component={LoginPage} />
     </Switch>

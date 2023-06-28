@@ -293,6 +293,9 @@ function NavBar () {
   const navigateUrbanismoEstadosTable = () => {
     history.push(enumPaths.URBANISMO_ESTADOS_TABLE);
   };
+  const navigateUrbanismoTramiteRequisitosStepOne = () => {
+    history.push(enumPaths.URBANISMO_TRAMITE_REQUISITOS_STEP_ONE);
+  };
   const NavbarBackground = "dark"; // dark, light, primary
   const NavbarVariant = "dark puggysoft-navbar"; // dark, light
 
@@ -508,6 +511,8 @@ function NavBar () {
   const urbanismoEstadosAdminLabel = (<><BsUiChecksGrid /> {i18n.navBar.urbanismoEstadosAdmin}</>);
   const urbanismoEstadosFormLabel = (<><GrAddCircle /> {i18n.navBar.urbanismoEstadosForm}</>);
   const urbanismoEstadosTableLabel = (<><AiOutlineTable /> {i18n.navBar.urbanismoEstadosTable}</>);
+  // URBANISMO ESTADOS
+  const urbanismoTramiteRequisitosStepOneLabel = (<><GrAddCircle /> {i18n.navBar.urbanismoTramiteRequisitosStepOne}</>);
 
   // ******* ******* ******* ALL SYSTEMS ******* ******* *******
   // CONFIG
@@ -722,6 +727,7 @@ function NavBar () {
             <NavDropdown title={urbanismoTramiteAdminLabel}>
               <NavDropdown.Item onClick={navigateUrbanismoTramiteForm}>{urbanismoTramiteFormLabel}</NavDropdown.Item>
               <NavDropdown.Item onClick={navigateUrbanismoTramiteTable}>{urbanismoTramiteTableLabel}</NavDropdown.Item>
+              <NavDropdown.Item onClick={navigateUrbanismoTramiteRequisitosStepOne}>{urbanismoTramiteRequisitosStepOneLabel}</NavDropdown.Item>
             </NavDropdown>}
           {userRoles.includes(enumRoles.URBANISMO_ENCARGADO) &&
             <NavDropdown title={urbanismoRequisitosAdminLabel}>

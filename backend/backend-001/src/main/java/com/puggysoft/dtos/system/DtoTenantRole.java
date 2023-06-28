@@ -15,7 +15,7 @@ public class DtoTenantRole extends DtoSuperClass {
 
   @NotNull
   private String role;
-  
+
   @NotNull
   private String tenant;
 
