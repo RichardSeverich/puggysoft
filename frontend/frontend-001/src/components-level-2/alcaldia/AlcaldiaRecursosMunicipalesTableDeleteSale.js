@@ -2,7 +2,7 @@ import React from "react";
 import i18n from "../../i18n/i18n";
 import { handleFilterRequest, handleDeleteRequest } from "../../actions/HandleManager";
 import AlcaldiaRecursosMunicipalesGenericTable from "./generic/AlcaldiaRecursosMunicipalesGenericTable";
-import enumTableColumnsToShow from "../../models/enumTableColumnsToShow";
+import enumTableColumnsToShow from "../../models/alcaldia/enumTableColumnsToShow";
 import CommonLoading from "../../components-level-1/CommonLoading";
 
 import PropTypes from "prop-types";

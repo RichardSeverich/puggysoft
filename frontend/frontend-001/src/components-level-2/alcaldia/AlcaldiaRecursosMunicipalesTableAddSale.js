@@ -5,7 +5,7 @@ import {
   handleAddRequest
 } from "../../actions/HandleManager";
 import AlcaldiaRecursosMunicipalesGenericTable from "./generic/AlcaldiaRecursosMunicipalesGenericTable";
-import enumTableColumnsToShow from "../../models/enumTableColumnsToShow";
+import enumTableColumnsToShow from "../../models/alcaldia/enumTableColumnsToShow";
 import enumWebElements from "../../models/enumWebElements";
 
 import PropTypes from "prop-types";
