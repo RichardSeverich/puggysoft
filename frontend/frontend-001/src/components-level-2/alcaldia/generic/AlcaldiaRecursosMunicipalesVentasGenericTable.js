@@ -36,8 +36,8 @@ function AlcaldiaRecursosMunicipalesVentasGenericTable (props) {
   const { value: operatorId, onChange: operatorOnChangeId, setValue: operatorSetId } = useInput(enumCompareOperators.TEXT_CONTAINS);
   const { value: operatorClienteNombre, onChange: operatorOnChangeClienteNombre, setValue: operatorSetClienteNombre } = useInput(enumCompareOperators.TEXT_CONTAINS);
   const { value: operatorClienteCiNit, onChange: operatorOnChangeClienteCiNit, setValue: operatorSetClienteCiNit } = useInput(enumCompareOperators.NUMBER_EQUALS);
-  const { value: operatorDireccion, onChange: operatorOnChangeDireccion, setValue: operatorSetDireccion } = useInput(enumCompareOperators.NUMBER_EQUALS);
-  const { value: operatorNota, onChange: operatorOnChangeNota, setValue: operatorSetNota } = useInput(enumCompareOperators.NUMBER_EQUALS);
+  const { value: operatorDireccion, onChange: operatorOnChangeDireccion, setValue: operatorSetDireccion } = useInput(enumCompareOperators.TEXT_CONTAINS);
+  const { value: operatorNota, onChange: operatorOnChangeNota, setValue: operatorSetNota } = useInput(enumCompareOperators.TEXT_CONTAINS);
   const { value: operatorVentaStatus, onChange: operatorOnChangeVentaStatus, setValue: operatorSetVentaStatus } = useInput(enumCompareOperators.TEXT_EQUALS);
   const { value: operatorVentaPrecioTotal, onChange: operatorOnChangeVentaPrecioTotal, setValue: operatorSetVentaPrecioTotal } = useInput(enumCompareOperators.NUMBER_EQUALS);
   const { value: operatorClienteDinero, onChange: operatorOnChangeClienteDinero, setValue: operatorSetClienteDinero } = useInput(enumCompareOperators.NUMBER_EQUALS);

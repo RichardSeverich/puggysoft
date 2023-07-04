@@ -12,10 +12,10 @@ import {
 import {
   handleValidation,
   classNameFormTextNew
-} from "../../validations/alcaldia/HandleAlcaldiaRecursosMunicipalesReporteValidations";
+} from "../../validations/alcaldia/HandleAlcaldiaRecursosMunicipalesReporteAnualValidations";
 import CommonMessage from "../../components-level-1/CommonMessage";
 import enumStatus from "../../models/alcaldia/enumVentaStatus";
-import GeneratePdf from "../../tools/alcaldia/pdfBuilderReporteDiario";
+import GeneratePdf from "../../tools/alcaldia/pdfBuilderReporteMensual";
 
 import "./../css/all-forms.css";
 
@@ -28,31 +28,40 @@ function AlcaldiaRecursosMunicipalesForm () {
   const [messageText, setMessageText] = useState("");
 
   // Use custom hook
-  const {
-    value: valueFecha,
-    onChange: onChangeFecha
-  } = useInput("");
+  const [year, setYear] = useState("");
+  const [month, setMonth] = useState("");
+  const [valueFecha, setValueFecha] = useState("");
   const {
     value: valueEstado,
     onChange: onChangeEstado
   } = useInput("ACTIVO");
+  const {
+    value: valueOrden,
+    onChange: onChangeOrden
+  } = useInput("Vertical");
 
+  const onChangeFecha = (value) => {
+    setValueFecha(value);
+    setYear(value.split("-")[0]);
+    setMonth(value.split("-")[1]);
+  };
   const getBody = useCallback(
     function () {
       const tenant = window.sessionStorage.getItem("tenant");
       const body = {
         estadoVenta: valueEstado, // ACTIVO,ANULADO
-        fecha: valueFecha,
+        year,
+        month,
         tenant
       };
       return body;
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [valueFecha, valueEstado]
   );
 
   const handleAfterGetData = function (data) {
-    const body = getBody();
-    GeneratePdf(data, body.fecha);
+    GeneratePdf(data, valueFecha.replace("-", "/"), valueOrden);
     setIsRequestInProgress(false);
   };
 
@@ -62,7 +71,7 @@ function AlcaldiaRecursosMunicipalesForm () {
     const isValid = handleValidation(body, setClassNameFormText);
     if (isValid) {
       setIsRequestInProgress(true);
-      handleFilterRequest("alcaldia-recursos-municipales-report", body, handleAfterGetData);
+      handleFilterRequest("alcaldia-recursos-municipales-reporte-mensual", body, handleAfterGetData);
     } else {
       setMessageTitle(i18n.errorMessages.validationErrorTitle);
       setMessageText(i18n.errorMessages.validationError);
@@ -90,26 +99,26 @@ function AlcaldiaRecursosMunicipalesForm () {
       />
       <Card>
         <Card.Header as="h3">
-          {i18n.alcaldiaRecursosMunicipalesReporteDiario.title}
+          {i18n.alcaldiaRecursosMunicipalesReporteMensual.title}
         </Card.Header>
         <Card.Body>
           <Form>
             <Form.Group className="mb-3" controlId="fecha">
               <Form.Label>
-                {i18n.alcaldiaRecursosMunicipalesReporteDiario.fieldFecha}
+                {i18n.alcaldiaRecursosMunicipalesReporteMensual.fieldFecha}
               </Form.Label>
               <Form.Control
-                onChange={onChangeFecha}
+                onChange={e => onChangeFecha(e.target.value)}
                 value={valueFecha}
-                type="date"
-                placeholder={i18n.alcaldiaRecursosMunicipalesReporteDiario.fieldFecha}
+                type="month"
+                placeholder={i18n.alcaldiaRecursosMunicipalesReporteMensual.fieldFecha}
               />
-              <Form.Text muted className={classNameFormText.fecha}>
-                {i18n.alcaldiaRecursosMunicipalesReporteDiario.fieldFechaText}
+              <Form.Text muted className={classNameFormText.year}>
+                {i18n.alcaldiaRecursosMunicipalesReporteMensual.fieldFechaText}
               </Form.Text>
             </Form.Group>
             <Form.Group className="mb-3" controlId="estado">
-              <Form.Label>{i18n.alcaldiaRecursosMunicipalesReporteDiario.fieldEstado}</Form.Label>
+              <Form.Label>{i18n.alcaldiaRecursosMunicipalesReporteMensual.fieldEstado}</Form.Label>
               <Form.Select
                 onChange={onChangeEstado}
                 value={valueEstado} >
@@ -117,11 +126,23 @@ function AlcaldiaRecursosMunicipalesForm () {
                 <option key="option-false" value={enumStatus.ANULADO}>{i18n.alcaldiaVentaStatusText.anulado}</option>
               </Form.Select>
               <Form.Text muted>
-                {i18n.alcaldiaRecursosMunicipalesReporteDiario.fieldEstadoText}
+                {i18n.alcaldiaRecursosMunicipalesReporteMensual.fieldEstadoText}
+              </Form.Text>
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="orden">
+              <Form.Label>{i18n.alcaldiaRecursosMunicipalesReporteMensual.fieldOrden}</Form.Label>
+              <Form.Select
+                onChange={onChangeOrden}
+                value={valueOrden} >
+                <option key="option-false" value={"Vertical"}>{i18n.alcaldiaRecursosMunicipalesReporteMensual.Columna}</option>
+                <option key="option-true" value={"Orizontal"}>{i18n.alcaldiaRecursosMunicipalesReporteMensual.Fila}</option>
+              </Form.Select>
+              <Form.Text muted>
+                {i18n.alcaldiaRecursosMunicipalesReporteMensual.fieldOrdenText}
               </Form.Text>
             </Form.Group>
             <Button onClick={handleGetData} variant="primary" type="button">
-              {i18n.alcaldiaRecursosMunicipalesReporteDiario.buttonGenerar}
+              {i18n.alcaldiaRecursosMunicipalesReporteMensual.buttonGenerar}
             </Button>
           </Form>
         </Card.Body>

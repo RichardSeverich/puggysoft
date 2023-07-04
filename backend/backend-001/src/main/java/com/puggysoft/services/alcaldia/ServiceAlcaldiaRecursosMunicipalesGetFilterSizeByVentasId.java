@@ -1,7 +1,6 @@
 package com.puggysoft.services.alcaldia;
 
 import com.puggysoft.dtos.alcaldia.DtoAlcaldiaRecursosMunicipalesFilter;
-import com.puggysoft.entities.alcaldia.EntityAlcaldiaRecursosMunicipales;
 import com.puggysoft.repositories.alcaldia.IRepositoryAlcaldiaRecursosMunicipales;
 import com.puggysoft.support.TotalPagesCalculator;
 import com.puggysoft.tools.alcaldia.SqlAlcaldiaRecursosMunicipalesFilterBuilderNative;
@@ -39,7 +38,7 @@ public class ServiceAlcaldiaRecursosMunicipalesGetFilterSizeByVentasId {
           + "INNER JOIN alcaldia_recursos_municipales_venta ON alcaldia_recursos_municipales_venta.id=alcaldia_recursos_municipales_venta_detalle.id_venta "
           + "WHERE alcaldia_recursos_municipales_venta.id = " + ventasId + " AND " + query;
       // JQPL (createQuery) and Native (createNativeQuery)
-      Query filterQuery = entityManager.createNativeQuery(fullQuery, EntityAlcaldiaRecursosMunicipales.class);
+      Query filterQuery = entityManager.createNativeQuery(fullQuery);
       totalRows = Long.valueOf(filterQuery.getSingleResult().toString());
     }
     Long totalPages = TotalPagesCalculator.getTotalPages(totalRows, pageSize);

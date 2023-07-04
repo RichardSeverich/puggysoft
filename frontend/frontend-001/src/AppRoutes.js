@@ -111,6 +111,8 @@ import AlcaldiaRecursosMunicipalesTablePage from "./components-level-3/alcaldia/
 import AlcaldiaRecursosMunicipalesVentasFormPage from "./components-level-3/alcaldia/AlcaldiaRecursosMunicipalesVentasFormPage";
 import AlcaldiaRecursosMunicipalesVentasTablePage from "./components-level-3/alcaldia/AlcaldiaRecursosMunicipalesVentasTablePage";
 import AlcaldiaRecursosMunicipalesReporteDiarioPage from "./components-level-3/alcaldia/AlcaldiaRecursosMunicipalesReporteDiarioPage";
+import AlcaldiaRecursosMunicipalesReporteMensualPage from "./components-level-3/alcaldia/AlcaldiaRecursosMunicipalesReporteMensualPage";
+import AlcaldiaRecursosMunicipalesReporteAnualPage from "./components-level-3/alcaldia/AlcaldiaRecursosMunicipalesReporteAnualPage";
 import UrbanismoTramiteFormPage from "./components-level-3/alcaldia/UrbanismoTramiteFormPage";
 import UrbanismoTramiteTablePage from "./components-level-3/alcaldia/UrbanismoTramiteTablePage";
 import UrbanismoRequisitosFormPage from "./components-level-3/alcaldia/UrbanismoRequisitosFormPage";
@@ -227,6 +229,8 @@ const AppRoutes = () => (
       <Route exact path={enumPaths.ALCALDIA_RECURSOS_MUNICIPALES_VENTAS_FORM} component={AlcaldiaRecursosMunicipalesVentasFormPage} />
       <Route exact path={enumPaths.ALCALDIA_RECURSOS_MUNICIPALES_VENTAS_TABLE} component={AlcaldiaRecursosMunicipalesVentasTablePage} />
       <Route exact path={enumPaths.ALCALDIA_RECURSOS_MUNICIPALES_REPORTE_DIARIO} component={AlcaldiaRecursosMunicipalesReporteDiarioPage} />
+      <Route exact path={enumPaths.ALCALDIA_RECURSOS_MUNICIPALES_REPORTE_MENSUAL} component={AlcaldiaRecursosMunicipalesReporteMensualPage} />
+      <Route exact path={enumPaths.ALCALDIA_RECURSOS_MUNICIPALES_REPORTE_ANUAL} component={AlcaldiaRecursosMunicipalesReporteAnualPage} />
       <Route exact path={enumPaths.URBANISMO_TRAMITE_FORM} component={UrbanismoTramiteFormPage} />
       <Route exact path={enumPaths.URBANISMO_TRAMITE_TABLE} component={UrbanismoTramiteTablePage} />
       <Route exact path={enumPaths.URBANISMO_REQUISITOS_FORM} component={UrbanismoRequisitosFormPage} />

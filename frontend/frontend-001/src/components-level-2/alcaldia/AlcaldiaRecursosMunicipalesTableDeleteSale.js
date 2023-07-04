@@ -58,7 +58,7 @@ function AlcaldiaRecursosMunicipalesTableDeleteSale (props) {
       handleGetData={handleGetData}
       handleGetSize={handleGetSize}
       tableArrayCustomRowButtons={tableArrayCustomRowButtons}
-      columnsToShow={enumTableColumnsToShow.MINIMUM}
+      columnsToShow={enumTableColumnsToShow.SALEDELETE}
     >
     </AlcaldiaRecursosMunicipalesGenericTable>
   );

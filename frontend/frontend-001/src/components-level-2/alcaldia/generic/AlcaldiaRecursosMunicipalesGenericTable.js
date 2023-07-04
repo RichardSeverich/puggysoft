@@ -31,7 +31,7 @@ function AlcaldiaRecursosMunicipalesGenericTable (props) {
   // FILTER OPERATORS
   const { value: operatorId, onChange: operatorOnChangeId, setValue: operatorSetId } = useInput(enumCompareOperators.TEXT_CONTAINS);
   const { value: operatorCodigo, onChange: operatorOnChangeCodigo, setValue: operatorSetCodigo } = useInput(enumCompareOperators.TEXT_CONTAINS);
-  const { value: operatorName, onChange: operatorOnChangeName, setValue: operatorSetName } = useInput(enumCompareOperators.NUMBER_EQUALS);
+  const { value: operatorName, onChange: operatorOnChangeName, setValue: operatorSetName } = useInput(enumCompareOperators.TEXT_CONTAINS);
   const { value: operatorPrecio, onChange: operatorOnChangePrecio, setValue: operatorSetPrecio } = useInput(enumCompareOperators.TEXT_CONTAINS);
   const { value: operatorCreatedBy, onChange: operatorOnChangeCreatedBy, setValue: operatorSetCreatedBy } = useInput(enumCompareOperators.TEXT_CONTAINS);
   const { value: operatorUpdatedBy, onChange: operatorOnChangeUpdatedBy, setValue: operatorSetUpdatedBy } = useInput(enumCompareOperators.TEXT_CONTAINS);
@@ -81,7 +81,9 @@ AlcaldiaRecursosMunicipalesGenericTable.propTypes = {
   columnsToShow: PropTypes.oneOf([
     enumTableColumnsToShow.FULL,
     enumTableColumnsToShow.MEDIUM,
-    enumTableColumnsToShow.MINIMUM
+    enumTableColumnsToShow.MINIMUM,
+    enumTableColumnsToShow.SALEADD,
+    enumTableColumnsToShow.SALEDELETE
   ]),
   fixArrayData: PropTypes.func
 };

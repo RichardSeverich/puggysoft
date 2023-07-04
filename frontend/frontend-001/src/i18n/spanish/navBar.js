@@ -178,6 +178,9 @@ const navBar = {
   recursoMunicipalReporteAdmin: "Adm. Reportes",
   recursoMunicipalReporte1: "Reportes por fecha",
   recursoMunicipalReporte2: "Reportes por rango de fechas",
+  recursoMunicipalReporteDiario: "Reporte diario",
+  recursoMunicipalReporteMensual: "Reporte mensual",
+  recursoMunicipalReporteAnual: "Reporte anual",
   // Urbanismo Tramite
   urbanismoTramiteAdmin: "Adm. Tramite",
   urbanismoTramiteForm: "Registrar Tramite",

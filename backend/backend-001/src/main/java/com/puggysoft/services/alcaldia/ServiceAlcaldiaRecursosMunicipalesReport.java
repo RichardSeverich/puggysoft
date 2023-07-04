@@ -60,7 +60,7 @@ public class ServiceAlcaldiaRecursosMunicipalesReport {
           estadoVenta,
           tenant,
           fecha);
-      reportResumen.ventasTotales = totalPerProduct;
+      reportResumen.ventasTotales = totalPerProduct == null ? 0 : totalPerProduct;
       reportResumen.codigoRecursoMunicipal = producto.getCodigo();
       reportResumen.nombreRecursoMunicipal = producto.getName();
       reportResumenList.add(reportResumen);
@@ -70,7 +70,7 @@ public class ServiceAlcaldiaRecursosMunicipalesReport {
         tenant,
         fecha);
     reportResult.resumenVentasPorProducto = reportResumenList;
-    reportResult.granTotal = totalPerProduct;
+    reportResult.granTotal = totalPerProduct == null ? 0 : totalPerProduct;
     return ResponseEntity.status(HttpStatus.OK).body(reportResult);
   }
 }

@@ -59,6 +59,9 @@ import intervalTimeTable from "./spanish/reservation/intervalTimeTable";
 import alcaldiaVentaStatusText from "./spanish/alcaldia/alcaldiaVentaStatusText";
 import alcaldiaRecursosMunicipalesForm from "./spanish/alcaldia/alcaldiaRecursosMunicipalesForm";
 import alcaldiaRecursosMunicipalesReporteDiario from "./spanish/alcaldia/alcaldiaRecursosMunicipalesReporteDiario";
+import alcaldiaRecursosMunicipalesReporteMensual from "./spanish/alcaldia/alcaldiaRecursosMunicipalesReporteMensual";
+import alcaldiaRecursosMunicipalesReporteAnual from "./spanish/alcaldia/alcaldiaRecursosMunicipalesReporteAnual";
+import alcaldiaRecursosMunicipalesReportePdf from "./spanish/alcaldia/alcaldiaRecursosMunicipalesReportesPdf";
 import alcaldiaRecursosMunicipalesTable from "./spanish/alcaldia/alcaldiaRecursosMunicipalesTable";
 import alcaldiaRecursosMunicipalesVentasForm from "./spanish/alcaldia/alcaldiaRecursosMunicipalesVentasForm";
 import alcaldiaRecursosMunicipalesVentasTable from "./spanish/alcaldia/alcaldiaRecursosMunicipalesVentasTable";
@@ -138,6 +141,9 @@ const i18n = {
   alcaldiaRecursosMunicipalesVentasForm,
   alcaldiaRecursosMunicipalesVentasTable,
   alcaldiaRecursosMunicipalesReporteDiario,
+  alcaldiaRecursosMunicipalesReporteMensual,
+  alcaldiaRecursosMunicipalesReporteAnual,
+  alcaldiaRecursosMunicipalesReportePdf,
   urbanismoTramiteForm,
   urbanismoTramiteTable,
   urbanismoRequisitosForm,

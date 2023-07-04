@@ -126,6 +126,8 @@ const ALCALDIA_RECURSOS_MUNICIPALES_TABLE = "/alcaldia-recursos-municipales-tabl
 const ALCALDIA_RECURSOS_MUNICIPALES_VENTAS_FORM = "/alcaldia-recursos-municipales-ventas-form";
 const ALCALDIA_RECURSOS_MUNICIPALES_VENTAS_TABLE = "/alcaldia-recursos-municipales--ventas-table";
 const ALCALDIA_RECURSOS_MUNICIPALES_REPORTE_DIARIO = "/alcaldia-recursos-municipales-reporte-diario";
+const ALCALDIA_RECURSOS_MUNICIPALES_REPORTE_ANUAL = "/alcaldia-recursos-municipales-reporte-anual";
+const ALCALDIA_RECURSOS_MUNICIPALES_REPORTE_MENSUAL = "/alcaldia-recursos-municipales-reporte-mensual";
 const URBANISMO_TRAMITE_FORM = "/urbanismo-tramite-form";
 const URBANISMO_TRAMITE_TABLE = "/urbanismo-tramite-table";
 const URBANISMO_REQUISITOS_FORM = "/urbanismo-requisitos-form";
@@ -259,6 +261,8 @@ const enumPaths = {
   ALCALDIA_RECURSOS_MUNICIPALES_VENTAS_TABLE,
   ALCALDIA_RECURSOS_MUNICIPALES_TABLE,
   ALCALDIA_RECURSOS_MUNICIPALES_REPORTE_DIARIO,
+  ALCALDIA_RECURSOS_MUNICIPALES_REPORTE_ANUAL,
+  ALCALDIA_RECURSOS_MUNICIPALES_REPORTE_MENSUAL,
   URBANISMO_TRAMITE_FORM,
   URBANISMO_TRAMITE_TABLE,
   URBANISMO_REQUISITOS_FORM,

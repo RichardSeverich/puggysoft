@@ -52,6 +52,8 @@ const alcaldiaRecursosMunicipalesTableModels = function (
 
   const isMedium = tableColumnsToShow === enumTableColumnsToShow.MEDIUM;
   const isMinimum = tableColumnsToShow === enumTableColumnsToShow.MINIMUM;
+  const isSaleAdd = tableColumnsToShow === enumTableColumnsToShow.SALEADD;
+  const isSaleDeleted = tableColumnsToShow === enumTableColumnsToShow.SALEDELETE;
 
   if (isMedium) {
     arrayColumnsFilter = arrayColumnsFilter.slice(0, arrayColumnsFilter.length - 4);
@@ -61,9 +63,23 @@ const alcaldiaRecursosMunicipalesTableModels = function (
     arrayColumnsFilter = arrayColumnsFilter.slice(1, arrayColumnsFilter.length - 4);
     arrayColumnsLabels = arrayColumnsLabels.slice(1, arrayColumnsLabels.length - 4);
     arrayDataFields = arrayDataFields.slice(1, arrayDataFields.length - 4);
+  } else if (isSaleAdd) {
+    arrayColumnsFilter = arrayColumnsFilter.slice(1, arrayColumnsFilter.length - 4);
+    arrayColumnsFilter.push({ type: "NONE" });
+    arrayColumnsLabels = arrayColumnsLabels.slice(1, arrayColumnsLabels.length - 4);
+    arrayColumnsLabels.push("Cantidad");
+    arrayDataFields = arrayDataFields.slice(1, arrayDataFields.length - 4);
+  } else if (isSaleDeleted) {
+    arrayColumnsFilter = arrayColumnsFilter.slice(1, arrayColumnsFilter.length - 4);
+    arrayColumnsFilter.push({ type: "NONE" });
+    arrayColumnsLabels = arrayColumnsLabels.slice(1, arrayColumnsLabels.length - 4);
+    arrayColumnsLabels.push("Cantidad");
+    arrayDataFields = arrayDataFields.slice(1, arrayDataFields.length - 4);
+    arrayDataFields.push("cantidad");
   }
 
   const getFilterBody = () => {
+    const tenant = window.sessionStorage.getItem("tenant");
     const filterBody = {
       idCriteria: criteriaId,
       idOperator: operatorId,
@@ -80,7 +96,9 @@ const alcaldiaRecursosMunicipalesTableModels = function (
       creationDateCriteria: criteriaCreatedDate,
       creationDateOperator: operatorCreatedDate,
       updateDateCriteria: criteriaUpdatedDate,
-      updateDateOperator: operatorUpdatedDate
+      updateDateOperator: operatorUpdatedDate,
+      tenantCriteria: tenant,
+      tenantOperator: enumCompareOperators.TEXT_EQUALS
     };
     return filterBody;
   };

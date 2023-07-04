@@ -8,9 +8,12 @@ import CommonLoading from "../../components-level-1/CommonLoading";
 import i18n from "../../i18n/i18n";
 import useInput from "../../hooks/useInput";
 import enumVentaStatus from "./../../models/alcaldia/enumVentaStatus";
+import GeneratePdf from "../../tools/alcaldia/pdfBuilderComprobante";
+import enumCompareOperators from "../../models/enumCompareOperators";
 import {
   handleAddRequest,
-  handleEditRequest
+  handleEditRequest,
+  handleFilterRequest
 } from "../../actions/HandleManager";
 import {
   handleValidation,
@@ -44,6 +47,7 @@ function AlcaldiaRecursosMunicipalesVentasForm () {
   const [valueClienteDinero, setValueClienteDinero] = useState("0");
   const [valueClienteCambio, setValueClienteCambio] = useState("0");
   const [controlarEdit, setControlarEdit] = useState(true);
+  const [ignore, setIgnore] = useState(true);
 
   // Put default values:
   if (isEdit?.data.id && controlarEdit) {
@@ -160,16 +164,35 @@ function AlcaldiaRecursosMunicipalesVentasForm () {
     // setValueClienteCambio(valueClienteCambio - price);
   };
 
+  const afterDataComprobante = data => {
+    const body = getBody();
+    GeneratePdf(data, body);
+    setIsRequestInProgress(false);
+  };
+
+  const handleComprobante = function () {
+    setIsRequestInProgress(true);
+    const tenant = window.sessionStorage.getItem("tenant");
+    const filterBody = {
+      tenantCriteria: tenant,
+      tenantOperator: enumCompareOperators.TEXT_EQUALS
+    };
+    handleFilterRequest(`alcaldia/filter-by-ventas-id?ventasId=${idVenta}`, filterBody, afterDataComprobante);
+  };
+
   useEffect(() => {
     const body = getBody();
     handleValidation(body, setClassNameFormText);
   }, [getBody]);
 
   useEffect(() => {
-    if (verDetalles) {
+    if (ignore) {
+      setIgnore(false);
+    } else if (verDetalles) {
       onChangeClienteDinero(valueClienteDinero);
       handleAdd(undefined, true);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [valueVentaPrecioTotal]);
 
   function onChangeClienteDinero (ClienteDinero) {
@@ -403,6 +426,16 @@ function AlcaldiaRecursosMunicipalesVentasForm () {
                 className="puggysoft-button-inline"
               >
                 {i18n.commonForm.saveButton}
+              </Button>
+            </div>
+            <div className="puggysoft-five-divs-side-by-side-child">
+              <Button
+                onClick={handleComprobante}
+                variant="success"
+                type="button"
+                className="puggysoft-button-inline"
+              >
+                {i18n.alcaldiaRecursosMunicipalesVentasForm.buttonComprobante}
               </Button>
             </div>
             <div className="puggysoft-five-divs-side-by-side-child"></div>

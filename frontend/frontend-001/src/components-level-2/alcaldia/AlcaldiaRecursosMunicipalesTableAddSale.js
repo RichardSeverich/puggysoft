@@ -6,6 +6,7 @@ import {
 } from "../../actions/HandleManager";
 import AlcaldiaRecursosMunicipalesGenericTable from "./generic/AlcaldiaRecursosMunicipalesGenericTable";
 import enumTableColumnsToShow from "../../models/enumTableColumnsToShow";
+import enumWebElements from "../../models/enumWebElements";
 
 import PropTypes from "prop-types";
 
@@ -41,8 +42,11 @@ function AlcaldiaRecursosMunicipalesTableAddSale (props) {
     console.error("error in add producto to sale");
   }
 
-  function handleAddProductToSale (data) {
-    const price = Number(data.precio) * Number(data.cantidad || 1);
+  function handleAddProductToSale (data, textboxId) {
+    const textboxElement = document.getElementById(textboxId);
+    const saleQuantity = textboxElement.value;
+
+    const price = Number(data.precio) * Number(saleQuantity);
     handleChangeData(price);
     setUpdateTableDelete(true);
     const username = window.sessionStorage.getItem("username");
@@ -52,7 +56,7 @@ function AlcaldiaRecursosMunicipalesTableAddSale (props) {
       idVenta: ventasId,
       precioUnidad: data.precio,
       tenant,
-      cantidad: 1,
+      cantidad: saleQuantity,
       createdBy: username,
       updatedBy: username
     };
@@ -67,6 +71,11 @@ function AlcaldiaRecursosMunicipalesTableAddSale (props) {
 
   const tableArrayCustomRowButtons = [
     {
+      type: enumWebElements.TEXTBOX,
+      placeholder: 0,
+      formType: "number"
+    },
+    {
       variant: "primary",
       handleCustom: handleAddProductToSale,
       text: "Agregar"
@@ -80,7 +89,7 @@ function AlcaldiaRecursosMunicipalesTableAddSale (props) {
       handleGetData={handleGetData}
       handleGetSize={handleGetSize}
       tableArrayCustomRowButtons={tableArrayCustomRowButtons}
-      columnsToShow={enumTableColumnsToShow.MINIMUM}
+      columnsToShow={enumTableColumnsToShow.SALEADD}
     ></AlcaldiaRecursosMunicipalesGenericTable>
   );
 }

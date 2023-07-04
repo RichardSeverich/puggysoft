@@ -287,6 +287,12 @@ function NavBar () {
   const navigateAlcaldiaRecursosMunicipalesReporteDiario = () => {
     history.push(enumPaths.ALCALDIA_RECURSOS_MUNICIPALES_REPORTE_DIARIO);
   };
+  const navigateAlcaldiaRecursosMunicipalesReporteMensual = () => {
+    history.push(enumPaths.ALCALDIA_RECURSOS_MUNICIPALES_REPORTE_MENSUAL);
+  };
+  const navigateAlcaldiaRecursosMunicipalesReporteAnual = () => {
+    history.push(enumPaths.ALCALDIA_RECURSOS_MUNICIPALES_REPORTE_ANUAL);
+  };
   const navigateUrbanismoTramiteForm = () => {
     history.push(enumPaths.URBANISMO_TRAMITE_FORM);
   };
@@ -516,7 +522,9 @@ function NavBar () {
   const recursoMunicipaVentaTableLabel = (<><AiOutlineTable /> {i18n.navBar.recursoMunicipalVentaTable}</>);
   // VENTA RECURSOS MUNICIPALES
   const recursoMunicipalReporteAdminLabel = (<><BsFillBarChartFill /> {i18n.navBar.recursoMunicipalReporteAdmin}</>);
-  const recursoMunicipaReporteOneLabel = (<><FaChartLine /> {i18n.navBar.recursoMunicipalReporte1}</>);
+  const recursoMunicipalReporteDiarioLabel = (<><FaChartLine /> {i18n.navBar.recursoMunicipalReporteDiario}</>);
+  const recursoMunicipalReporteMensualLabel = (<><FaChartLine /> {i18n.navBar.recursoMunicipalReporteMensual}</>);
+  const recursoMunicipalReporteAnualLabel = (<><FaChartLine /> {i18n.navBar.recursoMunicipalReporteAnual}</>);
   // URBANISMO TRAMITE
   const urbanismoTramiteAdminLabel = (<><IoNewspaperSharp /> {i18n.navBar.urbanismoTramiteAdmin}</>);
   const urbanismoTramiteFormLabel = (<><GrAddCircle /> {i18n.navBar.urbanismoTramiteForm}</>);
@@ -733,7 +741,9 @@ function NavBar () {
             </NavDropdown>}
           {userRoles.includes(enumRoles.ALCALDIA_RECURSOS_MUNICIPALES_ENCARGADO) &&
             <NavDropdown title={recursoMunicipalReporteAdminLabel}>
-              <NavDropdown.Item onClick={navigateAlcaldiaRecursosMunicipalesReporteDiario}>{recursoMunicipaReporteOneLabel}</NavDropdown.Item>
+              <NavDropdown.Item onClick={navigateAlcaldiaRecursosMunicipalesReporteDiario}>{recursoMunicipalReporteDiarioLabel}</NavDropdown.Item>
+              <NavDropdown.Item onClick={navigateAlcaldiaRecursosMunicipalesReporteMensual}>{recursoMunicipalReporteMensualLabel}</NavDropdown.Item>
+              <NavDropdown.Item onClick={navigateAlcaldiaRecursosMunicipalesReporteAnual}>{recursoMunicipalReporteAnualLabel}</NavDropdown.Item>
             </NavDropdown>}
           {userRoles.includes(enumRoles.URBANISMO_ENCARGADO) &&
             <NavDropdown title={urbanismoTramiteAdminLabel}>
