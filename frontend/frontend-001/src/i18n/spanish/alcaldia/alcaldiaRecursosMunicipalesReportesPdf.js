@@ -8,6 +8,8 @@ const alcaldiaRecursosMunicipalesReportePdf = {
   hora: "Hora",
   mes: "MES",
   monto: "MONTO",
+  Monto: "Monto",
+  venta: "Venta",
   rubro: "RUBRO",
   bs: "Bs",
   pag: "Pag",

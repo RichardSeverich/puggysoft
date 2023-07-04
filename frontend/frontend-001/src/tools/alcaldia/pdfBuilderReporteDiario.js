@@ -5,7 +5,7 @@ import i18n from "../../i18n/i18n";
 const fileName = "colcaEscudo.jpg";
 const imageUrl = `${appUrlConfig.URL}/${fileName}`;
 
-const subs = ["Venta", "Monto"];
+const subs = [i18n.alcaldiaRecursosMunicipalesReportePdf.venta, i18n.alcaldiaRecursosMunicipalesReportePdf.Monto];
 
 const GeneratePdf = (data, fecha, orden) => {
   const doc = jsPDF({
