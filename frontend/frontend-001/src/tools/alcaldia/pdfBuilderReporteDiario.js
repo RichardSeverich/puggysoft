@@ -16,19 +16,19 @@ const GeneratePdf = (data, fecha, orden) => {
   // Adding the fonts
   doc.setFontSize(12);
   doc.text(180, 30, i18n.alcaldiaRecursosMunicipalesReportePdf.title);
-  doc.text(152, 43, `${i18n.alcaldiaRecursosMunicipalesReportePdf.fecha} ${fecha}`);
+  doc.text(152, 43, `${i18n.alcaldiaRecursosMunicipalesReportePdf.correspondienteAFecha} ${fecha}`);
   doc.addImage(imageUrl, "jpg", 25, 15, 40, 40);
 
   let page = 1;
   doc.setFontSize(7);
-  doc.text(420, 10, `Pag. ${page}`);
+  doc.text(420, 10, `${i18n.alcaldiaRecursosMunicipalesReportePdf.pag}. ${page}`);
 
   // obtener la fecha y la hora
   const today = new Date();
   const now = today.toLocaleString();
-  doc.text(400, 22, "Emicion de reporte");
-  doc.text(400, 29, `Fecha: ${now.split(",")[0]}`);
-  doc.text(400, 36, `Hora: ${now.split(",")[1]}`);
+  doc.text(400, 22, i18n.alcaldiaRecursosMunicipalesReportePdf.emicionDeReporte);
+  doc.text(400, 29, `${i18n.alcaldiaRecursosMunicipalesReportePdf.fecha}: ${now.split(",")[0]}`);
+  doc.text(400, 36, `${i18n.alcaldiaRecursosMunicipalesReportePdf.hora}: ${now.split(",")[1]}`);
 
   const yInicial = 70;
   let y1 = 70;
@@ -41,7 +41,7 @@ const GeneratePdf = (data, fecha, orden) => {
     doc.rect(x, y1, 410, y2);
     doc.setFontSize(7);
     doc.setTextColor(88, 139, 196);
-    doc.text(x, y1 + 8.5, ` RUBRO ${rubro.codigoRecursoMunicipal}    ${rubro.nombreRecursoMunicipal}`);
+    doc.text(x, y1 + 8.5, ` ${i18n.alcaldiaRecursosMunicipalesReportePdf.rubro} ${rubro.codigoRecursoMunicipal}    ${rubro.nombreRecursoMunicipal}`);
     y1 = y1 + y2;
 
     doc.setTextColor(0, 0, 0);
@@ -70,7 +70,7 @@ const GeneratePdf = (data, fecha, orden) => {
       doc.text(x, y1 + 8.5, ` ${totalDay.numeroVenta}`);
       x = x + 51;
       doc.line(x, y1, x, y1 + y2);
-      doc.text(x, y1 + 8.5, ` Bs ${totalDay.ingresoVenta.toLocaleString("en")}`);
+      doc.text(x, y1 + 8.5, ` ${i18n.alcaldiaRecursosMunicipalesReportePdf.bs} ${totalDay.ingresoVenta.toLocaleString("en")}`);
       x = x + 51;
       if (iDay === 0 && resumenVentas.length < 4) {
         doc.rect(25, y1, 410, y2);
@@ -100,7 +100,7 @@ const GeneratePdf = (data, fecha, orden) => {
         y1 = yInicial;
         doc.addPage();
         doc.setFontSize(7);
-        doc.text(420, 10, `Pag. ${++page}`);
+        doc.text(420, 10, `${i18n.alcaldiaRecursosMunicipalesReportePdf.pag}. ${++page}`);
       }
     }
     y1 = y1 + y2;
@@ -109,27 +109,27 @@ const GeneratePdf = (data, fecha, orden) => {
       y1 = yInicial;
       doc.addPage();
       doc.setFontSize(7);
-      doc.text(420, 10, `Pag. ${++page}`);
+      doc.text(420, 10, `${i18n.alcaldiaRecursosMunicipalesReportePdf.pag}. ${++page}`);
     }
     doc.setFillColor(184, 217, 255);
     doc.rect(x, y1, 102, y2, "FD");
 
-    doc.text(x, y1 + 8.5, " Sub total");
+    doc.text(x, y1 + 8.5, ` ${i18n.alcaldiaRecursosMunicipalesReportePdf.subTotal}`);
     x = x + 51;
     doc.line(x, y1, x, y1 + y2);
-    doc.text(x, y1 + 8.5, ` Bs ${rubro.ventasTotales.toLocaleString("en")}`);
+    doc.text(x, y1 + 8.5, ` ${i18n.alcaldiaRecursosMunicipalesReportePdf.bs} ${rubro.ventasTotales.toLocaleString("en")}`);
     y1 = y1 + y2 * 2;
     x = 25;
     if (y1 > 486) {
       y1 = yInicial;
       doc.addPage();
       doc.setFontSize(7);
-      doc.text(420, 10, `Pag. ${++page}`);
+      doc.text(420, 10, `${i18n.alcaldiaRecursosMunicipalesReportePdf.pag}. ${++page}`);
     }
   }
 
   doc.setFontSize(10);
-  doc.text(x, y1, `Gran total: Bs ${data.granTotal.toLocaleString("en")}`);
+  doc.text(x, y1, `${i18n.alcaldiaRecursosMunicipalesReportePdf.pag}: ${i18n.alcaldiaRecursosMunicipalesReportePdf.bs} ${data.granTotal.toLocaleString("en")}`);
   doc.output("dataurlnewwindow");
 };
 

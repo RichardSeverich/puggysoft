@@ -18,7 +18,6 @@ public class ControllerAlcaldiaRecursosMunicipalesGetByVentasId {
   @Autowired
   private ServiceAlcaldiaRecursosMunicipalesGetByVentasId serviceAlcaldiaRecursosMunicipalesGet;
 
-  // products/filter?page=${activePage - 1}&size=${pageSize}&saleId=${saleId}
   @PostMapping(path = "/api/v1/alcaldia/filter-by-ventas-id")
   public ResponseEntity<List<DtoAlcaldiaRecursosMunicipales>> getAlcaldiaRecursosMunicipales(
       @RequestParam Long ventasId,

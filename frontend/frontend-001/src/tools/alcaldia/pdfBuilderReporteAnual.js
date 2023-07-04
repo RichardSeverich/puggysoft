@@ -5,20 +5,7 @@ import i18n from "../../i18n/i18n";
 const fileName = "colcaEscudo.jpg";
 const imageUrl = `${appUrlConfig.URL}/${fileName}`;
 
-const MONTHS = {
-  ENERO: "january",
-  FEBRERO: "february",
-  MARZO: "march",
-  ABRIL: "april",
-  MAYO: "may",
-  JUNIO: "june",
-  JULIO: "july",
-  AGOSTO: "august",
-  SEPTIEMBRE: "september",
-  OCTUBRE: "october",
-  NOVIEMBRE: "november",
-  DICIEMBRE: "december"
-};
+const MONTHS = i18n.commonMonths;
 
 const GeneratePdf = (data, fecha) => {
   const doc = jsPDF({
@@ -29,19 +16,19 @@ const GeneratePdf = (data, fecha) => {
   // Adding the fonts
   doc.setFontSize(12);
   doc.text(180, 30, i18n.alcaldiaRecursosMunicipalesReportePdf.title);
-  doc.text(152, 43, `${i18n.alcaldiaRecursosMunicipalesReportePdf.year} ${fecha}`);
+  doc.text(152, 43, `${i18n.alcaldiaRecursosMunicipalesReportePdf.correspondienteAlYear} ${fecha}`);
   doc.addImage(imageUrl, "jpg", 25, 15, 40, 40);
 
   let page = 1;
   doc.setFontSize(7);
-  doc.text(420, 10, `Pag. ${page}`);
+  doc.text(420, 10, `${i18n.alcaldiaRecursosMunicipalesReportePdf.pag}. ${page}`);
   const today = new Date();
 
   // obtener la fecha y la hora
   const now = today.toLocaleString();
-  doc.text(400, 22, "Emicion de reporte");
-  doc.text(400, 29, `Fecha: ${now.split(",")[0]}`);
-  doc.text(400, 36, `Hora: ${now.split(",")[1]}`);
+  doc.text(400, 22, i18n.alcaldiaRecursosMunicipalesReportePdf.emicionDeReporte);
+  doc.text(400, 29, `${i18n.alcaldiaRecursosMunicipalesReportePdf.fecha}: ${now.split(",")[0]}`);
+  doc.text(400, 36, `${i18n.alcaldiaRecursosMunicipalesReportePdf.hora}: ${now.split(",")[1]}`);
 
   let rep = true;
   const yInicial = 70;
@@ -54,7 +41,7 @@ const GeneratePdf = (data, fecha) => {
     doc.rect(x, y1, 200, y2);
     doc.setFontSize(7);
     doc.setTextColor(88, 139, 196);
-    doc.text(x, y1 + 8.5, ` RUBRO ${rubro.codigoRecursoMunicipal}    ${rubro.nombreRecursoMunicipal}`);
+    doc.text(x, y1 + 8.5, ` ${i18n.alcaldiaRecursosMunicipalesReportePdf.rubro} ${rubro.codigoRecursoMunicipal}    ${rubro.nombreRecursoMunicipal}`);
 
     y1 = y1 + y2;
 
@@ -63,31 +50,31 @@ const GeneratePdf = (data, fecha) => {
     doc.setFillColor(240, 240, 240);
     doc.rect(x, y1, 200, y2, "FD");
     doc.setFontSize(7);
-    doc.text(x, y1 + 8, " MES");
+    doc.text(x, y1 + 8, ` ${i18n.alcaldiaRecursosMunicipalesReportePdf.mes}`);
     x = x + 100;
     doc.line(x, y1, x, y1 + y2);
-    doc.text(x, y1 + 8, " MONTO");
+    doc.text(x, y1 + 8, ` ${i18n.alcaldiaRecursosMunicipalesReportePdf.monto}`);
     y1 = y1 + y2;
     x = x - 100;
 
     // doc.setFontSize(6);
     for (const month in MONTHS) {
       doc.rect(x, y1, 200, y2);
-      doc.text(x, y1 + 8, ` ${month}`);
+      doc.text(x, y1 + 8, ` ${MONTHS[month]}`);
       x = x + 100;
 
       doc.line(x, y1, x, y1 + y2);
-      doc.text(x, y1 + 8, ` Bs ${rubro[MONTHS[month]].toLocaleString("en")}`);
+      doc.text(x, y1 + 8, ` ${i18n.alcaldiaRecursosMunicipalesReportePdf.bs} ${rubro[month].toLocaleString("en")}`);
       x = x - 100;
       y1 = y1 + y2;
     }
     doc.setFillColor(184, 217, 255);
     doc.rect(x, y1, 200, y2, "FD");
-    doc.text(x, y1 + 8, " Sub total");
+    doc.text(x, y1 + 8, ` ${i18n.alcaldiaRecursosMunicipalesReportePdf.subTotal}`);
     x = x + 100;
 
     doc.line(x, y1, x, y1 + y2);
-    doc.text(x, y1 + 8, ` Bs ${rubro.ventasTotales.toLocaleString("en")}`);
+    doc.text(x, y1 + 8, ` ${i18n.alcaldiaRecursosMunicipalesReportePdf.bs} ${rubro.ventasTotales.toLocaleString("en")}`);
 
     if (rep) {
       rep = false;
@@ -107,11 +94,11 @@ const GeneratePdf = (data, fecha) => {
       y1 = yInicial;
       doc.addPage();
       doc.setFontSize(7);
-      doc.text(420, 10, `Pag. ${++page}`);
+      doc.text(420, 10, `${i18n.alcaldiaRecursosMunicipalesReportePdf.pag}. ${++page}`);
     }
   }
   doc.setFontSize(10);
-  doc.text(25, y1 + y2 * 16, `Gran total: Bs ${data.granTotal.toLocaleString("en")}`);
+  doc.text(25, y1 + y2 * 16, `${i18n.alcaldiaRecursosMunicipalesReportePdf.granTotal}: ${i18n.alcaldiaRecursosMunicipalesReportePdf.bs} ${data.granTotal.toLocaleString("en")}`);
 
   doc.output("dataurlnewwindow");
 };

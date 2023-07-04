@@ -67,6 +67,7 @@ import alcaldiaRecursosMunicipalesVentasForm from "./spanish/alcaldia/alcaldiaRe
 import alcaldiaRecursosMunicipalesVentasTable from "./spanish/alcaldia/alcaldiaRecursosMunicipalesVentasTable";
 import alcaldiaRecursosMunicipalesTableAdd from "./spanish/alcaldia/alcaldiaRecursosMunicipalesTableAdd";
 import alcaldiaRecursosMunicipalesTableDelete from "./spanish/alcaldia/alcaldiaRecursosMunicipalesTableDelete";
+import alcaldiaRecursosMunicipalesNumToText from "./spanish/alcaldia/alcaldiaRecursosMunicipalesNumToText";
 import urbanismoTramiteForm from "./spanish/alcaldia/urbanismoTramiteForm";
 import urbanismoTramiteTable from "./spanish/alcaldia/urbanismoTramiteTable";
 import urbanismoRequisitosForm from "./spanish/alcaldia/urbanismoRequisitosForm";
@@ -144,6 +145,7 @@ const i18n = {
   alcaldiaRecursosMunicipalesReporteMensual,
   alcaldiaRecursosMunicipalesReporteAnual,
   alcaldiaRecursosMunicipalesReportePdf,
+  alcaldiaRecursosMunicipalesNumToText,
   urbanismoTramiteForm,
   urbanismoTramiteTable,
   urbanismoRequisitosForm,
