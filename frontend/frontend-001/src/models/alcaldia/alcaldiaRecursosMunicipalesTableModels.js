@@ -1,5 +1,5 @@
 import enumCompareOperators from "../enumCompareOperators";
-import enumTableColumnsToShow from "../enumTableColumnsToShow";
+import enumTableColumnsToShow from "../alcaldia/enumTableColumnsToShow";
 import arrayDataFieldsImport from "./alcaldiaRecursosMunicipalesDataFields";
 import arrayColumnsLabelsImport from "./alcaldiaRecursosMunicipalesColumnsLabels";
 import alcaldiaRecursosMunicipalesColumnsFilter from "./alcaldiaRecursosMunicipalesColumnsFilter";

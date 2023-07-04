@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import TableFilterGeneric from "../../generic/TableFilterGeneric";
 import useInput from "../../../hooks/useInput";
 import enumCompareOperators from "../../../models/enumCompareOperators";
-import enumTableColumnsToShow from "../../../models/enumTableColumnsToShow";
+import enumTableColumnsToShow from "../../../models/alcaldia/enumTableColumnsToShow";
 import alcaldiaRecursosMunicipalesTableModels from "../../../models/alcaldia/alcaldiaRecursosMunicipalesTableModels";
 
 function AlcaldiaRecursosMunicipalesGenericTable (props) {

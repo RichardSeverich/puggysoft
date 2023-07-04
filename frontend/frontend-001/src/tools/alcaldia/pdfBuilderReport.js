@@ -46,7 +46,6 @@ const GeneratePdf = (data, fecha) => {
       }
     }
 
-    // y1 = y1 + y2; para dar espacio entre tablas
     y2 = 15;
   }
 
