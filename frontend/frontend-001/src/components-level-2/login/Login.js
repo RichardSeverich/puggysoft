@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useHistory } from "react-router";
+import { useHistory, useParams } from "react-router";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
@@ -17,6 +17,10 @@ function Login () {
   const history = useHistory();
   const { value: valueUsername, onChange: onChangeUsername } = useInput("");
   const { value: valuePassword, onChange: onChangePassword } = useInput("");
+
+  const params = useParams();
+  const tenantParam = params.tenant ? params.tenant : null;
+  console.log(tenantParam);
 
   const [tenantSelected, setTenantSelected] = useState(null);
   const [roleSelected, setRoleSelected] = useState(null);
@@ -58,6 +62,9 @@ function Login () {
         setLoading(false);
         handleGetRequest(`tenants-by-user?username=${valueUsername}`, (tenants) => {
           if (tenants.length > 0) {
+            tenants.forEach(function (tenant) {
+              if (tenant.shortName === tenantParam) setTenantSelected(tenantParam);
+            });
             setListOfTenants(tenants);
           } else {
             setMessageTitle(i18n.errorMessages.errorTitle);
@@ -105,6 +112,7 @@ function Login () {
 
   const bodyContent = <>
     <Form>
+      {tenantParam === null &&
       <Form.Group className="mb-3" controlId="select-tenant">
         <Form.Label>{i18n.login.labelTenant}</Form.Label>
         <Form.Select
@@ -122,6 +130,7 @@ function Login () {
           }
         </Form.Select>
       </Form.Group>
+      }
       <Form.Group className="mb-3" controlId="select-role">
         <Form.Label>{i18n.login.labelRol}</Form.Label>
         <Form.Select

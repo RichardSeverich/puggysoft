@@ -1,5 +1,5 @@
 // ALL SYSTEMS
-const LOGIN = "/login";
+const LOGIN = "/login/:tenant";
 const DASHBOARD = "/dashboard";
 const SYSTEM_PROPERTIES_TABLE = "/system-properties-table";
 const SYSTEM_PROPERTIES_FORM = "/system-properties-form";
