@@ -136,6 +136,12 @@ const URBANISMO_ESTADOS_FORM = "/urbanismo-estados-form";
 const URBANISMO_ESTADOS_TABLE = "/urbanismo-estados-table";
 const URBANISMO_TRAMITE_REQUISITOS_STEP_ONE = "/urbanismo-tramites-requisitos-step-one";
 const URBANISMO_TRAMITE_REQUISITOS_STEP_TWO = "/urbanismo-tramites-requisitos-step-two";
+const URBANISMO_TRAMITE_ESTADOS_STEP_ONE = "/urbanismo-tramites-estados-step-one";
+const URBANISMO_TRAMITE_ESTADOS_STEP_TWO = "/urbanismo-tramites-estados-step-two";
+const URBANISMO_TRAMITE_ESTADOS_STEP_THREE = "/urbanismo-tramites-flujo-step-three";
+const URBANISMO_TRAMITE_ESTADOS_TABLE = "/urbanismo-tramite-estados-table";
+const URBANISMO_FLUJO_REQUISITOS_STEP_ONE = "/urbanismo-flujo-requisitos-step-one";
+const URBANISMO_FLUJO_REQUISITOS_STEP_TWO = "/urbanismo-flujo-requisitos-step-two";
 
 const enumPaths = {
   DASHBOARD,
@@ -270,7 +276,13 @@ const enumPaths = {
   URBANISMO_ESTADOS_FORM,
   URBANISMO_ESTADOS_TABLE,
   URBANISMO_TRAMITE_REQUISITOS_STEP_ONE,
-  URBANISMO_TRAMITE_REQUISITOS_STEP_TWO
+  URBANISMO_TRAMITE_ESTADOS_STEP_ONE,
+  URBANISMO_TRAMITE_ESTADOS_STEP_TWO,
+  URBANISMO_TRAMITE_REQUISITOS_STEP_TWO,
+  URBANISMO_TRAMITE_ESTADOS_STEP_THREE,
+  URBANISMO_TRAMITE_ESTADOS_TABLE,
+  URBANISMO_FLUJO_REQUISITOS_STEP_ONE,
+  URBANISMO_FLUJO_REQUISITOS_STEP_TWO
 };
 
 export default enumPaths;

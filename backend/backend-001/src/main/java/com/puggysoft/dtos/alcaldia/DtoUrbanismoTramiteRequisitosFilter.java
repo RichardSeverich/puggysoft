@@ -8,7 +8,7 @@ import lombok.Data;
  * Class.
  */
 @Data
-public class DtoUrbanismoTramiteFlujoFilter {
+public class DtoUrbanismoTramiteRequisitosFilter {
 
   // ID
   public String idCriteria;
@@ -16,15 +16,9 @@ public class DtoUrbanismoTramiteFlujoFilter {
   // TRAMITE NOMBRE CORTO
   public String tramiteNombreCortoCriteria;
   public EnumCompareOperator tramiteNombreCortoOperator;
-  // ESTADO NOMBRE CORTO
-  public String estadoNombreCortoCriteria;
-  public EnumCompareOperator estadoNombreCortoOperator;
-  // NOMBRE CLIENTE
-  public String nombreClienteCriteria;
-  public EnumCompareOperator nombreClienteOperator;
-  // CI CLIENTE
-  public String ciClienteCriteria;
-  public EnumCompareOperator ciClienteOperator;
+  // REQUISITO NOMBRE CORTO
+  public String requisitoNombreCortoCriteria;
+  public EnumCompareOperator requisitoNombreCortoOperator;
   // TENANT
   public String tenantCriteria;
   public EnumCompareOperator tenantOperator;

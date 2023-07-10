@@ -194,7 +194,11 @@ const navBar = {
   urbanismoEstadosForm: "Registrar Estados",
   urbanismoEstadosTable: "Mostrar Estados",
   // Urbanismo Tramite Requisitos
-  urbanismoTramiteRequisitosStepOne: "Asignar requisitos"
+  urbanismoTramiteRequisitosStepOne: "Asignar Requisitos",
+  urbanismoTramiteEstadosAdmin: "Adm. Flujo",
+  urbanismoTramiteEstadosStepOne: "Crear Flujo",
+  urbanismoTramiteEstadosTable: "Mostrar Flujo",
+  urbanismoFlujoRequisitosStepOne: "Flujo Requisitos"
 };
 
 export default navBar;

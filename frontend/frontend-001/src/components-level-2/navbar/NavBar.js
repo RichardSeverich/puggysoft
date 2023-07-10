@@ -314,6 +314,15 @@ function NavBar () {
   const navigateUrbanismoTramiteRequisitosStepOne = () => {
     history.push(enumPaths.URBANISMO_TRAMITE_REQUISITOS_STEP_ONE);
   };
+  const navigateUrbanismoTramiteEstadosStepOne = () => {
+    history.push(enumPaths.URBANISMO_TRAMITE_ESTADOS_STEP_ONE);
+  };
+  const navigateUrbanismoTramiteEstadosTable = () => {
+    history.push(enumPaths.URBANISMO_TRAMITE_ESTADOS_TABLE);
+  };
+  const navigateUrbanismoFlujoRequisitosStepOne = () => {
+    history.push(enumPaths.URBANISMO_FLUJO_REQUISITOS_STEP_ONE);
+  };
   const NavbarBackground = "dark"; // dark, light, primary
   const NavbarVariant = "dark puggysoft-navbar"; // dark, light
 
@@ -539,6 +548,9 @@ function NavBar () {
   const urbanismoEstadosTableLabel = (<><AiOutlineTable /> {i18n.navBar.urbanismoEstadosTable}</>);
   // URBANISMO ESTADOS
   const urbanismoTramiteRequisitosStepOneLabel = (<><GrAddCircle /> {i18n.navBar.urbanismoTramiteRequisitosStepOne}</>);
+  const urbanismoTramiteEstadosStepOneLabel = (<><GrAddCircle /> {i18n.navBar.urbanismoTramiteEstadosStepOne}</>);
+  const urbanismoTramiteEstadosTableLabel = (<><AiOutlineTable /> {i18n.navBar.urbanismoTramiteEstadosTable}</>);
+  const urbanismoFlujoRequisitosStepOneLabel = (<><GrAddCircle /> {i18n.navBar.urbanismoFlujoRequisitosStepOne}</>);
 
   // ******* ******* ******* ALL SYSTEMS ******* ******* *******
   // CONFIG
@@ -750,6 +762,9 @@ function NavBar () {
               <NavDropdown.Item onClick={navigateUrbanismoTramiteForm}>{urbanismoTramiteFormLabel}</NavDropdown.Item>
               <NavDropdown.Item onClick={navigateUrbanismoTramiteTable}>{urbanismoTramiteTableLabel}</NavDropdown.Item>
               <NavDropdown.Item onClick={navigateUrbanismoTramiteRequisitosStepOne}>{urbanismoTramiteRequisitosStepOneLabel}</NavDropdown.Item>
+              <NavDropdown.Item onClick={navigateUrbanismoTramiteEstadosStepOne}>{urbanismoTramiteEstadosStepOneLabel}</NavDropdown.Item>
+              <NavDropdown.Item onClick={navigateUrbanismoTramiteEstadosTable}>{urbanismoTramiteEstadosTableLabel}</NavDropdown.Item>
+              <NavDropdown.Item onClick={navigateUrbanismoFlujoRequisitosStepOne}>{urbanismoFlujoRequisitosStepOneLabel}</NavDropdown.Item>
             </NavDropdown>}
           {userRoles.includes(enumRoles.URBANISMO_ENCARGADO) &&
             <NavDropdown title={urbanismoRequisitosAdminLabel}>

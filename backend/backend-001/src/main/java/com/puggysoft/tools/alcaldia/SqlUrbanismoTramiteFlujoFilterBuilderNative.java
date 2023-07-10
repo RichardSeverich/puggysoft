@@ -25,6 +25,9 @@ public final class SqlUrbanismoTramiteFlujoFilterBuilderNative {
     query = query + SqlFilterBuilder.getFilterQuery("alc_urb_tramite_flujo.nombre_cliente",
         dtoUrbanismoTramiteFlujoFilter.nombreClienteCriteria,
         dtoUrbanismoTramiteFlujoFilter.nombreClienteOperator);
+    query = query + SqlFilterBuilder.getFilterQuery("alc_urb_tramite_flujo.ci_cliente",
+        dtoUrbanismoTramiteFlujoFilter.ciClienteCriteria,
+        dtoUrbanismoTramiteFlujoFilter.ciClienteOperator);    
     query = query + SqlFilterBuilder.getFilterQuery("alc_urb_tramite_flujo.tenant ",
         dtoUrbanismoTramiteFlujoFilter.tenantCriteria,
         dtoUrbanismoTramiteFlujoFilter.tenantOperator);

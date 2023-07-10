@@ -19,6 +19,8 @@ public class DtoUrbanismoTramiteFlujo extends DtoSuperClass {
   @NotNull
   private String nombreCliente;
   @NotNull
+  private String ciCliente;
+  @NotNull
   private String tenant;
 
   /** convert from dto to entity. */
@@ -29,6 +31,7 @@ public class DtoUrbanismoTramiteFlujo extends DtoSuperClass {
     entity.setTramiteNombreCorto(tramiteNombreCorto);
     entity.setEstadoNombreCorto(estadoNombreCorto);
     entity.setNombreCliente(nombreCliente);
+    entity.setCiCliente(ciCliente);
     entity.setTenant(tenant);
     entity.setCreatedBy(createdBy);
     entity.setUpdatedBy(updatedBy);
@@ -43,6 +46,7 @@ public class DtoUrbanismoTramiteFlujo extends DtoSuperClass {
     dto.setTramiteNombreCorto(entity.getTramiteNombreCorto());
     dto.setEstadoNombreCorto(entity.getEstadoNombreCorto());
     dto.setNombreCliente(entity.getNombreCliente());
+    dto.setCiCliente(entity.getCiCliente());
     dto.setTenant(entity.getTenant());
     dto.setCreatedBy(entity.getCreatedBy());
     dto.setUpdatedBy(entity.getUpdatedBy());

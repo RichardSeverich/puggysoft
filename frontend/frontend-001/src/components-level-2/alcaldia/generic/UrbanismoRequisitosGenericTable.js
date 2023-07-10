@@ -30,7 +30,7 @@ function UrbanismoRequisitosGenericTable (props) {
   // FILTER OPERATORS
   const { value: operatorId, onChange: operatorOnChangeId, setValue: operatorSetId } = useInput(enumCompareOperators.TEXT_CONTAINS);
   const { value: operatorNombre, onChange: operatorOnChangeNombre, setValue: operatorSetNombre } = useInput(enumCompareOperators.TEXT_CONTAINS);
-  const { value: operatorNombreCorto, onChange: operatorOnChangeNombreCorto, setValue: operatorSetNombreCorto } = useInput(enumCompareOperators.NUMBER_EQUALS);
+  const { value: operatorNombreCorto, onChange: operatorOnChangeNombreCorto, setValue: operatorSetNombreCorto } = useInput(enumCompareOperators.TEXT_CONTAINS);
   const { value: operatorCreatedBy, onChange: operatorOnChangeCreatedBy, setValue: operatorSetCreatedBy } = useInput(enumCompareOperators.TEXT_CONTAINS);
   const { value: operatorUpdatedBy, onChange: operatorOnChangeUpdatedBy, setValue: operatorSetUpdatedBy } = useInput(enumCompareOperators.TEXT_CONTAINS);
   const { value: operatorCreatedDate, onChange: operatorOnChangeCreatedDate, setValue: operatorSetCreatedDate } = useInput(enumCompareOperators.DATE_EQUALS);

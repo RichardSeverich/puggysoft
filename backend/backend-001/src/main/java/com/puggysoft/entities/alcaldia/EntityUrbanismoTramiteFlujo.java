@@ -20,6 +20,8 @@ public class EntityUrbanismoTramiteFlujo extends EntitySuperClass {
   private String estadoNombreCorto;
   @Column(name = "nombre_cliente")
   private String nombreCliente;
+  @Column(name = "ci_cliente")
+  private String ciCliente;
   @Column(name = "precio")
   private String precio;
   @Column(name = "tenant")

@@ -26,6 +26,7 @@ const commonTable = {
   columnImage: "Foto",
   columnCreatedBy: "Creado por",
   columnUpdatedBy: "Editado por",
+  columnTramite: "Tramite",
   columnCreationDate: "Fecha de creacion",
   columnUpdateDate: "Fecha de edicion",
   columnId: "Id"

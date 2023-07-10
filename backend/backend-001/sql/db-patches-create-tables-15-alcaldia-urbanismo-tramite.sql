@@ -68,6 +68,7 @@ CREATE TABLE alc_urb_tramite_flujo(
    tramite_nombre_corto VARCHAR(30) NOT NULL,
    estado_nombre_corto VARCHAR(30) NOT NULL,
    nombre_cliente VARCHAR(120) NOT NULL,
+   ci_cliente VARCHAR(60) NOT NULL,
    tenant VARCHAR(30) NOT NULL,
    creation_date DATETIME DEFAULT CURRENT_TIMESTAMP,
    update_date DATETIME ON UPDATE CURRENT_TIMESTAMP,
