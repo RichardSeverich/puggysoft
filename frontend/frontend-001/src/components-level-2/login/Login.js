@@ -20,7 +20,6 @@ function Login () {
 
   const params = useParams();
   const tenantParam = params.tenant ? params.tenant : null;
-  console.log(tenantParam);
 
   const [tenantSelected, setTenantSelected] = useState(null);
   const [roleSelected, setRoleSelected] = useState(null);
