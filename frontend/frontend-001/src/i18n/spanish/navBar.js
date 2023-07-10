@@ -195,6 +195,7 @@ const navBar = {
   urbanismoEstadosTable: "Mostrar Estados",
   // Urbanismo Tramite Requisitos
   urbanismoTramiteRequisitosStepOne: "Asignar Requisitos",
+  // Urbanismo Tramite Flujo
   urbanismoTramiteEstadosAdmin: "Adm. Flujo",
   urbanismoTramiteEstadosStepOne: "Crear Flujo",
   urbanismoTramiteEstadosTable: "Mostrar Flujo",

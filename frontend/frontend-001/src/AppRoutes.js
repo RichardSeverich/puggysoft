@@ -121,10 +121,12 @@ import UrbanismoEstadosFormPage from "./components-level-3/alcaldia/UrbanismoEst
 import UrbanismoEstadosTablePage from "./components-level-3/alcaldia/UrbanismoEstadosTablePage";
 import UrbanismoTramiteRequisitosStepOnePage from "./components-level-3/alcaldia/UrbanismoTramiteRequisitosStepOnePage";
 import UrbanismoTramiteRequisitosStepTwoPage from "./components-level-3/alcaldia/UrbanismoTramiteRequisitosStepTwoPage";
-// import UrbanismoTramiteEstadosStepThreePage from "./components-level-3/alcaldia/UrbanismoTramiteEstadosStepThreePage";
 import UrbanismoTramiteEstadosTablePage from "./components-level-3/alcaldia/UrbanismoTramiteEstadosTablePage";
 import UrbanismoFlujoRequisitosStepOnePage from "./components-level-3/alcaldia/UrbanismoFlujoRequisitosStepOnePage";
 import UrbanismoFlujoRequisitosStepTwoPage from "./components-level-3/alcaldia/UrbanismoFlujoRequisitosStepTwoPage";
+import UrbanismoTramiteEstadosStepOnePage from "./components-level-3/alcaldia/UrbanismoTramiteEstadosStepOnePage";
+import UrbanismoTramiteEstadosStepTwoPage from "./components-level-3/alcaldia/UrbanismoTramiteEstadosStepTwoPage";
+import UrbanismoTramiteEstadosStepThreePage from "./components-level-3/alcaldia/UrbanismoTramiteEstadosStepThreePage";
 
 const AppRoutes = () => (
   <App>
@@ -243,10 +245,12 @@ const AppRoutes = () => (
       <Route exact path={enumPaths.URBANISMO_ESTADOS_TABLE} component={UrbanismoEstadosTablePage} />
       <Route exact path={enumPaths.URBANISMO_TRAMITE_REQUISITOS_STEP_ONE} component={UrbanismoTramiteRequisitosStepOnePage} />
       <Route exact path={enumPaths.URBANISMO_TRAMITE_REQUISITOS_STEP_TWO} component={UrbanismoTramiteRequisitosStepTwoPage} />
-      {/* <Route exact path={enumPaths.URBANISMO_TRAMITE_ESTADOS_STEP_THREE} component={UrbanismoTramiteEstadosStepThreePage} /> */}
       <Route exact path={enumPaths.URBANISMO_TRAMITE_ESTADOS_TABLE} component={UrbanismoTramiteEstadosTablePage} />
       <Route exact path={enumPaths.URBANISMO_FLUJO_REQUISITOS_STEP_ONE} component={UrbanismoFlujoRequisitosStepOnePage} />
       <Route exact path={enumPaths.URBANISMO_FLUJO_REQUISITOS_STEP_TWO} component={UrbanismoFlujoRequisitosStepTwoPage} />
+      <Route exact path={enumPaths.URBANISMO_TRAMITE_ESTADOS_STEP_ONE} component={UrbanismoTramiteEstadosStepOnePage} />
+      <Route exact path={enumPaths.URBANISMO_TRAMITE_ESTADOS_STEP_TWO} component={UrbanismoTramiteEstadosStepTwoPage} />
+      <Route exact path={enumPaths.URBANISMO_TRAMITE_ESTADOS_STEP_THREE} component={UrbanismoTramiteEstadosStepThreePage} />
       <Route exact path="/" component={LoginPage} />
       <Route component={LoginPage} />
     </Switch>
