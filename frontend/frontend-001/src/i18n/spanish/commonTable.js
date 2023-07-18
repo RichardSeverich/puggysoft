@@ -29,7 +29,8 @@ const commonTable = {
   columnTramite: "Tramite",
   columnCreationDate: "Fecha de creacion",
   columnUpdateDate: "Fecha de edicion",
-  columnId: "Id"
+  columnId: "Id",
+  download: "Descargar"
 };
 
 export default commonTable;

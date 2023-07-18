@@ -185,6 +185,10 @@ const navBar = {
   urbanismoTramiteAdmin: "Adm. Tramite",
   urbanismoTramiteForm: "Registrar Tramite",
   urbanismoTramiteTable: "Mostrar Tramite",
+  // Regula Lotes
+  regulaLotesAdmin: "Adm. Regulacion de lotes",
+  regulaLotesForm: "Registrar reg. lotes",
+  regulaLotesTable: "Mostrar reg. lotes",
   // Urbanismo Requisitos
   urbanismoRequisitosAdmin: "Adm. Requisitos",
   urbanismoRequisitosForm: "Registrar Requisitos",

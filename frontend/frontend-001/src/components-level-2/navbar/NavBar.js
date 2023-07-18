@@ -300,6 +300,12 @@ function NavBar () {
   const navigateUrbanismoTramiteTable = () => {
     history.push(enumPaths.URBANISMO_TRAMITE_TABLE);
   };
+  const navigateRegulaLotesForm = () => {
+    history.push(enumPaths.REGULA_LOTES_FORM);
+  };
+  const navigateRegulaLotesTable = () => {
+    history.push(enumPaths.REGULA_LOTES_TABLE);
+  };
   const navigateUrbanismoRequisitosForm = () => {
     history.push(enumPaths.URBANISMO_REQUISITOS_FORM);
   };
@@ -539,6 +545,10 @@ function NavBar () {
   const urbanismoTramiteAdminLabel = (<><IoNewspaperSharp /> {i18n.navBar.urbanismoTramiteAdmin}</>);
   const urbanismoTramiteFormLabel = (<><GrAddCircle /> {i18n.navBar.urbanismoTramiteForm}</>);
   const urbanismoTramiteTableLabel = (<><AiOutlineTable /> {i18n.navBar.urbanismoTramiteTable}</>);
+  // REGULARIZACION LOTES
+  const regulaLotesAdminLabel = (<><IoNewspaperSharp /> {i18n.navBar.regulaLotesAdmin}</>);
+  const regulaLotesFormLabel = (<><GrAddCircle /> {i18n.navBar.regulaLotesForm}</>);
+  const regulaLotesTableLabel = (<><AiOutlineTable /> {i18n.navBar.regulaLotesTable}</>);
   // URBANISMO REQUISITOS
   const urbanismoRequisitosAdminLabel = (<><BsClipboardCheckFill /> {i18n.navBar.urbanismoRequisitosAdmin}</>);
   const urbanismoRequisitosFormLabel = (<><GrAddCircle /> {i18n.navBar.urbanismoRequisitosForm}</>);
@@ -781,6 +791,11 @@ function NavBar () {
               <NavDropdown.Item onClick={navigateUrbanismoTramiteEstadosStepOne}>{urbanismoTramiteEstadosStepOneLabel}</NavDropdown.Item>
               <NavDropdown.Item onClick={navigateUrbanismoTramiteEstadosTable}>{urbanismoTramiteEstadosTableLabel}</NavDropdown.Item>
               <NavDropdown.Item onClick={navigateUrbanismoFlujoRequisitosStepOne}>{urbanismoFlujoRequisitosStepOneLabel}</NavDropdown.Item>
+            </NavDropdown>}
+          {userRoles.includes(enumRoles.REGULARIZACION_LOTES_ENCARGADO) &&
+            <NavDropdown title={regulaLotesAdminLabel}>
+              <NavDropdown.Item onClick={navigateRegulaLotesForm}>{regulaLotesFormLabel}</NavDropdown.Item>
+              <NavDropdown.Item onClick={navigateRegulaLotesTable}>{regulaLotesTableLabel}</NavDropdown.Item>
             </NavDropdown>}
         </Nav>
         {/* ******* ******* ******* ALL SYSTEM ******* ******* ********/}

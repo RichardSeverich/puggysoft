@@ -130,6 +130,8 @@ const ALCALDIA_RECURSOS_MUNICIPALES_REPORTE_ANUAL = "/alcaldia-recursos-municipa
 const ALCALDIA_RECURSOS_MUNICIPALES_REPORTE_MENSUAL = "/alcaldia-recursos-municipales-reporte-mensual";
 const URBANISMO_TRAMITE_FORM = "/urbanismo-tramite-form";
 const URBANISMO_TRAMITE_TABLE = "/urbanismo-tramite-table";
+const REGULA_LOTES_FORM = "/regularizacion-lotes-form";
+const REGULA_LOTES_TABLE = "/regularizacion-lotes-table";
 const URBANISMO_REQUISITOS_FORM = "/urbanismo-requisitos-form";
 const URBANISMO_REQUISITOS_TABLE = "/urbanismo-requisitos-table";
 const URBANISMO_ESTADOS_FORM = "/urbanismo-estados-form";
@@ -271,6 +273,8 @@ const enumPaths = {
   ALCALDIA_RECURSOS_MUNICIPALES_REPORTE_MENSUAL,
   URBANISMO_TRAMITE_FORM,
   URBANISMO_TRAMITE_TABLE,
+  REGULA_LOTES_FORM,
+  REGULA_LOTES_TABLE,
   URBANISMO_REQUISITOS_FORM,
   URBANISMO_REQUISITOS_TABLE,
   URBANISMO_ESTADOS_FORM,

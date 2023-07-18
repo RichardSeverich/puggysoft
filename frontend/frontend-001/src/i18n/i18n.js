@@ -70,6 +70,8 @@ import alcaldiaRecursosMunicipalesTableDelete from "./spanish/alcaldia/alcaldiaR
 import alcaldiaRecursosMunicipalesNumToText from "./spanish/alcaldia/alcaldiaRecursosMunicipalesNumToText";
 import urbanismoTramiteForm from "./spanish/alcaldia/urbanismoTramiteForm";
 import urbanismoTramiteTable from "./spanish/alcaldia/urbanismoTramiteTable";
+import regulaLotesForm from "./spanish/alcaldia/regulaLotesForm";
+import regulaLotesTable from "./spanish/alcaldia/regulaLotesTable";
 import urbanismoRequisitosForm from "./spanish/alcaldia/urbanismoRequisitosForm";
 import urbanismoRequisitosTable from "./spanish/alcaldia/urbanismoRequisitosTable";
 import urbanismoEstadosForm from "./spanish/alcaldia/urbanismoEstadosForm";
@@ -152,6 +154,8 @@ const i18n = {
   alcaldiaRecursosMunicipalesNumToText,
   urbanismoTramiteForm,
   urbanismoTramiteTable,
+  regulaLotesForm,
+  regulaLotesTable,
   urbanismoRequisitosForm,
   urbanismoRequisitosTable,
   urbanismoEstadosForm,
