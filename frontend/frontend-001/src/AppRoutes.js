@@ -129,6 +129,11 @@ import UrbanismoFlujoRequisitosStepTwoPage from "./components-level-3/alcaldia/U
 import UrbanismoTramiteEstadosStepOnePage from "./components-level-3/alcaldia/UrbanismoTramiteEstadosStepOnePage";
 import UrbanismoTramiteEstadosStepTwoPage from "./components-level-3/alcaldia/UrbanismoTramiteEstadosStepTwoPage";
 import UrbanismoTramiteEstadosStepThreePage from "./components-level-3/alcaldia/UrbanismoTramiteEstadosStepThreePage";
+import UrbanismoFlujoHistorialStepOnePage from "./components-level-3/alcaldia/UrbanismoFlujoHistorialStepOnePage";
+import UrbanismoFlujoHistorialStepTwoPage from "./components-level-3/alcaldia/UrbanismoFlujoHistorialStepTwoPage";
+import UrbanismoHistorialEstadoStepOnePage from "./components-level-3/alcaldia/UrbanismoHistorialEstadoStepOnePage";
+import UrbanismoHistorialEstadoStepTwoPage from "./components-level-3/alcaldia/UrbanismoHistorialEstadoStepTwoPage";
+import UrbanismoHistorialEstadoStepThreePage from "./components-level-3/alcaldia/UrbanismoHistorialEstadoStepThreePage";
 
 const AppRoutes = () => (
   <App>
@@ -255,6 +260,11 @@ const AppRoutes = () => (
       <Route exact path={enumPaths.URBANISMO_TRAMITE_ESTADOS_STEP_ONE} component={UrbanismoTramiteEstadosStepOnePage} />
       <Route exact path={enumPaths.URBANISMO_TRAMITE_ESTADOS_STEP_TWO} component={UrbanismoTramiteEstadosStepTwoPage} />
       <Route exact path={enumPaths.URBANISMO_TRAMITE_ESTADOS_STEP_THREE} component={UrbanismoTramiteEstadosStepThreePage} />
+      <Route exact path={enumPaths.URBANISMO_FLUJO_HISTORIAL_STEP_ONE} component={UrbanismoFlujoHistorialStepOnePage} />
+      <Route exact path={enumPaths.URBANISMO_FLUJO_HISTORIAL_STEP_TWO} component={UrbanismoFlujoHistorialStepTwoPage} />
+      <Route exact path={enumPaths.URBANISMO_HISTORIAL_ESTADO_STEP_ONE} component={UrbanismoHistorialEstadoStepOnePage} />
+      <Route exact path={enumPaths.URBANISMO_HISTORIAL_ESTADO_STEP_TWO} component={UrbanismoHistorialEstadoStepTwoPage} />
+      <Route exact path={enumPaths.URBANISMO_HISTORIAL_ESTADO_STEP_THREE} component={UrbanismoHistorialEstadoStepThreePage} />
       <Route exact path="/" component={LoginPage} />
       <Route component={LoginPage} />
     </Switch>

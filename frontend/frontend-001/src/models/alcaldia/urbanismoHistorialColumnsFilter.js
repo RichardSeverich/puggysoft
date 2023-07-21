@@ -1,6 +1,6 @@
 import enumFilterType from "../enumFilterType";
 
-const urbanismoFlujoRequisitosColumnsFilter = function (
+const urbanismoHistorialColumnsFilter = function (
   /* ID */ criteriaId,
   criteriaOnChangeId,
   operatorId,
@@ -9,14 +9,18 @@ const urbanismoFlujoRequisitosColumnsFilter = function (
   criteriaOnChangeIdFlujo,
   operatorIdFlujo,
   operatorOnChangeIdFlujo,
-  /* REQUISITOS */ criteriaRequisitos,
-  criteriaOnChangeRequisitos,
-  operatorRequisitos,
-  operatorOnChangeRequisitos,
-  /* ESTADO */ criteriaEstados,
-  criteriaOnChangeEstados,
-  operatorEstados,
-  operatorOnChangeEstados,
+  /* USERNAME */ criteriaUsername,
+  criteriaOnChangeUsername,
+  operatorUsername,
+  operatorOnChangeUsername,
+  /* ESTADO ANTERIOR */ criteriaEstadoAnterior,
+  criteriaOnChangeEstadoAnterior,
+  operatorEstadoAnterior,
+  operatorOnChangeEstadoAnterior,
+  /* ESTADO NUEVO */ criteriaEstadoNuevo,
+  criteriaOnChangeEstadoNuevo,
+  operatorEstadoNuevo,
+  operatorOnChangeEstadoNuevo,
   /* CREATED BY */ criteriaCreatedBy,
   criteriaOnChangeCreatedBy,
   operatorCreatedBy,
@@ -51,17 +55,24 @@ const urbanismoFlujoRequisitosColumnsFilter = function (
     },
     {
       type: enumFilterType.TEXTBOX,
-      criteriaValue: criteriaRequisitos,
-      criteriaOnchange: criteriaOnChangeRequisitos,
-      operatorValue: operatorRequisitos,
-      operatorOnchange: operatorOnChangeRequisitos
+      criteriaValue: criteriaUsername,
+      criteriaOnchange: criteriaOnChangeUsername,
+      operatorValue: operatorUsername,
+      operatorOnchange: operatorOnChangeUsername
     },
     {
       type: enumFilterType.TEXTBOX,
-      criteriaValue: criteriaEstados,
-      criteriaOnchange: criteriaOnChangeEstados,
-      operatorValue: operatorEstados,
-      operatorOnchange: operatorOnChangeEstados
+      criteriaValue: criteriaEstadoAnterior,
+      criteriaOnchange: criteriaOnChangeEstadoAnterior,
+      operatorValue: operatorEstadoAnterior,
+      operatorOnchange: operatorOnChangeEstadoAnterior
+    },
+    {
+      type: enumFilterType.TEXTBOX,
+      criteriaValue: criteriaEstadoNuevo,
+      criteriaOnchange: criteriaOnChangeEstadoNuevo,
+      operatorValue: operatorEstadoNuevo,
+      operatorOnchange: operatorOnChangeEstadoNuevo
     },
     {
       type: enumFilterType.TEXTBOX,
@@ -96,4 +107,4 @@ const urbanismoFlujoRequisitosColumnsFilter = function (
   return arrayColumnsFilter;
 };
 
-export default urbanismoFlujoRequisitosColumnsFilter;
+export default urbanismoHistorialColumnsFilter;

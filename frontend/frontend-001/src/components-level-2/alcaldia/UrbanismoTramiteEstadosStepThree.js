@@ -5,6 +5,7 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import CommonLoading from "../../components-level-1/CommonLoading";
 import i18n from "../../i18n/i18n";
+import enumPaths from "../../models/enumPaths";
 import useInput from "../../hooks/useInput";
 import {
   handleAddRequest,
@@ -74,8 +75,12 @@ function UrbanismoTramiteForm () {
   const handleAfterAdd = function (newEntityId) {
     handleReset();
     const body = getBody();
-    handleValidation(body, setClassNameFormText);
-    setIsRequestInProgress(false);
+    history.push({
+      pathname: enumPaths.URBANISMO_FLUJO_REQUISITOS_STEP_TWO,
+      state: {
+        data: { ...body, id: newEntityId, updatedBy: "" }
+      }
+    });
   };
 
   const handleAfterEdit = function () {
@@ -144,9 +149,6 @@ function UrbanismoTramiteForm () {
                 type="text"
                 placeholder={i18n.urbanismoTramiteEstadosForm.fieldTramite}
               />
-              <Form.Text muted className={classNameFormText.nombre}>
-                {i18n.urbanismoTramiteEstadosForm.fieldNombreText}
-              </Form.Text>
             </Form.Group>
             <Form.Group className="mb-3" controlId="estado">
               <Form.Label>{i18n.urbanismoTramiteEstadosForm.fieldEstado}</Form.Label>
@@ -157,9 +159,6 @@ function UrbanismoTramiteForm () {
                 type="text"
                 placeholder={i18n.urbanismoTramiteEstadosForm.fieldEstado}
               />
-              <Form.Text muted className={classNameFormText.nombre}>
-                {i18n.urbanismoTramiteEstadosForm.fieldNombreText}
-              </Form.Text>
             </Form.Group>
             <Form.Group className="mb-3" controlId="nombre">
               <Form.Label>{i18n.urbanismoTramiteEstadosForm.fieldNombre}</Form.Label>
@@ -169,7 +168,7 @@ function UrbanismoTramiteForm () {
                 type="text"
                 placeholder={i18n.urbanismoTramiteEstadosForm.fieldNombre}
               />
-              <Form.Text muted className={classNameFormText.nombre}>
+              <Form.Text muted className={classNameFormText.nombreCliente}>
                 {i18n.urbanismoTramiteEstadosForm.fieldNombreText}
               </Form.Text>
             </Form.Group>
@@ -181,8 +180,8 @@ function UrbanismoTramiteForm () {
                 type="text"
                 placeholder={i18n.urbanismoTramiteEstadosForm.fieldCi}
               />
-              <Form.Text muted className={classNameFormText.nombre}>
-                {i18n.urbanismoTramiteEstadosForm.fieldNombreText}
+              <Form.Text muted className={classNameFormText.ciCliente}>
+                {i18n.urbanismoTramiteEstadosForm.fieldCiText}
               </Form.Text>
             </Form.Group>
             <Button onClick={handleAdd} variant="primary" type="button">

@@ -5,6 +5,7 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import CommonLoading from "../../components-level-1/CommonLoading";
 import i18n from "../../i18n/i18n";
+import enumPaths from "../../models/enumPaths";
 import useInput from "../../hooks/useInput";
 import {
   handleAddRequest,
@@ -13,11 +14,11 @@ import {
 import {
   handleValidation,
   classNameFormTextNew
-} from "../../validations/alcaldia/HandleUrbanismoTramiteEstadosFormValidations";
+} from "../../validations/alcaldia/HandleUrbanismoHistorialEstadoFormValidations";
 import CommonMessage from "../../components-level-1/CommonMessage";
 import "./../css/all-forms.css";
 
-function UrbanismoTramiteForm () {
+function UrbanismoHistorialEstadoStepThree () {
   const history = useHistory();
   const [isEdit, setIsEdit] = useState(false);
   const [classNameFormText, setClassNameFormText] =
@@ -33,14 +34,14 @@ function UrbanismoTramiteForm () {
     history && history.location && history.location.state.data;
 
   const id = selectedFlujo ? selectedFlujo.id : "";
-  const nombreCliente = selectedFlujo ? selectedFlujo.nombreCliente : "";
+  const username = selectedFlujo ? selectedFlujo.username : "";
 
   // Use custom hook
   const {
     value: valueNombre,
     onChange: onChangeNombre,
     reset: resetNombre
-  } = useInput(nombreCliente);
+  } = useInput(username);
 
   const handleReset = () => {
     resetNombre();
@@ -51,9 +52,10 @@ function UrbanismoTramiteForm () {
       const username = window.sessionStorage.getItem("username");
       const tenant = window.sessionStorage.getItem("tenant");
       const body = {
-        tramiteNombreCorto: selectedTramite.nombreCorto,
-        estadoNombreCorto: selectedEstado.nombreCorto,
-        nombreCliente: valueNombre,
+        idTramiteFlujo: selectedTramite.id,
+        username: valueNombre,
+        estadoAnterior: selectedTramite.estadoNombreCorto,
+        estadoNuevo: selectedEstado.nombreCorto,
         tenant,
         createdBy: username,
         updatedBy: username
@@ -64,10 +66,12 @@ function UrbanismoTramiteForm () {
   );
 
   const handleAfterAdd = function (newEntityId) {
-    handleReset();
-    const body = getBody();
-    handleValidation(body, setClassNameFormText);
-    setIsRequestInProgress(false);
+    history.push({
+      pathname: enumPaths.URBANISMO_FLUJO_HISTORIAL_STEP_TWO,
+      state: {
+        data: selectedTramite
+      }
+    });
   };
 
   const handleAfterEdit = function () {
@@ -86,14 +90,14 @@ function UrbanismoTramiteForm () {
       setIsRequestInProgress(true);
       if (isEdit) {
         handleEditRequest(
-          "urbanismo-tramite-flujo/",
+          "urbanismo-historial/",
           body,
           id,
           handleAfterEdit
         );
       } else {
         handleAddRequest(
-          "urbanismo-tramite-flujo/",
+          "urbanismo-historial/",
           body,
           handleAfterAdd
         );
@@ -124,45 +128,39 @@ function UrbanismoTramiteForm () {
         variant="danger"
       />
       <Card>
-        <Card.Header as="h3">{i18n.urbanismoTramiteEstadosForm.title}</Card.Header>
+        <Card.Header as="h3">{i18n.urbanismoHistorialEstadoForm.title}</Card.Header>
         <Card.Body>
           <Form>
             <Form.Group className="mb-3" controlId="tramite">
-              <Form.Label>{i18n.urbanismoTramiteEstadosForm.fieldTramite}</Form.Label>
+              <Form.Label>{i18n.urbanismoHistorialEstadoForm.fieldTramite}</Form.Label>
               <Form.Control
                 disabled
                 onChange={() => {}}
-                value={selectedTramite.nombre}
+                value={selectedTramite.tramiteNombreCorto}
                 type="text"
-                placeholder={i18n.urbanismoTramiteEstadosForm.fieldTramite}
+                placeholder={i18n.urbanismoHistorialEstadoForm.fieldTramite}
               />
-              <Form.Text muted className={classNameFormText.nombre}>
-                {i18n.urbanismoTramiteEstadosForm.fieldNombreText}
-              </Form.Text>
             </Form.Group>
             <Form.Group className="mb-3" controlId="estado">
-              <Form.Label>{i18n.urbanismoTramiteEstadosForm.fieldEstado}</Form.Label>
+              <Form.Label>{i18n.urbanismoHistorialEstadoForm.fieldEstado}</Form.Label>
               <Form.Control
                 disabled
                 onChange={() => {}}
                 value={selectedEstado.nombre}
                 type="text"
-                placeholder={i18n.urbanismoTramiteEstadosForm.fieldEstado}
+                placeholder={i18n.urbanismoHistorialEstadoForm.fieldEstado}
               />
-              <Form.Text muted className={classNameFormText.nombre}>
-                {i18n.urbanismoTramiteEstadosForm.fieldNombreText}
-              </Form.Text>
             </Form.Group>
             <Form.Group className="mb-3" controlId="nombre">
-              <Form.Label>{i18n.urbanismoTramiteEstadosForm.fieldNombre}</Form.Label>
+              <Form.Label>{i18n.urbanismoHistorialEstadoForm.fieldNombre}</Form.Label>
               <Form.Control
                 onChange={onChangeNombre}
                 value={valueNombre}
                 type="text"
-                placeholder={i18n.urbanismoTramiteEstadosForm.fieldNombre}
+                placeholder={i18n.urbanismoHistorialEstadoForm.fieldNombre}
               />
-              <Form.Text muted className={classNameFormText.nombreCliente}>
-                {i18n.urbanismoTramiteEstadosForm.fieldNombreText}
+              <Form.Text muted className={classNameFormText.username}>
+                {i18n.urbanismoHistorialEstadoForm.fieldNombreText}
               </Form.Text>
             </Form.Group>
             <Button onClick={handleAdd} variant="primary" type="button">
@@ -175,4 +173,4 @@ function UrbanismoTramiteForm () {
   );
 }
 
-export default UrbanismoTramiteForm;
+export default UrbanismoHistorialEstadoStepThree;

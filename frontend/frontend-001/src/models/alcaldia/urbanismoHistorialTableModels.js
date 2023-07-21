@@ -1,10 +1,10 @@
 import enumCompareOperators from "../enumCompareOperators";
 import enumTableColumnsToShow from "../enumTableColumnsToShow";
-import arrayDataFieldsImport from "./urbanismoFlujoRequisitosDataFields";
-import arrayColumnsLabelsImport from "./urbanismoFlujoRequisitosColumnsLabels";
-import urbanismoFlujoRequisitosColumnsFilter from "./urbanismoFlujoRequisitosColumnsFilter";
+import arrayDataFieldsImport from "./urbanismoHistorialDataFields";
+import arrayColumnsLabelsImport from "./urbanismoHistorialColumnsLabels";
+import urbanismoHistorialColumnsFilter from "./urbanismoHistorialColumnsFilter";
 
-const urbanismoTramiteEstadosTableModels = function (
+const urbanismoHistorialTableModels = function (
   tableColumnsToShow,
   /* ID */ criteriaId,
   criteriaOnChangeId,
@@ -18,24 +18,23 @@ const urbanismoTramiteEstadosTableModels = function (
   operatorIdFlujo,
   operatorOnChangeIdFlujo,
   operatorSetIdFlujo,
-  /* REQUISITOS */criteriaRequisitos,
-  criteriaOnChangeRequisitos,
-  criteriaSetRequisitos,
-  operatorRequisitos,
-  operatorOnChangeRequisitos,
-  operatorSetRequisitos,
-  /* ESTADOS */ criteriaEstados,
-  criteriaOnChangeEstados,
-  criteriaSetEstados,
-  operatorEstados,
-  operatorOnChangeEstados,
-  operatorSetEstados,
-  /* ARCHIVO */ criteriaArchivo,
-  criteriaOnChangeArchivo,
-  criteriaSetArchivo,
-  operatorArchivo,
-  operatorOnChangeArchivo,
-  operatorSetArchivo,
+  /* USERNAME */criteriaUsername,
+  criteriaOnChangeUsername,
+  criteriaSetUsername,
+  operatorUsername,
+  operatorOnChangeUsername,
+  operatorSetUsername,
+  /* ESTADO ANTERIOR */criteriaEstadoAnterior,
+  criteriaOnChangeEstadoAnterior,
+  criteriaSetEstadoAnterior,
+  operatorEstadoAnterior,
+  operatorOnChangeEstadoAnterior,
+  operatorSetEstadoAnterior,
+  /* ESTADO NUEVO */ criteriaEstadoNuevo,
+  criteriaOnChangeEstadoNuevo,
+  criteriaSetEstadoNuevo, operatorEstadoNuevo,
+  operatorOnChangeEstadoNuevo,
+  operatorSetEstadoNuevo,
   /* CREATED BY */ criteriaCreatedBy,
   criteriaOnChangeCreatedBy,
   criteriaSetCreatedBy,
@@ -63,7 +62,7 @@ const urbanismoTramiteEstadosTableModels = function (
 ) {
   let arrayDataFields = arrayDataFieldsImport;
   let arrayColumnsLabels = arrayColumnsLabelsImport;
-  let arrayColumnsFilter = urbanismoFlujoRequisitosColumnsFilter(
+  let arrayColumnsFilter = urbanismoHistorialColumnsFilter(
     /* ID */ criteriaId,
     criteriaOnChangeId,
     operatorId,
@@ -72,14 +71,18 @@ const urbanismoTramiteEstadosTableModels = function (
     criteriaOnChangeIdFlujo,
     operatorIdFlujo,
     operatorOnChangeIdFlujo,
-    /* REQUISITOS */ criteriaRequisitos,
-    criteriaOnChangeRequisitos,
-    operatorRequisitos,
-    operatorOnChangeRequisitos,
-    /* ESTADO */ criteriaEstados,
-    criteriaOnChangeEstados,
-    operatorEstados,
-    operatorOnChangeEstados,
+    /* USERNAME */ criteriaUsername,
+    criteriaOnChangeUsername,
+    operatorUsername,
+    operatorOnChangeUsername,
+    /* ESTADO ANTERIOR */ criteriaEstadoAnterior,
+    criteriaOnChangeEstadoAnterior,
+    operatorEstadoAnterior,
+    operatorOnChangeEstadoAnterior,
+    /* ESTADO NUEVO */ criteriaEstadoNuevo,
+    criteriaOnChangeEstadoNuevo,
+    operatorEstadoNuevo,
+    operatorOnChangeEstadoNuevo,
     /* CREATED BY */ criteriaCreatedBy,
     criteriaOnChangeCreatedBy,
     operatorCreatedBy,
@@ -101,8 +104,9 @@ const urbanismoTramiteEstadosTableModels = function (
   const setOperatorsDefaultValues = function () {
     operatorSetId(enumCompareOperators.NUMBER_EQUALS);
     operatorSetIdFlujo(enumCompareOperators.TEXT_CONTAINS);
-    operatorSetEstados(enumCompareOperators.TEXT_CONTAINS);
-    operatorSetRequisitos(enumCompareOperators.TEXT_CONTAINS);
+    operatorSetEstadoAnterior(enumCompareOperators.TEXT_CONTAINS);
+    operatorSetEstadoNuevo(enumCompareOperators.TEXT_CONTAINS);
+    operatorSetUsername(enumCompareOperators.TEXT_CONTAINS);
     operatorSetCreatedBy(enumCompareOperators.TEXT_CONTAINS);
     operatorSetUpdatedBy(enumCompareOperators.TEXT_CONTAINS);
     operatorSetCreatedDate(enumCompareOperators.DATE_EQUALS);
@@ -112,8 +116,9 @@ const urbanismoTramiteEstadosTableModels = function (
   const clearFilters = function () {
     criteriaSetId("");
     criteriaSetIdFlujo("");
-    criteriaSetEstados("");
-    criteriaSetRequisitos("");
+    criteriaSetEstadoAnterior("");
+    criteriaSetEstadoNuevo("");
+    criteriaSetUsername("");
     criteriaSetCreatedBy("");
     criteriaSetUpdatedBy("");
     criteriaSetCreatedDate("");
@@ -125,15 +130,12 @@ const urbanismoTramiteEstadosTableModels = function (
   const isMinimum = tableColumnsToShow === enumTableColumnsToShow.MINIMUM;
 
   if (isMedium) {
-    arrayColumnsFilter = arrayColumnsFilter.slice(
-      0,
-      arrayColumnsFilter.length - 4
-    );
-    arrayColumnsLabels = arrayColumnsLabels.slice(
-      0,
-      arrayColumnsLabels.length - 5
-    );
-    arrayDataFields = arrayDataFields.slice(0, arrayDataFields.length - 5);
+    arrayColumnsFilter = arrayColumnsFilter.slice(0, arrayColumnsFilter.length - 4);
+    arrayColumnsFilter.splice(3, 1);
+    arrayColumnsLabels = arrayColumnsLabels.slice(0, arrayColumnsLabels.length - 4);
+    arrayColumnsLabels.splice(3, 1);
+    arrayDataFields = arrayDataFields.slice(0, arrayDataFields.length - 4);
+    arrayDataFields.splice(3, 1);
   } else if (isMinimum) {
     arrayColumnsFilter = arrayColumnsFilter.slice(
       1,
@@ -141,9 +143,9 @@ const urbanismoTramiteEstadosTableModels = function (
     );
     arrayColumnsLabels = arrayColumnsLabels.slice(
       1,
-      arrayColumnsLabels.length - 5
+      arrayColumnsLabels.length - 4
     );
-    arrayDataFields = arrayDataFields.slice(1, arrayDataFields.length - 5);
+    arrayDataFields = arrayDataFields.slice(1, arrayDataFields.length - 4);
   }
 
   const getFilterBody = () => {
@@ -152,10 +154,12 @@ const urbanismoTramiteEstadosTableModels = function (
       idOperator: operatorId,
       idTramiteFlujoCriteria: criteriaIdFlujo,
       idTramiteFlujoOperator: operatorIdFlujo,
-      requisitoNombreCortoCriteria: criteriaRequisitos,
-      requisitoNombreCortoOperator: operatorRequisitos,
-      estadoCriteria: criteriaEstados,
-      estadoOperator: operatorEstados,
+      usernameCriteria: criteriaUsername,
+      usernameOperator: operatorUsername,
+      estadoAnteriorCriteria: criteriaEstadoAnterior,
+      estadoAnteriorOperator: operatorEstadoAnterior,
+      estadoNuevoCriteria: criteriaEstadoNuevo,
+      estadoNuevoOperator: operatorEstadoNuevo,
       createdByCriteria: criteriaCreatedBy,
       createdByOperator: operatorCreatedBy,
       updatedByCriteria: criteriaUpdatedBy,
@@ -178,4 +182,4 @@ const urbanismoTramiteEstadosTableModels = function (
   };
 };
 
-export default urbanismoTramiteEstadosTableModels;
+export default urbanismoHistorialTableModels;

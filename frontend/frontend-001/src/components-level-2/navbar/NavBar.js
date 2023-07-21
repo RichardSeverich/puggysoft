@@ -330,6 +330,12 @@ function NavBar () {
   const navigateUrbanismoFlujoRequisitosStepOne = () => {
     history.push(enumPaths.URBANISMO_FLUJO_REQUISITOS_STEP_ONE);
   };
+  const navigateUrbanismoFlujoHistorialStepOne = () => {
+    history.push(enumPaths.URBANISMO_FLUJO_HISTORIAL_STEP_ONE);
+  };
+  const navigateUrbanismoHistorialEstadoStepOne = () => {
+    history.push(enumPaths.URBANISMO_HISTORIAL_ESTADO_STEP_ONE);
+  };
   const NavbarBackground = "dark"; // dark, light, primary
   const NavbarVariant = "dark puggysoft-navbar"; // dark, light
 
@@ -564,6 +570,8 @@ function NavBar () {
   const urbanismoTramiteEstadosStepOneLabel = (<><GrAddCircle /> {i18n.navBar.urbanismoTramiteEstadosStepOne}</>);
   const urbanismoTramiteEstadosTableLabel = (<><AiOutlineTable /> {i18n.navBar.urbanismoTramiteEstadosTable}</>);
   const urbanismoFlujoRequisitosStepOneLabel = (<><GrAddCircle /> {i18n.navBar.urbanismoFlujoRequisitosStepOne}</>);
+  const urbanismoFlujoHistorialStepOneLabel = (<><GrAddCircle /> {i18n.navBar.urbanismoFlujoHistorialStepOne}</>);
+  const urbanismoHistorialEstadoStepOneLabel = (<><GrAddCircle /> {i18n.navBar.urbanismoHistorialEstadoStepOne}</>);
 
   // ******* ******* ******* ALL SYSTEMS ******* ******* *******
   // CONFIG
@@ -791,6 +799,8 @@ function NavBar () {
               <NavDropdown.Item onClick={navigateUrbanismoTramiteEstadosStepOne}>{urbanismoTramiteEstadosStepOneLabel}</NavDropdown.Item>
               <NavDropdown.Item onClick={navigateUrbanismoTramiteEstadosTable}>{urbanismoTramiteEstadosTableLabel}</NavDropdown.Item>
               <NavDropdown.Item onClick={navigateUrbanismoFlujoRequisitosStepOne}>{urbanismoFlujoRequisitosStepOneLabel}</NavDropdown.Item>
+              <NavDropdown.Item onClick={navigateUrbanismoHistorialEstadoStepOne}>{urbanismoHistorialEstadoStepOneLabel}</NavDropdown.Item>
+              <NavDropdown.Item onClick={navigateUrbanismoFlujoHistorialStepOne}>{urbanismoFlujoHistorialStepOneLabel}</NavDropdown.Item>
             </NavDropdown>}
           {userRoles.includes(enumRoles.REGULARIZACION_LOTES_ENCARGADO) &&
             <NavDropdown title={regulaLotesAdminLabel}>

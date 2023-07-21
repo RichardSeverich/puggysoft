@@ -2,6 +2,7 @@ const classNameRed = "puggysoft-red-text";
 
 const classNameFormTextNew = {
   nombreCliente: classNameRed,
+  ciCliente: classNameRed,
   tenant: classNameRed
 };
 
@@ -12,6 +13,12 @@ const handleValidation = (data, setClassNameFormText) => {
     classNameFormTextNew.nombreCliente = classNameRed;
   } else {
     classNameFormTextNew.nombreCliente = "";
+  }
+  if (!(data.ciCliente.length >= 7 && data.ciCliente.length <= 11)) {
+    isValid = false;
+    classNameFormTextNew.ciCliente = classNameRed;
+  } else {
+    classNameFormTextNew.ciCliente = "";
   }
   setClassNameFormText({ ...classNameFormTextNew });
   return isValid;

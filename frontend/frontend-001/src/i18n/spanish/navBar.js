@@ -203,7 +203,9 @@ const navBar = {
   urbanismoTramiteEstadosAdmin: "Adm. Flujo",
   urbanismoTramiteEstadosStepOne: "Crear Flujo",
   urbanismoTramiteEstadosTable: "Mostrar Flujo",
-  urbanismoFlujoRequisitosStepOne: "Flujo Requisitos"
+  urbanismoFlujoRequisitosStepOne: "Flujo Requisitos",
+  urbanismoHistorialEstadoStepOne: "Crear Historial",
+  urbanismoFlujoHistorialStepOne: "Flujo Historial"
 };
 
 export default navBar;

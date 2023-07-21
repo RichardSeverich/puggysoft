@@ -1,5 +1,5 @@
-const urbanismoTramiteForm = {
-  title: "Flujo de tramite",
+const urbanismoHistorialEstadoForm = {
+  title: "Registrar historial",
   fieldNombre: "Nombre",
   fieldTramite: "Tramite",
   fieldEstado: "Estado",
@@ -8,4 +8,4 @@ const urbanismoTramiteForm = {
   fieldCiText: "Minimo 7, maximo 11 caracteres"
 };
 
-export default urbanismoTramiteForm;
+export default urbanismoHistorialEstadoForm;

@@ -4,9 +4,9 @@ import TableFilterGeneric from "../../generic/TableFilterGeneric";
 import useInput from "../../../hooks/useInput";
 import enumCompareOperators from "../../../models/enumCompareOperators";
 import enumTableColumnsToShow from "../../../models/enumTableColumnsToShow";
-import urbanismoEstadosTableModels from "../../../models/alcaldia/urbanismoEstadosTableModels";
+import urbanismoHistorialTableModels from "../../../models/alcaldia/urbanismoHistorialTableModels";
 
-function UrbanismoEstadosGenericTable (props) {
+function UrbanismoHistorialGenericTable (props) {
   const {
     numberPagesToShow,
     tableTitle,
@@ -14,14 +14,15 @@ function UrbanismoEstadosGenericTable (props) {
     handleGetData,
     handleGetSize,
     tableArrayCustomRowButtons,
-    columnsToShow,
-    fixArrayData
+    columnsToShow
   } = props;
 
   // CRITERIA OF SEARCH OR FILTER
   const { value: criteriaId, onChange: criteriaOnChangeId, setValue: criteriaSetId } = useInput("");
-  const { value: criteriaNombre, onChange: criteriaOnChangeNombre, setValue: criteriaSetNombre } = useInput("");
-  const { value: criteriaNombreCorto, onChange: criteriaOnChangeNombreCorto, setValue: criteriaSetNombreCorto } = useInput("");
+  const { value: criteriaIdFlujo, onChange: criteriaOnChangeIdFlujo, setValue: criteriaSetIdFlujo } = useInput("");
+  const { value: criteriaUsername, onChange: criteriaOnChangeUsername, setValue: criteriaSetUsername } = useInput("");
+  const { value: criteriaEstadoAnterior, onChange: criteriaOnChangeEstadoAnterior, setValue: criteriaSetEstadoAnterior } = useInput("");
+  const { value: criteriaEstadoNuevo, onChange: criteriaOnChangeEstadoNuevo, setValue: criteriaSetEstadoNuevo } = useInput("");
   const { value: criteriaCreatedBy, onChange: criteriaOnChangeCreatedBy, setValue: criteriaSetCreatedBy } = useInput("");
   const { value: criteriaUpdatedBy, onChange: criteriaOnChangeUpdatedBy, setValue: criteriaSetUpdatedBy } = useInput("");
   const { value: criteriaCreatedDate, onChange: criteriaOnChangeCreatedDate, setValue: criteriaSetCreatedDate } = useInput("");
@@ -29,18 +30,22 @@ function UrbanismoEstadosGenericTable (props) {
 
   // FILTER OPERATORS
   const { value: operatorId, onChange: operatorOnChangeId, setValue: operatorSetId } = useInput(enumCompareOperators.TEXT_CONTAINS);
-  const { value: operatorNombre, onChange: operatorOnChangeNombre, setValue: operatorSetNombre } = useInput(enumCompareOperators.TEXT_CONTAINS);
-  const { value: operatorNombreCorto, onChange: operatorOnChangeNombreCorto, setValue: operatorSetNombreCorto } = useInput(enumCompareOperators.NUMBER_EQUALS);
+  const { value: operatorIdFlujo, onChange: operatorOnChangeIdFlujo, setValue: operatorSetIdFlujo } = useInput(enumCompareOperators.TEXT_CONTAINS);
+  const { value: operatorUsername, onChange: operatorOnChangeUsername, setValue: operatorSetUsername } = useInput(enumCompareOperators.TEXT_CONTAINS);
+  const { value: operatorEstadoAnterior, onChange: operatorOnChangeEstadoAnterior, setValue: operatorSetEstadoAnterior } = useInput(enumCompareOperators.TEXT_CONTAINS);
+  const { value: operatorEstadoNuevo, onChange: operatorOnChangeEstadoNuevo, setValue: operatorSetEstadoNuevo } = useInput(enumCompareOperators.TEXT_CONTAINS);
   const { value: operatorCreatedBy, onChange: operatorOnChangeCreatedBy, setValue: operatorSetCreatedBy } = useInput(enumCompareOperators.TEXT_CONTAINS);
   const { value: operatorUpdatedBy, onChange: operatorOnChangeUpdatedBy, setValue: operatorSetUpdatedBy } = useInput(enumCompareOperators.TEXT_CONTAINS);
   const { value: operatorCreatedDate, onChange: operatorOnChangeCreatedDate, setValue: operatorSetCreatedDate } = useInput(enumCompareOperators.DATE_EQUALS);
   const { value: operatorUpdatedDate, onChange: operatorOnChangeUpdatedDate, setValue: operatorSetUpdatedDate } = useInput(enumCompareOperators.DATE_EQUALS);
 
-  const { arrayColumnsFilter, clearFilters, getFilterBody, arrayColumnsLabels, arrayDataFields } = urbanismoEstadosTableModels(
+  const { arrayColumnsFilter, clearFilters, getFilterBody, arrayColumnsLabels, arrayDataFields } = urbanismoHistorialTableModels(
     columnsToShow,
     /* ID */ criteriaId, criteriaOnChangeId, criteriaSetId, operatorId, operatorOnChangeId, operatorSetId,
-    /* NOMBRE */ criteriaNombre, criteriaOnChangeNombre, criteriaSetNombre, operatorNombre, operatorOnChangeNombre, operatorSetNombre,
-    /* NOMBRE CORTO */criteriaNombreCorto, criteriaOnChangeNombreCorto, criteriaSetNombreCorto, operatorNombreCorto, operatorOnChangeNombreCorto, operatorSetNombreCorto,
+    /* IDFLUJO */ criteriaIdFlujo, criteriaOnChangeIdFlujo, criteriaSetIdFlujo, operatorIdFlujo, operatorOnChangeIdFlujo, operatorSetIdFlujo,
+    /* USERNAME */criteriaUsername, criteriaOnChangeUsername, criteriaSetUsername, operatorUsername, operatorOnChangeUsername, operatorSetUsername,
+    /* ESTADO ANTERIOR */criteriaEstadoAnterior, criteriaOnChangeEstadoAnterior, criteriaSetEstadoAnterior, operatorEstadoAnterior, operatorOnChangeEstadoAnterior, operatorSetEstadoAnterior,
+    /* ESTADO NUEVO */ criteriaEstadoNuevo, criteriaOnChangeEstadoNuevo, criteriaSetEstadoNuevo, operatorEstadoNuevo, operatorOnChangeEstadoNuevo, operatorSetEstadoNuevo,
     /* CREATED BY */criteriaCreatedBy, criteriaOnChangeCreatedBy, criteriaSetCreatedBy, operatorCreatedBy, operatorOnChangeCreatedBy, operatorSetCreatedBy,
     /* UPDATED BY */criteriaUpdatedBy, criteriaOnChangeUpdatedBy, criteriaSetUpdatedBy, operatorUpdatedBy, operatorOnChangeUpdatedBy, operatorSetUpdatedBy,
     /* CREATED DATE */criteriaCreatedDate, criteriaOnChangeCreatedDate, criteriaSetCreatedDate, operatorCreatedDate, operatorOnChangeCreatedDate, operatorSetCreatedDate,
@@ -60,15 +65,14 @@ function UrbanismoEstadosGenericTable (props) {
       arrayColumnsFilter={arrayColumnsFilter}
       clearFilters={clearFilters}
       getFilterBody={getFilterBody}
-      fixArrayData={fixArrayData}
     >
     </TableFilterGeneric>
   );
 }
 
-export default UrbanismoEstadosGenericTable;
+export default UrbanismoHistorialGenericTable;
 
-UrbanismoEstadosGenericTable.propTypes = {
+UrbanismoHistorialGenericTable.propTypes = {
   numberPagesToShow: PropTypes.number,
   tableTitle: PropTypes.string,
   tableSubTitle: PropTypes.string,
@@ -79,17 +83,15 @@ UrbanismoEstadosGenericTable.propTypes = {
     enumTableColumnsToShow.FULL,
     enumTableColumnsToShow.MEDIUM,
     enumTableColumnsToShow.MINIMUM
-  ]),
-  fixArrayData: PropTypes.func
+  ])
 };
 
-UrbanismoEstadosGenericTable.defaultProps = {
+UrbanismoHistorialGenericTable.defaultProps = {
   numberPagesToShow: 0,
   tableTitle: "",
   tableSubTitle: undefined,
   handleGetData: () => { },
   handleGetSize: () => { },
   tableArrayCustomRowButtons: [],
-  columnsToShow: enumTableColumnsToShow.FULL,
-  fixArrayData: undefined
+  columnsToShow: enumTableColumnsToShow.FULL
 };

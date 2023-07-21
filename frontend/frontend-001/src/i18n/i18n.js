@@ -80,6 +80,8 @@ import urbanismoTramiteEstadosForm from "./spanish/alcaldia/urbanismoTramiteEsta
 import urbanismoFlujoRequisitosTable from "./spanish/alcaldia/urbanismoFlujoRequisitosTable";
 import urbanismoTramiteRequisitosTable from "./spanish/alcaldia/urbanismoTramiteRequisitosTable";
 import urbanismoTramiteEstadosTable from "./spanish/alcaldia/urbanismoTramiteEstadosTable";
+import urbanismoHistorialTable from "./spanish/alcaldia/urbanismoHistorialTable";
+import urbanismoHistorialEstadoForm from "./spanish/alcaldia/urbanismoHistorialEstadoForm";
 
 const i18n = {
   // Common
@@ -163,7 +165,9 @@ const i18n = {
   urbanismoFlujoRequisitosTable,
   urbanismoTramiteRequisitosTable,
   urbanismoTramiteEstadosTable,
-  urbanismoEstadosTable
+  urbanismoEstadosTable,
+  urbanismoHistorialEstadoForm,
+  urbanismoHistorialTable
 };
 
 export default i18n;
