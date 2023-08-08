@@ -305,6 +305,9 @@ function NavBar () {
   const navigateRegulaLotesForm = () => {
     history.push(enumPaths.REGULA_LOTES_FORM);
   };
+  const navigateRegulaLotesFormCliente = () => {
+    history.push(enumPaths.REGULA_LOTES_FORM_CLIENTE);
+  };
   const navigateRegulaLotesTable = () => {
     history.push(enumPaths.REGULA_LOTES_TABLE);
   };
@@ -556,6 +559,8 @@ function NavBar () {
   // REGULARIZACION LOTES
   const regulaLotesAdminLabel = (<><IoNewspaperSharp /> {i18n.navBar.regulaLotesAdmin}</>);
   const regulaLotesFormLabel = (<><GrAddCircle /> {i18n.navBar.regulaLotesForm}</>);
+  const regulaLotesFormClienteLabel = (<><GrAddCircle /> {i18n.navBar.regulaLotesFormCliente}</>);
+  const regulaLotesClienteAdminLabel = (<><FaCashRegister /> {i18n.navBar.regulaLotesAdmin}</>);
   const regulaLotesTableLabel = (<><AiOutlineTable /> {i18n.navBar.regulaLotesTable}</>);
   // URBANISMO REQUISITOS
   const urbanismoRequisitosAdminLabel = (<><BsClipboardCheckFill /> {i18n.navBar.urbanismoRequisitosAdmin}</>);
@@ -817,6 +822,10 @@ function NavBar () {
             <NavDropdown title={regulaLotesAdminLabel}>
               <NavDropdown.Item onClick={navigateRegulaLotesForm}>{regulaLotesFormLabel}</NavDropdown.Item>
               <NavDropdown.Item onClick={navigateRegulaLotesTable}>{regulaLotesTableLabel}</NavDropdown.Item>
+            </NavDropdown>}
+          {userRoles.includes(enumRoles.REGULARIZACION_LOTES_ENCARGADO) &&
+            <NavDropdown title={regulaLotesClienteAdminLabel}>
+              <NavDropdown.Item onClick={navigateRegulaLotesFormCliente}>{regulaLotesFormClienteLabel}</NavDropdown.Item>
             </NavDropdown>}
         </Nav>
         {/* ******* ******* ******* ALL SYSTEM ******* ******* ********/}

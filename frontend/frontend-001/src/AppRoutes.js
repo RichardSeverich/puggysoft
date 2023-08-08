@@ -116,6 +116,8 @@ import AlcaldiaRecursosMunicipalesReporteAnualPage from "./components-level-3/al
 import UrbanismoTramiteFormPage from "./components-level-3/alcaldia/UrbanismoTramiteFormPage";
 import UrbanismoTramiteTablePage from "./components-level-3/alcaldia/UrbanismoTramiteTablePage";
 import RegulaLotesFormPage from "./components-level-3/alcaldia/RegulaLotesFormPage";
+import RegulaLotesFormClientePage from "./components-level-3/alcaldia/RegulaLotesFormClientePage";
+import RegulaLotesFormClienteStepTwoPage from "./components-level-3/alcaldia/RegulaLotesFormClienteStepTwoPage";
 import RegulaLotesTablePage from "./components-level-3/alcaldia/RegulaLotesTablePage";
 import UrbanismoRequisitosFormPage from "./components-level-3/alcaldia/UrbanismoRequisitosFormPage";
 import UrbanismoRequisitosTablePage from "./components-level-3/alcaldia/UrbanismoRequisitosTablePage";
@@ -248,6 +250,8 @@ const AppRoutes = () => (
       <Route exact path={enumPaths.URBANISMO_TRAMITE_FORM} component={UrbanismoTramiteFormPage} />
       <Route exact path={enumPaths.URBANISMO_TRAMITE_TABLE} component={UrbanismoTramiteTablePage} />
       <Route exact path={enumPaths.REGULA_LOTES_FORM} component={RegulaLotesFormPage} />
+      <Route exact path={enumPaths.REGULA_LOTES_FORM_CLIENTE} component={RegulaLotesFormClientePage} />
+      <Route exact path={enumPaths.REGULA_LOTES_FORM_CLIENTE_STEP_TWO} component={RegulaLotesFormClienteStepTwoPage} />
       <Route exact path={enumPaths.REGULA_LOTES_TABLE} component={RegulaLotesTablePage} />
       <Route exact path={enumPaths.URBANISMO_REQUISITOS_FORM} component={UrbanismoRequisitosFormPage} />
       <Route exact path={enumPaths.URBANISMO_REQUISITOS_TABLE} component={UrbanismoRequisitosTablePage} />

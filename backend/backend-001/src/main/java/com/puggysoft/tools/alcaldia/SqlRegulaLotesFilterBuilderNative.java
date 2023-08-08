@@ -22,9 +22,15 @@ public final class SqlRegulaLotesFilterBuilderNative {
     query = query + SqlFilterBuilder.getFilterQuery("alc_reg_lotes.ci_cliente",
         dtoRegulaLotesFilter.ciClienteCriteria,
         dtoRegulaLotesFilter.ciClienteOperator);
-    query = query + SqlFilterBuilder.getFilterQuery("alc_reg_lotes.codigo_catastral",
-        dtoRegulaLotesFilter.codigoCatastralCriteria,
-        dtoRegulaLotesFilter.codigoCatastralOperator);
+    query = query + SqlFilterBuilder.getFilterQuery("alc_reg_lotes.numero_inmueble",
+        dtoRegulaLotesFilter.numeroInmuebleCriteria,
+        dtoRegulaLotesFilter.numeroInmuebleOperator);
+    query = query + SqlFilterBuilder.getFilterQuery("alc_reg_lotes.comprobante_pago",
+        dtoRegulaLotesFilter.comprobantePagoCriteria,
+        dtoRegulaLotesFilter.comprobantePagoOperator);
+    query = query + SqlFilterBuilder.getFilterQuery("alc_reg_lotes.monto",
+        dtoRegulaLotesFilter.montoCriteria,
+        dtoRegulaLotesFilter.montoOperator);
     query = query + SqlFilterBuilder.getFilterQuery("alc_reg_lotes.tenant ",
         dtoRegulaLotesFilter.tenantCriteria,
         dtoRegulaLotesFilter.tenantOperator);

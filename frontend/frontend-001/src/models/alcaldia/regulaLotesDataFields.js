@@ -6,8 +6,7 @@ const arrayDataFields = [
   "createdBy",
   "updatedBy",
   "creationDate",
-  "updateDate",
-  "boletaPago"
+  "updateDate"
 ];
 
 export default arrayDataFields;

@@ -65,25 +65,6 @@ function RegulaLotesTableEditDelete () {
     }
   ];
 
-  const fixArray = (arrayData) => {
-    const newArray = [];
-    arrayData.forEach((item) => {
-      if (item.boletaPago) {
-        const fileUrlInitAux = `data:image/jpeg;base64, ${item.boletaPago}`;
-        item.boletaPago = (
-          <a
-            href={fileUrlInitAux}
-            download={"archivo.jpg"}
-          >
-            {i18n.commonTable.download}
-          </a>
-        );
-      }
-      newArray.push(item);
-    });
-    return newArray;
-  };
-
   return (
     <RegulaLotesGenericTable
       tableTitle={tableTitle}
@@ -92,7 +73,6 @@ function RegulaLotesTableEditDelete () {
       handleGetSize={handleGetSize}
       tableArrayCustomRowButtons={tableArrayCustomRowButtons}
       columnsToShow={enumTableColumnsToShow.FULL}
-      fixArrayData={fixArray}
     ></RegulaLotesGenericTable>
   );
 }

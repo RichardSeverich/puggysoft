@@ -16,9 +16,9 @@ public class DtoRegulaLotes extends DtoSuperClass {
   private String nombreCliente;
   @NotNull
   private String ciCliente;
+  private String numeroInmueble;
   @NotNull
-  private String codigoCatastral;
-  private byte[] boletaPago;
+  private String monto;
   @NotNull
   private String tenant;
 
@@ -29,8 +29,8 @@ public class DtoRegulaLotes extends DtoSuperClass {
     entity.setId(id);
     entity.setNombreCliente(nombreCliente);
     entity.setCiCliente(ciCliente);
-    entity.setCodigoCatastral(codigoCatastral);
-    entity.setBoletaPago(boletaPago);
+    entity.setNumeroInmueble(numeroInmueble);
+    entity.setMonto(monto);
     entity.setTenant(tenant);
     entity.setCreatedBy(createdBy);
     entity.setUpdatedBy(updatedBy);
@@ -44,8 +44,8 @@ public class DtoRegulaLotes extends DtoSuperClass {
     dto.setId(entity.getId());
     dto.setNombreCliente(entity.getNombreCliente());
     dto.setCiCliente(entity.getCiCliente());
-    dto.setCodigoCatastral(entity.getCodigoCatastral());
-    dto.setBoletaPago(entity.getBoletaPago());
+    dto.setNumeroInmueble(entity.getNumeroInmueble());
+    dto.setMonto(entity.getMonto());
     dto.setTenant(entity.getTenant());
     dto.setCreatedBy(entity.getCreatedBy());
     dto.setUpdatedBy(entity.getUpdatedBy());

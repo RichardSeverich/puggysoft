@@ -19,9 +19,15 @@ public class DtoRegulaLotesFilter {
   // CI CLIENTE
   public String ciClienteCriteria;
   public EnumCompareOperator ciClienteOperator;
-  // CODIGO CATASTRAL
-  public String codigoCatastralCriteria;
-  public EnumCompareOperator codigoCatastralOperator;
+  // NUMERO INMUEBLE
+  public String numeroInmuebleCriteria;
+  public EnumCompareOperator numeroInmuebleOperator;
+  // COMPROBANTE PAGO
+  public String comprobantePagoCriteria;
+  public EnumCompareOperator comprobantePagoOperator;
+  // MONTO
+  public String montoCriteria;
+  public EnumCompareOperator montoOperator;
   // TENANT
   public String tenantCriteria;
   public EnumCompareOperator tenantOperator;

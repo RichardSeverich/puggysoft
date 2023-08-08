@@ -8,13 +8,13 @@ import CommonLoading from "../../components-level-1/CommonLoading";
 import i18n from "../../i18n/i18n";
 import useInput from "../../hooks/useInput";
 import {
-  handleAddRequest,
+  handleFilterRequest,
   handleEditRequest
 } from "../../actions/HandleManager";
 import {
   handleValidation,
   classNameFormTextNew
-} from "../../validations/alcaldia/HandleRegulaLotesFormValidations";
+} from "../../validations/alcaldia/HandleRegulaLotesFormClienteStepTwoValidations";
 import CommonMessage from "../../components-level-1/CommonMessage";
 
 import "./../css/all-forms.css";
@@ -23,7 +23,7 @@ function RegulaLotesForm () {
   const history = useHistory();
   const isEditDefaultValue =
     history && history.location && history.location.state;
-  const [isEdit, setIsEdit] = useState(isEditDefaultValue);
+  const [isEdit] = useState(isEditDefaultValue);
   const [classNameFormText, setClassNameFormText] =
     useState(classNameFormTextNew);
   const [isRequestInProgress, setIsRequestInProgress] = useState(false);
@@ -43,45 +43,31 @@ function RegulaLotesForm () {
 
   // Put default values:
   const id = isEdit && isEdit.data.id !== null ? isEdit.data.id : "";
-  const nombreCliente = isEdit && isEdit.data.nombreCliente !== null ? isEdit.data.nombreCliente : "";
   const ciCliente =
     isEdit && isEdit.data.ciCliente !== null ? isEdit.data.ciCliente : "";
-  const monto =
-    isEdit && isEdit.data.monto !== null ? isEdit.data.monto : "";
+  const numeroInmueble =
+    isEdit && isEdit.data.numeroInmueble !== null ? isEdit.data.numeroInmueble : "";
 
   // Use custom hook
   const {
-    value: valueNombreCliente,
-    onChange: onChangeNombreCliente,
-    reset: resetNombreCliente
-  } = useInput(nombreCliente);
+    value: valueId,
+    onChange: onChangeId
+  } = useInput(id);
   const {
     value: valueCiCliente,
-    onChange: onChangeCiCliente,
-    reset: resetCiCliente
+    onChange: onChangeCiCliente
   } = useInput(ciCliente);
   const {
-    value: valueMonto,
-    onChange: onChangeMonto,
-    reset: resetMonto
-  } = useInput(monto);
-
-  const handleReset = () => {
-    resetNombreCliente();
-    resetCiCliente();
-    resetMonto();
-  };
+    value: valueNumeroInmueble,
+    onChange: onChangeNumeroInmueble
+  } = useInput(numeroInmueble);
 
   const getBody = useCallback(
     function () {
       const username = window.sessionStorage.getItem("username");
-      const tenant = window.sessionStorage.getItem("tenant");
       const body = {
-        nombreCliente: valueNombreCliente,
-        ciCliente: valueCiCliente,
-        monto: valueMonto,
-        tenant,
-        createdBy: username,
+        ...isEdit.data,
+        numeroInmueble: valueNumeroInmueble,
         updatedBy: username
       };
       if (archivo !== null) {
@@ -89,19 +75,10 @@ function RegulaLotesForm () {
       }
       return body;
     },
-    [valueNombreCliente, valueCiCliente, valueMonto]
+    [valueId, valueCiCliente, valueNumeroInmueble]
   );
 
-  const handleAfterAdd = function (newRegulaLotesId) {
-    handleReset();
-    const body = getBody();
-    handleValidation(body, setClassNameFormText);
-    setIsRequestInProgress(false);
-  };
-
   const handleAfterEdit = function () {
-    handleReset();
-    setIsEdit(undefined);
     const body = getBody();
     handleValidation(body, setClassNameFormText);
     setIsRequestInProgress(false);
@@ -121,10 +98,8 @@ function RegulaLotesForm () {
           handleAfterEdit
         );
       } else {
-        handleAddRequest(
-          "regula-lotes/",
-          body,
-          handleAfterAdd
+        handleFilterRequest(
+          `regula-lotes/filter?page=${0}&size=${10}`, body
         );
       }
     } else {
@@ -154,50 +129,52 @@ function RegulaLotesForm () {
       />
       <Card>
         <Card.Header as="h3">
-          {i18n.regulaLotesForm.title}
+          {i18n.regulaLotesFormClienteStepTwo.title}
         </Card.Header>
         <Card.Body>
           <Form>
-            <Form.Group className="mb-3" controlId="nombreCliente">
+            <Form.Group className="mb-3" controlId="idPago">
               <Form.Label>
-                {i18n.regulaLotesForm.fieldNombreCliente}
+                {i18n.regulaLotesFormClienteStepTwo.fieldIdPago}
               </Form.Label>
               <Form.Control
-                onChange={onChangeNombreCliente}
-                value={valueNombreCliente}
+                disabled
+                onChange={onChangeId}
+                value={valueId}
                 type="text"
-                placeholder={i18n.regulaLotesForm.fieldNombreCliente}
+                placeholder={i18n.regulaLotesFormClienteStepTwo.fieldIdPago}
               />
-              <Form.Text muted className={classNameFormText.nombreCliente}>
-                {i18n.regulaLotesForm.fieldNombreClienteText}
+              <Form.Text muted className={classNameFormText.idPago}>
+                {i18n.regulaLotesFormClienteStepTwo.fieldIdPagoText}
               </Form.Text>
             </Form.Group>
             <Form.Group className="mb-3" controlId="ciCliente">
               <Form.Label>
-                {i18n.regulaLotesForm.fieldCiCliente}
+                {i18n.regulaLotesFormClienteStepTwo.fieldCiCliente}
               </Form.Label>
               <Form.Control
+                disabled
                 onChange={onChangeCiCliente}
                 value={valueCiCliente}
                 type="text"
-                placeholder={i18n.regulaLotesForm.fieldCiCliente}
+                placeholder={i18n.regulaLotesFormClienteStepTwo.fieldCiCliente}
               />
               <Form.Text muted className={classNameFormText.ciCliente}>
-                {i18n.regulaLotesForm.fieldCiClienteText}
+                {i18n.regulaLotesFormClienteStepTwo.fieldCiClienteText}
               </Form.Text>
             </Form.Group>
-            <Form.Group className="mb-3" controlId="monto">
+            <Form.Group className="mb-3" controlId="numeroInmueble">
               <Form.Label>
-                {i18n.regulaLotesForm.fieldMonto}
+                {i18n.regulaLotesFormClienteStepTwo.fieldNumeroInmueble}
               </Form.Label>
               <Form.Control
-                onChange={onChangeMonto}
-                value={valueMonto}
+                onChange={onChangeNumeroInmueble}
+                value={valueNumeroInmueble}
                 type="text"
-                placeholder={i18n.regulaLotesForm.fieldMonto}
+                placeholder={i18n.regulaLotesFormClienteStepTwo.fieldNumeroInmueble}
               />
-              <Form.Text muted className={classNameFormText.monto}>
-                {i18n.regulaLotesForm.fieldMontoText}
+              <Form.Text muted className={classNameFormText.numeroInmueble}>
+                {i18n.regulaLotesFormClienteStepTwo.fieldNumeroInmuebleText}
               </Form.Text>
             </Form.Group>
             <Button onClick={handleAdd} variant="primary" type="button">

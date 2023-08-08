@@ -5,6 +5,7 @@ const regulaLotesColumnsFilter = function (
   /* NOMBRE CLIENTE */ criteriaNombreCliente, criteriaOnChangeNombreCliente, operatorNombreCliente, operatorOnChangeNombreCliente,
   /* CI CLIENTE */criteriaCiCliente, criteriaOnChangeCiCliente, operatorCiCliente, operatorOnChangeCiCliente,
   /* CODIGO CATASTRAL */ criteriaCodigoCatastral, criteriaOnChangeCodigoCatastral, operatorCodigoCatastral, operatorOnChangeCodigoCatastral,
+  /* COMPROBANTE PAGO */criteriaComprobantePago, criteriaOnChangeComprobantePago, operatorComprobantePago, operatorOnChangeComprobantePago,
   /* CREATED BY */criteriaCreatedBy, criteriaOnChangeCreatedBy, operatorCreatedBy, operatorOnChangeCreatedBy,
   /* UPDATED BY */criteriaUpdatedBy, criteriaOnChangeUpdatedBy, operatorUpdatedBy, operatorOnChangeUpdatedBy,
   /* CREATED DATE */criteriaCreatedDate, criteriaOnChangeCreatedDate, operatorCreatedDate, operatorOnChangeCreatedDate,
@@ -41,6 +42,13 @@ const regulaLotesColumnsFilter = function (
     },
     {
       type: enumFilterType.TEXTBOX,
+      criteriaValue: criteriaComprobantePago,
+      criteriaOnchange: criteriaOnChangeComprobantePago,
+      operatorValue: operatorComprobantePago,
+      operatorOnchange: operatorOnChangeComprobantePago
+    },
+    {
+      type: enumFilterType.TEXTBOX,
       criteriaValue: criteriaCreatedBy,
       criteriaOnchange: criteriaOnChangeCreatedBy,
       operatorValue: operatorCreatedBy,
@@ -66,9 +74,6 @@ const regulaLotesColumnsFilter = function (
       criteriaOnchange: criteriaOnChangeUpdatedDate,
       operatorValue: operatorUpdatedDate,
       operatorOnchange: operatorOnChangeUpdatedDate
-    },
-    {
-      type: enumFilterType.NONE
     }
   ];
 
