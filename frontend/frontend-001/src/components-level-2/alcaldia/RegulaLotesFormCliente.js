@@ -97,7 +97,7 @@ function RegulaLotesForm () {
         }
       });
     } else {
-      alert("Datos invalidos. Ingrese los datos nuevamente");
+      alert(i18n.regulaLotesFormCliente.fieldAlert);
     }
     setIsRequestInProgress(false);
   };
