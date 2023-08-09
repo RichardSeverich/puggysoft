@@ -16,7 +16,8 @@ const handleValidation = (data, setClassNameFormText) => {
     classNameFormTextNew.nombreCliente = "";
   }
   if (!(data.ciCliente.length >= 3 && data.ciCliente.length <= 30) ||
-  data.ciCliente.includes(" ")
+    data.ciCliente.includes(" ") ||
+    !/^\d*$/.test(data.ciCliente)
   ) {
     isValid = false;
     classNameFormTextNew.ciCliente = classNameRed;
@@ -24,7 +25,8 @@ const handleValidation = (data, setClassNameFormText) => {
     classNameFormTextNew.ciCliente = "";
   }
   if (!(data.monto.length >= 1 && data.monto.length <= 30) ||
-  data.monto.includes(" ")
+    data.monto.includes(" ") ||
+    !/^\d*$/.test(data.monto)
   ) {
     isValid = false;
     classNameFormTextNew.monto = classNameRed;

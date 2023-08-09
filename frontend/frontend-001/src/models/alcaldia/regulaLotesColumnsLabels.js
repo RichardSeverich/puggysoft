@@ -4,7 +4,7 @@ const arrayColumns = [
   i18n.regulaLotesTable.columnId,
   i18n.regulaLotesTable.columnNombreCliente,
   i18n.regulaLotesTable.columnCiCliente,
-  i18n.regulaLotesTable.columnCodigoCatastral,
+  i18n.regulaLotesTable.columnNumeroInmueble,
   i18n.commonTable.columnCreatedBy,
   i18n.commonTable.columnUpdatedBy,
   i18n.commonTable.columnCreationDate,

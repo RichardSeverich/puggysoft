@@ -2,7 +2,7 @@ const arrayDataFields = [
   "id",
   "nombreCliente",
   "ciCliente",
-  "codigoCatastral",
+  "numeroInmueble",
   "createdBy",
   "updatedBy",
   "creationDate",

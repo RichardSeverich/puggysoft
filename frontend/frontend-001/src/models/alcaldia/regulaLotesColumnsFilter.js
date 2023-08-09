@@ -4,8 +4,7 @@ const regulaLotesColumnsFilter = function (
   /* ID */ criteriaId, criteriaOnChangeId, operatorId, operatorOnChangeId,
   /* NOMBRE CLIENTE */ criteriaNombreCliente, criteriaOnChangeNombreCliente, operatorNombreCliente, operatorOnChangeNombreCliente,
   /* CI CLIENTE */criteriaCiCliente, criteriaOnChangeCiCliente, operatorCiCliente, operatorOnChangeCiCliente,
-  /* CODIGO CATASTRAL */ criteriaCodigoCatastral, criteriaOnChangeCodigoCatastral, operatorCodigoCatastral, operatorOnChangeCodigoCatastral,
-  /* COMPROBANTE PAGO */criteriaComprobantePago, criteriaOnChangeComprobantePago, operatorComprobantePago, operatorOnChangeComprobantePago,
+  /* NUMERO INMUEBLE */ criteriaNumeroInmueble, criteriaOnChangeNumeroInmueble, operatorNumeroInmueble, operatorOnChangeNumeroInmueble,
   /* CREATED BY */criteriaCreatedBy, criteriaOnChangeCreatedBy, operatorCreatedBy, operatorOnChangeCreatedBy,
   /* UPDATED BY */criteriaUpdatedBy, criteriaOnChangeUpdatedBy, operatorUpdatedBy, operatorOnChangeUpdatedBy,
   /* CREATED DATE */criteriaCreatedDate, criteriaOnChangeCreatedDate, operatorCreatedDate, operatorOnChangeCreatedDate,
@@ -35,17 +34,10 @@ const regulaLotesColumnsFilter = function (
     },
     {
       type: enumFilterType.TEXTBOX,
-      criteriaValue: criteriaCodigoCatastral,
-      criteriaOnchange: criteriaOnChangeCodigoCatastral,
-      operatorValue: operatorCodigoCatastral,
-      operatorOnchange: operatorOnChangeCodigoCatastral
-    },
-    {
-      type: enumFilterType.TEXTBOX,
-      criteriaValue: criteriaComprobantePago,
-      criteriaOnchange: criteriaOnChangeComprobantePago,
-      operatorValue: operatorComprobantePago,
-      operatorOnchange: operatorOnChangeComprobantePago
+      criteriaValue: criteriaNumeroInmueble,
+      criteriaOnchange: criteriaOnChangeNumeroInmueble,
+      operatorValue: operatorNumeroInmueble,
+      operatorOnchange: operatorOnChangeNumeroInmueble
     },
     {
       type: enumFilterType.TEXTBOX,

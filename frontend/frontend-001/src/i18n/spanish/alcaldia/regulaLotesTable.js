@@ -4,8 +4,7 @@ const regulaLotesTable = {
   columnId: "Numero comprobante pago",
   columnNombreCliente: "Nombre",
   columnCiCliente: "Ci cliente",
-  columnCodigoCatastral: "Numero de inmueble",
-  columnComprobantePago: "Numero de comprobante pago"
+  columnNumeroInmueble: "Numero de inmueble"
 };
 
 export default regulaLotesTable;

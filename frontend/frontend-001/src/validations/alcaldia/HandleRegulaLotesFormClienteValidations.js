@@ -8,14 +8,18 @@ const classNameFormTextNew = {
 
 const handleValidation = (data, setClassNameFormText) => {
   let isValid = true;
-  if (!(data.idCriteria.length >= 3 && data.idCriteria.length <= 256)) {
+  if (!(data.idCriteria.length >= 3 && data.idCriteria.length <= 256) ||
+  data.idCriteria.includes(" ") ||
+  !/^\d*$/.test(data.idCriteria)
+  ) {
     isValid = false;
     classNameFormTextNew.id = classNameRed;
   } else {
     classNameFormTextNew.id = "";
   }
   if (!(data.ciClienteCriteria.length >= 3 && data.ciClienteCriteria.length <= 30) ||
-  data.ciClienteCriteria.includes(" ")
+  data.ciClienteCriteria.includes(" ") ||
+  !/^\d*$/.test(data.ciClienteCriteria)
   ) {
     isValid = false;
     classNameFormTextNew.ciCliente = classNameRed;

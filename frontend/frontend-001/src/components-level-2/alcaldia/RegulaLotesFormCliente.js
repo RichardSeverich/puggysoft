@@ -170,7 +170,7 @@ function RegulaLotesForm () {
                 type="text"
                 placeholder={i18n.regulaLotesFormCliente.fieldIdPago}
               />
-              <Form.Text muted className={classNameFormText.idPago}>
+              <Form.Text muted className={classNameFormText.id}>
                 {i18n.regulaLotesFormCliente.fieldIdPagoText}
               </Form.Text>
             </Form.Group>
