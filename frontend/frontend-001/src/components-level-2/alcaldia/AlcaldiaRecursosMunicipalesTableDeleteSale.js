@@ -26,12 +26,12 @@ function AlcaldiaRecursosMunicipalesTableDeleteSale (props) {
     handleFilterRequest(`alcaldia/filter-by-ventas-id/filter/size?pageSize=${pageSize}&ventasId=${ventasId}`, filterBody, setTotalPages);
   }
 
-  function afterAddProductToSale (params) {
+  function afterAddProductToSale () {
     setUpdateTableDelete(false);
   }
 
   function handleDelete (data) {
-    const price = -Number(data.precio) * Number(data.cantidad);
+    const price = -Number(data.precio);
     handleChangeData(price);
     setUpdateTableDelete(true);
     handleDeleteRequest(`alcaldia-recursos-municipales-ventas-detalle/${data.id}`,

@@ -7,6 +7,7 @@ import Card from "react-bootstrap/Card";
 import CommonLoading from "../../components-level-1/CommonLoading";
 import i18n from "../../i18n/i18n";
 import useInput from "../../hooks/useInput";
+import enumTipo from "./../../models/alcaldia/enumRecursosMunicipalesTipo";
 import {
   handleAddRequest,
   handleEditRequest
@@ -32,13 +33,18 @@ function AlcaldiaRecursosMunicipalesForm () {
   const [messageTitle, setMessageTitle] = useState("");
   const [messageText, setMessageText] = useState("");
 
+  let tipo = enumTipo.PADRE;
   // Put default values:
   const id = isEdit && isEdit.data.id !== null ? isEdit.data.id : "";
   const codigo =
     isEdit && isEdit.data.codigo !== null ? isEdit.data.codigo : "";
+  const codigoAuxiliar =
+      isEdit && isEdit.data.codigoAuxiliar !== null ? isEdit.data.codigoAuxiliar : "";
   const name = isEdit && isEdit.data.name !== null ? isEdit.data.name : "";
   const precio =
     isEdit && isEdit.data.precio !== null ? isEdit.data.precio : "";
+  tipo =
+      isEdit && isEdit.data.tipo !== null ? isEdit.data.tipo : tipo;
 
   // Use custom hook
   const {
@@ -46,6 +52,11 @@ function AlcaldiaRecursosMunicipalesForm () {
     onChange: onChangeCodigo,
     reset: resetCodigo
   } = useInput(codigo);
+  const {
+    value: valueCodigoAuxiliar,
+    onChange: onChangeCodigoAuxiliar,
+    reset: resetCodigoAuxiliar
+  } = useInput(codigoAuxiliar);
   const {
     value: valueName,
     onChange: onChangeName,
@@ -56,11 +67,18 @@ function AlcaldiaRecursosMunicipalesForm () {
     onChange: onChangePrecio,
     reset: resetPrecio
   } = useInput(precio);
+  const {
+    value: valueTipo,
+    onChange: onChangeTipo,
+    reset: resetTipo
+  } = useInput(tipo);
 
   const handleReset = () => {
     resetCodigo();
+    resetCodigoAuxiliar();
     resetName();
     resetPrecio();
+    resetTipo();
   };
 
   const getBody = useCallback(
@@ -69,8 +87,10 @@ function AlcaldiaRecursosMunicipalesForm () {
       const tenant = window.sessionStorage.getItem("tenant");
       const body = {
         codigo: valueCodigo,
+        codigoAuxiliar: valueCodigoAuxiliar,
         name: valueName,
         precio: valuePrecio,
+        tipo: valueTipo,
         tenant,
         createdBy: username,
         updatedBy: username
@@ -156,8 +176,22 @@ function AlcaldiaRecursosMunicipalesForm () {
                 type="text"
                 placeholder={i18n.alcaldiaRecursosMunicipalesForm.fieldCodigo}
               />
-              <Form.Text muted className={classNameFormText.codigo}>
+              <Form.Text muted>
                 {i18n.alcaldiaRecursosMunicipalesForm.fieldCodigoText}
+              </Form.Text>
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="codigo-auxiliar">
+              <Form.Label>
+                {i18n.alcaldiaRecursosMunicipalesForm.fieldCodigoAuxiliar}
+              </Form.Label>
+              <Form.Control
+                onChange={onChangeCodigoAuxiliar}
+                value={valueCodigoAuxiliar}
+                type="text"
+                placeholder={i18n.alcaldiaRecursosMunicipalesForm.fieldCodigoAuxiliar}
+              />
+              <Form.Text muted>
+                {i18n.alcaldiaRecursosMunicipalesForm.fieldCodigoAuxiliarText}
               </Form.Text>
             </Form.Group>
             <Form.Group className="mb-3" controlId="name">
@@ -186,6 +220,18 @@ function AlcaldiaRecursosMunicipalesForm () {
               />
               <Form.Text muted className={classNameFormText.precio}>
                 {i18n.alcaldiaRecursosMunicipalesForm.fieldPrecioText}
+              </Form.Text>
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="sex">
+              <Form.Label>{i18n.alcaldiaRecursosMunicipalesForm.fieldTipo}</Form.Label>
+              <Form.Select
+                onChange={onChangeTipo}
+                value={valueTipo} >
+                <option key="option-padre" value={enumTipo.PADRE}>{i18n.recursoMunicipalTipo.PADRE}</option>
+                <option key="option-hijo" value={enumTipo.HIJO}>{i18n.recursoMunicipalTipo.HIJO}</option>
+              </Form.Select>
+              <Form.Text muted>
+                {i18n.alcaldiaRecursosMunicipalesForm.fieldTipoText}
               </Form.Text>
             </Form.Group>
             <Button onClick={handleAdd} variant="primary" type="button">

@@ -21,6 +21,7 @@ function AlcaldiaRecursosMunicipalesGenericTable (props) {
   // CRITERIA OF SEARCH OR FILTER
   const { value: criteriaId, onChange: criteriaOnChangeId, setValue: criteriaSetId } = useInput("");
   const { value: criteriaCodigo, onChange: criteriaOnChangeCodigo, setValue: criteriaSetCodigo } = useInput("");
+  const { value: criteriaCodigoAuxiliar, onChange: criteriaOnChangeCodigoAuxiliar, setValue: criteriaSetCodigoAuxiliar } = useInput("");
   const { value: criteriaName, onChange: criteriaOnChangeName, setValue: criteriaSetName } = useInput("");
   const { value: criteriaPrecio, onChange: criteriaOnChangePrecio, setValue: criteriaSetPrecio } = useInput("");
   const { value: criteriaCreatedBy, onChange: criteriaOnChangeCreatedBy, setValue: criteriaSetCreatedBy } = useInput("");
@@ -29,8 +30,9 @@ function AlcaldiaRecursosMunicipalesGenericTable (props) {
   const { value: criteriaUpdatedDate, onChange: criteriaOnChangeUpdatedDate, setValue: criteriaSetUpdatedDate } = useInput("");
 
   // FILTER OPERATORS
-  const { value: operatorId, onChange: operatorOnChangeId, setValue: operatorSetId } = useInput(enumCompareOperators.TEXT_CONTAINS);
-  const { value: operatorCodigo, onChange: operatorOnChangeCodigo, setValue: operatorSetCodigo } = useInput(enumCompareOperators.TEXT_CONTAINS);
+  const { value: operatorId, onChange: operatorOnChangeId, setValue: operatorSetId } = useInput(enumCompareOperators.NUMBER_EQUALS);
+  const { value: operatorCodigo, onChange: operatorOnChangeCodigo, setValue: operatorSetCodigo } = useInput(enumCompareOperators.NUMBER_EQUALS);
+  const { value: operatorCodigoAuxiliar, onChange: operatorOnChangeCodigoAuxiliar, setValue: operatorSetCodigoAuxiliar } = useInput(enumCompareOperators.NUMBER_EQUALS);
   const { value: operatorName, onChange: operatorOnChangeName, setValue: operatorSetName } = useInput(enumCompareOperators.TEXT_CONTAINS);
   const { value: operatorPrecio, onChange: operatorOnChangePrecio, setValue: operatorSetPrecio } = useInput(enumCompareOperators.TEXT_CONTAINS);
   const { value: operatorCreatedBy, onChange: operatorOnChangeCreatedBy, setValue: operatorSetCreatedBy } = useInput(enumCompareOperators.TEXT_CONTAINS);
@@ -42,6 +44,7 @@ function AlcaldiaRecursosMunicipalesGenericTable (props) {
     columnsToShow,
     /* ID */ criteriaId, criteriaOnChangeId, criteriaSetId, operatorId, operatorOnChangeId, operatorSetId,
     /* CODIGO */ criteriaCodigo, criteriaOnChangeCodigo, criteriaSetCodigo, operatorCodigo, operatorOnChangeCodigo, operatorSetCodigo,
+    /* CODIGO AUXILIAR */ criteriaCodigoAuxiliar, criteriaOnChangeCodigoAuxiliar, criteriaSetCodigoAuxiliar, operatorCodigoAuxiliar, operatorOnChangeCodigoAuxiliar, operatorSetCodigoAuxiliar,
     /* NAME */criteriaName, criteriaOnChangeName, criteriaSetName, operatorName, operatorOnChangeName, operatorSetName,
     /* PRECIO */ criteriaPrecio, criteriaOnChangePrecio, criteriaSetPrecio, operatorPrecio, operatorOnChangePrecio, operatorSetPrecio,
     /* CREATED BY */criteriaCreatedBy, criteriaOnChangeCreatedBy, criteriaSetCreatedBy, operatorCreatedBy, operatorOnChangeCreatedBy, operatorSetCreatedBy,

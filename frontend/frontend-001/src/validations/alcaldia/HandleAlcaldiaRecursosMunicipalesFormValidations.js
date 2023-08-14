@@ -1,7 +1,6 @@
 const classNameRed = "puggysoft-red-text";
 
 const classNameFormTextNew = {
-  codigo: classNameRed,
   name: classNameRed,
   precio: classNameRed,
   tenant: classNameRed
@@ -9,12 +8,6 @@ const classNameFormTextNew = {
 
 const handleValidation = (data, setClassNameFormText) => {
   let isValid = true;
-  if (!(data.codigo.length >= 3 && data.codigo.length <= 30)) {
-    isValid = false;
-    classNameFormTextNew.codigo = classNameRed;
-  } else {
-    classNameFormTextNew.codigo = "";
-  }
   if (!(data.name.length >= 3 && data.name.length <= 120)) {
     isValid = false;
     classNameFormTextNew.name = classNameRed;

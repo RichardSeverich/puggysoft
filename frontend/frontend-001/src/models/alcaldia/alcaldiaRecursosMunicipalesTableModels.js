@@ -8,6 +8,7 @@ const alcaldiaRecursosMunicipalesTableModels = function (
   tableColumnsToShow,
   /* ID */ criteriaId, criteriaOnChangeId, criteriaSetId, operatorId, operatorOnChangeId, operatorSetId,
   /* CODIGO */ criteriaCodigo, criteriaOnChangeCodigo, criteriaSetCodigo, operatorCodigo, operatorOnChangeCodigo, operatorSetCodigo,
+  /* CODIGO AUXILIAR */ criteriaCodigoAuxiliar, criteriaOnChangeCodigoAuxiliar, criteriaSetCodigoAuxiliar, operatorCodigoAuxiliar, operatorOnChangeCodigoAuxiliar, operatorSetCodigoAuxiliar,
   /* NAME */criteriaName, criteriaOnChangeName, criteriaSetName, operatorName, operatorOnChangeName, operatorSetName,
   /* PRECIO */ criteriaPrecio, criteriaOnChangePrecio, criteriaSetPrecio, operatorPrecio, operatorOnChangePrecio, operatorSetPrecio,
   /* CREATED BY */criteriaCreatedBy, criteriaOnChangeCreatedBy, criteriaSetCreatedBy, operatorCreatedBy, operatorOnChangeCreatedBy, operatorSetCreatedBy,
@@ -20,6 +21,7 @@ const alcaldiaRecursosMunicipalesTableModels = function (
   let arrayColumnsFilter = alcaldiaRecursosMunicipalesColumnsFilter(
     /* ID */ criteriaId, criteriaOnChangeId, operatorId, operatorOnChangeId,
     /* CODIGO */ criteriaCodigo, criteriaOnChangeCodigo, operatorCodigo, operatorOnChangeCodigo,
+    /* CODIGO AUXILIAR */ criteriaCodigoAuxiliar, criteriaOnChangeCodigoAuxiliar, operatorCodigoAuxiliar, operatorOnChangeCodigoAuxiliar,
     /* NAME */criteriaName, criteriaOnChangeName, operatorName, operatorOnChangeName,
     /* PRECIO */ criteriaPrecio, criteriaOnChangePrecio, operatorPrecio, operatorOnChangePrecio,
     /* CREATED BY */criteriaCreatedBy, criteriaOnChangeCreatedBy, operatorCreatedBy, operatorOnChangeCreatedBy,
@@ -29,7 +31,8 @@ const alcaldiaRecursosMunicipalesTableModels = function (
 
   const setOperatorsDefaultValues = function () {
     operatorSetId(enumCompareOperators.NUMBER_EQUALS);
-    operatorSetCodigo(enumCompareOperators.NUMBER_EQUALS);
+    operatorSetCodigo(enumCompareOperators.TEXT_CONTAINS);
+    operatorSetCodigoAuxiliar(enumCompareOperators.TEXT_CONTAINS);
     operatorSetName(enumCompareOperators.TEXT_CONTAINS);
     operatorSetPrecio(enumCompareOperators.NUMBER_EQUALS);
     operatorSetCreatedBy(enumCompareOperators.TEXT_CONTAINS);
@@ -41,6 +44,7 @@ const alcaldiaRecursosMunicipalesTableModels = function (
   const clearFilters = function () {
     criteriaSetId("");
     criteriaSetCodigo("");
+    criteriaSetCodigoAuxiliar("");
     criteriaSetName("");
     criteriaSetPrecio("");
     criteriaSetCreatedBy("");
@@ -85,6 +89,8 @@ const alcaldiaRecursosMunicipalesTableModels = function (
       idOperator: operatorId,
       codigoCriteria: criteriaCodigo,
       codigoOperator: operatorCodigo,
+      codigoAuxiliarCriteria: criteriaCodigoAuxiliar,
+      codigoAuxiliarOperator: operatorCodigoAuxiliar,
       nameCriteria: criteriaName,
       nameOperator: operatorName,
       precioCriteria: criteriaPrecio,

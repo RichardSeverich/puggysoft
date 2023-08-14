@@ -34,7 +34,7 @@ public class ServiceAlcaldiaRecursosMunicipalesGetFilterSizeByVentasId {
       query = query.substring(0, query.length() - 4);
       String fullQuery = "SELECT COUNT(*) "
           + "FROM alcaldia_recursos_municipales "
-          + "INNER JOIN alcaldia_recursos_municipales_venta_detalle ON alcaldia_recursos_municipales.codigo=alcaldia_recursos_municipales_venta_detalle.recurso_municipal_codigo "
+          + "INNER JOIN alcaldia_recursos_municipales_venta_detalle ON alcaldia_recursos_municipales.id=alcaldia_recursos_municipales_venta_detalle.id_recurso_municipal "
           + "INNER JOIN alcaldia_recursos_municipales_venta ON alcaldia_recursos_municipales_venta.id=alcaldia_recursos_municipales_venta_detalle.id_venta "
           + "WHERE alcaldia_recursos_municipales_venta.id = " + ventasId + " AND " + query;
       // JQPL (createQuery) and Native (createNativeQuery)

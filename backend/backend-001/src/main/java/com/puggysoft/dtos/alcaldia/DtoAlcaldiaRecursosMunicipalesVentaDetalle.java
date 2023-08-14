@@ -13,7 +13,7 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = true)
 public class DtoAlcaldiaRecursosMunicipalesVentaDetalle extends DtoSuperClass {
   @NotNull
-  private String recuersoMunicipalCodigo;
+  private String idRecursoMunicipal;
   @NotNull
   private String idVenta;
   @NotNull
@@ -28,7 +28,7 @@ public class DtoAlcaldiaRecursosMunicipalesVentaDetalle extends DtoSuperClass {
   public EntityAlcaldiaRecursosMunicipalesVentaDetalle dtoToEntity() {
     EntityAlcaldiaRecursosMunicipalesVentaDetalle entity = new EntityAlcaldiaRecursosMunicipalesVentaDetalle();
     entity.setId(id);
-    entity.setRecursoMunicipalCodigo(recuersoMunicipalCodigo);
+    entity.setIdRecursoMunicipal(idRecursoMunicipal);
     entity.setIdVenta(idVenta);
     entity.setPrecioUnidad(precioUnidad);
     entity.setCantidad(cantidad);
@@ -44,7 +44,7 @@ public class DtoAlcaldiaRecursosMunicipalesVentaDetalle extends DtoSuperClass {
       EntityAlcaldiaRecursosMunicipalesVentaDetalle entity) {
     DtoAlcaldiaRecursosMunicipalesVentaDetalle dto = new DtoAlcaldiaRecursosMunicipalesVentaDetalle();
     dto.setId(entity.getId());
-    dto.setRecuersoMunicipalCodigo(entity.getRecursoMunicipalCodigo());
+    dto.setIdRecursoMunicipal(entity.getIdRecursoMunicipal());
     dto.setIdVenta(entity.getIdVenta());
     dto.setPrecioUnidad(entity.getPrecioUnidad());
     dto.setCantidad(entity.getCantidad());

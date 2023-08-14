@@ -5,6 +5,7 @@ const alcaldiaRecursosMunicipalesVentasTable = {
   columnClienteCiNit: "Cliente Ci/Nit",
   columnDireccion: "Direccion",
   columnNota: "Nota",
+  columnCantidad: "Cantidad",
   columnVentaStatus: "Estado de venta",
   columnVentaPrecioTotal: "Venta precio total",
   columnClienteDinero: "Cliente dinero",

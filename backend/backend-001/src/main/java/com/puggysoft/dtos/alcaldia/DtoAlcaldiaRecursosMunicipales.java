@@ -16,11 +16,15 @@ public class DtoAlcaldiaRecursosMunicipales extends DtoSuperClass {
   @NotNull
   @Size(min = 3, max = 30)
   private String codigo;
-  private String cantidad;
+  private String codigoAuxiliar;
   @NotNull
   private String name;
   @NotNull
   private String precio;
+  private String talonarioMovimiento;
+  private String talonarioInicio;
+  private String talonarioFinal;
+  private String tipo;
   @NotNull
   private String tenant;
 
@@ -30,7 +34,11 @@ public class DtoAlcaldiaRecursosMunicipales extends DtoSuperClass {
     EntityAlcaldiaRecursosMunicipales entity = new EntityAlcaldiaRecursosMunicipales();
     entity.setId(id);
     entity.setCodigo(codigo);
-    entity.setCantidad(cantidad);
+    entity.setCodigoAuxiliar(codigoAuxiliar);
+    entity.setTalonarioMovimiento(talonarioMovimiento);
+    entity.setTalonarioInicio(talonarioInicio);
+    entity.setTalonarioFinal(talonarioFinal);
+    entity.setTipo(tipo);
     entity.setName(name);
     entity.setPrecio(precio);
     entity.setTenant(tenant);
@@ -45,7 +53,11 @@ public class DtoAlcaldiaRecursosMunicipales extends DtoSuperClass {
     DtoAlcaldiaRecursosMunicipales dto = new DtoAlcaldiaRecursosMunicipales();
     dto.setId(entity.getId());
     dto.setCodigo(entity.getCodigo());
-    dto.setCantidad(entity.getCantidad());
+    dto.setCodigoAuxiliar(entity.getCodigoAuxiliar());
+    dto.setTalonarioMovimiento(entity.getTalonarioMovimiento());
+    dto.setTalonarioInicio(entity.getTalonarioInicio());
+    dto.setTalonarioFinal(entity.getTalonarioFinal());
+    dto.setTipo(entity.getTipo());
     dto.setName(entity.getName());
     dto.setPrecio(entity.getPrecio());
     dto.setTenant(entity.getTenant());

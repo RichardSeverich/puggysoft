@@ -3,6 +3,7 @@ import enumFilterType from "../enumFilterType";
 const alcaldiaRecursosMunicipalesColumnsFilter = function (
   /* ID */ criteriaId, criteriaOnChangeId, operatorId, operatorOnChangeId,
   /* CODIGO */ criteriaCodigo, criteriaOnChangeCodigo, operatorCodigo, operatorOnChangeCodigo,
+  /* CODIGO AUXILIAR */ criteriaCodigoAuxiliar, criteriaOnChangeCodigoAuxiliar, operatorCodigoAuxiliar, operatorOnChangeCodigoAuxiliar,
   /* NAME */criteriaName, criteriaOnChangeName, operatorName, operatorOnChangeName,
   /* PRECIO */ criteriaPrecio, criteriaOnChangePrecio, operatorPrecio, operatorOnChangePrecio,
   /* CREATED BY */criteriaCreatedBy, criteriaOnChangeCreatedBy, operatorCreatedBy, operatorOnChangeCreatedBy,
@@ -24,6 +25,13 @@ const alcaldiaRecursosMunicipalesColumnsFilter = function (
       criteriaOnchange: criteriaOnChangeCodigo,
       operatorValue: operatorCodigo,
       operatorOnchange: operatorOnChangeCodigo
+    },
+    {
+      type: enumFilterType.NUMBER,
+      criteriaValue: criteriaCodigoAuxiliar,
+      criteriaOnchange: criteriaOnChangeCodigoAuxiliar,
+      operatorValue: operatorCodigoAuxiliar,
+      operatorOnchange: operatorOnChangeCodigoAuxiliar
     },
     {
       type: enumFilterType.TEXTBOX,

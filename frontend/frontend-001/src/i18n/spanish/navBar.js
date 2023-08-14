@@ -170,10 +170,19 @@ const navBar = {
   recursoMunicipalAdmin: "Adm. Recursos Municipales",
   recursoMunicipalForm: "Registrar Recurso",
   recursoMunicipalTable: "Mostrar Recursos",
+  recursoMunicipalGrupoStepOne: "Gestionar gerarquia",
   // Venta Recursos Municipales
   recursoMunicipaVentalAdmin: "Adm. Caja Recursos Municipales",
   recursoMunicipalVentaForm: "Registrar venta",
   recursoMunicipalVentaTable: "Mostrar ventas",
+  // Recurso Municipal Timbres
+  recursoMunicipalTimbresAdmin: "Adm. Timbres",
+  recursoMunicipalTimbresForm: "Registrar Lote de Timbres",
+  recursoMunicipalTimbresTable: "Mostrar Timbres",
+  // Venta Recursos Municipales Timbres
+  recursoMunicipalTimbresVentalAdmin: "Adm. Caja Timbres",
+  recursoMunicipalTimbresVentaForm: "Registrar venta",
+  recursoMunicipalTimbresVentaTable: "Mostrar ventas",
   // Reportes de ventas de Recursos Municipales
   recursoMunicipalReporteAdmin: "Adm. Reportes",
   recursoMunicipalReporte1: "Reportes por fecha",

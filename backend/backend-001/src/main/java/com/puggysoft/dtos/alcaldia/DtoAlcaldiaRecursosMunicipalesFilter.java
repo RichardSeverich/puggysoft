@@ -16,15 +16,27 @@ public class DtoAlcaldiaRecursosMunicipalesFilter {
   // CODIGO
   public String codigoCriteria;
   public EnumCompareOperator codigoOperator;
-  // CANTIDAD
-  public String cantidadCriteria;
-  public EnumCompareOperator cantidadOperator;
+  // CODIGO AUXILIAR
+  public String codigoAuxiliarCriteria;
+  public EnumCompareOperator codigoAuxiliarOperator;
   // NAME
   public String nameCriteria;
   public EnumCompareOperator nameOperator;
   // PRECIO
   public String precioCriteria;
   public EnumCompareOperator precioOperator;
+  // TALONARIO MOVIMIENTO
+  public String talonarioMovimientoCriteria;
+  public EnumCompareOperator talonarioMovimientoOperator;
+  // TALONARIO INICIO
+  public String talonarioInicioCriteria;
+  public EnumCompareOperator talonarioInicioOperator;
+  // TALONARIO FINAL
+  public String talonarioFinalCriteria;
+  public EnumCompareOperator talonarioFinalOperator;
+  // TIPO
+  public String tipoCriteria;
+  public EnumCompareOperator tipoOperator;
   // TENANT
   public String tenantCriteria;
   public EnumCompareOperator tenantOperator;

@@ -1,6 +1,7 @@
 const arrayDataFields = [
   "id",
   "codigo",
+  "codigoAuxiliar",
   "name",
   "precio",
   "createdBy",

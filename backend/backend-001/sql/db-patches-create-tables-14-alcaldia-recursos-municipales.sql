@@ -1,11 +1,15 @@
 -- ------ RECURSOS SYSTEM TABLES -------
 CREATE TABLE alcaldia_recursos_municipales(
    id BIGINT AUTO_INCREMENT,
-   codigo VARCHAR(30) NOT NULL UNIQUE,
+   codigo VARCHAR(30),
+   codigo_auxiliar VARCHAR(30),
    name VARCHAR(120) NOT NULL,
    precio FLOAT(11,2) NOT NULL,
+   talonario_movimiento INT,
+   talonario_inicio INT,
+   talonario_final INT,
+   tipo ENUM('PADRE', 'HIJO') NOT NULL,
    tenant VARCHAR(30) NOT NULL,
-   cantidad INT,
    creation_date DATETIME DEFAULT CURRENT_TIMESTAMP,
    update_date DATETIME ON UPDATE CURRENT_TIMESTAMP,
    created_by VARCHAR(30),
@@ -13,6 +17,23 @@ CREATE TABLE alcaldia_recursos_municipales(
    FOREIGN KEY (created_by) REFERENCES users(username),
    FOREIGN KEY (updated_by) REFERENCES users(username),
    FOREIGN KEY (tenant) REFERENCES tenants(short_name),
+   PRIMARY KEY (id)
+)AUTO_INCREMENT=1000;
+
+CREATE TABLE alcaldia_recursos_municipales_grupo(
+   id BIGINT AUTO_INCREMENT,
+   id_recurso_municipal_padre BIGINT NOT NULL,
+   id_recurso_municipal_hijo BIGINT NOT NULL,
+   tenant VARCHAR(30) NOT NULL,
+   creation_date DATETIME DEFAULT CURRENT_TIMESTAMP,
+   update_date DATETIME ON UPDATE CURRENT_TIMESTAMP,
+   created_by VARCHAR(30),
+   updated_by VARCHAR(30),
+   FOREIGN KEY (created_by) REFERENCES users(username),
+   FOREIGN KEY (updated_by) REFERENCES users(username),
+   FOREIGN KEY (tenant) REFERENCES tenants(short_name),
+   FOREIGN KEY (id_recurso_municipal_padre) REFERENCES alcaldia_recursos_municipales(id),
+   FOREIGN KEY (id_recurso_municipal_hijo) REFERENCES alcaldia_recursos_municipales(id),
    PRIMARY KEY (id)
 )AUTO_INCREMENT=1000;
 
@@ -39,7 +60,7 @@ CREATE TABLE alcaldia_recursos_municipales_venta(
 
 CREATE TABLE alcaldia_recursos_municipales_venta_detalle(
    id BIGINT AUTO_INCREMENT,
-   recurso_municipal_codigo VARCHAR(30) NOT NULL,
+   id_recurso_municipal BIGINT NOT NULL,
    id_venta BIGINT NOT NULL,
    precio_unidad FLOAT(11,2),
    cantidad INT NOT NULL,
@@ -52,6 +73,6 @@ CREATE TABLE alcaldia_recursos_municipales_venta_detalle(
    FOREIGN KEY (updated_by) REFERENCES users(username),
    FOREIGN KEY (tenant) REFERENCES tenants(short_name),
    FOREIGN KEY (id_venta) REFERENCES alcaldia_recursos_municipales_venta(id),
-   FOREIGN KEY (recurso_municipal_codigo) REFERENCES alcaldia_recursos_municipales(codigo),
+   FOREIGN KEY (id_recurso_municipal) REFERENCES alcaldia_recursos_municipales(id),
    PRIMARY KEY (id)
 )AUTO_INCREMENT=1000;

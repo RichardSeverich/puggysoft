@@ -14,11 +14,11 @@ function AlcaldiaRecursosMunicipalesTableEditDelete () {
   const history = useHistory();
 
   function handleGetData (activePage, filterBody, updateArrayData) {
-    handleFilterRequest(`alcaldia-recursos-municipales/filter?page=${activePage - 1}&size=${pageSize}`, filterBody, updateArrayData);
+    handleFilterRequest(`alcaldia-recursos-municipales-out-timbres/filter?page=${activePage - 1}&size=${pageSize}`, filterBody, updateArrayData);
   }
 
   function handleGetSize (filterBody, setTotalPages) {
-    handleFilterRequest(`alcaldia-recursos-municipales/filter/size/${pageSize}`, filterBody, setTotalPages);
+    handleFilterRequest(`alcaldia-recursos-municipales-out-timbres/filter/size/${pageSize}`, filterBody, setTotalPages);
   }
 
   function handleDelete (data) {

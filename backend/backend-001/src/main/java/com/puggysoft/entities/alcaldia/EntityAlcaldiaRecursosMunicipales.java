@@ -16,12 +16,20 @@ public class EntityAlcaldiaRecursosMunicipales extends EntitySuperClass {
 
   @Column(name = "codigo")
   private String codigo;
-  @Column(name = "cantidad")
-  private String cantidad;
+  @Column(name = "codigo_auxiliar")
+  private String codigoAuxiliar;
   @Column(name = "name")
   private String name;
   @Column(name = "precio")
   private String precio;
+  @Column(name = "talonario_movimiento")
+  private String talonarioMovimiento;
+  @Column(name = "talonario_inicio")
+  private String talonarioInicio;
+  @Column(name = "talonario_final")
+  private String talonarioFinal;
+  @Column(name = "tipo")
+  private String tipo;
   @Column(name = "tenant")
   private String tenant;
 

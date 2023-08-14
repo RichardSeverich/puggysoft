@@ -6,35 +6,29 @@ import {
 } from "../../actions/HandleManager";
 import AlcaldiaRecursosMunicipalesGenericTable from "./generic/AlcaldiaRecursosMunicipalesGenericTable";
 import enumTableColumnsToShow from "../../models/alcaldia/enumTableColumnsToShow";
-import enumWebElements from "../../models/enumWebElements";
+import enumTipo from "./../../models/alcaldia/enumRecursosMunicipalesTipo";
+import enumCompareOperators from "../../models/enumCompareOperators";
 
 import PropTypes from "prop-types";
 
 function AlcaldiaRecursosMunicipalesTableAddSale (props) {
-  const { ventasId, setUpdateTableDelete, handleChangeData } = props;
+  const { ventasId, setUpdateTableDelete, handleChangeData, setValueVentaPrecioTotal } = props;
   const tableTitle = i18n.alcaldiaRecursosMunicipalesTableAdd.title;
   const pageSize = 7;
   const numberPagesToShow = 7;
 
   function handleGetData (activePage, filterBody, updateArrayData) {
-    handleFilterRequest(
-      `alcaldia-recursos-municipales/filter?page=${
-        activePage - 1
-      }&size=${pageSize}`,
-      filterBody,
-      updateArrayData
-    );
+    filterBody = { ...filterBody, tipoCriteria: enumTipo.PADRE, tipoOperator: enumCompareOperators.TEXT_EQUALS };
+    handleFilterRequest(`alcaldia-recursos-municipales-out-timbres/filter?page=${activePage - 1}&size=${pageSize}`, filterBody, updateArrayData);
   }
 
   function handleGetSize (filterBody, setTotalPages) {
-    handleFilterRequest(
-      `alcaldia-recursos-municipales/filter/size/${pageSize}`,
-      filterBody,
-      setTotalPages
-    );
+    filterBody = { ...filterBody, tipoCriteria: enumTipo.PADRE, tipoOperator: enumCompareOperators.TEXT_EQUALS };
+    handleFilterRequest(`alcaldia-recursos-municipales-out-timbres/filter/size/${pageSize}`, filterBody, setTotalPages);
   }
 
   function afterAddProductToSale (params) {
+    setValueVentaPrecioTotal(params);
     setUpdateTableDelete(false);
   }
 
@@ -42,26 +36,23 @@ function AlcaldiaRecursosMunicipalesTableAddSale (props) {
     console.error("error in add producto to sale");
   }
 
-  function handleAddProductToSale (data, textboxId) {
-    const textboxElement = document.getElementById(textboxId);
-    const saleQuantity = textboxElement.value;
-
-    const price = Number(data.precio) * Number(saleQuantity);
+  function handleAddProductToSale (data) {
+    const price = Number(data.precio);
     handleChangeData(price);
     setUpdateTableDelete(true);
     const username = window.sessionStorage.getItem("username");
     const tenant = window.sessionStorage.getItem("tenant");
     const body = {
-      recuersoMunicipalCodigo: data.codigo,
+      idRecursoMunicipal: data.id,
       idVenta: ventasId,
       precioUnidad: data.precio,
       tenant,
-      cantidad: saleQuantity,
+      cantidad: 1,
       createdBy: username,
       updatedBy: username
     };
     handleAddRequest(
-      "alcaldia-recursos-municipales-ventas-detalle/",
+      "alcaldia-recursos-municipales-ventas-detalle-group/",
       body,
       afterAddProductToSale,
       false,
@@ -70,11 +61,6 @@ function AlcaldiaRecursosMunicipalesTableAddSale (props) {
   }
 
   const tableArrayCustomRowButtons = [
-    {
-      type: enumWebElements.TEXTBOX,
-      placeholder: 0,
-      formType: "number"
-    },
     {
       variant: "primary",
       handleCustom: handleAddProductToSale,
@@ -89,7 +75,7 @@ function AlcaldiaRecursosMunicipalesTableAddSale (props) {
       handleGetData={handleGetData}
       handleGetSize={handleGetSize}
       tableArrayCustomRowButtons={tableArrayCustomRowButtons}
-      columnsToShow={enumTableColumnsToShow.SALEADD}
+      columnsToShow={enumTableColumnsToShow.MINIMUM}
     ></AlcaldiaRecursosMunicipalesGenericTable>
   );
 }

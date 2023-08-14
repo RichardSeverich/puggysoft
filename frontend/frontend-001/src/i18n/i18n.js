@@ -59,6 +59,10 @@ import intervalTimeTable from "./spanish/reservation/intervalTimeTable";
 // Alcaldia System
 import alcaldiaVentaStatusText from "./spanish/alcaldia/alcaldiaVentaStatusText";
 import alcaldiaRecursosMunicipalesForm from "./spanish/alcaldia/alcaldiaRecursosMunicipalesForm";
+import recursoMunicipalTipo from "./spanish/alcaldia/recursoMunicipalTipo";
+import alcaldiaRecursosMunicipalesTimbresForm from "./spanish/alcaldia/alcaldiaRecursosMunicipalesTimbresForm";
+import alcaldiaRecursosMunicipalesTimbresTable from "./spanish/alcaldia/alcaldiaRecursosMunicipalesTimbresTable";
+import alcaldiaRecursosMunicipalesTimbresVentasForm from "./spanish/alcaldia/alcaldiaRecursosMunicipalesTimbresVentasForm";
 import alcaldiaRecursosMunicipalesReporteDiario from "./spanish/alcaldia/alcaldiaRecursosMunicipalesReporteDiario";
 import alcaldiaRecursosMunicipalesReporteMensual from "./spanish/alcaldia/alcaldiaRecursosMunicipalesReporteMensual";
 import alcaldiaRecursosMunicipalesReporteAnual from "./spanish/alcaldia/alcaldiaRecursosMunicipalesReporteAnual";
@@ -150,6 +154,10 @@ const i18n = {
   alcaldiaRecursosMunicipalesForm,
   alcaldiaVentaStatusText,
   alcaldiaRecursosMunicipalesTable,
+  recursoMunicipalTipo,
+  alcaldiaRecursosMunicipalesTimbresForm,
+  alcaldiaRecursosMunicipalesTimbresTable,
+  alcaldiaRecursosMunicipalesTimbresVentasForm,
   alcaldiaRecursosMunicipalesTableAdd,
   alcaldiaRecursosMunicipalesTableDelete,
   alcaldiaRecursosMunicipalesVentasForm,
