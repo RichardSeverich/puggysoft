@@ -8,6 +8,7 @@ const alcaldiaRecursosMunicipalesTimbresVentasForm = {
   fieldClienteCiNitText: "Minimo 7, maximo 11 caracteres",
   fieldDireccion: "Direccion",
   fieldDireccionText: "Minimo 3, maximo 120 caracteres",
+  fieldDescontinuados: "Descontinuados",
   fieldTalonarioActual: "Desde el timbre",
   fieldCantidad: "Cantidad",
   fieldCantidadText: "No debe exceder el limite del talonario",

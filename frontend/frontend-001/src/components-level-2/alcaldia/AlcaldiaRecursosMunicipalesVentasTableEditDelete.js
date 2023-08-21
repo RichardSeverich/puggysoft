@@ -14,11 +14,11 @@ function AlcaldiaRecursosMunicipalesVentasTable () {
   const history = useHistory();
 
   function handleGetData (activePage, filterBody, updateArrayData) {
-    handleFilterRequest(`alcaldia-recursos-municipales-ventas/filter?page=${activePage - 1}&size=${pageSize}`, filterBody, updateArrayData);
+    handleFilterRequest(`alcaldia-recursos-municipales-ventas-without-timbres/filter?page=${activePage - 1}&size=${pageSize}`, filterBody, updateArrayData);
   }
 
   function handleGetSize (filterBody, setTotalPages) {
-    handleFilterRequest(`alcaldia-recursos-municipales-ventas/filter/size/${pageSize}`, filterBody, setTotalPages);
+    handleFilterRequest(`alcaldia-recursos-municipales-ventas-without-timbres/filter/size/${pageSize}`, filterBody, setTotalPages);
   }
 
   function handleEdit (data) {

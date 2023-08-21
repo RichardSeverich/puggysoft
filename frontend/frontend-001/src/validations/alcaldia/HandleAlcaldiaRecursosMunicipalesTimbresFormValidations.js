@@ -1,22 +1,12 @@
 const classNameRed = "puggysoft-red-text";
 
 const classNameFormTextNew = {
-  talonarioInicio: classNameRed,
   talonarioFinal: classNameRed,
   precio: classNameRed
 };
 
 const handleValidation = (data, setClassNameFormText) => {
   let isValid = true;
-  if (!(data.talonarioInicio.length > 0 && data.talonarioInicio.length <= 11)) {
-    isValid = false;
-    classNameFormTextNew.talonarioInicio = classNameRed;
-  } else if (!/^[0-9]+$/.test(data.talonarioInicio)) {
-    isValid = false;
-    classNameFormTextNew.talonarioInicio = classNameRed;
-  } else {
-    classNameFormTextNew.talonarioInicio = "";
-  }
   if (!(data.talonarioFinal.length > 0 && data.talonarioFinal.length <= 11)) {
     isValid = false;
     classNameFormTextNew.talonarioFinal = classNameRed;

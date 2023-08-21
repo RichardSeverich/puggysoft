@@ -291,6 +291,12 @@ function NavBar () {
   const navigateAlcaldiaRecursosMunicipalesTimbresTable = () => {
     history.push(enumPaths.ALCALDIA_RECURSOS_MUNICIPALES_TIMBRES_TABLE);
   };
+  const navigateAlcaldiaRecursosMunicipalesTimbresDescontinuadosForm = () => {
+    history.push(enumPaths.ALCALDIA_RECURSOS_MUNICIPALES_TIMBRES_DESCONTINUADOS_FORM);
+  };
+  const navigateAlcaldiaRecursosMunicipalesTimbresDescontinuadosTable = () => {
+    history.push(enumPaths.ALCALDIA_RECURSOS_MUNICIPALES_TIMBRES_DESCONTINUADOS_TABLE);
+  };
   const navigateAlcaldiaRecursosMunicipaleTimbressVentasForm = () => {
     history.push(enumPaths.ALCALDIA_RECURSOS_MUNICIPALES_TIMBRES_VENTAS_FORM);
   };
@@ -570,6 +576,8 @@ function NavBar () {
   const recursoMunicipalTimbresAdminLabel = (<><IoIosNotifications /> {i18n.navBar.recursoMunicipalTimbresAdmin}</>);
   const recursoMunicipalTimbresFormLabel = (<><GrAddCircle /> {i18n.navBar.recursoMunicipalTimbresForm}</>);
   const recursoMunicipalTimbresTableLabel = (<><AiOutlineTable /> {i18n.navBar.recursoMunicipalTimbresTable}</>);
+  const recursoMunicipalTimbresDescontinuadosFormLabel = (<><GrAddCircle /> {i18n.navBar.recursoMunicipalTimbresDescontinuadosForm}</>);
+  const recursoMunicipalTimbresDescontinuadosTableLabel = (<><AiOutlineTable /> {i18n.navBar.recursoMunicipalTimbresDescontinuadosTable}</>);
   // VENTA RECURSOS MUNICIPALES TIMBRES
   const recursoMunicipalTimbresVentaAdminLabel = (<><FaCashRegister /> {i18n.navBar.recursoMunicipalTimbresVentalAdmin}</>);
   const recursoMunicipalTimbresVentaFormLabel = (<><GrAddCircle /> {i18n.navBar.recursoMunicipalTimbresVentaForm}</>);
@@ -822,6 +830,8 @@ function NavBar () {
             <NavDropdown title={recursoMunicipalTimbresAdminLabel}>
               <NavDropdown.Item onClick={navigateAlcaldiaRecursosMunicipalesTimbresForm}>{recursoMunicipalTimbresFormLabel}</NavDropdown.Item>
               <NavDropdown.Item onClick={navigateAlcaldiaRecursosMunicipalesTimbresTable}>{recursoMunicipalTimbresTableLabel}</NavDropdown.Item>
+              <NavDropdown.Item onClick={navigateAlcaldiaRecursosMunicipalesTimbresDescontinuadosForm}>{recursoMunicipalTimbresDescontinuadosFormLabel}</NavDropdown.Item>
+              <NavDropdown.Item onClick={navigateAlcaldiaRecursosMunicipalesTimbresDescontinuadosTable}>{recursoMunicipalTimbresDescontinuadosTableLabel}</NavDropdown.Item>
             </NavDropdown>}
           {(userRoles.includes(enumRoles.ALCALDIA_RECURSOS_MUNICIPALES_ENCARGADO) ||
             userRoles.includes(enumRoles.ALCALDIA_RECURSOS_MUNICIPALES_CAJERO)

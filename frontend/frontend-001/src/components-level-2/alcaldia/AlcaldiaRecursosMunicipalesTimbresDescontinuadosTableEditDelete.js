@@ -3,31 +3,31 @@ import { useHistory } from "react-router";
 import i18n from "../../i18n/i18n";
 import enumPaths from "../../models/enumPaths";
 import { handleFilterRequest, handleDeleteRequest } from "../../actions/HandleManager";
-import AlcaldiaRecursosMunicipalesTimbresGenericTable from "./generic/AlcaldiaRecursosMunicipalesTimbresGenericTable";
+import AlcaldiaRecursosMunicipalesTimbresDescontinuadosGenericTable from "./generic/AlcaldiaRecursosMunicipalesTimbresDescontinuadosGenericTable";
 import enumTableColumnsToShow from "../../models/enumTableColumnsToShow";
 
-function AlcaldiaRecursosMunicipalesTimbresTableEditDelete () {
-  const tableTitle = i18n.alcaldiaRecursosMunicipalesTable.title;
+function AlcaldiaRecursosMunicipalesTimbresDescontinuadosTableEditDelete () {
+  const tableTitle = i18n.alcaldiaRecursosMunicipalesTimbresDescontinuadosTable.title;
   const pageSize = 7;
   const numberPagesToShow = 7;
 
   const history = useHistory();
 
   function handleGetData (activePage, filterBody, updateArrayData) {
-    handleFilterRequest(`alcaldia-recursos-municipales/filter?page=${activePage - 1}&size=${pageSize}`, filterBody, updateArrayData);
+    handleFilterRequest(`alcaldia-recursos-municipales-timbres-descontinuados/filter?page=${activePage - 1}&size=${pageSize}`, filterBody, updateArrayData);
   }
 
   function handleGetSize (filterBody, setTotalPages) {
-    handleFilterRequest(`alcaldia-recursos-municipales/filter/size/${pageSize}`, filterBody, setTotalPages);
+    handleFilterRequest(`alcaldia-recursos-municipales-timbres-descontinuados/filter/size/${pageSize}`, filterBody, setTotalPages);
   }
 
   function handleDelete (data) {
-    handleDeleteRequest(`alcaldia-recursos-municipales/${data.id}`, undefined, undefined, undefined, true);
+    handleDeleteRequest(`alcaldia-recursos-municipales-timbres-descontinuados/${data.id}`, undefined, undefined, undefined, true);
   }
 
   function handleEdit (data) {
     history.push({
-      pathname: enumPaths.ALCALDIA_RECURSOS_MUNICIPALES_TIMBRES_FORM,
+      pathname: enumPaths.ALCALDIA_RECURSOS_MUNICIPALES_TIMBRES_DESCONTINUADOS_FORM,
       state: {
         data,
         edit: true
@@ -48,28 +48,17 @@ function AlcaldiaRecursosMunicipalesTimbresTableEditDelete () {
     }
   ];
 
-  const fixArrayData = data => {
-    return data.map(timbre => {
-      const today = new Date(timbre.creationDate);
-      const valueName =
-        `${today.getDate()} de ${i18n.commonMonths[today.toLocaleString("en-GB", { month: "long" }).toLowerCase()]} ${today.getFullYear()}`;
-      timbre.name = `${timbre.name} ${valueName}`;
-      return timbre;
-    });
-  };
-
   return (
-    <AlcaldiaRecursosMunicipalesTimbresGenericTable
+    <AlcaldiaRecursosMunicipalesTimbresDescontinuadosGenericTable
       tableTitle={tableTitle}
       numberPagesToShow={numberPagesToShow}
       handleGetData={handleGetData}
       handleGetSize={handleGetSize}
       tableArrayCustomRowButtons={tableArrayCustomRowButtons}
       columnsToShow={enumTableColumnsToShow.FULL}
-      fixArrayData={fixArrayData}
     >
-    </AlcaldiaRecursosMunicipalesTimbresGenericTable>
+    </AlcaldiaRecursosMunicipalesTimbresDescontinuadosGenericTable>
   );
 }
 
-export default AlcaldiaRecursosMunicipalesTimbresTableEditDelete;
+export default AlcaldiaRecursosMunicipalesTimbresDescontinuadosTableEditDelete;

@@ -114,6 +114,8 @@ import AlcaldiaRecursosMunicipalesVentasFormPage from "./components-level-3/alca
 import AlcaldiaRecursosMunicipalesVentasTablePage from "./components-level-3/alcaldia/AlcaldiaRecursosMunicipalesVentasTablePage";
 import AlcaldiaRecursosMunicipalesTimbresFormPage from "./components-level-3/alcaldia/AlcaldiaRecursosMunicipalesTimbresFormPage";
 import AlcaldiaRecursosMunicipalesTimbresTablePage from "./components-level-3/alcaldia/AlcaldiaRecursosMunicipalesTimbresTablePage";
+import AlcaldiaRecursosMunicipalesTimbresDescontinuadasFormPage from "./components-level-3/alcaldia/AlcaldiaRecursosMunicipalesTimbresDescontinuadosFormPage";
+import AlcaldiaRecursosMunicipalesTimbresDescontinuadosTablePage from "./components-level-3/alcaldia/AlcaldiaRecursosMunicipalesTimbresDescontinuadosTablePage";
 import AlcaldiaRecursosMunicipalesTimbresVentasFormPage from "./components-level-3/alcaldia/AlcaldiaRecursosMunicipalesTimbresVentasFormPage";
 import AlcaldiaRecursosMunicipalesTimbresVentasTablePage from "./components-level-3/alcaldia/AlcaldiaRecursosMunicipalesTimbresVentasTablePage";
 import AlcaldiaRecursosMunicipalesReporteDiarioPage from "./components-level-3/alcaldia/AlcaldiaRecursosMunicipalesReporteDiarioPage";
@@ -254,6 +256,8 @@ const AppRoutes = () => (
       <Route exact path={enumPaths.ALCALDIA_RECURSOS_MUNICIPALES_VENTAS_TABLE} component={AlcaldiaRecursosMunicipalesVentasTablePage} />
       <Route exact path={enumPaths.ALCALDIA_RECURSOS_MUNICIPALES_TIMBRES_FORM} component={AlcaldiaRecursosMunicipalesTimbresFormPage} />
       <Route exact path={enumPaths.ALCALDIA_RECURSOS_MUNICIPALES_TIMBRES_TABLE} component={AlcaldiaRecursosMunicipalesTimbresTablePage} />
+      <Route exact path={enumPaths.ALCALDIA_RECURSOS_MUNICIPALES_TIMBRES_DESCONTINUADOS_FORM} component={AlcaldiaRecursosMunicipalesTimbresDescontinuadasFormPage} />
+      <Route exact path={enumPaths.ALCALDIA_RECURSOS_MUNICIPALES_TIMBRES_DESCONTINUADOS_TABLE} component={AlcaldiaRecursosMunicipalesTimbresDescontinuadosTablePage} />
       <Route exact path={enumPaths.ALCALDIA_RECURSOS_MUNICIPALES_TIMBRES_VENTAS_FORM} component={AlcaldiaRecursosMunicipalesTimbresVentasFormPage} />
       <Route exact path={enumPaths.ALCALDIA_RECURSOS_MUNICIPALES_TIMBRES_VENTAS_TABLE} component={AlcaldiaRecursosMunicipalesTimbresVentasTablePage} />
       <Route exact path={enumPaths.ALCALDIA_RECURSOS_MUNICIPALES_REPORTE_DIARIO} component={AlcaldiaRecursosMunicipalesReporteDiarioPage} />

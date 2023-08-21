@@ -179,6 +179,8 @@ const navBar = {
   recursoMunicipalTimbresAdmin: "Adm. Timbres",
   recursoMunicipalTimbresForm: "Registrar Lote de Timbres",
   recursoMunicipalTimbresTable: "Mostrar Timbres",
+  recursoMunicipalTimbresDescontinuadosForm: "Registrar Timbre Descontinuado",
+  recursoMunicipalTimbresDescontinuadosTable: "Mostrar Timbres Descontinuados",
   // Venta Recursos Municipales Timbres
   recursoMunicipalTimbresVentalAdmin: "Adm. Caja Timbres",
   recursoMunicipalTimbresVentaForm: "Registrar venta",

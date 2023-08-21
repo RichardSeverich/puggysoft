@@ -9,6 +9,7 @@ import i18n from "../../i18n/i18n";
 import useInput from "../../hooks/useInput";
 import enumTipo from "./../../models/alcaldia/enumRecursosMunicipalesTipo";
 import {
+  handleGetRequest,
   handleAddRequest,
   handleEditRequest
 } from "../../actions/HandleManager";
@@ -32,6 +33,7 @@ function AlcaldiaRecursosMunicipalesTimbresForm () {
   const [isMessageVisible, setIsMessageVisible] = useState(false);
   const [messageTitle, setMessageTitle] = useState("");
   const [messageText, setMessageText] = useState("");
+  const [controlGet, setControlGet] = useState(true);
 
   const tipo = enumTipo.HIJO;
   // Put default values:
@@ -43,14 +45,17 @@ function AlcaldiaRecursosMunicipalesTimbresForm () {
   const precio =
     isEdit && isEdit.data.precio !== null ? isEdit.data.precio : "";
 
-  const today = new Date();
+  const use = isEdit?.data?.creationDate;
+  const timeElapsed = Date.now();
+
+  const today = new Date(use !== undefined ? use : timeElapsed);
   const valueName =
     `${i18n.alcaldiaRecursosMunicipalesTimbresForm.defaultTimbre} ${today.getDate()} de ${i18n.commonMonths[today.toLocaleString("en-GB", { month: "long" }).toLowerCase()]} ${today.getFullYear()}`;
 
   // Use custom hook
   const {
     value: valueTalonarioInicio,
-    onChange: onChangeTalonarioInicio,
+    setValue: setValueTalonarioInicio,
     reset: resetTalonarioInicio
   } = useInput(talonarioInicio);
   const {
@@ -69,6 +74,13 @@ function AlcaldiaRecursosMunicipalesTimbresForm () {
     resetTalonarioFinal();
     resetPrecio();
   };
+
+  if (controlGet && isEdit === undefined) {
+    handleGetRequest("alcaldia-recursos-municipales-timbres-get-for-register", (data) => {
+      setValueTalonarioInicio(data);
+      setControlGet(false);
+    });
+  }
 
   const getBody = useCallback(
     function () {
@@ -177,7 +189,7 @@ function AlcaldiaRecursosMunicipalesTimbresForm () {
                 {i18n.alcaldiaRecursosMunicipalesTimbresForm.fieldTalonarioInicio}
               </Form.Label>
               <Form.Control
-                onChange={onChangeTalonarioInicio}
+                disabled
                 value={valueTalonarioInicio}
                 type="number"
                 placeholder={i18n.alcaldiaRecursosMunicipalesTimbresForm.fieldTalonarioInicio}

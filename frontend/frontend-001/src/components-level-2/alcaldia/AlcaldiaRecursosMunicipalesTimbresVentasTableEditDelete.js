@@ -23,7 +23,7 @@ function AlcaldiaRecursosMunicipalesTimbresVentasTable () {
 
   function handleEdit (data) {
     history.push({
-      pathname: enumPaths.ALCALDIA_RECURSOS_MUNICIPALES_VENTAS_FORM,
+      pathname: enumPaths.ALCALDIA_RECURSOS_MUNICIPALES_TIMBRES_VENTAS_FORM,
       state: {
         data,
         edit: true
