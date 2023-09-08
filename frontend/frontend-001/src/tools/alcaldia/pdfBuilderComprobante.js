@@ -8,7 +8,7 @@ const GeneratePdf = (data, body) => {
     format: [16.5, 21.6],
     unit: "cm"
   });
-  const fileName = "comprobanteRubros.jpg";
+  const fileName = "alcaldia/comprobanteRubros.jpg";
   const imageUrl = `${appUrlConfig.URL}/${fileName}`;
   doc.addImage(imageUrl, "JPG", 0, 0, 21.6, 16.5);
 
