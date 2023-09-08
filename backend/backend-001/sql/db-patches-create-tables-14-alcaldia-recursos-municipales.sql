@@ -20,7 +20,7 @@ CREATE TABLE alcaldia_recursos_municipales(
    PRIMARY KEY (id)
 )AUTO_INCREMENT=1000;
 
-CREATE TABLE alcaldia_recursos_municipales_grupo(
+CREATE TABLE alcaldia_recursos_municipales_grupo_para_reportes(
    id BIGINT AUTO_INCREMENT,
    id_recurso_municipal_padre BIGINT NOT NULL,
    id_recurso_municipal_hijo BIGINT NOT NULL,
@@ -81,6 +81,54 @@ CREATE TABLE alcaldia_recursos_municipales_venta_detalle(
 CREATE TABLE alcaldia_timbres_descontinuados(
    id BIGINT AUTO_INCREMENT,
    codigo BIGINT  NOT NULL UNIQUE,
+   tenant VARCHAR(30) NOT NULL,
+   creation_date DATETIME DEFAULT CURRENT_TIMESTAMP,
+   update_date DATETIME ON UPDATE CURRENT_TIMESTAMP,
+   created_by VARCHAR(30),
+   updated_by VARCHAR(30),
+   FOREIGN KEY (created_by) REFERENCES users(username),
+   FOREIGN KEY (updated_by) REFERENCES users(username),
+   FOREIGN KEY (tenant) REFERENCES tenants(short_name),
+   PRIMARY KEY (id)
+)AUTO_INCREMENT=1000;
+
+CREATE TABLE alcaldia_actividades(
+   id BIGINT AUTO_INCREMENT,
+   name VARCHAR(120)  NOT NULL UNIQUE,
+   tenant VARCHAR(30) NOT NULL,
+   creation_date DATETIME DEFAULT CURRENT_TIMESTAMP,
+   update_date DATETIME ON UPDATE CURRENT_TIMESTAMP,
+   created_by VARCHAR(30),
+   updated_by VARCHAR(30),
+   FOREIGN KEY (created_by) REFERENCES users(username),
+   FOREIGN KEY (updated_by) REFERENCES users(username),
+   FOREIGN KEY (tenant) REFERENCES tenants(short_name),
+   PRIMARY KEY (id)
+)AUTO_INCREMENT=1000;
+
+CREATE TABLE alcaldia_recursos_municipales_actividades(
+   id BIGINT AUTO_INCREMENT,
+   id_actividades BIGINT NOT NULL,
+   id_recurso_municipal BIGINT NOT NULL,
+   tenant VARCHAR(30) NOT NULL,
+   creation_date DATETIME DEFAULT CURRENT_TIMESTAMP,
+   update_date DATETIME ON UPDATE CURRENT_TIMESTAMP,
+   created_by VARCHAR(30),
+   updated_by VARCHAR(30),
+   FOREIGN KEY (created_by) REFERENCES users(username),
+   FOREIGN KEY (updated_by) REFERENCES users(username),
+   FOREIGN KEY (tenant) REFERENCES tenants(short_name),
+   FOREIGN KEY (id_actividades) REFERENCES alcaldia_actividades(id),
+   FOREIGN KEY (id_recurso_municipal) REFERENCES alcaldia_recursos_municipales(id),
+   UNIQUE (id_actividades, id_recurso_municipal),
+   PRIMARY KEY (id)
+)AUTO_INCREMENT=1000;
+
+CREATE TABLE alcaldia_recursos_valorados(
+   id BIGINT AUTO_INCREMENT,
+   codigo BIGINT  NOT NULL,
+   codigo_auxiliar VARCHAR(30),
+   name VARCHAR(120) NOT NULL,
    tenant VARCHAR(30) NOT NULL,
    creation_date DATETIME DEFAULT CURRENT_TIMESTAMP,
    update_date DATETIME ON UPDATE CURRENT_TIMESTAMP,

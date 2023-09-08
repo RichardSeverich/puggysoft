@@ -42,8 +42,13 @@ public class ServiceAlcaldiaRecursosMunicipalesHijoNotByPadreIdGetFilter {
       String fullQuery = "SELECT DISTINCT alcaldia_recursos_municipales.* FROM alcaldia_recursos_municipales "
       + "WHERE alcaldia_recursos_municipales.tipo = \"HIJO\" AND "
       + "alcaldia_recursos_municipales.id NOT IN (SELECT alcaldia_recursos_municipales.id FROM alcaldia_recursos_municipales "
-      + "INNER JOIN alcaldia_recursos_municipales_grupo ON alcaldia_recursos_municipales.id = alcaldia_recursos_municipales_grupo.id_recurso_municipal_hijo "
-      + "WHERE alcaldia_recursos_municipales_grupo.id_recurso_municipal_padre = " + idPadre + ") AND " + query + " LIMIT " + off + "," + size;
+      + "INNER JOIN alcaldia_recursos_municipales_grupo_para_reportes ON alcaldia_recursos_municipales.id = alcaldia_recursos_municipales_grupo_para_reportes.id_recurso_municipal_hijo "
+      + "WHERE alcaldia_recursos_municipales_grupo_para_reportes.id_recurso_municipal_padre = " + idPadre + ") AND alcaldia_recursos_municipales.id " 
+      + "NOT IN (SELECT id FROM alcaldia_recursos_municipales WHERE name = (SELECT alcaldia_recursos_municipales.name FROM alcaldia_recursos_municipales INNER JOIN alcaldia_recursos_municipales_grupo_para_reportes "
+      + "ON alcaldia_recursos_municipales_grupo_para_reportes.id_recurso_municipal_hijo = alcaldia_recursos_municipales.id "
+      + "WHERE alcaldia_recursos_municipales_grupo_para_reportes.id_recurso_municipal_padre = " + idPadre + " AND alcaldia_recursos_municipales_grupo_para_reportes.id_recurso_municipal_hijo = "
+      + "(SELECT id FROM `alcaldia_recursos_municipales` WHERE name LIKE \"%TIMBRES%\" LIMIT 1))) AND "
+      + query + " LIMIT " + off + "," + size;
       // JQPL (createQuery) and Native (createNativeQuery)
       Query filterQuery = entityManager.createNativeQuery(fullQuery, EntityAlcaldiaRecursosMunicipales.class);
       listEntities = (List<EntityAlcaldiaRecursosMunicipales>) filterQuery.getResultList();

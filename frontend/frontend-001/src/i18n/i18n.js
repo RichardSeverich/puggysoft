@@ -74,6 +74,8 @@ import alcaldiaRecursosMunicipalesReportePdf from "./spanish/alcaldia/alcaldiaRe
 import alcaldiaRecursosMunicipalesTable from "./spanish/alcaldia/alcaldiaRecursosMunicipalesTable";
 import alcaldiaRecursosMunicipalesVentasForm from "./spanish/alcaldia/alcaldiaRecursosMunicipalesVentasForm";
 import alcaldiaRecursosMunicipalesVentasTable from "./spanish/alcaldia/alcaldiaRecursosMunicipalesVentasTable";
+import alcaldiaActividadesForm from "./spanish/alcaldia/alcaldiaActividadesForm";
+import alcaldiaActividadesTable from "./spanish/alcaldia/alcaldiaActividadesTable";
 import alcaldiaRecursosMunicipalesTableAdd from "./spanish/alcaldia/alcaldiaRecursosMunicipalesTableAdd";
 import alcaldiaRecursosMunicipalesTableDelete from "./spanish/alcaldia/alcaldiaRecursosMunicipalesTableDelete";
 import alcaldiaRecursosMunicipalesNumToText from "./spanish/alcaldia/alcaldiaRecursosMunicipalesNumToText";
@@ -170,6 +172,8 @@ const i18n = {
   alcaldiaRecursosMunicipalesTableDelete,
   alcaldiaRecursosMunicipalesVentasForm,
   alcaldiaRecursosMunicipalesVentasTable,
+  alcaldiaActividadesForm,
+  alcaldiaActividadesTable,
   alcaldiaRecursosMunicipalesReporteDiario,
   alcaldiaRecursosMunicipalesReporteMensual,
   alcaldiaRecursosMunicipalesReporteAnual,

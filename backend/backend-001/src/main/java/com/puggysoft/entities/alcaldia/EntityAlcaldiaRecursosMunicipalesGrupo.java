@@ -9,7 +9,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 @Entity
-@Table(name = "alcaldia_recursos_municipales_grupo")
+@Table(name = "alcaldia_recursos_municipales_grupo_para_reportes")
 @Data
 @EqualsAndHashCode(callSuper = true)
 public class EntityAlcaldiaRecursosMunicipalesGrupo extends EntitySuperClass {

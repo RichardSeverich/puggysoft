@@ -8,7 +8,7 @@ import CommonLoading from "../../components-level-1/CommonLoading";
 import i18n from "../../i18n/i18n";
 import useInput from "../../hooks/useInput";
 import enumVentaStatus from "./../../models/alcaldia/enumVentaStatus";
-import GeneratePdf from "../../tools/alcaldia/pdfBuilderComprobante";
+import GeneratePdf from "../../tools/alcaldia/pdfBuilderComprobanteValorados";
 import enumCompareOperators from "../../models/enumCompareOperators";
 import {
   handleGetRequest,
@@ -55,6 +55,7 @@ function AlcaldiaRecursosMunicipalesTimbresVentasForm () {
   let hastaTimbre = 0;
   let talonarioMovimiento = 0;
   let clienteCambio = 0;
+  let creationDate;
   // Put default values:
   if (isEdit !== undefined && !isBlock) {
     venta = isEdit.data.id;
@@ -65,10 +66,11 @@ function AlcaldiaRecursosMunicipalesTimbresVentasForm () {
     hastaTimbre = Number(help[1].split("  ")[1]);
     talonarioMovimiento = help[0].split("  ")[1];
     setValueDescontinuados(help[2].split("-"));
-    nota = String(Number(hastaTimbre) - Number(talonarioMovimiento));
+    nota = String(Number(hastaTimbre) - Number(talonarioMovimiento) + 1);
     ventaPrecioTotal = isEdit.data.ventaPrecioTotal;
     clienteDinero = isEdit.data.clienteDinero;
     clienteCambio = isEdit.data.clienteCambio;
+    creationDate = isEdit.data.creationDate;
     setIsBlock(true);
   }
 
@@ -78,6 +80,7 @@ function AlcaldiaRecursosMunicipalesTimbresVentasForm () {
   const [valueVentaPrecioTotal, setValueVentaPrecioTotal] = useState(ventaPrecioTotal);
   const [idVenta, setIdVenta] = useState(venta);
   const [valueClienteCambio, setValueClienteCambio] = useState(clienteCambio);
+  const [valueCreationDate] = useState(creationDate);
   // Use custom hook
   const { value: valueClienteNombre, onChange: onChangeClienteNombre } = useInput(clienteNombre);
   const { value: valueClienteCiNit, onChange: onChangeClienteCiNit } = useInput(clienteCiNit);
@@ -95,7 +98,11 @@ function AlcaldiaRecursosMunicipalesTimbresVentasForm () {
 
   const afterGetTimbres = data => {
     if (data.length !== 0) {
-      setValueTimbres(data[0]);
+      const timbreWork = data[0];
+      if (timbreWork.talonarioInicio !== timbreWork.talonarioMovimiento) {
+        timbreWork.talonarioMovimiento++;
+      }
+      setValueTimbres(timbreWork);
       setControlDescontinuados(true);
     } else {
       setIsEmpy(true);
@@ -178,7 +185,7 @@ function AlcaldiaRecursosMunicipalesTimbresVentasForm () {
 
   const afterDataComprobante = data => {
     const body = getBody();
-    GeneratePdf(data, body);
+    GeneratePdf(data, { ...body, valueCreationDate, idVenta });
     setIsRequestInProgress(false);
   };
 
@@ -202,13 +209,13 @@ function AlcaldiaRecursosMunicipalesTimbresVentasForm () {
       let count = 0;
       // eslint-disable-next-line array-callback-return
       const help = descontinuados.filter((num) => {
-        if (num <= Number(valueCantidad) + Number(valueTimbres.talonarioMovimiento)) {
+        if (num <= Number(valueCantidad) + Number(valueTimbres.talonarioMovimiento) - 1) {
           ++count;
           return num;
         }
       });
       setValueDescontinuados(help);
-      setValueHastaTimbre(Number(valueCantidad) + Number(valueTimbres.talonarioMovimiento) + count);
+      setValueHastaTimbre(Number(valueCantidad) + Number(valueTimbres.talonarioMovimiento) + count - 1);
       setValueVentaPrecioTotal(Number(valueCantidad) * Number(valueTimbres.precio));
     }
   }, [valueCantidad]);
@@ -256,7 +263,7 @@ function AlcaldiaRecursosMunicipalesTimbresVentasForm () {
           </Button>}
         </Card.Header>
         <Card.Body>
-          <div className="puggysoft-five-divs-side-by-side-child-container">
+          <div className="puggysoft-flex-container">
             <div className="puggysoft-five-divs-side-by-side-child">
               <Form.Group className="mb-3" controlId="clienteNombre">
                 <Form.Label>
@@ -356,7 +363,7 @@ function AlcaldiaRecursosMunicipalesTimbresVentasForm () {
                 <Form.Control
                   disabled
                   style={{ resize: "none" }}
-                  value={valueHastaTimbre}
+                  value={valueHastaTimbre < valueTimbres?.talonarioMovimiento ? 0 : valueHastaTimbre}
                 />
               </Form.Group>
             </div>
@@ -405,16 +412,15 @@ function AlcaldiaRecursosMunicipalesTimbresVentasForm () {
               </Form.Group>
             </div>
             <div className="puggysoft-five-divs-side-by-side-child">
-              <Button
+              {!isBlock && <Button
                 onClick={handleAdd}
                 variant="primary"
                 type="button"
                 className="puggysoft-button-inline"
               >
                 {i18n.commonForm.saveButton}
-              </Button>
+              </Button>}
             </div>
-            <div className="puggysoft-five-divs-side-by-side-child"></div>
           </div>
         </Card.Body>
       </Card>

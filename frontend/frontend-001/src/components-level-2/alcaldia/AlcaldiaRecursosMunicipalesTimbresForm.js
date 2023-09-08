@@ -77,7 +77,7 @@ function AlcaldiaRecursosMunicipalesTimbresForm () {
 
   if (controlGet && isEdit === undefined) {
     handleGetRequest("alcaldia-recursos-municipales-timbres-get-for-register", (data) => {
-      setValueTalonarioInicio(data);
+      setValueTalonarioInicio(data + 1);
       setControlGet(false);
     });
   }
@@ -186,13 +186,13 @@ function AlcaldiaRecursosMunicipalesTimbresForm () {
             </Form.Group>
             <Form.Group className="mb-3" controlId="talonario-inicio">
               <Form.Label>
-                {i18n.alcaldiaRecursosMunicipalesTimbresForm.fieldTalonarioInicio}
+                {i18n.alcaldiaRecursosMunicipalesTimbresForm.fieldTimbresInicio}
               </Form.Label>
               <Form.Control
                 disabled
                 value={valueTalonarioInicio}
                 type="number"
-                placeholder={i18n.alcaldiaRecursosMunicipalesTimbresForm.fieldTalonarioInicio}
+                placeholder={i18n.alcaldiaRecursosMunicipalesTimbresForm.fieldTimbresInicio}
               />
               <Form.Text muted>
                 {i18n.alcaldiaRecursosMunicipalesTimbresForm.fieldTalonarioInicioText}
@@ -200,13 +200,13 @@ function AlcaldiaRecursosMunicipalesTimbresForm () {
             </Form.Group>
             <Form.Group className="mb-3" controlId="talonario-final">
               <Form.Label>
-                {i18n.alcaldiaRecursosMunicipalesTimbresForm.fieldTalonarioFinal}
+                {i18n.alcaldiaRecursosMunicipalesTimbresForm.fieldTimbresFinal}
               </Form.Label>
               <Form.Control
                 onChange={onChangeTalonarioFinal}
                 value={valueTalonarioFinal}
                 type="number"
-                placeholder={i18n.alcaldiaRecursosMunicipalesTimbresForm.fieldTalonarioFinal}
+                placeholder={i18n.alcaldiaRecursosMunicipalesTimbresForm.fieldTimbresFinal}
               />
               <Form.Text muted>
                 {i18n.alcaldiaRecursosMunicipalesTimbresForm.fieldTalonarioFinalText}

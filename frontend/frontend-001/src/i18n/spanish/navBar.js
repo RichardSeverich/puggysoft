@@ -171,7 +171,11 @@ const navBar = {
   recursoMunicipalAdmin: "Adm. Recursos Municipales",
   recursoMunicipalForm: "Registrar Recurso",
   recursoMunicipalTable: "Mostrar Recursos",
-  recursoMunicipalGrupoStepOne: "Gestionar gerarquia",
+  recursoMunicipalGrupoStepOne: "Gestionar jerarquía",
+  // Actividades
+  recursoActividadesAdmin: "Adm. actividades",
+  recursoActividadesForm: "Registrar actividad",
+  recursoActividadesTable: "Mostrar actividades",
   // Venta Recursos Municipales
   recursoMunicipaVentalAdmin: "Adm. Caja Recursos Municipales",
   recursoMunicipalVentaForm: "Registrar venta",
@@ -190,6 +194,7 @@ const navBar = {
   recursoMunicipalReporteAdmin: "Adm. Reportes",
   recursoMunicipalReporte1: "Reportes por fecha",
   recursoMunicipalReporte2: "Reportes por rango de fechas",
+  recursoMunicipalReporteCortoDiario: "Reporte corto diario",
   recursoMunicipalReporteDiario: "Reporte diario",
   recursoMunicipalReporteMensual: "Reporte mensual",
   recursoMunicipalReporteAnual: "Reporte anual",

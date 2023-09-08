@@ -36,17 +36,19 @@ public class ServiceAlcaldiaRecursosMunicipalesReport {
     String estadoVenta = criteria.estadoVenta.toString();
     String tenant = criteria.tenant;
     String fecha = criteria.fecha;
+
     List<DtoAlcaldiaRecursosMunicipales> listOfProducts = repositoryAlcaldiaRecursos
-        .findAll()
+        .findAlcaldiaRecursosMunicipalesKidsNotRepeatName()
         .stream()
         .map(DtoAlcaldiaRecursosMunicipales::entityToDto)
         .collect(Collectors.toList());
+
     DtoAlcaldiaRecursosMunicipalesReport reportResult = new DtoAlcaldiaRecursosMunicipalesReport();
     List<DtoAlcaldiaRecursosMunicipalesReportResumen> reportResumenList = new ArrayList<>();
     for (DtoAlcaldiaRecursosMunicipales producto : listOfProducts) {
       DtoAlcaldiaRecursosMunicipalesReportResumen reportResumen = new DtoAlcaldiaRecursosMunicipalesReportResumen();
       List<EntityAlcaldiaRecursosMunicipalesReportItem> listReportItemsEntities = repositoryReport.getRevenueSummary(
-          producto.getCodigo(),
+          producto.getName(),
           estadoVenta,
           tenant,
           fecha);
@@ -56,7 +58,7 @@ public class ServiceAlcaldiaRecursosMunicipalesReport {
           .collect(Collectors.toList());
       reportResumen.resumenVentas = listReportItems;
       Double totalPerProduct = repositoryReport.getRevenuePerProductTotal(
-          producto.getCodigo(),
+          producto.getName(),
           estadoVenta,
           tenant,
           fecha);

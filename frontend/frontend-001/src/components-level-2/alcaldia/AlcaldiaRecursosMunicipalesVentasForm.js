@@ -38,6 +38,7 @@ function AlcaldiaRecursosMunicipalesVentasForm () {
   const [isRequestInProgress, setIsRequestInProgress] = useState(false);
   const [verDetalles, setVerDetalles] = useState(false);
   const [idVenta, setIdVenta] = useState("");
+  const [valueCreationDate, setValueCreationDate] = useState(undefined);
   const [updateTableDelete, setUpdateTableDelete] = useState(false);
   // Message states
   const [isMessageVisible, setIsMessageVisible] = useState(false);
@@ -53,6 +54,7 @@ function AlcaldiaRecursosMunicipalesVentasForm () {
   if (isEdit?.data.id && controlarEdit) {
     setVerDetalles(true);
     setIdVenta(isEdit.data.id);
+    setValueCreationDate(isEdit.data.creationDate);
   }
   const clienteNombre =
     isEdit && isEdit.data.clienteNombre !== null
@@ -81,7 +83,7 @@ function AlcaldiaRecursosMunicipalesVentasForm () {
     useInput(clienteCiNit);
   const { value: valueDireccion, onChange: onChangeDireccion } =
     useInput(direccion);
-  const { value: valueNota, onChange: onChangeNota } = useInput(nota);
+  const [valueNota, setValueNota] = useState(nota);
   const { value: valueVentaStatus, onChange: onChangeVentaStatus } =
     useInput(ventaStatus);
 
@@ -166,7 +168,7 @@ function AlcaldiaRecursosMunicipalesVentasForm () {
 
   const afterDataComprobante = data => {
     const body = getBody();
-    GeneratePdf(data, body);
+    GeneratePdf(data, { ...body, valueCreationDate, idVenta });
     setIsRequestInProgress(false);
   };
 
@@ -293,16 +295,13 @@ function AlcaldiaRecursosMunicipalesVentasForm () {
                 </Form.Label>
                 <Form.Control
                   style={{ resize: "none" }}
+                  disabled
                   value={valueNota}
-                  onChange={onChangeNota}
                   as="textarea"
                   placeholder={
                     i18n.alcaldiaRecursosMunicipalesVentasForm.fieldNota
                   }
                 />
-                <Form.Text muted className={classNameFormText.nota}>
-                  {i18n.alcaldiaRecursosMunicipalesVentasForm.fieldNotaText}
-                </Form.Text>
               </Form.Group>
             </div>
             <div className="puggysoft-five-divs-side-by-side-child">
@@ -446,6 +445,7 @@ function AlcaldiaRecursosMunicipalesVentasForm () {
         <div>
           <div className="puggysoft-two-divs-side-by-side-child">
             <AlcaldiaRecursosMunicipalesTableAddSale
+              setValueNota={setValueNota}
               ventasId={idVenta}
               setUpdateTableDelete={setUpdateTableDelete}
               handleChangeData={handleChangeData}

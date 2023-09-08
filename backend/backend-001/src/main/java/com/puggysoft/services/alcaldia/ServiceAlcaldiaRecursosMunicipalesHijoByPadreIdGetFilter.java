@@ -39,7 +39,7 @@ public class ServiceAlcaldiaRecursosMunicipalesHijoByPadreIdGetFilter {
     } else {
       // Delete last 'AND' key workd.
       query = query.substring(0, query.length() - 4);
-      String fullQuery = "SELECT alcaldia_recursos_municipales_grupo.id AS id, "
+      String fullQuery = "SELECT alcaldia_recursos_municipales_grupo_para_reportes.id AS id, "
       + "alcaldia_recursos_municipales.codigo, "
       + "alcaldia_recursos_municipales.codigo_auxiliar, "
       + "alcaldia_recursos_municipales.name, "
@@ -54,8 +54,8 @@ public class ServiceAlcaldiaRecursosMunicipalesHijoByPadreIdGetFilter {
       + "alcaldia_recursos_municipales.created_by, "
       + "alcaldia_recursos_municipales.updated_by "
       + "FROM alcaldia_recursos_municipales "
-      + "INNER JOIN alcaldia_recursos_municipales_grupo ON alcaldia_recursos_municipales.id=alcaldia_recursos_municipales_grupo.id_recurso_municipal_hijo "
-      + "WHERE alcaldia_recursos_municipales_grupo.id_recurso_municipal_padre = " + idPadre + " AND " + query + " LIMIT " + off + "," + size;
+      + "INNER JOIN alcaldia_recursos_municipales_grupo_para_reportes ON alcaldia_recursos_municipales.id=alcaldia_recursos_municipales_grupo_para_reportes.id_recurso_municipal_hijo "
+      + "WHERE alcaldia_recursos_municipales_grupo_para_reportes.id_recurso_municipal_padre = " + idPadre + " AND " + query + " LIMIT " + off + "," + size;
       // JQPL (createQuery) and Native (createNativeQuery)
       Query filterQuery = entityManager.createNativeQuery(fullQuery, EntityAlcaldiaRecursosMunicipales.class);
       listEntities = (List<EntityAlcaldiaRecursosMunicipales>) filterQuery.getResultList();

@@ -4,7 +4,6 @@ const classNameFormTextNew = {
   clienteNombre: classNameRed,
   clienteCiNit: classNameRed,
   direccion: classNameRed,
-  nota: classNameRed,
   ventaStatus: classNameRed,
   ventaPrecioTotal: classNameRed,
   clienteDinero: classNameRed,
@@ -34,12 +33,6 @@ const handleValidation = (data, setClassNameFormText) => {
     classNameFormTextNew.direccion = classNameRed;
   } else {
     classNameFormTextNew.direccion = "";
-  }
-  if (!(data.nota.length >= 3 && data.nota.length <= 120)) {
-    isValid = false;
-    classNameFormTextNew.nota = classNameRed;
-  } else {
-    classNameFormTextNew.nota = "";
   }
   if (!(data.ventaStatus.length >= 5 && data.ventaStatus.length <= 10)) {
     isValid = false;

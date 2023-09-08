@@ -6,6 +6,7 @@ const commonTable = {
   filterButton: "Filtrar",
   cleanButton: "Limpiar",
   selectButton: "Seleccionar",
+  selectRelationsButton: "Adm. grupo",
   detailsButton: "Detalles",
   excelExportButton: "Exportar Excel",
   pdfExportButton: "Exportar Pdf",

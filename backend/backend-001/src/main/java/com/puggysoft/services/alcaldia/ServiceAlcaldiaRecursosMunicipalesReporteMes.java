@@ -20,7 +20,7 @@ import org.springframework.stereotype.Service;
 
 /** Services for get report. */
 @Service
-public class ServicesAlcaldiaRecursosMunicipalesReporteMes {
+public class ServiceAlcaldiaRecursosMunicipalesReporteMes {
   @Autowired
   private IRepositoryAlcaldiaRecursosMunicipales repositoryAlcaldiaRecursos;
 
@@ -34,7 +34,7 @@ public class ServicesAlcaldiaRecursosMunicipalesReporteMes {
     String year = criteria.year;
     String month = criteria.month;
     List<DtoAlcaldiaRecursosMunicipales> listOfProducts = repositoryAlcaldiaRecursos
-        .findAll()
+        .findAlcaldiaRecursosMunicipalesKidsNotRepeatName()
         .stream()
         .map(DtoAlcaldiaRecursosMunicipales::entityToDto)
         .collect(Collectors.toList());
@@ -49,11 +49,11 @@ public class ServicesAlcaldiaRecursosMunicipalesReporteMes {
       reportResumen.nombreRecursoMunicipal = producto.getName();
       for (int day = 1; day <= daysInMonth; day++) {
         String date = year + "-" + month + "-" + day;
-        Double sumDay = repositoryReport.getRevenuePerProductTotal(producto.getCodigo(), estadoVenta, tenant, date);
+        Double sumDay = repositoryReport.getRevenuePerProductTotal(producto.getName(), estadoVenta, tenant, date);
         sumDay = sumDay == null ? 0 : sumDay;
         reportResumen.arrayDays.add(sumDay);
       }
-      Double totalProductoMensual = repositoryReport.getReportePorProductoTotalMensual(producto.getCodigo(), estadoVenta, tenant, year, Integer.parseInt(month));
+      Double totalProductoMensual = repositoryReport.getReportePorProductoTotalMensual(producto.getName(), estadoVenta, tenant, year, Integer.parseInt(month));
       reportResumen.ventasTotales = totalProductoMensual == null ? 0 : totalProductoMensual;
       reportResumenList.add(reportResumen);
     }

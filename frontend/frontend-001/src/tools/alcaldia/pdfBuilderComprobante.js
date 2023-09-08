@@ -1,40 +1,60 @@
 import { jsPDF } from "jspdf";
 import NumeroALetras from "./numToText";
+import appUrlConfig from "./../../tools/appUrlConfig";
 
 const GeneratePdf = (data, body) => {
   const doc = jsPDF({
-    format: [18, 22],
+    orientation: "l",
+    format: [16.5, 21.6],
     unit: "cm"
   });
+  const fileName = "comprobanteRubros.jpg";
+  const imageUrl = `${appUrlConfig.URL}/${fileName}`;
+  doc.addImage(imageUrl, "JPG", 0, 0, 21.6, 16.5);
+
+  doc.setFontSize(15);
+  doc.setTextColor(88, 139, 196);
+  const idVenta = body.idVenta.toString().padStart(7, "0");
+  doc.text(15.7, 1.85, ` ${idVenta}`);
 
   doc.setFontSize(8);
   // obtener la fecha y la hora
   const today = new Date();
   const now = today.toLocaleString();
 
-  doc.text(2, 3, ` ${body.clienteCiNit}`);
-  doc.text(5, 3, ` ${body.clienteNombre}`);
+  const nombre = body.clienteNombre.replace(/([^\s]+)/gm, function (textoEncontrado) {
+    return textoEncontrado.charAt(0).toUpperCase() + textoEncontrado.substring(1);
+  });
 
-  const x = 2;
-  let y = 6;
+  doc.text(2, 4.4, ` ${body.clienteCiNit}`);
+  doc.text(7, 4.4, ` ${nombre}`);
+
+  doc.text(2.7, 5.05, ` ${body.direccion}`);
+  doc.text(2.7, 5.5, ` ${body.nota}`);
+  const x = 2.5;
+  let y = 7.7;
   for (let index = 0; index < data.length; index++) {
     const element = data[index];
     doc.text(x, y, ` ${element.codigo}`);
-    doc.text(x + 1.5, y, ` ${element.name}`);
-    doc.text(x + 13, y, ` ${element.precio}`);
+    doc.text(x + 2.7, y, ` ${element.name}`);
+    doc.text(x + 13.4, y, ` ${element.precio}`);
     y = y + 0.4;
   }
-  y = 12;
-  doc.text(x + 13, y, ` ${body.ventaPrecioTotal}`);
+  y = 12.3;
+  doc.text(x + 13.4, y, ` ${body.ventaPrecioTotal}`);
+  doc.text(x, y, NumeroALetras(body.ventaPrecioTotal));
 
-  ++y;
-  doc.text(x + 2, y, NumeroALetras(body.ventaPrecioTotal));
-
-  y = y + 1.5;
-  const fecha = dateConvert(now.split(",")[0]).split(" ");
-  doc.text(x + 4, y, ` ${fecha[0]}`);
-  doc.text(x + 6, y, ` ${fecha[2]}`);
-  doc.text(x + 8, y, ` ${fecha[4]}`);
+  y = y + 0.8;
+  doc.setFontSize(6);
+  let fecha = [];
+  if (body.valueCreationDate === undefined) {
+    fecha = dateConvert(now.split(",")[0]).split(" ");
+  } else {
+    fecha = dateConvert(body.valueCreationDate.split("T")[0]).split(" ");
+  }
+  doc.text(8.9, y, ` ${fecha[0]}`);
+  doc.text(10, y, ` ${fecha[2]}`);
+  doc.text(12.1, y, ` ${fecha[4]}`);
 
   doc.output("dataurlnewwindow");
 };

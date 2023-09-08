@@ -40,8 +40,8 @@ public class ServiceAlcaldiaRecursosMunicipalesVentaDetalleGroupCreate {
 
     String fullQuery = "SELECT alcaldia_recursos_municipales.* "
     + "FROM alcaldia_recursos_municipales "
-    + "INNER JOIN alcaldia_recursos_municipales_grupo ON alcaldia_recursos_municipales.id=alcaldia_recursos_municipales_grupo.id_recurso_municipal_hijo "
-    + "WHERE alcaldia_recursos_municipales_grupo.id_recurso_municipal_padre = " + dto.getIdRecursoMunicipal();
+    + "INNER JOIN alcaldia_recursos_municipales_grupo_para_reportes ON alcaldia_recursos_municipales.id=alcaldia_recursos_municipales_grupo_para_reportes.id_recurso_municipal_hijo "
+    + "WHERE alcaldia_recursos_municipales_grupo_para_reportes.id_recurso_municipal_padre = " + dto.getIdRecursoMunicipal();
     Query filterQuery = entityManager.createNativeQuery(fullQuery, EntityAlcaldiaRecursosMunicipales.class);
 
     try {

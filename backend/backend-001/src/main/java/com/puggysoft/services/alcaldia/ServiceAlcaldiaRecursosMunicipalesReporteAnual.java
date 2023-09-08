@@ -17,7 +17,7 @@ import org.springframework.stereotype.Service;
 
 /** Services for get report. */
 @Service
-public class ServicesAlcaldiaRecursosMunicipalesReporteAnual {
+public class ServiceAlcaldiaRecursosMunicipalesReporteAnual {
   @Autowired
   private IRepositoryAlcaldiaRecursosMunicipales repositoryAlcaldiaRecursos;
 
@@ -40,18 +40,18 @@ public class ServicesAlcaldiaRecursosMunicipalesReporteAnual {
     for (DtoAlcaldiaRecursosMunicipales producto : listOfProducts) {
       DtoAlcaldiaRecursosMunicipalesReporteAnual reportResumen = new DtoAlcaldiaRecursosMunicipalesReporteAnual();
 
-      Double january = repositoryReport.getReportePorProductoTotalMensual(producto.getCodigo(), estadoVenta, tenant, year, 1);
-      Double february = repositoryReport.getReportePorProductoTotalMensual(producto.getCodigo(), estadoVenta, tenant, year, 2);
-      Double march = repositoryReport.getReportePorProductoTotalMensual(producto.getCodigo(), estadoVenta, tenant, year, 3);
-      Double april = repositoryReport.getReportePorProductoTotalMensual(producto.getCodigo(), estadoVenta, tenant, year, 4);
-      Double may = repositoryReport.getReportePorProductoTotalMensual(producto.getCodigo(), estadoVenta, tenant, year, 5);
-      Double june = repositoryReport.getReportePorProductoTotalMensual(producto.getCodigo(), estadoVenta, tenant, year, 6);
-      Double july = repositoryReport.getReportePorProductoTotalMensual(producto.getCodigo(), estadoVenta, tenant, year, 7);
-      Double august = repositoryReport.getReportePorProductoTotalMensual(producto.getCodigo(), estadoVenta, tenant, year, 8);
-      Double september = repositoryReport.getReportePorProductoTotalMensual(producto.getCodigo(), estadoVenta, tenant, year, 9);
-      Double october = repositoryReport.getReportePorProductoTotalMensual(producto.getCodigo(), estadoVenta, tenant, year, 10);
-      Double november = repositoryReport.getReportePorProductoTotalMensual(producto.getCodigo(), estadoVenta, tenant, year, 11);
-      Double december = repositoryReport.getReportePorProductoTotalMensual(producto.getCodigo(), estadoVenta, tenant, year, 12);
+      Double january = repositoryReport.getReportePorProductoTotalMensual(producto.getName(), estadoVenta, tenant, year, 1);
+      Double february = repositoryReport.getReportePorProductoTotalMensual(producto.getName(), estadoVenta, tenant, year, 2);
+      Double march = repositoryReport.getReportePorProductoTotalMensual(producto.getName(), estadoVenta, tenant, year, 3);
+      Double april = repositoryReport.getReportePorProductoTotalMensual(producto.getName(), estadoVenta, tenant, year, 4);
+      Double may = repositoryReport.getReportePorProductoTotalMensual(producto.getName(), estadoVenta, tenant, year, 5);
+      Double june = repositoryReport.getReportePorProductoTotalMensual(producto.getName(), estadoVenta, tenant, year, 6);
+      Double july = repositoryReport.getReportePorProductoTotalMensual(producto.getName(), estadoVenta, tenant, year, 7);
+      Double august = repositoryReport.getReportePorProductoTotalMensual(producto.getName(), estadoVenta, tenant, year, 8);
+      Double september = repositoryReport.getReportePorProductoTotalMensual(producto.getName(), estadoVenta, tenant, year, 9);
+      Double october = repositoryReport.getReportePorProductoTotalMensual(producto.getName(), estadoVenta, tenant, year, 10);
+      Double november = repositoryReport.getReportePorProductoTotalMensual(producto.getName(), estadoVenta, tenant, year, 11);
+      Double december = repositoryReport.getReportePorProductoTotalMensual(producto.getName(), estadoVenta, tenant, year, 12);
       january = january == null ? 0 : january;
       february = february == null ? 0 : february;
       march = march == null ? 0 : march;
@@ -79,7 +79,7 @@ public class ServicesAlcaldiaRecursosMunicipalesReporteAnual {
       reportResumen.setDecember(december);
 
       Double totalPerProduct = repositoryReport.getReportePorProductoTotalAnual(
-          producto.getCodigo(),
+          producto.getName(),
           estadoVenta,
           tenant,
           year);
