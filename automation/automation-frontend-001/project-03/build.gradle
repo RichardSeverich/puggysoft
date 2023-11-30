@@ -1,0 +1,60 @@
+// Apply plug-ins
+plugins {
+    id 'java'
+    id 'idea'
+    id 'eclipse'
+    id 'checkstyle'
+}
+sourceCompatibility = 1.8
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '4.4.0'
+    testImplementation group: 'org.testng', name: 'testng', version: '6.14.3'
+    implementation group: 'info.cukes', name: 'cucumber-java', version: '1.2.5'
+    implementation group: 'info.cukes', name: 'cucumber-testng', version: '1.2.5'
+    implementation group: 'info.cukes', name: 'cucumber-picocontainer', version: '1.2.5'
+}
+
+checkstyle {
+    toolVersion = '7.8'
+}
+
+test {
+    useTestNG()
+}
+
+task cucumberCli(type: JavaExec, dependsOn: testClasses) {
+    main = "cucumber.api.cli.Main"
+    classpath += files(sourceSets.test.runtimeClasspath)
+args = [
+    '--plugin', 'pretty',
+    '--plugin', 'html:reports',
+    '--plugin', 'json:reports/report.json',
+    '--glue', 'puggysoft',
+    'src/test/resources/features']
+}
+
+configurations {
+    cucumberRuntime {
+        extendsFrom implementation
+    }
+}
+
+task cucumber() {
+    dependsOn assemble, testClasses
+    doLast {
+        javaexec {
+            main = "cucumber.api.cli.Main"
+            classpath = configurations.cucumberRuntime + sourceSets.main.output + sourceSets.test.output
+            args = [
+              '--plugin', 'pretty',
+              '--plugin', 'html:reports',
+              '--glue', 'puggysoft',
+              'src/test/resources']
+        }
+    }
+}

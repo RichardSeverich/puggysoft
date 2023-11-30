@@ -1,0 +1,13 @@
+/.gradle/
+/.idea/
+/build/
+/drivers/
+/project-01/build/
+/project-02/build/
+/project-03/build/
+/project-03/reports/
+/classes/
+/logs/
+/target/
+/test-output/
+*.iml
