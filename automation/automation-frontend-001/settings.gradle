@@ -2,3 +2,4 @@ rootProject.name = 'automation-frontend-001'
 include('project-01')
 include('project-02')
 include('project-03')
+include('project-04')

@@ -28,3 +28,9 @@
 * build only a project ```gradlew :project-03:build```
 * Run cucumber tests  ```gradlew :project-03:cucumber```
 * Run cucumber tests only smoke```gradlew :project-03:cucumber -P tags=@SmokeTest```
+
+
+## Run tests project-04
+
+* build only a project ```gradlew :project-04:build```
+* Run on project-01 ```gradlew :project-04:test``

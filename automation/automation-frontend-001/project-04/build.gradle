@@ -1,0 +1,25 @@
+// Apply plug-ins
+plugins {
+    id 'java'
+    id 'idea'
+    id 'eclipse'
+    id 'checkstyle'
+}
+sourceCompatibility = 1.8
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.141.59'
+    testImplementation group: 'org.testng', name: 'testng', version: '6.14.3'
+}
+
+checkstyle {
+    toolVersion = '7.8'
+}
+
+test {
+    useTestNG()
+}
