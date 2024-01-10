@@ -13,6 +13,9 @@ public interface IRepositorySystemProperty extends JpaRepository<EntitySystemPro
   @Query(value = "SELECT * FROM system_properties LIMIT ?1, ?2", nativeQuery = true)
   List<EntitySystemProperty> findSystemPropertiesByPagination(int off, int size);
 
+  @Query(value = "SELECT * FROM system_properties WHERE name = ?1 AND tenant = ?2", nativeQuery = true)
+  List<EntitySystemProperty> findSystemPropertyByNameAndTenant(String name, String tenant);
+
   @Query(value = "SELECT COUNT(*) FROM system_properties;", nativeQuery = true)
   Long findSize();
 

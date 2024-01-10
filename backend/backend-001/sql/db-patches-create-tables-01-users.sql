@@ -19,6 +19,7 @@ CREATE TABLE users(
    active BOOLEAN NOT NULL,
    image LONGBLOB,
    email_verified BOOLEAN NOT NULL,
+   email_verification_code TEXT,
    creation_date DATETIME DEFAULT CURRENT_TIMESTAMP,
    update_date DATETIME ON UPDATE CURRENT_TIMESTAMP,
    created_by VARCHAR(30),

@@ -78,6 +78,8 @@ public class DtoUser extends DtoSuperClass {
   @NotNull
   private Boolean active;
 
+  private String emailVerificationCode;
+
   private byte[] image;
 
   @NotNull
@@ -104,6 +106,7 @@ public class DtoUser extends DtoSuperClass {
     entity.setActive(active);
     entity.setImage(image);
     entity.setEmailVerified(emailVerified);
+    entity.setEmailVerificationCode(emailVerificationCode);
     entity.setCreatedBy(createdBy);
     entity.setUpdatedBy(updatedBy);
     return entity;
@@ -130,6 +133,7 @@ public class DtoUser extends DtoSuperClass {
     dto.setActive(entity.getActive());
     dto.setImage(entity.getImage());
     dto.setEmailVerified(entity.getEmailVerified());
+    dto.setEmailVerificationCode(entity.getEmailVerificationCode());
     dto.setCreatedBy(entity.getCreatedBy());
     dto.setUpdatedBy(entity.getUpdatedBy());
     dto.setCreationDate(entity.getCreationDate());

@@ -12,7 +12,13 @@ import org.springframework.stereotype.Repository;
 public interface IRepositoryUser extends JpaRepository<EntityUser, Long> {
 
   @Query(value = "SELECT * FROM users WHERE username = ?1 AND password = ?2", nativeQuery = true)
-  List<EntityUser> findUserByUsernameAndPassword(String userName, String password);
+  List<EntityUser> findUserByUsernameAndPassword(String username, String password);
+
+  @Query(value = "SELECT * FROM users WHERE active = true AND username = ?1 AND password = ?2", nativeQuery = true)
+  List<EntityUser> findUserByUsernameAndPasswordActive(String username, String password);
+
+  @Query(value = "SELECT * FROM users WHERE email_verified = true AND username = ?1", nativeQuery = true)
+  List<EntityUser> findUserByUsernameAndEmailVerifiedAndActive(String username);
 
   @Query(value = "SELECT * FROM users LIMIT ?1, ?2", nativeQuery = true)
   List<EntityUser> findUsersByPagination(int off, int size);

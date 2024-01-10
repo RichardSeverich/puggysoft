@@ -50,6 +50,9 @@ public class EntityUser extends EntitySuperClass {
 
   private Boolean active;
 
+  @Column(name = "email_verification_code")
+  private String emailVerificationCode;
+
   @Lob
   private byte[] image;
 

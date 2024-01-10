@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useHistory, useParams } from "react-router";
+import { useLocation } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
@@ -15,6 +16,7 @@ import "./styles.css";
 
 function Login () {
   const history = useHistory();
+  const location = useLocation();
   const { value: valueUsername, onChange: onChangeUsername } = useInput("");
   const { value: valuePassword, onChange: onChangePassword } = useInput("");
 
@@ -55,6 +57,7 @@ function Login () {
     setTenantSelected(null);
     setTenantImage(null);
     setRoleSelected(null);
+    setIsModalTenantAndRoleVisible(false);
     const body = {
       username: valueUsername,
       password: valuePassword
@@ -83,8 +86,16 @@ function Login () {
       } else {
         setLoading(false);
         setMessageTitle(i18n.errorMessages.errorTitle);
-        if (responseAuth.status === 400 || responseAuth.status === 404) setMessageText(i18n.errorMessages.invalidCredentials);
-        else setMessageText(i18n.errorMessages.unknownError);
+        // 400 is bad request, for example username with mor than 30 characteres.
+        // 404 is user not found.
+        if (responseAuth.status === 400 || responseAuth.status === 404) {
+          setMessageText(i18n.errorMessages.invalidCredentials);
+        } else if (responseAuth.status === 412) { // precondition failed
+          // status 412 returns when user is inactive
+          setMessageText(i18n.errorMessages.userInactive);
+        } else {
+          setMessageText(i18n.errorMessages.unknownError);
+        }
         setIsMessageVisible(true);
       }
     });
@@ -104,15 +115,24 @@ function Login () {
         }
       });
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [tenantSelected]);
 
   const handleContinueLogin = () => {
     if (tenantSelected) {
-      window.sessionStorage.setItem("tenant", tenantSelected);
-      window.sessionStorage.setItem("tenantImage", tenantImage);
-      window.sessionStorage.setItem("role", roleSelected);
-      history.push(enumPaths.DASHBOARD);
+      handleGetRequest(`login-tenant?username=${valueUsername}&tenant=${tenantSelected}`, (isEmailVerified) => {
+        if (isEmailVerified === true) {
+          window.sessionStorage.setItem("tenant", tenantSelected);
+          window.sessionStorage.setItem("tenantImage", tenantImage);
+          window.sessionStorage.setItem("role", roleSelected);
+          window.sessionStorage.setItem("login-path", location.pathname);
+          history.push(enumPaths.DASHBOARD);
+        } else {
+          setMessageTitle(i18n.errorMessages.errorTitle);
+          setMessageText(i18n.errorMessages.userEmailVerifiedRequired);
+          setIsMessageVisible(true);
+        }
+      });
     }
   };
 

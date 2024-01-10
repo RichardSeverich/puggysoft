@@ -66,6 +66,7 @@ function NavBar () {
   const currentTenant = window.sessionStorage.getItem("tenant");
   const tenantImage = window.sessionStorage.getItem("tenantImage");
   const theme = window.localStorage.getItem("theme");
+  const loginPath = window.sessionStorage.getItem("login-path");
   // const userRolesObjects = JSON.parse(userRolesString);
   const userRoles = [];
 
@@ -112,7 +113,15 @@ function NavBar () {
   // ******* ******* ******* USERS SYSTEM ******* ******* *******
 
   const navigateToLogout = () => {
-    history.push({ pathname: `${enumPaths.LOGIN}/${currentTenant}`, state: { logout: "" } });
+    if (loginPath === "/" || loginPath === enumPaths.LOGIN) {
+      history.push({ pathname: `${enumPaths.LOGIN}`, state: { logout: "" } });
+    } else if (loginPath.includes("/login/")) {
+      history.push({ pathname: `${enumPaths.LOGIN}/${currentTenant}`, state: { logout: "" } });
+    } else if (loginPath.includes("login-")) {
+      history.push({ pathname: loginPath, state: { logout: "" } });
+    } else {
+      history.push({ pathname: `${enumPaths.LOGIN}`, state: { logout: "" } });
+    }
   };
   const navigateThemeForm = () => {
     history.push(enumPaths.THEME_FORM);
@@ -954,7 +963,7 @@ function NavBar () {
             <NavDropdown title={regulaLotesAdminLabel}>
               <NavDropdown.Item onClick={navigateRegulaLotesForm}>{regulaLotesFormLabel}</NavDropdown.Item>
               {/* Change of requirements */}
-              {/* <NavDropdown.Item onClick={navigateRegulaLotesExtractoBancarioForm}>{regulaLotesExtractoBancarioFormLabel}</NavDropdown.Item> */}
+              <NavDropdown.Item onClick={navigateRegulaLotesExtractoBancarioForm}>{regulaLotesExtractoBancarioFormLabel}</NavDropdown.Item>
               <NavDropdown.Item onClick={navigateRegulaLotesTable}>{regulaLotesTableLabel}</NavDropdown.Item>
             </NavDropdown>}
           {(userRoles.includes(enumRoles.REGULARIZACION_LOTES_ENCARGADO) ||

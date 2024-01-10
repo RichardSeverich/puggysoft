@@ -63,7 +63,7 @@ function RegulaLotesExtractoBancarioForm () {
     ));
   };
 
-  const handleAdd = (event) => {
+  const handleSavePdfData = (event) => {
     const body = getBody();
     const isValid = handleValidation(body, setClassNameFormText);
     if (isValid) {
@@ -128,7 +128,7 @@ function RegulaLotesExtractoBancarioForm () {
                 {i18n.regulaLotesForm.extractoBancariofieldFileText}
               </Form.Text>
             </Form.Group>
-            <Button onClick={handleAdd} variant="primary" type="button">
+            <Button onClick={handleSavePdfData} variant="primary" type="button">
               {i18n.commonForm.saveButton}
             </Button>
           </Form>

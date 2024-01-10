@@ -1,5 +1,5 @@
 -- Insert data (Users).
-INSERT INTO users (username, password, dni, name, second_name, last_name, second_last_name, birth_date, age, sex, occupation, telephone, address, email, active, image, email_verified) VALUES ("admin", "admin123", "0000000", "Admin", "Admin", "Admin", "Admin", "1990-01-01", 25, 'MALE', 'Ing. Informatico', "76479009", "Av. Villazon km-5", "Admin@gmail.com", true, null, false);
+INSERT INTO users (username, password, dni, name, second_name, last_name, second_last_name, birth_date, age, sex, occupation, telephone, address, email, active, image, email_verified) VALUES ("admin", "admin123", "0000000", "Admin", "Admin", "Admin", "Admin", "1990-01-01", 25, 'MALE', 'Ing. Informatico', "76479009", "Av. Villazon km-5", "Admin@gmail.com", true, null, true);
 INSERT INTO users (username, password, dni, name, second_name, last_name, second_last_name, birth_date, age, sex, occupation, telephone, address, email, active, image, created_by, email_verified) VALUES ("adminhospital", "admin123", "111111787", "N/A", "adminhospital", "adminhospital", "adminhospital", "1990-10-10", 50, 'MALE', 'Admin Hospital', "76479666", "Av. B. Galindo", "adminhospital@gmail.com", true, null, "admin", false);
 INSERT INTO users (username, password, dni, name, second_name, last_name, second_last_name, birth_date, age, sex, occupation, telephone, address, email, active, image, created_by, email_verified) VALUES ("doctor", "admin123", "466587777", "N/A", "doctor", "doctor", "doctor", "1990-10-10", 50, 'MALE', 'Medico General', "76487888", "Av. B. Galindo", "doctor@gmail.com", true, null, "admin", false);
 INSERT INTO users (username, password, dni, name, second_name, last_name, second_last_name, birth_date, age, sex, occupation, telephone, address, email, active, image, created_by, email_verified) VALUES ("paciente", "admin123", "4548787", "N/A", "paciente", "paciente", "paciente", "1990-10-10", 50, 'MALE', 'Chef', "76487888", "Av. B. Galindo", "paciente@gmail.com", true, null, "admin", false);
@@ -99,7 +99,8 @@ INSERT INTO users (username, password, dni, name, second_name, last_name, second
 ("SysVentasRestAdmin", "admin123", "1000006", "N/A", "N/A", "N/A", "N/A", "1990-01-01", 27, 'MALE', 'Ing. Sistemas', "60795090", "Av. Wiracocha", "SysVentasRestAdmin@puggysoft.com", true, null, "SysAdmin",  true),
 ("SysVentasRestVendedor", "admin123", "1000007", "N/A", "N/A", "N/A", "N/A", "1990-01-01", 27, 'MALE', 'Ing. Sistemas', "60795090", "Av. Wiracocha", "SysVentasRestVendedor@puggysoft.com", true, null, "SysAdmin",  true),
 ("SysVentasRestCliente", "admin123", "1000008", "N/A", "N/A", "N/A", "N/A", "1990-01-01", 27, 'MALE', 'Ing. Sistemas', "60795090", "Av. Wiracocha", "SysVentasRestCliente@puggysoft.com", true, null, "SysAdmin",  true),
-("SysReservasAdmin", "admin123", "1000009", "N/A", "N/A", "N/A", "N/A", "1990-01-01", 27, 'MALE', 'Ing. Sistemas', "60795090", "Av. Wiracocha", "SysReservasAdmin@puggysoft.com", true, null, "SysAdmin",  true),
+("SysReservasAdmin", "admin123", "1000040", "N/A", "N/A", "N/A", "N/A", "1990-01-01", 27, 'MALE', 'Ing. Sistemas', "60795090", "Av. Wiracocha", "SysReservasAdmin@puggysoft.com", true, null, "SysAdmin",  true),
+("SysReservasEncargado", "admin123", "1000009", "N/A", "N/A", "N/A", "N/A", "1990-01-01", 27, 'MALE', 'Ing. Sistemas', "60795090", "Av. Wiracocha", "SysReservasEncargado@puggysoft.com", true, null, "SysAdmin",  true),
 ("SysQaAdmin", "admin123", "1000010", "N/A", "N/A", "N/A", "N/A", "1990-01-01", 27, 'MALE', 'Ing. Sistemas', "60795090", "Av. Wiracocha", "SysQaAdmin@puggysoft.com", true, null, "SysAdmin",  true),
 ("SysProyectosAdmin", "admin123", "1000011", "N/A", "N/A", "N/A", "N/A", "1990-01-01", 27, 'MALE', 'Ing. Sistemas', "60795090", "Av. Wiracocha", "SysProyectosAdmin@puggysoft.com", true, null, "SysAdmin",  true),
 ("SysPetsAdmin", "admin123", "1000012", "N/A", "N/A", "N/A", "N/A", "1990-01-01", 27, 'MALE', 'Ing. Sistemas', "60795090", "Av. Wiracocha", "SysPetsAdmin@puggysoft.com", true, null, "SysAdmin",  true),
@@ -120,7 +121,13 @@ INSERT INTO users (username, password, dni, name, second_name, last_name, second
 ("SysRegularizaLotesEncargado", "admin123", "1000031", "N/A", "N/A", "N/A", "N/A", "1990-01-01", 27, 'MALE', 'Ing. Sistemas', "60795090", "Av. Wiracocha", "SysRegularizaLotesEncargado@puggysoft.com", true, null, "SysAdmin",  true),
 ("SysRegularizaLotesCliente", "admin123", "1000032", "N/A", "N/A", "N/A", "N/A", "1990-01-01", 27, 'MALE', 'Ing. Sistemas', "60795090", "Av. Wiracocha", "SysRegularizaLotesCliente@puggysoft.com", true, null, "SysAdmin",  true),
 ("SysStorageEncargado", "admin123", "1000029", "N/A", "N/A", "N/A", "N/A", "1990-01-01", 27, 'MALE', 'Ing. Sistemas', "60795090", "Av. Wiracocha", "SysStorageEncargado@puggysoft.com", true, null, "SysAdmin",  true),
-("SysStorageAdmin", "admin123", "1000030", "N/A", "N/A", "N/A", "N/A", "1990-01-01", 27, 'MALE', 'Ing. Sistemas', "60795090", "Av. Wiracocha", "SysStorageAdmin@puggysoft.com", true, null, "SysAdmin",  true),
+("SysStorageAdmin", "admin123", "1000033", "N/A", "N/A", "N/A", "N/A", "1990-01-01", 27, 'MALE', 'Ing. Sistemas', "60795090", "Av. Wiracocha", "SysStorageAdmin@puggysoft.com", true, null, "SysAdmin",  true),
+("SysGamesAdmin", "admin123", "1000034", "N/A", "N/A", "N/A", "N/A", "1990-01-01", 27, 'MALE', 'Ing. Sistemas', "60795090", "Av. Wiracocha", "SysGamesAdmin@puggysoft.com", true, null, "SysAdmin",  true),
+("SysGamesEncargado", "admin123", "1000035", "N/A", "N/A", "N/A", "N/A", "1990-01-01", 27, 'MALE', 'Ing. Sistemas', "60795090", "Av. Wiracocha", "SysGamesEncargado@puggysoft.com", true, null, "SysAdmin",  true),
+("SysElisaAdmin", "admin123", "1000036", "N/A", "N/A", "N/A", "N/A", "1990-01-01", 27, 'MALE', 'Ing. Sistemas', "60795090", "Av. Wiracocha", "SysElisaAdmin@puggysoft.com", true, null, "SysAdmin",  true),
+("SysElisaEncargado", "admin123", "1000037", "N/A", "N/A", "N/A", "N/A", "1990-01-01", 27, 'MALE', 'Ing. Sistemas', "60795090", "Av. Wiracocha", "SysElisaEncargado@puggysoft.com", true, null, "SysAdmin",  true),
+("SysCondominioAdmin", "admin123", "1000038", "N/A", "N/A", "N/A", "N/A", "1990-01-01", 27, 'MALE', 'Ing. Sistemas', "60795090", "Av. Wiracocha", "SysCondominioAdmin@puggysoft.com", true, null, "SysAdmin",  true),
+("SysCondominioEncargado", "admin123", "1000039", "N/A", "N/A", "N/A", "N/A", "1990-01-01", 27, 'MALE', 'Ing. Sistemas', "60795090", "Av. Wiracocha", "SysCondominioEncargado@puggysoft.com", true, null, "SysAdmin",  true),
 ("SysEscuelaAdmin", "admin123", "1000017", "N/A", "N/A", "N/A", "N/A", "1990-01-01", 27, 'MALE', 'Ing. Sistemas', "60795090", "Av. Wiracocha", "SysEscuelaAdmin@puggysoft.com", true, null, "SysAdmin",  true);
 
 -- Insert data (Roles).
@@ -151,6 +158,9 @@ INSERT INTO roles (name, created_by) VALUES ("URBANISMO_ENCARGADO", "admin");
 INSERT INTO roles (name, created_by) VALUES ("REGULARIZA_LOTES_ENCARGADO", "admin");
 INSERT INTO roles (name, created_by) VALUES ("REGULARIZA_LOTES_CLIENTE", "admin");
 INSERT INTO roles (name, created_by) VALUES ("STORAGE_ENCARGADO", "admin");
+INSERT INTO roles (name, created_by) VALUES ("GAMES_ENCARGADO", "admin");
+INSERT INTO roles (name, created_by) VALUES ("ELISA_ENCARGADO", "admin");
+INSERT INTO roles (name, created_by) VALUES ("CONDOMINIO_ENCARGADO", "admin");
 
 -- TENANTS
 INSERT INTO tenants (name, short_name, status, description, created_by) VALUES
@@ -172,7 +182,7 @@ INSERT INTO users_roles (id_user, id_role, created_by, tenant) VALUES
 ((select id from users where username='SysVentasRestAdmin'), (select id from roles where name='SALES_ADMIN_RESTAURANT'), "SysAdmin", "EMPRESA_1"),
 ((select id from users where username='SysVentasRestVendedor'), (select id from roles where name='SALES_SELLER_RESTAURANT'), "SysAdmin", "EMPRESA_1"),
 ((select id from users where username='SysVentasRestCliente'), (select id from roles where name='SALES_CLIENT_RESTAURANT'), "SysAdmin", "EMPRESA_1"),
-((select id from users where username='SysReservasAdmin'), (select id from roles where name='RESERVATION_ADMIN'), "SysAdmin", "EMPRESA_1"),
+((select id from users where username='SysReservasEncargado'), (select id from roles where name='RESERVATION_ADMIN'), "SysAdmin", "EMPRESA_1"),
 ((select id from users where username='SysQaAdmin'), (select id from roles where name='QA_ADMIN'), "SysAdmin", "EMPRESA_1"),
 ((select id from users where username='SysProyectosAdmin'), (select id from roles where name='PROJECTS_ADMIN'), "SysAdmin", "EMPRESA_1"),
 ((select id from users where username='SysAccountingAdmin'), (select id from roles where name='ACCOUNTING_ADMIN'), "SysAdmin", "EMPRESA_1"),
@@ -193,6 +203,13 @@ INSERT INTO users_roles (id_user, id_role, created_by, tenant) VALUES
 ((select id from users where username='SysRegularizaLotesCliente'), (select id from roles where name='REGULARIZA_LOTES_CLIENTE'), "SysAdmin", "EMPRESA_1"),
 ((select id from users where username='SysStorageEncargado'), (select id from roles where name='STORAGE_ENCARGADO'), "SysAdmin", "EMPRESA_1"),
 ((select id from users where username='SysStorageAdmin'), (select id from roles where name='ADMIN_USERS'), "SysAdmin", "EMPRESA_1"),
+((select id from users where username='SysGamesAdmin'), (select id from roles where name='ADMIN_USERS'), "SysAdmin", "EMPRESA_1"),
+((select id from users where username='SysGamesEncargado'), (select id from roles where name='GAMES_ENCARGADO'), "SysAdmin", "EMPRESA_1"),
+((select id from users where username='SysElisaAdmin'), (select id from roles where name='ADMIN_USERS'), "SysAdmin", "EMPRESA_1"),
+((select id from users where username='SysElisaEncargado'), (select id from roles where name='ELISA_ENCARGADO'), "SysAdmin", "EMPRESA_1"),
+((select id from users where username='SysCondominioAdmin'), (select id from roles where name='ADMIN_USERS'), "SysAdmin", "EMPRESA_1"),
+((select id from users where username='SysCondominioEncargado'), (select id from roles where name='CONDOMINIO_ENCARGADO'), "SysAdmin", "EMPRESA_1"),
+((select id from users where username='SysReservasAdmin'), (select id from roles where name='ADMIN_USERS'), "SysAdmin", "EMPRESA_1"),
 ((select id from users where username='SysEscuelaAdmin'), (select id from roles where name='SCHOOL_ADMIN'), "SysAdmin", "EMPRESA_1");
 
 INSERT INTO users_roles (id_user, id_role, created_by, tenant) VALUES
@@ -204,7 +221,7 @@ INSERT INTO users_roles (id_user, id_role, created_by, tenant) VALUES
 ((select id from users where username='SysVentasRestAdmin'), (select id from roles where name='SALES_ADMIN_RESTAURANT'), "SysAdmin", "EMPRESA_2"),
 ((select id from users where username='SysVentasRestVendedor'), (select id from roles where name='SALES_SELLER_RESTAURANT'), "SysAdmin", "EMPRESA_2"),
 ((select id from users where username='SysVentasRestCliente'), (select id from roles where name='SALES_CLIENT_RESTAURANT'), "SysAdmin", "EMPRESA_2"),
-((select id from users where username='SysReservasAdmin'), (select id from roles where name='RESERVATION_ADMIN'), "SysAdmin", "EMPRESA_2"),
+((select id from users where username='SysReservasEncargado'), (select id from roles where name='RESERVATION_ADMIN'), "SysAdmin", "EMPRESA_2"),
 ((select id from users where username='SysQaAdmin'), (select id from roles where name='QA_ADMIN'), "SysAdmin", "EMPRESA_2"),
 ((select id from users where username='SysProyectosAdmin'), (select id from roles where name='PROJECTS_ADMIN'), "SysAdmin", "EMPRESA_2"),
 ((select id from users where username='SysAccountingAdmin'), (select id from roles where name='ACCOUNTING_ADMIN'), "SysAdmin", "EMPRESA_2"),
@@ -225,6 +242,13 @@ INSERT INTO users_roles (id_user, id_role, created_by, tenant) VALUES
 ((select id from users where username='SysRegularizaLotesCliente'), (select id from roles where name='REGULARIZA_LOTES_CLIENTE'), "SysAdmin", "EMPRESA_2"),
 ((select id from users where username='SysStorageEncargado'), (select id from roles where name='STORAGE_ENCARGADO'), "SysAdmin", "EMPRESA_2"),
 ((select id from users where username='SysStorageAdmin'), (select id from roles where name='ADMIN_USERS'), "SysAdmin", "EMPRESA_2"),
+((select id from users where username='SysGamesAdmin'), (select id from roles where name='ADMIN_USERS'), "SysAdmin", "EMPRESA_2"),
+((select id from users where username='SysGamesEncargado'), (select id from roles where name='GAMES_ENCARGADO'), "SysAdmin", "EMPRESA_2"),
+((select id from users where username='SysElisaAdmin'), (select id from roles where name='ADMIN_USERS'), "SysAdmin", "EMPRESA_2"),
+((select id from users where username='SysElisaEncargado'), (select id from roles where name='ELISA_ENCARGADO'), "SysAdmin", "EMPRESA_2"),
+((select id from users where username='SysCondominioAdmin'), (select id from roles where name='ADMIN_USERS'), "SysAdmin", "EMPRESA_2"),
+((select id from users where username='SysCondominioEncargado'), (select id from roles where name='CONDOMINIO_ENCARGADO'), "SysAdmin", "EMPRESA_2"),
+((select id from users where username='SysReservasAdmin'), (select id from roles where name='ADMIN_USERS'), "SysAdmin", "EMPRESA_2"),
 ((select id from users where username='SysEscuelaAdmin'), (select id from roles where name='SCHOOL_ADMIN'), "SysAdmin", "EMPRESA_2");
 
 -- Insert data (User-Roles).
@@ -283,11 +307,10 @@ INSERT INTO users_roles (id_user, id_role, created_by, tenant) VALUES (1054, 100
 INSERT INTO users_roles (id_user, id_role, created_by, tenant) VALUES (1055, 1007, "admin", "EMPRESA_1");
 
 
--- SYSTEM PROPERTIES
+-- SYSTEM PROPERTIES IT IS LOADING AUTOMATICALLY WITH STORED PROCEDURE.
 -- SYS_SALE_TYPE = GENERIC / RESTAURANT
-INSERT INTO system_properties (name, value, created_by, tenant) VALUES ("SYS_AUTO_USER_REG", "FALSE", "admin", "EMPRESA_1");
-INSERT INTO system_properties (name, value, created_by, tenant) VALUES ("SYS_SALE_BILLING", "FALSE", "admin", "EMPRESA_1");
-
+-- INSERT INTO system_properties (name, value, created_by, tenant) VALUES ("SYS_AUTO_USER_REG", "FALSE", "admin", "EMPRESA_1");
+-- INSERT INTO system_properties (name, value, created_by, tenant) VALUES ("SYS_SALE_BILLING", "FALSE", "admin", "EMPRESA_1");
 
 DROP PROCEDURE IF EXISTS assignTenantToAllUsers;
 
@@ -320,6 +343,7 @@ INSERT INTO tenants_users (username, tenant, created_by) VALUES
 ('SysVentasRestVendedor', 'EMPRESA_2', 'SysAdmin'),
 ('SysVentasRestCliente', 'EMPRESA_2', 'SysAdmin'),
 ('SysReservasAdmin', 'EMPRESA_2', 'SysAdmin'),
+('SysReservasEncargado', 'EMPRESA_2', 'SysAdmin'),
 ('SysQaAdmin', 'EMPRESA_2', 'SysAdmin'),
 ('SysProyectosAdmin', 'EMPRESA_2', 'SysAdmin'),
 ('SysAccountingAdmin', 'EMPRESA_2', 'SysAdmin'),
@@ -334,6 +358,12 @@ INSERT INTO tenants_users (username, tenant, created_by) VALUES
 ('SysRegularizaLotesAdmin', 'EMPRESA_2', 'SysAdmin'),
 ('SysRegularizaLotesEncargado', 'EMPRESA_2', 'SysAdmin'),
 ('SysRegularizaLotesCliente', 'EMPRESA_2', 'SysAdmin'),
+('SysGamesAdmin', 'EMPRESA_2', 'SysAdmin'),
+('SysGamesEncargado', 'EMPRESA_2', 'SysAdmin'),
+('SysElisaAdmin', 'EMPRESA_2', 'SysAdmin'),
+('SysElisaEncargado', 'EMPRESA_2', 'SysAdmin'),
+('SysCondominioAdmin', 'EMPRESA_2', 'SysAdmin'),
+('SysCondominioEncargado', 'EMPRESA_2', 'SysAdmin'),
 ('SysEscuelaAdmin', 'EMPRESA_2', 'SysAdmin');
 
 
@@ -360,6 +390,7 @@ INSERT INTO tenants_roles (role, tenant, created_by) VALUES
 ('SALES_SELLER_RESTAURANT', 'EMPRESA_1', "admin"),
 ('SALES_CLIENT_RESTAURANT', 'EMPRESA_1', "admin"),
 ('RESERVATION_ADMIN', 'EMPRESA_1', "admin"),
+('RESERVATION_ADMIN', 'EMPRESA_2', "admin"),
 ('QA_ADMIN', 'EMPRESA_1', "admin"),
 ('PROJECTS_ADMIN', 'EMPRESA_1', "admin"),
 ('ACCOUNTING_ADMIN', 'EMPRESA_1', "admin"),
@@ -369,4 +400,8 @@ INSERT INTO tenants_roles (role, tenant, created_by) VALUES
 ('ADMIN_USERS_BY_TENANT', 'EMPRESA_1', "admin"),
 ('ALCALDIA_RECURSOS_MUNICIPALES_ENCARGADO', 'EMPRESA_1', "admin"),
 ('REGULARIZA_LOTES_CLIENTE', 'EMPRESA_1', "admin"),
+('GAMES_ENCARGADO', 'EMPRESA_1', "admin"),
+('ELISA_ENCARGADO', 'EMPRESA_1', "admin"),
+('CONDOMINIO_ENCARGADO', 'EMPRESA_1', "admin"),
+('CONDOMINIO_ENCARGADO', 'EMPRESA_2', "admin"),
 ('ALCALDIA_RECURSOS_MUNICIPALES_CAJERO', 'EMPRESA_1', "admin");

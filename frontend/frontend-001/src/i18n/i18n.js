@@ -31,6 +31,7 @@ import userRoles from "./spanish/users/userRoles";
 import userRoleTableByRole from "./spanish/users/userRoleTableByRole";
 import userRoleTableByUser from "./spanish/users/userRoleTableByUser";
 import roleTable from "./spanish/users/roleTable";
+import notFoundPage from "./spanish/system/notFoundPage";
 // Sales System
 import productTable from "./spanish/sales/productTable";
 import productForm from "./spanish/sales/productForm";
@@ -136,6 +137,7 @@ const i18n = {
   roleTable,
   userStatus,
   userEmailVerified,
+  notFoundPage,
   // Sales System
   productTable,
   productForm,

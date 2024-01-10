@@ -1,0 +1,5 @@
+Empresa Puggysoft presenta: Sistema de ventas para todo tipo de negocios cómo ser:
+restaurantes, farmacias, ferreterías, tiendas y todo tipo de negocios.
+El sistema cuenta con las siguientes características:
+administración de usuarios, administración de inventario de productos,  administración de ventas,
+búsqueda de usuarios, y reportes de una forma practica, versátil y confiable. Contáctanos.

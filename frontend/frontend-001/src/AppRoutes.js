@@ -166,6 +166,7 @@ import StorageRecordFormStepOnePage from "./components-level-3/datastorage/Stora
 import StorageRecordFormStepTwoPage from "./components-level-3/datastorage/StorageRecordFormStepTwoPage";
 import StorageRecordTableStepOnePage from "./components-level-3/datastorage/StorageRecordTableStepOnePage";
 import StorageRecordTableStepTwoPage from "./components-level-3/datastorage/StorageRecordTableStepTwoPage";
+import NotFoundPage from "./components-level-3/system/NotFoundPage";
 
 const AppRoutes = () => (
   <App>
@@ -270,8 +271,6 @@ const AppRoutes = () => (
       <Route exact path={enumPaths.RESERVATION_SCHEDULE_TABLE} component={ScheduleTablePage} />
       <Route exact path={enumPaths.RESERVATION_INTERVAL_TIME_FORM} component={IntervalTimeFormPage} />
       <Route exact path={enumPaths.RESERVATION_INTERVAL_TIME_TABLE} component={IntervalTimeTablePage} />
-      <Route exact path={enumPaths.LOGIN_TENANT} component={LoginPage} />
-      <Route exact path={enumPaths.LOGIN} component={LoginPage} />
       {/** Alcaldia System */}
       <Route exact path={enumPaths.ALCALDIA_LOGIN_COLCAPIRHUA} component={LoginAlcaldiaColcapirhuaPage} />
       <Route exact path={enumPaths.ALCALDIA_RECURSOS_MUNICIPALES_FORM} component={AlcaldiaRecursosMunicipalesFormPage} />
@@ -330,8 +329,10 @@ const AppRoutes = () => (
       <Route exact path={enumPaths.DATA_STORAGE_RECORD_FORM_STEP_TWO} component={StorageRecordFormStepTwoPage} />
       <Route exact path={enumPaths.DATA_STORAGE_RECORD_TABLE_STEP_ONE} component={StorageRecordTableStepOnePage} />
       <Route exact path={enumPaths.DATA_STORAGE_RECORD_TABLE_STEP_TWO} component={StorageRecordTableStepTwoPage} />
+      <Route exact path={enumPaths.LOGIN_TENANT} component={LoginPage} />
+      <Route exact path={enumPaths.LOGIN} component={LoginPage} />
       <Route exact path="/" component={LoginPage} />
-      <Route component={LoginPage} />
+      <Route component={NotFoundPage} />
     </Switch>
   </App>
 );

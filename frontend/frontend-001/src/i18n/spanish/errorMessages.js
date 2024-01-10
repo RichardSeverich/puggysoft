@@ -11,7 +11,9 @@ const errorMessages = {
   userNoTenants: "El usuario no tiene inquilinos asignados",
   validationErrorTitle: "Error de validacion",
   errorTitle: "Error",
-  validationError: "Error de validacion, porfavor llene corretamente el formulario"
+  validationError: "Error de validacion, porfavor llene corretamente el formulario",
+  userInactive: "El usuario se encuentra inactivo, contacte con su administrador",
+  userEmailVerifiedRequired: "El usuario debe verificar su email"
 };
 
 export default errorMessages;

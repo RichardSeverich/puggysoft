@@ -24,6 +24,8 @@ function SystemPropertiesForm () {
     ? history.location.state.systemPropertyData
     : { id: "", name: "", value: "" };
 
+  console.log("ACA RICHAR CARAJO");
+  console.log({ systemPropertyData });
   // Use custom hook
   const { value: valueName, onChange: onChangeName, reset: resetName } = useInput(systemPropertyData.name);
   const { value: valueValue, onChange: onChangeValue, reset: resetValue } = useInput(systemPropertyData.value);
@@ -66,7 +68,8 @@ function SystemPropertiesForm () {
 
   function getOptions () {
     if (valueName === systemPropertiesNames.SYS_AUTO_USER_REG ||
-      valueName === systemPropertiesNames.SYS_SALE_BILLING
+      valueName === systemPropertiesNames.SYS_SALE_BILLING ||
+      valueName === systemPropertiesNames.SYS_LOGIN_EMAIL_VERIFIED_REQUIRED
     ) {
       return <>
         <option

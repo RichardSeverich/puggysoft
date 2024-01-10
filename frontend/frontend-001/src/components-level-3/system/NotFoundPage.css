@@ -1,0 +1,23 @@
+/*======================
+    404 page
+=======================*/
+
+.not-found-page {
+  width: 50%;
+  margin: auto;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.not-found-page-title {
+  font-size: 5rem;
+}
+
+.not-found-page-text {
+  font-size: 1rem;
+}
+
+.not-found-page-button{
+  margin-top: 1rem;
+}
