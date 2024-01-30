@@ -23,7 +23,7 @@ public final class SqlEscuelaCalificacionesFilterBuilderNative {
         dtoEscuelaCalificacionesFilter.estudianteOperator);
     query = query + SqlFilterBuilder.getFilterQuery("nota", dtoEscuelaCalificacionesFilter.notaCriteria,
         dtoEscuelaCalificacionesFilter.notaOperator);
-    query = query + SqlFilterBuilder.getFilterQuery("notaValor", dtoEscuelaCalificacionesFilter.notaValorCriteria,
+    query = query + SqlFilterBuilder.getFilterQuery("nota_valor", dtoEscuelaCalificacionesFilter.notaValorCriteria,
         dtoEscuelaCalificacionesFilter.notaValorOperator);
     query = query + SqlFilterBuilder.getFilterQuery("tenant ", dtoEscuelaCalificacionesFilter.tenantCriteria,
         dtoEscuelaCalificacionesFilter.tenantOperator);

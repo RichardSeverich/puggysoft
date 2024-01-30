@@ -168,10 +168,19 @@ import StorageRecordTableStepOnePage from "./components-level-3/datastorage/Stor
 import StorageRecordTableStepTwoPage from "./components-level-3/datastorage/StorageRecordTableStepTwoPage";
 import NotFoundPage from "./components-level-3/system/NotFoundPage";
 
+// Escuela System
+import CursosFormPage from "./components-level-3/escuela/CursosFormPage";
+import MateriasFormPage from "./components-level-3/escuela/MateriasFormPage";
+import NotasFormPage from "./components-level-3/escuela/NotasFormPage";
+import CursosTablePage from "./components-level-3/escuela/CursosTablePage";
+import MateriasTablePage from "./components-level-3/escuela/MateriasTablePage";
+import NotasTablePage from "./components-level-3/escuela/NotasTablePage";
+// const CursosFormLazyPage = lazy(() => import("./components-level-3/escuela/CursosFormPage"));
+
 const AppRoutes = () => (
   <App>
     {/** Here common components */}
-    <CommonMessageReduxPage/>
+    <CommonMessageReduxPage />
     <Switch>
       <Route exact path={enumPaths.DASHBOARD} component={DashboardPage} />
       <Route exact path={enumPaths.IN_PROGRESS_PAGE} component={InProgressPage} />
@@ -320,6 +329,15 @@ const AppRoutes = () => (
       <Route exact path={enumPaths.URBANISMO_HISTORIAL_ESTADO_STEP_THREE} component={UrbanismoHistorialEstadoStepThreePage} />
       <Route exact path={enumPaths.URBANISMO_FLUJO_BOARD_A} component={UrbanismoFlujoBoardStepOnePage} />
       <Route exact path={enumPaths.URBANISMO_FLUJO_BOARD_B} component={UrbanismoFlujoBoardStepTwoPage} />
+      {/** ESCUELA SYSTEM */}
+      {/** <Route exact path={enumPaths.ESCUELA_CURSOS_FORM} element={(<Suspense fallback={<Loading />}><CursosFormLazyPage /></Suspense>)} /> */}
+      <Route exact path={enumPaths.ESCUELA_CURSOS_FORM} component={CursosFormPage} />
+      <Route exact path={enumPaths.ESCUELA_MATERIAS_FORM} component={MateriasFormPage} />
+      <Route exact path={enumPaths.ESCUELA_NOTAS_FORM} component={NotasFormPage} />
+      <Route exact path={enumPaths.ESCUELA_CURSOS_TABLE} component={CursosTablePage} />
+      <Route exact path={enumPaths.ESCUELA_MATERIAS_TABLE} component={MateriasTablePage} />
+      <Route exact path={enumPaths.ESCUELA_NOTAS_TABLE} component={NotasTablePage} />
+
       {/** DATA STORAGE SYSTEM */}
       <Route exact path={enumPaths.DATA_STORAGE_SCHEMA_FORM} component={StorageSchemaFormPage} />
       <Route exact path={enumPaths.DATA_STORAGE_SCHEMA_TABLE} component={StorageSchemaTablePage} />
@@ -334,7 +352,7 @@ const AppRoutes = () => (
       <Route exact path="/" component={LoginPage} />
       <Route component={NotFoundPage} />
     </Switch>
-  </App>
+  </App >
 );
 
 export default AppRoutes;

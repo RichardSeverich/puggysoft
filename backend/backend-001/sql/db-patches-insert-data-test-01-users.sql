@@ -128,6 +128,7 @@ INSERT INTO users (username, password, dni, name, second_name, last_name, second
 ("SysElisaEncargado", "admin123", "1000037", "N/A", "N/A", "N/A", "N/A", "1990-01-01", 27, 'MALE', 'Ing. Sistemas', "60795090", "Av. Wiracocha", "SysElisaEncargado@puggysoft.com", true, null, "SysAdmin",  true),
 ("SysCondominioAdmin", "admin123", "1000038", "N/A", "N/A", "N/A", "N/A", "1990-01-01", 27, 'MALE', 'Ing. Sistemas', "60795090", "Av. Wiracocha", "SysCondominioAdmin@puggysoft.com", true, null, "SysAdmin",  true),
 ("SysCondominioEncargado", "admin123", "1000039", "N/A", "N/A", "N/A", "N/A", "1990-01-01", 27, 'MALE', 'Ing. Sistemas', "60795090", "Av. Wiracocha", "SysCondominioEncargado@puggysoft.com", true, null, "SysAdmin",  true),
+("SysEscuelaEncargado", "admin123", "1000041", "N/A", "N/A", "N/A", "N/A", "1990-01-01", 30, 'FEMALE', 'Ing. Sistemas', "60795055", "Av. Wiracocha", "SysEscuelaEncargado@puggysoft.com", true, null, "SysAdmin",  true),
 ("SysEscuelaAdmin", "admin123", "1000017", "N/A", "N/A", "N/A", "N/A", "1990-01-01", 27, 'MALE', 'Ing. Sistemas', "60795090", "Av. Wiracocha", "SysEscuelaAdmin@puggysoft.com", true, null, "SysAdmin",  true);
 
 -- Insert data (Roles).
@@ -150,7 +151,7 @@ INSERT INTO roles (name, created_by) VALUES ("ACCOUNTING_ADMIN", "admin");
 INSERT INTO roles (name, created_by) VALUES ("ASSIST_CONTROL_ADMIN", "admin");
 INSERT INTO roles (name, created_by) VALUES ("SALARY_SHEET_ADMIN", "admin");
 INSERT INTO roles (name, created_by) VALUES ("TICKETS_ADMIN", "admin");
-INSERT INTO roles (name, created_by) VALUES ("SCHOOL_ADMIN", "admin");
+INSERT INTO roles (name, created_by) VALUES ("SCHOOL_ENCARGADO", "admin");
 INSERT INTO roles (name, created_by) VALUES ("ADMIN_USERS_BY_TENANT", "admin");
 INSERT INTO roles (name, created_by) VALUES ("ALCALDIA_RECURSOS_MUNICIPALES_ENCARGADO", "admin");
 INSERT INTO roles (name, created_by) VALUES ("ALCALDIA_RECURSOS_MUNICIPALES_CAJERO", "admin");
@@ -210,7 +211,8 @@ INSERT INTO users_roles (id_user, id_role, created_by, tenant) VALUES
 ((select id from users where username='SysCondominioAdmin'), (select id from roles where name='ADMIN_USERS'), "SysAdmin", "EMPRESA_1"),
 ((select id from users where username='SysCondominioEncargado'), (select id from roles where name='CONDOMINIO_ENCARGADO'), "SysAdmin", "EMPRESA_1"),
 ((select id from users where username='SysReservasAdmin'), (select id from roles where name='ADMIN_USERS'), "SysAdmin", "EMPRESA_1"),
-((select id from users where username='SysEscuelaAdmin'), (select id from roles where name='SCHOOL_ADMIN'), "SysAdmin", "EMPRESA_1");
+((select id from users where username='SysEscuelaEncargado'), (select id from roles where name='SCHOOL_ENCARGADO'), "SysAdmin", "EMPRESA_1"),
+((select id from users where username='SysEscuelaAdmin'), (select id from roles where name='ADMIN_USERS'), "SysAdmin", "EMPRESA_1");
 
 INSERT INTO users_roles (id_user, id_role, created_by, tenant) VALUES
 ((select id from users where username='SysAdmin'), (select id from roles where name='ADMIN'), "SysAdmin", "EMPRESA_2"),
@@ -249,7 +251,8 @@ INSERT INTO users_roles (id_user, id_role, created_by, tenant) VALUES
 ((select id from users where username='SysCondominioAdmin'), (select id from roles where name='ADMIN_USERS'), "SysAdmin", "EMPRESA_2"),
 ((select id from users where username='SysCondominioEncargado'), (select id from roles where name='CONDOMINIO_ENCARGADO'), "SysAdmin", "EMPRESA_2"),
 ((select id from users where username='SysReservasAdmin'), (select id from roles where name='ADMIN_USERS'), "SysAdmin", "EMPRESA_2"),
-((select id from users where username='SysEscuelaAdmin'), (select id from roles where name='SCHOOL_ADMIN'), "SysAdmin", "EMPRESA_2");
+((select id from users where username='SysEscuelaEncargado'), (select id from roles where name='SCHOOL_ENCARGADO'), "SysAdmin", "EMPRESA_2"),
+((select id from users where username='SysEscuelaAdmin'), (select id from roles where name='ADMIN_USERS'), "SysAdmin", "EMPRESA_2");
 
 -- Insert data (User-Roles).
 INSERT INTO users_roles (id_user, id_role, created_by, tenant) VALUES (1000, 1000, "admin", "EMPRESA_1"); -- Admin Full.
@@ -364,6 +367,7 @@ INSERT INTO tenants_users (username, tenant, created_by) VALUES
 ('SysElisaEncargado', 'EMPRESA_2', 'SysAdmin'),
 ('SysCondominioAdmin', 'EMPRESA_2', 'SysAdmin'),
 ('SysCondominioEncargado', 'EMPRESA_2', 'SysAdmin'),
+('SysEscuelaEncargado', 'EMPRESA_2', 'SysAdmin'),
 ('SysEscuelaAdmin', 'EMPRESA_2', 'SysAdmin');
 
 
@@ -404,4 +408,6 @@ INSERT INTO tenants_roles (role, tenant, created_by) VALUES
 ('ELISA_ENCARGADO', 'EMPRESA_1', "admin"),
 ('CONDOMINIO_ENCARGADO', 'EMPRESA_1', "admin"),
 ('CONDOMINIO_ENCARGADO', 'EMPRESA_2', "admin"),
+('SCHOOL_ENCARGADO', 'EMPRESA_1', "admin"),
+('SCHOOL_ENCARGADO', 'EMPRESA_2', "admin"),
 ('ALCALDIA_RECURSOS_MUNICIPALES_CAJERO', 'EMPRESA_1', "admin");

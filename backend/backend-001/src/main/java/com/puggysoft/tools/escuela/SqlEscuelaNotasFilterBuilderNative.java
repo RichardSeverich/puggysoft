@@ -17,7 +17,7 @@ public final class SqlEscuelaNotasFilterBuilderNative {
         dtoEscuelaNotasFilter.idOperator);
     query = query + SqlFilterBuilder.getFilterQuery("name", dtoEscuelaNotasFilter.nameCriteria,
         dtoEscuelaNotasFilter.nameOperator);
-    query = query + SqlFilterBuilder.getFilterQuery("shortName", dtoEscuelaNotasFilter.shortNameCriteria,
+    query = query + SqlFilterBuilder.getFilterQuery("short_name", dtoEscuelaNotasFilter.shortNameCriteria,
         dtoEscuelaNotasFilter.shortNameOperator);
     query = query + SqlFilterBuilder.getFilterQuery("porcentaje", dtoEscuelaNotasFilter.porcentajeCriteria,
         dtoEscuelaNotasFilter.porcentajeOperator);

@@ -17,7 +17,7 @@ public final class SqlEscuelaCursosFilterBuilderNative {
         dtoEscuelaCursosFilter.idOperator);
     query = query + SqlFilterBuilder.getFilterQuery("name", dtoEscuelaCursosFilter.nameCriteria,
         dtoEscuelaCursosFilter.nameOperator);
-    query = query + SqlFilterBuilder.getFilterQuery("shortName", dtoEscuelaCursosFilter.shortNameCriteria,
+    query = query + SqlFilterBuilder.getFilterQuery("short_name", dtoEscuelaCursosFilter.shortNameCriteria,
         dtoEscuelaCursosFilter.shortNameOperator);
     query = query + SqlFilterBuilder.getFilterQuery("gestion", dtoEscuelaCursosFilter.gestionCriteria,
         dtoEscuelaCursosFilter.gestionOperator);

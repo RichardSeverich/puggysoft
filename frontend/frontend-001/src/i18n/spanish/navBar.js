@@ -228,6 +228,19 @@ const navBar = {
   urbanismoHistorialEstadoStepOne: "Crear Historial",
   urbanismoFlujoHistorialStepOne: "Mostrar tramites en curso (Flujo Historial)",
   urbanismoFlujoBoard: "Mostrar tramites en curso Board",
+  // ******* ******* SCHOOL SYSTEM ******* *******
+  // Cursos
+  escuelaCursosAdmin: "Adm. Cursos",
+  escuelaCursosForm: "Registrar Curso",
+  escuelaCursosTable: "Mostrar Cursos",
+  // Materias
+  escuelaMateriasAdmin: "Adm. Materias",
+  escuelaMateriasForm: "Registrar Materia",
+  escuelaMateriasTable: "Mostrar Materias",
+  // Notas
+  escuelaNotasAdmin: "Adm. Evaluaciones",
+  escuelaNotasForm: "Registrar Evaluacion",
+  escuelaNotasTable: "Mostrar Evaluaciones",
   // ******* ******* DATA STORAGE SYSTEM ******* *******
   // Schema
   storageSchemaAdmin: "Adm. Esquemas",

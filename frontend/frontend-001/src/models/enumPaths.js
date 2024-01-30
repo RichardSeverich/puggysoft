@@ -182,6 +182,14 @@ const DATA_STORAGE_RECORD_FORM_STEP_TWO = "/datastorage-record-form-step-two";
 const DATA_STORAGE_RECORD_TABLE_STEP_ONE = "/datastorage-record-table-step-one";
 const DATA_STORAGE_RECORD_TABLE_STEP_TWO = "/datastorage-record-table-step-two";
 
+// ESCUELA
+const ESCUELA_CURSOS_FORM = "/casa-estudios-cursos-form";
+const ESCUELA_CURSOS_TABLE = "/casa-estudios-cursos-table";
+const ESCUELA_MATERIAS_FORM = "/casa-estudios-materias-form";
+const ESCUELA_MATERIAS_TABLE = "/casa-estudios-materias-table";
+const ESCUELA_NOTAS_FORM = "/casa-estudios-notas-form";
+const ESCUELA_NOTAS_TABLE = "/casa-estudios-notas-table";
+
 const enumPaths = {
   DASHBOARD,
   THEME_FORM,
@@ -351,6 +359,13 @@ const enumPaths = {
   URBANISMO_HISTORIAL_ESTADO_STEP_THREE,
   URBANISMO_FLUJO_BOARD_A,
   URBANISMO_FLUJO_BOARD_B,
+  // ESCUELA
+  ESCUELA_CURSOS_FORM,
+  ESCUELA_CURSOS_TABLE,
+  ESCUELA_MATERIAS_FORM,
+  ESCUELA_MATERIAS_TABLE,
+  ESCUELA_NOTAS_FORM,
+  ESCUELA_NOTAS_TABLE,
   // DATA STORAGE SYSTEM
   DATA_STORAGE_SCHEMA_FORM,
   DATA_STORAGE_SCHEMA_TABLE,

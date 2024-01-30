@@ -101,6 +101,8 @@ import urbanismoHistorialEstadoForm from "./spanish/alcaldia/urbanismoHistorialE
 import urbanismoFlujoBoard from "./spanish/alcaldia/urbanismoFlujoBoard";
 // Data Storage System
 import datastorage from "./spanish/datastorage/datastorage";
+// Escuela System
+import escuela from "./spanish/escuela/escuela";
 
 const i18n = {
   // Common
@@ -204,6 +206,8 @@ const i18n = {
   urbanismoHistorialEstadoForm,
   urbanismoFlujoBoard,
   urbanismoHistorialTable,
+  // Escuela System
+  escuela,
   // Data Storage System
   datastorage
 };

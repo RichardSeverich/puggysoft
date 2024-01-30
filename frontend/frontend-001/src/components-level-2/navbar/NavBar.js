@@ -13,6 +13,8 @@ import {
   FaUser,
   FaCashRegister,
   FaUserShield,
+  FaStickyNote,
+  FaBook,
   FaHouseUser
 } from "react-icons/fa";
 import {
@@ -51,7 +53,11 @@ import { RiLoginCircleLine, RiUser2Fill, RiShieldKeyholeFill } from "react-icons
 import { MdOutlineSettingsSuggest, MdOutlineSchema } from "react-icons/md";
 import { GoCalendar } from "react-icons/go";
 import { GiGoldBar } from "react-icons/gi";
-import { IoMdTimer, IoIosNotifications } from "react-icons/io";
+import {
+  IoMdTimer,
+  IoIosNotifications,
+  IoMdSchool
+} from "react-icons/io";
 import { IoNewspaperSharp } from "react-icons/io5";
 import enumRoles from "./../../models/users/enumRoles";
 import enumTableType from "./../../models/enumTableType";
@@ -402,6 +408,28 @@ function NavBar () {
   const navigateUrbanismoHistorialEstadoStepOne = () => {
     history.push(enumPaths.URBANISMO_HISTORIAL_ESTADO_STEP_ONE);
   };
+  // ******* ******* ******* SCHOOL SYSTEM ******* ******* *******
+  // CURSOS
+  const navigateCursosForm = () => {
+    history.push(enumPaths.ESCUELA_CURSOS_FORM);
+  };
+  const navigateCursosTable = () => {
+    history.push(enumPaths.ESCUELA_CURSOS_TABLE);
+  };
+  // MATERIAS
+  const navigateMateriasForm = () => {
+    history.push(enumPaths.ESCUELA_MATERIAS_FORM);
+  };
+  const navigateMateriasTable = () => {
+    history.push(enumPaths.ESCUELA_MATERIAS_TABLE);
+  };
+  // NOTAS O EVALUACIONES
+  const navigateNotasForm = () => {
+    history.push(enumPaths.ESCUELA_NOTAS_FORM);
+  };
+  const navigateNotasTable = () => {
+    history.push(enumPaths.ESCUELA_NOTAS_TABLE);
+  };
   // ******* ******* ******* DATA STORAGE SYSTEM ******* ******* *******
   const navigateStorageSchemaForm = () => {
     history.push(enumPaths.DATA_STORAGE_SCHEMA_FORM);
@@ -682,6 +710,20 @@ function NavBar () {
   const urbanismoFlujoBoardLabel = (<><AiOutlineStar /> {i18n.navBar.urbanismoFlujoBoard}</>);
   // eslint-disable-next-line no-unused-vars
   const urbanismoHistorialEstadoStepOneLabel = (<><GrAddCircle /> {i18n.navBar.urbanismoHistorialEstadoStepOne}</>);
+  // ******* ******* ******* SCHOOL SYSTEM ******* ******* *******
+  // CURSOS
+  const escuelaCursosAdminLabel = (<><IoMdSchool /> {i18n.navBar.escuelaCursosAdmin}</>);
+  const escuelaCursosFormLabel = (<><GrAddCircle /> {i18n.navBar.escuelaCursosForm}</>);
+  const escuelaCursosTableLabel = (<><AiOutlineTable /> {i18n.navBar.escuelaCursosTable}</>);
+  // MATERIAS
+  const escuelaMateriasAdminLabel = (<><FaBook /> {i18n.navBar.escuelaMateriasAdmin}</>);
+  const escuelaMateriasFormLabel = (<><GrAddCircle /> {i18n.navBar.escuelaMateriasForm}</>);
+  const escuelaMateriasTableLabel = (<><AiOutlineTable /> {i18n.navBar.escuelaMateriasTable}</>);
+  // NOTAS
+  const escuelaNotasAdminLabel = (<><FaStickyNote /> {i18n.navBar.escuelaNotasAdmin}</>);
+  const escuelaNotasFormLabel = (<><GrAddCircle /> {i18n.navBar.escuelaNotasForm}</>);
+  const escuelaNotasTableLabel = (<><AiOutlineTable /> {i18n.navBar.escuelaNotasTable}</>);
+
   // ******* ******* ******* DATA STORAGE SYSTEM ******* ******* *******
   // SCHEMA
   const storageSchemaAdminLabel = (<><MdOutlineSchema /> {i18n.navBar.storageSchemaAdmin}</>);
@@ -971,6 +1013,23 @@ function NavBar () {
           ) &&
             <NavDropdown title={regulaLotesClienteAdminLabel}>
               <NavDropdown.Item onClick={navigateRegulaLotesFormCliente}>{regulaLotesFormClienteLabel}</NavDropdown.Item>
+            </NavDropdown>}
+
+          {/* ******* ******* ******* ESCUELA SYSTEM ******* ******* ********/}
+          {userRoles.includes(enumRoles.SCHOOL_ENCARGADO) &&
+            <NavDropdown title={escuelaCursosAdminLabel}>
+              <NavDropdown.Item onClick={navigateCursosForm}>{escuelaCursosFormLabel}</NavDropdown.Item>
+              <NavDropdown.Item onClick={navigateCursosTable}>{escuelaCursosTableLabel}</NavDropdown.Item>
+            </NavDropdown>}
+          {userRoles.includes(enumRoles.SCHOOL_ENCARGADO) &&
+            <NavDropdown title={escuelaMateriasAdminLabel}>
+              <NavDropdown.Item onClick={navigateMateriasForm}>{escuelaMateriasFormLabel}</NavDropdown.Item>
+              <NavDropdown.Item onClick={navigateMateriasTable}>{escuelaMateriasTableLabel}</NavDropdown.Item>
+            </NavDropdown>}
+          {userRoles.includes(enumRoles.SCHOOL_ENCARGADO) &&
+            <NavDropdown title={escuelaNotasAdminLabel}>
+              <NavDropdown.Item onClick={navigateNotasForm}>{escuelaNotasFormLabel}</NavDropdown.Item>
+              <NavDropdown.Item onClick={navigateNotasTable}>{escuelaNotasTableLabel}</NavDropdown.Item>
             </NavDropdown>}
 
           {/* ******* ******* ******* DATA STORAGE SYSTEM ******* ******* ********/}

@@ -17,9 +17,9 @@ public final class SqlEscuelaMateriasFilterBuilderNative {
         dtoEscuelaMateriasFilter.idOperator);
     query = query + SqlFilterBuilder.getFilterQuery("name", dtoEscuelaMateriasFilter.nameCriteria,
         dtoEscuelaMateriasFilter.nameOperator);
-    query = query + SqlFilterBuilder.getFilterQuery("shortName", dtoEscuelaMateriasFilter.shortNameCriteria,
+    query = query + SqlFilterBuilder.getFilterQuery("short_name", dtoEscuelaMateriasFilter.shortNameCriteria,
         dtoEscuelaMateriasFilter.shortNameOperator);
-    query = query + SqlFilterBuilder.getFilterQuery("notaMaxima", dtoEscuelaMateriasFilter.notaMaximaCriteria,
+    query = query + SqlFilterBuilder.getFilterQuery("nota_maxima", dtoEscuelaMateriasFilter.notaMaximaCriteria,
         dtoEscuelaMateriasFilter.notaMaximaOperator);
     query = query + SqlFilterBuilder.getFilterQuery("tenant ", dtoEscuelaMateriasFilter.tenantCriteria,
         dtoEscuelaMateriasFilter.tenantOperator);
