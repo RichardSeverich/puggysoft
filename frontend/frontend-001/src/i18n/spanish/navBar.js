@@ -233,6 +233,7 @@ const navBar = {
   escuelaCursosAdmin: "Adm. Cursos",
   escuelaCursosForm: "Registrar Curso",
   escuelaCursosTable: "Mostrar Cursos",
+  escuelaCursosMaterias: "Asignar Materias",
   // Materias
   escuelaMateriasAdmin: "Adm. Materias",
   escuelaMateriasForm: "Registrar Materia",

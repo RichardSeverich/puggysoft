@@ -13,23 +13,23 @@ public final class SqlEscuelaCursosFilterBuilderNative {
   /** build filter query method. */
   public static String build(DtoEscuelaCursosFilter dtoEscuelaCursosFilter) {
     String query = "";
-    query = query + SqlFilterBuilder.getFilterQuery("id", dtoEscuelaCursosFilter.idCriteria,
+    query = query + SqlFilterBuilder.getFilterQuery("escuela_cursos.id", dtoEscuelaCursosFilter.idCriteria,
         dtoEscuelaCursosFilter.idOperator);
-    query = query + SqlFilterBuilder.getFilterQuery("name", dtoEscuelaCursosFilter.nameCriteria,
+    query = query + SqlFilterBuilder.getFilterQuery("escuela_cursos.name", dtoEscuelaCursosFilter.nameCriteria,
         dtoEscuelaCursosFilter.nameOperator);
-    query = query + SqlFilterBuilder.getFilterQuery("short_name", dtoEscuelaCursosFilter.shortNameCriteria,
+    query = query + SqlFilterBuilder.getFilterQuery("escuela_cursos.short_name", dtoEscuelaCursosFilter.shortNameCriteria,
         dtoEscuelaCursosFilter.shortNameOperator);
-    query = query + SqlFilterBuilder.getFilterQuery("gestion", dtoEscuelaCursosFilter.gestionCriteria,
+    query = query + SqlFilterBuilder.getFilterQuery("escuela_cursos.gestion", dtoEscuelaCursosFilter.gestionCriteria,
         dtoEscuelaCursosFilter.gestionOperator);
-    query = query + SqlFilterBuilder.getFilterQuery("tenant ", dtoEscuelaCursosFilter.tenantCriteria,
+    query = query + SqlFilterBuilder.getFilterQuery("escuela_cursos.tenant ", dtoEscuelaCursosFilter.tenantCriteria,
         dtoEscuelaCursosFilter.tenantOperator);
-    query = query + SqlFilterBuilder.getFilterQuery("created_by", dtoEscuelaCursosFilter.createdByCriteria,
+    query = query + SqlFilterBuilder.getFilterQuery("escuela_cursos.created_by", dtoEscuelaCursosFilter.createdByCriteria,
         dtoEscuelaCursosFilter.createdByOperator);
-    query = query + SqlFilterBuilder.getFilterQuery("updated_by", dtoEscuelaCursosFilter.updatedByCriteria,
+    query = query + SqlFilterBuilder.getFilterQuery("escuela_cursos.updated_by", dtoEscuelaCursosFilter.updatedByCriteria,
         dtoEscuelaCursosFilter.updatedByOperator);
-    query = query + SqlFilterBuilder.getFilterQuery("creation_date", dtoEscuelaCursosFilter.creationDateCriteria,
+    query = query + SqlFilterBuilder.getFilterQuery("escuela_cursos.creation_date", dtoEscuelaCursosFilter.creationDateCriteria,
         dtoEscuelaCursosFilter.creationDateOperator);
-    query = query + SqlFilterBuilder.getFilterQuery("update_date", dtoEscuelaCursosFilter.updateDateCriteria,
+    query = query + SqlFilterBuilder.getFilterQuery("escuela_cursos.update_date", dtoEscuelaCursosFilter.updateDateCriteria,
         dtoEscuelaCursosFilter.updateDateOperator);
     return query;
   }

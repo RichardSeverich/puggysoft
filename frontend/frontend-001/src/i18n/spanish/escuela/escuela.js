@@ -2,6 +2,7 @@ const escuela = {
   // Courses
   cursosFormTitle: "Formulario de curso",
   cursosTableTitle: "Tabla de cursos",
+  cursosTableTitleSub: "Seleccione un curso",
   cursosNameLabel: "Nombre de curso",
   cursosShortNameLabel: "Codigo de curso",
   cursosGestionLabel: "Gestion",
@@ -17,6 +18,8 @@ const escuela = {
   materiasNameError: "Ingrese el nombre (min 3, max 60)",
   materiasShortNameError: "Ingrese el codigo (min 3, max 30, sin espacios)",
   materiasNotaMaximaError: "Ingrese la nota maxima",
+  materiasTitleOne: "Materias disponibles",
+  materiasTitleTwo: "Materias agregadas",
   // Notas
   notasFormTitle: "Formulario de evaluaciones",
   notasTableTitle: "Tabla de evaluacion",

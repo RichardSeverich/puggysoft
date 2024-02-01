@@ -416,6 +416,9 @@ function NavBar () {
   const navigateCursosTable = () => {
     history.push(enumPaths.ESCUELA_CURSOS_TABLE);
   };
+  const navigateAddCursosMaterias = () => {
+    history.push(enumPaths.ESCUELA_ASIGNAR_MATERIAS_STEP_ONE);
+  };
   // MATERIAS
   const navigateMateriasForm = () => {
     history.push(enumPaths.ESCUELA_MATERIAS_FORM);
@@ -715,6 +718,7 @@ function NavBar () {
   const escuelaCursosAdminLabel = (<><IoMdSchool /> {i18n.navBar.escuelaCursosAdmin}</>);
   const escuelaCursosFormLabel = (<><GrAddCircle /> {i18n.navBar.escuelaCursosForm}</>);
   const escuelaCursosTableLabel = (<><AiOutlineTable /> {i18n.navBar.escuelaCursosTable}</>);
+  const escuelaCursosMateriasLabel = (<><GrAddCircle /> {i18n.navBar.escuelaCursosMaterias}</>);
   // MATERIAS
   const escuelaMateriasAdminLabel = (<><FaBook /> {i18n.navBar.escuelaMateriasAdmin}</>);
   const escuelaMateriasFormLabel = (<><GrAddCircle /> {i18n.navBar.escuelaMateriasForm}</>);
@@ -1020,6 +1024,7 @@ function NavBar () {
             <NavDropdown title={escuelaCursosAdminLabel}>
               <NavDropdown.Item onClick={navigateCursosForm}>{escuelaCursosFormLabel}</NavDropdown.Item>
               <NavDropdown.Item onClick={navigateCursosTable}>{escuelaCursosTableLabel}</NavDropdown.Item>
+              <NavDropdown.Item onClick={navigateAddCursosMaterias}>{escuelaCursosMateriasLabel}</NavDropdown.Item>
             </NavDropdown>}
           {userRoles.includes(enumRoles.SCHOOL_ENCARGADO) &&
             <NavDropdown title={escuelaMateriasAdminLabel}>
