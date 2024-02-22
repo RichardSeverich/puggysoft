@@ -15,10 +15,10 @@ public interface IRepositoryAlcaldiaRecursosMunicipales extends JpaRepository<En
   @Query(value = "SELECT * FROM alcaldia_recursos_municipales LIMIT ?1, ?2", nativeQuery = true)
   List<EntityAlcaldiaRecursosMunicipales> findAlcaldiaRecursosMunicipalesByPagination(int off, int size);
 // obtener recursos hijos no repetidos por name
-  @Query(value = "SELECT * FROM alcaldia_recursos_municipales WHERE tipo = \"HIJO\" GROUP BY name ORDER BY id", nativeQuery = true)
+  @Query(value = "SELECT * FROM alcaldia_recursos_municipales WHERE tipo = \"HIJO\" GROUP BY name, id ORDER BY id", nativeQuery = true)
   List<EntityAlcaldiaRecursosMunicipales> findAlcaldiaRecursosMunicipalesKidsNotRepeatName();
 // obtener recursos padres no repetidos por name
-  @Query(value = "SELECT * FROM alcaldia_recursos_municipales WHERE tipo = \"PADRE\" GROUP BY name ORDER BY id", nativeQuery = true)
+  @Query(value = "SELECT * FROM alcaldia_recursos_municipales WHERE tipo = \"PADRE\" GROUP BY name, id ORDER BY id", nativeQuery = true)
   List<EntityAlcaldiaRecursosMunicipales> findAlcaldiaRecursosMunicipalesfatherNotRepeatName();
 
   @Query(value = "SELECT * FROM alcaldia_recursos_municipales WHERE name NOT LIKE \"%TIMBRES%\" LIMIT ?1, ?2", nativeQuery = true)

@@ -2,7 +2,7 @@ import { jsPDF } from "jspdf";
 import appUrlConfig from "../appUrlConfig";
 import i18n from "../../i18n/i18n";
 
-const fileName = "colcaEscudo.jpg";
+const fileName = "alcaldia/colcaEscudo.jpg";
 const imageUrl = `${appUrlConfig.URL}/${fileName}`;
 
 const GeneratePdf = (data, fecha) => {

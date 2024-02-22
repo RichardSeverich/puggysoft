@@ -97,7 +97,7 @@ function AlcaldiaRecursosMunicipalesForm () {
       };
       return body;
     },
-    [valueCodigo, valueName, valuePrecio]
+    [valueCodigo, valueCodigoAuxiliar, valueName, valuePrecio, valueTipo]
   );
 
   const handleAfterAdd = function (newEntityId) {
