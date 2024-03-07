@@ -378,4 +378,4 @@ INSERT INTO alcaldia_recursos_municipales_actividades (id_actividades, id_recurs
 INSERT INTO alcaldia_recursos_municipales_actividades (id_actividades, id_recurso_municipal, tenant, created_by, creation_date) VALUES ((select id from alcaldia_actividades where name='TASA DE LIMPIEZA PUBLICA'), (select id from alcaldia_recursos_municipales where codigo='15131'), "EMPRESA_1", "RecursosMunicipalesEncargado", "2023-05-26");
 
 -- ALCALDIA-RECURSOS-VALORADOS
-INSERT INTO alcaldia_recursos_valorados (codigo, codigo_auxiliar, name, tenant, created_by, creation_date) VALUES ("12250", "122000-003", "TIMBRES", "RecursosMunicipalesEncargado", "2021-11-01");
+INSERT INTO alcaldia_recursos_valorados (codigo, codigo_auxiliar, name, tenant, created_by, creation_date) VALUES ("12250", "122000-003", "TIMBRES", "EMPRESA_1", "RecursosMunicipalesEncargado", "2021-11-01");
