@@ -46,9 +46,9 @@ function AlcaldiaRecursosMunicipalesTimbresVentasForm () {
   const [messageText, setMessageText] = useState("");
 
   let venta = "";
-  let clienteNombre = "";
-  let clienteCiNit = "";
-  let direccion = "";
+  let clienteNombre = "N/A";
+  let clienteCiNit = "0000000";
+  let direccion = "N/A";
   let nota = "";
   let ventaPrecioTotal = 0;
   let clienteDinero = "";

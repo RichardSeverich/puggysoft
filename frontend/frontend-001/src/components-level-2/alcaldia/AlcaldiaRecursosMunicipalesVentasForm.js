@@ -59,11 +59,11 @@ function AlcaldiaRecursosMunicipalesVentasForm () {
   const clienteNombre =
     isEdit && isEdit.data.clienteNombre !== null
       ? isEdit.data.clienteNombre
-      : "";
+      : "N/A";
   const clienteCiNit =
-    isEdit && isEdit.data.clienteCiNit !== null ? isEdit.data.clienteCiNit : "";
+    isEdit && isEdit.data.clienteCiNit !== null ? isEdit.data.clienteCiNit : "0000000";
   const direccion =
-    isEdit && isEdit.data.direccion !== null ? isEdit.data.direccion : "";
+    isEdit && isEdit.data.direccion !== null ? isEdit.data.direccion : "N/A";
   const nota = isEdit && isEdit.data.nota !== null ? isEdit.data.nota : "";
   const ventaStatus =
     isEdit && isEdit.data.ventaStatus !== null

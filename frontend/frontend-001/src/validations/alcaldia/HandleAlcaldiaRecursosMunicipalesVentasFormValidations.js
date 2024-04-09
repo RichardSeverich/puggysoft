@@ -19,7 +19,7 @@ const handleValidation = (data, setClassNameFormText) => {
   } else {
     classNameFormTextNew.clienteNombre = "";
   }
-  if (!(data.clienteCiNit.length >= 7 && data.clienteCiNit.length <= 11)) {
+  if (!(data.clienteCiNit.length >= 5 && data.clienteCiNit.length <= 11)) {
     isValid = false;
     classNameFormTextNew.clienteCiNit = classNameRed;
   } else if (!/^\d+(\.\d{1,2})?$/.test(data.clienteCiNit)) {

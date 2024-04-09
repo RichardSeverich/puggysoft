@@ -5,7 +5,7 @@ const alcaldiaRecursosMunicipalesTimbresVentasForm = {
   fieldClienteNombre: "Cliente Nombre",
   fieldClienteNombreText: "Minimo 3, maximo 120 caracteres",
   fieldClienteCiNit: "Cliente Ci Nit",
-  fieldClienteCiNitText: "Minimo 7, maximo 11 caracteres",
+  fieldClienteCiNitText: "Minimo 5, maximo 11 caracteres",
   fieldDireccion: "Direccion",
   fieldDireccionText: "Minimo 3, maximo 120 caracteres",
   fieldDescontinuados: "Descontinuados",
