@@ -9,8 +9,14 @@
 </p>
 
 * Install uiautomator2 driver  ```appium driver install uiautomator2```
+* install driver for Ios: ```appium driver install xcutest```
 <p align="center">
   <img src="readme-files-02/002-install-driver-uiautomator2.jpg">
+</p>
+
+* Verify drivers installation with: ```appium driver list```
+<p align="center">
+  <img src="readme-files-02/002-appium-drivers-list.jpg">
 </p>
 
 * start appium server ```appium``` or ```appium --allow-cors```(recomended)

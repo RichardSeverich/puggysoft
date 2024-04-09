@@ -67,14 +67,18 @@
   <img src="readme-files/010-android-studio-go-sdk-manager.jpg">
 </p>
 
-* Select ```Android 11.0 (R) 30``` SDK Platform and press ```Apply``` button
+* Select ```Android 11.0 (R) 30``` SDK Platform and press ```Apply``` button. (Note: before selecting, it must be downloaded.)
 <p align="center">
   <img src="readme-files/011-android-studio-select-SDK-platform.jpg">
 </p>
 
-* Then go to ```SDK tools``` and select ```Android SDK Command-line Tools (latest)``` and press ```Apply``` button and ```Ok``` button
+* Then go to ```SDK tools``` and select ```Android SDK Command-line Tools (latest)``` and press ```Apply``` button and ```Ok``` button. (Note: before selecting, it must be downloaded.)
 <p align="center">
   <img src="readme-files/012-android-studio-select-SDK-tool.jpg">
+</p>
+
+<p align="center">
+  <img src="readme-files/012-android-studio-SDK-download.JPG">
 </p>
 
 * After that, Add ```Sdk``` and ```Platform tools``` to environment variables
