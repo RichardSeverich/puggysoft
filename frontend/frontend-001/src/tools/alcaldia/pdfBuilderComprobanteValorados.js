@@ -38,7 +38,7 @@ const GeneratePdf = (data, body) => {
   for (let index = 0; index < data.length; index++) {
     const element = data[index];
     doc.text(x, y, ` ${element.codigo}`);
-    doc.text(x + 2.7, y, ` ${element.name}`);
+    doc.text(x + 2.7, y, ` ${body[0].nota}`);
     doc.text(x + 13.3, y, ` ${body[1].cantidad}`);
     doc.text(x + 14.7, y, ` ${body[0].ventaPrecioTotal}`);
     y = y + 0.4;

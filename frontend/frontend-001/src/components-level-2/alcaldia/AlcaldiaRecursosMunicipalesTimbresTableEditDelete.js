@@ -7,7 +7,7 @@ import AlcaldiaRecursosMunicipalesTimbresGenericTable from "./generic/AlcaldiaRe
 import enumTableColumnsToShow from "../../models/enumTableColumnsToShow";
 
 function AlcaldiaRecursosMunicipalesTimbresTableEditDelete () {
-  const tableTitle = i18n.alcaldiaRecursosMunicipalesTable.title;
+  const tableTitle = i18n.alcaldiaRecursosMunicipalesTable.titleTimbres;
   const pageSize = 7;
   const numberPagesToShow = 7;
 

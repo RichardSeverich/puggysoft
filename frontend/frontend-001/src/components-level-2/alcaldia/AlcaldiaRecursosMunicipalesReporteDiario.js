@@ -15,7 +15,7 @@ import {
 } from "../../validations/alcaldia/HandleAlcaldiaRecursosMunicipalesReporteValidations";
 import CommonMessage from "../../components-level-1/CommonMessage";
 import enumStatus from "../../models/alcaldia/enumVentaStatus";
-import GeneratePdf from "../../tools/alcaldia/pdfBuilderReporteDiario";
+import GeneratePdf from "../../tools/alcaldia/pdfBuilderReporteDiarioV1";
 
 import "./../css/all-forms.css";
 

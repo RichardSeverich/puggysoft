@@ -1,5 +1,6 @@
 const alcaldiaRecursosMunicipalesVentasTable = {
   title: "Tabla de recursos municipales - ventas",
+  titleTimbres: "Tabla de recursos municipales (Timbres)- ventas",
   titleToSelect: "Seleccione un recurso",
   columnClienteNombre: "Cliente nombre",
   columnClienteCiNit: "Cliente Ci/Nit",

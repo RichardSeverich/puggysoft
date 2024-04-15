@@ -125,7 +125,7 @@ function AlcaldiaRecursosMunicipalesTimbresVentasForm () {
       const nota = i18n.alcaldiaRecursosMunicipalesTimbresVentasForm.fieldTalonarioActual +
         `  ${valueTimbres.talonarioMovimiento}, ` +
         i18n.alcaldiaRecursosMunicipalesTimbresVentasForm.fieldTalonarioVenta +
-        `  ${valueHastaTimbre}, ${valueDescontinuados.join("-")}`;
+        `  ${valueHastaTimbre} ${valueDescontinuados.join("-")}`;
       const body = [
         {
           clienteNombre: valueClienteNombre,
