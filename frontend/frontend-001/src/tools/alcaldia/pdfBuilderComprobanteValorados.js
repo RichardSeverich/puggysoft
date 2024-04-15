@@ -10,8 +10,9 @@ const GeneratePdf = (data, body) => {
     unit: "cm"
   });
   const fileName = "alcaldia/comprobanteValorados.jpg";
+  // eslint-disable-next-line no-unused-vars
   const imageUrl = `${appUrlConfig.URL}/${fileName}`;
-  doc.addImage(imageUrl, "JPG", 0, 0, 21.6, 16.5);
+  // doc.addImage(imageUrl, "JPG", 0, 0, 21.6, 16.5);
 
   doc.setFontSize(15);
   doc.setTextColor(88, 139, 196);
