@@ -36,4 +36,9 @@ public abstract class Screen {
     this.driver.quit();
   }
 
+  /** End session. */
+  public void startSession() {
+    Driver.getInstance().startSession();
+  }
+
 }

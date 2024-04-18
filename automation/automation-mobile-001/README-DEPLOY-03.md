@@ -1,8 +1,8 @@
 # Configure DesiredCapabilities capabilities
 
 * ```deviceName``` you can see in your device: eg.```Pixel API 30 (Android 11.0)```
-* ```platformName``` you can see in your device. eg. ```11.0``` 
-* ```platformVersion``` you can see in your device: eg. ```Android```
+* ```platformName``` you can see in your device. eg. ```Android```
+* ```platformVersion``` you can see in your device: eg. ```11.0```
 <p align="center">
   <img src="readme-files-03/001-Device-Name.jpg">
 </p>

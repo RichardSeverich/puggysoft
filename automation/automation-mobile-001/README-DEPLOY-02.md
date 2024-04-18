@@ -31,7 +31,14 @@
   <img src="readme-files-02/004-appium-inspector download.jpg">
 </p>
 
+
+### Open appium-inspector
+
+we have 2 options to open appium inspector.
+
+### Option A
 * Open appium-inspector, set the following configurtion and let empty Remote Host, Port and Path.
+(This option is if you installed the app manually)
 ```
 {
   "automationName": "UIAutomator2",
@@ -41,11 +48,29 @@
   "platformVersion": "11.0",
   "appPackage": "com.idt.n2p",
   "appActivity": "com.idt.n2p.MainActivity",
-  "noReset": "true"
+  "autoGrantPermissions": true
 }
 ```
 <p align="center">
   <img src="readme-files-02/005-configure-appium-inspector.jpg">
+</p>
+
+### Option B
+* Open appium-inspector, set the following configurtion and let empty Remote Host, Port and Path.
+(For this you need copy the apk file on C:\apk-files\n2p.apk)
+```
+{
+  "appium:automationName": "UIAutomator2",
+  "appium:deviceName": "Pixel API 30 (Android 11.0)",
+  "appium:udid": "emulator-5554",
+  "platformName": "Android",
+  "appium:platformVersion": "11.0",
+  "appium:app": "C:\\apk-files\\n2p.apk",
+  "autoGrantPermissions": true
+}
+```
+<p align="center">
+  <img src="readme-files-02/005-configure-appium-inspector-b.jpg">
 </p>
 
 This is in order to get the selectors of our application. (NOTE: for run test you should close the session of appium-inspector)
@@ -54,5 +79,5 @@ This is in order to get the selectors of our application. (NOTE: for run test yo
 * Install appium doctor: ```npm install -g appium-doctor```
 * Verify version: ```appium-doctor -v```
 * Verify Dependencies Ios: ```appium-doctor --ios```
-* Verify Dependencies Andorid: ```appium-doctor --andorid```
+* Verify Dependencies Android: ```appium-doctor --android```
 

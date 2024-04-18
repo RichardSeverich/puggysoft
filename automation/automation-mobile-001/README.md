@@ -13,6 +13,10 @@ Select ony one option:
 * Install Appium: follow all instructions from [README-DEPLOY-02](./README-DEPLOY-02.md)
 * Configure ```config.properties``` according with [README-DEPLOY-03](./README-DEPLOY-03.md)
 
+## Only Mac
+* Install and Configure Xcode [README-DEPLOY-04](./README-DEPLOY-04.md)
+* Configure ```config.properties``` according with [README-DEPLOY-05](./README-DEPLOY-05.md)
+
 ## Run tests
 * Run all test ```gradlew --info cleanTest test```
 * build all projects ```gradlew build```

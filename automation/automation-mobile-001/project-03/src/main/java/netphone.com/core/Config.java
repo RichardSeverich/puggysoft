@@ -16,6 +16,8 @@ public final class Config {
   protected String platformVersion;
   protected String appPackage;
   protected String appActivity;
+  protected String app;
+  protected boolean autoGrantPermissions;
   protected boolean noReset;
   protected boolean unicodeKeyboard;
   protected boolean resetKeyboard;
@@ -40,8 +42,12 @@ public final class Config {
       udId = prop.getProperty("desiredCapabilities.udid");
       platformName = prop.getProperty("desiredCapabilities.platformName");
       platformVersion = prop.getProperty("desiredCapabilities.platformVersion");
+      // option 1
       appPackage = prop.getProperty("desiredCapabilities.appPackage");
       appActivity = prop.getProperty("desiredCapabilities.appActivity");
+      // option 2
+      app = prop.getProperty("desiredCapabilities.app");
+      autoGrantPermissions = prop.getProperty("desiredCapabilities.autoGrantPermissions").equals("true");
       noReset = prop.getProperty("desiredCapabilities.noReset").equals("true");
       unicodeKeyboard = prop.getProperty("desiredCapabilities.unicodeKeyboard").equals("true");
       resetKeyboard = prop.getProperty("desiredCapabilities.resetKeyboard").equals("true");

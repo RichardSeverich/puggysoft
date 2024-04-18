@@ -40,4 +40,12 @@ public class LoginSteps {
     this.loginActions.loginScreen.endSession();
   }
 
+  /**
+   * Restart app.
+   */
+  @Then("^I restart app$")
+  public void restartApp() {
+
+  }
+
 }

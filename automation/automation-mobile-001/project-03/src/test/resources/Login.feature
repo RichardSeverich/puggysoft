@@ -7,4 +7,3 @@ Feature: Login
     Then I verify 'Messenger' text is visible
     Then I verify 'Meetings' text is visible
     Then I verify 'Contacts' text is visible
-    Then I close session

@@ -23,7 +23,7 @@
   <img src="readme-files/002-android-studio-install.jpg">
 </p>
 
-## Create a New Device in Andorid Studio
+## Create a New Device in Android Studio
 
 * Open Android Studio and go to ```More actions > Virtual Device manager```:
 <p align="center">
@@ -60,7 +60,7 @@
   <img src="readme-files/009-android-studio-run-device-finish.jpg">
 </p>
 
-## Configure SDK in Andorid Studio
+## Configure SDK in Android Studio
 
 * Go to a ```SDK Manager```
 <p align="center">

@@ -12,7 +12,7 @@
   <img src="./../../mobile/mobile001/readme-files/002-android-studio-install.jpg">
 </p>
 
-### Create a New Device in Andorid Studio
+### Create a New Device in Android Studio
 
 * Open Android Studio and go to ```More actions > Virtual Device manager```:
 <p align="center">
@@ -49,13 +49,17 @@
   <img src="./../../mobile/mobile001/readme-files/009-android-studio-run-device-finish.jpg">
 </p>
 
+### Optional (App install manually)
+
+You can install the app manually, or you can also use an APK directly in the appium settings, so if you are going to use an APK file you can skip this step.
+
 * Enter ```Play Store``` and Install ``` Net2Phone``` app.
 <p align="center">
   <img src="./readme-files-01/003-install-net-2-phone.jpg">
 </p>
 
 
-### Configure SDK in Andorid Studio
+### Configure SDK in Android Studio
 
 * Go to a ```SDK Manager```
 <p align="center">

@@ -6,6 +6,7 @@ import java.util.concurrent.TimeUnit;
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.ios.IOSDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -30,8 +31,13 @@ public class Driver {
     this.capabilities.setCapability("platformName", this.config.platformName);
     this.capabilities.setCapability("platformVersion", this.config.platformVersion);
     // Application
-    this.capabilities.setCapability("appPackage", this.config.appPackage);
-    this.capabilities.setCapability("appActivity", this.config.appActivity);
+    if(this.config.app == null) {
+      this.capabilities.setCapability("appPackage", this.config.appPackage);
+      this.capabilities.setCapability("appActivity", this.config.appActivity);
+    } else {
+      this.capabilities.setCapability("app", this.config.app);
+    }
+    this.capabilities.setCapability("autoGrantPermissions", this.config.autoGrantPermissions);
     this.capabilities.setCapability("noReset", this.config.noReset);
     // Hide keyboard
     this.capabilities.setCapability("unicodeKeyboard", this.config.unicodeKeyboard);
@@ -51,7 +57,11 @@ public class Driver {
   public void startSession() {
     try {
       URL url = new URL(config.appiumUrl);
-      this.appiumDriver = new AndroidDriver<>(url, capabilities);
+      if(config.platformName == "iOS") {
+        this.appiumDriver = new IOSDriver<>(url, capabilities);
+      } else {
+        this.appiumDriver = new AndroidDriver<>(url, capabilities);
+      }
       this.appiumDriver.manage().timeouts().implicitlyWait(config.implicitlyWaitSeconds, TimeUnit.SECONDS);
       this.driverWait =  new WebDriverWait(this.appiumDriver, this.config.explicitlyWaitSeconds);
     } catch (MalformedURLException exception) {
