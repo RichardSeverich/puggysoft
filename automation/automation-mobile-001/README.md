@@ -3,19 +3,17 @@
 ## Install Dependencies
 
 * Install node version: ```v18.16.1```
-* Install npm version: ```9.5.1```
-* Install npx version: ```9.5.1```
+  * Cames with npm version: ```9.5.1```
+  * Cames with npx version: ```9.5.1```
 * Install JDK version: ```1.8.0_401``` and add env variables
 * Install and Configure Android Studio.
 Select ony one option:
-  - Option A: follow all instructions from [README-DEPLOY-01A](./README-DEPLOY-01A.md) file. (Recommended) (Use it when you need test with real and emulator devices.)
-  - Option B: follow all instructions from [README-DEPLOY-01B](./README-DEPLOY-01B.md) file. (Use it when you need only test with real devices.)
-* Install Appium: follow all instructions from [README-DEPLOY-02](./README-DEPLOY-02.md)
-* Configure ```config.properties``` according with [README-DEPLOY-03](./README-DEPLOY-03.md)
-
-## Only Mac
-* Install and Configure Xcode [README-DEPLOY-04](./README-DEPLOY-04.md)
-* Configure ```config.properties``` according with [README-DEPLOY-05](./README-DEPLOY-05.md)
+  - Option A: follow all instructions from [Android-Studio.md](./README-DEPLOY-01A-Android-Studio.md) file. (Recommended) (Use it when you need test with real and emulator devices.)
+  - Option B: follow all instructions from [Android-Sdk.md](./README-DEPLOY-01B-Android-Sdk.md) file. (Use it when you need only test with real devices.)
+* Install Appium: follow all instructions from [Appium.md](./README-DEPLOY-02-Appium.md)
+* Install and Configure Xcode [Xcode.md](./README-DEPLOY-04-Xcode.md) (Only for MAC)
+* Configure ```config.properties``` file for Android according with [Config-Props-Android.md](./README-DEPLOY-03-Config-Props-Android.md)
+* Configure ```config.properties``` file for iOS according with [Config-Props-iOS.md](./README-DEPLOY-05-Config-Props-iOS.md) (Only for MAC)
 
 ## Run tests
 * Run all test ```gradlew --info cleanTest test```
