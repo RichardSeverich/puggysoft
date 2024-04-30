@@ -18,6 +18,7 @@ public final class Config {
   protected String appActivity;
   protected String app;
   protected boolean autoGrantPermissions;
+  protected boolean autoAcceptAlerts;
   protected boolean noReset;
   protected boolean unicodeKeyboard;
   protected boolean resetKeyboard;
@@ -48,6 +49,7 @@ public final class Config {
       // option 2
       app = prop.getProperty("desiredCapabilities.app");
       autoGrantPermissions = prop.getProperty("desiredCapabilities.autoGrantPermissions").equals("true");
+      autoAcceptAlerts = prop.getProperty("desiredCapabilities.autoAcceptAlerts").equals("true");
       noReset = prop.getProperty("desiredCapabilities.noReset").equals("true");
       unicodeKeyboard = prop.getProperty("desiredCapabilities.unicodeKeyboard").equals("true");
       resetKeyboard = prop.getProperty("desiredCapabilities.resetKeyboard").equals("true");

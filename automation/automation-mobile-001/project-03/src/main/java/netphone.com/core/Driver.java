@@ -31,17 +31,21 @@ public class Driver {
     this.capabilities.setCapability("platformName", this.config.platformName);
     this.capabilities.setCapability("platformVersion", this.config.platformVersion);
     // Application
-    if(this.config.app == null) {
+    if (this.config.app == null) {
       this.capabilities.setCapability("appPackage", this.config.appPackage);
       this.capabilities.setCapability("appActivity", this.config.appActivity);
     } else {
       this.capabilities.setCapability("app", this.config.app);
     }
-    this.capabilities.setCapability("autoGrantPermissions", this.config.autoGrantPermissions);
     this.capabilities.setCapability("noReset", this.config.noReset);
     // Hide keyboard
     this.capabilities.setCapability("unicodeKeyboard", this.config.unicodeKeyboard);
     this.capabilities.setCapability("resetKeyboard", this.config.resetKeyboard);
+    // Auto Grant Permissions
+    // iOS
+    this.capabilities.setCapability("autoAcceptAlerts", this.config.autoAcceptAlerts);
+    // Android
+    this.capabilities.setCapability("autoGrantPermissions", this.config.autoGrantPermissions);
   }
 
   /** @return instance. */
@@ -57,7 +61,7 @@ public class Driver {
   public void startSession() {
     try {
       URL url = new URL(config.appiumUrl);
-      if(config.platformName == "iOS") {
+      if (config.platformName.equals("iOS")) {
         this.appiumDriver = new IOSDriver<>(url, capabilities);
       } else {
         this.appiumDriver = new AndroidDriver<>(url, capabilities);

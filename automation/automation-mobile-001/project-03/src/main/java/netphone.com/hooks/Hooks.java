@@ -6,7 +6,7 @@ import cucumber.api.java.Before;
 import netphone.com.screens.AnyScreen;
 
 /**
- * Hooks
+ * Hooks.
  */
 public class Hooks {
 

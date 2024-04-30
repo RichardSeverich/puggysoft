@@ -25,7 +25,7 @@ public class LoginSteps {
    */
   @Given("^I login with \"(ADMIN|USER)\" credentials")
   public void login(String loginType) {
-    if(loginType.equals("ADMIN")) {
+    if (loginType.equals("ADMIN")) {
       this.loginActions.loginWithAdminCredentials();
     } else {
       this.loginActions.loginWithUserCredentials();

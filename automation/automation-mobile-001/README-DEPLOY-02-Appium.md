@@ -73,6 +73,23 @@ we have 2 options to open appium inspector.
   <img src="readme-files-02/005-configure-appium-inspector-b.jpg">
 </p>
 
+
+### Option C (iOS)
+```
+{
+  "automationName": "XCUITest",
+  "deviceName": "iPhone 14 Pro",
+  "udid": "7C62B764-5491-40DF-B732-42A46C8715BD",
+  "platformName": "iOS",
+  "platformVersion": "16.2",
+  "app": "/Users/rseverich/Desktop/app-files/n2p.app"
+}
+```
+<p align="center">
+  <img src="readme-files-02/006-configure-appium-inspector-ios.png">
+</p>
+
+
 This is in order to get the selectors of our application. (NOTE: for run test you should close the session of appium-inspector)
 
 ### Install appium-doctor
