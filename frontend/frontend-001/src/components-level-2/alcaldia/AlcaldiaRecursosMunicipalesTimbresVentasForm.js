@@ -48,7 +48,7 @@ function AlcaldiaRecursosMunicipalesTimbresVentasForm () {
   let venta = "";
   let clienteNombre = "N/A";
   let clienteCiNit = "0000000";
-  let direccion = "N/A";
+  let direccion = "Colcapirhua";
   let nota = "";
   let ventaPrecioTotal = 0;
   let clienteDinero = "";
