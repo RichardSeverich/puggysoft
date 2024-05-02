@@ -25,18 +25,20 @@ Select ony one option:
 
 ### Run all test
 * Run all test ```gradlew --info cleanTest test```
-* build all projects ```gradlew build```
+* Build all projects ```gradlew build```
 
 ### Run tests project-01
-* build only a project ```gradlew :project-01:build```
+* Build only a project ```gradlew :project-01:build```
 * Run on project-01 ```gradlew :project-01:test```
 
 ### Run tests project-02
-* build only a project ```gradlew :project-02:build```
+* Build only a project ```gradlew :project-02:build```
 * Run on project-01 ```gradlew :project-02:test```
 
 ### Run tests project-03
-* build only a project ```gradlew :project-03:build```
+* Permissions ```chmod +x gradlew```
+* Build only a project ```gradlew :project-03:build```
+* Check style ```gradlew :n2p-mobile:check```
 * Run cucumber tests  ```gradlew :project-03:cucumber```
 * Run cucumber tests only smoke```gradlew :project-03:cucumber -P tags=@SmokeTest```
 * Then you can see the reports in ```project-03/reports/index.html``` folder.
