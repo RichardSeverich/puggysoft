@@ -15,8 +15,8 @@ const GeneratePdf = (data, body) => {
 
   doc.setFontSize(15);
   doc.setTextColor(88, 139, 196);
-  const idVenta = body.idVenta.toString().padStart(7, "0");
-  doc.text(15.7, 1.85, ` ${idVenta}`);
+  // const idVenta = body.idVenta.toString().padStart(7, "0");
+  // doc.text(15.7, 1.85, ` ${idVenta}`);
 
   doc.setFontSize(8);
   // obtener la fecha y la hora
@@ -26,36 +26,34 @@ const GeneratePdf = (data, body) => {
   const nombre = body.clienteNombre.replace(/([^\s]+)/gm, function (textoEncontrado) {
     return textoEncontrado.charAt(0).toUpperCase() + textoEncontrado.substring(1);
   });
-
-  doc.text(2, 4.4, ` ${body.clienteCiNit}`);
-  doc.text(7, 4.4, ` ${nombre}`);
-
-  doc.text(2.7, 5.05, ` ${body.direccion}`);
-  doc.text(2.7, 5.5, ` ${body.nota}`);
+  if (body.clienteCiNit !== "0000000") {
+    doc.text(2, 1.5, ` ${body.clienteCiNit}`);
+  }
+  doc.text(7, 1.5, ` ${nombre}`);
+  doc.text(2.7, 2, ` ${body.direccion}`);
+  doc.text(2.7, 2.5, ` ${body.nota}`);
   const x = 2.5;
-  let y = 7.7;
+  let y = 5.5;
   for (let index = 0; index < data.length; index++) {
     const element = data[index];
     doc.text(x, y, ` ${element.codigo}`);
     doc.text(x + 2.7, y, ` ${element.name}`);
-    doc.text(x + 13.4, y, ` ${element.precio}`);
+    doc.text(x + 13.5, y, ` ${element.precio}`);
     y = y + 0.4;
   }
-  y = 12.3;
-  doc.text(x + 13.4, y, ` ${body.ventaPrecioTotal}`);
-  doc.text(x, y, NumeroALetras(body.ventaPrecioTotal));
 
-  y = y + 0.8;
-  doc.setFontSize(6);
+  doc.text(18.5, 10.5, ` ${body.ventaPrecioTotal}`);
+  doc.text(3, 10.5, NumeroALetras(body.ventaPrecioTotal));
   let fecha = [];
   if (body.valueCreationDate === undefined) {
     fecha = dateConvert(now.split(",")[0]).split(" ");
   } else {
     fecha = dateConvert(body.valueCreationDate.split("T")[0]).split(" ");
   }
-  doc.text(8.9, y, ` ${fecha[0]}`);
-  doc.text(10, y, ` ${fecha[2]}`);
-  doc.text(12.1, y, ` ${fecha[4]}`);
+  doc.setFontSize(6);
+  doc.text(9, 12.5, ` ${fecha[0]}`);
+  doc.text(10, 12.5, ` ${fecha[2]}`);
+  doc.text(11, 12.5, ` ${fecha[4]}`);
 
   doc.output("dataurlnewwindow");
 };
