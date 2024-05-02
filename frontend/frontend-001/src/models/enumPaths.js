@@ -191,6 +191,8 @@ const ESCUELA_NOTAS_FORM = "/casa-estudios-notas-form";
 const ESCUELA_NOTAS_TABLE = "/casa-estudios-notas-table";
 const ESCUELA_ASIGNAR_MATERIAS_STEP_ONE = "/casa-estudios-asignar-materias-step-1";
 const ESCUELA_ASIGNAR_MATERIAS_STEP_TWO = "/casa-estudios-asignar-materias-step-2";
+const ESCUELA_ASIGNAR_NOTAS_STEP_ONE = "/casa-estudios-asignar-notas-step-1";
+const ESCUELA_ASIGNAR_NOTAS_STEP_TWO = "/casa-estudios-asignar-notas-step-2";
 
 const enumPaths = {
   DASHBOARD,
@@ -370,6 +372,8 @@ const enumPaths = {
   ESCUELA_NOTAS_TABLE,
   ESCUELA_ASIGNAR_MATERIAS_STEP_ONE,
   ESCUELA_ASIGNAR_MATERIAS_STEP_TWO,
+  ESCUELA_ASIGNAR_NOTAS_STEP_ONE,
+  ESCUELA_ASIGNAR_NOTAS_STEP_TWO,
   // DATA STORAGE SYSTEM
   DATA_STORAGE_SCHEMA_FORM,
   DATA_STORAGE_SCHEMA_TABLE,

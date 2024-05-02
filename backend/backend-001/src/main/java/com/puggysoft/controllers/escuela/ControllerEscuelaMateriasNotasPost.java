@@ -10,11 +10,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class ControllerEscuelaNotasMateriasPost {
+public class ControllerEscuelaMateriasNotasPost {
   @Autowired
   private ServiceEscuelaNotasMateriasCreate serviceEscuelaNotasMateriasCreate;
 
-  @PostMapping(path = "/api/v1/escuela-notas-materias")
+  @PostMapping(path = "/api/v1/escuela-materias-notas")
   public ResponseEntity<String> post(@RequestBody @Valid DtoEscuelaNotasMaterias dtoEscuelaNotasMaterias) {
     return serviceEscuelaNotasMateriasCreate.create(dtoEscuelaNotasMaterias);
   }

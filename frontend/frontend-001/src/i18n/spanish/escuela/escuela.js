@@ -12,6 +12,7 @@ const escuela = {
   // Materias
   materiasFormTitle: "Formulario de materia",
   materiasTableTitle: "Tabla de materias",
+  materiasTableTitleSub: "Selecione una materia",
   materiasNameLabel: "Nombre de materia",
   materiasShortNameLabel: "Codigo de materia",
   materiasNotaMaximaLabel: "Nota maxima",
@@ -21,13 +22,15 @@ const escuela = {
   materiasTitleOne: "Materias disponibles",
   materiasTitleTwo: "Materias agregadas",
   // Notas
-  notasFormTitle: "Formulario de evaluaciones",
-  notasTableTitle: "Tabla de evaluacion",
-  notasNameLabel: "Nombre de la evaluacion",
-  notasShortNameLabel: "Codigo de la evaluacion",
-  notasPorcentajeLabel: "Porcentaje de la evalucacion",
+  notasFormTitle: "Formulario de notas",
+  notasTableTitle: "Tabla de nota",
+  notasNameLabel: "Nombre de la nota",
+  notasShortNameLabel: "Codigo de la nota",
+  notasPorcentajeLabel: "Porcentaje de la nota",
   notasNameError: "Ingrese el nombre (min 3, max 60)",
   notasShortNameError: "Ingrese el codigo (min 3, max 30, sin espacios)",
+  notasTitleOne: "Notas disponibles",
+  notasTitleTwo: "Notas agregadas",
   notasPorcentajeError: "Ingrese porcentaje (min 1, max 100)"
 };
 

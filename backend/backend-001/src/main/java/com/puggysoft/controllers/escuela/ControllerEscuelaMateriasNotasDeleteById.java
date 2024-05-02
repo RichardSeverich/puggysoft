@@ -8,12 +8,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class ControllerEscuelaNotasMateriasDeleteById {
+public class ControllerEscuelaMateriasNotasDeleteById {
 
   @Autowired
   private ServiceEscuelaNotasMateriasDeleteById serviceEscuelaNotasMateriasDeleteById;
 
-  @DeleteMapping(path = "/api/v1/escuela-notas-materias/{id}")
+  @DeleteMapping(path = "/api/v1/escuela-materias-notas/{id}")
   public ResponseEntity<String> deleteById(@PathVariable Long id) {
     return serviceEscuelaNotasMateriasDeleteById.deleteById(id);
   }

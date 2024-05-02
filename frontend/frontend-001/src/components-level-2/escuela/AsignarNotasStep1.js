@@ -3,28 +3,28 @@ import { useHistory } from "react-router";
 import i18n from "../../i18n/i18n";
 import enumPaths from "../../models/enumPaths";
 import { handleFilterRequest } from "../../actions/HandleManager";
-import CursoGenericTable from "./generic/CursoGenericTable";
+import MateriaGenericTable from "./generic/MateriaGenericTable";
 import enumTableColumnsToShow from "../../models/enumTableColumnsToShow";
 
-function AsignarMateriasStep1 () {
-  const tableTitle = i18n.escuela.cursosTableTitle;
-  const tableSubTitle = i18n.escuela.cursosTableTitleSub;
+function AsignarNotasStep1 () {
+  const tableTitle = i18n.escuela.materiasTableTitle;
+  const tableSubTitle = i18n.escuela.materiasTableTitleSub;
   const pageSize = 7;
   const numberPagesToShow = 7;
 
   const history = useHistory();
 
   function handleGetData (activePage, filterBody, updateArrayData) {
-    handleFilterRequest(`escuela-cursos/filter?page=${activePage - 1}&size=${pageSize}`, filterBody, updateArrayData);
+    handleFilterRequest(`escuela-materias/filter?page=${activePage - 1}&size=${pageSize}`, filterBody, updateArrayData);
   }
 
   function handleGetSize (filterBody, setTotalPages) {
-    handleFilterRequest(`escuela-cursos/filter/size/${pageSize}`, filterBody, setTotalPages);
+    handleFilterRequest(`escuela-materias/filter/size/${pageSize}`, filterBody, setTotalPages);
   }
 
   function handleSelection (data) {
     history.push({
-      pathname: enumPaths.ESCUELA_ASIGNAR_MATERIAS_STEP_TWO,
+      pathname: enumPaths.ESCUELA_ASIGNAR_NOTAS_STEP_TWO,
       state: { data }
     });
   }
@@ -38,7 +38,7 @@ function AsignarMateriasStep1 () {
   ];
 
   return (
-    <CursoGenericTable
+    <MateriaGenericTable
       tableTitle={tableTitle}
       tableSubTitle={tableSubTitle}
       numberPagesToShow={numberPagesToShow}
@@ -47,8 +47,8 @@ function AsignarMateriasStep1 () {
       tableArrayCustomRowButtons={tableArrayCustomRowButtons}
       columnsToShow={enumTableColumnsToShow.MEDIUM}
     >
-    </CursoGenericTable>
+    </MateriaGenericTable>
   );
 }
 
-export default AsignarMateriasStep1;
+export default AsignarNotasStep1;

@@ -419,6 +419,9 @@ function NavBar () {
   const navigateAddCursosMaterias = () => {
     history.push(enumPaths.ESCUELA_ASIGNAR_MATERIAS_STEP_ONE);
   };
+  const navigateAddNotasMaterias = () => {
+    history.push(enumPaths.ESCUELA_ASIGNAR_NOTAS_STEP_ONE);
+  };
   // MATERIAS
   const navigateMateriasForm = () => {
     history.push(enumPaths.ESCUELA_MATERIAS_FORM);
@@ -723,6 +726,7 @@ function NavBar () {
   const escuelaMateriasAdminLabel = (<><FaBook /> {i18n.navBar.escuelaMateriasAdmin}</>);
   const escuelaMateriasFormLabel = (<><GrAddCircle /> {i18n.navBar.escuelaMateriasForm}</>);
   const escuelaMateriasTableLabel = (<><AiOutlineTable /> {i18n.navBar.escuelaMateriasTable}</>);
+  const escuelaMateriasNotasLabel = (<><GrAddCircle /> {i18n.navBar.escuelaMateriasNotas}</>);
   // NOTAS
   const escuelaNotasAdminLabel = (<><FaStickyNote /> {i18n.navBar.escuelaNotasAdmin}</>);
   const escuelaNotasFormLabel = (<><GrAddCircle /> {i18n.navBar.escuelaNotasForm}</>);
@@ -1030,6 +1034,7 @@ function NavBar () {
             <NavDropdown title={escuelaMateriasAdminLabel}>
               <NavDropdown.Item onClick={navigateMateriasForm}>{escuelaMateriasFormLabel}</NavDropdown.Item>
               <NavDropdown.Item onClick={navigateMateriasTable}>{escuelaMateriasTableLabel}</NavDropdown.Item>
+              <NavDropdown.Item onClick={navigateAddNotasMaterias}>{escuelaMateriasNotasLabel}</NavDropdown.Item>
             </NavDropdown>}
           {userRoles.includes(enumRoles.SCHOOL_ENCARGADO) &&
             <NavDropdown title={escuelaNotasAdminLabel}>

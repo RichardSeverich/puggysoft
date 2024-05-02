@@ -177,6 +177,9 @@ import MateriasTablePage from "./components-level-3/escuela/MateriasTablePage";
 import NotasTablePage from "./components-level-3/escuela/NotasTablePage";
 import AsignarMateriasPageStep1 from "./components-level-3/escuela/AsignarMateriasPageStep1";
 import AsignarMateriasPageStep2 from "./components-level-3/escuela/AsignarMateriasPageStep2";
+import AsignarNotasPageStep1 from "./components-level-3/escuela/AsignarNotasPageStep1";
+import AsignarNotasPageStep2 from "./components-level-3/escuela/AsignarNotasPageStep2";
+
 // const CursosFormLazyPage = lazy(() => import("./components-level-3/escuela/CursosFormPage"));
 
 const AppRoutes = () => (
@@ -341,6 +344,8 @@ const AppRoutes = () => (
       <Route exact path={enumPaths.ESCUELA_NOTAS_TABLE} component={NotasTablePage} />
       <Route exact path={enumPaths.ESCUELA_ASIGNAR_MATERIAS_STEP_ONE} component={AsignarMateriasPageStep1} />
       <Route exact path={enumPaths.ESCUELA_ASIGNAR_MATERIAS_STEP_TWO} component={AsignarMateriasPageStep2} />
+      <Route exact path={enumPaths.ESCUELA_ASIGNAR_NOTAS_STEP_ONE} component={AsignarNotasPageStep1} />
+      <Route exact path={enumPaths.ESCUELA_ASIGNAR_NOTAS_STEP_TWO} component={AsignarNotasPageStep2} />
 
       {/** DATA STORAGE SYSTEM */}
       <Route exact path={enumPaths.DATA_STORAGE_SCHEMA_FORM} component={StorageSchemaFormPage} />
