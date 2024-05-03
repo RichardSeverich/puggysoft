@@ -14,17 +14,17 @@
 
 * Install ```Apk Info``` in your device to get ```appPackage``` and ```appActivity```
 <p align="center">
-  <img src="readme-files-03/003-Install-apk-info.jpg">
+  <img src="readme-files-03/003-Install-apk-info.JPG">
 </p>
 
 * ```appPackage``` you can get it from ```Apk Info``` app, eg. ```com.idt.n2p```
 <p align="center">
-  <img src="readme-files-03/004-apk-info-package.jpg">
+  <img src="readme-files-03/004-apk-info-package.JPG">
 </p>
 
 * ```appActivity``` you can get it from ```Apk Info``` app, eg. ```com.idt.n2p.MainActivity```
 <p align="center">
-  <img src="readme-files-03/005-apk-info-activity.jpg">
+  <img src="readme-files-03/005-apk-info-activity.JPG">
 </p>
 
 * ```appiumUrl``` you can get this information when you run appium. eg. ```http://192.168.0.7:4723/wd/hub```

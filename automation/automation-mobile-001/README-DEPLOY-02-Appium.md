@@ -5,30 +5,30 @@
 * Verify appium ```npm ls --global```
 * Verify appium ```appium --version```
 <p align="center">
-  <img src="readme-files-02/001-appium-verification.jpg">
+  <img src="readme-files-02/001-appium-verification.JPG">
 </p>
 
 * Install uiautomator2 driver  ```appium driver install uiautomator2```
 * install driver for Ios: ```appium driver install xcutest```
 <p align="center">
-  <img src="readme-files-02/002-install-driver-uiautomator2.jpg">
+  <img src="readme-files-02/002-install-driver-uiautomator2.JPG">
 </p>
 
 * Verify drivers installation with: ```appium driver list```
 <p align="center">
-  <img src="readme-files-02/002-appium-drivers-list.jpg">
+  <img src="readme-files-02/002-appium-drivers-list.JPG">
 </p>
 
 * start appium server ```appium``` or ```appium --allow-cors```(recomended)
 <p align="center">
-  <img src="readme-files-02/003-appium-start.jpg">
+  <img src="readme-files-02/003-appium-start.JPG">
 </p>
 
 ### Install appium-inspector
 * Download and install appium-inspector client from ```https://github.com/appium/appium-inspector/releases```
 
 <p align="center">
-  <img src="readme-files-02/004-appium-inspector download.jpg">
+  <img src="readme-files-02/004-appium-inspector-download.jpg">
 </p>
 
 
@@ -52,7 +52,7 @@ we have 2 options to open appium inspector.
 }
 ```
 <p align="center">
-  <img src="readme-files-02/005-configure-appium-inspector.jpg">
+  <img src="readme-files-02/005-configure-appium-inspector.JPG">
 </p>
 
 ### Option B
@@ -70,7 +70,7 @@ we have 2 options to open appium inspector.
 }
 ```
 <p align="center">
-  <img src="readme-files-02/005-configure-appium-inspector-b.jpg">
+  <img src="readme-files-02/005-configure-appium-inspector-b.JPG">
 </p>
 
 

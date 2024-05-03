@@ -14,7 +14,7 @@
 
 * Open Xcode and go to ```Create a new Xcode Project```
 <p align="center">
-  <img src="readme-files-04/03-xcode-createdevice-A.png">
+  <img src="readme-files-04/03-xcode-create-device-A.png">
 </p>
 
 * Select ```App``` and click ```Next``` button
