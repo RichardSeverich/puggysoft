@@ -103,7 +103,7 @@ All the following commands should be run in the root folder of the project run (
 
 * check dependencies run  ```npx react-native doctor``` in cmd in root folder of the project,  If incompatibility errors appear, fix the errors.
 <p align="center">
-  <img src="readme-files/015-android-studio-npx-react-native-doctor.jpg">
+  <img src="readme-files/015-android-studio-npx-react-native-doctor.JPG">
 </p>
 
 * run app only first time: ```npm run android```
