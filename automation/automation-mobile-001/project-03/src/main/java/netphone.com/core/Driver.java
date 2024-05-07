@@ -37,15 +37,22 @@ public class Driver {
     } else {
       this.capabilities.setCapability("app", this.config.app);
     }
+    // Configurations
     this.capabilities.setCapability("noReset", this.config.noReset);
+    this.capabilities.setCapability("clearSystemFiles", this.config.clearSystemFiles);
     // Hide keyboard
     this.capabilities.setCapability("unicodeKeyboard", this.config.unicodeKeyboard);
     this.capabilities.setCapability("resetKeyboard", this.config.resetKeyboard);
     // Auto Grant Permissions
     // iOS
-    this.capabilities.setCapability("autoAcceptAlerts", this.config.autoAcceptAlerts);
-    // Android
-    this.capabilities.setCapability("autoGrantPermissions", this.config.autoGrantPermissions);
+    if (config.platformName.equals("iOS")) {
+      this.capabilities.setCapability("autoAcceptAlerts", this.config.autoAcceptAlerts);
+      this.capabilities.setCapability("appium:permissions", "{\"" + this.config.bundleId + "\""
+              + ":{\"notifications\":\"YES\",\"contacts\":\"YES\",\"microphone\":\"YES\"}}");
+    } else {
+      // Android
+      this.capabilities.setCapability("autoGrantPermissions", this.config.autoGrantPermissions);
+    }
   }
 
   /** @return instance. */

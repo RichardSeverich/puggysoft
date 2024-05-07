@@ -9,6 +9,7 @@ import java.util.Properties;
 public final class Config {
   private static Config instance;
   // Desired Capabilities
+  protected  boolean clearSystemFiles;
   protected String automationName;
   protected String deviceName;
   protected String udId;
@@ -24,6 +25,7 @@ public final class Config {
   protected boolean resetKeyboard;
   // Config
   protected String appiumUrl;
+  protected String bundleId;
   protected int implicitlyWaitSeconds;
   protected int explicitlyWaitSeconds;
   // App credentials
@@ -38,6 +40,7 @@ public final class Config {
       Properties prop = new Properties();
       prop.load(input);
       // Desired Capabilities
+      clearSystemFiles = prop.getProperty("desiredCapabilities.clearSystemFiles").equals("true");
       automationName = prop.getProperty("desiredCapabilities.automationName");
       deviceName = prop.getProperty("desiredCapabilities.deviceName");
       udId = prop.getProperty("desiredCapabilities.udid");
@@ -55,6 +58,7 @@ public final class Config {
       resetKeyboard = prop.getProperty("desiredCapabilities.resetKeyboard").equals("true");
       // Config
       appiumUrl = prop.getProperty("appium.url");
+      bundleId = prop.getProperty("app.bundle.identifier");
       implicitlyWaitSeconds = Integer.parseInt(prop.getProperty("selenium.implicitlyWaitSeconds"));
       explicitlyWaitSeconds = Integer.parseInt(prop.getProperty("selenium.explicitWaitSeconds"));
       // App credentials

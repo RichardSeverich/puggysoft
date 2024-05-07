@@ -27,7 +27,7 @@ public class LoginScreen extends Screen {
   public MobileElement welcomeText;
 
   @AndroidFindBy(xpath = "//android.view.View[@text='Login']")
-  @AndroidFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"Login\"]")
+  @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"Login\"]")
   public MobileElement loginInputLabel;
 
   @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Don't have an account?\"]")
