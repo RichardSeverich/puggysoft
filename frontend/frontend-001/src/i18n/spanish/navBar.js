@@ -243,6 +243,16 @@ const navBar = {
   escuelaNotasAdmin: "Adm. Notas",
   escuelaNotasForm: "Registrar Notas",
   escuelaNotasTable: "Mostrar Notas",
+  // Estudiantes
+  escuelaEstudiantesAdmin: "Adm. Estudiantes",
+  escuelaEstudiantesForm: "Registrar Estudiantes",
+  escuelaEstudiantesTable: "Mostrar Estudiantes",
+  escuelaEstudiantesMaterias: "Asignar Cursos (Inscripciones)",
+  // Docentes
+  escuelaDocentesAdmin: "Adm. Docentes",
+  escuelaDocentesForm: "Registrar Docentes",
+  escuelaDocentesTable: "Mostrar Docentes",
+  escuelaDocentesMaterias: "Asignar Cursos",
   // ******* ******* DATA STORAGE SYSTEM ******* *******
   // Schema
   storageSchemaAdmin: "Adm. Esquemas",

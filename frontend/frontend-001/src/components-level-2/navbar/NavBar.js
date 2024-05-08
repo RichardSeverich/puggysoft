@@ -52,12 +52,19 @@ import { TbHierarchy3, TbSoccerField } from "react-icons/tb";
 import { RiLoginCircleLine, RiUser2Fill, RiShieldKeyholeFill } from "react-icons/ri";
 import { MdOutlineSettingsSuggest, MdOutlineSchema } from "react-icons/md";
 import { GoCalendar } from "react-icons/go";
-import { GiGoldBar } from "react-icons/gi";
+import {
+  GiGoldBar,
+  GiTeacher
+} from "react-icons/gi";
 import {
   IoMdTimer,
   IoIosNotifications,
   IoMdSchool
 } from "react-icons/io";
+import {
+  PiStudentFill
+} from "react-icons/pi";
+
 import { IoNewspaperSharp } from "react-icons/io5";
 import enumRoles from "./../../models/users/enumRoles";
 import enumTableType from "./../../models/enumTableType";
@@ -436,6 +443,27 @@ function NavBar () {
   const navigateNotasTable = () => {
     history.push(enumPaths.ESCUELA_NOTAS_TABLE);
   };
+  // ESTUDIANTES
+  const navigateEstudiantesForm = () => {
+    history.push(enumPaths.ESCUELA_ESTUDIANTES_FORM);
+  };
+  const navigateEstudiantesTable = () => {
+    history.push(enumPaths.ESCUELA_ESTUDIANTES_TABLE);
+  };
+  const navigateEstudiantesCursos = () => {
+    history.push(enumPaths.ESCUELA_ASIGNAR_CURSOS_A_ESTUDIANTE_STEP_ONE);
+  };
+  // DOCENTES
+  const navigateDocentesForm = () => {
+    history.push(enumPaths.ESCUELA_DOCENTES_FORM);
+  };
+  const navigateDocentesTable = () => {
+    history.push(enumPaths.ESCUELA_DOCENTES_TABLE);
+  };
+  const navigateDocentesCursos = () => {
+    history.push(enumPaths.ESCUELA_ASIGNAR_CURSOS_A_DOCENTE_STEP_ONE);
+  };
+
   // ******* ******* ******* DATA STORAGE SYSTEM ******* ******* *******
   const navigateStorageSchemaForm = () => {
     history.push(enumPaths.DATA_STORAGE_SCHEMA_FORM);
@@ -731,6 +759,16 @@ function NavBar () {
   const escuelaNotasAdminLabel = (<><FaStickyNote /> {i18n.navBar.escuelaNotasAdmin}</>);
   const escuelaNotasFormLabel = (<><GrAddCircle /> {i18n.navBar.escuelaNotasForm}</>);
   const escuelaNotasTableLabel = (<><AiOutlineTable /> {i18n.navBar.escuelaNotasTable}</>);
+  // ESTUDIANTES
+  const escuelaEstudiantesAdminLabel = (<><PiStudentFill /> {i18n.navBar.escuelaEstudiantesAdmin}</>);
+  const escuelaEstudiantesFormLabel = (<><GrAddCircle /> {i18n.navBar.escuelaEstudiantesForm}</>);
+  const escuelaEstudiantesTableLabel = (<><AiOutlineTable /> {i18n.navBar.escuelaEstudiantesTable}</>);
+  const escuelaEstudiantesCursoLabel = (<><GrAddCircle /> {i18n.navBar.escuelaEstudiantesMaterias}</>);
+  // DOCENTES
+  const escuelaDocentesAdminLabel = (<>< GiTeacher /> {i18n.navBar.escuelaDocentesAdmin}</>);
+  const escuelaDocentesFormLabel = (<><GrAddCircle /> {i18n.navBar.escuelaDocentesForm}</>);
+  const escuelaDocentesTableLabel = (<><AiOutlineTable /> {i18n.navBar.escuelaDocentesTable}</>);
+  const escuelaDocentesCursoLabel = (<><GrAddCircle /> {i18n.navBar.escuelaDocentesMaterias}</>);
 
   // ******* ******* ******* DATA STORAGE SYSTEM ******* ******* *******
   // SCHEMA
@@ -1024,6 +1062,18 @@ function NavBar () {
             </NavDropdown>}
 
           {/* ******* ******* ******* ESCUELA SYSTEM ******* ******* ********/}
+          {userRoles.includes(enumRoles.SCHOOL_ENCARGADO) &&
+            <NavDropdown title={escuelaEstudiantesAdminLabel}>
+              <NavDropdown.Item onClick={navigateEstudiantesForm}>{escuelaEstudiantesFormLabel}</NavDropdown.Item>
+              <NavDropdown.Item onClick={navigateEstudiantesTable}>{escuelaEstudiantesTableLabel}</NavDropdown.Item>
+              <NavDropdown.Item onClick={navigateEstudiantesCursos}>{escuelaEstudiantesCursoLabel}</NavDropdown.Item>
+            </NavDropdown>}
+          {userRoles.includes(enumRoles.SCHOOL_ENCARGADO) &&
+            <NavDropdown title={escuelaDocentesAdminLabel}>
+              <NavDropdown.Item onClick={navigateDocentesForm}>{escuelaDocentesFormLabel}</NavDropdown.Item>
+              <NavDropdown.Item onClick={navigateDocentesTable}>{escuelaDocentesTableLabel}</NavDropdown.Item>
+              <NavDropdown.Item onClick={navigateDocentesCursos}>{escuelaDocentesCursoLabel}</NavDropdown.Item>
+            </NavDropdown>}
           {userRoles.includes(enumRoles.SCHOOL_ENCARGADO) &&
             <NavDropdown title={escuelaCursosAdminLabel}>
               <NavDropdown.Item onClick={navigateCursosForm}>{escuelaCursosFormLabel}</NavDropdown.Item>

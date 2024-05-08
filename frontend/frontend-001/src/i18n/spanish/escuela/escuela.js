@@ -31,7 +31,13 @@ const escuela = {
   notasShortNameError: "Ingrese el codigo (min 3, max 30, sin espacios)",
   notasTitleOne: "Notas disponibles",
   notasTitleTwo: "Notas agregadas",
-  notasPorcentajeError: "Ingrese porcentaje (min 1, max 100)"
+  notasPorcentajeError: "Ingrese porcentaje (min 1, max 100)",
+  // Estudiantes
+  estudianteForm: "Formulario de Estudiantes",
+  estudianteTable: "Tabla de Estudiantes",
+  // Docentes
+  docentesForm: "Formulario de Docentes",
+  docentesTable: "Tabla de Docentes"
 };
 
 export default escuela;
