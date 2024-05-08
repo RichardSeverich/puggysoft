@@ -4,7 +4,7 @@ import appUrlConfig from "./../../tools/appUrlConfig";
 
 const GeneratePdf = (data, body) => {
   const doc = jsPDF({
-    orientation: "l",
+    orientation: "p",
     format: [16.5, 21.6],
     unit: "cm"
   });
@@ -27,33 +27,32 @@ const GeneratePdf = (data, body) => {
     return textoEncontrado.charAt(0).toUpperCase() + textoEncontrado.substring(1);
   });
   if (body.clienteCiNit !== "0000000") {
-    doc.text(2, 1.5, ` ${body.clienteCiNit}`);
+    doc.text(1, 5.6, ` ${body.clienteCiNit}`);
   }
-  doc.text(7, 1.5, ` ${nombre}`);
-  doc.text(2.7, 2, ` ${body.direccion}`);
-  doc.text(2.7, 2.5, ` ${body.nota}`);
-  const x = 2.5;
-  let y = 5.5;
+  doc.text(3.7, 5.6, ` ${nombre}`);
+  doc.text(2.6, 6.4, ` ${body.direccion}`);
+  doc.text(2.6, 6.9, ` ${body.nota}`);
+  let y = 10;
   for (let index = 0; index < data.length; index++) {
     const element = data[index];
-    doc.text(x, y, ` ${element.codigo}`);
-    doc.text(x + 2.7, y, ` ${element.name}`);
-    doc.text(x + 13.5, y, ` ${element.precio}`);
+    doc.text(1.4, y, ` ${element.codigo}`);
+    doc.text(3.3, y, ` ${element.name}`);
+    doc.text(13.2, y, ` ${element.precio}`);
     y = y + 0.4;
   }
 
-  doc.text(18.5, 10.5, ` ${body.ventaPrecioTotal}`);
-  doc.text(3, 10.5, NumeroALetras(body.ventaPrecioTotal));
+  doc.text(13.2, 16.1, ` ${body.ventaPrecioTotal}`);
+  doc.text(2, 16.1, NumeroALetras(body.ventaPrecioTotal));
   let fecha = [];
   if (body.valueCreationDate === undefined) {
     fecha = dateConvert(now.split(",")[0]).split(" ");
   } else {
     fecha = dateConvert(body.valueCreationDate.split("T")[0]).split(" ");
   }
-  doc.setFontSize(6);
-  doc.text(9, 12.5, ` ${fecha[0]}`);
-  doc.text(10, 12.5, ` ${fecha[2]}`);
-  doc.text(11, 12.5, ` ${fecha[4]}`);
+  doc.setFontSize(7);
+  doc.text(6.4, 17.4, ` ${fecha[0]}`);
+  doc.text(8.4, 17.4, ` ${fecha[2]}`);
+  doc.text(11.6, 17.4, ` ${fecha[4].split("")[3]}`);
 
   doc.output("dataurlnewwindow");
 };

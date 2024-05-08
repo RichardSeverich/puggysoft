@@ -5,7 +5,7 @@ import i18n from "../../i18n/i18n";
 
 const GeneratePdf = (data, body) => {
   const doc = jsPDF({
-    orientation: "l",
+    orientation: "p",
     format: [16.5, 21.6],
     unit: "cm"
   });
@@ -29,37 +29,35 @@ const GeneratePdf = (data, body) => {
   });
 
   if (body[0].clienteCiNit !== "0000000") {
-    doc.text(2, 1.5, ` ${body[0].clienteCiNit}`);
+    doc.text(1, 5.6, ` ${body[0].clienteCiNit}`);
   }
-  doc.text(7, 1.5, ` ${nombre}`);
+  doc.text(3.7, 5.6, ` ${nombre}`);
 
-  doc.text(2.7, 2, ` ${body[0].direccion}`);
-  doc.text(2.7, 2.5, ` ${i18n.alcaldiaRecursosMunicipalesReportePdf.venta} de ${data[0].name}`);
+  doc.text(2.6, 6.4, ` ${body[0].direccion}`);
+  doc.text(2.6, 6.9, ` ${i18n.alcaldiaRecursosMunicipalesReportePdf.venta} de ${data[0].name}`);
 
-  const x = 2.5;
-  let y = 5.5;
+  let y = 10;
   for (let index = 0; index < data.length; index++) {
     const element = data[index];
-    doc.text(x, y, ` ${element.codigo}`);
-    doc.text(x + 2.7, y, ` ${body[0].nota}`);
-    doc.text(x + 13.3, y, ` ${body[1].cantidad}`);
-    doc.text(x + 14.7, y, ` ${body[0].ventaPrecioTotal}`);
+    doc.text(1.4, y, ` ${element.codigo}`);
+    doc.text(3.3, y, ` ${body[0].nota} (${body[1].cantidad})`);
+    doc.text(13.2, y, ` ${body[0].ventaPrecioTotal}`);
     y = y + 0.4;
   }
 
-  doc.text(18, 10.5, ` ${body[0].ventaPrecioTotal}`);
-  doc.text(3, 10.5, NumeroALetras(body[0].ventaPrecioTotal));
+  doc.text(13.2, 16.1, ` ${body[0].ventaPrecioTotal}`);
+  doc.text(2, 16.1, NumeroALetras(body[0].ventaPrecioTotal));
 
-  doc.setFontSize(6);
+  doc.setFontSize(7);
   let fecha = [];
   if (body.valueCreationDate === undefined) {
     fecha = dateConvert(now.split(",")[0]).split(" ");
   } else {
     fecha = dateConvert(body.valueCreationDate.split("T")[0]).split(" ");
   }
-  doc.text(9, 12.5, ` ${fecha[0]}`);
-  doc.text(10, 12.5, ` ${fecha[2]}`);
-  doc.text(11.1, 12.5, ` ${fecha[4]}`);
+  doc.text(6.4, 17.4, ` ${fecha[0]}`);
+  doc.text(8.4, 17.4, ` ${fecha[2]}`);
+  doc.text(11.6, 17.4, ` ${fecha[4].split("")[3]}`);
 
   doc.output("dataurlnewwindow");
 };
