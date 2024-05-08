@@ -82,12 +82,12 @@ public class LoginTest {
     MobileElement nextButton = (MobileElement) this.driver.findElement(By.xpath("//android.widget.Button[@text='NEXT']"));
     this.driverWait.until(ExpectedConditions.visibilityOf(emailTextBox));
     this.driverWait.until(ExpectedConditions.visibilityOf(nextButton));
-    emailTextBox.sendKeys("richard.severich+prod1@idt.net");
+    emailTextBox.sendKeys("richard.severich@example.com");
     nextButton.click();
     Thread.sleep(SLEEP_TIME);
     // Screen 3
     MobileElement passwordTextBox = (MobileElement) this.driver.findElement(By.xpath("//android.widget.EditText[@resource-id='password']"));
-    passwordTextBox.sendKeys("idt12345");
+    passwordTextBox.sendKeys("somesecretpass");
     Thread.sleep(SLEEP_TIME);
     MobileElement loginButton = (MobileElement) this.driver.findElement(By.xpath("//android.widget.Button[@text='LOGIN']"));
     loginButton.click();
