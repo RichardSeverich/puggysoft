@@ -10,7 +10,7 @@ const escuela = {
   cursosShortNameError: "Ingrese el codigo (min 3, max 30, sin espacios)",
   cursosGestionError: "Ingrese la gestion (min 3, max 10, ejemplo 2024 o 2024/01)",
   cursosTitleOne: "Cursos disponibles",
-  cursosTitleTwo: "Cursos agregadas",
+  cursosTitleTwo: "Cursos agregados",
   // Materias
   materiasFormTitle: "Formulario de materia",
   materiasTableTitle: "Tabla de materias",

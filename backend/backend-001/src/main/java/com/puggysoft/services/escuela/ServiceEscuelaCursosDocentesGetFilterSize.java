@@ -38,7 +38,7 @@ public class ServiceEscuelaCursosDocentesGetFilterSize {
     // Relationship table
     String relationTableName = "escuela_cursos_docentes";
     String relationForeignKey = "curso";
-    String relationForeignKeyCriteria = "docentes";
+    String relationForeignKeyCriteria = "docente";
     String criteria = docente;
     String fullQuery;
     if (contains) {

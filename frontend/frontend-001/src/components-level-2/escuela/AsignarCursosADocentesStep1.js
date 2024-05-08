@@ -13,7 +13,7 @@ function EstudiantesTable () {
   const history = useHistory();
   function handleSelection (userData) {
     history.push({
-      pathname: enumPaths.ESCUELA_ASIGNAR_CURSOS_A_ESTUDIANTE_STEP_TWO,
+      pathname: enumPaths.ESCUELA_ASIGNAR_CURSOS_A_DOCENTE_STEP_TWO,
       state: {
         data: userData
       }
