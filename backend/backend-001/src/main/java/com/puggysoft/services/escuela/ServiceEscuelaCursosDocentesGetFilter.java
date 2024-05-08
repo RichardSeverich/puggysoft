@@ -1,11 +1,11 @@
 package com.puggysoft.services.escuela;
 
-import com.puggysoft.dtos.escuela.DtoEscuelaNotas;
-import com.puggysoft.dtos.escuela.DtoEscuelaNotasFilter;
-import com.puggysoft.entities.escuela.EntityEscuelaNotas;
+import com.puggysoft.dtos.escuela.DtoEscuelaCursos;
+import com.puggysoft.dtos.escuela.DtoEscuelaCursosFilter;
+import com.puggysoft.entities.escuela.EntityEscuelaCursos;
 import com.puggysoft.tools.SqlJoinBuilder;
 import com.puggysoft.tools.SqlNotInBuilder;
-import com.puggysoft.tools.escuela.SqlEscuelaNotasFilterBuilderNative;
+import com.puggysoft.tools.escuela.SqlEscuelaCursosFilterBuilderNative;
 import java.util.List;
 import java.util.stream.Collectors;
 import javax.persistence.EntityManager;
@@ -15,11 +15,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+
 /**
  * Services for filter.
  */
 @Service
-public class ServiceEscuelaMateriasNotasGetFilter {
+public class ServiceEscuelaCursosDocentesGetFilter {
 
   @PersistenceContext
   private EntityManager entityManager;
@@ -29,22 +30,23 @@ public class ServiceEscuelaMateriasNotasGetFilter {
    */
   @SuppressWarnings(value = "unchecked")
 
-  public ResponseEntity<List<DtoEscuelaNotas>> filter(
-      DtoEscuelaNotasFilter dtoFilter,
+  public ResponseEntity<List<DtoEscuelaCursos>> filter(
+      DtoEscuelaCursosFilter dtoFilter,
       int page,
       int size,
-      String materia,
+      String docente,
       boolean contains
   ) {
-    String queryFilter = SqlEscuelaNotasFilterBuilderNative.build(dtoFilter);
+    String queryFilter = SqlEscuelaCursosFilterBuilderNative.build(dtoFilter);
     // Principal Table
-    String principalTableName = "escuela_notas";
+    String principalTableName = "escuela_cursos";
     String principalTablePrimaryKey = "short_name";
     // Relationship table
-    String relationTableName = "escuela_notas_materias";
-    String relationForeignKey = "nota";
-    String relationForeignKeyCriteria = "materia";
-    String criteria = materia;
+    String relationTableName = "escuela_cursos_docentes";
+    String relationForeignKey = "curso";
+    String relationForeignKeyCriteria = "docente";
+    String criteria = docente;
+    //
     String fullQuery;
     if (contains) {
       fullQuery = SqlJoinBuilder.getQuery(
@@ -72,12 +74,12 @@ public class ServiceEscuelaMateriasNotasGetFilter {
       );
     }
     // JQPL (createQuery) and Native (createNativeQuery)
-    Query query = entityManager.createNativeQuery(fullQuery, EntityEscuelaNotas.class);
-    List<EntityEscuelaNotas> listEntities;
-    listEntities = (List<EntityEscuelaNotas>) query.getResultList();
-    List<DtoEscuelaNotas> listDtos = listEntities
+    Query query = entityManager.createNativeQuery(fullQuery, EntityEscuelaCursos.class);
+    List<EntityEscuelaCursos> listEntities;
+    listEntities = (List<EntityEscuelaCursos>) query.getResultList();
+    List<DtoEscuelaCursos> listDtos = listEntities
         .stream()
-        .map(DtoEscuelaNotas::entityToDto)
+        .map(DtoEscuelaCursos::entityToDto)
         .collect(Collectors.toList());
     return ResponseEntity.status(HttpStatus.OK).body(listDtos);
   }

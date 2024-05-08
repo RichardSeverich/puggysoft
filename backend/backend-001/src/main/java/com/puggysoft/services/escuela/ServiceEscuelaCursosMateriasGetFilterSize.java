@@ -3,13 +3,13 @@ package com.puggysoft.services.escuela;
 import com.puggysoft.dtos.escuela.DtoEscuelaMateriasFilter;
 import com.puggysoft.support.TotalPagesCalculator;
 import com.puggysoft.tools.escuela.SqlEscuelaMateriasFilterBuilderNative;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
 
 /**
  * Services for get size.

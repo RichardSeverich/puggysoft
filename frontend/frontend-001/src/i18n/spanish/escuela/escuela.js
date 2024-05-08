@@ -9,6 +9,8 @@ const escuela = {
   cursosNameError: "Ingrese el nombre (min 3, max 60)",
   cursosShortNameError: "Ingrese el codigo (min 3, max 30, sin espacios)",
   cursosGestionError: "Ingrese la gestion (min 3, max 10, ejemplo 2024 o 2024/01)",
+  cursosTitleOne: "Cursos disponibles",
+  cursosTitleTwo: "Cursos agregadas",
   // Materias
   materiasFormTitle: "Formulario de materia",
   materiasTableTitle: "Tabla de materias",
@@ -35,9 +37,11 @@ const escuela = {
   // Estudiantes
   estudianteForm: "Formulario de Estudiantes",
   estudianteTable: "Tabla de Estudiantes",
+  estudianteTableTitleSub: "Selecione un estudiante",
   // Docentes
   docentesForm: "Formulario de Docentes",
-  docentesTable: "Tabla de Docentes"
+  docentesTable: "Tabla de Docentes",
+  docenteTableTitleSub: "Selecione un docente"
 };
 
 export default escuela;

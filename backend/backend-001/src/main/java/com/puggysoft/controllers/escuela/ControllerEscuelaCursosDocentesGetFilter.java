@@ -1,8 +1,8 @@
 package com.puggysoft.controllers.escuela;
 
-import com.puggysoft.dtos.escuela.DtoEscuelaNotas;
-import com.puggysoft.dtos.escuela.DtoEscuelaNotasFilter;
-import com.puggysoft.services.escuela.ServiceEscuelaMateriasNotasGetFilter;
+import com.puggysoft.dtos.escuela.DtoEscuelaCursos;
+import com.puggysoft.dtos.escuela.DtoEscuelaCursosFilter;
+import com.puggysoft.services.escuela.ServiceEscuelaCursosDocentesGetFilter;
 import java.util.List;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,18 +14,18 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-public class ControllerEscuelaMateriasNotasGetFilter {
+public class ControllerEscuelaCursosDocentesGetFilter {
 
   @Autowired
-  private ServiceEscuelaMateriasNotasGetFilter service;
+  private ServiceEscuelaCursosDocentesGetFilter service;
 
-  @PostMapping(path = "/api/v1/escuela-materias-notas/filter")
-  public ResponseEntity<List<DtoEscuelaNotas>> getFilter(
+  @PostMapping(path = "/api/v1/escuela-cursos-docentes/filter")
+  public ResponseEntity<List<DtoEscuelaCursos>> getFilter(
       @RequestParam int page,
       @RequestParam int size,
-      @RequestParam String materia,
+      @RequestParam String docente,
       @RequestParam boolean contains,
-      @RequestBody @Valid DtoEscuelaNotasFilter dtoFilter) {
-    return service.filter(dtoFilter, page, size, materia, contains);
+      @RequestBody @Valid DtoEscuelaCursosFilter dtoFilter) {
+    return service.filter(dtoFilter, page, size, docente, contains);
   }
 }

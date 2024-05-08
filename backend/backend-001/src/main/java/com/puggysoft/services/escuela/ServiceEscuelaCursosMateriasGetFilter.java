@@ -4,15 +4,15 @@ import com.puggysoft.dtos.escuela.DtoEscuelaMaterias;
 import com.puggysoft.dtos.escuela.DtoEscuelaMateriasFilter;
 import com.puggysoft.entities.escuela.EntityEscuelaMaterias;
 import com.puggysoft.tools.escuela.SqlEscuelaMateriasFilterBuilderNative;
+import java.util.List;
+import java.util.stream.Collectors;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
-import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * Services for filter.

@@ -10,7 +10,7 @@ function UserTableFilterGenericByRole (props) {
   const [role, setRole] = useState(null);
 
   // roleName should be instance of enumRoles
-  const { tableArrayCustomRowButtons, roleName, tableTitle } = props;
+  const { tableArrayCustomRowButtons, roleName, tableTitle, tableSubTitle } = props;
 
   useEffect(() => {
     handleGetRequest(`role?roleName=${roleName}`, setRole);
@@ -37,6 +37,7 @@ function UserTableFilterGenericByRole (props) {
       handleGetData={handleGetData}
       handleGetSize={handleGetSize}
       tableTitle={tableTitle}
+      tableSubTitle={tableSubTitle}
       tableArrayCustomRowButtons={tableArrayCustomRowButtons}
       pageSize={pageSize}
       numberPagesToShow={numberPagesToShow}
@@ -50,11 +51,13 @@ export default UserTableFilterGenericByRole;
 UserTableFilterGenericByRole.propTypes = {
   roleName: PropTypes.string,
   tableTitle: PropTypes.string,
+  tableSubTitle: PropTypes.string,
   tableArrayCustomRowButtons: PropTypes.array
 };
 
 UserTableFilterGenericByRole.defaultProps = {
   roleName: "",
   tableTitle: "",
+  tableSubTitle: undefined,
   tableArrayCustomRowButtons: []
 };

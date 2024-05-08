@@ -14,6 +14,7 @@ function UserTableFilterGeneric (props) {
     handleGetData,
     handleGetSize,
     tableTitle,
+    tableSubTitle,
     tableArrayCustomRowButtons,
     numberPagesToShow
   } = props;
@@ -96,6 +97,7 @@ function UserTableFilterGeneric (props) {
   return (
     <CommonTablePagination
       tableTitle={tableTitle}
+      tableSubTitle={tableSubTitle}
       tableArrayData={arrayData}
       tableArrayDataFields={arrayDataFields}
       tableArrayColumns={arrayColumns}
@@ -121,6 +123,7 @@ UserTableFilterGeneric.propTypes = {
   handleGetData: PropTypes.func,
   handleGetSize: PropTypes.func,
   tableTitle: PropTypes.string,
+  tableSubTitle: PropTypes.string,
   tableArrayCustomRowButtons: PropTypes.array,
   numberPagesToShow: PropTypes.number
 };
@@ -129,6 +132,7 @@ UserTableFilterGeneric.defaultProps = {
   handleGetData: () => { },
   handleGetSize: () => { },
   tableTitle: "",
+  tableSubTitle: undefined,
   tableArrayCustomRowButtons: [],
   numberPagesToShow: 0
 };

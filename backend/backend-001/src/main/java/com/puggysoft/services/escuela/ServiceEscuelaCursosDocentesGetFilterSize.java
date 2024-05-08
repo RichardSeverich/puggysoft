@@ -1,10 +1,10 @@
 package com.puggysoft.services.escuela;
 
-import com.puggysoft.dtos.escuela.DtoEscuelaNotasFilter;
+import com.puggysoft.dtos.escuela.DtoEscuelaCursosFilter;
 import com.puggysoft.support.TotalPagesCalculator;
 import com.puggysoft.tools.SqlJoinCountBuilder;
 import com.puggysoft.tools.SqlNotInCountBuilder;
-import com.puggysoft.tools.escuela.SqlEscuelaNotasFilterBuilderNative;
+import com.puggysoft.tools.escuela.SqlEscuelaCursosFilterBuilderNative;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
@@ -17,7 +17,7 @@ import org.springframework.stereotype.Service;
  * Services for get size.
  */
 @Service
-public class ServiceEscuelaMateriasNotasGetFilterSize {
+public class ServiceEscuelaCursosDocentesGetFilterSize {
 
   @PersistenceContext
   private EntityManager entityManager;
@@ -26,20 +26,20 @@ public class ServiceEscuelaMateriasNotasGetFilterSize {
    * method for get size.
    */
   public ResponseEntity<Long> getSize(
-      DtoEscuelaNotasFilter dtoFilter,
+      DtoEscuelaCursosFilter dtoFilter,
       Long pageSize,
-      String materia,
+      String docente,
       boolean contains
   ) {
-    String queryFilter = SqlEscuelaNotasFilterBuilderNative.build(dtoFilter);
+    String queryFilter = SqlEscuelaCursosFilterBuilderNative.build(dtoFilter);
     // Principal Table
-    String principalTableName = "escuela_notas";
+    String principalTableName = "escuela_cursos";
     String principalTablePrimaryKey = "short_name";
     // Relationship table
-    String relationTableName = "escuela_notas_materias";
-    String relationForeignKey = "nota";
-    String relationForeignKeyCriteria = "materia";
-    String criteria = materia;
+    String relationTableName = "escuela_cursos_docentes";
+    String relationForeignKey = "curso";
+    String relationForeignKeyCriteria = "docentes";
+    String criteria = docente;
     String fullQuery;
     if (contains) {
       fullQuery = SqlJoinCountBuilder.getQuery(
