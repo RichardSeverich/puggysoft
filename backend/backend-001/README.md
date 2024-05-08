@@ -10,6 +10,8 @@
 6. Install MySQL Shell 8.0.33 ```https://dev.mysql.com/downloads/shell/```
 7. Install DBeaver Community. ```https://dbeaver.io/```
 
+Note see installers on: https://drive.google.com/drive/folders/1r2BjEkD81jj2xuj9UWdbCxU1tFeCDFN3
+
 ### Optional install mysql db in docker
 
 0. Install Docker 19.03.8
@@ -69,20 +71,6 @@ docker build -t java-spring-puggysoft:1.0 .
 first time: docker run -d --name java-spring-puggysoft -p 8080:8080 java-spring-puggysoft:1.0
 then: docker start java-spring-puggysoft
 ```
-
-## Diagrams
-
-### Class Diagram
-
-<p align="center">
-  <img src="documents/class-diagram.jpg">
-</p>
-
-### Entity relation data base
-
-<p align="center">
-  <img src="documents/entity-relation-dbeaver.jpg">
-</p>
 
 ## Usage
 
