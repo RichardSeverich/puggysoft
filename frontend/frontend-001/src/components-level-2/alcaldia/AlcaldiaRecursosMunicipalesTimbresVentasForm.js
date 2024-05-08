@@ -65,7 +65,7 @@ function AlcaldiaRecursosMunicipalesTimbresVentasForm () {
     const help = isEdit.data.nota.split(",");
     hastaTimbre = Number(help[1].split("  ")[1]);
     talonarioMovimiento = help[0].split("  ")[1];
-    setValueDescontinuados(help[2].split("-"));
+    setValueDescontinuados(help[2]?.split("-"));
     nota = String(Number(hastaTimbre) - Number(talonarioMovimiento) + 1);
     ventaPrecioTotal = isEdit.data.ventaPrecioTotal;
     clienteDinero = isEdit.data.clienteDinero;
@@ -187,6 +187,9 @@ function AlcaldiaRecursosMunicipalesTimbresVentasForm () {
     const body = getBody();
     GeneratePdf(data, { ...body, valueCreationDate, idVenta });
     setIsRequestInProgress(false);
+    setTimeout(() => {
+      window.location.reload()
+    }, 1000);
   };
 
   const handleComprobante = function () {
@@ -321,7 +324,7 @@ function AlcaldiaRecursosMunicipalesTimbresVentasForm () {
                 </Form.Label>
                 <Form.Control
                   disabled
-                  value={valueDescontinuados.map(num => num + " ")}
+                  value={valueDescontinuados?.map(num => num + " ")}
                   placeholder={i18n.alcaldiaRecursosMunicipalesTimbresVentasForm.fieldDescontinuados}
                 />
               </Form.Group>
