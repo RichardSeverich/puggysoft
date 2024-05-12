@@ -187,6 +187,11 @@ import AsignarCursosAEstudiantesPageStep1 from "./components-level-3/escuela/Asi
 import AsignarCursosAEstudiantesPageStep2 from "./components-level-3/escuela/AsignarCursosAEstudiantesPageStep2";
 import AsignarCursosADocentesPageStep1 from "./components-level-3/escuela/AsignarCursosADocentesPageStep1";
 import AsignarCursosADocentesPageStep2 from "./components-level-3/escuela/AsignarCursosADocentesPageStep2";
+import AsignarCalificacionesPageStep1 from "./components-level-3/escuela/AsignarCalificacionesPageStep1";
+import AsignarCalificacionesPageStep2 from "./components-level-3/escuela/AsignarCalificacionesPageStep2";
+import AsignarCalificacionesPageStep3 from "./components-level-3/escuela/AsignarCalificacionesPageStep3";
+import AsignarCalificacionesPageStep4 from "./components-level-3/escuela/AsignarCalificacionesPageStep4";
+import AsignarCalificacionesPageStep5 from "./components-level-3/escuela/AsignarCalificacionesPageStep5";
 
 // const CursosFormLazyPage = lazy(() => import("./components-level-3/escuela/CursosFormPage"));
 
@@ -362,6 +367,11 @@ const AppRoutes = () => (
       <Route exact path={enumPaths.ESCUELA_ASIGNAR_CURSOS_A_ESTUDIANTE_STEP_TWO} component={AsignarCursosAEstudiantesPageStep2} />
       <Route exact path={enumPaths.ESCUELA_ASIGNAR_CURSOS_A_DOCENTE_STEP_ONE} component={AsignarCursosADocentesPageStep1} />
       <Route exact path={enumPaths.ESCUELA_ASIGNAR_CURSOS_A_DOCENTE_STEP_TWO} component={AsignarCursosADocentesPageStep2} />
+      <Route exact path={enumPaths.ESCUELA_ASIGNAR_CALIFICACIONES_STEP_ONE} component={AsignarCalificacionesPageStep1 } />
+      <Route exact path={enumPaths.ESCUELA_ASIGNAR_CALIFICACIONES_STEP_TWO} component={AsignarCalificacionesPageStep2 } />
+      <Route exact path={enumPaths.ESCUELA_ASIGNAR_CALIFICACIONES_STEP_THREE} component={AsignarCalificacionesPageStep3 } />
+      <Route exact path={enumPaths.ESCUELA_ASIGNAR_CALIFICACIONES_STEP_FOUR} component={AsignarCalificacionesPageStep4 } />
+      <Route exact path={enumPaths.ESCUELA_ASIGNAR_CALIFICACIONES_STEP_FIVE} component={AsignarCalificacionesPageStep5 } />
 
       {/** DATA STORAGE SYSTEM */}
       <Route exact path={enumPaths.DATA_STORAGE_SCHEMA_FORM} component={StorageSchemaFormPage} />

@@ -253,6 +253,9 @@ const navBar = {
   escuelaDocentesForm: "Registrar Docentes",
   escuelaDocentesTable: "Mostrar Docentes",
   escuelaDocentesMaterias: "Asignar Cursos",
+  // Caliticaciones
+  escuelaCalificacionesAdmin: "Adm. Calificaciones",
+  escuelaCalificacionesForm: "Registrar Calificacion",
   // ******* ******* DATA STORAGE SYSTEM ******* *******
   // Schema
   storageSchemaAdmin: "Adm. Esquemas",

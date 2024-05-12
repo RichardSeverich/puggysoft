@@ -54,7 +54,8 @@ import { MdOutlineSettingsSuggest, MdOutlineSchema } from "react-icons/md";
 import { GoCalendar } from "react-icons/go";
 import {
   GiGoldBar,
-  GiTeacher
+  GiTeacher,
+  GiVibratingShield
 } from "react-icons/gi";
 import {
   IoMdTimer,
@@ -463,6 +464,10 @@ function NavBar () {
   const navigateDocentesCursos = () => {
     history.push(enumPaths.ESCUELA_ASIGNAR_CURSOS_A_DOCENTE_STEP_ONE);
   };
+  // CALIFICACIONES
+  const navigateAsignarCalificaciones = () => {
+    history.push(enumPaths.ESCUELA_ASIGNAR_CALIFICACIONES_STEP_ONE);
+  };
 
   // ******* ******* ******* DATA STORAGE SYSTEM ******* ******* *******
   const navigateStorageSchemaForm = () => {
@@ -769,6 +774,9 @@ function NavBar () {
   const escuelaDocentesFormLabel = (<><GrAddCircle /> {i18n.navBar.escuelaDocentesForm}</>);
   const escuelaDocentesTableLabel = (<><AiOutlineTable /> {i18n.navBar.escuelaDocentesTable}</>);
   const escuelaDocentesCursoLabel = (<><GrAddCircle /> {i18n.navBar.escuelaDocentesMaterias}</>);
+  // CALIFICACIONES
+  const escuelaCalificacionesAdmin = (<>< GiVibratingShield /> {i18n.navBar.escuelaCalificacionesAdmin}</>);
+  const escuelaCalificacionesForm = (<><GrAddCircle /> {i18n.navBar.escuelaCalificacionesForm}</>);
 
   // ******* ******* ******* DATA STORAGE SYSTEM ******* ******* *******
   // SCHEMA
@@ -1090,6 +1098,10 @@ function NavBar () {
             <NavDropdown title={escuelaNotasAdminLabel}>
               <NavDropdown.Item onClick={navigateNotasForm}>{escuelaNotasFormLabel}</NavDropdown.Item>
               <NavDropdown.Item onClick={navigateNotasTable}>{escuelaNotasTableLabel}</NavDropdown.Item>
+            </NavDropdown>}
+          {userRoles.includes(enumRoles.SCHOOL_ENCARGADO) &&
+            <NavDropdown title={escuelaCalificacionesAdmin}>
+              <NavDropdown.Item onClick={navigateAsignarCalificaciones}>{escuelaCalificacionesForm}</NavDropdown.Item>
             </NavDropdown>}
 
           {/* ******* ******* ******* DATA STORAGE SYSTEM ******* ******* ********/}

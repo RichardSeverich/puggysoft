@@ -5,17 +5,17 @@ import enumRoles from "./../../models/users/enumRoles";
 import enumPaths from "./../../models/enumPaths";
 import i18n from "../../i18n/i18n";
 
-const roleName = enumRoles.SCHOOL_DOCENTE;
-const title = i18n.escuela.docentesTable;
-const tableSubTitle = i18n.escuela.docenteTableTitleSub;
+const roleName = enumRoles.SCHOOL_ESTUDIANTE;
+const title = i18n.escuela.estudianteTable;
+const tableSubTitle = i18n.escuela.estudianteTableTitleSub;
 
-function DocentesTable () {
+function EstudiantesTable () {
   const history = useHistory();
-  function handleSelection (userData) {
+  function handleSelection (estudianteSelected) {
     history.push({
-      pathname: enumPaths.ESCUELA_ASIGNAR_CURSOS_A_DOCENTE_STEP_TWO,
+      pathname: enumPaths.ESCUELA_ASIGNAR_CALIFICACIONES_STEP_TWO,
       state: {
-        data: userData
+        estudianteSelected
       }
     });
   }
@@ -23,11 +23,11 @@ function DocentesTable () {
     <UserTableFilterGenericByRoleAndTenantTo
       roleName={roleName}
       tableTitle={title}
-      tableSubTitle={tableSubTitle}
       handleSelection={handleSelection}
+      tableSubTitle={tableSubTitle}
     >
     </UserTableFilterGenericByRoleAndTenantTo>
   );
 }
 
-export default DocentesTable;
+export default EstudiantesTable;

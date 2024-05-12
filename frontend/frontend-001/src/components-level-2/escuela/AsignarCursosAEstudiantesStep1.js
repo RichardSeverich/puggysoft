@@ -9,7 +9,7 @@ const roleName = enumRoles.SCHOOL_ESTUDIANTE;
 const title = i18n.escuela.estudianteTable;
 const tableSubTitle = i18n.escuela.estudianteTableTitleSub;
 
-function DocentesTable () {
+function EstudiantesTable () {
   const history = useHistory();
   function handleSelection (userData) {
     history.push({
@@ -30,4 +30,4 @@ function DocentesTable () {
   );
 }
 
-export default DocentesTable;
+export default EstudiantesTable;

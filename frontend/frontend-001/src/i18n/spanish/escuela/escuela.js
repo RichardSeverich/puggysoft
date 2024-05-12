@@ -11,6 +11,7 @@ const escuela = {
   cursosGestionError: "Ingrese la gestion (min 3, max 10, ejemplo 2024 o 2024/01)",
   cursosTitleOne: "Cursos disponibles",
   cursosTitleTwo: "Cursos agregados",
+  curso: "Curso",
   // Materias
   materiasFormTitle: "Formulario de materia",
   materiasTableTitle: "Tabla de materias",
@@ -23,9 +24,11 @@ const escuela = {
   materiasNotaMaximaError: "Ingrese la nota maxima",
   materiasTitleOne: "Materias disponibles",
   materiasTitleTwo: "Materias agregadas",
+  materia: "Materia",
   // Notas
   notasFormTitle: "Formulario de notas",
   notasTableTitle: "Tabla de nota",
+  notasTableTitleSub: "Selecione una nota",
   notasNameLabel: "Nombre de la nota",
   notasShortNameLabel: "Codigo de la nota",
   notasPorcentajeLabel: "Porcentaje de la nota",
@@ -34,14 +37,19 @@ const escuela = {
   notasTitleOne: "Notas disponibles",
   notasTitleTwo: "Notas agregadas",
   notasPorcentajeError: "Ingrese porcentaje (min 1, max 100)",
+  nota: "Nota",
+  calificacion: "Calificacion",
+  calificacionValidation: "La calificacion debe ser igual o mayor que 0",
   // Estudiantes
   estudianteForm: "Formulario de Estudiantes",
   estudianteTable: "Tabla de Estudiantes",
   estudianteTableTitleSub: "Selecione un estudiante",
+  estudiante: "Estudiante",
   // Docentes
   docentesForm: "Formulario de Docentes",
   docentesTable: "Tabla de Docentes",
-  docenteTableTitleSub: "Selecione un docente"
+  docenteTableTitleSub: "Selecione un docente",
+  docente: "Docente"
 };
 
 export default escuela;
