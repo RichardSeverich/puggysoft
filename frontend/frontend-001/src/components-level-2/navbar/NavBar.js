@@ -48,14 +48,23 @@ import {
   BsUiChecks,
   BsRecordCircleFill
 } from "react-icons/bs";
-import { TbHierarchy3, TbSoccerField } from "react-icons/tb";
+import {
+  TbHierarchy3,
+  TbSoccerField
+} from "react-icons/tb";
 import { RiLoginCircleLine, RiUser2Fill, RiShieldKeyholeFill } from "react-icons/ri";
 import { MdOutlineSettingsSuggest, MdOutlineSchema } from "react-icons/md";
 import { GoCalendar } from "react-icons/go";
 import {
+  IoNewspaperSharp,
+  IoGameControllerSharp
+} from "react-icons/io5";
+
+import {
   GiGoldBar,
   GiTeacher,
-  GiVibratingShield
+  GiVibratingShield,
+  GiTicTacToe
 } from "react-icons/gi";
 import {
   IoMdTimer,
@@ -66,7 +75,6 @@ import {
   PiStudentFill
 } from "react-icons/pi";
 
-import { IoNewspaperSharp } from "react-icons/io5";
 import enumRoles from "./../../models/users/enumRoles";
 import enumTableType from "./../../models/enumTableType";
 import enumPaths from "./../../models/enumPaths";
@@ -469,6 +477,15 @@ function NavBar () {
     history.push(enumPaths.ESCUELA_ASIGNAR_CALIFICACIONES_STEP_ONE);
   };
 
+  // ******* ******* ******* GAMES SYSTEM ******* ******* *******
+  const navigateGamesTicTacToe = () => {
+    history.push(enumPaths.GAMES_TIC_TAC_TOE);
+  };
+
+  const navigateGamesTicTacToePC = () => {
+    history.push(enumPaths.GAMES_TIC_TAC_TOE_PC);
+  };
+
   // ******* ******* ******* DATA STORAGE SYSTEM ******* ******* *******
   const navigateStorageSchemaForm = () => {
     history.push(enumPaths.DATA_STORAGE_SCHEMA_FORM);
@@ -777,6 +794,12 @@ function NavBar () {
   // CALIFICACIONES
   const escuelaCalificacionesAdmin = (<>< GiVibratingShield /> {i18n.navBar.escuelaCalificacionesAdmin}</>);
   const escuelaCalificacionesForm = (<><GrAddCircle /> {i18n.navBar.escuelaCalificacionesForm}</>);
+
+  // ******* ******* ******* GAMES SYSTEM ******* ******* *******
+  // GAMES
+  const gamesAdminLabel = (<><IoGameControllerSharp /> {i18n.navBar.gamesAdmin}</>);
+  const gamesTicTacToe = (<><GiTicTacToe /> {i18n.navBar.gamesTicTacToe}</>);
+  const gamesTicTacToePC = (<><GiTicTacToe /> {i18n.navBar.gamesTicTacToePC}</>);
 
   // ******* ******* ******* DATA STORAGE SYSTEM ******* ******* *******
   // SCHEMA
@@ -1102,6 +1125,13 @@ function NavBar () {
           {userRoles.includes(enumRoles.SCHOOL_ENCARGADO) &&
             <NavDropdown title={escuelaCalificacionesAdmin}>
               <NavDropdown.Item onClick={navigateAsignarCalificaciones}>{escuelaCalificacionesForm}</NavDropdown.Item>
+            </NavDropdown>}
+
+          {/* ******* ******* ******* GAMES SYSTEM ******* ******* ********/}
+          {userRoles.includes(enumRoles.GAMES_ENCARGADO) &&
+            <NavDropdown title={gamesAdminLabel}>
+              <NavDropdown.Item onClick={navigateGamesTicTacToe}>{gamesTicTacToe}</NavDropdown.Item>
+              <NavDropdown.Item onClick={navigateGamesTicTacToePC}>{gamesTicTacToePC}</NavDropdown.Item>
             </NavDropdown>}
 
           {/* ******* ******* ******* DATA STORAGE SYSTEM ******* ******* ********/}

@@ -192,6 +192,8 @@ import AsignarCalificacionesPageStep2 from "./components-level-3/escuela/Asignar
 import AsignarCalificacionesPageStep3 from "./components-level-3/escuela/AsignarCalificacionesPageStep3";
 import AsignarCalificacionesPageStep4 from "./components-level-3/escuela/AsignarCalificacionesPageStep4";
 import AsignarCalificacionesPageStep5 from "./components-level-3/escuela/AsignarCalificacionesPageStep5";
+import TicTacToePage from "./components-level-3/games/tic-tac-toe/TicTacToePage";
+import TicTacToePagePc from "./components-level-3/games/tic-tac-toe/TicTacToePagePc";
 
 // const CursosFormLazyPage = lazy(() => import("./components-level-3/escuela/CursosFormPage"));
 
@@ -372,6 +374,10 @@ const AppRoutes = () => (
       <Route exact path={enumPaths.ESCUELA_ASIGNAR_CALIFICACIONES_STEP_THREE} component={AsignarCalificacionesPageStep3 } />
       <Route exact path={enumPaths.ESCUELA_ASIGNAR_CALIFICACIONES_STEP_FOUR} component={AsignarCalificacionesPageStep4 } />
       <Route exact path={enumPaths.ESCUELA_ASIGNAR_CALIFICACIONES_STEP_FIVE} component={AsignarCalificacionesPageStep5 } />
+
+      {/** GAMES */}
+      <Route exact path={enumPaths.GAMES_TIC_TAC_TOE} component={TicTacToePage} />
+      <Route exact path={enumPaths.GAMES_TIC_TAC_TOE_PC} component={TicTacToePagePc} />
 
       {/** DATA STORAGE SYSTEM */}
       <Route exact path={enumPaths.DATA_STORAGE_SCHEMA_FORM} component={StorageSchemaFormPage} />

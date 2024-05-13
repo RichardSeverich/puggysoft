@@ -256,6 +256,11 @@ const navBar = {
   // Caliticaciones
   escuelaCalificacionesAdmin: "Adm. Calificaciones",
   escuelaCalificacionesForm: "Registrar Calificacion",
+
+  // ******* ******* GAMES ******* *******
+  gamesAdmin: "Juegos",
+  gamesTicTacToe: "Tres en raya (1 vs 1)",
+  gamesTicTacToePC: "Tres en raya (1 vs Computer)",
   // ******* ******* DATA STORAGE SYSTEM ******* *******
   // Schema
   storageSchemaAdmin: "Adm. Esquemas",

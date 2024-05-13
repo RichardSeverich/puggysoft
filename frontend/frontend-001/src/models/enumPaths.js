@@ -172,6 +172,10 @@ const URBANISMO_HISTORIAL_ESTADO_STEP_THREE = "/urbanismo-historial-estado-step-
 const URBANISMO_FLUJO_BOARD_A = "/urbanismo-flujo-board-a";
 const URBANISMO_FLUJO_BOARD_B = "/urbanismo-flujo-board-b";
 
+// GAMES
+const GAMES_TIC_TAC_TOE = "/games-tic-tac-toe";
+const GAMES_TIC_TAC_TOE_PC = "/games-tic-tac-toe-pc";
+
 // DATA STORAGE SYSTEM
 const DATA_STORAGE_SCHEMA_FORM = "/datastorage-schema-form";
 const DATA_STORAGE_SCHEMA_TABLE = "/datastorage-schema-table";
@@ -400,6 +404,9 @@ const enumPaths = {
   ESCUELA_ASIGNAR_CALIFICACIONES_STEP_THREE,
   ESCUELA_ASIGNAR_CALIFICACIONES_STEP_FOUR,
   ESCUELA_ASIGNAR_CALIFICACIONES_STEP_FIVE,
+  // GAMES
+  GAMES_TIC_TAC_TOE,
+  GAMES_TIC_TAC_TOE_PC,
   // DATA STORAGE SYSTEM
   DATA_STORAGE_SCHEMA_FORM,
   DATA_STORAGE_SCHEMA_TABLE,
