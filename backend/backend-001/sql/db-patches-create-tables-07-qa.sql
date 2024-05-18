@@ -79,7 +79,7 @@ CREATE TABLE qa_test_cases_steps(
    FOREIGN KEY (created_by) REFERENCES users(username),
    FOREIGN KEY (updated_by) REFERENCES users(username),
    FOREIGN KEY (tenant) REFERENCES tenants(short_name),
-   FOREIGN KEY (id_test_case) REFERENCES qa_steps(id),
-   FOREIGN KEY (id_test_step) REFERENCES qa_test_cases(id),
+   FOREIGN KEY (id_test_case) REFERENCES qa_test_cases(id),
+   FOREIGN KEY (id_test_step) REFERENCES qa_steps(id),
    PRIMARY KEY (id)
 )AUTO_INCREMENT=1000;
