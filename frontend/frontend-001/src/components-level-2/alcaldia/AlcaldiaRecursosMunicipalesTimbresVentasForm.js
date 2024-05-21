@@ -188,7 +188,7 @@ function AlcaldiaRecursosMunicipalesTimbresVentasForm () {
     GeneratePdf(data, { ...body, valueCreationDate, idVenta });
     setIsRequestInProgress(false);
     setTimeout(() => {
-      window.location.reload()
+      window.location.reload();
     }, 1000);
   };
 
@@ -229,12 +229,14 @@ function AlcaldiaRecursosMunicipalesTimbresVentasForm () {
     }
   }, [valueVentaPrecioTotal, valueClienteDinero]);
 
-  if (isRequestInProgress) {
+  if (isRequestInProgress || valueTimbres === undefined) {
     return <CommonLoading></CommonLoading>;
   }
   if (isEmpy) {
     return <Card.Header as="h2">{i18n.alcaldiaRecursosMunicipalesTimbresVentasForm.empyTimbres}</Card.Header>;
   }
+
+  const talonariosRestantes = valueTimbres.talonarioFinal - valueTimbres.talonarioMovimiento;
 
   return (
     <div className="">
@@ -250,7 +252,8 @@ function AlcaldiaRecursosMunicipalesTimbresVentasForm () {
           {i18n.alcaldiaRecursosMunicipalesTimbresVentasForm.title}
         </Card.Header>
         { !isBlock && <Card.Header as="h5">
-          {i18n.alcaldiaRecursosMunicipalesTimbresVentasForm.subTitle + valueTimbres?.talonarioFinal}
+          {i18n.alcaldiaRecursosMunicipalesTimbresVentasForm.subTitle + valueTimbres?.talonarioFinal + " - - -"}
+          {i18n.alcaldiaRecursosMunicipalesTimbresVentasForm.subTitleThree + talonariosRestantes}
         </Card.Header>}
         <Card.Header as="h5">
           {!isBlock && i18n.alcaldiaRecursosMunicipalesTimbresVentasForm.subTitleTwo + valueTimbres?.precio}

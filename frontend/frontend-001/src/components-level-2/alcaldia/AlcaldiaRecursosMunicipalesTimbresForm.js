@@ -39,10 +39,12 @@ function AlcaldiaRecursosMunicipalesTimbresForm () {
   const tipo = enumTipo.HIJO;
   // Put default values:
   const id = isEdit && isEdit.data.id !== null ? isEdit.data.id : "";
+  const nameAux =
+    isEdit && isEdit.data.nameAux !== null ? isEdit.data.nameAux : "";
   const talonarioInicio =
     isEdit && isEdit.data.talonarioInicio !== null ? isEdit.data.talonarioInicio : "";
   const talonarioFinal =
-      isEdit && isEdit.data.talonarioFinal !== null ? isEdit.data.talonarioFinal : "";
+    isEdit && isEdit.data.talonarioFinal !== null ? isEdit.data.talonarioFinal : "";
   const precio =
     isEdit && isEdit.data.precio !== null ? isEdit.data.precio : "";
 
@@ -55,8 +57,14 @@ function AlcaldiaRecursosMunicipalesTimbresForm () {
 
   // Use custom hook
   const {
+    value: valueNameAux,
+    onChange: onChangeValueNameAux,
+    reset: resetNameAux
+  } = useInput(nameAux === "" ? valueName : nameAux);
+  const {
     value: valueTalonarioInicio,
     setValue: setValueTalonarioInicio,
+    onChange: onChangeTalonarioInicio,
     reset: resetTalonarioInicio
   } = useInput(talonarioInicio);
   const {
@@ -74,6 +82,7 @@ function AlcaldiaRecursosMunicipalesTimbresForm () {
     resetTalonarioInicio();
     resetTalonarioFinal();
     resetPrecio();
+    resetNameAux();
   };
 
   if (controlGet && isEdit === undefined) {
@@ -91,6 +100,7 @@ function AlcaldiaRecursosMunicipalesTimbresForm () {
         codigo: i18n.alcaldiaRecursosMunicipalesTimbresForm.defaultCodigo,
         codigoAuxiliar: i18n.alcaldiaRecursosMunicipalesTimbresForm.defaultCodigoAuxiliar,
         name: i18n.alcaldiaRecursosMunicipalesTimbresForm.defaultTimbre,
+        nameAux: valueNameAux,
         talonarioMovimiento: valueTalonarioInicio,
         talonarioInicio: valueTalonarioInicio,
         talonarioFinal: valueTalonarioFinal,
@@ -173,18 +183,34 @@ function AlcaldiaRecursosMunicipalesTimbresForm () {
         </Card.Header>
         <Card.Body>
           <Form>
-            <Form.Group className="mb-3" controlId="name">
+            <div style={{ display: "none" }}>
+              <Form.Group className="mb-3" controlId="name">
+                <Form.Label>
+                  {i18n.alcaldiaRecursosMunicipalesTimbresForm.fieldName}
+                </Form.Label>
+                <Form.Control
+                  disabled
+                  value={valueName}
+                  type="text"
+                  placeholder={i18n.alcaldiaRecursosMunicipalesTimbresForm.fieldName}
+                />
+                <Form.Text muted className={classNameFormText.name}>
+                  {i18n.alcaldiaRecursosMunicipalesTimbresForm.fieldNameText}
+                </Form.Text>
+              </Form.Group>
+            </div>
+            <Form.Group className="mb-3" controlId="nameAux">
               <Form.Label>
-                {i18n.alcaldiaRecursosMunicipalesTimbresForm.fieldName}
+                {i18n.alcaldiaRecursosMunicipalesFoldersForm.fieldName}
               </Form.Label>
               <Form.Control
-                disabled
-                value={valueName}
+                onChange={onChangeValueNameAux}
+                value={valueNameAux}
                 type="text"
-                placeholder={i18n.alcaldiaRecursosMunicipalesTimbresForm.fieldName}
+                placeholder={i18n.alcaldiaRecursosMunicipalesFoldersForm.fieldName}
               />
               <Form.Text muted className={classNameFormText.name}>
-                {i18n.alcaldiaRecursosMunicipalesTimbresForm.fieldNameText}
+                {i18n.alcaldiaRecursosMunicipalesFoldersForm.fieldNameText}
               </Form.Text>
             </Form.Group>
             <Form.Group className="mb-3" controlId="talonario-inicio">
@@ -192,9 +218,9 @@ function AlcaldiaRecursosMunicipalesTimbresForm () {
                 {i18n.alcaldiaRecursosMunicipalesTimbresForm.fieldTimbresInicio}
               </Form.Label>
               <Form.Control
-                disabled
                 value={valueTalonarioInicio}
                 type="number"
+                onChange={onChangeTalonarioInicio}
                 placeholder={i18n.alcaldiaRecursosMunicipalesTimbresForm.fieldTimbresInicio}
               />
               <Form.Text muted>

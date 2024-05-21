@@ -2,7 +2,7 @@ import React from "react";
 import { useHistory } from "react-router";
 import i18n from "../../i18n/i18n";
 import enumPaths from "../../models/enumPaths";
-import { handleFilterRequest } from "../../actions/HandleManager";
+import { handleFilterRequest, handleDeleteRequest } from "../../actions/HandleManager";
 import AlcaldiaActividadesGenericTable from "./generic/AlcaldiaActividadesGenericTable";
 import enumTableColumnsToShow from "../../models/enumTableColumnsToShow";
 
@@ -41,11 +41,20 @@ function AlcaldiaActividadesTableEditDelete () {
     });
   }
 
+  function handleDelete (data) {
+    handleDeleteRequest(`alcaldia-actividades/${data.id}`, undefined, undefined, undefined, true);
+  }
+
   const tableArrayCustomRowButtons = [
     {
       variant: "success",
       handleCustom: handleEdit,
       text: i18n.commonTable.editButton
+    },
+    {
+      variant: "danger",
+      handleCustom: handleDelete,
+      text: i18n.commonTable.deleteButton
     },
     {
       variant: "info",

@@ -22,7 +22,7 @@ import CommonMessage from "../../components-level-1/CommonMessage";
 
 import "./../css/all-forms.css";
 
-function AlcaldiaRecursosMunicipalesFoldersForm() {
+function AlcaldiaRecursosMunicipalesFoldersForm () {
   const history = useHistory();
   const isEditDefaultValue =
     history && history.location && history.location.state;
@@ -59,7 +59,6 @@ function AlcaldiaRecursosMunicipalesFoldersForm() {
   const {
     value: valueNameAux,
     onChange: onChangeValueNameAux,
-    setValue: setValueNameAux,
     reset: resetNameAux
   } = useInput(nameAux === "" ? valueName : nameAux);
   const {
@@ -183,20 +182,22 @@ function AlcaldiaRecursosMunicipalesFoldersForm() {
         </Card.Header>
         <Card.Body>
           <Form>
-            <Form.Group className="mb-3" controlId="name">
-              <Form.Label>
-                {i18n.alcaldiaRecursosMunicipalesFoldersForm.fieldName}
-              </Form.Label>
-              <Form.Control
-                disabled
-                value={valueName}
-                type="text"
-                placeholder={i18n.alcaldiaRecursosMunicipalesFoldersForm.fieldName}
-              />
-              <Form.Text muted className={classNameFormText.name}>
-                {i18n.alcaldiaRecursosMunicipalesFoldersForm.fieldNameText}
-              </Form.Text>
-            </Form.Group>
+            <div style={{ display: "none" }}>
+              <Form.Group className="mb-3" controlId="name">
+                <Form.Label>
+                  {i18n.alcaldiaRecursosMunicipalesFoldersForm.fieldName}
+                </Form.Label>
+                <Form.Control
+                  disabled
+                  value={valueName}
+                  type="text"
+                  placeholder={i18n.alcaldiaRecursosMunicipalesFoldersForm.fieldName}
+                />
+                <Form.Text muted className={classNameFormText.name}>
+                  {i18n.alcaldiaRecursosMunicipalesFoldersForm.fieldNameText}
+                </Form.Text>
+              </Form.Group>
+            </div>
             <Form.Group className="mb-3" controlId="nameAux">
               <Form.Label>
                 {i18n.alcaldiaRecursosMunicipalesFoldersForm.fieldName}
@@ -216,7 +217,7 @@ function AlcaldiaRecursosMunicipalesFoldersForm() {
                 {i18n.alcaldiaRecursosMunicipalesFoldersForm.fieldFoldersInicio}
               </Form.Label>
               <Form.Control
-                //disabled
+                // disabled
                 value={valueTalonarioInicio}
                 type="number"
                 placeholder={i18n.alcaldiaRecursosMunicipalesFoldersForm.fieldFoldersInicio}
@@ -259,7 +260,7 @@ function AlcaldiaRecursosMunicipalesFoldersForm() {
           </Form>
         </Card.Body>
       </Card>
-    </div>
+    </div >
   );
 }
 
