@@ -69,6 +69,8 @@ import alcaldiaRecursosMunicipalesTimbresTable from "./spanish/alcaldia/alcaldia
 import alcaldiaRecursosMunicipalesTimbresDescontinuadosForm from "./spanish/alcaldia/alcaldiaRecursosMunicipalesTimbresDescontinuadosForm";
 import alcaldiaRecursosMunicipalesTimbresDescontinuadosTable from "./spanish/alcaldia/alcaldiaRecursosMunicipalesTimbresDescontinuadosTable";
 import alcaldiaRecursosMunicipalesTimbresVentasForm from "./spanish/alcaldia/alcaldiaRecursosMunicipalesTimbresVentasForm";
+import alcaldiaRecursosMunicipalesFoldersForm from "./spanish/alcaldia/alcaldiaRecursosMunicipalesFoldersForm";
+import alcaldiaRecursosMunicipalesFoldersTable from "./spanish/alcaldia/alcaldiaRecursosMunicipalesFoldersTable";
 import alcaldiaRecursosMunicipalesReporteDiario from "./spanish/alcaldia/alcaldiaRecursosMunicipalesReporteDiario";
 import alcaldiaRecursosMunicipalesReporteMensual from "./spanish/alcaldia/alcaldiaRecursosMunicipalesReporteMensual";
 import alcaldiaRecursosMunicipalesReporteAnual from "./spanish/alcaldia/alcaldiaRecursosMunicipalesReporteAnual";
@@ -177,6 +179,8 @@ const i18n = {
   alcaldiaRecursosMunicipalesTimbresDescontinuadosForm,
   alcaldiaRecursosMunicipalesTimbresDescontinuadosTable,
   alcaldiaRecursosMunicipalesTimbresVentasForm,
+  alcaldiaRecursosMunicipalesFoldersForm,
+  alcaldiaRecursosMunicipalesFoldersTable,
   alcaldiaRecursosMunicipalesTableAdd,
   alcaldiaRecursosMunicipalesTableDelete,
   alcaldiaRecursosMunicipalesVentasForm,
