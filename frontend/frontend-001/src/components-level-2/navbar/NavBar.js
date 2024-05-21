@@ -15,6 +15,7 @@ import {
   FaUserShield,
   FaStickyNote,
   FaBook,
+  FaFolderPlus,
   FaHouseUser
 } from "react-icons/fa";
 import {
@@ -53,7 +54,11 @@ import {
   TbSoccerField
 } from "react-icons/tb";
 import { RiLoginCircleLine, RiUser2Fill, RiShieldKeyholeFill } from "react-icons/ri";
-import { MdOutlineSettingsSuggest, MdOutlineSchema } from "react-icons/md";
+import { 
+  MdOutlineSettingsSuggest, 
+  MdOutlineSchema,
+  MdFolderCopy
+} from "react-icons/md";
 import { GoCalendar } from "react-icons/go";
 import {
   IoNewspaperSharp,
@@ -82,7 +87,7 @@ import i18n from "../../i18n/i18n";
 
 import "./styles.css";
 
-function NavBar () {
+function NavBar() {
   const history = useHistory();
   const userRolesString = window.sessionStorage.getItem("role");
   const currentTenant = window.sessionStorage.getItem("tenant");
@@ -291,7 +296,7 @@ function NavBar () {
     history.push(enumPaths.HOSPITAL_PATIENT_USER_TABLE_TO_DETAILS);
   };
 
-  function navigateGeneric (event) {
+  function navigateGeneric(event) {
     history.push(enumPaths.IN_PROGRESS_PAGE);
   }
 
@@ -342,6 +347,12 @@ function NavBar () {
   };
   const navigateAlcaldiaRecursosMunicipalesTimbresVentasTable = () => {
     history.push(enumPaths.ALCALDIA_RECURSOS_MUNICIPALES_TIMBRES_VENTAS_TABLE);
+  };
+  const navigateAlcaldiaRecursosMunicipalesFoldersForm = () => {
+    history.push(enumPaths.ALCALDIA_RECURSOS_MUNICIPALES_FOLDERS_FORM);
+  };
+  const navigateAlcaldiaRecursosMunicipalesFoldersTable = () => {
+    history.push(enumPaths.ALCALDIA_RECURSOS_MUNICIPALES_FOLDERS_TABLE);
   };
   const navigateAlcaldiaActividadesForm = () => {
     history.push(enumPaths.ALCALDIA_ACTIVIDADES_FORM);
@@ -728,6 +739,9 @@ function NavBar () {
   const recursoMunicipalTimbresVentaTableLabel = (<><AiOutlineTable /> {i18n.navBar.recursoMunicipalTimbresVentaTable}</>);
   const recursoActividadesFormLabel = (<><GrAddCircle /> {i18n.navBar.recursoActividadesForm}</>);
   const recursoActividadesTableLabel = (<><AiOutlineTable /> {i18n.navBar.recursoActividadesTable}</>);
+  // RECURSOS MUNICIPALES FOLDERS
+  const recursoMunicipalFoldersFormLabel = (<><FaFolderPlus /> {i18n.navBar.recursoMunicipalFoldersForm}</>);
+  const recursoMunicipalFoldersTableLabel = (<><MdFolderCopy  /> {i18n.navBar.recursoMunicipalFoldersTable}</>);
   // REPORTES RECURSOS MUNICIPALES
   const recursoMunicipalReporteAdminLabel = (<><BsFillBarChartFill /> {i18n.navBar.recursoMunicipalReporteAdmin}</>);
   const recursoMunicipalReporteCortoDiarioLabel = (<><FaChartLine /> {i18n.navBar.recursoMunicipalReporteCortoDiario}</>);
@@ -1034,6 +1048,8 @@ function NavBar () {
             <NavDropdown title={recursoMunicipalTimbresAdminLabel}>
               <NavDropdown.Item onClick={navigateAlcaldiaRecursosMunicipalesTimbresForm}>{recursoMunicipalTimbresFormLabel}</NavDropdown.Item>
               <NavDropdown.Item onClick={navigateAlcaldiaRecursosMunicipalesTimbresTable}>{recursoMunicipalTimbresTableLabel}</NavDropdown.Item>
+              <NavDropdown.Item onClick={navigateAlcaldiaRecursosMunicipalesFoldersForm}>{recursoMunicipalFoldersFormLabel}</NavDropdown.Item>
+              <NavDropdown.Item onClick={navigateAlcaldiaRecursosMunicipalesFoldersTable}>{recursoMunicipalFoldersTableLabel}</NavDropdown.Item>
               <NavDropdown.Item onClick={navigateAlcaldiaRecursosMunicipalesTimbresDescontinuadosForm}>{recursoMunicipalTimbresDescontinuadosFormLabel}</NavDropdown.Item>
               <NavDropdown.Item onClick={navigateAlcaldiaRecursosMunicipalesTimbresDescontinuadosTable}>{recursoMunicipalTimbresDescontinuadosTableLabel}</NavDropdown.Item>
             </NavDropdown>}

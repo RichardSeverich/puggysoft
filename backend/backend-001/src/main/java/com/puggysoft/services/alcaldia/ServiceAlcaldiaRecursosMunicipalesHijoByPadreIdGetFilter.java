@@ -43,6 +43,7 @@ public class ServiceAlcaldiaRecursosMunicipalesHijoByPadreIdGetFilter {
       + "alcaldia_recursos_municipales.codigo, "
       + "alcaldia_recursos_municipales.codigo_auxiliar, "
       + "alcaldia_recursos_municipales.name, "
+      + "alcaldia_recursos_municipales.name_aux, "
       + "alcaldia_recursos_municipales.precio, "
       + "alcaldia_recursos_municipales.tipo, "
       + "alcaldia_recursos_municipales.tenant, "

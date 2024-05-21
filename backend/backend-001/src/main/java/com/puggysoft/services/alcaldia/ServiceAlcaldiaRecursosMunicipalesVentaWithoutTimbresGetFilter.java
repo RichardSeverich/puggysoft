@@ -45,6 +45,7 @@ public class ServiceAlcaldiaRecursosMunicipalesVentaWithoutTimbresGetFilter {
           + "INNER JOIN alcaldia_recursos_municipales_venta_detalle ON alcaldia_recursos_municipales_venta.id=alcaldia_recursos_municipales_venta_detalle.id_venta "
           + "INNER JOIN alcaldia_recursos_municipales ON alcaldia_recursos_municipales_venta_detalle.id_recurso_municipal=alcaldia_recursos_municipales.id "
           + "WHERE alcaldia_recursos_municipales.name NOT LIKE \"%TIMBRES%\" AND "
+          + "alcaldia_recursos_municipales.name NOT LIKE \"%FOLDERS%\" AND "
           + query + " LIMIT " + off + "," + size;
       // JQPL (createQuery) and Native (createNativeQuery)
       Query filterQuery = entityManager.createNativeQuery(fullQuery, EntityAlcaldiaRecursosMunicipalesVenta.class);
