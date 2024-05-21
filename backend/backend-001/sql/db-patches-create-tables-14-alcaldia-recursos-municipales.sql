@@ -4,6 +4,7 @@ CREATE TABLE alcaldia_recursos_municipales(
    codigo VARCHAR(30),
    codigo_auxiliar VARCHAR(30),
    name VARCHAR(120) NOT NULL,
+   name_aux VARCHAR(120),
    precio FLOAT(11,2) NOT NULL,
    talonario_movimiento INT,
    talonario_inicio INT,
