@@ -8,6 +8,7 @@ import CommonLoading from "../../components-level-1/CommonLoading";
 import i18n from "../../i18n/i18n";
 import useInput from "../../hooks/useInput";
 import enumTipo from "./../../models/alcaldia/enumRecursosMunicipalesTipo";
+import enumPaths from "../../models/enumPaths";
 import {
   handleGetRequest,
   handleAddRequest,
@@ -109,6 +110,7 @@ function AlcaldiaRecursosMunicipalesTimbresForm () {
     const body = getBody();
     handleValidation(body, setClassNameFormText);
     setIsRequestInProgress(false);
+    history.push(enumPaths.ALCALDIA_RECURSOS_MUNICIPALES_TIMBRES_TABLE);
   };
 
   const handleAfterEdit = function () {
@@ -117,6 +119,7 @@ function AlcaldiaRecursosMunicipalesTimbresForm () {
     const body = getBody();
     handleValidation(body, setClassNameFormText);
     setIsRequestInProgress(false);
+    history.push(enumPaths.ALCALDIA_RECURSOS_MUNICIPALES_TIMBRES_TABLE);
   };
 
   const handleAdd = (event) => {
