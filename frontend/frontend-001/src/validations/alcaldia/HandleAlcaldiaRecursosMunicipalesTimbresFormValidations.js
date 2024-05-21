@@ -19,7 +19,7 @@ const handleValidation = (data, setClassNameFormText) => {
   if (!(data.precio.length > 0 && data.precio.length <= 11)) {
     isValid = false;
     classNameFormTextNew.precio = classNameRed;
-  } else if (!/^[0-9]+$/.test(data.precio)) {
+  } else if (!/^[0-9]+$/.test(data.precio) && !/^-?\d*\.?\d+$/.test(data.precio)) {
     isValid = false;
     classNameFormTextNew.precio = classNameRed;
   } else {
