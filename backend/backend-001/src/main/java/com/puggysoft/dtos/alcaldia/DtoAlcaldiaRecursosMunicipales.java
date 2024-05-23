@@ -22,6 +22,7 @@ public class DtoAlcaldiaRecursosMunicipales extends DtoSuperClass {
   private String nameAux;
   @NotNull
   private String precio;
+  private String folderCantidadTimbres;
   private String talonarioMovimiento;
   private String talonarioInicio;
   private String talonarioFinal;
@@ -43,6 +44,7 @@ public class DtoAlcaldiaRecursosMunicipales extends DtoSuperClass {
     entity.setName(name);
     entity.setNameAux(nameAux);
     entity.setPrecio(precio);
+    entity.setFolderCantidadTimbres(folderCantidadTimbres);
     entity.setTenant(tenant);
     entity.setCreatedBy(createdBy);
     entity.setUpdatedBy(updatedBy);
@@ -62,6 +64,7 @@ public class DtoAlcaldiaRecursosMunicipales extends DtoSuperClass {
     dto.setTipo(entity.getTipo());
     dto.setName(entity.getName());
     dto.setNameAux(entity.getNameAux());
+    dto.setFolderCantidadTimbres(entity.getFolderCantidadTimbres());
     dto.setPrecio(entity.getPrecio());
     dto.setTenant(entity.getTenant());
     dto.setCreatedBy(entity.getCreatedBy());

@@ -112,7 +112,7 @@ function AlcaldiaRecursosMunicipalesTimbresForm () {
       };
       return body;
     },
-    [valueTalonarioInicio, valuePrecio]
+    [valueNameAux, valueTalonarioInicio, valueTalonarioFinal, valuePrecio]
   );
 
   const handleAfterAdd = function (newEntityId) {
@@ -204,8 +204,8 @@ function AlcaldiaRecursosMunicipalesTimbresForm () {
                 {i18n.alcaldiaRecursosMunicipalesFoldersForm.fieldName}
               </Form.Label>
               <Form.Control
-                onChange={onChangeValueNameAux}
                 value={valueNameAux}
+                onChange={onChangeValueNameAux}
                 type="text"
                 placeholder={i18n.alcaldiaRecursosMunicipalesFoldersForm.fieldName}
               />

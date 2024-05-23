@@ -24,6 +24,8 @@ public class EntityAlcaldiaRecursosMunicipales extends EntitySuperClass {
   private String nameAux;
   @Column(name = "precio")
   private String precio;
+  @Column(name = "folder_cantidad_timbres")
+  private String folderCantidadTimbres;
   @Column(name = "talonario_movimiento")
   private String talonarioMovimiento;
   @Column(name = "talonario_inicio")

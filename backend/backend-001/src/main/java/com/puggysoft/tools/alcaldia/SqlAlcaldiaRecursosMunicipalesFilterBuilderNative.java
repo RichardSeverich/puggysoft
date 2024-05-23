@@ -37,28 +37,34 @@ public final class SqlAlcaldiaRecursosMunicipalesFilterBuilderNative {
     query = query + SqlFilterBuilder.getFilterQuery("alcaldia_recursos_municipales.name",
         dtoAlcaldiaRecursosMunicipalesFilter.nameCriteria,
         dtoAlcaldiaRecursosMunicipalesFilter.nameOperator);
+    query = query + SqlFilterBuilder.getFilterQuery("alcaldia_recursos_municipales.name_aux",
+        dtoAlcaldiaRecursosMunicipalesFilter.nameAuxCriteria,
+        dtoAlcaldiaRecursosMunicipalesFilter.nameAuxOperator);
     query = query + SqlFilterBuilder.getFilterQuery("alcaldia_recursos_municipales.precio",
         dtoAlcaldiaRecursosMunicipalesFilter.precioCriteria,
         dtoAlcaldiaRecursosMunicipalesFilter.precioOperator);
+    query = query + SqlFilterBuilder.getFilterQuery("alcaldia_recursos_municipales.folder_cantidad_timbres",
+        dtoAlcaldiaRecursosMunicipalesFilter.folderCantidadTimbresCriteria,
+        dtoAlcaldiaRecursosMunicipalesFilter.folderCantidadTimbresOperator);
     query = query + SqlFilterBuilder.getFilterQuery("alcaldia_recursos_municipales.tenant ",
         dtoAlcaldiaRecursosMunicipalesFilter.tenantCriteria,
         dtoAlcaldiaRecursosMunicipalesFilter.tenantOperator);
     query = query
         + SqlFilterBuilder.getFilterQuery("alcaldia_recursos_municipales.created_by",
-            dtoAlcaldiaRecursosMunicipalesFilter.createdByCriteria,
-            dtoAlcaldiaRecursosMunicipalesFilter.createdByOperator);
+        dtoAlcaldiaRecursosMunicipalesFilter.createdByCriteria,
+        dtoAlcaldiaRecursosMunicipalesFilter.createdByOperator);
     query = query
         + SqlFilterBuilder.getFilterQuery("alcaldia_recursos_municipales.updated_by",
-            dtoAlcaldiaRecursosMunicipalesFilter.updatedByCriteria,
-            dtoAlcaldiaRecursosMunicipalesFilter.updatedByOperator);
+        dtoAlcaldiaRecursosMunicipalesFilter.updatedByCriteria,
+        dtoAlcaldiaRecursosMunicipalesFilter.updatedByOperator);
     query = query
         + SqlFilterBuilder.getFilterQuery("alcaldia_recursos_municipales.creation_date",
-            dtoAlcaldiaRecursosMunicipalesFilter.creationDateCriteria,
-            dtoAlcaldiaRecursosMunicipalesFilter.creationDateOperator);
+        dtoAlcaldiaRecursosMunicipalesFilter.creationDateCriteria,
+        dtoAlcaldiaRecursosMunicipalesFilter.creationDateOperator);
     query = query
         + SqlFilterBuilder.getFilterQuery("alcaldia_recursos_municipales.update_date",
-            dtoAlcaldiaRecursosMunicipalesFilter.updateDateCriteria,
-            dtoAlcaldiaRecursosMunicipalesFilter.updateDateOperator);
+        dtoAlcaldiaRecursosMunicipalesFilter.updateDateCriteria,
+        dtoAlcaldiaRecursosMunicipalesFilter.updateDateOperator);
     return query;
   }
 

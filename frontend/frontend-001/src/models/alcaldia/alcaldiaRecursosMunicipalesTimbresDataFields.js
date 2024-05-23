@@ -1,6 +1,6 @@
 const arrayDataFields = [
   "id",
-  "name",
+  "nameAux",
   "talonarioInicio",
   "talonarioFinal",
   "precio",
