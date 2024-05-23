@@ -111,7 +111,7 @@ function AlcaldiaRecursosMunicipalesFoldersForm () {
       };
       return body;
     },
-    [valueTalonarioInicio, valuePrecio]
+    [valueNameAux, valueTalonarioInicio, valueTalonarioFinal, valuePrecio]
   );
 
   const handleAfterAdd = function (newEntityId) {
@@ -217,7 +217,6 @@ function AlcaldiaRecursosMunicipalesFoldersForm () {
                 {i18n.alcaldiaRecursosMunicipalesFoldersForm.fieldFoldersInicio}
               </Form.Label>
               <Form.Control
-                // disabled
                 value={valueTalonarioInicio}
                 type="number"
                 placeholder={i18n.alcaldiaRecursosMunicipalesFoldersForm.fieldFoldersInicio}
@@ -240,6 +239,7 @@ function AlcaldiaRecursosMunicipalesFoldersForm () {
                 {i18n.alcaldiaRecursosMunicipalesFoldersForm.fieldTalonarioFinalText}
               </Form.Text>
             </Form.Group>
+            
             <Form.Group className="mb-3" controlId="precio">
               <Form.Label>
                 {i18n.alcaldiaRecursosMunicipalesFoldersForm.fieldPrecio}

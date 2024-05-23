@@ -13,7 +13,8 @@ import enumCompareOperators from "../../models/enumCompareOperators";
 import {
   handleAddRequest,
   handleEditRequest,
-  handleFilterRequest
+  handleFilterRequest,
+  handleGetRequest
 } from "../../actions/HandleManager";
 import {
   handleValidation,
@@ -28,7 +29,7 @@ import "./../css/button-inline.css";
 import AlcaldiaRecursosMunicipalesTableAddSale from "./AlcaldiaRecursosMunicipalesTableAddSale";
 import AlcaldiaRecursosMunicipalesTableDeleteSale from "./AlcaldiaRecursosMunicipalesTableDeleteSale";
 
-function AlcaldiaRecursosMunicipalesVentasForm () {
+function AlcaldiaRecursosMunicipalesVentasForm() {
   const history = useHistory();
   const isEditDefaultValue =
     history && history.location && history.location.state;
@@ -49,12 +50,14 @@ function AlcaldiaRecursosMunicipalesVentasForm () {
   const [valueClienteCambio, setValueClienteCambio] = useState("0");
   const [controlarEdit, setControlarEdit] = useState(true);
   const [ignore, setIgnore] = useState(true);
+  const [isButtonComprobanteDisabled, setIsButtonComprobanteDisabled] = useState(true);
 
   // Put default values:
   if (isEdit?.data.id && controlarEdit) {
     setVerDetalles(true);
     setIdVenta(isEdit.data.id);
     setValueCreationDate(isEdit.data.creationDate);
+    setIsButtonComprobanteDisabled(false);
   }
   const clienteNombre =
     isEdit && isEdit.data.clienteNombre !== null
@@ -118,10 +121,20 @@ function AlcaldiaRecursosMunicipalesVentasForm () {
     ]
   );
 
-  const handleAfterAdd = function (newEntityId) {
+  const handleAfterGetById = function(newVenta) {
+    setValueCreationDate(newVenta.creationDate);
     setVerDetalles(true);
-    setIdVenta(newEntityId);
     setIsRequestInProgress(false);
+    setIsButtonComprobanteDisabled(false);
+  }
+
+  const handleGetById = function(rmId) {
+    handleGetRequest(`alcaldia-recursos-municipales-ventas/${rmId}`, handleAfterGetById, null, false);
+  }
+
+  const handleAfterAdd = function (newEntityId) {
+    setIdVenta(newEntityId);
+    handleGetById(newEntityId);
   };
 
   const handleAfterEdit = function () {
@@ -170,9 +183,6 @@ function AlcaldiaRecursosMunicipalesVentasForm () {
     const body = getBody();
     GeneratePdf(data, { ...body, valueCreationDate, idVenta });
     setIsRequestInProgress(false);
-    setTimeout(() => {
-      window.location.reload()
-    }, 1000);
   };
 
   const handleComprobante = function () {
@@ -197,10 +207,10 @@ function AlcaldiaRecursosMunicipalesVentasForm () {
       onChangeClienteDinero(valueClienteDinero);
       handleAdd(undefined, true);
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [valueVentaPrecioTotal]);
 
-  function onChangeClienteDinero (ClienteDinero) {
+  function onChangeClienteDinero(ClienteDinero) {
     setValueClienteCambio(Number(ClienteDinero) - valueVentaPrecioTotal);
     setValueClienteDinero(ClienteDinero);
   }
@@ -432,6 +442,7 @@ function AlcaldiaRecursosMunicipalesVentasForm () {
             </div>
             <div className="puggysoft-five-divs-side-by-side-child">
               <Button
+                disabled={isButtonComprobanteDisabled}
                 onClick={handleComprobante}
                 variant="success"
                 type="button"

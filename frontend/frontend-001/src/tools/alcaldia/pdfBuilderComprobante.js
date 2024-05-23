@@ -3,6 +3,7 @@ import NumeroALetras from "./numToText";
 import appUrlConfig from "./../../tools/appUrlConfig";
 
 const GeneratePdf = (data, body) => {
+  console.log({data, body});
   const doc = jsPDF({
     orientation: "p",
     format: [16.5, 21.6],

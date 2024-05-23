@@ -6,6 +6,7 @@ CREATE TABLE alcaldia_recursos_municipales(
    name VARCHAR(120) NOT NULL,
    name_aux VARCHAR(120),
    precio FLOAT(11,2) NOT NULL,
+   folder_cantidad_timbres INT,
    talonario_movimiento INT,
    talonario_inicio INT,
    talonario_final INT,
