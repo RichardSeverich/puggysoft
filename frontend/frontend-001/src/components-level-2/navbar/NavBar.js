@@ -54,8 +54,8 @@ import {
   TbSoccerField
 } from "react-icons/tb";
 import { RiLoginCircleLine, RiUser2Fill, RiShieldKeyholeFill } from "react-icons/ri";
-import { 
-  MdOutlineSettingsSuggest, 
+import {
+  MdOutlineSettingsSuggest,
   MdOutlineSchema,
   MdFolderCopy
 } from "react-icons/md";
@@ -87,7 +87,7 @@ import i18n from "../../i18n/i18n";
 
 import "./styles.css";
 
-function NavBar() {
+function NavBar () {
   const history = useHistory();
   const userRolesString = window.sessionStorage.getItem("role");
   const currentTenant = window.sessionStorage.getItem("tenant");
@@ -296,7 +296,7 @@ function NavBar() {
     history.push(enumPaths.HOSPITAL_PATIENT_USER_TABLE_TO_DETAILS);
   };
 
-  function navigateGeneric(event) {
+  function navigateGeneric (event) {
     history.push(enumPaths.IN_PROGRESS_PAGE);
   }
 
@@ -486,6 +486,14 @@ function NavBar() {
   // CALIFICACIONES
   const navigateAsignarCalificaciones = () => {
     history.push(enumPaths.ESCUELA_ASIGNAR_CALIFICACIONES_STEP_ONE);
+  };
+
+  const navigateCalificacionesTable1 = () => {
+    history.push(enumPaths.ESCUELA_CALIFICACIONES_TABLE);
+  };
+
+  const navigateCalificacionesTable2 = () => {
+    history.push(enumPaths.ESCUELA_ASIGNAR_CALIFICACIONES_STEP_ONE_TABLE);
   };
 
   // ******* ******* ******* GAMES SYSTEM ******* ******* *******
@@ -741,7 +749,7 @@ function NavBar() {
   const recursoActividadesTableLabel = (<><AiOutlineTable /> {i18n.navBar.recursoActividadesTable}</>);
   // RECURSOS MUNICIPALES FOLDERS
   const recursoMunicipalFoldersFormLabel = (<><FaFolderPlus /> {i18n.navBar.recursoMunicipalFoldersForm}</>);
-  const recursoMunicipalFoldersTableLabel = (<><MdFolderCopy  /> {i18n.navBar.recursoMunicipalFoldersTable}</>);
+  const recursoMunicipalFoldersTableLabel = (<><MdFolderCopy /> {i18n.navBar.recursoMunicipalFoldersTable}</>);
   // REPORTES RECURSOS MUNICIPALES
   const recursoMunicipalReporteAdminLabel = (<><BsFillBarChartFill /> {i18n.navBar.recursoMunicipalReporteAdmin}</>);
   const recursoMunicipalReporteCortoDiarioLabel = (<><FaChartLine /> {i18n.navBar.recursoMunicipalReporteCortoDiario}</>);
@@ -808,6 +816,8 @@ function NavBar() {
   // CALIFICACIONES
   const escuelaCalificacionesAdmin = (<>< GiVibratingShield /> {i18n.navBar.escuelaCalificacionesAdmin}</>);
   const escuelaCalificacionesForm = (<><GrAddCircle /> {i18n.navBar.escuelaCalificacionesForm}</>);
+  const escuelaCalificacionesTable1 = (<><AiOutlineTable /> {i18n.navBar.escuelaCalificacionesTable1}</>);
+  const escuelaCalificacionesTable2 = (<><AiOutlineTable /> {i18n.navBar.escuelaCalificacionesTable2}</>);
 
   // ******* ******* ******* GAMES SYSTEM ******* ******* *******
   // GAMES
@@ -1141,6 +1151,8 @@ function NavBar() {
           {userRoles.includes(enumRoles.SCHOOL_ENCARGADO) &&
             <NavDropdown title={escuelaCalificacionesAdmin}>
               <NavDropdown.Item onClick={navigateAsignarCalificaciones}>{escuelaCalificacionesForm}</NavDropdown.Item>
+              <NavDropdown.Item onClick={navigateCalificacionesTable1}>{escuelaCalificacionesTable1}</NavDropdown.Item>
+              <NavDropdown.Item onClick={navigateCalificacionesTable2}>{escuelaCalificacionesTable2}</NavDropdown.Item>
             </NavDropdown>}
 
           {/* ******* ******* ******* GAMES SYSTEM ******* ******* ********/}

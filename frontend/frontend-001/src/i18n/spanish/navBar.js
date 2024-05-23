@@ -259,6 +259,8 @@ const navBar = {
   // Caliticaciones
   escuelaCalificacionesAdmin: "Adm. Calificaciones",
   escuelaCalificacionesForm: "Registrar Calificacion",
+  escuelaCalificacionesTable1: "Mostrar Calificaciones 1",
+  escuelaCalificacionesTable2: "Mostrar Calificaciones 2",
 
   // ******* ******* GAMES ******* *******
   gamesAdmin: "Juegos",

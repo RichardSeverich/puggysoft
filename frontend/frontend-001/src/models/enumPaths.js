@@ -205,11 +205,13 @@ const ESCUELA_ESTUDIANTES_FORM = "/casa-estudios-estudiantes-form";
 const ESCUELA_ESTUDIANTES_TABLE = "/casa-estudios-estudiantes-table";
 const ESCUELA_DOCENTES_FORM = "/casa-estudios-docentes-form";
 const ESCUELA_DOCENTES_TABLE = "/casa-estudios-docentes-table";
+const ESCUELA_CALIFICACIONES_TABLE = "/casa-estudios-calificaciones-table";
 const ESCUELA_ASIGNAR_CURSOS_A_ESTUDIANTE_STEP_ONE = "/casa-estudios-asignar-cursos-a-estudiante-step-1";
 const ESCUELA_ASIGNAR_CURSOS_A_ESTUDIANTE_STEP_TWO = "/casa-estudios-asignar-cursos-a-estudiante-step-2";
 const ESCUELA_ASIGNAR_CURSOS_A_DOCENTE_STEP_ONE = "/casa-estudios-asignar-cursos-a-docente-step-1";
 const ESCUELA_ASIGNAR_CURSOS_A_DOCENTE_STEP_TWO = "/casa-estudios-asignar-cursos-a-docente-step-2";
 const ESCUELA_ASIGNAR_CALIFICACIONES_STEP_ONE = "/casa-estudios-asignar-calificaciones-step-1";
+const ESCUELA_ASIGNAR_CALIFICACIONES_STEP_ONE_TABLE = "/casa-estudios-asignar-calificaciones-step-1-table";
 const ESCUELA_ASIGNAR_CALIFICACIONES_STEP_TWO = "/casa-estudios-asignar-calificaciones-step-2";
 const ESCUELA_ASIGNAR_CALIFICACIONES_STEP_THREE = "/casa-estudios-asignar-calificaciones-step-3";
 const ESCUELA_ASIGNAR_CALIFICACIONES_STEP_FOUR = "/casa-estudios-asignar-calificaciones-step-4";
@@ -403,11 +405,13 @@ const enumPaths = {
   ESCUELA_ESTUDIANTES_TABLE,
   ESCUELA_DOCENTES_FORM,
   ESCUELA_DOCENTES_TABLE,
+  ESCUELA_CALIFICACIONES_TABLE,
   ESCUELA_ASIGNAR_CURSOS_A_ESTUDIANTE_STEP_ONE,
   ESCUELA_ASIGNAR_CURSOS_A_ESTUDIANTE_STEP_TWO,
   ESCUELA_ASIGNAR_CURSOS_A_DOCENTE_STEP_ONE,
   ESCUELA_ASIGNAR_CURSOS_A_DOCENTE_STEP_TWO,
   ESCUELA_ASIGNAR_CALIFICACIONES_STEP_ONE,
+  ESCUELA_ASIGNAR_CALIFICACIONES_STEP_ONE_TABLE,
   ESCUELA_ASIGNAR_CALIFICACIONES_STEP_TWO,
   ESCUELA_ASIGNAR_CALIFICACIONES_STEP_THREE,
   ESCUELA_ASIGNAR_CALIFICACIONES_STEP_FOUR,

@@ -190,10 +190,14 @@ import AsignarCursosAEstudiantesPageStep2 from "./components-level-3/escuela/Asi
 import AsignarCursosADocentesPageStep1 from "./components-level-3/escuela/AsignarCursosADocentesPageStep1";
 import AsignarCursosADocentesPageStep2 from "./components-level-3/escuela/AsignarCursosADocentesPageStep2";
 import AsignarCalificacionesPageStep1 from "./components-level-3/escuela/AsignarCalificacionesPageStep1";
+import AsignarCalificacionesPageStep1Table from "./components-level-3/escuela/AsignarCalificacionesPageStep1Table";
 import AsignarCalificacionesPageStep2 from "./components-level-3/escuela/AsignarCalificacionesPageStep2";
 import AsignarCalificacionesPageStep3 from "./components-level-3/escuela/AsignarCalificacionesPageStep3";
 import AsignarCalificacionesPageStep4 from "./components-level-3/escuela/AsignarCalificacionesPageStep4";
 import AsignarCalificacionesPageStep5 from "./components-level-3/escuela/AsignarCalificacionesPageStep5";
+import CalificacionesTablePage from "./components-level-3/escuela/CalificacionesTablePage";
+
+// Games System
 import TicTacToePage from "./components-level-3/games/tic-tac-toe/TicTacToePage";
 import TicTacToePagePc from "./components-level-3/games/tic-tac-toe/TicTacToePagePc";
 
@@ -371,16 +375,17 @@ const AppRoutes = () => (
       <Route exact path={enumPaths.ESCUELA_ESTUDIANTES_TABLE} component={EstudiantesTablePage} />
       <Route exact path={enumPaths.ESCUELA_DOCENTES_FORM} component={DocentesFormPage} />
       <Route exact path={enumPaths.ESCUELA_DOCENTES_TABLE} component={DocentesTablePage} />
+      <Route exact path={enumPaths.ESCUELA_CALIFICACIONES_TABLE} component={CalificacionesTablePage} />
       <Route exact path={enumPaths.ESCUELA_ASIGNAR_CURSOS_A_ESTUDIANTE_STEP_ONE} component={AsignarCursosAEstudiantesPageStep1} />
       <Route exact path={enumPaths.ESCUELA_ASIGNAR_CURSOS_A_ESTUDIANTE_STEP_TWO} component={AsignarCursosAEstudiantesPageStep2} />
       <Route exact path={enumPaths.ESCUELA_ASIGNAR_CURSOS_A_DOCENTE_STEP_ONE} component={AsignarCursosADocentesPageStep1} />
       <Route exact path={enumPaths.ESCUELA_ASIGNAR_CURSOS_A_DOCENTE_STEP_TWO} component={AsignarCursosADocentesPageStep2} />
       <Route exact path={enumPaths.ESCUELA_ASIGNAR_CALIFICACIONES_STEP_ONE} component={AsignarCalificacionesPageStep1 } />
+      <Route exact path={enumPaths.ESCUELA_ASIGNAR_CALIFICACIONES_STEP_ONE_TABLE} component={AsignarCalificacionesPageStep1Table } />
       <Route exact path={enumPaths.ESCUELA_ASIGNAR_CALIFICACIONES_STEP_TWO} component={AsignarCalificacionesPageStep2 } />
       <Route exact path={enumPaths.ESCUELA_ASIGNAR_CALIFICACIONES_STEP_THREE} component={AsignarCalificacionesPageStep3 } />
       <Route exact path={enumPaths.ESCUELA_ASIGNAR_CALIFICACIONES_STEP_FOUR} component={AsignarCalificacionesPageStep4 } />
       <Route exact path={enumPaths.ESCUELA_ASIGNAR_CALIFICACIONES_STEP_FIVE} component={AsignarCalificacionesPageStep5 } />
-
       {/** GAMES */}
       <Route exact path={enumPaths.GAMES_TIC_TAC_TOE} component={TicTacToePage} />
       <Route exact path={enumPaths.GAMES_TIC_TAC_TOE_PC} component={TicTacToePagePc} />

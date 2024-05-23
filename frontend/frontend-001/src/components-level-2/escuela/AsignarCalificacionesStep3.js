@@ -15,7 +15,8 @@ function AsignarCalificacionesStep3 () {
   const history = useHistory();
   const {
     estudianteSelected,
-    cursoSelected
+    cursoSelected,
+    isMostrar
   } = history && history.location && history.location.state;
 
   function handleGetData (activePage, filterBody, updateArrayData) {
@@ -35,14 +36,25 @@ function AsignarCalificacionesStep3 () {
   }
 
   function handleSelection (materiaSelected) {
-    history.push({
-      pathname: enumPaths.ESCUELA_ASIGNAR_CALIFICACIONES_STEP_FOUR,
-      state: {
-        estudianteSelected,
-        cursoSelected,
-        materiaSelected
-      }
-    });
+    if (isMostrar) {
+      history.push({
+        pathname: enumPaths.ESCUELA_CALIFICACIONES_TABLE,
+        state: {
+          estudianteSelected,
+          cursoSelected,
+          materiaSelected
+        }
+      });
+    } else {
+      history.push({
+        pathname: enumPaths.ESCUELA_ASIGNAR_CALIFICACIONES_STEP_FOUR,
+        state: {
+          estudianteSelected,
+          cursoSelected,
+          materiaSelected
+        }
+      });
+    }
   }
 
   const tableArrayCustomRowButtons = [

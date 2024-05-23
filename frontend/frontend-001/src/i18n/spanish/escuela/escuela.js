@@ -39,6 +39,7 @@ const escuela = {
   notasPorcentajeError: "Ingrese porcentaje (min 1, max 100)",
   nota: "Nota",
   calificacion: "Calificacion",
+  calificacionTable: "Tabla de Calificacion",
   calificacionValidation: "La calificacion debe ser igual o mayor que 0",
   // Estudiantes
   estudianteForm: "Formulario de Estudiantes",

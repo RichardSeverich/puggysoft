@@ -13,7 +13,10 @@ function AsignarCalificacionesStep2 () {
   const pageSize = 7;
   const numberPagesToShow = 7;
   const history = useHistory();
-  const { estudianteSelected } = history && history.location && history.location.state;
+  const {
+    estudianteSelected,
+    isMostrar
+  } = history && history.location && history.location.state;
 
   function handleGetData (activePage, filterBody, updateArrayData) {
     handleFilterRequest(
@@ -36,7 +39,8 @@ function AsignarCalificacionesStep2 () {
       pathname: enumPaths.ESCUELA_ASIGNAR_CALIFICACIONES_STEP_THREE,
       state: {
         estudianteSelected,
-        cursoSelected
+        cursoSelected,
+        isMostrar
       }
     });
   }
