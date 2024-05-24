@@ -7,7 +7,7 @@ const alcaldiaRecursosMunicipalesForm = {
   fieldName: "Nombre",
   fieldNameText: "Minimo 3, maximo 120 caracteres",
   fieldPrecio: "Precio",
-  fieldPrecioText: "Minimo 1, maximo 11 numeros",
+  fieldPrecioText: "Minimo 0, maximo 11 numeros",
   fieldTipo: "Tipo",
   fieldTipoText: "Seleccione un tipo"
 };

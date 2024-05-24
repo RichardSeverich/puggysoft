@@ -5,10 +5,10 @@ const alcaldiaRecursosMunicipalesTimbresForm = {
   defaultCodigoAuxiliar: "122000-003",
   fieldTalonarioInicio: "Talonario inicio",
   fieldTimbresInicio: "Timbre inicio",
-  fieldTalonarioInicioText: "Campo obligatorio",
+  fieldTalonarioInicioText: "Numero mayor igual a 0",
   fieldTalonarioFinal: "Talonario final",
   fieldTimbresFinal: "Timbre final",
-  fieldTalonarioFinalText: "Campo obligatorio",
+  fieldTalonarioFinalText: "Numero mayor a talonario inicio",
   fieldCodigo: "Codigo",
   fieldCodigoText: "Minimo 3, maximo 30 caracteres",
   fieldCodigoAuxiliar: "Codigo Auxiliar",
@@ -16,7 +16,7 @@ const alcaldiaRecursosMunicipalesTimbresForm = {
   fieldName: "Nombre",
   fieldNameText: "Minimo 3, maximo 120 caracteres",
   fieldPrecio: "Precio",
-  fieldPrecioText: "Minimo 1, maximo 11 numeros",
+  fieldPrecioText: "Minimo 0, maximo 11 numeros",
   fieldTipo: "Tipo",
   fieldTipoText: "Seleccione un tipo"
 };

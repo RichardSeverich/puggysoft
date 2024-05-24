@@ -1,6 +1,6 @@
 const alcaldiaRecursosMunicipalesTimbresVentasForm = {
   title: "Formulario para venta de timbres",
-  subTitle: "Este talonario esta habilitado hasta: ",
+  subTitle: "Limite: ",
   subTitleTwo: "Precio por unidad: ",
   subTitleThree: "Talonarios restantes: ",
   fieldClienteNombre: "Cliente Nombre",

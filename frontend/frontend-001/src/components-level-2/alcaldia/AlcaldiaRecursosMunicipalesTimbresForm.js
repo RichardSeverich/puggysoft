@@ -237,7 +237,7 @@ function AlcaldiaRecursosMunicipalesTimbresForm () {
                 type="number"
                 placeholder={i18n.alcaldiaRecursosMunicipalesTimbresForm.fieldTimbresFinal}
               />
-              <Form.Text muted>
+              <Form.Text muted className={classNameFormText.talonarioFinal}>
                 {i18n.alcaldiaRecursosMunicipalesTimbresForm.fieldTalonarioFinalText}
               </Form.Text>
             </Form.Group>

@@ -43,6 +43,8 @@ function AlcaldiaRecursosMunicipalesFoldersForm () {
     isEdit && isEdit.data.nameAux !== null ? isEdit.data.nameAux : "";
   const talonarioInicio =
     isEdit && isEdit.data.talonarioInicio !== null ? isEdit.data.talonarioInicio : "";
+  const folderCantidadTimbres =
+    isEdit && isEdit.data.folderCantidadTimbres !== null ? isEdit.data.folderCantidadTimbres : "";
   const talonarioFinal =
     isEdit && isEdit.data.talonarioFinal !== null ? isEdit.data.talonarioFinal : "";
   const precio =
@@ -72,6 +74,11 @@ function AlcaldiaRecursosMunicipalesFoldersForm () {
     reset: resetTalonarioFinal
   } = useInput(talonarioFinal);
   const {
+    value: valueCantidadTimbres,
+    onChange: onChangeCantidadTimbres,
+    reset: resetCantidadTimbres
+  } = useInput(folderCantidadTimbres);
+  const {
     value: valuePrecio,
     onChange: onChangePrecio,
     reset: resetPrecio
@@ -81,6 +88,7 @@ function AlcaldiaRecursosMunicipalesFoldersForm () {
     resetTalonarioInicio();
     resetTalonarioFinal();
     resetPrecio();
+    resetCantidadTimbres();
     resetNameAux();
   };
 
@@ -104,6 +112,7 @@ function AlcaldiaRecursosMunicipalesFoldersForm () {
         talonarioInicio: valueTalonarioInicio,
         talonarioFinal: valueTalonarioFinal,
         precio: valuePrecio,
+        folderCantidadTimbres: valueCantidadTimbres,
         tipo,
         tenant,
         createdBy: username,
@@ -111,7 +120,7 @@ function AlcaldiaRecursosMunicipalesFoldersForm () {
       };
       return body;
     },
-    [valueNameAux, valueTalonarioInicio, valueTalonarioFinal, valuePrecio]
+    [valueNameAux, valueTalonarioInicio, valueTalonarioFinal, valuePrecio, valueCantidadTimbres]
   );
 
   const handleAfterAdd = function (newEntityId) {
@@ -235,11 +244,24 @@ function AlcaldiaRecursosMunicipalesFoldersForm () {
                 type="number"
                 placeholder={i18n.alcaldiaRecursosMunicipalesFoldersForm.fieldFoldersFinal}
               />
-              <Form.Text muted>
+              <Form.Text muted className={classNameFormText.talonarioFinal}>
                 {i18n.alcaldiaRecursosMunicipalesFoldersForm.fieldTalonarioFinalText}
               </Form.Text>
             </Form.Group>
-            
+            <Form.Group className="mb-3" controlId="cantidad-timbres">
+              <Form.Label>
+                {i18n.alcaldiaRecursosMunicipalesFoldersForm.fieldFoldersFinal}
+              </Form.Label>
+              <Form.Control
+                onChange={onChangeCantidadTimbres}
+                value={valueCantidadTimbres}
+                type="number"
+                placeholder={i18n.alcaldiaRecursosMunicipalesFoldersForm.fieldCantidadTimbres}
+              />
+              <Form.Text muted className={classNameFormText.folderCantidadTimbres}>
+                {i18n.alcaldiaRecursosMunicipalesFoldersForm.fieldFolderCantidadTimbres}
+              </Form.Text>
+            </Form.Group>
             <Form.Group className="mb-3" controlId="precio">
               <Form.Label>
                 {i18n.alcaldiaRecursosMunicipalesFoldersForm.fieldPrecio}

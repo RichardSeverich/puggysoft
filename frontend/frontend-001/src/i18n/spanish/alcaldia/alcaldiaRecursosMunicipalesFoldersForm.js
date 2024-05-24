@@ -5,10 +5,12 @@ const alcaldiaRecursosMunicipalesFoldersForm = {
   defaultCodigoAuxiliar: "122000-003",
   fieldTalonarioInicio: "Talonario inicio",
   fieldFoldersInicio: "Folder inicio",
-  fieldTalonarioInicioText: "Campo obligatorio",
+  fieldTalonarioInicioText: "Numero mayor que 0",
   fieldTalonarioFinal: "Talonario final",
   fieldFoldersFinal: "Folder final",
-  fieldTalonarioFinalText: "Campo obligatorio",
+  fieldCantidadTimbres: "Cantidad Timbres",
+  fieldTalonarioFinalText: "Numero mayor que folder inicio",
+  fieldFolderCantidadTimbres: "Numero igual o mayor que 0",
   fieldCodigo: "Codigo",
   fieldCodigoText: "Minimo 3, maximo 30 caracteres",
   fieldCodigoAuxiliar: "Codigo Auxiliar",
@@ -17,7 +19,7 @@ const alcaldiaRecursosMunicipalesFoldersForm = {
   fieldDate: "Fecha",
   fieldNameText: "Minimo 3, maximo 120 caracteres",
   fieldPrecio: "Precio",
-  fieldPrecioText: "Minimo 1, maximo 11 numeros",
+  fieldPrecioText: "Minimo 0, maximo 11 numeros",
   fieldTipo: "Tipo",
   fieldTipoText: "Seleccione un tipo"
 };
