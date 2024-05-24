@@ -26,12 +26,10 @@ import "./../css/all-forms.css";
 import "./../css/all-two-divs-side-by-side.css";
 import "./../css/all-five-divs-side-by-side.css";
 import "./../css/button-inline.css";
+import enumPaths from "../../models/enumPaths";
 
 function AlcaldiaRecursosMunicipalesTimbresVentasForm () {
   const history = useHistory();
-  const isEditDefaultValue =
-    history && history.location && history.location.state;
-  const [isEdit] = useState(isEditDefaultValue);
   const [classNameFormText, setClassNameFormText] =
     useState(classNameFormTextNew);
   const [isRequestInProgress, setIsRequestInProgress] = useState(false);
@@ -56,8 +54,28 @@ function AlcaldiaRecursosMunicipalesTimbresVentasForm () {
   let talonarioMovimiento = 0;
   let clienteCambio = 0;
   let creationDate;
+
+  let folderSelected;
+  let timbreSelected;
+  let isEditDefaultValue;
+  let valueTimbresDefault = { talonarioMovimiento: talonarioMovimiento || 0, precio: 0, talonarioFinal: hastaTimbre === "" ? 0 : hastaTimbre + 1 };
+  if (history && history.location && history.location.state) {
+    folderSelected = history.location.state.folderSelected;
+    timbreSelected = history.location.state.timbreSelected;
+    if (folderSelected) {
+      valueTimbresDefault = folderSelected;
+    } else if (timbreSelected) {
+      valueTimbresDefault = timbreSelected;
+    } else {
+      isEditDefaultValue = history && history.location && history.location.state;
+    }
+  }
+  const [isEdit] = useState(isEditDefaultValue);
   // Put default values:
-  if (isEdit !== undefined && !isBlock) {
+  if (isEdit !== undefined &&
+    isEdit.folderSelected === undefined &&
+    isEdit.timbreSelected === undefined &&
+    !isBlock) {
     venta = isEdit.data.id;
     clienteNombre = isEdit.data.clienteNombre;
     clienteCiNit = isEdit.data.clienteCiNit;
@@ -73,8 +91,7 @@ function AlcaldiaRecursosMunicipalesTimbresVentasForm () {
     creationDate = isEdit.data.creationDate;
     setIsBlock(true);
   }
-
-  const [valueTimbres, setValueTimbres] = useState({ talonarioMovimiento: talonarioMovimiento || 0, precio: 0, talonarioFinal: hastaTimbre === "" ? 0 : hastaTimbre + 1 });
+  const [valueTimbres, setValueTimbres] = useState(valueTimbresDefault);
   const [valueHastaTimbre, setValueHastaTimbre] = useState(hastaTimbre);
   // eslint-disable-next-line no-unused-vars
   const [valueVentaPrecioTotal, setValueVentaPrecioTotal] = useState(ventaPrecioTotal);
@@ -88,29 +105,29 @@ function AlcaldiaRecursosMunicipalesTimbresVentasForm () {
   const { value: valueCantidad, onChange: onChangeCantidad } = useInput(nota);
   const { value: valueClienteDinero, onChange: onChangeClienteDinero } = useInput(clienteDinero);
 
-  const tenant = window.sessionStorage.getItem("tenant");
-  const filterBody = {
-    nameCriteria: i18n.alcaldiaRecursosMunicipalesTimbresForm.defaultTimbre,
-    nameOperator: enumCompareOperators.TEXT_EQUALS,
-    tenantCriteria: tenant,
-    tenantOperator: enumCompareOperators.TEXT_EQUALS
-  };
-
-  const afterGetTimbres = data => {
-    if (data.length !== 0) {
-      const timbreWork = data[0];
-      if (timbreWork.talonarioInicio !== timbreWork.talonarioMovimiento) {
-        timbreWork.talonarioMovimiento++;
+  if (folderSelected === undefined && timbreSelected === undefined) {
+    const tenant = window.sessionStorage.getItem("tenant");
+    const filterBody = {
+      nameCriteria: i18n.alcaldiaRecursosMunicipalesTimbresForm.defaultTimbre,
+      nameOperator: enumCompareOperators.TEXT_EQUALS,
+      tenantCriteria: tenant,
+      tenantOperator: enumCompareOperators.TEXT_EQUALS
+    };
+    const afterGetTimbres = data => {
+      if (data.length !== 0) {
+        const timbreWork = data[0];
+        if (timbreWork.talonarioInicio !== timbreWork.talonarioMovimiento) {
+          timbreWork.talonarioMovimiento++;
+        }
+        setValueTimbres(timbreWork);
+        setControlDescontinuados(true);
+      } else {
+        setIsEmpy(true);
       }
-      setValueTimbres(timbreWork);
-      setControlDescontinuados(true);
-    } else {
-      setIsEmpy(true);
+    };
+    if (valueTimbres?.talonarioMovimiento === 0 && isEdit === undefined) {
+      handleFilterRequest("alcaldia-recursos-municipales-timbres-ventas", filterBody, afterGetTimbres);
     }
-  };
-
-  if (valueTimbres?.talonarioMovimiento === 0 && isEdit === undefined) {
-    handleFilterRequest("alcaldia-recursos-municipales-timbres-ventas", filterBody, afterGetTimbres);
   }
 
   if (controlDescontinuados) {
@@ -163,14 +180,17 @@ function AlcaldiaRecursosMunicipalesTimbresVentasForm () {
   }
   const handleAfterAdd = function (newEntityId) {
     const body = getBody();
-    handleAddRequest("alcaldia-recursos-municipales-ventas-detalle/", { ...body[1], idVenta: newEntityId }, () => {}, false, afterAddTimbreToSaleOnFail);
-    handleEditRequest("alcaldia-recursos-municipales/", body[2], body[2].id, () => {});
+    handleAddRequest("alcaldia-recursos-municipales-ventas-detalle/", { ...body[1], idVenta: newEntityId }, () => { }, false, afterAddTimbreToSaleOnFail);
+    handleEditRequest("alcaldia-recursos-municipales/", body[2], body[2].id, () => { });
     setIsBlock(true);
     setIdVenta(newEntityId);
     setIsRequestInProgress(false);
   };
 
   const handleAdd = (event) => {
+    if (folderSelected) {
+      // TODO: Request para disminuir timbres de acuerdo a la cantidad.
+    }
     event?.preventDefault();
     const body = getBody();
     const isValid = handleValidation(body, setClassNameFormText);
@@ -187,9 +207,15 @@ function AlcaldiaRecursosMunicipalesTimbresVentasForm () {
     const body = getBody();
     GeneratePdf(data, { ...body, valueCreationDate, idVenta });
     setIsRequestInProgress(false);
-    setTimeout(() => {
-      window.location.reload();
-    }, 1000);
+    if (isEdit === undefined && folderSelected === undefined && timbreSelected === undefined) {
+      setTimeout(() => {
+        window.location.reload();
+      }, 1000);
+    } else if (folderSelected) {
+      history.push(enumPaths.ALCALDIA_RECURSOS_MUNICIPALES_FOLDERS_VENTAS_STEP_1);
+    } else if (timbreSelected) {
+      history.push(enumPaths.ALCALDIA_RECURSOS_MUNICIPALES_TIMBRES_VENTAS_STEP_1);
+    }
   };
 
   const handleComprobante = function () {
@@ -236,7 +262,7 @@ function AlcaldiaRecursosMunicipalesTimbresVentasForm () {
     return <Card.Header as="h2">{i18n.alcaldiaRecursosMunicipalesTimbresVentasForm.empyTimbres}</Card.Header>;
   }
 
-  const talonariosRestantes = valueTimbres.talonarioFinal - valueTimbres.talonarioMovimiento;
+  const talonariosRestantes = Number(valueTimbres.talonarioFinal) - Number(valueTimbres.talonarioMovimiento);
 
   return (
     <div className="">
@@ -249,24 +275,28 @@ function AlcaldiaRecursosMunicipalesTimbresVentasForm () {
       />
       <Card>
         <Card.Header as="h3">
-          {i18n.alcaldiaRecursosMunicipalesTimbresVentasForm.title}
+          {folderSelected
+            ? i18n.alcaldiaRecursosMunicipalesTimbresVentasForm.titleFolder
+            : i18n.alcaldiaRecursosMunicipalesTimbresVentasForm.title}
         </Card.Header>
-        { !isBlock && <Card.Header as="h5">
-          {i18n.alcaldiaRecursosMunicipalesTimbresVentasForm.subTitle + valueTimbres?.talonarioFinal + " - - -"}
+        {!isBlock && <Card.Header as="h5">
+          {i18n.alcaldiaRecursosMunicipalesTimbresVentasForm.subTitle + valueTimbres?.talonarioInicio + " - "}
+          {i18n.alcaldiaRecursosMunicipalesTimbresVentasForm.subTitleOne + valueTimbres?.talonarioFinal + " - "}
+          {i18n.alcaldiaRecursosMunicipalesTimbresVentasForm.subTitleFour + valueTimbres?.talonarioMovimiento + " - "}
           {i18n.alcaldiaRecursosMunicipalesTimbresVentasForm.subTitleThree + talonariosRestantes}
         </Card.Header>}
         <Card.Header as="h5">
           {!isBlock && i18n.alcaldiaRecursosMunicipalesTimbresVentasForm.subTitleTwo + valueTimbres?.precio}
-          { isBlock &&
-          <Button
-            style={{ width: "auto", margin: "0px 15px" }}
-            onClick={handleComprobante}
-            variant="success"
-            type="button"
-            className="puggysoft-button-inline"
-          >
-            {i18n.alcaldiaRecursosMunicipalesTimbresVentasForm.buttonComprobante}
-          </Button>}
+          {isBlock &&
+            <Button
+              style={{ width: "auto", margin: "0px 15px" }}
+              onClick={handleComprobante}
+              variant="success"
+              type="button"
+              className="puggysoft-button-inline"
+            >
+              {i18n.alcaldiaRecursosMunicipalesTimbresVentasForm.buttonComprobante}
+            </Button>}
         </Card.Header>
         <Card.Body>
           <div className="puggysoft-flex-container">

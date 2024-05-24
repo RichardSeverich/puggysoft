@@ -130,6 +130,8 @@ import AlcaldiaRecursosMunicipalesReporteCortoDiarioPage from "./components-leve
 import AlcaldiaRecursosMunicipalesReporteDiarioPage from "./components-level-3/alcaldia/AlcaldiaRecursosMunicipalesReporteDiarioPage";
 import AlcaldiaRecursosMunicipalesReporteMensualPage from "./components-level-3/alcaldia/AlcaldiaRecursosMunicipalesReporteMensualPage";
 import AlcaldiaRecursosMunicipalesReporteAnualPage from "./components-level-3/alcaldia/AlcaldiaRecursosMunicipalesReporteAnualPage";
+import AlcaldiaRecursosMunicipalesVentaFoldersStep1Page from "./components-level-3/alcaldia/AlcaldiaRecursosMunicipalesVentaFoldersStep1Page";
+import AlcaldiaRecursosMunicipalesVentaTimbresStep1Page from "./components-level-3/alcaldia/AlcaldiaRecursosMunicipalesVentaTimbresStep1Page";
 import UrbanismoTramiteFormPage from "./components-level-3/alcaldia/UrbanismoTramiteFormPage";
 import UrbanismoTramiteTablePage from "./components-level-3/alcaldia/UrbanismoTramiteTablePage";
 import RegulaLotesFormPage from "./components-level-3/alcaldia/RegulaLotesFormPage";
@@ -331,6 +333,8 @@ const AppRoutes = () => (
       <Route exact path={enumPaths.ALCALDIA_RECURSOS_MUNICIPALES_REPORTE_DIARIO} component={AlcaldiaRecursosMunicipalesReporteDiarioPage} />
       <Route exact path={enumPaths.ALCALDIA_RECURSOS_MUNICIPALES_REPORTE_MENSUAL} component={AlcaldiaRecursosMunicipalesReporteMensualPage} />
       <Route exact path={enumPaths.ALCALDIA_RECURSOS_MUNICIPALES_REPORTE_ANUAL} component={AlcaldiaRecursosMunicipalesReporteAnualPage} />
+      <Route exact path={enumPaths.ALCALDIA_RECURSOS_MUNICIPALES_FOLDERS_VENTAS_STEP_1} component={AlcaldiaRecursosMunicipalesVentaFoldersStep1Page} />
+      <Route exact path={enumPaths.ALCALDIA_RECURSOS_MUNICIPALES_TIMBRES_VENTAS_STEP_1} component={AlcaldiaRecursosMunicipalesVentaTimbresStep1Page} />
       <Route exact path={enumPaths.URBANISMO_TRAMITE_FORM} component={UrbanismoTramiteFormPage} />
       <Route exact path={enumPaths.URBANISMO_TRAMITE_TABLE} component={UrbanismoTramiteTablePage} />
       <Route exact path={enumPaths.REGULA_LOTES_FORM} component={RegulaLotesFormPage} />
@@ -380,12 +384,12 @@ const AppRoutes = () => (
       <Route exact path={enumPaths.ESCUELA_ASIGNAR_CURSOS_A_ESTUDIANTE_STEP_TWO} component={AsignarCursosAEstudiantesPageStep2} />
       <Route exact path={enumPaths.ESCUELA_ASIGNAR_CURSOS_A_DOCENTE_STEP_ONE} component={AsignarCursosADocentesPageStep1} />
       <Route exact path={enumPaths.ESCUELA_ASIGNAR_CURSOS_A_DOCENTE_STEP_TWO} component={AsignarCursosADocentesPageStep2} />
-      <Route exact path={enumPaths.ESCUELA_ASIGNAR_CALIFICACIONES_STEP_ONE} component={AsignarCalificacionesPageStep1 } />
-      <Route exact path={enumPaths.ESCUELA_ASIGNAR_CALIFICACIONES_STEP_ONE_TABLE} component={AsignarCalificacionesPageStep1Table } />
-      <Route exact path={enumPaths.ESCUELA_ASIGNAR_CALIFICACIONES_STEP_TWO} component={AsignarCalificacionesPageStep2 } />
-      <Route exact path={enumPaths.ESCUELA_ASIGNAR_CALIFICACIONES_STEP_THREE} component={AsignarCalificacionesPageStep3 } />
-      <Route exact path={enumPaths.ESCUELA_ASIGNAR_CALIFICACIONES_STEP_FOUR} component={AsignarCalificacionesPageStep4 } />
-      <Route exact path={enumPaths.ESCUELA_ASIGNAR_CALIFICACIONES_STEP_FIVE} component={AsignarCalificacionesPageStep5 } />
+      <Route exact path={enumPaths.ESCUELA_ASIGNAR_CALIFICACIONES_STEP_ONE} component={AsignarCalificacionesPageStep1} />
+      <Route exact path={enumPaths.ESCUELA_ASIGNAR_CALIFICACIONES_STEP_ONE_TABLE} component={AsignarCalificacionesPageStep1Table} />
+      <Route exact path={enumPaths.ESCUELA_ASIGNAR_CALIFICACIONES_STEP_TWO} component={AsignarCalificacionesPageStep2} />
+      <Route exact path={enumPaths.ESCUELA_ASIGNAR_CALIFICACIONES_STEP_THREE} component={AsignarCalificacionesPageStep3} />
+      <Route exact path={enumPaths.ESCUELA_ASIGNAR_CALIFICACIONES_STEP_FOUR} component={AsignarCalificacionesPageStep4} />
+      <Route exact path={enumPaths.ESCUELA_ASIGNAR_CALIFICACIONES_STEP_FIVE} component={AsignarCalificacionesPageStep5} />
       {/** GAMES */}
       <Route exact path={enumPaths.GAMES_TIC_TAC_TOE} component={TicTacToePage} />
       <Route exact path={enumPaths.GAMES_TIC_TAC_TOE_PC} component={TicTacToePagePc} />

@@ -2,12 +2,12 @@ import React from "react";
 import { useHistory } from "react-router";
 import i18n from "../../i18n/i18n";
 import enumPaths from "../../models/enumPaths";
-import { handleFilterRequest, handleDeleteRequest } from "../../actions/HandleManager";
-import AlcaldiaRecursosMunicipalesFoldersGenericTable from "./generic/AlcaldiaRecursosMunicipalesFoldersGenericTable";
+import { handleFilterRequest } from "../../actions/HandleManager";
+import AlcaldiaRecursosMunicipalesTimbresGenericTable from "./generic/AlcaldiaRecursosMunicipalesTimbresGenericTable";
 import enumTableColumnsToShow from "../../models/enumTableColumnsToShow";
 
-function AlcaldiaRecursosMunicipalesFoldersTableEditDelete () {
-  const tableTitle = i18n.alcaldiaRecursosMunicipalesTable.titleFolders;
+function AlcaldiaRecursosMunicipalesTimbresTable () {
+  const tableTitle = i18n.alcaldiaRecursosMunicipalesTable.titleTimbres;
   const pageSize = 7;
   const numberPagesToShow = 7;
 
@@ -21,45 +21,35 @@ function AlcaldiaRecursosMunicipalesFoldersTableEditDelete () {
     handleFilterRequest(`alcaldia-recursos-municipales/filter/size/${pageSize}`, filterBody, setTotalPages);
   }
 
-  function handleDelete (data) {
-    handleDeleteRequest(`alcaldia-recursos-municipales/${data.id}`, undefined, undefined, undefined, true);
-  }
-
-  function handleEdit (data) {
+  function handleSelection (timbreSelected) {
     history.push({
-      pathname: enumPaths.ALCALDIA_RECURSOS_MUNICIPALES_FOLDERS_FORM,
+      pathname: enumPaths.ALCALDIA_RECURSOS_MUNICIPALES_TIMBRES_VENTAS_FORM,
       state: {
-        data,
-        edit: true
+        timbreSelected
       }
     });
   }
 
   const tableArrayCustomRowButtons = [
     {
-      variant: "warning",
-      handleCustom: handleEdit,
-      text: i18n.commonTable.editButton
-    },
-    {
-      variant: "danger",
-      handleCustom: handleDelete,
-      text: i18n.commonTable.deleteButton
+      variant: "info",
+      handleCustom: handleSelection,
+      text: i18n.commonTable.selectButton
     }
   ];
 
   const fixArrayData = data => {
-    return data.map(folder => {
-      const today = new Date(folder.creationDate);
+    return data.map(timbre => {
+      const today = new Date(timbre.creationDate);
       const valueName =
         `${today.getDate()} de ${i18n.commonMonths[today.toLocaleString("en-GB", { month: "long" }).toLowerCase()]} ${today.getFullYear()}`;
-      folder.name = `${folder.name} ${valueName}`;
-      return folder;
+      timbre.name = `${timbre.name} ${valueName}`;
+      return timbre;
     });
   };
 
   return (
-    <AlcaldiaRecursosMunicipalesFoldersGenericTable
+    <AlcaldiaRecursosMunicipalesTimbresGenericTable
       tableTitle={tableTitle}
       numberPagesToShow={numberPagesToShow}
       handleGetData={handleGetData}
@@ -68,8 +58,8 @@ function AlcaldiaRecursosMunicipalesFoldersTableEditDelete () {
       columnsToShow={enumTableColumnsToShow.FULL}
       fixArrayData={fixArrayData}
     >
-    </AlcaldiaRecursosMunicipalesFoldersGenericTable>
+    </AlcaldiaRecursosMunicipalesTimbresGenericTable>
   );
 }
 
-export default AlcaldiaRecursosMunicipalesFoldersTableEditDelete;
+export default AlcaldiaRecursosMunicipalesTimbresTable;

@@ -2,11 +2,11 @@ import React from "react";
 import { useHistory } from "react-router";
 import i18n from "../../i18n/i18n";
 import enumPaths from "../../models/enumPaths";
-import { handleFilterRequest, handleDeleteRequest } from "../../actions/HandleManager";
+import { handleFilterRequest } from "../../actions/HandleManager";
 import AlcaldiaRecursosMunicipalesFoldersGenericTable from "./generic/AlcaldiaRecursosMunicipalesFoldersGenericTable";
 import enumTableColumnsToShow from "../../models/enumTableColumnsToShow";
 
-function AlcaldiaRecursosMunicipalesFoldersTableEditDelete () {
+function AlcaldiaRecursosMunicipalesFoldersTable () {
   const tableTitle = i18n.alcaldiaRecursosMunicipalesTable.titleFolders;
   const pageSize = 7;
   const numberPagesToShow = 7;
@@ -21,30 +21,20 @@ function AlcaldiaRecursosMunicipalesFoldersTableEditDelete () {
     handleFilterRequest(`alcaldia-recursos-municipales/filter/size/${pageSize}`, filterBody, setTotalPages);
   }
 
-  function handleDelete (data) {
-    handleDeleteRequest(`alcaldia-recursos-municipales/${data.id}`, undefined, undefined, undefined, true);
-  }
-
-  function handleEdit (data) {
+  function handleSelection (folderSelected) {
     history.push({
-      pathname: enumPaths.ALCALDIA_RECURSOS_MUNICIPALES_FOLDERS_FORM,
+      pathname: enumPaths.ALCALDIA_RECURSOS_MUNICIPALES_TIMBRES_VENTAS_FORM,
       state: {
-        data,
-        edit: true
+        folderSelected
       }
     });
   }
 
   const tableArrayCustomRowButtons = [
     {
-      variant: "warning",
-      handleCustom: handleEdit,
-      text: i18n.commonTable.editButton
-    },
-    {
-      variant: "danger",
-      handleCustom: handleDelete,
-      text: i18n.commonTable.deleteButton
+      variant: "info",
+      handleCustom: handleSelection,
+      text: i18n.commonTable.selectButton
     }
   ];
 
@@ -72,4 +62,4 @@ function AlcaldiaRecursosMunicipalesFoldersTableEditDelete () {
   );
 }
 
-export default AlcaldiaRecursosMunicipalesFoldersTableEditDelete;
+export default AlcaldiaRecursosMunicipalesFoldersTable;

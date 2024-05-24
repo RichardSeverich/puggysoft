@@ -6,7 +6,7 @@ function AlcaldiaRecursosMunicipalesTimbresVentasFormPage () {
   return (
     <div className="form-page-timbres-ventas-form">
       <NavBar></NavBar>
-      <AlcaldiaRecursosMunicipalesTimbresVentasForm/>
+      <AlcaldiaRecursosMunicipalesTimbresVentasForm />
     </div>
   );
 }

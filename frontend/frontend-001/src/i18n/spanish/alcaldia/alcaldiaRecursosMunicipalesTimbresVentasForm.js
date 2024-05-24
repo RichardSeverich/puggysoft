@@ -1,8 +1,11 @@
 const alcaldiaRecursosMunicipalesTimbresVentasForm = {
   title: "Formulario para venta de timbres",
-  subTitle: "Limite: ",
+  titleFolder: "Formulario para venta de folders",
+  subTitle: "Inicio: ",
+  subTitleOne: "Final: ",
   subTitleTwo: "Precio por unidad: ",
-  subTitleThree: "Talonarios restantes: ",
+  subTitleThree: "Restantes: ",
+  subTitleFour: "Actual: ",
   fieldClienteNombre: "Cliente Nombre",
   fieldClienteNombreText: "Minimo 3, maximo 120 caracteres",
   fieldClienteCiNit: "Cliente Ci Nit",

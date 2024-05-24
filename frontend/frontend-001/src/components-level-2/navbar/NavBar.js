@@ -342,8 +342,14 @@ function NavBar () {
   const navigateAlcaldiaRecursosMunicipalesTimbresDescontinuadosTable = () => {
     history.push(enumPaths.ALCALDIA_RECURSOS_MUNICIPALES_TIMBRES_DESCONTINUADOS_TABLE);
   };
-  const navigateAlcaldiaRecursosMunicipaleTimbressVentasForm = () => {
+  const navigateAlcaldiaRecursosMunicipaleTimbresVentasForm = () => {
     history.push(enumPaths.ALCALDIA_RECURSOS_MUNICIPALES_TIMBRES_VENTAS_FORM);
+  };
+  const navigateAlcaldiaRecursosMunicipaleTimbresVentasStep1 = () => {
+    history.push(enumPaths.ALCALDIA_RECURSOS_MUNICIPALES_TIMBRES_VENTAS_STEP_1);
+  };
+  const navigateAlcaldiaRecursosMunicipalesFoldersVentasStep1 = () => {
+    history.push(enumPaths.ALCALDIA_RECURSOS_MUNICIPALES_FOLDERS_VENTAS_STEP_1);
   };
   const navigateAlcaldiaRecursosMunicipalesTimbresVentasTable = () => {
     history.push(enumPaths.ALCALDIA_RECURSOS_MUNICIPALES_TIMBRES_VENTAS_TABLE);
@@ -743,7 +749,9 @@ function NavBar () {
   const recursoMunicipalTimbresDescontinuadosTableLabel = (<><AiOutlineTable /> {i18n.navBar.recursoMunicipalTimbresDescontinuadosTable}</>);
   // VENTA RECURSOS MUNICIPALES TIMBRES
   const recursoMunicipalTimbresVentaAdminLabel = (<><FaCashRegister /> {i18n.navBar.recursoMunicipalTimbresVentalAdmin}</>);
-  const recursoMunicipalTimbresVentaFormLabel = (<><GrAddCircle /> {i18n.navBar.recursoMunicipalTimbresVentaForm}</>);
+  const recursoMunicipalTimbresVentaFormLabel = (<><GrAddCircle /> {i18n.navBar.recursoMunicipalTimbresVentaFormOp1}</>);
+  const recursoMunicipalTimbresVentaFormLabelOp2 = (<><GrAddCircle /> {i18n.navBar.recursoMunicipalTimbresVentaFormOp2}</>);
+  const recursoMunicipalFoldersVentaFormLabel = (<><GrAddCircle /> {i18n.navBar.recursoMunicipalFoldersVentaForm}</>);
   const recursoMunicipalTimbresVentaTableLabel = (<><AiOutlineTable /> {i18n.navBar.recursoMunicipalTimbresVentaTable}</>);
   const recursoActividadesFormLabel = (<><GrAddCircle /> {i18n.navBar.recursoActividadesForm}</>);
   const recursoActividadesTableLabel = (<><AiOutlineTable /> {i18n.navBar.recursoActividadesTable}</>);
@@ -1067,7 +1075,9 @@ function NavBar () {
             userRoles.includes(enumRoles.ALCALDIA_RECURSOS_MUNICIPALES_CAJERO)
           ) &&
             <NavDropdown title={recursoMunicipalTimbresVentaAdminLabel}>
-              <NavDropdown.Item onClick={navigateAlcaldiaRecursosMunicipaleTimbressVentasForm}>{recursoMunicipalTimbresVentaFormLabel}</NavDropdown.Item>
+              <NavDropdown.Item onClick={navigateAlcaldiaRecursosMunicipaleTimbresVentasForm}>{recursoMunicipalTimbresVentaFormLabel}</NavDropdown.Item>
+              <NavDropdown.Item onClick={navigateAlcaldiaRecursosMunicipaleTimbresVentasStep1}>{recursoMunicipalTimbresVentaFormLabelOp2}</NavDropdown.Item>
+              <NavDropdown.Item onClick={navigateAlcaldiaRecursosMunicipalesFoldersVentasStep1}>{recursoMunicipalFoldersVentaFormLabel}</NavDropdown.Item>
               <NavDropdown.Item onClick={navigateAlcaldiaRecursosMunicipalesTimbresVentasTable}>{recursoMunicipalTimbresVentaTableLabel}</NavDropdown.Item>
             </NavDropdown>}
           {userRoles.includes(enumRoles.ALCALDIA_RECURSOS_MUNICIPALES_ENCARGADO) &&
