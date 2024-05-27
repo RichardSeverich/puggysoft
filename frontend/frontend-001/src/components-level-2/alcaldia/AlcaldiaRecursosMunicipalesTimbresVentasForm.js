@@ -28,7 +28,7 @@ import "./../css/all-five-divs-side-by-side.css";
 import "./../css/button-inline.css";
 import enumPaths from "../../models/enumPaths";
 
-function AlcaldiaRecursosMunicipalesTimbresVentasForm () {
+function AlcaldiaRecursosMunicipalesTimbresVentasForm() {
   const history = useHistory();
   const [classNameFormText, setClassNameFormText] =
     useState(classNameFormTextNew);
@@ -44,7 +44,7 @@ function AlcaldiaRecursosMunicipalesTimbresVentasForm () {
   const [messageText, setMessageText] = useState("");
 
   let venta = "";
-  let clienteNombre = "N/A";
+  let clienteNombre = "Sin Nombre";
   let clienteCiNit = "0000000";
   let direccion = "Colcapirhua";
   let nota = "";
@@ -92,6 +92,7 @@ function AlcaldiaRecursosMunicipalesTimbresVentasForm () {
     setIsBlock(true);
   }
   const [valueTimbres, setValueTimbres] = useState(valueTimbresDefault);
+  const [valueTimbresForFolder, setValueTimbresForFolder] = useState(null);
   const [valueHastaTimbre, setValueHastaTimbre] = useState(hastaTimbre);
   // eslint-disable-next-line no-unused-vars
   const [valueVentaPrecioTotal, setValueVentaPrecioTotal] = useState(ventaPrecioTotal);
@@ -105,7 +106,7 @@ function AlcaldiaRecursosMunicipalesTimbresVentasForm () {
   const { value: valueCantidad, onChange: onChangeCantidad } = useInput(nota);
   const { value: valueClienteDinero, onChange: onChangeClienteDinero } = useInput(clienteDinero);
 
-  if (folderSelected === undefined && timbreSelected === undefined) {
+  const selectTimbre = (isForFolder) => {
     const tenant = window.sessionStorage.getItem("tenant");
     const filterBody = {
       nameCriteria: i18n.alcaldiaRecursosMunicipalesTimbresForm.defaultTimbre,
@@ -119,13 +120,17 @@ function AlcaldiaRecursosMunicipalesTimbresVentasForm () {
         if (timbreWork.talonarioInicio !== timbreWork.talonarioMovimiento) {
           timbreWork.talonarioMovimiento++;
         }
-        setValueTimbres(timbreWork);
-        setControlDescontinuados(true);
+        if (isForFolder) {
+          setValueTimbresForFolder(timbreWork);
+        } else {
+          setValueTimbres(timbreWork);
+          setControlDescontinuados(true);
+        }
       } else {
         setIsEmpy(true);
       }
     };
-    if (valueTimbres?.talonarioMovimiento === 0 && isEdit === undefined) {
+    if (isForFolder || (valueTimbres?.talonarioMovimiento === 0 && isEdit === undefined)) {
       handleFilterRequest("alcaldia-recursos-municipales-timbres-ventas", filterBody, afterGetTimbres);
     }
   }
@@ -175,22 +180,29 @@ function AlcaldiaRecursosMunicipalesTimbresVentasForm () {
     [valueClienteNombre, valueClienteCiNit, valueDireccion, valueClienteDinero, valueClienteCambio, valueVentaPrecioTotal, valueCantidad]
   );
 
-  function afterAddTimbreToSaleOnFail () {
+  function afterAddTimbreToSaleOnFail() {
     console.error("error in add producto to sale");
   }
   const handleAfterAdd = function (newEntityId) {
     const body = getBody();
+    if (folderSelected) {
+      const bodyTimbreForFolders = getBody()[1];
+      bodyTimbreForFolders.precioUnidad = valueTimbresForFolder.precio;
+      const cantidadTimbresParaFolders = Number(valueTimbres.folderCantidadTimbres) * Number(body[1].cantidad);
+      bodyTimbreForFolders.cantidad = cantidadTimbresParaFolders;
+      handleAddRequest("alcaldia-recursos-municipales-ventas-detalle/", { ...bodyTimbreForFolders, idVenta: newEntityId }, () => { }, false, afterAddTimbreToSaleOnFail);
+      const bodyRmTimbre = valueTimbresForFolder;
+      bodyRmTimbre.talonarioMovimiento = Number(valueTimbresForFolder.talonarioMovimiento) + cantidadTimbresParaFolders;
+      handleEditRequest("alcaldia-recursos-municipales/", bodyRmTimbre, bodyRmTimbre.id, null, null, false);
+    }
     handleAddRequest("alcaldia-recursos-municipales-ventas-detalle/", { ...body[1], idVenta: newEntityId }, () => { }, false, afterAddTimbreToSaleOnFail);
-    handleEditRequest("alcaldia-recursos-municipales/", body[2], body[2].id, () => { });
+    handleEditRequest("alcaldia-recursos-municipales/", body[2], body[2].id, null, null, false);
     setIsBlock(true);
     setIdVenta(newEntityId);
     setIsRequestInProgress(false);
   };
 
   const handleAdd = (event) => {
-    if (folderSelected) {
-      // TODO: Request para disminuir timbres de acuerdo a la cantidad.
-    }
     event?.preventDefault();
     const body = getBody();
     const isValid = handleValidation(body, setClassNameFormText);
@@ -232,6 +244,14 @@ function AlcaldiaRecursosMunicipalesTimbresVentasForm () {
     const body = getBody();
     handleValidation(body, setClassNameFormText);
   }, [getBody]);
+
+  useEffect(() => {
+    if (folderSelected === undefined && timbreSelected === undefined) {
+      selectTimbre(false);
+    } else if (folderSelected) {
+      selectTimbre(true);
+    }
+  }, []);
 
   useEffect(() => {
     if (isEdit === undefined) {
