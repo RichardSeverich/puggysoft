@@ -17,7 +17,7 @@ public class ServiceAlcaldiaRecursosMunicipalesFoldersGetForRegister {
 
   public ResponseEntity<String> filter() {
 
-    String fullQuery = "SELECT MAX(talonario_final) FROM alcaldia_recursos_municipales WHERE name LIKE 'FOLDERS'";
+    String fullQuery = "SELECT MAX(talonario_final) FROM alcaldia_recursos_municipales WHERE name LIKE '%FOLDERS%'";
 
     Query filterQuery = entityManager.createNativeQuery(fullQuery);
     int count = ((Number) filterQuery.getSingleResult()).intValue();
