@@ -250,7 +250,7 @@ function AlcaldiaRecursosMunicipalesFoldersForm () {
             </Form.Group>
             <Form.Group className="mb-3" controlId="cantidad-timbres">
               <Form.Label>
-                {i18n.alcaldiaRecursosMunicipalesFoldersForm.fieldFoldersFinal}
+                {i18n.alcaldiaRecursosMunicipalesFoldersForm.fieldCantidadTimbres}
               </Form.Label>
               <Form.Control
                 onChange={onChangeCantidadTimbres}
