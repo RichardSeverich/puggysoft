@@ -21,7 +21,7 @@ function AlcaldiaRecursosMunicipalesTimbresVentasTable () {
     handleFilterRequest(`alcaldia-recursos-municipales-timbres-ventas/filter/size/${pageSize}`, filterBody, setTotalPages);
   }
 
-  function handleEdit (data) {
+  function handleSelection (data) {
     history.push({
       pathname: enumPaths.ALCALDIA_RECURSOS_MUNICIPALES_TIMBRES_VENTAS_FORM,
       state: {
@@ -33,9 +33,9 @@ function AlcaldiaRecursosMunicipalesTimbresVentasTable () {
 
   const tableArrayCustomRowButtons = [
     {
-      variant: "success",
-      handleCustom: handleEdit,
-      text: i18n.commonTable.editButton
+      variant: "info",
+      handleCustom: handleSelection,
+      text: i18n.commonTable.selectButton
     }
   ];
 

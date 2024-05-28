@@ -43,7 +43,7 @@ function AsignarCalificacionesStep4 () {
     if (calificacionArray.length > 0) {
       calificacionData = calificacionArray[0];
     }
-    console.log(calificacionData);
+    
     history.push({
       pathname: enumPaths.ESCUELA_ASIGNAR_CALIFICACIONES_STEP_FIVE,
       state: {

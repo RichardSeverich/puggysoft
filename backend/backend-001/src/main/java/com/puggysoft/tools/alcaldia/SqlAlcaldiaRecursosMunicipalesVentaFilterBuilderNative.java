@@ -14,7 +14,7 @@ public final class SqlAlcaldiaRecursosMunicipalesVentaFilterBuilderNative {
   public static String build(DtoAlcaldiaRecursosMunicipalesVentaFilter dtoAlcaldiaRecursosMunicipalesVentaFilter) {
     String query = "";
     query = query
-        + SqlFilterBuilder.getFilterQuery("alcaldia_recursos_municipales_venta.alcaldia_recursos_municipales_venta.id",
+        + SqlFilterBuilder.getFilterQuery("alcaldia_recursos_municipales_venta.id",
             dtoAlcaldiaRecursosMunicipalesVentaFilter.idCriteria,
             dtoAlcaldiaRecursosMunicipalesVentaFilter.idOperator);
     query = query + SqlFilterBuilder.getFilterQuery("alcaldia_recursos_municipales_venta.cliente_nombre",

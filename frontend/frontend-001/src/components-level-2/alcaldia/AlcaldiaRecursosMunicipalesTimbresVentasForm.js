@@ -144,10 +144,18 @@ function AlcaldiaRecursosMunicipalesTimbresVentasForm() {
     function () {
       const username = window.sessionStorage.getItem("username");
       const tenant = window.sessionStorage.getItem("tenant");
-      const nota = i18n.alcaldiaRecursosMunicipalesTimbresVentasForm.fieldTalonarioActual +
+      let nota;
+      if(folderSelected) {
+        nota = i18n.alcaldiaRecursosMunicipalesTimbresVentasForm.fieldTalonarioActualFolder +
+        `  ${valueTimbres.talonarioMovimiento}, ` +
+        i18n.alcaldiaRecursosMunicipalesTimbresVentasForm.fieldTalonarioVentaFolder +
+        `  ${valueHastaTimbre} ${valueDescontinuados.join("-")}`;
+      } else {
+        nota = i18n.alcaldiaRecursosMunicipalesTimbresVentasForm.fieldTalonarioActual +
         `  ${valueTimbres.talonarioMovimiento}, ` +
         i18n.alcaldiaRecursosMunicipalesTimbresVentasForm.fieldTalonarioVenta +
         `  ${valueHastaTimbre} ${valueDescontinuados.join("-")}`;
+      }
       const body = [
         {
           clienteNombre: valueClienteNombre,
@@ -295,7 +303,7 @@ function AlcaldiaRecursosMunicipalesTimbresVentasForm() {
       />
       <Card>
         <Card.Header as="h3">
-          {folderSelected
+          {folderSelected || isEdit.isForFolder
             ? i18n.alcaldiaRecursosMunicipalesTimbresVentasForm.titleFolder
             : i18n.alcaldiaRecursosMunicipalesTimbresVentasForm.title}
         </Card.Header>

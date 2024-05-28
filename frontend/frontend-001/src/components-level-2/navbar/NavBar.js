@@ -360,6 +360,9 @@ function NavBar () {
   const navigateAlcaldiaRecursosMunicipalesFoldersTable = () => {
     history.push(enumPaths.ALCALDIA_RECURSOS_MUNICIPALES_FOLDERS_TABLE);
   };
+  const navigateAlcaldiaRecursosMunicipalesFoldersVentasTable = () => {
+    history.push(enumPaths.ALCALDIA_RECURSOS_MUNICIPALES_FOLDERS_VENTAS_TABLE);
+  };
   const navigateAlcaldiaActividadesForm = () => {
     history.push(enumPaths.ALCALDIA_ACTIVIDADES_FORM);
   };
@@ -751,13 +754,14 @@ function NavBar () {
   const recursoMunicipalTimbresVentaAdminLabel = (<><FaCashRegister /> {i18n.navBar.recursoMunicipalTimbresVentalAdmin}</>);
   const recursoMunicipalTimbresVentaFormLabel = (<><GrAddCircle /> {i18n.navBar.recursoMunicipalTimbresVentaFormOp1}</>);
   const recursoMunicipalTimbresVentaFormLabelOp2 = (<><GrAddCircle /> {i18n.navBar.recursoMunicipalTimbresVentaFormOp2}</>);
-  const recursoMunicipalFoldersVentaFormLabel = (<><GrAddCircle /> {i18n.navBar.recursoMunicipalFoldersVentaForm}</>);
   const recursoMunicipalTimbresVentaTableLabel = (<><AiOutlineTable /> {i18n.navBar.recursoMunicipalTimbresVentaTable}</>);
   const recursoActividadesFormLabel = (<><GrAddCircle /> {i18n.navBar.recursoActividadesForm}</>);
   const recursoActividadesTableLabel = (<><AiOutlineTable /> {i18n.navBar.recursoActividadesTable}</>);
   // RECURSOS MUNICIPALES FOLDERS
   const recursoMunicipalFoldersFormLabel = (<><FaFolderPlus /> {i18n.navBar.recursoMunicipalFoldersForm}</>);
   const recursoMunicipalFoldersTableLabel = (<><MdFolderCopy /> {i18n.navBar.recursoMunicipalFoldersTable}</>);
+  const recursoMunicipalFoldersVentaFormLabel = (<><FaFolderPlus /> {i18n.navBar.recursoMunicipalFoldersVentaForm}</>);
+  const recursoMunicipalFoldersVentaTableLabel = (<><MdFolderCopy /> {i18n.navBar.recursoMunicipalFoldersVentaTable}</>);
   // REPORTES RECURSOS MUNICIPALES
   const recursoMunicipalReporteAdminLabel = (<><BsFillBarChartFill /> {i18n.navBar.recursoMunicipalReporteAdmin}</>);
   const recursoMunicipalReporteCortoDiarioLabel = (<><FaChartLine /> {i18n.navBar.recursoMunicipalReporteCortoDiario}</>);
@@ -1077,8 +1081,9 @@ function NavBar () {
             <NavDropdown title={recursoMunicipalTimbresVentaAdminLabel}>
               <NavDropdown.Item onClick={navigateAlcaldiaRecursosMunicipaleTimbresVentasForm}>{recursoMunicipalTimbresVentaFormLabel}</NavDropdown.Item>
               <NavDropdown.Item onClick={navigateAlcaldiaRecursosMunicipaleTimbresVentasStep1}>{recursoMunicipalTimbresVentaFormLabelOp2}</NavDropdown.Item>
-              <NavDropdown.Item onClick={navigateAlcaldiaRecursosMunicipalesFoldersVentasStep1}>{recursoMunicipalFoldersVentaFormLabel}</NavDropdown.Item>
               <NavDropdown.Item onClick={navigateAlcaldiaRecursosMunicipalesTimbresVentasTable}>{recursoMunicipalTimbresVentaTableLabel}</NavDropdown.Item>
+              <NavDropdown.Item onClick={navigateAlcaldiaRecursosMunicipalesFoldersVentasStep1}>{recursoMunicipalFoldersVentaFormLabel}</NavDropdown.Item>
+              <NavDropdown.Item onClick={navigateAlcaldiaRecursosMunicipalesFoldersVentasTable}>{recursoMunicipalFoldersVentaTableLabel}</NavDropdown.Item>
             </NavDropdown>}
           {userRoles.includes(enumRoles.ALCALDIA_RECURSOS_MUNICIPALES_ENCARGADO) &&
             <NavDropdown title={recursoMunicipalReporteAdminLabel}>
