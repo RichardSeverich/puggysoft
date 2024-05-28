@@ -28,7 +28,6 @@ function UserDetails (props) {
 
   const [classNameFormText, setClassNameFormText] = useState(classNameFormTextNew);
   const [isRequestInProgress, setIsRequestInProgress] = useState(false);
-  console.log(classNameFormText);
   // const [isProgressRequest, setIsProgressRequest] = useState(false);
   // Message states
   const [isMessageVisible, setIsMessageVisible] = useState(false);

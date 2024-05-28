@@ -189,6 +189,7 @@ const navBar = {
   // Recurso Municipal Folders
   recursoMunicipalFoldersForm: "Registrar Lote de Folders",
   recursoMunicipalFoldersTable: "Mostrar Folders",
+  recursoMunicipalFoldersVentaTable: "Mostrar ventas folders",
   // Venta Recursos Municipales Timbres
   recursoMunicipalTimbresVentalAdmin: "Adm. Caja Timbres & Folders",
   recursoMunicipalTimbresVentaFormOp1: "Registrar venta timbres (Opcion 1)",

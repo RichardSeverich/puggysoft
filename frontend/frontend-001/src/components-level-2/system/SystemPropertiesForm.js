@@ -24,8 +24,6 @@ function SystemPropertiesForm () {
     ? history.location.state.systemPropertyData
     : { id: "", name: "", value: "" };
 
-  console.log("ACA RICHAR CARAJO");
-  console.log({ systemPropertyData });
   // Use custom hook
   const { value: valueName, onChange: onChangeName, reset: resetName } = useInput(systemPropertyData.name);
   const { value: valueValue, onChange: onChangeValue, reset: resetValue } = useInput(systemPropertyData.value);

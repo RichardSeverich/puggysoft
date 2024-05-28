@@ -4,9 +4,9 @@ import TableFilterGeneric from "../../generic/TableFilterGeneric";
 import useInput from "../../../hooks/useInput";
 import enumCompareOperators from "../../../models/enumCompareOperators";
 import enumTableColumnsToShow from "../../../models/enumTableColumnsToShow";
-import alcaldiaRecursosMunicipalesTimbresVentasTableModels from "../../../models/alcaldia/alcaldiaRecursosMunicipalesTimbresVentasTableModels";
+import alcaldiaRecursosMunicipalesFoldersVentasTableModels from "../../../models/alcaldia/alcaldiaRecursosMunicipalesFoldersVentasTableModels";
 
-function AlcaldiaRecursosMunicipalesTimbresVentasGenericTable (props) {
+function AlcaldiaRecursosMunicipalesFoldersVentasGenericTable (props) {
   const {
     numberPagesToShow,
     tableTitle,
@@ -49,7 +49,7 @@ function AlcaldiaRecursosMunicipalesTimbresVentasGenericTable (props) {
   const { value: operatorCreatedDate, onChange: operatorOnChangeCreatedDate, setValue: operatorSetCreatedDate } = useInput(enumCompareOperators.DATE_EQUALS);
   const { value: operatorUpdatedDate, onChange: operatorOnChangeUpdatedDate, setValue: operatorSetUpdatedDate } = useInput(enumCompareOperators.DATE_EQUALS);
 
-  const { arrayColumnsFilter, clearFilters, getFilterBody, arrayColumnsLabels, arrayDataFields } = alcaldiaRecursosMunicipalesTimbresVentasTableModels(
+  const { arrayColumnsFilter, clearFilters, getFilterBody, arrayColumnsLabels, arrayDataFields } = alcaldiaRecursosMunicipalesFoldersVentasTableModels(
     columnsToShow,
     /* ID */ criteriaId, criteriaOnChangeId, criteriaSetId, operatorId, operatorOnChangeId, operatorSetId,
     /* CLIENTE NOMBRE */ criteriaClienteNombre, criteriaOnChangeClienteNombre, criteriaSetClienteNombre, operatorClienteNombre, operatorOnChangeClienteNombre, operatorSetClienteNombre,
@@ -85,9 +85,9 @@ function AlcaldiaRecursosMunicipalesTimbresVentasGenericTable (props) {
   );
 }
 
-export default AlcaldiaRecursosMunicipalesTimbresVentasGenericTable;
+export default AlcaldiaRecursosMunicipalesFoldersVentasGenericTable;
 
-AlcaldiaRecursosMunicipalesTimbresVentasGenericTable.propTypes = {
+AlcaldiaRecursosMunicipalesFoldersVentasGenericTable.propTypes = {
   numberPagesToShow: PropTypes.number,
   tableTitle: PropTypes.string,
   tableSubTitle: PropTypes.string,
@@ -101,7 +101,7 @@ AlcaldiaRecursosMunicipalesTimbresVentasGenericTable.propTypes = {
   ])
 };
 
-AlcaldiaRecursosMunicipalesTimbresVentasGenericTable.defaultProps = {
+AlcaldiaRecursosMunicipalesFoldersVentasGenericTable.defaultProps = {
   numberPagesToShow: 0,
   tableTitle: "",
   tableSubTitle: undefined,
