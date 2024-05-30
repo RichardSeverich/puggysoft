@@ -303,7 +303,7 @@ function AlcaldiaRecursosMunicipalesTimbresVentasForm() {
       />
       <Card>
         <Card.Header as="h3">
-          {folderSelected || isEdit.isForFolder
+          {folderSelected || isEdit?.isForFolder
             ? i18n.alcaldiaRecursosMunicipalesTimbresVentasForm.titleFolder
             : i18n.alcaldiaRecursosMunicipalesTimbresVentasForm.title}
         </Card.Header>
