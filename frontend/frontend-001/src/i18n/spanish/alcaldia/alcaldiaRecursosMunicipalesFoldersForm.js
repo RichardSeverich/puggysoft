@@ -5,7 +5,7 @@ const alcaldiaRecursosMunicipalesFoldersForm = {
   defaultCodigoAuxiliar: "122000-003",
   fieldTalonarioInicio: "Talonario inicio",
   fieldFoldersInicio: "Folder inicio",
-  fieldTalonarioInicioText: "Numero mayor que 0",
+  fieldTalonarioInicioText: "Numero menor que folder final",
   fieldTalonarioFinal: "Talonario final",
   fieldFoldersFinal: "Folder final",
   fieldCantidadTimbres: "Cantidad Timbres",

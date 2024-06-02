@@ -3,6 +3,7 @@ const arrayDataFields = [
   "clienteNombre",
   "clienteCiNit",
   "direccion",
+  "glosa",
   "nota",
   "ventaStatus",
   "ventaPrecioTotal",

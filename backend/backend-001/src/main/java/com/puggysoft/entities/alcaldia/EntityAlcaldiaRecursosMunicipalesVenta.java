@@ -30,6 +30,8 @@ public class EntityAlcaldiaRecursosMunicipalesVenta extends EntitySuperClass {
   private String clienteDinero;
   @Column(name = "cliente_cambio")
   private String clienteCambio;
+  @Column(name = "glosa")
+  private String glosa;
   @Column(name = "tenant")
   private String tenant;
 

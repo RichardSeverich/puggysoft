@@ -30,6 +30,12 @@ const alcaldiaRecursosMunicipalesVentasTableModels = function (
   operatorDireccion,
   operatorOnChangeDireccion,
   operatorSetDireccion,
+  /* GLOSA */ criteriaGlosa,
+  criteriaOnChangeGlosa,
+  criteriaSetGlosa,
+  operatorGlosa,
+  operatorOnChangeGlosa,
+  operatorSetGlosa,
   /* NOTA */ criteriaNota,
   criteriaOnChangeNota,
   criteriaSetNota,
@@ -104,6 +110,10 @@ const alcaldiaRecursosMunicipalesVentasTableModels = function (
     criteriaOnChangeDireccion,
     operatorDireccion,
     operatorOnChangeDireccion,
+    /* GLOSA */ criteriaGlosa,
+    criteriaOnChangeGlosa,
+    operatorGlosa,
+    operatorOnChangeGlosa,
     /* NOTA */ criteriaNota,
     criteriaOnChangeNota,
     operatorNota,
@@ -147,6 +157,7 @@ const alcaldiaRecursosMunicipalesVentasTableModels = function (
     operatorSetClienteNombre(enumCompareOperators.TEXT_CONTAINS);
     operatorSetClienteCiNit(enumCompareOperators.NUMBER_EQUALS);
     operatorSetDireccion(enumCompareOperators.TEXT_CONTAINS);
+    operatorSetGlosa(enumCompareOperators.TEXT_CONTAINS);
     operatorSetNota(enumCompareOperators.TEXT_CONTAINS);
     operatorSetVentaStatus(enumCompareOperators.TEXT_CONTAINS);
     operatorSetVentaPrecioTotal(enumCompareOperators.NUMBER_EQUALS);
@@ -163,6 +174,7 @@ const alcaldiaRecursosMunicipalesVentasTableModels = function (
     criteriaSetClienteNombre("");
     criteriaSetClienteCiNit("");
     criteriaSetDireccion("");
+    criteriaSetGlosa("");
     criteriaSetNota("");
     criteriaSetVentaStatus("");
     criteriaSetVentaPrecioTotal("");
@@ -211,6 +223,8 @@ const alcaldiaRecursosMunicipalesVentasTableModels = function (
       clienteCiNitOperator: operatorClienteCiNit,
       direccionCriteria: criteriaDireccion,
       direccionOperator: operatorDireccion,
+      glosaCriteria: criteriaGlosa,
+      glosaOperator: operatorGlosa,
       notaCriteria: criteriaNota,
       notaOperator: operatorNota,
       ventaStatusCriteria: criteriaVentaStatus,

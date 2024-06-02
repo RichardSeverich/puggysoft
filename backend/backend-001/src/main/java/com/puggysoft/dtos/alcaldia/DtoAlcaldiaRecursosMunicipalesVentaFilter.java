@@ -37,6 +37,9 @@ public class DtoAlcaldiaRecursosMunicipalesVentaFilter {
   // CLIENTE CAMBIO
   public String clienteCambioCriteria;
   public EnumCompareOperator clienteCambioOperator;
+  // GLOSA
+  public String glosaCriteria;
+  public EnumCompareOperator glosaOperator;
   // TENANT
   public String tenantCriteria;
   public EnumCompareOperator tenantOperator;

@@ -1,5 +1,6 @@
 const commonForm = {
   saveButton: "Guardar",
+  savedButton: "Guardado",
   okButton: "Aceptar"
 };
 

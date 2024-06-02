@@ -5,7 +5,7 @@ const alcaldiaRecursosMunicipalesTimbresForm = {
   defaultCodigoAuxiliar: "122000-003",
   fieldTalonarioInicio: "Talonario inicio",
   fieldTimbresInicio: "Timbre inicio",
-  fieldTalonarioInicioText: "Numero mayor igual a 0",
+  fieldTalonarioInicioText: "Numero menor a talonario final",
   fieldTalonarioFinal: "Talonario final",
   fieldTimbresFinal: "Timbre final",
   fieldTalonarioFinalText: "Numero mayor a talonario inicio",
