@@ -51,11 +51,13 @@ const GeneratePdf = (data, body) => {
   doc.setFontSize(7);
   let fecha = [];
   let amPm;
+  let dateForName;
   if (body.valueCreationDate === undefined) {
     fecha = dateConvert(now.split(",")[0]).split(" ");
+    dateForName = now.split(",")[0];
   } else {
-    //fecha = dateConvert(body.valueCreationDate.split("T")[0]).split(" ");
     const dateParts = body.valueCreationDate.split("T");
+    dateForName = dateParts[0];
     creationTime = dateParts[1].substring(0, 5);
     fecha = dateConvert(dateParts[0]).split(" ");
     const hora = Number(creationTime.split(":")[0]);
@@ -68,6 +70,7 @@ const GeneratePdf = (data, body) => {
   doc.text(12.3, 16.4, amPm);
 
   doc.output("dataurlnewwindow");
+  doc.save(`${dateForName}-venta-${body.idVenta}.pdf`);
 };
 
 const dateConvert = (dateFirst) => {

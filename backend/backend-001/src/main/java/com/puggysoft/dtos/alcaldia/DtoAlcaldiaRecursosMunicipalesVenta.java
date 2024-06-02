@@ -28,6 +28,8 @@ public class DtoAlcaldiaRecursosMunicipalesVenta extends DtoSuperClass {
   private String clienteDinero;
   @NotNull
   private String clienteCambio;
+  //@NotNull
+  private String glosa;
   @NotNull
   private String tenant;
 
@@ -44,6 +46,7 @@ public class DtoAlcaldiaRecursosMunicipalesVenta extends DtoSuperClass {
     entity.setVentaPrecioTotal(ventaPrecioTotal);
     entity.setClienteDinero(clienteDinero);
     entity.setClienteCambio(clienteCambio);
+    entity.setGlosa(glosa);
     entity.setTenant(tenant);
     entity.setCreatedBy(createdBy);
     entity.setUpdatedBy(updatedBy);
@@ -63,6 +66,7 @@ public class DtoAlcaldiaRecursosMunicipalesVenta extends DtoSuperClass {
     dto.setVentaPrecioTotal(entity.getVentaPrecioTotal());
     dto.setClienteDinero(entity.getClienteDinero());
     dto.setClienteCambio(entity.getClienteCambio());
+    dto.setGlosa(entity.getGlosa());
     dto.setTenant(entity.getTenant());
     dto.setCreatedBy(entity.getCreatedBy());
     dto.setUpdatedBy(entity.getUpdatedBy());

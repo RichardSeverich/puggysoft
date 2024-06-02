@@ -1,9 +1,12 @@
+import regexVars from "../../tools/regexVars";
+
 const classNameRed = "puggysoft-red-text";
 
 const classNameFormTextNew = {
   clienteNombre: classNameRed,
   clienteCiNit: classNameRed,
   direccion: classNameRed,
+  glosa: classNameRed,
   ventaStatus: classNameRed,
   ventaPrecioTotal: classNameRed,
   clienteDinero: classNameRed,
@@ -34,6 +37,12 @@ const handleValidation = (data, setClassNameFormText) => {
   } else {
     classNameFormTextNew.direccion = "";
   }
+  if (!(data.glosa.length <= 150)) {
+    isValid = false;
+    classNameFormTextNew.glosa = classNameRed;
+  } else {
+    classNameFormTextNew.glosa = "";
+  }
   if (!(data.ventaStatus.length >= 5 && data.ventaStatus.length <= 10)) {
     isValid = false;
     classNameFormTextNew.ventaStatus = classNameRed;
@@ -52,7 +61,7 @@ const handleValidation = (data, setClassNameFormText) => {
   if (!(data.clienteDinero.length >= 1 && data.clienteDinero.length <= 11)) {
     isValid = false;
     classNameFormTextNew.clienteDinero = classNameRed;
-  } else if (!/^\d+(\.\d{1,2})?$/.test(data.clienteDinero)) {
+  } else if (!(regexVars.REGEX_DECIMAL_NUMBER.test(data.clienteDinero) && data.clienteCambio >= 0)) {
     isValid = false;
     classNameFormTextNew.clienteDinero = classNameRed;
   } else {

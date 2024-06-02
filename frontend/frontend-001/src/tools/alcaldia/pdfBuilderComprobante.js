@@ -32,25 +32,29 @@ const GeneratePdf = (data, body) => {
   doc.text(3.7, 4.6, ` ${nombre}`);
   doc.text(2.6, 5.4, ` ${body.direccion}`);
   doc.text(2.6, 5.9, ` ${body.nota}`);
-  
+
   let y = 8.5;
   for (let index = 0; index < data.length; index++) {
     const element = data[index];
     doc.text(1.4, y, ` ${element.codigo}`);
     doc.text(3.3, y, ` ${element.name}`);
-    doc.text(13.2, y, ` ${element.precio}`);
+    doc.text(13.2, y, ` ${Number(element.precio).toFixed(2)}`);
     y = y + 0.4;
   }
+  doc.text(3.3, y + 0.8, ` ${"GLOSA: " + body.glosa}`);
 
   doc.text(13.2, 15.1, ` ${body.ventaPrecioTotal}`);
   doc.text(2, 15.1, NumeroALetras(body.ventaPrecioTotal));
   let fecha = [];
   let creationTime;
   let amPm;
+  let dateForName;
   if (body.valueCreationDate === undefined) {
     fecha = dateConvert(now.split(",")[0]).split(" ");
+    dateForName = now.split(",")[0];
   } else {
     const dateParts = body.valueCreationDate.split("T");
+    dateForName = dateParts[0];
     creationTime = dateParts[1].substring(0, 5);
     fecha = dateConvert(dateParts[0]).split(" ");
     const hora = Number(creationTime.split(":")[0]);
@@ -64,6 +68,7 @@ const GeneratePdf = (data, body) => {
   doc.text(12.3, 16.4, amPm);
 
   doc.output("dataurlnewwindow");
+  doc.save(`${dateForName}-venta-${body.idVenta}.pdf`);
 };
 
 const dateConvert = (dateFirst) => {

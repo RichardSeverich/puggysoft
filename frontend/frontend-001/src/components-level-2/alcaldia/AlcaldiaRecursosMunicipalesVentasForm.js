@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useEffect, useState, useCallback, useRef } from "react";
 import { useHistory } from "react-router";
 
 import Form from "react-bootstrap/Form";
@@ -25,6 +25,7 @@ import CommonMessage from "../../components-level-1/CommonMessage";
 import "./../css/all-forms.css";
 import "./../css/all-two-divs-side-by-side.css";
 import "./../css/all-five-divs-side-by-side.css";
+import "./../css/all-six-divs-side-by-side.css";
 import "./../css/button-inline.css";
 import AlcaldiaRecursosMunicipalesTableAddSale from "./AlcaldiaRecursosMunicipalesTableAddSale";
 import AlcaldiaRecursosMunicipalesTableDeleteSale from "./AlcaldiaRecursosMunicipalesTableDeleteSale";
@@ -34,6 +35,9 @@ function AlcaldiaRecursosMunicipalesVentasForm() {
   const isEditDefaultValue =
     history && history.location && history.location.state;
   const [isEdit] = useState(isEditDefaultValue);
+  const [isSaleSaved, setIsSaleSaved] = useState(isEdit ? true : false);
+  const [isSaleSavedCounter, setIsSaleSavedCounter] = useState(0);
+  const [isSaveButtonDisabled, setIsSaveButtonDisabled] = useState(false);
   const [classNameFormText, setClassNameFormText] =
     useState(classNameFormTextNew);
   const [isRequestInProgress, setIsRequestInProgress] = useState(false);
@@ -67,6 +71,10 @@ function AlcaldiaRecursosMunicipalesVentasForm() {
     isEdit && isEdit.data.clienteCiNit !== null ? isEdit.data.clienteCiNit : "0000000";
   const direccion =
     isEdit && isEdit.data.direccion !== null ? isEdit.data.direccion : "Colcapirhua";
+
+  const glosa =
+    isEdit && isEdit.data.glosa !== null ? isEdit.data.glosa : "";
+
   const nota = isEdit && isEdit.data.nota !== null ? isEdit.data.nota : "";
   const ventaStatus =
     isEdit && isEdit.data.ventaStatus !== null
@@ -86,6 +94,8 @@ function AlcaldiaRecursosMunicipalesVentasForm() {
     useInput(clienteCiNit);
   const { value: valueDireccion, onChange: onChangeDireccion } =
     useInput(direccion);
+  const { value: valueGlosa, onChange: onChangeGlosa } =
+    useInput(glosa);
   const [valueNota, setValueNota] = useState(nota);
   const { value: valueVentaStatus, onChange: onChangeVentaStatus } =
     useInput(ventaStatus);
@@ -98,6 +108,7 @@ function AlcaldiaRecursosMunicipalesVentasForm() {
         clienteNombre: valueClienteNombre,
         clienteCiNit: valueClienteCiNit,
         direccion: valueDireccion,
+        glosa: valueGlosa,
         nota: valueNota,
         ventaStatus: valueVentaStatus,
         ventaPrecioTotal: valueVentaPrecioTotal,
@@ -113,6 +124,7 @@ function AlcaldiaRecursosMunicipalesVentasForm() {
       valueClienteNombre,
       valueClienteCiNit,
       valueDireccion,
+      valueGlosa,
       valueNota,
       valueVentaStatus,
       valueVentaPrecioTotal,
@@ -121,14 +133,14 @@ function AlcaldiaRecursosMunicipalesVentasForm() {
     ]
   );
 
-  const handleAfterGetById = function(newVenta) {
+  const handleAfterGetById = function (newVenta) {
     setValueCreationDate(newVenta.creationDate);
     setVerDetalles(true);
     setIsRequestInProgress(false);
     setIsButtonComprobanteDisabled(false);
   }
 
-  const handleGetById = function(rmId) {
+  const handleGetById = function (rmId) {
     handleGetRequest(`alcaldia-recursos-municipales-ventas/${rmId}`, handleAfterGetById, null, false);
   }
 
@@ -152,6 +164,7 @@ function AlcaldiaRecursosMunicipalesVentasForm() {
     }
     const isValid = handleValidation(body, setClassNameFormText);
     if (isValid) {
+      setIsSaleSavedCounter(isSaleSavedCounter + 1);
       setIsRequestInProgress(true);
       if (verDetalles) {
         handleEditRequest(
@@ -193,6 +206,9 @@ function AlcaldiaRecursosMunicipalesVentasForm() {
       tenantOperator: enumCompareOperators.TEXT_EQUALS
     };
     handleFilterRequest(`alcaldia/filter-by-ventas-id?ventasId=${idVenta}`, filterBody, afterDataComprobante);
+    setTimeout(() => {
+      window.location.reload();
+    }, 1000);
   };
 
   useEffect(() => {
@@ -201,11 +217,20 @@ function AlcaldiaRecursosMunicipalesVentasForm() {
   }, [getBody]);
 
   useEffect(() => {
+    if (isSaleSavedCounter === 2) {
+      setIsSaleSaved(true);
+    }
+    if (isSaleSavedCounter === 1 && !isEdit) {
+      setIsSaveButtonDisabled(true);
+    }
+  }, [isSaleSavedCounter]);
+
+  useEffect(() => {
     if (ignore) {
       setIgnore(false);
     } else if (verDetalles) {
       onChangeClienteDinero(valueClienteDinero);
-      handleAdd(undefined, true);
+      // handleAdd(undefined, true);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [valueVentaPrecioTotal]);
@@ -345,7 +370,7 @@ function AlcaldiaRecursosMunicipalesVentasForm() {
           </div>
           <div className="puggysoft-five-divs-side-by-side-child-container">
             {verDetalles && (
-              <div className="puggysoft-five-divs-side-by-side-child">
+              <div className="puggysoft-six-divs-side-by-side-child">
                 <Form.Group className="mb-3" controlId="ventaPrecioTotal">
                   <Form.Label>
                     {
@@ -375,7 +400,7 @@ function AlcaldiaRecursosMunicipalesVentasForm() {
               </div>
             )}
             {verDetalles && (
-              <div className="puggysoft-five-divs-side-by-side-child">
+              <div className="puggysoft-six-divs-side-by-side-child">
                 <Form.Group className="mb-3" controlId="clienteDinero">
                   <Form.Label>
                     {
@@ -404,7 +429,7 @@ function AlcaldiaRecursosMunicipalesVentasForm() {
               </div>
             )}
             {verDetalles && (
-              <div className="puggysoft-five-divs-side-by-side-child">
+              <div className="puggysoft-six-divs-side-by-side-child">
                 <Form.Group className="mb-3" controlId="clienteCambio">
                   <Form.Label>
                     {
@@ -430,28 +455,51 @@ function AlcaldiaRecursosMunicipalesVentasForm() {
                 </Form.Group>
               </div>
             )}
-            <div className="puggysoft-five-divs-side-by-side-child">
+            {verDetalles && (
+              <div className="puggysoft-six-divs-side-by-side-child">
+                <Form.Group className="mb-3" controlId="glosa">
+                  <Form.Label>
+                    {i18n.alcaldiaRecursosMunicipalesVentasForm.fieldGlosa}
+                  </Form.Label>
+                  <Form.Control
+                    onChange={onChangeGlosa}
+                    value={valueGlosa}
+                    as="textarea"
+                    placeholder={
+                      i18n.alcaldiaRecursosMunicipalesVentasForm.fieldGlosa
+                    }
+                  />
+                  <Form.Text muted className={classNameFormText.glosa}>
+                    {
+                      i18n.alcaldiaRecursosMunicipalesVentasForm
+                        .fieldGlosaText
+                    }
+                  </Form.Text>
+                </Form.Group>
+              </div>
+            )}
+            <div className="puggysoft-six-divs-side-by-side-child">
               <Button
+                disabled={isSaveButtonDisabled}
                 onClick={handleAdd}
-                variant="primary"
+                variant={isSaleSaved ? "success" : "primary"}
                 type="button"
                 className="puggysoft-button-inline"
               >
-                {i18n.commonForm.saveButton}
+                {isSaleSaved ? i18n.commonForm.savedButton : i18n.commonForm.saveButton}
               </Button>
             </div>
-            <div className="puggysoft-five-divs-side-by-side-child">
+            <div className="puggysoft-six-divs-side-by-side-child">
               <Button
-                disabled={isButtonComprobanteDisabled}
+                disabled={isButtonComprobanteDisabled || !isSaleSaved}
                 onClick={handleComprobante}
-                variant="success"
+                variant={isSaleSaved ? "success" : "primary"}
                 type="button"
                 className="puggysoft-button-inline"
               >
                 {i18n.alcaldiaRecursosMunicipalesVentasForm.buttonComprobante}
               </Button>
             </div>
-            <div className="puggysoft-five-divs-side-by-side-child"></div>
           </div>
         </Card.Body>
       </Card>
@@ -465,7 +513,7 @@ function AlcaldiaRecursosMunicipalesVentasForm() {
               handleChangeData={handleChangeData}
               setValueVentaPrecioTotal={setValueVentaPrecioTotal}
               setValueClienteCambio={setValueClienteCambio}
-              handleAdd={handleAdd}
+              setIsSaveButtonDisabled={setIsSaveButtonDisabled}
             />
           </div>
           <div className="puggysoft-two-divs-side-by-side-child">
@@ -476,7 +524,6 @@ function AlcaldiaRecursosMunicipalesVentasForm() {
               setValueVentaPrecioTotal={setValueVentaPrecioTotal}
               setValueClienteCambio={setValueClienteCambio}
               handleChangeData={handleChangeData}
-              handleAdd={handleAdd}
             />
           </div>
         </div>

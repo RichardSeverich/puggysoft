@@ -74,8 +74,7 @@ AlcaldiaRecursosMunicipalesTableDeleteSale.propTypes = {
   setValueClienteCambio: PropTypes.func,
   valueVentaPrecioTotal: PropTypes.number,
   valueClienteCambio: PropTypes.number,
-  handleChangeData: PropTypes.func,
-  handleAdd: PropTypes.func
+  handleChangeData: PropTypes.func
 };
 
 AlcaldiaRecursosMunicipalesTableDeleteSale.defaultProps = {
@@ -86,6 +85,5 @@ AlcaldiaRecursosMunicipalesTableDeleteSale.defaultProps = {
   setValueClienteCambio: () => {},
   valueVentaPrecioTotal: 0,
   valueClienteCambio: 0,
-  handleChangeData: () => {},
-  handleAdd: () => {}
+  handleChangeData: () => {}
 };

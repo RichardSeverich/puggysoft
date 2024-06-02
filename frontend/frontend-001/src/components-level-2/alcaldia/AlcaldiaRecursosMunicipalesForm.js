@@ -176,7 +176,7 @@ function AlcaldiaRecursosMunicipalesForm () {
                 type="text"
                 placeholder={i18n.alcaldiaRecursosMunicipalesForm.fieldCodigo}
               />
-              <Form.Text muted>
+              <Form.Text muted className={classNameFormText.codigo}>
                 {i18n.alcaldiaRecursosMunicipalesForm.fieldCodigoText}
               </Form.Text>
             </Form.Group>
@@ -190,7 +190,7 @@ function AlcaldiaRecursosMunicipalesForm () {
                 type="text"
                 placeholder={i18n.alcaldiaRecursosMunicipalesForm.fieldCodigoAuxiliar}
               />
-              <Form.Text muted>
+              <Form.Text muted className={classNameFormText.codigoAuxiliar}>
                 {i18n.alcaldiaRecursosMunicipalesForm.fieldCodigoAuxiliarText}
               </Form.Text>
             </Form.Group>
@@ -222,7 +222,7 @@ function AlcaldiaRecursosMunicipalesForm () {
                 {i18n.alcaldiaRecursosMunicipalesForm.fieldPrecioText}
               </Form.Text>
             </Form.Group>
-            <Form.Group className="mb-3" controlId="sex">
+            <Form.Group className="mb-3" controlId="tipo">
               <Form.Label>{i18n.alcaldiaRecursosMunicipalesForm.fieldTipo}</Form.Label>
               <Form.Select
                 onChange={onChangeTipo}

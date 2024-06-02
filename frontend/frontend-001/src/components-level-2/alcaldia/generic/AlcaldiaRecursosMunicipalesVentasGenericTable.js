@@ -22,6 +22,7 @@ function AlcaldiaRecursosMunicipalesVentasGenericTable (props) {
   const { value: criteriaClienteNombre, onChange: criteriaOnChangeClienteNombre, setValue: criteriaSetClienteNombre } = useInput("");
   const { value: criteriaClienteCiNit, onChange: criteriaOnChangeClienteCiNit, setValue: criteriaSetClienteCiNit } = useInput("");
   const { value: criteriaDireccion, onChange: criteriaOnChangeDireccion, setValue: criteriaSetDireccion } = useInput("");
+  const { value: criteriaGlosa, onChange: criteriaOnChangeGlosa, setValue: criteriaSetGlosa } = useInput("");
   const { value: criteriaNota, onChange: criteriaOnChangeNota, setValue: criteriaSetNota } = useInput("");
   const { value: criteriaVentaStatus, onChange: criteriaOnChangeVentaStatus, setValue: criteriaSetVentaStatus } = useInput("");
   const { value: criteriaVentaPrecioTotal, onChange: criteriaOnChangeVentaPrecioTotal, setValue: criteriaSetVentaPrecioTotal } = useInput("");
@@ -37,6 +38,7 @@ function AlcaldiaRecursosMunicipalesVentasGenericTable (props) {
   const { value: operatorClienteNombre, onChange: operatorOnChangeClienteNombre, setValue: operatorSetClienteNombre } = useInput(enumCompareOperators.TEXT_CONTAINS);
   const { value: operatorClienteCiNit, onChange: operatorOnChangeClienteCiNit, setValue: operatorSetClienteCiNit } = useInput(enumCompareOperators.NUMBER_EQUALS);
   const { value: operatorDireccion, onChange: operatorOnChangeDireccion, setValue: operatorSetDireccion } = useInput(enumCompareOperators.TEXT_CONTAINS);
+  const { value: operatorGlosa, onChange: operatorOnChangeGlosa, setValue: operatorSetGlosa } = useInput(enumCompareOperators.TEXT_CONTAINS);
   const { value: operatorNota, onChange: operatorOnChangeNota, setValue: operatorSetNota } = useInput(enumCompareOperators.TEXT_CONTAINS);
   const { value: operatorVentaStatus, onChange: operatorOnChangeVentaStatus, setValue: operatorSetVentaStatus } = useInput(enumCompareOperators.TEXT_EQUALS);
   const { value: operatorVentaPrecioTotal, onChange: operatorOnChangeVentaPrecioTotal, setValue: operatorSetVentaPrecioTotal } = useInput(enumCompareOperators.NUMBER_EQUALS);
@@ -53,6 +55,7 @@ function AlcaldiaRecursosMunicipalesVentasGenericTable (props) {
     /* CLIENTE NOMBRE */ criteriaClienteNombre, criteriaOnChangeClienteNombre, criteriaSetClienteNombre, operatorClienteNombre, operatorOnChangeClienteNombre, operatorSetClienteNombre,
     /* CLIENTE CI NIT */criteriaClienteCiNit, criteriaOnChangeClienteCiNit, criteriaSetClienteCiNit, operatorClienteCiNit, operatorOnChangeClienteCiNit, operatorSetClienteCiNit,
     /* DIRECCION */criteriaDireccion, criteriaOnChangeDireccion, criteriaSetDireccion, operatorDireccion, operatorOnChangeDireccion, operatorSetDireccion,
+    /* GLOSA */criteriaGlosa, criteriaOnChangeGlosa, criteriaSetGlosa, operatorGlosa, operatorOnChangeGlosa, operatorSetGlosa,
     /* NOTA */criteriaNota, criteriaOnChangeNota, criteriaSetNota, operatorNota, operatorOnChangeNota, operatorSetNota,
     /* VENTA STATUS */criteriaVentaStatus, criteriaOnChangeVentaStatus, criteriaSetVentaStatus, operatorVentaStatus, operatorOnChangeVentaStatus, operatorSetVentaStatus,
     /* VENTA PRECIO TOTAL */criteriaVentaPrecioTotal, criteriaOnChangeVentaPrecioTotal, criteriaSetVentaPrecioTotal, operatorVentaPrecioTotal, operatorOnChangeVentaPrecioTotal, operatorSetVentaPrecioTotal,

@@ -10,7 +10,7 @@ import enumTableColumnsToShow from "../../models/enumTableColumnsToShow";
 import PropTypes from "prop-types";
 
 function AlcaldiaRecursosMunicipalesTableAddSale (props) {
-  const { setValueNota, ventasId, setUpdateTableDelete, setValueVentaPrecioTotal } = props;
+  const { setValueNota, ventasId, setUpdateTableDelete, setValueVentaPrecioTotal, setIsSaveButtonDisabled} = props;
   const tableTitle = i18n.alcaldiaRecursosMunicipalesTableAdd.titleActivity;
   const pageSize = 7;
   const numberPagesToShow = 7;
@@ -25,6 +25,7 @@ function AlcaldiaRecursosMunicipalesTableAddSale (props) {
 
   function afterAddProductToSale (params) {
     setValueVentaPrecioTotal(params);
+    setIsSaveButtonDisabled(false);
     setUpdateTableDelete(false);
   }
 
@@ -86,7 +87,7 @@ AlcaldiaRecursosMunicipalesTableAddSale.propTypes = {
   setValueClienteCambio: PropTypes.func,
   valueVentaPrecioTotal: PropTypes.number,
   valueClienteCambio: PropTypes.number,
-  handleAdd: PropTypes.func
+  setIsSaveButtonDisabled: PropTypes.func
 };
 
 AlcaldiaRecursosMunicipalesTableAddSale.defaultProps = {
@@ -98,5 +99,5 @@ AlcaldiaRecursosMunicipalesTableAddSale.defaultProps = {
   setValueClienteCambio: () => {},
   valueVentaPrecioTotal: 0,
   valueClienteCambio: 0,
-  handleAdd: () => {}
+  setIsSaveButtonDisabled: () => {}
 };

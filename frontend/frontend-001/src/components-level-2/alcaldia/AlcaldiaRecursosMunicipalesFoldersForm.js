@@ -22,7 +22,7 @@ import CommonMessage from "../../components-level-1/CommonMessage";
 
 import "./../css/all-forms.css";
 
-function AlcaldiaRecursosMunicipalesFoldersForm () {
+function AlcaldiaRecursosMunicipalesFoldersForm() {
   const history = useHistory();
   const isEditDefaultValue =
     history && history.location && history.location.state;
@@ -65,6 +65,7 @@ function AlcaldiaRecursosMunicipalesFoldersForm () {
   } = useInput(nameAux === "" ? valueName : nameAux);
   const {
     value: valueTalonarioInicio,
+    onChange: onChangeTalonarioInicio,
     setValue: setValueTalonarioInicio,
     reset: resetTalonarioInicio
   } = useInput(talonarioInicio);
@@ -226,11 +227,12 @@ function AlcaldiaRecursosMunicipalesFoldersForm () {
                 {i18n.alcaldiaRecursosMunicipalesFoldersForm.fieldFoldersInicio}
               </Form.Label>
               <Form.Control
+                onChange={onChangeTalonarioInicio}
                 value={valueTalonarioInicio}
                 type="number"
                 placeholder={i18n.alcaldiaRecursosMunicipalesFoldersForm.fieldFoldersInicio}
               />
-              <Form.Text muted>
+              <Form.Text muted className={classNameFormText.talonarioInicio}>
                 {i18n.alcaldiaRecursosMunicipalesFoldersForm.fieldTalonarioInicioText}
               </Form.Text>
             </Form.Group>

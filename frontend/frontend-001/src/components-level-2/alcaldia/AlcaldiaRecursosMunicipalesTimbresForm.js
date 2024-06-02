@@ -223,7 +223,7 @@ function AlcaldiaRecursosMunicipalesTimbresForm () {
                 onChange={onChangeTalonarioInicio}
                 placeholder={i18n.alcaldiaRecursosMunicipalesTimbresForm.fieldTimbresInicio}
               />
-              <Form.Text muted>
+              <Form.Text muted className={classNameFormText.talonarioInicio}>
                 {i18n.alcaldiaRecursosMunicipalesTimbresForm.fieldTalonarioInicioText}
               </Form.Text>
             </Form.Group>

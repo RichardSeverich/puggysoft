@@ -19,6 +19,10 @@ const alcaldiaRecursosMunicipalesVentasColumnsFilter = function (
   criteriaOnChangeDireccion,
   operatorDireccion,
   operatorOnChangeDireccion,
+  /* GLOSA */ criteriaGlosa,
+  criteriaOnChangeGlosa,
+  operatorGlosa,
+  operatorOnChangeGlosa,
   /* NOTA */ criteriaNota,
   criteriaOnChangeNota,
   operatorNota,
@@ -84,6 +88,13 @@ const alcaldiaRecursosMunicipalesVentasColumnsFilter = function (
       criteriaOnchange: criteriaOnChangeDireccion,
       operatorValue: operatorDireccion,
       operatorOnchange: operatorOnChangeDireccion
+    },
+    {
+      type: enumFilterType.TEXTBOX,
+      criteriaValue: criteriaGlosa,
+      criteriaOnchange: criteriaOnChangeGlosa,
+      operatorValue: operatorGlosa,
+      operatorOnchange: operatorOnChangeGlosa
     },
     {
       type: enumFilterType.TEXTBOX,
