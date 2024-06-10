@@ -122,6 +122,8 @@ const GeneratePdf = (data, fecha) => {
   x = x + 337;
   doc.text(x, y1 + y2, ` ${data.granTotal}`);
   doc.output("dataurlnewwindow");
+  doc.save(`${fecha}-reporte-corto-diario.pdf`);
+  alert("Reporte generado exitosamente");
 };
 
 export default GeneratePdf;

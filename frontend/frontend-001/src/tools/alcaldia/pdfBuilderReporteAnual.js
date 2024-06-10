@@ -101,6 +101,8 @@ const GeneratePdf = (data, fecha) => {
   doc.text(25, y1 + y2 * 16, `${i18n.alcaldiaRecursosMunicipalesReportePdf.granTotal}: ${i18n.alcaldiaRecursosMunicipalesReportePdf.bs} ${data.granTotal.toLocaleString("en")}`);
 
   doc.output("dataurlnewwindow");
+  doc.save(`${fecha}-reporte-anual.pdf`);
+  alert("Reporte generado exitosamente");
 };
 
 export default GeneratePdf;

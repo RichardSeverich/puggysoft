@@ -48,8 +48,8 @@ const GeneratePdf = (data, body) => {
   doc.text(13.2, 15.1, ` ${body[0].ventaPrecioTotal}`);
   doc.text(2, 15.1, NumeroALetras(body[0].ventaPrecioTotal));
 
-  doc.setFontSize(7);
   let fecha = [];
+  let creationTime;
   let amPm;
   let dateForName;
   if (body.valueCreationDate === undefined) {
@@ -63,6 +63,7 @@ const GeneratePdf = (data, body) => {
     const hora = Number(creationTime.split(":")[0]);
     amPm = hora >= 12 ? "pm" : "am";
   }
+  doc.setFontSize(7);
   doc.text(6.4, 16.4, ` ${fecha[0]}`);
   doc.text(8.4, 16.4, ` ${fecha[2]}`);
   doc.text(10.6, 16.4, ` ${fecha[4].split("")[3]}`);

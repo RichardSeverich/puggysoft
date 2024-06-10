@@ -1,8 +1,8 @@
 const alcaldiaRecursosMunicipalesForm = {
   title: "Formulario de recursos municipales",
-  fieldCodigo: "Codigo",
+  fieldCodigo: "Codigo/Rubro",
   fieldCodigoText: "Minimo 3, maximo 30 caracteres",
-  fieldCodigoAuxiliar: "Codigo Auxiliar",
+  fieldCodigoAuxiliar: "Codigo/Rubro Auxiliar",
   fieldCodigoAuxiliarText: "Minimo 3, maximo 30 caracteres",
   fieldName: "Nombre",
   fieldNameText: "Minimo 3, maximo 120 caracteres",

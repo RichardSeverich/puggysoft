@@ -149,6 +149,8 @@ const GeneratePdf = (data, fecha, orden) => {
   doc.setFontSize(10);
   doc.text(x, y1, `${i18n.alcaldiaRecursosMunicipalesReportePdf.pag}: ${i18n.alcaldiaRecursosMunicipalesReportePdf.bs} ${data.granTotal.toLocaleString("en")}`);
   doc.output("dataurlnewwindow");
+  doc.save(`${fecha}-reporte-mensual.pdf`);
+  alert("Reporte generado exitosamente");
 };
 
 export default GeneratePdf;

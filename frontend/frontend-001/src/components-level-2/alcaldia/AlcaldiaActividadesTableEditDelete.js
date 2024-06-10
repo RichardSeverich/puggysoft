@@ -8,7 +8,7 @@ import enumTableColumnsToShow from "../../models/enumTableColumnsToShow";
 
 function AlcaldiaActividadesTableEditDelete () {
   const tableTitle = i18n.alcaldiaActividadesTable.title;
-  const pageSize = 7;
+  const pageSize = 20;
   const numberPagesToShow = 7;
 
   const history = useHistory();

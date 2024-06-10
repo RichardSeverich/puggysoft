@@ -8,7 +8,7 @@ import enumTableColumnsToShow from "../../models/enumTableColumnsToShow";
 
 function AlcaldiaRecursosMunicipalesVentasTable () {
   const tableTitle = i18n.alcaldiaRecursosMunicipalesVentasTable.title;
-  const pageSize = 7;
+  const pageSize = 20;
   const numberPagesToShow = 7;
 
   const history = useHistory();

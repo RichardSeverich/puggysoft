@@ -42,9 +42,10 @@ function AlcaldiaRecursosMunicipalesTimbresVentasForm() {
   const [isMessageVisible, setIsMessageVisible] = useState(false);
   const [messageTitle, setMessageTitle] = useState("");
   const [messageText, setMessageText] = useState("");
+  const hideElement = false;
 
   let venta = "";
-  let clienteNombre = "Sin Nombre";
+  let clienteNombre = "N/A";
   let clienteCiNit = "0000000";
   let direccion = "Colcapirhua";
   let nota = "";
@@ -81,8 +82,8 @@ function AlcaldiaRecursosMunicipalesTimbresVentasForm() {
     clienteCiNit = isEdit.data.clienteCiNit;
     direccion = isEdit.data.direccion;
     const help = isEdit.data.nota.split(",");
-    hastaTimbre = Number(help[1].split("  ")[1]);
-    talonarioMovimiento = help[0].split("  ")[1];
+    hastaTimbre = Number(help[1]?.split("  ")[1]);
+    talonarioMovimiento = help[0]?.split("  ")[1];
     setValueDescontinuados(help[2]?.split("-"));
     nota = String(Number(hastaTimbre) - Number(talonarioMovimiento) + 1);
     ventaPrecioTotal = isEdit.data.ventaPrecioTotal;
@@ -104,7 +105,7 @@ function AlcaldiaRecursosMunicipalesTimbresVentasForm() {
   const { value: valueClienteCiNit, onChange: onChangeClienteCiNit } = useInput(clienteCiNit);
   const { value: valueDireccion, onChange: onChangeDireccion } = useInput(direccion);
   const { value: valueCantidad, onChange: onChangeCantidad } = useInput(nota);
-  const { value: valueClienteDinero, onChange: onChangeClienteDinero } = useInput(clienteDinero);
+  const { value: valueClienteDinero, onChange: onChangeClienteDinero, setValue: setValueClienteDinero } = useInput(clienteDinero);
 
   const selectTimbre = (isForFolder) => {
     const tenant = window.sessionStorage.getItem("tenant");
@@ -145,16 +146,16 @@ function AlcaldiaRecursosMunicipalesTimbresVentasForm() {
       const username = window.sessionStorage.getItem("username");
       const tenant = window.sessionStorage.getItem("tenant");
       let nota;
-      if(folderSelected) {
+      if (folderSelected) {
         nota = i18n.alcaldiaRecursosMunicipalesTimbresVentasForm.fieldTalonarioActualFolder +
-        `  ${valueTimbres.talonarioMovimiento}, ` +
-        i18n.alcaldiaRecursosMunicipalesTimbresVentasForm.fieldTalonarioVentaFolder +
-        `  ${valueHastaTimbre} ${valueDescontinuados.join("-")}`;
+          `  ${valueTimbres.talonarioMovimiento}, ` +
+          i18n.alcaldiaRecursosMunicipalesTimbresVentasForm.fieldTalonarioVentaFolder +
+          `  ${valueHastaTimbre} ${valueDescontinuados.join("-")}`;
       } else {
         nota = i18n.alcaldiaRecursosMunicipalesTimbresVentasForm.fieldTalonarioActual +
-        `  ${valueTimbres.talonarioMovimiento}, ` +
-        i18n.alcaldiaRecursosMunicipalesTimbresVentasForm.fieldTalonarioVenta +
-        `  ${valueHastaTimbre} ${valueDescontinuados.join("-")}`;
+          `  ${valueTimbres.talonarioMovimiento}, ` +
+          i18n.alcaldiaRecursosMunicipalesTimbresVentasForm.fieldTalonarioVenta +
+          `  ${valueHastaTimbre} ${valueDescontinuados.join("-")}`;
       }
       const body = [
         {
@@ -193,7 +194,7 @@ function AlcaldiaRecursosMunicipalesTimbresVentasForm() {
   }
   const handleAfterAdd = function (newEntityId) {
     const body = getBody();
-    if (folderSelected) {
+    /*if (folderSelected) {
       const bodyTimbreForFolders = getBody()[1];
       bodyTimbreForFolders.precioUnidad = valueTimbresForFolder.precio;
       const cantidadTimbresParaFolders = Number(valueTimbres.folderCantidadTimbres) * Number(body[1].cantidad);
@@ -202,7 +203,7 @@ function AlcaldiaRecursosMunicipalesTimbresVentasForm() {
       const bodyRmTimbre = valueTimbresForFolder;
       bodyRmTimbre.talonarioMovimiento = Number(valueTimbresForFolder.talonarioMovimiento) + cantidadTimbresParaFolders;
       handleEditRequest("alcaldia-recursos-municipales/", bodyRmTimbre, bodyRmTimbre.id, null, null, false);
-    }
+    }*/
     handleAddRequest("alcaldia-recursos-municipales-ventas-detalle/", { ...body[1], idVenta: newEntityId }, () => { }, false, afterAddTimbreToSaleOnFail);
     handleEditRequest("alcaldia-recursos-municipales/", body[2], body[2].id, null, null, false);
     setIsBlock(true);
@@ -282,6 +283,10 @@ function AlcaldiaRecursosMunicipalesTimbresVentasForm() {
       setValueClienteCambio(Number(valueClienteDinero) - Number(valueVentaPrecioTotal));
     }
   }, [valueVentaPrecioTotal, valueClienteDinero]);
+
+  useEffect(() => {
+    setValueClienteDinero(valueVentaPrecioTotal.toString());
+  }, [valueVentaPrecioTotal]);
 
   if (isRequestInProgress || valueTimbres === undefined) {
     return <CommonLoading></CommonLoading>;
@@ -443,7 +448,7 @@ function AlcaldiaRecursosMunicipalesTimbresVentasForm() {
                 />
               </Form.Group>
             </div>
-            <div className="puggysoft-five-divs-side-by-side-child">
+            {hideElement && (<div className="puggysoft-five-divs-side-by-side-child">
               <Form.Group className="mb-3" controlId="clienteDinero">
                 <Form.Label>
                   {i18n.alcaldiaRecursosMunicipalesTimbresVentasForm.fieldClienteDinero}
@@ -458,8 +463,8 @@ function AlcaldiaRecursosMunicipalesTimbresVentasForm() {
                   {i18n.alcaldiaRecursosMunicipalesTimbresVentasForm.fieldClienteDineroText}
                 </Form.Text>
               </Form.Group>
-            </div>
-            <div className="puggysoft-five-divs-side-by-side-child">
+            </div>)}
+            {hideElement && (<div className="puggysoft-five-divs-side-by-side-child">
               <Form.Group className="mb-3" controlId="clienteCambio">
                 <Form.Label>
                   {i18n.alcaldiaRecursosMunicipalesTimbresVentasForm.fieldClienteCambio}
@@ -474,7 +479,7 @@ function AlcaldiaRecursosMunicipalesTimbresVentasForm() {
                   {i18n.alcaldiaRecursosMunicipalesTimbresVentasForm.fieldClienteCambioText}
                 </Form.Text>
               </Form.Group>
-            </div>
+            </div>)}
             <div className="puggysoft-five-divs-side-by-side-child">
               {!isBlock && <Button
                 onClick={handleAdd}

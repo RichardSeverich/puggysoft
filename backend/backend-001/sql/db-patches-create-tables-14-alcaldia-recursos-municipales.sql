@@ -83,7 +83,7 @@ CREATE TABLE alcaldia_recursos_municipales_venta_detalle(
 
 CREATE TABLE alcaldia_timbres_descontinuados(
    id BIGINT AUTO_INCREMENT,
-   codigo BIGINT  NOT NULL UNIQUE,
+   codigo BIGINT  NOT NULL,
    tenant VARCHAR(30) NOT NULL,
    creation_date DATETIME DEFAULT CURRENT_TIMESTAMP,
    update_date DATETIME ON UPDATE CURRENT_TIMESTAMP,
@@ -92,12 +92,13 @@ CREATE TABLE alcaldia_timbres_descontinuados(
    FOREIGN KEY (created_by) REFERENCES users(username),
    FOREIGN KEY (updated_by) REFERENCES users(username),
    FOREIGN KEY (tenant) REFERENCES tenants(short_name),
+   UNIQUE (codigo, tenant),
    PRIMARY KEY (id)
 )AUTO_INCREMENT=1000;
 
 CREATE TABLE alcaldia_actividades(
    id BIGINT AUTO_INCREMENT,
-   name VARCHAR(120)  NOT NULL UNIQUE,
+   name VARCHAR(120)  NOT NULL,
    tenant VARCHAR(30) NOT NULL,
    creation_date DATETIME DEFAULT CURRENT_TIMESTAMP,
    update_date DATETIME ON UPDATE CURRENT_TIMESTAMP,
@@ -106,6 +107,7 @@ CREATE TABLE alcaldia_actividades(
    FOREIGN KEY (created_by) REFERENCES users(username),
    FOREIGN KEY (updated_by) REFERENCES users(username),
    FOREIGN KEY (tenant) REFERENCES tenants(short_name),
+   UNIQUE (name, tenant),
    PRIMARY KEY (id)
 )AUTO_INCREMENT=1000;
 
