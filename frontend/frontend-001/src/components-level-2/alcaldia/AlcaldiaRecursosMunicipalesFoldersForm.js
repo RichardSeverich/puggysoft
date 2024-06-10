@@ -44,7 +44,9 @@ function AlcaldiaRecursosMunicipalesFoldersForm() {
   const talonarioInicio =
     isEdit && isEdit.data.talonarioInicio !== null ? isEdit.data.talonarioInicio : "";
   const folderCantidadTimbres =
-    isEdit && isEdit.data.folderCantidadTimbres !== null ? isEdit.data.folderCantidadTimbres : "";
+    isEdit && isEdit.data.folderCantidadTimbres !== null
+      ? isEdit.data.folderCantidadTimbres
+      : 0;
   const talonarioFinal =
     isEdit && isEdit.data.talonarioFinal !== null ? isEdit.data.talonarioFinal : "";
   const precio =
@@ -250,20 +252,22 @@ function AlcaldiaRecursosMunicipalesFoldersForm() {
                 {i18n.alcaldiaRecursosMunicipalesFoldersForm.fieldTalonarioFinalText}
               </Form.Text>
             </Form.Group>
-            <Form.Group className="mb-3" controlId="cantidad-timbres">
-              <Form.Label>
-                {i18n.alcaldiaRecursosMunicipalesFoldersForm.fieldCantidadTimbres}
-              </Form.Label>
-              <Form.Control
-                onChange={onChangeCantidadTimbres}
-                value={valueCantidadTimbres}
-                type="number"
-                placeholder={i18n.alcaldiaRecursosMunicipalesFoldersForm.fieldCantidadTimbres}
-              />
-              <Form.Text muted className={classNameFormText.folderCantidadTimbres}>
-                {i18n.alcaldiaRecursosMunicipalesFoldersForm.fieldFolderCantidadTimbres}
-              </Form.Text>
-            </Form.Group>
+            <div style={{ display: "none" }}>
+              <Form.Group className="mb-3" controlId="cantidad-timbres">
+                <Form.Label>
+                  {i18n.alcaldiaRecursosMunicipalesFoldersForm.fieldCantidadTimbres}
+                </Form.Label>
+                <Form.Control
+                  onChange={onChangeCantidadTimbres}
+                  value={valueCantidadTimbres}
+                  type="number"
+                  placeholder={i18n.alcaldiaRecursosMunicipalesFoldersForm.fieldCantidadTimbres}
+                />
+                <Form.Text muted className={classNameFormText.folderCantidadTimbres}>
+                  {i18n.alcaldiaRecursosMunicipalesFoldersForm.fieldFolderCantidadTimbres}
+                </Form.Text>
+              </Form.Group>
+            </div>
             <Form.Group className="mb-3" controlId="precio">
               <Form.Label>
                 {i18n.alcaldiaRecursosMunicipalesFoldersForm.fieldPrecio}

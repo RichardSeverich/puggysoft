@@ -10,7 +10,7 @@ const classNameFormTextNew = {
 
 const handleValidation = (data, setClassNameFormText) => {
   let isValid = true;
-  if (!(data.talonarioFinal.length > 0 && data.talonarioFinal.length <= 11)) {
+  if (!(data.talonarioFinal.toString().length > 0 && data.talonarioFinal.toString().length <= 11)) {
     isValid = false;
     classNameFormTextNew.talonarioFinal = classNameRed;
   } else if (!(regexVars.REGEX_INT_NUMBER.test(data.talonarioFinal) && /^-?\d*\.?\d+$/.test(data.talonarioFinal)
@@ -20,7 +20,7 @@ const handleValidation = (data, setClassNameFormText) => {
   } else {
     classNameFormTextNew.talonarioFinal = "";
   }
-  if (!(data.talonarioInicio.length >= 0 && data.talonarioInicio.length <= 11)) {
+  if (!(data.talonarioInicio.toString().length >= 0 && data.talonarioInicio.toString().length <= 11)) {
     isValid = false;
     classNameFormTextNew.talonarioInicio = classNameRed;
   } else if (!(regexVars.REGEX_INT_NUMBER.test(data.talonarioInicio) && /^-?\d*\.?\d+$/.test(data.talonarioInicio)
@@ -30,7 +30,7 @@ const handleValidation = (data, setClassNameFormText) => {
   } else {
     classNameFormTextNew.talonarioInicio = "";
   }
-  if (!(data.precio.length > 0 && data.precio.length <= 11)) {
+  if (!(data.precio.toString().length > 0 && data.precio.toString().length <= 11)) {
     isValid = false;
     classNameFormTextNew.precio = classNameRed;
   } else if (!(regexVars.REGEX_DECIMAL_NUMBER.test(data.precio) && /^-?\d*\.?\d+$/.test(data.precio) && data.precio >= 0)) {

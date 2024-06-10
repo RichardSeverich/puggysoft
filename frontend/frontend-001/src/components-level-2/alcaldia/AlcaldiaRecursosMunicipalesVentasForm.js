@@ -55,6 +55,7 @@ function AlcaldiaRecursosMunicipalesVentasForm() {
   const [controlarEdit, setControlarEdit] = useState(true);
   const [ignore, setIgnore] = useState(true);
   const [isButtonComprobanteDisabled, setIsButtonComprobanteDisabled] = useState(true);
+  const hideElement = false;
 
   // Put default values:
   if (isEdit?.data.id && controlarEdit) {
@@ -229,7 +230,7 @@ function AlcaldiaRecursosMunicipalesVentasForm() {
     if (ignore) {
       setIgnore(false);
     } else if (verDetalles) {
-      onChangeClienteDinero(valueClienteDinero);
+      onChangeClienteDinero(valueVentaPrecioTotal.toString());
       // handleAdd(undefined, true);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -399,7 +400,7 @@ function AlcaldiaRecursosMunicipalesVentasForm() {
                 </Form.Group>
               </div>
             )}
-            {verDetalles && (
+            {hideElement && verDetalles && (
               <div className="puggysoft-six-divs-side-by-side-child">
                 <Form.Group className="mb-3" controlId="clienteDinero">
                   <Form.Label>
@@ -428,7 +429,7 @@ function AlcaldiaRecursosMunicipalesVentasForm() {
                 </Form.Group>
               </div>
             )}
-            {verDetalles && (
+            {hideElement && verDetalles && (
               <div className="puggysoft-six-divs-side-by-side-child">
                 <Form.Group className="mb-3" controlId="clienteCambio">
                   <Form.Label>

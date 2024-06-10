@@ -5,8 +5,8 @@ const alcaldiaRecursosMunicipalesTable = {
   titlePadre: "Tabla de recursos municipales padres",
   rubroSelect: "Rubro:",
   titleToSelect: "Seleccione un recurso",
-  columnCodigo: "Codigo",
-  columnCodigoAuxiliar: "Codigo Auxiliar",
+  columnCodigo: "Codigo/Rubro",
+  columnCodigoAuxiliar: "Codigo/Rubro Auxiliar",
   columnName: "Nombre",
   columnPrecio: "Precio"
 };

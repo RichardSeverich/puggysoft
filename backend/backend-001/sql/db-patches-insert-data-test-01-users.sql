@@ -425,3 +425,27 @@ INSERT INTO tenants_roles (role, tenant, created_by) VALUES
 ('SCHOOL_ESTUDIANTE', 'EMPRESA_1', "admin"),
 ('SCHOOL_ESTUDIANTE', 'EMPRESA_2', "admin"),
 ('ALCALDIA_RECURSOS_MUNICIPALES_CAJERO', 'EMPRESA_1', "admin");
+
+-- ALCALDIA PRODUCCION
+-- TENANTS
+INSERT INTO tenants (name, short_name, status, description, created_by) VALUES ("COLCAPIRHUA", 'COLCAPIRHUA', 'ACTIVE', 'ALCALDIA DE COLCAPIRHUA', 'SysAdmin');
+
+-- USERS - ROLES
+INSERT INTO users_roles (id_user, id_role, created_by, tenant) VALUES
+((select id from users where username='SysAdmin'), (select id from roles where name='ADMIN_USERS'), "ADMIN", "COLCAPIRHUA"),
+((select id from users where username='RecursosMunicipalesEncargado'), (select id from roles where name='ALCALDIA_RECURSOS_MUNICIPALES_ENCARGADO'), "SysAdmin", "COLCAPIRHUA"),
+((select id from users where username='RecursosMunicipalesAdmin'), (select id from roles where name='ADMIN_USERS'), "SysAdmin", "COLCAPIRHUA");
+
+-- USERS - TENANTS
+INSERT INTO tenants_users(username, tenant, created_by) VALUES
+((select username from users where username='SysAdmin'),'COLCAPIRHUA', 'SysAdmin'),
+((select username from users where username='RecursosMunicipalesEncargado'),'COLCAPIRHUA', 'SysAdmin'),
+((select username from users where username='RecursosMunicipalesAdmin'),'COLCAPIRHUA', 'SysAdmin');
+
+-- TENANTS - ROLES
+INSERT INTO tenants_roles (role, tenant, created_by) VALUES
+('ADMIN', 'COLCAPIRHUA', "SysAdmin"),
+('ADMIN_USERS', 'COLCAPIRHUA', "SysAdmin"),
+('ALCALDIA_RECURSOS_MUNICIPALES_ENCARGADO', 'COLCAPIRHUA', "SysAdmin"),
+('ALCALDIA_RECURSOS_MUNICIPALES_CAJERO', 'COLCAPIRHUA', "SysAdmin"),
+('URBANISMO_ENCARGADO', 'COLCAPIRHUA', "SysAdmin");
