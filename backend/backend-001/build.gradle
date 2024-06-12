@@ -32,6 +32,7 @@ dependencies {
   testCompile group: 'junit', name: 'junit', version: '4.12'
   testImplementation 'org.springframework.boot:spring-boot-starter-test'
   implementation group: 'org.springframework.boot', name: 'spring-boot-starter-mail', version: '2.3.4.RELEASE'
+  implementation group: 'com.google.code.gson', name: 'gson', version: '2.7'
 }
 
 test {
