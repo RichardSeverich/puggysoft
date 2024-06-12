@@ -16,7 +16,8 @@ function AlcaldiaRecursosMunicipalesTableDeleteSale (props) {
     handleChangeData,
     setValueVentaPrecioTotal,
     valueVentaPrecioTotal,
-    newVentaDetalle
+    newVentaDetalle,
+    isEdit
   } = props;
   const tableTitle = i18n.alcaldiaRecursosMunicipalesTableDelete.title;
   const pageSize = 7;
@@ -87,6 +88,7 @@ function AlcaldiaRecursosMunicipalesTableDeleteSale (props) {
       element.precio = <Form.Control
         onChange={(event) => onChangeArryPrecios(event, index, setArrayData, valuePrecioTotalCopy)}
         value={element.precio}
+        disabled={isEdit}
         type="number"
       />;
       return element;
@@ -124,6 +126,7 @@ AlcaldiaRecursosMunicipalesTableDeleteSale.propTypes = {
   valueVentaPrecioTotal: PropTypes.number,
   valueClienteCambio: PropTypes.number,
   newVentaDetalle: PropTypes.object,
+  isEdit: PropTypes.bool,
   handleChangeData: PropTypes.func
 };
 
@@ -136,5 +139,6 @@ AlcaldiaRecursosMunicipalesTableDeleteSale.defaultProps = {
   valueVentaPrecioTotal: 0,
   valueClienteCambio: 0,
   newVentaDetalle: {},
+  isEdit: true,
   handleChangeData: () => { }
 };

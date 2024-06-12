@@ -553,6 +553,7 @@ function AlcaldiaRecursosMunicipalesVentasForm () {
               setValueClienteCambio={setValueClienteCambio}
               handleChangeData={handleChangeData}
               newVentaDetalle={newVentaDetalle}
+              isEdit={!!isEdit}
             />
           </div>
         </div>
