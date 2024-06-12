@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useRef } from "react";
 import i18n from "../../i18n/i18n";
+import Form from "react-bootstrap/Form";
 import { handleFilterRequest, handleDeleteRequest } from "../../actions/HandleManager";
 import AlcaldiaRecursosMunicipalesGenericTable from "./generic/AlcaldiaRecursosMunicipalesGenericTable";
 import enumTableColumnsToShow from "../../models/alcaldia/enumTableColumnsToShow";
@@ -12,7 +13,9 @@ function AlcaldiaRecursosMunicipalesTableDeleteSale (props) {
     ventasId,
     setUpdateTableDelete,
     updateTableDelete,
-    handleChangeData
+    handleChangeData,
+    setValueVentaPrecioTotal,
+    valueVentaPrecioTotal
   } = props;
   const tableTitle = i18n.alcaldiaRecursosMunicipalesTableDelete.title;
   const pageSize = 7;
@@ -39,6 +42,10 @@ function AlcaldiaRecursosMunicipalesTableDeleteSale (props) {
     );
   }
 
+  const dataOldCopy = useRef();
+  const dataNewCopy = useRef();
+  const valuePrecioTotalCopy = useRef();
+
   const tableArrayCustomRowButtons = [
     {
       variant: "danger",
@@ -46,6 +53,45 @@ function AlcaldiaRecursosMunicipalesTableDeleteSale (props) {
       text: i18n.commonTable.deleteButton
     }
   ];
+
+  const onChangeArryPrecios = function (event, index, setArrayData, valuePrecioTotalCopy) {
+    event.preventDefault();
+    const precioOld = dataOldCopy.current[index].precio;
+    const newPrecio = event.target.value;
+    if (valuePrecioTotalCopy.current === undefined) {
+      valuePrecioTotalCopy.current = valueVentaPrecioTotal;
+    }
+    valuePrecioTotalCopy.current = Number(valuePrecioTotalCopy.current) - Number(precioOld) + Number(newPrecio);
+    setValueVentaPrecioTotal(valuePrecioTotalCopy.current);
+    // newOldData
+    const newOldData = JSON.parse(JSON.stringify(dataOldCopy.current));
+    dataNewCopy.current.forEach((element, indice) => {
+      newOldData[indice].precio = element.precioAux;
+    });
+    // Update new precio
+    newOldData[index].precio = newPrecio;
+    dataOldCopy.current[index].precio = newPrecio;
+    const newData = fixArrayData(newOldData, setArrayData, false);
+    setArrayData(newData);
+  };
+
+  const fixArrayData = (data, setArrayData, isCopy = true) => {
+    if (isCopy) {
+      dataOldCopy.current = JSON.parse(JSON.stringify(data));
+    }
+    const newDataAux = JSON.parse(JSON.stringify(data));
+    const newData = newDataAux.map((element, index) => {
+      element.precioAux = element.precio;
+      element.precio = <Form.Control
+        onChange={(event) => onChangeArryPrecios(event, index, setArrayData, valuePrecioTotalCopy)}
+        value={element.precio}
+        type="number"
+      />;
+      return element;
+    });
+    dataNewCopy.current = newData;
+    return newData;
+  };
 
   if (updateTableDelete) {
     return <CommonLoading></CommonLoading>;
@@ -59,6 +105,7 @@ function AlcaldiaRecursosMunicipalesTableDeleteSale (props) {
       handleGetSize={handleGetSize}
       tableArrayCustomRowButtons={tableArrayCustomRowButtons}
       columnsToShow={enumTableColumnsToShow.SALEDELETE}
+      fixArrayData={fixArrayData}
     >
     </AlcaldiaRecursosMunicipalesGenericTable>
   );
@@ -79,11 +126,11 @@ AlcaldiaRecursosMunicipalesTableDeleteSale.propTypes = {
 
 AlcaldiaRecursosMunicipalesTableDeleteSale.defaultProps = {
   ventasId: 0,
-  setUpdateTableDelete: () => {},
+  setUpdateTableDelete: () => { },
   updateTableDelete: false,
-  setValueVentaPrecioTotal: () => {},
-  setValueClienteCambio: () => {},
+  setValueVentaPrecioTotal: () => { },
+  setValueClienteCambio: () => { },
   valueVentaPrecioTotal: 0,
   valueClienteCambio: 0,
-  handleChangeData: () => {}
+  handleChangeData: () => { }
 };

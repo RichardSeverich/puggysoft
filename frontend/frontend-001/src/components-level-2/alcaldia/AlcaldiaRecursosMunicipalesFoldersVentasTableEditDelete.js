@@ -6,7 +6,7 @@ import { handleFilterRequest } from "../../actions/HandleManager";
 import AlcaldiaRecursosMunicipalesFoldersVentasGenericTable from "./generic/AlcaldiaRecursosMunicipalesFoldersVentasGenericTable";
 import enumTableColumnsToShow from "../../models/enumTableColumnsToShow";
 
-function AlcaldiaRecursosMunicipalesFoldersVentasTable() {
+function AlcaldiaRecursosMunicipalesFoldersVentasTable () {
   const tableTitle = i18n.alcaldiaRecursosMunicipalesVentasTable.titleFolders;
   const pageSize = 20;
   const numberPagesToShow = 7;
@@ -21,7 +21,7 @@ function AlcaldiaRecursosMunicipalesFoldersVentasTable() {
     handleFilterRequest(`alcaldia-recursos-municipales-folders-ventas/filter/size/${pageSize}`, filterBody, setTotalPages);
   }
 
-  function handleSelection(data) {
+  function handleSelection (data) {
     history.push({
       pathname: enumPaths.ALCALDIA_RECURSOS_MUNICIPALES_TIMBRES_VENTAS_FORM,
       state: {

@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback, useRef } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { useHistory } from "react-router";
 
 import Form from "react-bootstrap/Form";
@@ -30,12 +30,12 @@ import "./../css/button-inline.css";
 import AlcaldiaRecursosMunicipalesTableAddSale from "./AlcaldiaRecursosMunicipalesTableAddSale";
 import AlcaldiaRecursosMunicipalesTableDeleteSale from "./AlcaldiaRecursosMunicipalesTableDeleteSale";
 
-function AlcaldiaRecursosMunicipalesVentasForm() {
+function AlcaldiaRecursosMunicipalesVentasForm () {
   const history = useHistory();
   const isEditDefaultValue =
     history && history.location && history.location.state;
   const [isEdit] = useState(isEditDefaultValue);
-  const [isSaleSaved, setIsSaleSaved] = useState(isEdit ? true : false);
+  const [isSaleSaved, setIsSaleSaved] = useState(!!isEdit);
   const [isSaleSavedCounter, setIsSaleSavedCounter] = useState(0);
   const [isSaveButtonDisabled, setIsSaveButtonDisabled] = useState(false);
   const [classNameFormText, setClassNameFormText] =
@@ -139,11 +139,11 @@ function AlcaldiaRecursosMunicipalesVentasForm() {
     setVerDetalles(true);
     setIsRequestInProgress(false);
     setIsButtonComprobanteDisabled(false);
-  }
+  };
 
   const handleGetById = function (rmId) {
     handleGetRequest(`alcaldia-recursos-municipales-ventas/${rmId}`, handleAfterGetById, null, false);
-  }
+  };
 
   const handleAfterAdd = function (newEntityId) {
     setIdVenta(newEntityId);
@@ -236,7 +236,7 @@ function AlcaldiaRecursosMunicipalesVentasForm() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [valueVentaPrecioTotal]);
 
-  function onChangeClienteDinero(ClienteDinero) {
+  function onChangeClienteDinero (ClienteDinero) {
     setValueClienteCambio(Number(ClienteDinero) - valueVentaPrecioTotal);
     setValueClienteDinero(ClienteDinero);
   }
@@ -523,6 +523,7 @@ function AlcaldiaRecursosMunicipalesVentasForm() {
               setUpdateTableDelete={setUpdateTableDelete}
               updateTableDelete={updateTableDelete}
               setValueVentaPrecioTotal={setValueVentaPrecioTotal}
+              valueVentaPrecioTotal={valueVentaPrecioTotal}
               setValueClienteCambio={setValueClienteCambio}
               handleChangeData={handleChangeData}
             />

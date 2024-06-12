@@ -26,7 +26,7 @@ function TablePaginationFilterGeneric (props) {
 
   function updateArrayData (arrayData) {
     if (fixArrayData) {
-      const arrayFixed = fixArrayData(arrayData);
+      const arrayFixed = fixArrayData(arrayData, setArrayData);
       setArrayData(arrayFixed);
     } else {
       setArrayData(arrayData);
