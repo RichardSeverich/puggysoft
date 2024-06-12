@@ -54,6 +54,7 @@ function AlcaldiaRecursosMunicipalesFoldersTableEditDelete () {
       const valueName =
         `${today.getDate()} de ${i18n.commonMonths[today.toLocaleString("en-GB", { month: "long" }).toLowerCase()]} ${today.getFullYear()}`;
       folder.name = `${folder.name} ${valueName}`;
+      folder.disponible = Number(folder.talonarioFinal) - Number(folder.talonarioMovimiento);
       return folder;
     });
   };

@@ -5,6 +5,8 @@ const arrayColumns = [
   i18n.alcaldiaRecursosMunicipalesTimbresTable.columnName,
   i18n.alcaldiaRecursosMunicipalesTimbresTable.columnTalonarioInicio,
   i18n.alcaldiaRecursosMunicipalesTimbresTable.columnTalonarioFinal,
+  i18n.alcaldiaRecursosMunicipalesTimbresTable.columnTalonarioMovimiento,
+  i18n.alcaldiaRecursosMunicipalesTimbresTable.columnTalonarioDisponible,
   i18n.alcaldiaRecursosMunicipalesTimbresTable.columnPrecio,
   i18n.commonTable.columnCreatedBy,
   i18n.commonTable.columnUpdatedBy,

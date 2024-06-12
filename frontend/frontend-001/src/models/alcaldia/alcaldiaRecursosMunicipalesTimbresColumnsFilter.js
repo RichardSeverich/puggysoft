@@ -41,6 +41,12 @@ const alcaldiaRecursosMunicipalesTimbresColumnsFilter = function (
       operatorOnchange: operatorOnChangeTalonarioFinal
     },
     {
+      type: enumFilterType.NONE
+    },
+    {
+      type: enumFilterType.NONE
+    },
+    {
       type: enumFilterType.NUMBER,
       criteriaValue: criteriaPrecio,
       criteriaOnchange: criteriaOnChangePrecio,

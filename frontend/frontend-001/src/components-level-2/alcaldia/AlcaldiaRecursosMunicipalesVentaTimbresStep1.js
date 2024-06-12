@@ -44,6 +44,7 @@ function AlcaldiaRecursosMunicipalesTimbresTable () {
       const valueName =
         `${today.getDate()} de ${i18n.commonMonths[today.toLocaleString("en-GB", { month: "long" }).toLowerCase()]} ${today.getFullYear()}`;
       timbre.name = `${timbre.name} ${valueName}`;
+      timbre.disponible = Number(timbre.talonarioFinal) - Number(timbre.talonarioMovimiento);
       return timbre;
     });
   };
@@ -55,7 +56,7 @@ function AlcaldiaRecursosMunicipalesTimbresTable () {
       handleGetData={handleGetData}
       handleGetSize={handleGetSize}
       tableArrayCustomRowButtons={tableArrayCustomRowButtons}
-      columnsToShow={enumTableColumnsToShow.FULL}
+      columnsToShow={enumTableColumnsToShow.MEDIUM}
       fixArrayData={fixArrayData}
     >
     </AlcaldiaRecursosMunicipalesTimbresGenericTable>
