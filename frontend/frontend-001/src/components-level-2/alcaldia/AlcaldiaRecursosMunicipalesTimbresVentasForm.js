@@ -28,7 +28,7 @@ import "./../css/all-five-divs-side-by-side.css";
 import "./../css/button-inline.css";
 import enumPaths from "../../models/enumPaths";
 
-function AlcaldiaRecursosMunicipalesTimbresVentasForm() {
+function AlcaldiaRecursosMunicipalesTimbresVentasForm () {
   const history = useHistory();
   const [classNameFormText, setClassNameFormText] =
     useState(classNameFormTextNew);
@@ -93,7 +93,7 @@ function AlcaldiaRecursosMunicipalesTimbresVentasForm() {
     setIsBlock(true);
   }
   const [valueTimbres, setValueTimbres] = useState(valueTimbresDefault);
-  const [valueTimbresForFolder, setValueTimbresForFolder] = useState(null);
+  const [, setValueTimbresForFolder] = useState(null);
   const [valueHastaTimbre, setValueHastaTimbre] = useState(hastaTimbre);
   // eslint-disable-next-line no-unused-vars
   const [valueVentaPrecioTotal, setValueVentaPrecioTotal] = useState(ventaPrecioTotal);
@@ -134,7 +134,7 @@ function AlcaldiaRecursosMunicipalesTimbresVentasForm() {
     if (isForFolder || (valueTimbres?.talonarioMovimiento === 0 && isEdit === undefined)) {
       handleFilterRequest("alcaldia-recursos-municipales-timbres-ventas", filterBody, afterGetTimbres);
     }
-  }
+  };
 
   if (controlDescontinuados) {
     setControlDescontinuados(false);
@@ -189,12 +189,12 @@ function AlcaldiaRecursosMunicipalesTimbresVentasForm() {
     [valueClienteNombre, valueClienteCiNit, valueDireccion, valueClienteDinero, valueClienteCambio, valueVentaPrecioTotal, valueCantidad]
   );
 
-  function afterAddTimbreToSaleOnFail() {
+  function afterAddTimbreToSaleOnFail () {
     console.error("error in add producto to sale");
   }
   const handleAfterAdd = function (newEntityId) {
     const body = getBody();
-    /*if (folderSelected) {
+    /* if (folderSelected) {
       const bodyTimbreForFolders = getBody()[1];
       bodyTimbreForFolders.precioUnidad = valueTimbresForFolder.precio;
       const cantidadTimbresParaFolders = Number(valueTimbres.folderCantidadTimbres) * Number(body[1].cantidad);
@@ -203,7 +203,7 @@ function AlcaldiaRecursosMunicipalesTimbresVentasForm() {
       const bodyRmTimbre = valueTimbresForFolder;
       bodyRmTimbre.talonarioMovimiento = Number(valueTimbresForFolder.talonarioMovimiento) + cantidadTimbresParaFolders;
       handleEditRequest("alcaldia-recursos-municipales/", bodyRmTimbre, bodyRmTimbre.id, null, null, false);
-    }*/
+    } */
     handleAddRequest("alcaldia-recursos-municipales-ventas-detalle/", { ...body[1], idVenta: newEntityId }, () => { }, false, afterAddTimbreToSaleOnFail);
     handleEditRequest("alcaldia-recursos-municipales/", body[2], body[2].id, null, null, false);
     setIsBlock(true);

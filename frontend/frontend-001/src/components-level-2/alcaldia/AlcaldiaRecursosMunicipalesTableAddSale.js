@@ -10,7 +10,14 @@ import enumTableColumnsToShow from "../../models/enumTableColumnsToShow";
 import PropTypes from "prop-types";
 
 function AlcaldiaRecursosMunicipalesTableAddSale (props) {
-  const { setValueNota, ventasId, setUpdateTableDelete, setValueVentaPrecioTotal, setIsSaveButtonDisabled} = props;
+  const {
+    setValueNota,
+    ventasId,
+    setUpdateTableDelete,
+    setValueVentaPrecioTotal,
+    setIsSaveButtonDisabled,
+    recursosMunicipalesVendidos
+  } = props;
   const tableTitle = i18n.alcaldiaRecursosMunicipalesTableAdd.titleActivity;
   const pageSize = 7;
   const numberPagesToShow = 7;
@@ -24,7 +31,46 @@ function AlcaldiaRecursosMunicipalesTableAddSale (props) {
   }
 
   function afterAddProductToSale (params) {
-    setValueVentaPrecioTotal(params);
+    // params = {'precioTotal': '${precioTotal}', 'arrayRecursos': '${arrayString}'}
+    /* {
+    "precioTotal": "4.0",
+    "arrayRecursos": [
+        {
+            "codigo": "12210",
+            "codigoAuxiliar": "122000-002",
+            "name": "VALORES MUNICIPALES",
+            "precio": "0.0",
+            "tipo": "HIJO",
+            "tenant": "EMPRESA_1",
+            "id": 1002,
+            "createdBy": "RecursosMunicipalesEncargado",
+            "creationDate": "Oct 31, 2021 8:00:00 PM"
+        },
+        {
+            "codigo": "15113",
+            "codigoAuxiliar": "122000-006",
+            "name": "LIMPIEZA PUBLICA",
+            "precio": "2.0",
+            "tipo": "HIJO",
+            "tenant": "EMPRESA_1",
+            "id": 1007,
+            "createdBy": "RecursosMunicipalesEncargado",
+            "creationDate": "Oct 31, 2021 8:00:00 PM"
+        },
+        {
+            "codigo": "15131",
+            "codigoAuxiliar": "15100-006",
+            "name": "REPOSICION DE COMPROBANTE",
+            "precio": "2.0",
+            "tipo": "HIJO",
+            "tenant": "EMPRESA_1",
+            "id": 1022,
+            "createdBy": "RecursosMunicipalesEncargado",
+            "creationDate": "Oct 31, 2021 8:00:00 PM"
+        }
+    ]} */
+    recursosMunicipalesVendidos.current = params.arrayRecursos;
+    setValueVentaPrecioTotal(params.precioTotal);
     setIsSaveButtonDisabled(false);
     setUpdateTableDelete(false);
   }
@@ -87,17 +133,19 @@ AlcaldiaRecursosMunicipalesTableAddSale.propTypes = {
   setValueClienteCambio: PropTypes.func,
   valueVentaPrecioTotal: PropTypes.number,
   valueClienteCambio: PropTypes.number,
+  recursosMunicipalesVendidos: PropTypes.object,
   setIsSaveButtonDisabled: PropTypes.func
 };
 
 AlcaldiaRecursosMunicipalesTableAddSale.defaultProps = {
-  setValueNota: () => {},
+  setValueNota: () => { },
   ventasId: 0,
-  setUpdateTableDelete: () => {},
-  handleChangeData: () => {},
-  setValueVentaPrecioTotal: () => {},
-  setValueClienteCambio: () => {},
+  setUpdateTableDelete: () => { },
+  handleChangeData: () => { },
+  setValueVentaPrecioTotal: () => { },
+  setValueClienteCambio: () => { },
   valueVentaPrecioTotal: 0,
   valueClienteCambio: 0,
-  setIsSaveButtonDisabled: () => {}
+  recursosMunicipalesVendidos: {},
+  setIsSaveButtonDisabled: () => { }
 };
