@@ -1,5 +1,6 @@
 package com.puggysoft.services.alcaldia;
 
+import com.google.gson.Gson;
 import com.puggysoft.dtos.alcaldia.DtoAlcaldiaRecursosMunicipales;
 import com.puggysoft.dtos.alcaldia.DtoAlcaldiaRecursosMunicipalesVenta;
 import com.puggysoft.dtos.alcaldia.DtoAlcaldiaRecursosMunicipalesVentaDetalle;
@@ -8,6 +9,7 @@ import com.puggysoft.entities.alcaldia.EntityAlcaldiaRecursosMunicipalesVenta;
 import com.puggysoft.repositories.alcaldia.IRepositoryAlcaldiaRecursosMunicipalesVenta;
 import com.puggysoft.repositories.alcaldia.IRepositoryAlcaldiaRecursosMunicipalesVentaDetalle;
 import java.lang.String;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -44,13 +46,14 @@ public class ServiceAlcaldiaRecursosMunicipalesVentaPorActividades {
     + "INNER JOIN alcaldia_actividades ON alcaldia_recursos_municipales_actividades.id_actividades=alcaldia_actividades.id "
     + "WHERE alcaldia_actividades.id = " + dto.getIdRecursoMunicipal();
     Query filterQuery = entityManager.createNativeQuery(fullQuery, EntityAlcaldiaRecursosMunicipales.class);
-
+    String arrayString = "[]";
     try {
       List<DtoAlcaldiaRecursosMunicipales> listDto = ((List<EntityAlcaldiaRecursosMunicipales>) filterQuery.getResultList())
         .stream()
         .map(DtoAlcaldiaRecursosMunicipales::entityToDto)
         .collect(Collectors.toList());
-
+        Gson gson = new Gson();
+        arrayString = gson.toJson(listDto);
         Optional<EntityAlcaldiaRecursosMunicipalesVenta> optionalEntity = repositoryAlcaldiaRecursosMunicipalesVenta
         .findById(Long.parseLong(dto.getIdVenta()));
         DtoAlcaldiaRecursosMunicipalesVenta dtoControl = DtoAlcaldiaRecursosMunicipalesVenta
@@ -73,7 +76,11 @@ public class ServiceAlcaldiaRecursosMunicipalesVentaPorActividades {
         dtoControl.setId(Long.parseLong(dto.getIdVenta()));
         repositoryAlcaldiaRecursosMunicipalesVenta.save(dtoControl.dtoToEntity());
 
-        return ResponseEntity.status(HttpStatus.CREATED).body(dtoControl.getVentaPrecioTotal());
+        String result = "{\"precioTotal\": \"${precioTotal}\", \"arrayRecursos\": ${arrayString}}";
+        result = result.replace("${precioTotal}", dtoControl.getVentaPrecioTotal());
+        result = result.replace("${arrayString}", arrayString);
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(result);
     } catch (DataAccessException ex) {
       String dbException = ex.getMostSpecificCause().getMessage();
       return ResponseEntity.status(HttpStatus.CONFLICT).body(dbException);

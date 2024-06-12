@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useEffect, useState, useCallback, useRef } from "react";
 import { useHistory } from "react-router";
 
 import Form from "react-bootstrap/Form";
@@ -56,6 +56,8 @@ function AlcaldiaRecursosMunicipalesVentasForm () {
   const [ignore, setIgnore] = useState(true);
   const [isButtonComprobanteDisabled, setIsButtonComprobanteDisabled] = useState(true);
   const hideElement = false;
+  const recursosMunicipalesVendidos = useRef();
+  const newVentaDetalle = useRef();
 
   // Put default values:
   if (isEdit?.data.id && controlarEdit) {
@@ -180,6 +182,29 @@ function AlcaldiaRecursosMunicipalesVentasForm () {
           body,
           handleAfterAdd
         );
+      }
+      if (newVentaDetalle.current && recursosMunicipalesVendidos.current) {
+        newVentaDetalle.current.forEach((element, index) => {
+          const username = window.sessionStorage.getItem("username");
+          const tenant = window.sessionStorage.getItem("tenant");
+          const ventaDetalleBody = {
+            idRecursoMunicipal: recursosMunicipalesVendidos.current.find(rm => rm.codigo === element.codigo && rm.name === element.name)?.id,
+            idVenta,
+            precioUnidad: element.precio,
+            cantidad: 1,
+            createdBy: username,
+            updatedBy: username,
+            tenant
+          };
+          handleEditRequest(
+            "alcaldia-recursos-municipales-ventas-detalle/",
+            ventaDetalleBody,
+            element.id,
+            handleAfterEdit,
+            () => { },
+            false
+          );
+        });
       }
     } else {
       setMessageTitle(i18n.errorMessages.validationErrorTitle);
@@ -515,6 +540,7 @@ function AlcaldiaRecursosMunicipalesVentasForm () {
               setValueVentaPrecioTotal={setValueVentaPrecioTotal}
               setValueClienteCambio={setValueClienteCambio}
               setIsSaveButtonDisabled={setIsSaveButtonDisabled}
+              recursosMunicipalesVendidos={recursosMunicipalesVendidos}
             />
           </div>
           <div className="puggysoft-two-divs-side-by-side-child">
@@ -526,6 +552,7 @@ function AlcaldiaRecursosMunicipalesVentasForm () {
               valueVentaPrecioTotal={valueVentaPrecioTotal}
               setValueClienteCambio={setValueClienteCambio}
               handleChangeData={handleChangeData}
+              newVentaDetalle={newVentaDetalle}
             />
           </div>
         </div>

@@ -15,7 +15,8 @@ function AlcaldiaRecursosMunicipalesTableDeleteSale (props) {
     updateTableDelete,
     handleChangeData,
     setValueVentaPrecioTotal,
-    valueVentaPrecioTotal
+    valueVentaPrecioTotal,
+    newVentaDetalle
   } = props;
   const tableTitle = i18n.alcaldiaRecursosMunicipalesTableDelete.title;
   const pageSize = 7;
@@ -71,6 +72,7 @@ function AlcaldiaRecursosMunicipalesTableDeleteSale (props) {
     // Update new precio
     newOldData[index].precio = newPrecio;
     dataOldCopy.current[index].precio = newPrecio;
+    newVentaDetalle.current = dataOldCopy.current;
     const newData = fixArrayData(newOldData, setArrayData, false);
     setArrayData(newData);
   };
@@ -121,6 +123,7 @@ AlcaldiaRecursosMunicipalesTableDeleteSale.propTypes = {
   setValueClienteCambio: PropTypes.func,
   valueVentaPrecioTotal: PropTypes.number,
   valueClienteCambio: PropTypes.number,
+  newVentaDetalle: PropTypes.object,
   handleChangeData: PropTypes.func
 };
 
@@ -132,5 +135,6 @@ AlcaldiaRecursosMunicipalesTableDeleteSale.defaultProps = {
   setValueClienteCambio: () => { },
   valueVentaPrecioTotal: 0,
   valueClienteCambio: 0,
+  newVentaDetalle: {},
   handleChangeData: () => { }
 };
