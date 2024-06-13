@@ -53,10 +53,29 @@ const GeneratePdf = (data, body) => {
   let amPm;
   let dateForName;
   if (body.valueCreationDate === undefined) {
-    fecha = dateConvert(now.split(",")[0]).split(" ");
-    dateForName = now.split(",")[0];
-    creationTime = now.split(",")[1];
-    amPm = "";
+    // now ---> English browser: 6/13/2024, 2:01:02 AM ---> Month/Day/Year
+    // now ---> Spanish browser: 13/6/2024, 1:53:11 a. m. ---> Day/Month/Year
+    const userLang = navigator.language || navigator.userLanguage;
+    const fullDateParts = now.split(",");
+    let date = fullDateParts[0]; // Ejemplo: 6/13/2024
+    const time = fullDateParts[1]; // Ejemplo: 2:01:02 AM
+    const timeParts = time.split(" ");
+    // es --> espanish ---> ejemplo: es-AR
+    // en --> english
+    if (userLang.includes("es")) {
+      const dateParts = date.split("/");
+      const day = dateParts[0];
+      const month = dateParts[1];
+      const year = dateParts[2];
+      date = `${month}/${day}/${year}`;
+    }
+    fecha = dateConvert(date).split(" ");
+    dateForName = date;
+    creationTime = timeParts[0]; // 2:01:02
+    amPm = timeParts[1]; // AM/PM  or a. m./p. m.
+    if (timeParts.length === 3) {
+      amPm = timeParts[1] + timeParts[2];
+    }
   } else {
     const dateParts = body.valueCreationDate.split("T");
     dateForName = dateParts[0];
@@ -76,6 +95,8 @@ const GeneratePdf = (data, body) => {
   doc.save(`${dateForName}-venta-${body.idVenta}.pdf`);
 };
 
+// Entrada: 6/13/2024
+// Retorna:  13 DE JUNIO DE 2024
 const dateConvert = (dateFirst) => {
   const date = new Date(dateFirst.replace("-", "/"));
   const options = { year: "numeric", month: "long", day: "numeric" };
