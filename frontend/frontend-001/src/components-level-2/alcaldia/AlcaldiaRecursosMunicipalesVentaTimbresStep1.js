@@ -40,10 +40,6 @@ function AlcaldiaRecursosMunicipalesTimbresTable () {
 
   const fixArrayData = data => {
     return data.map(timbre => {
-      const today = new Date(timbre.creationDate);
-      const valueName =
-        `${today.getDate()} de ${i18n.commonMonths[today.toLocaleString("en-GB", { month: "long" }).toLowerCase()]} ${today.getFullYear()}`;
-      timbre.name = `${timbre.name} ${valueName}`;
       timbre.disponible = Number(timbre.talonarioFinal) - Number(timbre.talonarioMovimiento);
       return timbre;
     });

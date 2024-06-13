@@ -42,10 +42,10 @@ function AlcaldiaRecursosMunicipalesFoldersVentasTable () {
 
   const fixArrayData = data => {
     return data.map(folder => {
-      const today = new Date(folder.creationDate);
+      /* const today = new Date(folder.creationDate);
       const valueName =
         `${today.getDate()} de ${i18n.commonMonths[today.toLocaleString("en-GB", { month: "long" }).toLowerCase()]} ${today.getFullYear()}`;
-      folder.name = `${folder.name} ${valueName}`;
+      folder.name = `${folder.name} ${valueName}`; */
       return folder;
     });
   };

@@ -52,6 +52,8 @@ const GeneratePdf = (data, body) => {
   if (body.valueCreationDate === undefined) {
     fecha = dateConvert(now.split(",")[0]).split(" ");
     dateForName = now.split(",")[0];
+    creationTime = now.split(",")[1];
+    amPm = "";
   } else {
     const dateParts = body.valueCreationDate.split("T");
     dateForName = dateParts[0];

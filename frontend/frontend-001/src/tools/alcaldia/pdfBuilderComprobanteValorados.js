@@ -55,6 +55,8 @@ const GeneratePdf = (data, body) => {
   if (body.valueCreationDate === undefined) {
     fecha = dateConvert(now.split(",")[0]).split(" ");
     dateForName = now.split(",")[0];
+    creationTime = now.split(",")[1];
+    amPm = "";
   } else {
     const dateParts = body.valueCreationDate.split("T");
     dateForName = dateParts[0];
@@ -67,7 +69,7 @@ const GeneratePdf = (data, body) => {
   doc.text(6.4, 14.4, ` ${fecha[0]}`);
   doc.text(8.4, 14.4, ` ${fecha[2]}`);
   doc.text(10.6, 14.4, ` ${fecha[4].split("")[3]}`);
-  doc.text(11.6, 14.4, creationTime);
+  doc.text(11.6, 14.4, creationTime || "12:00");
   doc.text(12.3, 14.4, amPm);
 
   doc.output("dataurlnewwindow");

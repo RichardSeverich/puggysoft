@@ -22,7 +22,7 @@ import CommonMessage from "../../components-level-1/CommonMessage";
 
 import "./../css/all-forms.css";
 
-function AlcaldiaRecursosMunicipalesFoldersForm() {
+function AlcaldiaRecursosMunicipalesFoldersForm () {
   const history = useHistory();
   const isEditDefaultValue =
     history && history.location && history.location.state;

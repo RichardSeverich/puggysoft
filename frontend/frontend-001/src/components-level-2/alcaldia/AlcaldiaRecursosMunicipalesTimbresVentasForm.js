@@ -226,7 +226,8 @@ function AlcaldiaRecursosMunicipalesTimbresVentasForm () {
 
   const afterDataComprobante = data => {
     const body = getBody();
-    GeneratePdf(data, { ...body, valueCreationDate, idVenta });
+    const newBody = { ...body, valueCreationDate, idVenta };
+    GeneratePdf(data, newBody);
     setIsRequestInProgress(false);
     if (isEdit === undefined && folderSelected === undefined && timbreSelected === undefined) {
       setTimeout(() => {
@@ -417,6 +418,7 @@ function AlcaldiaRecursosMunicipalesTimbresVentasForm () {
                   style={{ resize: "none" }}
                   value={valueCantidad}
                   onChange={onChangeCantidad}
+                  type="number"
                   placeholder={i18n.alcaldiaRecursosMunicipalesTimbresVentasForm.fieldCantidad}
                 />
                 <Form.Text muted className={classNameFormText.cantidad}>
