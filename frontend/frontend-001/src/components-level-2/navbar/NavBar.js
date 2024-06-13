@@ -4,6 +4,8 @@ import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import CommonLabel from "./../../components-level-1/CommonLabel";
 import NavDropdown from "react-bootstrap/NavDropdown";
+import { LuBellPlus } from "react-icons/lu";
+import { CiBellOn } from "react-icons/ci";
 import {
   FaUsers,
   FaChartLine,
@@ -47,6 +49,7 @@ import {
   BsCoin,
   BsBuildingLock,
   BsUiChecks,
+  BsBellSlash,
   BsRecordCircleFill
 } from "react-icons/bs";
 import {
@@ -746,15 +749,15 @@ function NavBar () {
   const recursoMunicipaVentaTableLabel = (<><AiOutlineTable /> {i18n.navBar.recursoMunicipalVentaTable}</>);
   // RECURSO MUNICIPAL TIMBRES
   const recursoMunicipalTimbresAdminLabel = (<><IoIosNotifications /> {i18n.navBar.recursoMunicipalTimbresAdmin}</>);
-  const recursoMunicipalTimbresFormLabel = (<><GrAddCircle /> {i18n.navBar.recursoMunicipalTimbresForm}</>);
-  const recursoMunicipalTimbresTableLabel = (<><AiOutlineTable /> {i18n.navBar.recursoMunicipalTimbresTable}</>);
-  const recursoMunicipalTimbresDescontinuadosFormLabel = (<><GrAddCircle /> {i18n.navBar.recursoMunicipalTimbresDescontinuadosForm}</>);
-  const recursoMunicipalTimbresDescontinuadosTableLabel = (<><AiOutlineTable /> {i18n.navBar.recursoMunicipalTimbresDescontinuadosTable}</>);
+  const recursoMunicipalTimbresFormLabel = (<><LuBellPlus /> {i18n.navBar.recursoMunicipalTimbresForm}</>);
+  const recursoMunicipalTimbresTableLabel = (<><CiBellOn /> {i18n.navBar.recursoMunicipalTimbresTable}</>);
+  const recursoMunicipalTimbresDescontinuadosFormLabel = (<><BsBellSlash /> {i18n.navBar.recursoMunicipalTimbresDescontinuadosForm}</>);
+  const recursoMunicipalTimbresDescontinuadosTableLabel = (<><BsBellSlash /> {i18n.navBar.recursoMunicipalTimbresDescontinuadosTable}</>);
   // VENTA RECURSOS MUNICIPALES TIMBRES
   const recursoMunicipalTimbresVentaAdminLabel = (<><FaCashRegister /> {i18n.navBar.recursoMunicipalTimbresVentalAdmin}</>);
-  const recursoMunicipalTimbresVentaFormLabel = (<><GrAddCircle /> {i18n.navBar.recursoMunicipalTimbresVentaFormOp1}</>);
-  const recursoMunicipalTimbresVentaFormLabelOp2 = (<><GrAddCircle /> {i18n.navBar.recursoMunicipalTimbresVentaFormOp2}</>);
-  const recursoMunicipalTimbresVentaTableLabel = (<><AiOutlineTable /> {i18n.navBar.recursoMunicipalTimbresVentaTable}</>);
+  const recursoMunicipalTimbresVentaFormLabel = (<><LuBellPlus /> {i18n.navBar.recursoMunicipalTimbresVentaFormOp1}</>);
+  const recursoMunicipalTimbresVentaFormLabelOp2 = (<><LuBellPlus /> {i18n.navBar.recursoMunicipalTimbresVentaFormOp2}</>);
+  const recursoMunicipalTimbresVentaTableLabel = (<><CiBellOn /> {i18n.navBar.recursoMunicipalTimbresVentaTable}</>);
   const recursoActividadesFormLabel = (<><GrAddCircle /> {i18n.navBar.recursoActividadesForm}</>);
   const recursoActividadesTableLabel = (<><AiOutlineTable /> {i18n.navBar.recursoActividadesTable}</>);
   // RECURSOS MUNICIPALES FOLDERS
@@ -1079,7 +1082,7 @@ function NavBar () {
             userRoles.includes(enumRoles.ALCALDIA_RECURSOS_MUNICIPALES_CAJERO)
           ) &&
             <NavDropdown title={recursoMunicipalTimbresVentaAdminLabel}>
-              <NavDropdown.Item onClick={navigateAlcaldiaRecursosMunicipaleTimbresVentasForm}>{recursoMunicipalTimbresVentaFormLabel}</NavDropdown.Item>
+              <div style={{ display: "none" }}><NavDropdown.Item onClick={navigateAlcaldiaRecursosMunicipaleTimbresVentasForm}>{recursoMunicipalTimbresVentaFormLabel}</NavDropdown.Item></div>
               <NavDropdown.Item onClick={navigateAlcaldiaRecursosMunicipaleTimbresVentasStep1}>{recursoMunicipalTimbresVentaFormLabelOp2}</NavDropdown.Item>
               <NavDropdown.Item onClick={navigateAlcaldiaRecursosMunicipalesTimbresVentasTable}>{recursoMunicipalTimbresVentaTableLabel}</NavDropdown.Item>
               <NavDropdown.Item onClick={navigateAlcaldiaRecursosMunicipalesFoldersVentasStep1}>{recursoMunicipalFoldersVentaFormLabel}</NavDropdown.Item>
@@ -1203,7 +1206,7 @@ function NavBar () {
           </NavDropdown>
         </Nav>
       </Navbar.Collapse>
-    </Navbar>
+    </Navbar >
   );
 }
 

@@ -27,13 +27,13 @@ const GeneratePdf = (data, body) => {
     return textoEncontrado.charAt(0).toUpperCase() + textoEncontrado.substring(1);
   });
   if (body.clienteCiNit !== "0000000") {
-    doc.text(1, 4.6, ` ${body.clienteCiNit}`);
+    doc.text(1, 2.6, ` ${body.clienteCiNit}`);
   }
-  doc.text(3.7, 4.6, ` ${nombre}`);
-  doc.text(2.6, 5.4, ` ${body.direccion}`);
-  doc.text(2.6, 5.9, ` ${body.nota}`);
+  doc.text(3.7, 2.6, ` ${nombre}`);
+  doc.text(2.6, 3.4, ` ${body.direccion}`);
+  doc.text(2.6, 3.9, ` ${body.nota}`);
 
-  let y = 8.5;
+  let y = 6.5;
   for (let index = 0; index < data.length; index++) {
     const element = data[index];
     doc.text(1.4, y, ` ${element.codigo}`);
@@ -43,8 +43,8 @@ const GeneratePdf = (data, body) => {
   }
   doc.text(3.3, y + 0.8, ` ${"GLOSA: " + body.glosa}`);
 
-  doc.text(13.2, 15.1, ` ${body.ventaPrecioTotal}`);
-  doc.text(2, 15.1, NumeroALetras(body.ventaPrecioTotal));
+  doc.text(13.2, 12.1, ` ${body.ventaPrecioTotal}`);
+  doc.text(2, 12.1, NumeroALetras(body.ventaPrecioTotal));
   let fecha = [];
   let creationTime;
   let amPm;
@@ -52,6 +52,8 @@ const GeneratePdf = (data, body) => {
   if (body.valueCreationDate === undefined) {
     fecha = dateConvert(now.split(",")[0]).split(" ");
     dateForName = now.split(",")[0];
+    creationTime = now.split(",")[1];
+    amPm = "";
   } else {
     const dateParts = body.valueCreationDate.split("T");
     dateForName = dateParts[0];
@@ -61,11 +63,11 @@ const GeneratePdf = (data, body) => {
     amPm = hora >= 12 ? "pm" : "am";
   }
   doc.setFontSize(7);
-  doc.text(6.4, 16.4, ` ${fecha[0]}`);
-  doc.text(8.4, 16.4, ` ${fecha[2]}`);
-  doc.text(10.6, 16.4, ` ${fecha[4].split("")[3]}`);
-  doc.text(11.6, 16.4, creationTime);
-  doc.text(12.3, 16.4, amPm);
+  doc.text(6.4, 14.4, ` ${fecha[0]}`);
+  doc.text(8.4, 14.4, ` ${fecha[2]}`);
+  doc.text(10.6, 14.4, ` ${fecha[4].split("")[3]}`);
+  doc.text(11.6, 14.4, creationTime);
+  doc.text(12.3, 14.4, amPm);
 
   doc.output("dataurlnewwindow");
   doc.save(`${dateForName}-venta-${body.idVenta}.pdf`);

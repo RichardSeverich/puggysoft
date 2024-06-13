@@ -3,6 +3,8 @@ const arrayDataFields = [
   "nameAux",
   "talonarioInicio",
   "talonarioFinal",
+  "talonarioMovimiento",
+  "disponible",
   "precio",
   "createdBy",
   "updatedBy",

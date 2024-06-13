@@ -182,18 +182,18 @@ const navBar = {
   recursoMunicipalVentaTable: "Mostrar ventas",
   // Recurso Municipal Timbres
   recursoMunicipalTimbresAdmin: "Adm. Timbres & Folders",
-  recursoMunicipalTimbresForm: "Registrar Lote de Timbres",
-  recursoMunicipalTimbresTable: "Mostrar Timbres",
-  recursoMunicipalTimbresDescontinuadosForm: "Registrar Timbre Descontinuado",
-  recursoMunicipalTimbresDescontinuadosTable: "Mostrar Timbres Descontinuados",
+  recursoMunicipalTimbresForm: "Registrar lote de timbres",
+  recursoMunicipalTimbresTable: "Mostrar lote de timbres",
+  recursoMunicipalTimbresDescontinuadosForm: "Registrar timbre descontinuado",
+  recursoMunicipalTimbresDescontinuadosTable: "Mostrar timbres descontinuados",
   // Recurso Municipal Folders
-  recursoMunicipalFoldersForm: "Registrar Lote de Folders",
-  recursoMunicipalFoldersTable: "Mostrar Folders",
+  recursoMunicipalFoldersForm: "Registrar lote de folders",
+  recursoMunicipalFoldersTable: "Mostrar lote de folders",
   recursoMunicipalFoldersVentaTable: "Mostrar ventas folders",
   // Venta Recursos Municipales Timbres
   recursoMunicipalTimbresVentalAdmin: "Adm. Caja Timbres & Folders",
   recursoMunicipalTimbresVentaFormOp1: "Registrar venta timbres (Opcion 1)",
-  recursoMunicipalTimbresVentaFormOp2: "Registrar venta timbres (Opcion 2)",
+  recursoMunicipalTimbresVentaFormOp2: "Registrar venta timbres",
   recursoMunicipalFoldersVentaForm: "Registrar venta folders",
   recursoMunicipalTimbresVentaTable: "Mostrar ventas timbres",
   // Reportes de ventas de Recursos Municipales
