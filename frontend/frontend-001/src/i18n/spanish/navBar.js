@@ -202,6 +202,8 @@ const navBar = {
   recursoMunicipalReporte2: "Reportes por rango de fechas",
   recursoMunicipalReporteCortoDiario: "Reporte corto diario",
   recursoMunicipalReporteDiario: "Reporte diario",
+  recursoMunicipalReporteDiarioTimbres: "Reporte diario Timbres",
+  recursoMunicipalReporteDiarioFolders: "Reporte diario Folders",
   recursoMunicipalReporteMensual: "Reporte mensual",
   recursoMunicipalReporteAnual: "Reporte anual",
   // Urbanismo Tramite

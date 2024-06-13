@@ -1,26 +1,23 @@
 package com.puggysoft.services.alcaldia;
 
-import com.puggysoft.dtos.alcaldia.DtoAlcaldiaRecursosMunicipales;
-import com.puggysoft.dtos.alcaldia.DtoAlcaldiaRecursosMunicipalesReport;
-import com.puggysoft.dtos.alcaldia.DtoAlcaldiaRecursosMunicipalesReportCriteria;
-import com.puggysoft.dtos.alcaldia.DtoAlcaldiaRecursosMunicipalesReportItem;
-import com.puggysoft.dtos.alcaldia.DtoAlcaldiaRecursosMunicipalesReportResumen;
+import com.puggysoft.dtos.alcaldia.*;
 import com.puggysoft.entities.alcaldia.EntityAlcaldiaRecursosMunicipalesReportItem;
 import com.puggysoft.repositories.alcaldia.IRepositoryAlcaldiaRecursosMunicipales;
 import com.puggysoft.repositories.alcaldia.IRepositoryAlcaldiaRecursosMunicipalesReport;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
 /**
  * Services for get by id.
  */
 @Service
-public class ServiceAlcaldiaRecursosMunicipalesReport {
+public class ServiceAlcaldiaRecursosMunicipalesReportFolders {
 
   @Autowired
   private IRepositoryAlcaldiaRecursosMunicipales repositoryAlcaldiaRecursos;
@@ -38,7 +35,7 @@ public class ServiceAlcaldiaRecursosMunicipalesReport {
     String fecha = criteria.fecha;
 
     List<DtoAlcaldiaRecursosMunicipales> listOfProducts = repositoryAlcaldiaRecursos
-        .findAlcaldiaRecursosMunicipalesKidsNotRepeatName(tenant)
+        .findAlcaldiaRecursosMunicipalesKidsNotRepeatNameFolders(tenant)
         .stream()
         .map(DtoAlcaldiaRecursosMunicipales::entityToDto)
         .collect(Collectors.toList());
@@ -67,7 +64,8 @@ public class ServiceAlcaldiaRecursosMunicipalesReport {
       reportResumen.nombreRecursoMunicipal = producto.getName();
       reportResumenList.add(reportResumen);
     }
-    Double totalPerProduct = repositoryReport.getRevenueTotal(
+    Double totalPerProduct = repositoryReport.getIngresoTotalDiario(
+        "FOLDERS",
         estadoVenta,
         tenant,
         fecha);

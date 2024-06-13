@@ -60,6 +60,25 @@ public interface IRepositoryAlcaldiaRecursosMunicipalesReport
       @Param("tenant") String tenant,
       @Param("fecha") String date);
 
+  // REPORTE DIARIO RECURSO MUNICIPAL VENTA INGRESOS
+  @Query(value = "SELECT "
+      + "SUM(alcaldia_recursos_municipales_venta_detalle.precio_unidad * alcaldia_recursos_municipales_venta_detalle.cantidad) "
+      + "FROM alcaldia_recursos_municipales_venta_detalle "
+      + "INNER JOIN alcaldia_recursos_municipales_venta "
+      + "ON alcaldia_recursos_municipales_venta.id=alcaldia_recursos_municipales_venta_detalle.id_venta "
+      + "INNER JOIN alcaldia_recursos_municipales "
+      + "ON alcaldia_recursos_municipales.id=alcaldia_recursos_municipales_venta_detalle.id_recurso_municipal "
+      + "WHERE alcaldia_recursos_municipales.name LIKE '%:nameRecursoMunicipal%' "
+      + "AND alcaldia_recursos_municipales_venta.venta_status = :estadoVenta "
+      + "AND alcaldia_recursos_municipales_venta_detalle.tenant = :tenant "
+      + "AND DATE(alcaldia_recursos_municipales_venta_detalle.creation_date) = :yearMonthDay "
+      , nativeQuery = true)
+  Double getIngresoTotalDiario(
+      @Param("nameRecursoMunicipal") String nameRecursoMunicipal,
+      @Param("estadoVenta") String estadoVenta,
+      @Param("tenant") String tenant,
+      @Param("yearMonthDay") String yearMonthDay);
+
   // total anual de todos los recursos [activo||anulado]
   @Query(value = "SELECT "
       + "SUM(alcaldia_recursos_municipales_venta_detalle.precio_unidad * alcaldia_recursos_municipales_venta_detalle.cantidad) "
