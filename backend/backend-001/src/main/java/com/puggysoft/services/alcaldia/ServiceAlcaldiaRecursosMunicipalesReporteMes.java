@@ -34,7 +34,7 @@ public class ServiceAlcaldiaRecursosMunicipalesReporteMes {
     String year = criteria.year;
     String month = criteria.month;
     List<DtoAlcaldiaRecursosMunicipales> listOfProducts = repositoryAlcaldiaRecursos
-        .findAlcaldiaRecursosMunicipalesKidsNotRepeatName()
+        .findAlcaldiaRecursosMunicipalesKidsNotRepeatName(tenant)
         .stream()
         .map(DtoAlcaldiaRecursosMunicipales::entityToDto)
         .collect(Collectors.toList());

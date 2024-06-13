@@ -99,6 +99,7 @@ function NavBar () {
   const loginPath = window.sessionStorage.getItem("login-path");
   // const userRolesObjects = JSON.parse(userRolesString);
   const userRoles = [];
+  const showElement = false;
 
   if (userRolesString) {
     userRoles.push(userRolesString);
@@ -383,6 +384,12 @@ function NavBar () {
   };
   const navigateAlcaldiaRecursosMunicipalesReporteDiario = () => {
     history.push(enumPaths.ALCALDIA_RECURSOS_MUNICIPALES_REPORTE_DIARIO);
+  };
+  const navigateAlcaldiaRecursosMunicipalesReporteDiarioTimbres = () => {
+    history.push(enumPaths.ALCALDIA_RECURSOS_MUNICIPALES_REPORTE_DIARIO_TIMBRES);
+  };
+  const navigateAlcaldiaRecursosMunicipalesReporteDiarioFolders = () => {
+    history.push(enumPaths.ALCALDIA_RECURSOS_MUNICIPALES_REPORTE_DIARIO_FOLDERS);
   };
   const navigateAlcaldiaRecursosMunicipalesReporteMensual = () => {
     history.push(enumPaths.ALCALDIA_RECURSOS_MUNICIPALES_REPORTE_MENSUAL);
@@ -771,6 +778,8 @@ function NavBar () {
   const recursoMunicipalReporteDiarioLabel = (<><FaChartLine /> {i18n.navBar.recursoMunicipalReporteDiario}</>);
   const recursoMunicipalReporteMensualLabel = (<><FaChartLine /> {i18n.navBar.recursoMunicipalReporteMensual}</>);
   const recursoMunicipalReporteAnualLabel = (<><FaChartLine /> {i18n.navBar.recursoMunicipalReporteAnual}</>);
+  const recursoMunicipalReporteDiarioTimbresLabel = (<><FaChartLine /> {i18n.navBar.recursoMunicipalReporteDiarioTimbres}</>);
+  const recursoMunicipalReporteDiarioFoldersLabel = (<><FaChartLine /> {i18n.navBar.recursoMunicipalReporteDiarioFolders}</>);
   // URBANISMO TRAMITE
   const urbanismoTramiteAdminLabel = (<><IoNewspaperSharp /> {i18n.navBar.urbanismoTramiteAdmin}</>);
   const urbanismoTramiteFormLabel = (<><GrAddCircle /> {i18n.navBar.urbanismoTramiteForm}</>);
@@ -1092,6 +1101,8 @@ function NavBar () {
             <NavDropdown title={recursoMunicipalReporteAdminLabel}>
               <NavDropdown.Item onClick={navigateAlcaldiaRecursosMunicipalesReporteCortoDiario}>{recursoMunicipalReporteCortoDiarioLabel}</NavDropdown.Item>
               <NavDropdown.Item onClick={navigateAlcaldiaRecursosMunicipalesReporteDiario}>{recursoMunicipalReporteDiarioLabel}</NavDropdown.Item>
+              {showElement && (<NavDropdown.Item onClick={navigateAlcaldiaRecursosMunicipalesReporteDiarioTimbres}>{recursoMunicipalReporteDiarioTimbresLabel}</NavDropdown.Item>)}
+              {showElement && (<NavDropdown.Item onClick={navigateAlcaldiaRecursosMunicipalesReporteDiarioFolders}>{recursoMunicipalReporteDiarioFoldersLabel}</NavDropdown.Item>)}
               <NavDropdown.Item onClick={navigateAlcaldiaRecursosMunicipalesReporteMensual}>{recursoMunicipalReporteMensualLabel}</NavDropdown.Item>
               <NavDropdown.Item onClick={navigateAlcaldiaRecursosMunicipalesReporteAnual}>{recursoMunicipalReporteAnualLabel}</NavDropdown.Item>
               <NavDropdown.Item onClick={navigateAlcaldiaRecursosMunicipalesGrupoStepOne}>{recursoMunicipalGrupoStepOneLabel}</NavDropdown.Item>

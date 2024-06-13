@@ -36,7 +36,7 @@ public class ServiceAlcaldiaRecursosMunicipalesReporteCorto {
     String fecha = criteria.fecha;
 
     List<DtoAlcaldiaRecursosMunicipales> listOfRecursosPadres = repositoryAlcaldiaRecursos
-        .findAlcaldiaRecursosMunicipalesfatherNotRepeatName()
+        .findAlcaldiaRecursosMunicipalesfatherNotRepeatName(tenant)
         .stream()
         .map(DtoAlcaldiaRecursosMunicipales::entityToDto)
         .collect(Collectors.toList());
