@@ -15,7 +15,7 @@ public class HomeScreen extends Screen {
     super();
   }
 
-  @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"HOME\"]")
+  @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Home\"]")
   @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"Home\"]")
   public MobileElement homeText;
 
@@ -35,4 +35,16 @@ public class HomeScreen extends Screen {
   @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"Contacts\"]")
   public MobileElement contactsText;
 
+  @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"All\"]")
+  public MobileElement allText;
+
+  @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Channels\"]")
+  public MobileElement channelsText;
+
+  @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"There is nothing here\"]")
+  public MobileElement thereIsNothingHereText;
+
+  // PROFILE BUTTON
+  @AndroidFindBy(xpath = "//android.widget.FrameLayout[@resource-id=\"android:id/content\"]/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[1]/android.view.ViewGroup")
+  public MobileElement profileSettingsButton;
 }

@@ -1,5 +1,7 @@
 package netphone.com.core;
 
+import netphone.com.models.EnumPlatformName;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -33,6 +35,7 @@ public final class Config {
   protected String adminPassword;
   protected String userUsername;
   protected String userPassword;
+  protected EnumPlatformName enumPlatformName;
 
   /** Constructor read config properties file. */
   private Config() {

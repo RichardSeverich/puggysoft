@@ -7,6 +7,7 @@ import java.util.concurrent.TimeUnit;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.ios.IOSDriver;
+import netphone.com.models.EnumPlatformName;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -70,8 +71,10 @@ public class Driver {
       URL url = new URL(config.appiumUrl);
       if (config.platformName.equals("iOS")) {
         this.appiumDriver = new IOSDriver<>(url, capabilities);
+        this.config.enumPlatformName = EnumPlatformName.IOS;
       } else {
         this.appiumDriver = new AndroidDriver<>(url, capabilities);
+        this.config.enumPlatformName = EnumPlatformName.ANDROID;
       }
       this.appiumDriver.manage().timeouts().implicitlyWait(config.implicitlyWaitSeconds, TimeUnit.SECONDS);
       this.driverWait =  new WebDriverWait(this.appiumDriver, this.config.explicitlyWaitSeconds);
