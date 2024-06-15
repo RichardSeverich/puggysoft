@@ -53,42 +53,41 @@ const GeneratePdf = (data, body) => {
   let amPm;
   let dateForName;
   if (body.valueCreationDate === undefined) {
+    // @Deprecate this section never executed.
     // now ---> English browser: 6/13/2024, 2:01:02 AM ---> Month/Day/Year
     // now ---> Spanish browser: 13/6/2024, 1:53:11 a. m. ---> Day/Month/Year
-    const userLang = navigator.language || navigator.userLanguage;
+    // const userLang = navigator.language || navigator.userLanguage;
+    const today = new Date().toLocaleDateString("en-US");
     const fullDateParts = now.split(",");
-    let date = fullDateParts[0]; // Ejemplo: 6/13/2024
+    const date = today; // Ejemplo: 6/13/2024
     const time = fullDateParts[1]; // Ejemplo: 2:01:02 AM
     const timeParts = time.split(" ");
     // es --> espanish ---> ejemplo: es-AR
     // en --> english
-    if (userLang.includes("es")) {
-      const dateParts = date.split("/");
-      const day = dateParts[0];
-      const month = dateParts[1];
-      const year = dateParts[2];
-      date = `${month}/${day}/${year}`;
-    }
+    const dateParts = today.split("/");
+    const day = dateParts[1];
+    const month = dateParts[0];
+    const year = dateParts[2];
     fecha = dateConvert(date).split(" ");
-    dateForName = date;
-    creationTime = timeParts[0]; // 2:01:02
-    amPm = timeParts[1]; // AM/PM  or a. m./p. m.
-    if (timeParts.length === 3) {
-      amPm = timeParts[1] + timeParts[2];
-    }
+    dateForName = `${year}-${month}-${day}`;
+    creationTime = timeParts[1].substring(0, timeParts[1].length - 3); // 2:01:02 ---> 2:01
+    amPm = timeParts[2]; // AM/PM  or a. m./p. m.
   } else {
+    // valueCreationDate = 2024-06-10 04:38:02.0
     const dateParts = body.valueCreationDate.split("T");
-    dateForName = dateParts[0];
-    creationTime = dateParts[1].substring(0, 5);
-    fecha = dateConvert(dateParts[0]).split(" ");
-    const hora = Number(creationTime.split(":")[0]);
+    const date = dateParts[0]; // 2024-06-10
+    const time = dateParts[1]; //  04:38:02.0
+    dateForName = date;
+    creationTime = time.substring(0, 5); // 04:38
+    fecha = dateConvert(date).split(" "); // 10 DE JUNIO DE 2024
+    const hora = Number(creationTime.split(":")[0]); // 04
     amPm = hora >= 12 ? "pm" : "am";
   }
   doc.setFontSize(7);
   doc.text(6.4, 14.4, ` ${fecha[0]}`);
   doc.text(8.4, 14.4, ` ${fecha[2]}`);
   doc.text(10.6, 14.4, ` ${fecha[4].split("")[3]}`);
-  doc.text(11.6, 14.4, creationTime || "12:00");
+  doc.text(11.6, 14.4, creationTime);
   doc.text(12.3, 14.4, amPm);
 
   doc.output("dataurlnewwindow");
