@@ -1,7 +1,10 @@
 package netphone.com.core;
 
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
+import netphone.com.models.EnumPlatformName;
+import org.openqa.selenium.By;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -17,6 +20,7 @@ public abstract class Screen {
   public String adminPassword;
   public String userUserName;
   public String userPassword;
+  public EnumPlatformName platformName;
 
   /** Constructor. */
   public Screen() {
@@ -28,6 +32,7 @@ public abstract class Screen {
     this.adminPassword = this.config.adminPassword;
     this.userUserName = this.config.userUsername;
     this.userPassword = this.config.userPassword;
+    this.platformName = this.config.enumPlatformName;
     PageFactory.initElements(new AppiumFieldDecorator(this.driver), this);
   }
 
@@ -41,4 +46,7 @@ public abstract class Screen {
     Driver.getInstance().startSession();
   }
 
+  public MobileElement getElementByXpath(String xpath) {
+    return (MobileElement) this.driver.findElement(By.xpath(xpath));
+  }
 }

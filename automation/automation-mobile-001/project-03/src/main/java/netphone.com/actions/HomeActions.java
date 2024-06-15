@@ -24,11 +24,21 @@ public class HomeActions extends AbstractActions {
     this.waitForDisplayed(this.homeScreen.homeText);
   }
 
+  /** Click. */
+  public void clickHome() {
+    this.homeScreen.homeText.click();
+  }
+
   /**
    * Verification calls.
    */
   public void verifyCalls() {
     this.waitForDisplayed(this.homeScreen.callsText);
+  }
+
+  /** Click. */
+  public void clickCalls() {
+    this.homeScreen.callsText.click();
   }
 
   /**
@@ -38,11 +48,21 @@ public class HomeActions extends AbstractActions {
     this.waitForDisplayed(this.homeScreen.messengerText);
   }
 
+  /** Click. */
+  public void clickMessenger() {
+    this.homeScreen.messengerText.click();
+  }
+
   /**
    * Verification Meetings.
    */
   public void verifyMeetings() {
     this.waitForDisplayed(this.homeScreen.meetingsText);
+  }
+
+  /** Click. */
+  public void clickMeetings() {
+    this.homeScreen.meetingsText.click();
   }
 
   /**
@@ -52,4 +72,29 @@ public class HomeActions extends AbstractActions {
     this.waitForDisplayed(this.homeScreen.contactsText);
   }
 
+  /** Click. */
+  public void clickContacts() {
+    this.homeScreen.contactsText.click();
+  }
+
+  /**
+   * Verification All Text.
+   */
+  public void verifyAllText() {
+    this.waitForDisplayed(this.homeScreen.allText);
+  }
+
+  /**
+   * Verification There Is Nothing Here Text.
+   */
+  public void verifyThereIsNothingHereText() {
+    this.waitForDisplayed(this.homeScreen.thereIsNothingHereText);
+  }
+
+  /**
+   * Click User Settings Button.
+   */
+  public void clickProfileSettingsButton() {
+    this.homeScreen.profileSettingsButton.click();
+  }
 }

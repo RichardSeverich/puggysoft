@@ -21,11 +21,11 @@ public class LoginScreen extends Screen {
   @iOSXCUITFindBy(xpath = "//XCUIElementTypeOther[@name=\"LET'S GET STARTED\"]")
   public MobileElement letsGetStarterButton;
 
-  // Login Screen Part 2
   @AndroidFindBy(xpath = "//android.widget.TextView[@text='Welcome to']")
   @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"Welcome to\"]")
-  public MobileElement welcomeText;
+  public MobileElement welcomeToText;
 
+  // Login Screen Part 2
   @AndroidFindBy(xpath = "//android.view.View[@text='Login']")
   @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"Login\"]")
   public MobileElement loginInputLabel;
@@ -36,7 +36,8 @@ public class LoginScreen extends Screen {
   @AndroidFindBy(xpath = "//android.widget.TextView[@text='Sign Up']")
   public MobileElement sigUpText;
 
-  @AndroidFindBy(xpath = "//android.widget.EditText[@resource-id='email']")
+  // @AndroidFindBy(xpath = "//android.widget.EditText[@resource-id='email']")
+  @AndroidFindBy(xpath = "//android.widget.EditText")
   @iOSXCUITFindBy(xpath = "//XCUIElementTypeTextField[@value=\"Your email or username\"]")
   public MobileElement emailInput;
 
@@ -44,13 +45,28 @@ public class LoginScreen extends Screen {
   @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"NEXT\"]")
   public MobileElement nextButton;
 
+  @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Email or username is incorrect.\"]")
+  public MobileElement emailInputErrorMessage;
+
   // Login Screen Part 3
-  @AndroidFindBy(xpath = "//android.widget.EditText[@resource-id='password']")
+  // @AndroidFindBy(xpath = "//android.widget.EditText[@resource-id='password']")
+  @AndroidFindBy(xpath = "//android.widget.EditText")
   @iOSXCUITFindBy(xpath = "//XCUIElementTypeSecureTextField")
   public MobileElement passwordInput;
 
   @AndroidFindBy(xpath = "//android.widget.Button[@text='LOGIN']")
   @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"LOGIN\"]")
   public MobileElement loginButton;
+
+  @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Login / Password is incorrect.\"]")
+  public MobileElement passwordInputErrorMessage;
+
+  // @AndroidFindBy(xpath = "//android.view.View[@text=\"Forgot Password?\"]")
+  @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Forgot Password?\"]")
+  public MobileElement forgotPasswordText;
+
+  // @AndroidFindBy(xpath = "//android.view.View[@text=\"Please contact your authentication provider.\"]")
+  @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Please contact your authentication provider.\"]")
+  public MobileElement contactProviderText;
 
 }
