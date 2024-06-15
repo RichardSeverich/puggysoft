@@ -36,8 +36,7 @@ function AlcaldiaRecursosMunicipalesTableDeleteSale (props) {
   }
 
   function handleDelete (data) {
-    const price = -Number(data.precio);
-    handleChangeData(price);
+    handleChangeData(data.precioAux);
     setUpdateTableDelete(true);
     handleDeleteRequest(`alcaldia-recursos-municipales-ventas-detalle/${data.id}`,
       afterAddProductToSale, afterAddProductToSale, afterAddProductToSale

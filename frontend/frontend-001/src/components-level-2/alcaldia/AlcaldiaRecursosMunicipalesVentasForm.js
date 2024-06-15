@@ -213,9 +213,12 @@ function AlcaldiaRecursosMunicipalesVentasForm () {
     }
   };
 
-  const handleChangeData = (price) => {
+  const handleChangeDataSumar = (price) => {
     setValueVentaPrecioTotal(Number(valueVentaPrecioTotal) + Number(price));
-    // setValueClienteCambio(valueClienteCambio - price);
+  };
+
+  const handleChangeDataRestar = (price) => {
+    setValueVentaPrecioTotal(Number(valueVentaPrecioTotal) - Number(price));
   };
 
   const afterDataComprobante = data => {
@@ -536,7 +539,7 @@ function AlcaldiaRecursosMunicipalesVentasForm () {
               setValueNota={setValueNota}
               ventasId={idVenta}
               setUpdateTableDelete={setUpdateTableDelete}
-              handleChangeData={handleChangeData}
+              handleChangeData={handleChangeDataSumar}
               setValueVentaPrecioTotal={setValueVentaPrecioTotal}
               setValueClienteCambio={setValueClienteCambio}
               setIsSaveButtonDisabled={setIsSaveButtonDisabled}
@@ -551,7 +554,7 @@ function AlcaldiaRecursosMunicipalesVentasForm () {
               setValueVentaPrecioTotal={setValueVentaPrecioTotal}
               valueVentaPrecioTotal={valueVentaPrecioTotal}
               setValueClienteCambio={setValueClienteCambio}
-              handleChangeData={handleChangeData}
+              handleChangeData={handleChangeDataRestar}
               newVentaDetalle={newVentaDetalle}
               isEdit={!!isEdit}
             />
