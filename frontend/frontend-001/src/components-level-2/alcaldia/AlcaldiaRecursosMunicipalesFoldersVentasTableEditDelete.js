@@ -57,7 +57,7 @@ function AlcaldiaRecursosMunicipalesFoldersVentasTable () {
       handleGetData={handleGetData}
       handleGetSize={handleGetSize}
       tableArrayCustomRowButtons={tableArrayCustomRowButtons}
-      columnsToShow={enumTableColumnsToShow.MEDIUM}
+      columnsToShow={enumTableColumnsToShow.FULL}
       fixArrayData={fixArrayData}
     >
     </AlcaldiaRecursosMunicipalesFoldersVentasGenericTable>

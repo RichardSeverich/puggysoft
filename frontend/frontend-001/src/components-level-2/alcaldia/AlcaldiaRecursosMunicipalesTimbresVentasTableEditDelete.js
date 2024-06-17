@@ -46,7 +46,7 @@ function AlcaldiaRecursosMunicipalesTimbresVentasTable () {
       handleGetData={handleGetData}
       handleGetSize={handleGetSize}
       tableArrayCustomRowButtons={tableArrayCustomRowButtons}
-      columnsToShow={enumTableColumnsToShow.MEDIUM}
+      columnsToShow={enumTableColumnsToShow.FULL}
     >
     </AlcaldiaRecursosMunicipalesTimbresVentasGenericTable>
   );
