@@ -1,4 +1,4 @@
-@SmokeTest @Android @Login
+@Android
 Feature: Login
 
   Scenario: Verify login screen components

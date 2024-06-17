@@ -13,13 +13,13 @@
 
 * After that, Add ```Platform tools``` to environment variables
 <p align="center">
-  <img src="./../../mobile/mobile001/readme-files/013-android-studio-environment-variables1.JPG">
+  <img src="./../../../mobile/mobile001/readme-files/013-android-studio-environment-variables1.JPG">
 </p>
 <p align="center">
-  <img src="./../../mobile/mobile001/readme-files/013-android-studio-environment-variables2.JPG">
+  <img src="./../../../mobile/mobile001/readme-files/013-android-studio-environment-variables2.JPG">
 </p>
 
 * Then test with ``` adb devices``` in cmd
 <p align="center">
-  <img src="./../../mobile/mobile001/readme-files/014-android-studio-test-adb-devices.JPG">
+  <img src="./../../../mobile/mobile001/readme-files/014-android-studio-test-adb-devices.JPG">
 </p>
