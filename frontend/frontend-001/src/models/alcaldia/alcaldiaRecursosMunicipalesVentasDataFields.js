@@ -1,5 +1,6 @@
 const arrayDataFields = [
   "id",
+  "numeroComprobante",
   "clienteNombre",
   "clienteCiNit",
   "direccion",

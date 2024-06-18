@@ -45,7 +45,7 @@ public class ServiceAlcaldiaRecursosMunicipalesReportFolders {
     for (DtoAlcaldiaRecursosMunicipales producto : listOfProducts) {
       DtoAlcaldiaRecursosMunicipalesReportResumen reportResumen = new DtoAlcaldiaRecursosMunicipalesReportResumen();
       List<EntityAlcaldiaRecursosMunicipalesReportItem> listReportItemsEntities = repositoryReport.getRevenueSummary(
-          producto.getName(),
+          producto.getId(),
           estadoVenta,
           tenant,
           fecha);
@@ -55,7 +55,7 @@ public class ServiceAlcaldiaRecursosMunicipalesReportFolders {
           .collect(Collectors.toList());
       reportResumen.resumenVentas = listReportItems;
       Double totalPerProduct = repositoryReport.getRevenuePerProductTotal(
-          producto.getName(),
+          producto.getId(),
           estadoVenta,
           tenant,
           fecha);

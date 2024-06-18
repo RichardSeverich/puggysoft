@@ -28,7 +28,7 @@ import "./../css/all-five-divs-side-by-side.css";
 import "./../css/button-inline.css";
 import enumPaths from "../../models/enumPaths";
 
-function AlcaldiaRecursosMunicipalesTimbresVentasForm () {
+function AlcaldiaRecursosMunicipalesTimbresVentasForm() {
   const history = useHistory();
   const [classNameFormText, setClassNameFormText] =
     useState(classNameFormTextNew);
@@ -45,6 +45,7 @@ function AlcaldiaRecursosMunicipalesTimbresVentasForm () {
   const hideElement = false;
 
   let venta = "";
+  let numeroComprobante = "";
   let clienteNombre = "N/A";
   let clienteCiNit = "0000000";
   let direccion = "Colcapirhua";
@@ -78,6 +79,7 @@ function AlcaldiaRecursosMunicipalesTimbresVentasForm () {
     isEdit.timbreSelected === undefined &&
     !isBlock) {
     venta = isEdit.data.id;
+    numeroComprobante = isEdit.data.numeroComprobante;
     clienteNombre = isEdit.data.clienteNombre;
     clienteCiNit = isEdit.data.clienteCiNit;
     direccion = isEdit.data.direccion;
@@ -101,6 +103,7 @@ function AlcaldiaRecursosMunicipalesTimbresVentasForm () {
   const [valueClienteCambio, setValueClienteCambio] = useState(clienteCambio);
   const [valueCreationDate] = useState(creationDate);
   // Use custom hook
+  const { value: valueNumeroComprobante, onChange: onChangeNumeroComprovante } = useInput(numeroComprobante);
   const { value: valueClienteNombre, onChange: onChangeClienteNombre } = useInput(clienteNombre);
   const { value: valueClienteCiNit, onChange: onChangeClienteCiNit } = useInput(clienteCiNit);
   const { value: valueDireccion, onChange: onChangeDireccion } = useInput(direccion);
@@ -159,6 +162,7 @@ function AlcaldiaRecursosMunicipalesTimbresVentasForm () {
       }
       const body = [
         {
+          numeroComprobante: valueNumeroComprobante,
           clienteNombre: valueClienteNombre,
           clienteCiNit: valueClienteCiNit,
           direccion: valueDireccion,
@@ -186,10 +190,10 @@ function AlcaldiaRecursosMunicipalesTimbresVentasForm () {
       ];
       return body;
     },
-    [valueClienteNombre, valueClienteCiNit, valueDireccion, valueClienteDinero, valueClienteCambio, valueVentaPrecioTotal, valueCantidad]
+    [valueNumeroComprobante, valueClienteNombre, valueClienteCiNit, valueDireccion, valueClienteDinero, valueClienteCambio, valueVentaPrecioTotal, valueCantidad]
   );
 
-  function afterAddTimbreToSaleOnFail () {
+  function afterAddTimbreToSaleOnFail() {
     console.error("error in add producto to sale");
   }
   const handleAfterAdd = function (newEntityId) {
@@ -334,6 +338,23 @@ function AlcaldiaRecursosMunicipalesTimbresVentasForm () {
         </Card.Header>
         <Card.Body>
           <div className="puggysoft-flex-container">
+            <div className="puggysoft-five-divs-side-by-side-child">
+              <Form.Group className="mb-3" controlId="numeroComprobante">
+                <Form.Label>
+                  {i18n.alcaldiaRecursosMunicipalesTimbresVentasForm.fieldNumeroComprobante}
+                </Form.Label>
+                <Form.Control
+                  disabled={isBlock}
+                  onChange={onChangeNumeroComprovante}
+                  value={valueNumeroComprobante}
+                  type="number"
+                  placeholder={i18n.alcaldiaRecursosMunicipalesTimbresVentasForm.fieldNumeroComprobante}
+                />
+                <Form.Text muted className={classNameFormText.numeroComprobante}>
+                  {i18n.alcaldiaRecursosMunicipalesTimbresVentasForm.fieldNumeroComprobanteText}
+                </Form.Text>
+              </Form.Group>
+            </div>
             <div className="puggysoft-five-divs-side-by-side-child">
               <Form.Group className="mb-3" controlId="clienteNombre">
                 <Form.Label>

@@ -30,7 +30,7 @@ import "./../css/button-inline.css";
 import AlcaldiaRecursosMunicipalesTableAddSale from "./AlcaldiaRecursosMunicipalesTableAddSale";
 import AlcaldiaRecursosMunicipalesTableDeleteSale from "./AlcaldiaRecursosMunicipalesTableDeleteSale";
 
-function AlcaldiaRecursosMunicipalesVentasForm () {
+function AlcaldiaRecursosMunicipalesVentasForm() {
   const history = useHistory();
   const isEditDefaultValue =
     history && history.location && history.location.state;
@@ -66,6 +66,10 @@ function AlcaldiaRecursosMunicipalesVentasForm () {
     setValueCreationDate(isEdit.data.creationDate);
     setIsButtonComprobanteDisabled(false);
   }
+  const numeroComprobante =
+    isEdit && isEdit.data.numeroComprobante !== null
+      ? isEdit.data.numeroComprobante
+      : "";
   const clienteNombre =
     isEdit && isEdit.data.clienteNombre !== null
       ? isEdit.data.clienteNombre
@@ -93,6 +97,8 @@ function AlcaldiaRecursosMunicipalesVentasForm () {
   // Use custom hook
   const { value: valueClienteNombre, onChange: onChangeClienteNombre } =
     useInput(clienteNombre);
+  const { value: valueNumeroComprobante, onChange: onChangeNumeroComprobante } =
+    useInput(numeroComprobante);
   const { value: valueClienteCiNit, onChange: onChangeClienteCiNit } =
     useInput(clienteCiNit);
   const { value: valueDireccion, onChange: onChangeDireccion } =
@@ -108,6 +114,7 @@ function AlcaldiaRecursosMunicipalesVentasForm () {
       const username = window.sessionStorage.getItem("username");
       const tenant = window.sessionStorage.getItem("tenant");
       const body = {
+        numeroComprobante: valueNumeroComprobante,
         clienteNombre: valueClienteNombre,
         clienteCiNit: valueClienteCiNit,
         direccion: valueDireccion,
@@ -124,6 +131,7 @@ function AlcaldiaRecursosMunicipalesVentasForm () {
       return body;
     },
     [
+      valueNumeroComprobante,
       valueClienteNombre,
       valueClienteCiNit,
       valueDireccion,
@@ -264,7 +272,7 @@ function AlcaldiaRecursosMunicipalesVentasForm () {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [valueVentaPrecioTotal]);
 
-  function onChangeClienteDinero (ClienteDinero) {
+  function onChangeClienteDinero(ClienteDinero) {
     setValueClienteCambio(Number(ClienteDinero) - valueVentaPrecioTotal);
     setValueClienteDinero(ClienteDinero);
   }
@@ -288,6 +296,31 @@ function AlcaldiaRecursosMunicipalesVentasForm () {
         </Card.Header>
         <Card.Body>
           <div className="puggysoft-five-divs-side-by-side-child-container">
+            <div className="puggysoft-five-divs-side-by-side-child">
+              <Form.Group className="mb-3" controlId="numeroComprobante">
+                <Form.Label>
+                  {
+                    i18n.alcaldiaRecursosMunicipalesVentasForm
+                      .fieldNumeroComprobante
+                  }
+                </Form.Label>
+                <Form.Control
+                  onChange={onChangeNumeroComprobante}
+                  value={valueNumeroComprobante}
+                  type="number"
+                  placeholder={
+                    i18n.alcaldiaRecursosMunicipalesVentasForm
+                      .fieldNumeroComprobante
+                  }
+                />
+                <Form.Text muted className={classNameFormText.numeroComprobante}>
+                  {
+                    i18n.alcaldiaRecursosMunicipalesVentasForm
+                      .fieldNumeroComprobanteText
+                  }
+                </Form.Text>
+              </Form.Group>
+            </div>
             <div className="puggysoft-five-divs-side-by-side-child">
               <Form.Group className="mb-3" controlId="clienteNombre">
                 <Form.Label>
@@ -371,6 +404,8 @@ function AlcaldiaRecursosMunicipalesVentasForm () {
                 />
               </Form.Group>
             </div>
+          </div>
+          <div className="puggysoft-five-divs-side-by-side-child-container">
             <div className="puggysoft-five-divs-side-by-side-child">
               <Form.Group className="mb-3" controlId="ventaStatus">
                 <Form.Label>
@@ -396,8 +431,6 @@ function AlcaldiaRecursosMunicipalesVentasForm () {
                 </Form.Text>
               </Form.Group>
             </div>
-          </div>
-          <div className="puggysoft-five-divs-side-by-side-child-container">
             {verDetalles && (
               <div className="puggysoft-six-divs-side-by-side-child">
                 <Form.Group className="mb-3" controlId="ventaPrecioTotal">

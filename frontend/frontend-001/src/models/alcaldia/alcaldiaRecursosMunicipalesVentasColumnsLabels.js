@@ -2,6 +2,7 @@ import i18n from "../../i18n/i18n";
 
 const arrayColumns = [
   i18n.commonTable.columnId,
+  i18n.commonTable.columnNumeroComprobante,
   i18n.alcaldiaRecursosMunicipalesVentasTable.columnClienteNombre,
   i18n.alcaldiaRecursosMunicipalesVentasTable.columnClienteCiNit,
   i18n.alcaldiaRecursosMunicipalesVentasTable.columnDireccion,

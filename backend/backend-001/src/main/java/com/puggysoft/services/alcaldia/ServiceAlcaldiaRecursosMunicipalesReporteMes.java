@@ -49,11 +49,11 @@ public class ServiceAlcaldiaRecursosMunicipalesReporteMes {
       reportResumen.nombreRecursoMunicipal = producto.getName();
       for (int day = 1; day <= daysInMonth; day++) {
         String date = year + "-" + month + "-" + day;
-        Double sumDay = repositoryReport.getRevenuePerProductTotal(producto.getName(), estadoVenta, tenant, date);
+        Double sumDay = repositoryReport.getRevenuePerProductTotal(producto.getId(), estadoVenta, tenant, date);
         sumDay = sumDay == null ? 0 : sumDay;
         reportResumen.arrayDays.add(sumDay);
       }
-      Double totalProductoMensual = repositoryReport.getReportePorProductoTotalMensual(producto.getName(), estadoVenta, tenant, year, Integer.parseInt(month));
+      Double totalProductoMensual = repositoryReport.getReportePorProductoTotalMensual(producto.getId(), estadoVenta, tenant, year, Integer.parseInt(month));
       reportResumen.ventasTotales = totalProductoMensual == null ? 0 : totalProductoMensual;
       reportResumenList.add(reportResumen);
     }

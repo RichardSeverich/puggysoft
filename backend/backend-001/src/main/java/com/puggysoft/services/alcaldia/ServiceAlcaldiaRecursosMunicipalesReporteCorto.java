@@ -63,7 +63,7 @@ public class ServiceAlcaldiaRecursosMunicipalesReporteCorto {
         hijoByList.setNombreRecursoMunicipal(recursoHijo.getName());
 
         Double totalHijo = repositoryReport.getRevenuePerProductTotal(
-          recursoHijo.getName(),
+          recursoHijo.getId(),
           estadoVenta,
           tenant,
           fecha);

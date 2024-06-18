@@ -86,7 +86,8 @@ function AlcaldiaRecursosMunicipalesTimbresForm () {
   };
 
   if (controlGet && isEdit === undefined) {
-    handleGetRequest("alcaldia-recursos-municipales-timbres-get-for-register", (data) => {
+    const tenant = window.sessionStorage.getItem("tenant");
+    handleGetRequest(`alcaldia-recursos-municipales-timbres-get-for-register?tenant=${tenant}`, (data) => {
       setValueTalonarioInicio(data + 1);
       setControlGet(false);
     });

@@ -96,7 +96,8 @@ function AlcaldiaRecursosMunicipalesFoldersForm () {
   };
 
   if (controlGet && isEdit === undefined) {
-    handleGetRequest("alcaldia-recursos-municipales-folders-get-for-register", (data) => {
+    const tenant = window.sessionStorage.getItem("tenant");
+    handleGetRequest(`alcaldia-recursos-municipales-folders-get-for-register?tenant=${tenant}`, (data) => {
       setValueTalonarioInicio(data + 1);
       setControlGet(false);
     });

@@ -1,6 +1,7 @@
 const classNameRed = "puggysoft-red-text";
 
 const classNameFormTextNew = {
+  numeroComprobante: classNameRed,
   clienteNombre: classNameRed,
   clienteCiNit: classNameRed,
   direccion: classNameRed,
@@ -10,6 +11,15 @@ const classNameFormTextNew = {
 
 const handleValidation = (data, setClassNameFormText) => {
   let isValid = true;
+  if (!(data[0].numeroComprobante.length >= 5 && data[0].numeroComprobante.length <= 24)) {
+    isValid = false;
+    classNameFormTextNew.numeroComprobante = classNameRed;
+  } else if (!/^\d+(\.\d{1,2})?$/.test(data[0].numeroComprobante)) {
+    isValid = false;
+    classNameFormTextNew.numeroComprobante = classNameRed;
+  } else {
+    classNameFormTextNew.numeroComprobante = "";
+  }
   if (!(data[0].clienteNombre.length >= 3 && data[0].clienteNombre.length <= 120)) {
     isValid = false;
     classNameFormTextNew.clienteNombre = classNameRed;

@@ -13,6 +13,9 @@ public class DtoAlcaldiaRecursosMunicipalesVentaFilter {
   // ID
   public String idCriteria;
   public EnumCompareOperator idOperator;
+  // NUMERO COMPROBANTE
+  public String numeroComprobanteCriteria;
+  public EnumCompareOperator numeroComprobanteOperator;
   // CLIENTE NOMBRE
   public String clienteNombreCriteria;
   public EnumCompareOperator clienteNombreOperator;
