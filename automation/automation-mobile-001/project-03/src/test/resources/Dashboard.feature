@@ -1,4 +1,4 @@
-@SmokeTest
+@Android @iOS
 Feature: Dashboard
   Scenario: Verify dashboard screen components
     Given I login with "richard.severich+prod1@idt.net" and "secret123" credentials
