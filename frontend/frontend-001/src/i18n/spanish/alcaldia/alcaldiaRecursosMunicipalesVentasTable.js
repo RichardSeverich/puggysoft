@@ -3,6 +3,7 @@ const alcaldiaRecursosMunicipalesVentasTable = {
   titleTimbres: "Tabla de recursos municipales (Timbres)- ventas",
   titleFolders: "Tabla de recursos municipales (Folders) - ventas",
   titleToSelect: "Seleccione un recurso",
+  columnNumeroComprobante: "Numero de Comprobante",
   columnClienteNombre: "Cliente nombre",
   columnClienteCiNit: "Cliente Ci/Nit",
   columnDireccion: "Direccion",

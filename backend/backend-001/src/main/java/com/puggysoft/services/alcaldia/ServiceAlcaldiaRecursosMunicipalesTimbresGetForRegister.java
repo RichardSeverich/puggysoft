@@ -14,13 +14,14 @@ public class ServiceAlcaldiaRecursosMunicipalesTimbresGetForRegister {
   @PersistenceContext
   private EntityManager entityManager;
 
-  public ResponseEntity<String> filter() {
+  public ResponseEntity<String> filter(String tenant) {
 
-    String fullQuery = "SELECT MAX(talonario_final) FROM alcaldia_recursos_municipales WHERE name LIKE '%TIMBRES%'";
+    String fullQuery = "SELECT MAX(talonario_final) FROM alcaldia_recursos_municipales WHERE name LIKE '%TIMBRES%' "
+        + "AND alcaldia_recursos_municipales.tenant = '${tenant}'";
+    fullQuery = fullQuery.replace("${tenant}", tenant);
 
     Query filterQuery = entityManager.createNativeQuery(fullQuery);
     int count = ((Number) filterQuery.getSingleResult()).intValue();
-
 
     String max  =  String.valueOf(count);
     return ResponseEntity.status(HttpStatus.OK).body(max);

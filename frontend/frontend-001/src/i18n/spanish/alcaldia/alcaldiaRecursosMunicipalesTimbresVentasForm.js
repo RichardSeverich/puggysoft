@@ -6,6 +6,8 @@ const alcaldiaRecursosMunicipalesTimbresVentasForm = {
   subTitleTwo: "Precio por unidad: ",
   subTitleThree: "Restantes: ",
   subTitleFour: "Actual: ",
+  fieldNumeroComprobante: "Numero de Comprobante",
+  fieldNumeroComprobanteText: "Minimo 5, maximo 24 caracteres",
   fieldClienteNombre: "Cliente Nombre",
   fieldClienteNombreText: "Minimo 3, maximo 120 caracteres",
   fieldClienteCiNit: "Cliente Ci Nit",

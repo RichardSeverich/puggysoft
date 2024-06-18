@@ -3,6 +3,7 @@ import regexVars from "../../tools/regexVars";
 const classNameRed = "puggysoft-red-text";
 
 const classNameFormTextNew = {
+  numeroComprobante: classNameRed,
   clienteNombre: classNameRed,
   clienteCiNit: classNameRed,
   direccion: classNameRed,
@@ -16,6 +17,15 @@ const classNameFormTextNew = {
 
 const handleValidation = (data, setClassNameFormText) => {
   let isValid = true;
+  if (!(data.numeroComprobante.length >= 5 && data.numeroComprobante.length <= 24)) {
+    isValid = false;
+    classNameFormTextNew.numeroComprobante = classNameRed;
+  } else if (!/^\d+(\.\d{1,2})?$/.test(data.numeroComprobante)) {
+    isValid = false;
+    classNameFormTextNew.numeroComprobante = classNameRed;
+  } else {
+    classNameFormTextNew.numeroComprobante = "";
+  }
   if (!(data.clienteNombre.length >= 3 && data.clienteNombre.length <= 120)) {
     isValid = false;
     classNameFormTextNew.clienteNombre = classNameRed;

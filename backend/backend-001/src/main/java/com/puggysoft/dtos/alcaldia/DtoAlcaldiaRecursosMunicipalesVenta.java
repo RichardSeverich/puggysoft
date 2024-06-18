@@ -13,6 +13,8 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = true)
 public class DtoAlcaldiaRecursosMunicipalesVenta extends DtoSuperClass {
   @NotNull
+  private String numeroComprobante;
+  @NotNull
   private String clienteNombre;
   @NotNull
   private String clienteCiNit;
@@ -28,7 +30,7 @@ public class DtoAlcaldiaRecursosMunicipalesVenta extends DtoSuperClass {
   private String clienteDinero;
   @NotNull
   private String clienteCambio;
-  //@NotNull
+
   private String glosa;
   @NotNull
   private String tenant;
@@ -38,6 +40,7 @@ public class DtoAlcaldiaRecursosMunicipalesVenta extends DtoSuperClass {
   public EntityAlcaldiaRecursosMunicipalesVenta dtoToEntity() {
     EntityAlcaldiaRecursosMunicipalesVenta entity = new EntityAlcaldiaRecursosMunicipalesVenta();
     entity.setId(id);
+    entity.setNumeroComprobante(numeroComprobante);
     entity.setClienteNombre(clienteNombre);
     entity.setClienteCiNit(clienteCiNit);
     entity.setDireccion(direccion);
@@ -58,6 +61,7 @@ public class DtoAlcaldiaRecursosMunicipalesVenta extends DtoSuperClass {
   public static DtoAlcaldiaRecursosMunicipalesVenta entityToDto(EntityAlcaldiaRecursosMunicipalesVenta entity) {
     DtoAlcaldiaRecursosMunicipalesVenta dto = new DtoAlcaldiaRecursosMunicipalesVenta();
     dto.setId(entity.getId());
+    dto.setNumeroComprobante(entity.getNumeroComprobante());
     dto.setClienteNombre(entity.getClienteNombre());
     dto.setClienteCiNit(entity.getClienteCiNit());
     dto.setDireccion(entity.getDireccion());

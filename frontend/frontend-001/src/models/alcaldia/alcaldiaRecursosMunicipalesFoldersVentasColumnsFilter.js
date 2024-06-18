@@ -7,6 +7,10 @@ const alcaldiaRecursosMunicipalesFoldersVentasColumnsFilter = function (
   criteriaOnChangeId,
   operatorId,
   operatorOnChangeId,
+  /* CLIENTE NOMBRE */ criteriaNumeroComprobante,
+  criteriaOnChangeNumeroComprobante,
+  operatorNumeroComprobante,
+  operatorOnChangeNumeroComprobante,
   /* CLIENTE NOMBRE */ criteriaClienteNombre,
   criteriaOnChangeClienteNombre,
   operatorClienteNombre,
@@ -67,6 +71,13 @@ const alcaldiaRecursosMunicipalesFoldersVentasColumnsFilter = function (
       criteriaOnchange: criteriaOnChangeId,
       operatorValue: operatorId,
       operatorOnchange: operatorOnChangeId
+    },
+    {
+      type: enumFilterType.TEXTBOX,
+      criteriaValue: criteriaNumeroComprobante,
+      criteriaOnchange: criteriaOnChangeNumeroComprobante,
+      operatorValue: operatorNumeroComprobante,
+      operatorOnchange: operatorOnChangeNumeroComprobante
     },
     {
       type: enumFilterType.TEXTBOX,

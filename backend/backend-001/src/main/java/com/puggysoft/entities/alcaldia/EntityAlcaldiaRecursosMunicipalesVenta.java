@@ -14,6 +14,8 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = true)
 public class EntityAlcaldiaRecursosMunicipalesVenta extends EntitySuperClass {
 
+  @Column(name = "numero_comprobante")
+  private String numeroComprobante;
   @Column(name = "cliente_nombre")
   private String clienteNombre;
   @Column(name = "cliente_ci_nit")

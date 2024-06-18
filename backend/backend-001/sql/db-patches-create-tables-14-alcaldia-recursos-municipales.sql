@@ -42,6 +42,7 @@ CREATE TABLE alcaldia_recursos_municipales_grupo_para_reportes(
 
 CREATE TABLE alcaldia_recursos_municipales_venta(
    id BIGINT AUTO_INCREMENT,
+   numero_comprobante VARCHAR(24) NOT NULL,
    cliente_nombre TEXT NOT NULL,
    cliente_ci_nit TEXT NOT NULL,
    direccion VARCHAR(120) NOT NULL,

@@ -19,6 +19,7 @@ function AlcaldiaRecursosMunicipalesFoldersVentasGenericTable (props) {
 
   // CRITERIA OF SEARCH OR FILTER
   const { value: criteriaId, onChange: criteriaOnChangeId, setValue: criteriaSetId } = useInput("");
+  const { value: criteriaNumeroComprobante, onChange: criteriaOnChangeNumeroComprobante, setValue: criteriaSetNumeroComprobante } = useInput("");
   const { value: criteriaClienteNombre, onChange: criteriaOnChangeClienteNombre, setValue: criteriaSetClienteNombre } = useInput("");
   const { value: criteriaClienteCiNit, onChange: criteriaOnChangeClienteCiNit, setValue: criteriaSetClienteCiNit } = useInput("");
   const { value: criteriaDireccion, onChange: criteriaOnChangeDireccion, setValue: criteriaSetDireccion } = useInput("");
@@ -35,6 +36,7 @@ function AlcaldiaRecursosMunicipalesFoldersVentasGenericTable (props) {
 
   // FILTER OPERATORS
   const { value: operatorId, onChange: operatorOnChangeId, setValue: operatorSetId } = useInput(enumCompareOperators.NUMBER_EQUALS);
+  const { value: operatorNumeroComprobante, onChange: operatorOnChangeNumeroComprobante, setValue: operatorSetNumeroComprobante } = useInput(enumCompareOperators.TEXT_CONTAINS);
   const { value: operatorClienteNombre, onChange: operatorOnChangeClienteNombre, setValue: operatorSetClienteNombre } = useInput(enumCompareOperators.TEXT_CONTAINS);
   const { value: operatorClienteCiNit, onChange: operatorOnChangeClienteCiNit, setValue: operatorSetClienteCiNit } = useInput(enumCompareOperators.NUMBER_EQUALS);
   const { value: operatorDireccion, onChange: operatorOnChangeDireccion, setValue: operatorSetDireccion } = useInput(enumCompareOperators.TEXT_CONTAINS);
@@ -52,6 +54,7 @@ function AlcaldiaRecursosMunicipalesFoldersVentasGenericTable (props) {
   const { arrayColumnsFilter, clearFilters, getFilterBody, arrayColumnsLabels, arrayDataFields } = alcaldiaRecursosMunicipalesFoldersVentasTableModels(
     columnsToShow,
     /* ID */ criteriaId, criteriaOnChangeId, criteriaSetId, operatorId, operatorOnChangeId, operatorSetId,
+    /* NUMERO COMPROBANTE  */ criteriaNumeroComprobante, criteriaOnChangeNumeroComprobante, criteriaSetNumeroComprobante, operatorNumeroComprobante, operatorOnChangeNumeroComprobante, operatorSetNumeroComprobante,
     /* CLIENTE NOMBRE */ criteriaClienteNombre, criteriaOnChangeClienteNombre, criteriaSetClienteNombre, operatorClienteNombre, operatorOnChangeClienteNombre, operatorSetClienteNombre,
     /* CLIENTE CI NIT */criteriaClienteCiNit, criteriaOnChangeClienteCiNit, criteriaSetClienteCiNit, operatorClienteCiNit, operatorOnChangeClienteCiNit, operatorSetClienteCiNit,
     /* DIRECCION */criteriaDireccion, criteriaOnChangeDireccion, criteriaSetDireccion, operatorDireccion, operatorOnChangeDireccion, operatorSetDireccion,

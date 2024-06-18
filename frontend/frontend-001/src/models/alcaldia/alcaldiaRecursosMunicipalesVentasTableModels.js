@@ -12,6 +12,12 @@ const alcaldiaRecursosMunicipalesVentasTableModels = function (
   operatorId,
   operatorOnChangeId,
   operatorSetId,
+  /* NUMERO COMPROBANTE */ criteriaNumeroComprobante,
+  criteriaOnChangeNumeroComprobante,
+  criteriaSetNumeroComprobante,
+  operatorNumeroComprobante,
+  operatorOnChangeNumeroComprobante,
+  operatorSetNumeroComprobante,
   /* CLIENTE NOMBRE */ criteriaClienteNombre,
   criteriaOnChangeClienteNombre,
   criteriaSetClienteNombre,
@@ -98,6 +104,10 @@ const alcaldiaRecursosMunicipalesVentasTableModels = function (
     criteriaOnChangeId,
     operatorId,
     operatorOnChangeId,
+    /* NUMERO COMPROBANTE */ criteriaNumeroComprobante,
+    criteriaOnChangeNumeroComprobante,
+    operatorNumeroComprobante,
+    operatorOnChangeNumeroComprobante,
     /* CLIENTE NOMBRE */ criteriaClienteNombre,
     criteriaOnChangeClienteNombre,
     operatorClienteNombre,
@@ -154,6 +164,7 @@ const alcaldiaRecursosMunicipalesVentasTableModels = function (
 
   const setOperatorsDefaultValues = function () {
     operatorSetId(enumCompareOperators.NUMBER_EQUALS);
+    operatorSetNumeroComprobante(enumCompareOperators.TEXT_CONTAINS);
     operatorSetClienteNombre(enumCompareOperators.TEXT_CONTAINS);
     operatorSetClienteCiNit(enumCompareOperators.NUMBER_EQUALS);
     operatorSetDireccion(enumCompareOperators.TEXT_CONTAINS);
@@ -171,6 +182,7 @@ const alcaldiaRecursosMunicipalesVentasTableModels = function (
 
   const clearFilters = function () {
     criteriaSetId("");
+    criteriaSetNumeroComprobante("");
     criteriaSetClienteNombre("");
     criteriaSetClienteCiNit("");
     criteriaSetDireccion("");
@@ -217,6 +229,8 @@ const alcaldiaRecursosMunicipalesVentasTableModels = function (
     const filterBody = {
       idCriteria: criteriaId,
       idOperator: operatorId,
+      numeroComprobanteCriteria: criteriaNumeroComprobante,
+      numeroComprobanteOperator: operatorNumeroComprobante,
       clienteNombreCriteria: criteriaClienteNombre,
       clienteNombreOperator: operatorClienteNombre,
       clienteCiNitCriteria: criteriaClienteCiNit,

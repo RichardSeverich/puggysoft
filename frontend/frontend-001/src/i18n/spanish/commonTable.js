@@ -31,6 +31,7 @@ const commonTable = {
   columnCreationDate: "Fecha de creacion",
   columnUpdateDate: "Fecha de edicion",
   columnId: "Id",
+  columnNumeroComprobante: "Numero de Comprobante",
   download: "Descargar"
 };
 
