@@ -28,13 +28,14 @@ import "./../css/all-five-divs-side-by-side.css";
 import "./../css/button-inline.css";
 import enumPaths from "../../models/enumPaths";
 
-function AlcaldiaRecursosMunicipalesTimbresVentasForm() {
+function AlcaldiaRecursosMunicipalesTimbresVentasForm () {
   const history = useHistory();
   const [classNameFormText, setClassNameFormText] =
     useState(classNameFormTextNew);
   const [isRequestInProgress, setIsRequestInProgress] = useState(false);
   // Message states
   const [isBlock, setIsBlock] = useState(false);
+  const [isTalonarioVendido, setIsTalonarioVendido] = useState(false);
   const [isEmpy, setIsEmpy] = useState(false);
   const [controlDescontinuados, setControlDescontinuados] = useState(false);
   const [valueDescontinuados, setValueDescontinuados] = useState([]);
@@ -193,7 +194,7 @@ function AlcaldiaRecursosMunicipalesTimbresVentasForm() {
     [valueNumeroComprobante, valueClienteNombre, valueClienteCiNit, valueDireccion, valueClienteDinero, valueClienteCambio, valueVentaPrecioTotal, valueCantidad]
   );
 
-  function afterAddTimbreToSaleOnFail() {
+  function afterAddTimbreToSaleOnFail () {
     console.error("error in add producto to sale");
   }
   const handleAfterAdd = function (newEntityId) {
@@ -278,10 +279,17 @@ function AlcaldiaRecursosMunicipalesTimbresVentasForm() {
         }
       });
       setValueDescontinuados(help);
-      setValueHastaTimbre(Number(valueCantidad) + Number(valueTimbres.talonarioMovimiento) + count - 1);
+      setValueHastaTimbre(Number(valueCantidad) + Number(valueTimbres.talonarioMovimiento) + count);
       setValueVentaPrecioTotal(Number(valueCantidad) * Number(valueTimbres.precio));
     }
   }, [valueCantidad]);
+
+  useEffect(() => {
+    const talonariosRestantesNew = Number(valueTimbres.talonarioFinal) - Number(valueTimbres.talonarioMovimiento);
+    if (talonariosRestantesNew === 0) {
+      setIsTalonarioVendido(true);
+    }
+  }, []);
 
   useEffect(() => {
     if (isEdit === undefined) {
@@ -344,7 +352,7 @@ function AlcaldiaRecursosMunicipalesTimbresVentasForm() {
                   {i18n.alcaldiaRecursosMunicipalesTimbresVentasForm.fieldNumeroComprobante}
                 </Form.Label>
                 <Form.Control
-                  disabled={isBlock}
+                  disabled={isBlock || isTalonarioVendido}
                   onChange={onChangeNumeroComprovante}
                   value={valueNumeroComprobante}
                   type="number"
@@ -361,7 +369,7 @@ function AlcaldiaRecursosMunicipalesTimbresVentasForm() {
                   {i18n.alcaldiaRecursosMunicipalesTimbresVentasForm.fieldClienteNombre}
                 </Form.Label>
                 <Form.Control
-                  disabled={isBlock}
+                  disabled={isBlock || isTalonarioVendido}
                   onChange={onChangeClienteNombre}
                   value={valueClienteNombre}
                   type="text"
@@ -378,7 +386,7 @@ function AlcaldiaRecursosMunicipalesTimbresVentasForm() {
                   {i18n.alcaldiaRecursosMunicipalesTimbresVentasForm.fieldClienteCiNit}
                 </Form.Label>
                 <Form.Control
-                  disabled={isBlock}
+                  disabled={isBlock || isTalonarioVendido}
                   onChange={onChangeClienteCiNit}
                   value={valueClienteCiNit}
                   type="number"
@@ -395,7 +403,7 @@ function AlcaldiaRecursosMunicipalesTimbresVentasForm() {
                   {i18n.alcaldiaRecursosMunicipalesTimbresVentasForm.fieldDireccion}
                 </Form.Label>
                 <Form.Control
-                  disabled={isBlock}
+                  disabled={isBlock || isTalonarioVendido}
                   onChange={onChangeDireccion}
                   value={valueDireccion}
                   placeholder={i18n.alcaldiaRecursosMunicipalesTimbresVentasForm.fieldDireccion}
@@ -435,7 +443,7 @@ function AlcaldiaRecursosMunicipalesTimbresVentasForm() {
                   {i18n.alcaldiaRecursosMunicipalesTimbresVentasForm.fieldCantidad}
                 </Form.Label>
                 <Form.Control
-                  disabled={isBlock}
+                  disabled={isBlock || isTalonarioVendido}
                   style={{ resize: "none" }}
                   value={valueCantidad}
                   onChange={onChangeCantidad}
@@ -509,6 +517,7 @@ function AlcaldiaRecursosMunicipalesTimbresVentasForm() {
                 variant="primary"
                 type="button"
                 className="puggysoft-button-inline"
+                disabled={isTalonarioVendido}
               >
                 {i18n.commonForm.saveButton}
               </Button>}

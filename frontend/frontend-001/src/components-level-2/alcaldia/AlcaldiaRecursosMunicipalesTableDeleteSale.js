@@ -20,7 +20,7 @@ function AlcaldiaRecursosMunicipalesTableDeleteSale (props) {
     isEdit
   } = props;
   const tableTitle = i18n.alcaldiaRecursosMunicipalesTableDelete.title;
-  const pageSize = 7;
+  const pageSize = 1000;
   const numberPagesToShow = 7;
 
   function handleGetData (activePage, filterBody, updateArrayData) {
@@ -81,6 +81,7 @@ function AlcaldiaRecursosMunicipalesTableDeleteSale (props) {
     if (isCopy) {
       dataOldCopy.current = JSON.parse(JSON.stringify(data));
     }
+    let newPrecioTotal = 0;
     const newDataAux = JSON.parse(JSON.stringify(data));
     const newData = newDataAux.map((element, index) => {
       element.precioAux = element.precio;
@@ -90,9 +91,11 @@ function AlcaldiaRecursosMunicipalesTableDeleteSale (props) {
         disabled={isEdit}
         type="number"
       />;
+      newPrecioTotal = newPrecioTotal + Number(element.precioAux);
       return element;
     });
     dataNewCopy.current = newData;
+    setValueVentaPrecioTotal(newPrecioTotal);
     return newData;
   };
 
