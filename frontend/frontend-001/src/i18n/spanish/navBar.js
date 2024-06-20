@@ -208,7 +208,8 @@ const navBar = {
   recursoMunicipalReporteAnual: "Reporte anual",
   // Reportes de inventarios de Recursos Municipales
   recursoMunicipalReporteInventarioAdmin: "Adm. Reportes Inventario",
-  recursoMunicipalReporteDiarioInventarioTimbres: "Reporte diario timbres",
+  recursoMunicipalReporteDiarioInventarioTimbres: "Reporte diario inventario timbres",
+  recursoMunicipalReporteDiarioInventarioFolders: "Reporte diario inventario folders",
   // Urbanismo Tramite
   urbanismoTramiteAdmin: "Adm. Tramite",
   urbanismoTramiteForm: "Registrar Tramite",

@@ -395,6 +395,9 @@ function NavBar() {
   const navigateAlcaldiaRecursosMunicipalesReporteDiarioInventarioTimbresStep1 = () => {
     history.push(enumPaths.ALCALDIA_RECURSOS_MUNICIPALES_REPORTE_DIARIO_INVENTARIO_TIMBRES_STEP1);
   };
+  const navigateAlcaldiaRecursosMunicipalesReporteDiarioInventarioFoldersStep1 = () => {
+    history.push(enumPaths.ALCALDIA_RECURSOS_MUNICIPALES_REPORTE_DIARIO_INVENTARIO_FOLDERS_STEP1);
+  };
   const navigateAlcaldiaRecursosMunicipalesReporteDiarioInventarioTimbres = () => {
     history.push(enumPaths.ALCALDIA_RECURSOS_MUNICIPALES_REPORTE_DIARIO_INVENTARIO_TIMBRES);
   };
@@ -790,6 +793,7 @@ function NavBar() {
   // REPORTES INVENTARIO RECURSOS MUNICIPALES
   const recursoMunicipalReporteInventarioAdminLabel = (<><MdAllInbox /> {i18n.navBar.recursoMunicipalReporteInventarioAdmin}</>);
   const recursoMunicipalReporteDiarioInventarioTimbresLabel = (<><FaChartLine /> {i18n.navBar.recursoMunicipalReporteDiarioInventarioTimbres}</>);
+  const recursoMunicipalReporteDiarioInventarioFoldersLabel = (<><FaChartLine /> {i18n.navBar.recursoMunicipalReporteDiarioInventarioFolders}</>);
   // URBANISMO TRAMITE
   const urbanismoTramiteAdminLabel = (<><IoNewspaperSharp /> {i18n.navBar.urbanismoTramiteAdmin}</>);
   const urbanismoTramiteFormLabel = (<><GrAddCircle /> {i18n.navBar.urbanismoTramiteForm}</>);
@@ -1092,8 +1096,10 @@ function NavBar() {
             <NavDropdown title={recursoMunicipalTimbresAdminLabel}>
               <NavDropdown.Item onClick={navigateAlcaldiaRecursosMunicipalesTimbresForm}>{recursoMunicipalTimbresFormLabel}</NavDropdown.Item>
               <NavDropdown.Item onClick={navigateAlcaldiaRecursosMunicipalesTimbresTable}>{recursoMunicipalTimbresTableLabel}</NavDropdown.Item>
+              <NavDropdown.Divider/>
               <NavDropdown.Item onClick={navigateAlcaldiaRecursosMunicipalesFoldersForm}>{recursoMunicipalFoldersFormLabel}</NavDropdown.Item>
               <NavDropdown.Item onClick={navigateAlcaldiaRecursosMunicipalesFoldersTable}>{recursoMunicipalFoldersTableLabel}</NavDropdown.Item>
+              <NavDropdown.Divider/>
               <NavDropdown.Item onClick={navigateAlcaldiaRecursosMunicipalesTimbresDescontinuadosForm}>{recursoMunicipalTimbresDescontinuadosFormLabel}</NavDropdown.Item>
               <NavDropdown.Item onClick={navigateAlcaldiaRecursosMunicipalesTimbresDescontinuadosTable}>{recursoMunicipalTimbresDescontinuadosTableLabel}</NavDropdown.Item>
             </NavDropdown>}
@@ -1104,6 +1110,7 @@ function NavBar() {
               <div style={{ display: "none" }}><NavDropdown.Item onClick={navigateAlcaldiaRecursosMunicipaleTimbresVentasForm}>{recursoMunicipalTimbresVentaFormLabel}</NavDropdown.Item></div>
               <NavDropdown.Item onClick={navigateAlcaldiaRecursosMunicipaleTimbresVentasStep1}>{recursoMunicipalTimbresVentaFormLabelOp2}</NavDropdown.Item>
               <NavDropdown.Item onClick={navigateAlcaldiaRecursosMunicipalesTimbresVentasTable}>{recursoMunicipalTimbresVentaTableLabel}</NavDropdown.Item>
+              <NavDropdown.Divider/>
               <NavDropdown.Item onClick={navigateAlcaldiaRecursosMunicipalesFoldersVentasStep1}>{recursoMunicipalFoldersVentaFormLabel}</NavDropdown.Item>
               <NavDropdown.Item onClick={navigateAlcaldiaRecursosMunicipalesFoldersVentasTable}>{recursoMunicipalFoldersVentaTableLabel}</NavDropdown.Item>
             </NavDropdown>}
@@ -1115,11 +1122,11 @@ function NavBar() {
               {showElement && (<NavDropdown.Item onClick={navigateAlcaldiaRecursosMunicipalesReporteDiarioFolders}>{recursoMunicipalReporteDiarioFoldersLabel}</NavDropdown.Item>)}
               <NavDropdown.Item onClick={navigateAlcaldiaRecursosMunicipalesReporteMensual}>{recursoMunicipalReporteMensualLabel}</NavDropdown.Item>
               <NavDropdown.Item onClick={navigateAlcaldiaRecursosMunicipalesReporteAnual}>{recursoMunicipalReporteAnualLabel}</NavDropdown.Item>
-              <NavDropdown.Item onClick={navigateAlcaldiaRecursosMunicipalesGrupoStepOne}>{recursoMunicipalGrupoStepOneLabel}</NavDropdown.Item>
-            </NavDropdown>}
-          {userRoles.includes(enumRoles.ALCALDIA_RECURSOS_MUNICIPALES_ENCARGADO) &&
-            <NavDropdown title={recursoMunicipalReporteInventarioAdminLabel}>
+              <NavDropdown.Divider/>
               <NavDropdown.Item onClick={navigateAlcaldiaRecursosMunicipalesReporteDiarioInventarioTimbresStep1}>{recursoMunicipalReporteDiarioInventarioTimbresLabel}</NavDropdown.Item>
+              <NavDropdown.Item onClick={navigateAlcaldiaRecursosMunicipalesReporteDiarioInventarioFoldersStep1}>{recursoMunicipalReporteDiarioInventarioFoldersLabel}</NavDropdown.Item>
+              <NavDropdown.Divider/>
+              <NavDropdown.Item onClick={navigateAlcaldiaRecursosMunicipalesGrupoStepOne}>{recursoMunicipalGrupoStepOneLabel}</NavDropdown.Item>
             </NavDropdown>}
           {userRoles.includes(enumRoles.URBANISMO_ENCARGADO) &&
             <NavDropdown title={urbanismoTramiteAdminLabel}>

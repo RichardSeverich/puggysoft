@@ -22,7 +22,7 @@ import "./../css/all-forms.css";
 
 function AlcaldiaRecursosMunicipalesForm() {
   const history = useHistory();
-  
+
   const [classNameFormText, setClassNameFormText] = useState(classNameFormTextNew);
   const [isRequestInProgress, setIsRequestInProgress] = useState(false);
   // Message states
@@ -32,8 +32,11 @@ function AlcaldiaRecursosMunicipalesForm() {
 
 
   let timbreSelected;
-  if (history && history.location && history.location.state) {
+  let folderSelected;
+  if (history && history.location && history.location.state && history.location.state.timbreSelected) {
     timbreSelected = history.location.state.timbreSelected;
+  } else if (history && history.location && history.location.state && history.location.state.folderSelected) {
+    folderSelected = history.location.state.folderSelected;
   }
 
   // Use custom hook
@@ -50,8 +53,8 @@ function AlcaldiaRecursosMunicipalesForm() {
     function () {
       const tenant = window.sessionStorage.getItem("tenant");
       const body = {
-        nameRecursoMunicipal: timbreSelected.name,
-        idRecursoMunipal: timbreSelected.id,
+        nameRecursoMunicipal: timbreSelected !== undefined ? timbreSelected.name : folderSelected.name,
+        idRecursoMunipal: timbreSelected !== undefined ? timbreSelected.id : folderSelected.id,
         status: valueEstado, // ACTIVO,ANULADO
         tenant,
         yearMonthDay: valueFecha
