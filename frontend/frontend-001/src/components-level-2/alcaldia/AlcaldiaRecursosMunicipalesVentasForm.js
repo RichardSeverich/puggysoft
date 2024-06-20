@@ -30,7 +30,7 @@ import "./../css/button-inline.css";
 import AlcaldiaRecursosMunicipalesTableAddSale from "./AlcaldiaRecursosMunicipalesTableAddSale";
 import AlcaldiaRecursosMunicipalesTableDeleteSale from "./AlcaldiaRecursosMunicipalesTableDeleteSale";
 
-function AlcaldiaRecursosMunicipalesVentasForm() {
+function AlcaldiaRecursosMunicipalesVentasForm () {
   const history = useHistory();
   const isEditDefaultValue =
     history && history.location && history.location.state;
@@ -272,7 +272,7 @@ function AlcaldiaRecursosMunicipalesVentasForm() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [valueVentaPrecioTotal]);
 
-  function onChangeClienteDinero(ClienteDinero) {
+  function onChangeClienteDinero (ClienteDinero) {
     setValueClienteCambio(Number(ClienteDinero) - valueVentaPrecioTotal);
     setValueClienteDinero(ClienteDinero);
   }
@@ -575,6 +575,7 @@ function AlcaldiaRecursosMunicipalesVentasForm() {
               handleChangeData={handleChangeDataSumar}
               setValueVentaPrecioTotal={setValueVentaPrecioTotal}
               setValueClienteCambio={setValueClienteCambio}
+              valueVentaPrecioTotal={valueVentaPrecioTotal}
               setIsSaveButtonDisabled={setIsSaveButtonDisabled}
               recursosMunicipalesVendidos={recursosMunicipalesVendidos}
             />

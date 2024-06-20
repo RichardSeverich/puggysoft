@@ -15,11 +15,12 @@ function AlcaldiaRecursosMunicipalesTableAddSale (props) {
     ventasId,
     setUpdateTableDelete,
     setValueVentaPrecioTotal,
+    valueVentaPrecioTotal,
     setIsSaveButtonDisabled,
     recursosMunicipalesVendidos
   } = props;
   const tableTitle = i18n.alcaldiaRecursosMunicipalesTableAdd.titleActivity;
-  const pageSize = 7;
+  const pageSize = 10;
   const numberPagesToShow = 7;
 
   function handleGetData (activePage, filterBody, updateArrayData) {
@@ -70,7 +71,7 @@ function AlcaldiaRecursosMunicipalesTableAddSale (props) {
         }
     ]} */
     recursosMunicipalesVendidos.current = params.arrayRecursos;
-    setValueVentaPrecioTotal(params.precioTotal);
+    setValueVentaPrecioTotal(Number(params.precioTotal) + Number(valueVentaPrecioTotal));
     setIsSaveButtonDisabled(false);
     setUpdateTableDelete(false);
   }

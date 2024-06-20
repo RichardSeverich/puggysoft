@@ -44,7 +44,7 @@ const handleValidation = (data, setClassNameFormText) => {
   if (!(data[1].cantidad.length >= 1 && data[1].cantidad.length <= 11)) {
     isValid = false;
     classNameFormTextNew.cantidad = classNameRed;
-  } else if (data[2]?.talonarioMovimiento >= data[2].talonarioFinal) {
+  } else if (data[2]?.talonarioMovimiento > data[2].talonarioFinal) {
     isValid = false;
     classNameFormTextNew.cantidad = classNameRed;
   } else {

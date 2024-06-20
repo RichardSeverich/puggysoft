@@ -48,6 +48,7 @@ public class ServiceAlcaldiaRecursosMunicipalesVentaPorActividades {
     Query filterQuery = entityManager.createNativeQuery(fullQuery, EntityAlcaldiaRecursosMunicipales.class);
     String arrayString = "[]";
     try {
+      Double precioTotal = 0.0;
       List<DtoAlcaldiaRecursosMunicipales> listDto = ((List<EntityAlcaldiaRecursosMunicipales>) filterQuery.getResultList())
         .stream()
         .map(DtoAlcaldiaRecursosMunicipales::entityToDto)
@@ -58,7 +59,7 @@ public class ServiceAlcaldiaRecursosMunicipalesVentaPorActividades {
         .findById(Long.parseLong(dto.getIdVenta()));
         DtoAlcaldiaRecursosMunicipalesVenta dtoControl = DtoAlcaldiaRecursosMunicipalesVenta
           .entityToDto(optionalEntity.get());
-        
+
         for (DtoAlcaldiaRecursosMunicipales producto : listDto) {
           DtoAlcaldiaRecursosMunicipalesVentaDetalle dtoCreate= new DtoAlcaldiaRecursosMunicipalesVentaDetalle();
           dtoCreate.setIdVenta(dto.getIdVenta());
@@ -67,6 +68,7 @@ public class ServiceAlcaldiaRecursosMunicipalesVentaPorActividades {
           dtoCreate.setCreatedBy(dto.getCreatedBy());
           dtoCreate.setTenant(dto.getTenant());
           dtoCreate.setPrecioUnidad(producto.getPrecio());
+          precioTotal = precioTotal + Float.parseFloat(producto.getPrecio()) *  Float.parseFloat(dtoCreate.getCantidad());
           repositoryAlcaldiaRecursosMunicipalesVentaDetalle
             .save(dtoCreate.dtoToEntity());
           Double actual = Double.parseDouble(dtoControl.getVentaPrecioTotal());
@@ -77,7 +79,7 @@ public class ServiceAlcaldiaRecursosMunicipalesVentaPorActividades {
         repositoryAlcaldiaRecursosMunicipalesVenta.save(dtoControl.dtoToEntity());
 
         String result = "{\"precioTotal\": \"${precioTotal}\", \"arrayRecursos\": ${arrayString}}";
-        result = result.replace("${precioTotal}", dtoControl.getVentaPrecioTotal());
+        result = result.replace("${precioTotal}", precioTotal.toString());
         result = result.replace("${arrayString}", arrayString);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(result);
