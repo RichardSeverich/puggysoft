@@ -9,7 +9,7 @@
 </p>
 
 * Install uiautomator2 driver  ```appium driver install uiautomator2```
-* install driver for Ios: ```appium driver install XCUITest```
+* install driver for Ios: ```appium driver install xcuitest```
 <p align="center">
   <img src="readme-files-02/002-install-driver-uiautomator2.JPG">
 </p>
