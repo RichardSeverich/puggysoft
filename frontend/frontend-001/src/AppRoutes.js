@@ -133,6 +133,8 @@ import AlcaldiaRecursosMunicipalesReporteDiarioTimbresPage from "./components-le
 import AlcaldiaRecursosMunicipalesReporteDiarioFoldersPage from "./components-level-3/alcaldia/AlcaldiaRecursosMunicipalesReporteDiarioFoldersPage";
 import AlcaldiaRecursosMunicipalesReporteMensualPage from "./components-level-3/alcaldia/AlcaldiaRecursosMunicipalesReporteMensualPage";
 import AlcaldiaRecursosMunicipalesReporteAnualPage from "./components-level-3/alcaldia/AlcaldiaRecursosMunicipalesReporteAnualPage";
+import AlcaldiaRecursosMunicipalesReporteDiarioInventarioTimbresStep1Page from "./components-level-3/alcaldia/AlcaldiaRecursosMunicipalesReporteDiarioInventarioTimbresStep1Page";
+import AlcaldiaRecursosMunicipalesReporteDiarioInventarioTimbresStep2Page from "./components-level-3/alcaldia/AlcaldiaRecursosMunicipalesReporteDiarioInventarioTimbresStep2Page";
 import AlcaldiaRecursosMunicipalesVentaFoldersStep1Page from "./components-level-3/alcaldia/AlcaldiaRecursosMunicipalesVentaFoldersStep1Page";
 import AlcaldiaRecursosMunicipalesVentaTimbresStep1Page from "./components-level-3/alcaldia/AlcaldiaRecursosMunicipalesVentaTimbresStep1Page";
 import UrbanismoTramiteFormPage from "./components-level-3/alcaldia/UrbanismoTramiteFormPage";
@@ -338,6 +340,8 @@ const AppRoutes = () => (
       <Route exact path={enumPaths.ALCALDIA_RECURSOS_MUNICIPALES_REPORTE_DIARIO_FOLDERS} component={AlcaldiaRecursosMunicipalesReporteDiarioFoldersPage} />
       <Route exact path={enumPaths.ALCALDIA_RECURSOS_MUNICIPALES_REPORTE_MENSUAL} component={AlcaldiaRecursosMunicipalesReporteMensualPage} />
       <Route exact path={enumPaths.ALCALDIA_RECURSOS_MUNICIPALES_REPORTE_ANUAL} component={AlcaldiaRecursosMunicipalesReporteAnualPage} />
+      <Route exact path={enumPaths.ALCALDIA_RECURSOS_MUNICIPALES_REPORTE_DIARIO_INVENTARIO_TIMBRES_STEP1} component={AlcaldiaRecursosMunicipalesReporteDiarioInventarioTimbresStep1Page} />
+      <Route exact path={enumPaths.ALCALDIA_RECURSOS_MUNICIPALES_REPORTE_DIARIO_INVENTARIO_TIMBRES_STEP2} component={AlcaldiaRecursosMunicipalesReporteDiarioInventarioTimbresStep2Page} />
       <Route exact path={enumPaths.ALCALDIA_RECURSOS_MUNICIPALES_FOLDERS_VENTAS_STEP_1} component={AlcaldiaRecursosMunicipalesVentaFoldersStep1Page} />
       <Route exact path={enumPaths.ALCALDIA_RECURSOS_MUNICIPALES_TIMBRES_VENTAS_STEP_1} component={AlcaldiaRecursosMunicipalesVentaTimbresStep1Page} />
       <Route exact path={enumPaths.URBANISMO_TRAMITE_FORM} component={UrbanismoTramiteFormPage} />

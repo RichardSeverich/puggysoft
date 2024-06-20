@@ -17,7 +17,7 @@ const alcaldiaRecursosMunicipalesFoldersForm = {
   fieldCodigoAuxiliarText: "Minimo 3, maximo 30 caracteres",
   fieldName: "Nombre",
   fieldDate: "Fecha",
-  fieldNameText: "Minimo 3, maximo 120 caracteres",
+  fieldNameText: "Debe incluir la palabra (FOLDERS)",
   fieldPrecio: "Precio",
   fieldPrecioText: "Minimo 0, maximo 11 numeros",
   fieldTipo: "Tipo",

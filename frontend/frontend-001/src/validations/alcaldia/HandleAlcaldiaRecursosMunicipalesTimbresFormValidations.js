@@ -5,7 +5,8 @@ const classNameRed = "puggysoft-red-text";
 const classNameFormTextNew = {
   talonarioInicio: classNameRed,
   talonarioFinal: classNameRed,
-  precio: classNameRed
+  precio: classNameRed,
+  name: classNameRed
 };
 
 const handleValidation = (data, setClassNameFormText) => {
@@ -38,6 +39,18 @@ const handleValidation = (data, setClassNameFormText) => {
     classNameFormTextNew.precio = classNameRed;
   } else {
     classNameFormTextNew.precio = "";
+  }
+  if (!(data.name.length >= 3 && data.name.length <= 120)) {
+    isValid = false;
+    classNameFormTextNew.name = classNameRed;
+  } else if (!(/^[a-zA-Z0-9 ]*$/.test(data.name))) {
+    isValid = false;
+    classNameFormTextNew.name = classNameRed;
+  } else if (!(data.name.includes("TIMBRES") && !data.name.toUpperCase().includes("FOLDERS"))) {
+    isValid = false;
+    classNameFormTextNew.name = classNameRed;
+  } else {
+    classNameFormTextNew.name = "";
   }
   setClassNameFormText({ ...classNameFormTextNew });
   return isValid;

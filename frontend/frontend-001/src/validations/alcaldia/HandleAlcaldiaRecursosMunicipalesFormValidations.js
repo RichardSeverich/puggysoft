@@ -27,13 +27,16 @@ const handleValidation = (data, setClassNameFormText) => {
   if (!(data.name.length >= 3 && data.name.length <= 120)) {
     isValid = false;
     classNameFormTextNew.name = classNameRed;
+  } else if (data.name.toUpperCase().includes("TIMBRES") || data.name.toUpperCase().includes("FOLDERS")) {
+    isValid = false;
+    classNameFormTextNew.name = classNameRed;
   } else {
     classNameFormTextNew.name = "";
   }
   if (!(data.precio.length > 0 && data.precio.length <= 11)) {
     isValid = false;
     classNameFormTextNew.precio = classNameRed;
-  } else if (!regexVars.REGEX_INT_NUMBER.test(data.precio) 
+  } else if (!regexVars.REGEX_INT_NUMBER.test(data.precio)
     && regexVars.REGEX_DECIMAL_NUMBER.test(data.clienteDinero)) {
     isValid = false;
     classNameFormTextNew.precio = classNameRed;

@@ -22,7 +22,7 @@ import CommonMessage from "../../components-level-1/CommonMessage";
 
 import "./../css/all-forms.css";
 
-function AlcaldiaRecursosMunicipalesFoldersForm () {
+function AlcaldiaRecursosMunicipalesFoldersForm() {
   const history = useHistory();
   const isEditDefaultValue =
     history && history.location && history.location.state;
@@ -56,10 +56,20 @@ function AlcaldiaRecursosMunicipalesFoldersForm () {
   const timeElapsed = Date.now();
 
   const today = new Date(use !== undefined ? use : timeElapsed);
-  const valueName =
-    `${i18n.alcaldiaRecursosMunicipalesFoldersForm.defaultFolder} ${today.getDate()} de ${i18n.commonMonths[today.toLocaleString("en-GB", { month: "long" }).toLowerCase()]} ${today.getFullYear()}`;
+  const name = isEdit && isEdit.data.name !== null
+    ? isEdit.data.name
+    : `${i18n.alcaldiaRecursosMunicipalesFoldersForm.defaultFolder} ${today.getDate()} de ${i18n.commonMonths[today.toLocaleString("en-GB", { month: "long" }).toLowerCase()]} ${today.getFullYear()}`;
+
+  //const today = new Date(use !== undefined ? use : timeElapsed);
+  //const valueName =
+  //  `${i18n.alcaldiaRecursosMunicipalesFoldersForm.defaultFolder} ${today.getDate()} de ${i18n.commonMonths[today.toLocaleString("en-GB", { month: "long" }).toLowerCase()]} ${today.getFullYear()}`;
 
   // Use custom hook
+  const {
+    value: valueName,
+    onChange: onChangeValueName,
+    reset: resetName
+  } = useInput(name === "" ? valueName : name);
   const {
     value: valueNameAux,
     onChange: onChangeValueNameAux,
@@ -93,6 +103,7 @@ function AlcaldiaRecursosMunicipalesFoldersForm () {
     resetPrecio();
     resetCantidadTimbres();
     resetNameAux();
+    resetName();
   };
 
   if (controlGet && isEdit === undefined) {
@@ -110,7 +121,7 @@ function AlcaldiaRecursosMunicipalesFoldersForm () {
       const body = {
         codigo: i18n.alcaldiaRecursosMunicipalesFoldersForm.defaultCodigo,
         codigoAuxiliar: i18n.alcaldiaRecursosMunicipalesFoldersForm.defaultCodigoAuxiliar,
-        name: i18n.alcaldiaRecursosMunicipalesFoldersForm.defaultFolder,
+        name: valueName,
         nameAux: valueNameAux,
         talonarioMovimiento: valueTalonarioInicio,
         talonarioInicio: valueTalonarioInicio,
@@ -124,7 +135,7 @@ function AlcaldiaRecursosMunicipalesFoldersForm () {
       };
       return body;
     },
-    [valueNameAux, valueTalonarioInicio, valueTalonarioFinal, valuePrecio, valueCantidadTimbres]
+    [valueName, valueNameAux, valueTalonarioInicio, valueTalonarioFinal, valuePrecio, valueCantidadTimbres]
   );
 
   const handleAfterAdd = function (newEntityId) {
@@ -195,14 +206,29 @@ function AlcaldiaRecursosMunicipalesFoldersForm () {
         </Card.Header>
         <Card.Body>
           <Form>
+            <Form.Group className="mb-3" controlId="name">
+              <Form.Label>
+                {i18n.alcaldiaRecursosMunicipalesFoldersForm.fieldName}
+              </Form.Label>
+              <Form.Control
+                //disabled
+                value={valueName}
+                onChange={onChangeValueName}
+                type="text"
+                placeholder={i18n.alcaldiaRecursosMunicipalesFoldersForm.fieldName}
+              />
+              <Form.Text muted className={classNameFormText.name}>
+                {i18n.alcaldiaRecursosMunicipalesFoldersForm.fieldNameText}
+              </Form.Text>
+            </Form.Group>
             <div style={{ display: "none" }}>
-              <Form.Group className="mb-3" controlId="name">
+              <Form.Group className="mb-3" controlId="nameAux">
                 <Form.Label>
                   {i18n.alcaldiaRecursosMunicipalesFoldersForm.fieldName}
                 </Form.Label>
                 <Form.Control
-                  disabled
-                  value={valueName}
+                  onChange={onChangeValueNameAux}
+                  value={valueNameAux}
                   type="text"
                   placeholder={i18n.alcaldiaRecursosMunicipalesFoldersForm.fieldName}
                 />
@@ -211,20 +237,7 @@ function AlcaldiaRecursosMunicipalesFoldersForm () {
                 </Form.Text>
               </Form.Group>
             </div>
-            <Form.Group className="mb-3" controlId="nameAux">
-              <Form.Label>
-                {i18n.alcaldiaRecursosMunicipalesFoldersForm.fieldName}
-              </Form.Label>
-              <Form.Control
-                onChange={onChangeValueNameAux}
-                value={valueNameAux}
-                type="text"
-                placeholder={i18n.alcaldiaRecursosMunicipalesFoldersForm.fieldName}
-              />
-              <Form.Text muted className={classNameFormText.name}>
-                {i18n.alcaldiaRecursosMunicipalesFoldersForm.fieldNameText}
-              </Form.Text>
-            </Form.Group>
+
             <Form.Group className="mb-3" controlId="talonario-inicio">
               <Form.Label>
                 {i18n.alcaldiaRecursosMunicipalesFoldersForm.fieldFoldersInicio}

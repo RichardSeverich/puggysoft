@@ -60,7 +60,8 @@ import { RiLoginCircleLine, RiUser2Fill, RiShieldKeyholeFill } from "react-icons
 import {
   MdOutlineSettingsSuggest,
   MdOutlineSchema,
-  MdFolderCopy
+  MdFolderCopy,
+  MdAllInbox
 } from "react-icons/md";
 import { GoCalendar } from "react-icons/go";
 import {
@@ -90,7 +91,7 @@ import i18n from "../../i18n/i18n";
 
 import "./styles.css";
 
-function NavBar () {
+function NavBar() {
   const history = useHistory();
   const userRolesString = window.sessionStorage.getItem("role");
   const currentTenant = window.sessionStorage.getItem("tenant");
@@ -300,7 +301,7 @@ function NavBar () {
     history.push(enumPaths.HOSPITAL_PATIENT_USER_TABLE_TO_DETAILS);
   };
 
-  function navigateGeneric (event) {
+  function navigateGeneric(event) {
     history.push(enumPaths.IN_PROGRESS_PAGE);
   }
 
@@ -390,6 +391,12 @@ function NavBar () {
   };
   const navigateAlcaldiaRecursosMunicipalesReporteDiarioFolders = () => {
     history.push(enumPaths.ALCALDIA_RECURSOS_MUNICIPALES_REPORTE_DIARIO_FOLDERS);
+  };
+  const navigateAlcaldiaRecursosMunicipalesReporteDiarioInventarioTimbresStep1 = () => {
+    history.push(enumPaths.ALCALDIA_RECURSOS_MUNICIPALES_REPORTE_DIARIO_INVENTARIO_TIMBRES_STEP1);
+  };
+  const navigateAlcaldiaRecursosMunicipalesReporteDiarioInventarioTimbres = () => {
+    history.push(enumPaths.ALCALDIA_RECURSOS_MUNICIPALES_REPORTE_DIARIO_INVENTARIO_TIMBRES);
   };
   const navigateAlcaldiaRecursosMunicipalesReporteMensual = () => {
     history.push(enumPaths.ALCALDIA_RECURSOS_MUNICIPALES_REPORTE_MENSUAL);
@@ -780,6 +787,9 @@ function NavBar () {
   const recursoMunicipalReporteAnualLabel = (<><FaChartLine /> {i18n.navBar.recursoMunicipalReporteAnual}</>);
   const recursoMunicipalReporteDiarioTimbresLabel = (<><FaChartLine /> {i18n.navBar.recursoMunicipalReporteDiarioTimbres}</>);
   const recursoMunicipalReporteDiarioFoldersLabel = (<><FaChartLine /> {i18n.navBar.recursoMunicipalReporteDiarioFolders}</>);
+  // REPORTES INVENTARIO RECURSOS MUNICIPALES
+  const recursoMunicipalReporteInventarioAdminLabel = (<><MdAllInbox /> {i18n.navBar.recursoMunicipalReporteInventarioAdmin}</>);
+  const recursoMunicipalReporteDiarioInventarioTimbresLabel = (<><FaChartLine /> {i18n.navBar.recursoMunicipalReporteDiarioInventarioTimbres}</>);
   // URBANISMO TRAMITE
   const urbanismoTramiteAdminLabel = (<><IoNewspaperSharp /> {i18n.navBar.urbanismoTramiteAdmin}</>);
   const urbanismoTramiteFormLabel = (<><GrAddCircle /> {i18n.navBar.urbanismoTramiteForm}</>);
@@ -1106,6 +1116,10 @@ function NavBar () {
               <NavDropdown.Item onClick={navigateAlcaldiaRecursosMunicipalesReporteMensual}>{recursoMunicipalReporteMensualLabel}</NavDropdown.Item>
               <NavDropdown.Item onClick={navigateAlcaldiaRecursosMunicipalesReporteAnual}>{recursoMunicipalReporteAnualLabel}</NavDropdown.Item>
               <NavDropdown.Item onClick={navigateAlcaldiaRecursosMunicipalesGrupoStepOne}>{recursoMunicipalGrupoStepOneLabel}</NavDropdown.Item>
+            </NavDropdown>}
+          {userRoles.includes(enumRoles.ALCALDIA_RECURSOS_MUNICIPALES_ENCARGADO) &&
+            <NavDropdown title={recursoMunicipalReporteInventarioAdminLabel}>
+              <NavDropdown.Item onClick={navigateAlcaldiaRecursosMunicipalesReporteDiarioInventarioTimbresStep1}>{recursoMunicipalReporteDiarioInventarioTimbresLabel}</NavDropdown.Item>
             </NavDropdown>}
           {userRoles.includes(enumRoles.URBANISMO_ENCARGADO) &&
             <NavDropdown title={urbanismoTramiteAdminLabel}>

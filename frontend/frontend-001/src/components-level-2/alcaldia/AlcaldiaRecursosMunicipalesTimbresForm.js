@@ -22,7 +22,7 @@ import CommonMessage from "../../components-level-1/CommonMessage";
 
 import "./../css/all-forms.css";
 
-function AlcaldiaRecursosMunicipalesTimbresForm () {
+function AlcaldiaRecursosMunicipalesTimbresForm() {
   const history = useHistory();
   const isEditDefaultValue =
     history && history.location && history.location.state;
@@ -52,10 +52,19 @@ function AlcaldiaRecursosMunicipalesTimbresForm () {
   const timeElapsed = Date.now();
 
   const today = new Date(use !== undefined ? use : timeElapsed);
-  const valueName =
-    `${i18n.alcaldiaRecursosMunicipalesTimbresForm.defaultTimbre} ${today.getDate()} de ${i18n.commonMonths[today.toLocaleString("en-GB", { month: "long" }).toLowerCase()]} ${today.getFullYear()}`;
+  const name = isEdit && isEdit.data.name !== null
+    ? isEdit.data.name
+    : `${i18n.alcaldiaRecursosMunicipalesTimbresForm.defaultTimbre} ${today.getDate()} de ${i18n.commonMonths[today.toLocaleString("en-GB", { month: "long" }).toLowerCase()]} ${today.getFullYear()}`;
+
+  //const valueName =
+  //  `${i18n.alcaldiaRecursosMunicipalesTimbresForm.defaultTimbre} ${today.getDate()} de ${i18n.commonMonths[today.toLocaleString("en-GB", { month: "long" }).toLowerCase()]} ${today.getFullYear()}`;
 
   // Use custom hook
+  const {
+    value: valueName,
+    onChange: onChangeValueName,
+    reset: resetName
+  } = useInput(name === "" ? valueName : name);
   const {
     value: valueNameAux,
     onChange: onChangeValueNameAux,
@@ -83,6 +92,7 @@ function AlcaldiaRecursosMunicipalesTimbresForm () {
     resetTalonarioFinal();
     resetPrecio();
     resetNameAux();
+    resetName();
   };
 
   if (controlGet && isEdit === undefined) {
@@ -100,7 +110,7 @@ function AlcaldiaRecursosMunicipalesTimbresForm () {
       const body = {
         codigo: i18n.alcaldiaRecursosMunicipalesTimbresForm.defaultCodigo,
         codigoAuxiliar: i18n.alcaldiaRecursosMunicipalesTimbresForm.defaultCodigoAuxiliar,
-        name: i18n.alcaldiaRecursosMunicipalesTimbresForm.defaultTimbre,
+        name: valueName,
         nameAux: valueNameAux,
         talonarioMovimiento: valueTalonarioInicio,
         talonarioInicio: valueTalonarioInicio,
@@ -113,7 +123,7 @@ function AlcaldiaRecursosMunicipalesTimbresForm () {
       };
       return body;
     },
-    [valueNameAux, valueTalonarioInicio, valueTalonarioFinal, valuePrecio]
+    [valueName, valueNameAux, valueTalonarioInicio, valueTalonarioFinal, valuePrecio]
   );
 
   const handleAfterAdd = function (newEntityId) {
@@ -184,36 +194,37 @@ function AlcaldiaRecursosMunicipalesTimbresForm () {
         </Card.Header>
         <Card.Body>
           <Form>
+            <Form.Group className="mb-3" controlId="name">
+              <Form.Label>
+                {i18n.alcaldiaRecursosMunicipalesTimbresForm.fieldName}
+              </Form.Label>
+              <Form.Control
+                //disabled
+                value={valueName}
+                onChange={onChangeValueName}
+                type="text"
+                placeholder={i18n.alcaldiaRecursosMunicipalesTimbresForm.fieldName}
+              />
+              <Form.Text muted className={classNameFormText.name}>
+                {i18n.alcaldiaRecursosMunicipalesTimbresForm.fieldNameText}
+              </Form.Text>
+            </Form.Group>
             <div style={{ display: "none" }}>
-              <Form.Group className="mb-3" controlId="name">
+              <Form.Group className="mb-3" controlId="nameAux">
                 <Form.Label>
-                  {i18n.alcaldiaRecursosMunicipalesTimbresForm.fieldName}
+                  {i18n.alcaldiaRecursosMunicipalesFoldersForm.fieldName}
                 </Form.Label>
                 <Form.Control
-                  disabled
-                  value={valueName}
+                  value={valueNameAux}
+                  onChange={onChangeValueNameAux}
                   type="text"
-                  placeholder={i18n.alcaldiaRecursosMunicipalesTimbresForm.fieldName}
+                  placeholder={i18n.alcaldiaRecursosMunicipalesFoldersForm.fieldName}
                 />
                 <Form.Text muted className={classNameFormText.name}>
-                  {i18n.alcaldiaRecursosMunicipalesTimbresForm.fieldNameText}
+                  {i18n.alcaldiaRecursosMunicipalesFoldersForm.fieldNameText}
                 </Form.Text>
               </Form.Group>
             </div>
-            <Form.Group className="mb-3" controlId="nameAux">
-              <Form.Label>
-                {i18n.alcaldiaRecursosMunicipalesFoldersForm.fieldName}
-              </Form.Label>
-              <Form.Control
-                value={valueNameAux}
-                onChange={onChangeValueNameAux}
-                type="text"
-                placeholder={i18n.alcaldiaRecursosMunicipalesFoldersForm.fieldName}
-              />
-              <Form.Text muted className={classNameFormText.name}>
-                {i18n.alcaldiaRecursosMunicipalesFoldersForm.fieldNameText}
-              </Form.Text>
-            </Form.Group>
             <Form.Group className="mb-3" controlId="talonario-inicio">
               <Form.Label>
                 {i18n.alcaldiaRecursosMunicipalesTimbresForm.fieldTimbresInicio}

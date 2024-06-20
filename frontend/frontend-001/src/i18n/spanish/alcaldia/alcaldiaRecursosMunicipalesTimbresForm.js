@@ -14,7 +14,7 @@ const alcaldiaRecursosMunicipalesTimbresForm = {
   fieldCodigoAuxiliar: "Codigo Auxiliar",
   fieldCodigoAuxiliarText: "Minimo 3, maximo 30 caracteres",
   fieldName: "Nombre",
-  fieldNameText: "Minimo 3, maximo 120 caracteres",
+  fieldNameText: "Debe incluir la palabra (TIMBRES)",
   fieldPrecio: "Precio",
   fieldPrecioText: "Minimo 0, maximo 11 numeros",
   fieldTipo: "Tipo",
