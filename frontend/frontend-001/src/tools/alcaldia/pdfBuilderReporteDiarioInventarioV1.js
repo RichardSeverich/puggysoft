@@ -31,12 +31,22 @@ const GeneratePdf = (data, fecha, orden) => {
   doc.text(400, 29, `${i18n.alcaldiaRecursosMunicipalesReportePdf.fecha}: ${now.split(",")[0]}`);
   doc.text(400, 36, `${i18n.alcaldiaRecursosMunicipalesReportePdf.hora}: ${now.split(",")[1]}`);
 
-  const headValues = ["Num Comprobante", "Detalle", "Precio total"];
+  const headValues = [
+    i18n.alcaldiaRecursosMunicipalesReportePdf.numeroComprobante,
+    i18n.alcaldiaRecursosMunicipalesReportePdf.detalle,
+    i18n.alcaldiaRecursosMunicipalesReportePdf.cantidad,
+    i18n.alcaldiaRecursosMunicipalesReportePdf.subTotal
+  ];
 
+  let cantidadTotal = 0;
+  let precioTotal = 0;
   const values = data.map( elemento => {
+    cantidadTotal = cantidadTotal + Number(elemento.aux);
+    precioTotal = precioTotal + Number(elemento.ventaPrecioTotal);
     return [
       elemento.numeroComprobante,
       elemento.nota,
+      elemento.aux,
       elemento.ventaPrecioTotal
     ];
   });

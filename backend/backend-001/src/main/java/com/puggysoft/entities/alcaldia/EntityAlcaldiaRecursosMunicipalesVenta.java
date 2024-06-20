@@ -34,6 +34,8 @@ public class EntityAlcaldiaRecursosMunicipalesVenta extends EntitySuperClass {
   private String clienteCambio;
   @Column(name = "glosa")
   private String glosa;
+  @Column(name = "aux")
+  private String aux;
   @Column(name = "tenant")
   private String tenant;
 
