@@ -89,6 +89,11 @@
   <img src="./readme-files-04/15-xcode-select-command-line-tools-b.png">
 </p>
 
+* Then execute ```xcrun simctl list``` in terminal and you should see all devices
+<p align="center">
+  <img src="readme-files-04/15-xcode-verify-xcrun.png">
+</p>
+
 * Then run the simulator ```Product -> Run```
 <p align="center">
   <img src="./readme-files-04/16-xcode-run-simulator.png">
