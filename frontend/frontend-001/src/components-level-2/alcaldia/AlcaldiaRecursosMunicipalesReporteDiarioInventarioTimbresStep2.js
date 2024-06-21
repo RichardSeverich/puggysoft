@@ -66,7 +66,7 @@ function AlcaldiaRecursosMunicipalesForm() {
 
   const handleAfterGetData = function (data) {
     const body = getBody();
-    GeneratePdf(data, body.yearMonthDay);
+    GeneratePdf(data, body.yearMonthDay, body);
     setIsRequestInProgress(false);
   };
 

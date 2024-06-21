@@ -23,7 +23,7 @@ public interface IRepositoryAlcaldiaRecursosMunicipalesVentasReporte
       + "alcaldia_recursos_municipales_venta.venta_status,"
       + "alcaldia_recursos_municipales_venta.venta_precio_total,"
       + "alcaldia_recursos_municipales_venta.cliente_dinero,"
-      + "alcaldia_recursos_municipales_venta.cliente_cambio,"
+      + "alcaldia_recursos_municipales_venta_detalle.precio_unidad AS cliente_cambio,"
       + "alcaldia_recursos_municipales_venta.glosa,"
       + "alcaldia_recursos_municipales_venta_detalle.cantidad AS aux,"
       + "alcaldia_recursos_municipales_venta.tenant,"
