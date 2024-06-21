@@ -22,7 +22,12 @@ const alcaldiaRecursosMunicipalesReportePdf = {
   granTotal: "Gran total",
   numeroComprobante: "Numero De Comprobante",
   detalle: "Detalle",
-  cantidad: "Cantidad"
+  cantidad: "Cantidad",
+  totalBs: "Total (bs)",
+  numeroInicio : "N° Inicio", 
+  numeroFinal: "N° Final",
+  nombre: "Nombre",
+  precioUnitario: "Precio unitario"
 };
 
 export default alcaldiaRecursosMunicipalesReportePdf;
