@@ -41,6 +41,15 @@ function AlcaldiaActividadesTableEditDelete () {
     });
   }
 
+  function handleSelectTimbres (data) {
+    history.push({
+      pathname: enumPaths.ALCALDIA_ACTIVIDADES_TIMBRES,
+      state: {
+        actividad: data
+      }
+    });
+  }
+
   function handleDelete (data) {
     handleDeleteRequest(`alcaldia-actividades/${data.id}`, undefined, undefined, undefined, true);
   }
@@ -60,6 +69,11 @@ function AlcaldiaActividadesTableEditDelete () {
       variant: "info",
       handleCustom: handleSelect,
       text: i18n.commonTable.selectRelationsButton
+    },
+    {
+      variant: "primary",
+      handleCustom: handleSelectTimbres,
+      text: i18n.alcaldiaActividadesTable.buttonTimbres
     }
   ];
 

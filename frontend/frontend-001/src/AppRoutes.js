@@ -118,6 +118,7 @@ import AlcaldiaRecursosMunicipalesVentasTablePage from "./components-level-3/alc
 import AlcaldiaActividadesFormPage from "./components-level-3/alcaldia/AlcaldiaActividadesFormPage";
 import AlcaldiaActividadesTablePage from "./components-level-3/alcaldia/AlcaldiaActividadesTablePage";
 import AlcaldiaActividadesGrupoPage from "./components-level-3/alcaldia/AlcaldiaActividadesGrupoPage";
+import AlcaldiaActividadesTimbresPage from "./components-level-3/alcaldia/AlcaldiaActividadesTimbresPage";
 import AlcaldiaRecursosMunicipalesTimbresFormPage from "./components-level-3/alcaldia/AlcaldiaRecursosMunicipalesTimbresFormPage";
 import AlcaldiaRecursosMunicipalesTimbresTablePage from "./components-level-3/alcaldia/AlcaldiaRecursosMunicipalesTimbresTablePage";
 import AlcaldiaRecursosMunicipalesTimbresDescontinuadasFormPage from "./components-level-3/alcaldia/AlcaldiaRecursosMunicipalesTimbresDescontinuadosFormPage";
@@ -325,6 +326,7 @@ const AppRoutes = () => (
       <Route exact path={enumPaths.ALCALDIA_ACTIVIDADES_FORM} component={AlcaldiaActividadesFormPage} />
       <Route exact path={enumPaths.ALCALDIA_ACTIVIDADES_TABLE} component={AlcaldiaActividadesTablePage} />
       <Route exact path={enumPaths.ALCALDIA_ACTIVIDADES_JERARQUIA} component={AlcaldiaActividadesGrupoPage} />
+      <Route exact path={enumPaths.ALCALDIA_ACTIVIDADES_TIMBRES} component={AlcaldiaActividadesTimbresPage} />
       <Route exact path={enumPaths.ALCALDIA_RECURSOS_MUNICIPALES_TIMBRES_FORM} component={AlcaldiaRecursosMunicipalesTimbresFormPage} />
       <Route exact path={enumPaths.ALCALDIA_RECURSOS_MUNICIPALES_TIMBRES_TABLE} component={AlcaldiaRecursosMunicipalesTimbresTablePage} />
       <Route exact path={enumPaths.ALCALDIA_RECURSOS_MUNICIPALES_TIMBRES_DESCONTINUADOS_FORM} component={AlcaldiaRecursosMunicipalesTimbresDescontinuadasFormPage} />

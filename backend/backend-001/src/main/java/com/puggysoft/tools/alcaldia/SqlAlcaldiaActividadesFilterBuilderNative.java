@@ -19,6 +19,15 @@ public final class SqlAlcaldiaActividadesFilterBuilderNative {
     query = query + SqlFilterBuilder.getFilterQuery("alcaldia_actividades.name",
         dtoAlcaldiaActividadesFilter.nameCriteria,
         dtoAlcaldiaActividadesFilter.nameOperator);
+    query = query + SqlFilterBuilder.getFilterQuery("alcaldia_actividades.id_timbre",
+        dtoAlcaldiaActividadesFilter.idTimbreCriteria,
+        dtoAlcaldiaActividadesFilter.idTimbreOperator);
+    query = query + SqlFilterBuilder.getFilterQuery("alcaldia_actividades.cantidad_timbres",
+        dtoAlcaldiaActividadesFilter.cantidadTimbresCriteria,
+        dtoAlcaldiaActividadesFilter.cantidadTimbresOperator);
+    query = query + SqlFilterBuilder.getFilterQuery("alcaldia_actividades.aux",
+        dtoAlcaldiaActividadesFilter.auxCriteria,
+        dtoAlcaldiaActividadesFilter.auxOperator);
     query = query + SqlFilterBuilder.getFilterQuery("alcaldia_actividades.tenant ",
         dtoAlcaldiaActividadesFilter.tenantCriteria,
         dtoAlcaldiaActividadesFilter.tenantOperator);
