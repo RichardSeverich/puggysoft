@@ -101,6 +101,9 @@ CREATE TABLE alcaldia_timbres_descontinuados(
 CREATE TABLE alcaldia_actividades(
    id BIGINT AUTO_INCREMENT,
    name VARCHAR(120)  NOT NULL,
+   id_timbre VARCHAR(120),
+   cantidad_timbres VARCHAR(60),
+   aux VARCHAR(60),
    tenant VARCHAR(30) NOT NULL,
    creation_date DATETIME DEFAULT CURRENT_TIMESTAMP,
    update_date DATETIME ON UPDATE CURRENT_TIMESTAMP,

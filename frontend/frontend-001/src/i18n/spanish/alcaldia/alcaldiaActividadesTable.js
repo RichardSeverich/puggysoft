@@ -1,7 +1,8 @@
 const alcaldiaActividadesTable = {
   title: "Tabla de actividades",
   titleGroup: "Actividad:",
-  columnName: "Nombre"
+  columnName: "Nombre",
+  buttonTimbres: "Adm. Timbres"
 };
 
 export default alcaldiaActividadesTable;

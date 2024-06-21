@@ -16,6 +16,12 @@ public class EntityAlcaldiaActividades extends EntitySuperClass {
 
   @Column(name = "name")
   private String name;
+  @Column(name = "id_timbre")
+  private String idTimbre;
+  @Column(name = "cantidad_timbres")
+  private String cantidadTimbres;
+  @Column(name = "aux")
+  private String aux;
   @Column(name = "tenant")
   private String tenant;
 

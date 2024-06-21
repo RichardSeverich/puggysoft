@@ -16,6 +16,15 @@ public class DtoAlcaldiaActividadesFilter {
   // NAME
   public String nameCriteria;
   public EnumCompareOperator nameOperator;
+  // ID TIMBRE
+  public String idTimbreCriteria;
+  public EnumCompareOperator idTimbreOperator;
+  // CANTIDAD TIMBRES
+  public String cantidadTimbresCriteria;
+  public EnumCompareOperator cantidadTimbresOperator;
+  // AUX
+  public String auxCriteria;
+  public EnumCompareOperator auxOperator;
   // TENANT
   public String tenantCriteria;
   public EnumCompareOperator tenantOperator;

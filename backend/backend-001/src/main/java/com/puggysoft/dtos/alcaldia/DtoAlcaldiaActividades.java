@@ -14,6 +14,12 @@ import lombok.EqualsAndHashCode;
 public class DtoAlcaldiaActividades extends DtoSuperClass {
   @NotNull
   private String name;
+
+  private String idTimbre;
+
+  private String cantidadTimbres;
+
+  private String aux;
   @NotNull
   private String tenant;
 
@@ -23,6 +29,9 @@ public class DtoAlcaldiaActividades extends DtoSuperClass {
     EntityAlcaldiaActividades entity = new EntityAlcaldiaActividades();
     entity.setId(id);
     entity.setName(name);
+    entity.setIdTimbre(idTimbre);
+    entity.setCantidadTimbres(cantidadTimbres);
+    entity.setAux(aux);
     entity.setTenant(tenant);
     entity.setCreatedBy(createdBy);
     entity.setUpdatedBy(updatedBy);
@@ -35,6 +44,9 @@ public class DtoAlcaldiaActividades extends DtoSuperClass {
     DtoAlcaldiaActividades dto = new DtoAlcaldiaActividades();
     dto.setId(entity.getId());
     dto.setName(entity.getName());
+    dto.setIdTimbre(entity.getIdTimbre());
+    dto.setCantidadTimbres(entity.getCantidadTimbres());
+    dto.setAux(entity.getAux());
     dto.setTenant(entity.getTenant());
     dto.setCreatedBy(entity.getCreatedBy());
     dto.setUpdatedBy(entity.getUpdatedBy());
