@@ -6,7 +6,7 @@ const classNameFormTextNew = {
 
 const handleValidation = (data, setClassNameFormText) => {
   let isValid = true;
-  if (!(data.cantidadTimbres > 0)) {
+  if (!(Number(data.valueCantidadTimbres) > 0)) {
     isValid = false;
     classNameFormTextNew.cantidadTimbres = classNameRed;
   } else {

@@ -5,7 +5,7 @@ import Form from "react-bootstrap/Form";
 import Card from "react-bootstrap/Card";
 import i18n from "../../i18n/i18n";
 import CommonLoading from "../../components-level-1/CommonLoading";
-import { handleFilterRequest, handleEditRequest } from "../../actions/HandleManager";
+import { handleFilterRequest, handleEditRequest, handleGetRequest } from "../../actions/HandleManager";
 import {
   handleValidation,
   classNameFormTextNew
@@ -23,6 +23,8 @@ function AlcaldiaRecursosMunicipalesTimbresTable() {
   const actividadSelected = history && history.location && history.location.state.actividad;
   const [isRequestInProgress, setIsRequestInProgress] = useState(false);
   const [classNameFormText, setClassNameFormText] = useState(classNameFormTextNew);
+  const [timbre, setTimbre] = useState(null);
+  const [isRequestInProgressTimbres, setIsRequestInProgressTimbres] = useState(false);
 
   const {
     value: valueCantidadTimbres,
@@ -45,21 +47,39 @@ function AlcaldiaRecursosMunicipalesTimbresTable() {
     setIsRequestInProgress(false);
   };
 
+  const handleAfterGetTimbreSuccess = (timbre) => {
+    setTimbre(timbre);
+    setIsRequestInProgressTimbres(false);
+  }
+
+  useEffect(() => {
+    if (actividadSelected.idTimbre) {
+      setIsRequestInProgressTimbres(true);
+      handleGetRequest(`alcaldia-recursos-municipales/${actividadSelected.idTimbre}`, handleAfterGetTimbreSuccess);
+    }
+  }, []);
+
   function handleSelectionAdd(timbreSelected) {
-    setIsRequestInProgress(true);
-    const username = window.sessionStorage.getItem("username");
-    actividadSelected.idTimbre = timbreSelected.id;
-    actividadSelected.cantidadTimbres = valueCantidadTimbres;
-    actividadSelected.updatedBy = username;
-    handleEditRequest(
-      "alcaldia-actividades/",
-      actividadSelected,
-      actividadSelected.id,
-      handleAfterEdit
-    );
+    setTimbre(timbreSelected);
+    if (handleValidation({ valueCantidadTimbres }, setClassNameFormText)) {
+      setIsRequestInProgress(true);
+      const username = window.sessionStorage.getItem("username");
+      actividadSelected.idTimbre = timbreSelected.id;
+      actividadSelected.cantidadTimbres = valueCantidadTimbres;
+      actividadSelected.updatedBy = username;
+      handleEditRequest(
+        "alcaldia-actividades/",
+        actividadSelected,
+        actividadSelected.id,
+        handleAfterEdit
+      );
+    } else {
+      alert(i18n.errorMessages.validationError);
+    }
   }
 
   function handleSelectionDeleted(timbreSelected) {
+    setTimbre(null);
     setIsRequestInProgress(true);
     const username = window.sessionStorage.getItem("username");
     actividadSelected.idTimbre = "";
@@ -86,6 +106,8 @@ function AlcaldiaRecursosMunicipalesTimbresTable() {
     }
   ];
 
+
+
   const fixArrayData = data => {
     return data.map(timbre => {
       timbre.disponible = Number(timbre.talonarioFinal) - Number(timbre.talonarioMovimiento);
@@ -93,14 +115,22 @@ function AlcaldiaRecursosMunicipalesTimbresTable() {
     });
   };
 
-  if (isRequestInProgress) {
+  if (isRequestInProgress || isRequestInProgressTimbres) {
     return <CommonLoading></CommonLoading>;
   }
 
   return (
     <div>
       <Card>
-        <Card.Header as="h2">{`${i18n.alcaldiaActividadesTable.titleGroup} ${actividadSelected.name}`}</Card.Header>
+        <Card.Header
+          as="h2">{`${i18n.alcaldiaActividadesTable.titleGroup} ${actividadSelected.name}`}
+        </Card.Header>
+        {timbre &&
+          <Card.Header
+            as="h4">{`${i18n.alcaldiaActividadesTable.titleNombreTimbre} ${timbre.name} - `}
+            {`${i18n.alcaldiaActividadesTable.titleCantidadTimbres} ${actividadSelected.cantidadTimbres}`}
+          </Card.Header>
+        }
         <Card.Body>
           <div className="puggysoft-form-thirty-with">
             <Form>
