@@ -6,25 +6,25 @@ import enumTableColumnsToShow from "../../models/alcaldia/enumTableColumnsToShow
 
 import PropTypes from "prop-types";
 
-function AlcaldiaActividadesTableDeleteToGroup (props) {
-  const { idActividad, setIsRequestInProgress } = props;
+function AlcaldiaActividadesTableDeleteToGroup(props) {
+  const { idActividad, setIsRequestInProgress, timbre } = props;
   const tableTitle = i18n.alcaldiaRecursosMunicipalesTableDelete.title;
   const pageSize = 7;
   const numberPagesToShow = 7;
 
-  function handleGetData (activePage, filterBody, updateArrayData) {
+  function handleGetData(activePage, filterBody, updateArrayData) {
     handleFilterRequest(`alcaldia-actividades-id-recursos-municipales/filter?page=${activePage - 1}&size=${pageSize}&idActividad=${idActividad}`, filterBody, updateArrayData);
   }
 
-  function handleGetSize (filterBody, setTotalPages) {
+  function handleGetSize(filterBody, setTotalPages) {
     handleFilterRequest(`alcaldia-actividades-id-recursos-municipales/filter/size?pageSize=${pageSize}&idActividad=${idActividad}`, filterBody, setTotalPages);
   }
 
-  function afterAddProductToSale (params) {
+  function afterAddProductToSale(params) {
     setIsRequestInProgress(false);
   }
 
-  function handleDelete (data) {
+  function handleDelete(data) {
     setIsRequestInProgress(true);
     handleDeleteRequest(`alcaldia-recursos-municipales-actividades/${data.id}`,
       afterAddProductToSale, afterAddProductToSale, afterAddProductToSale
@@ -39,6 +39,13 @@ function AlcaldiaActividadesTableDeleteToGroup (props) {
     }
   ];
 
+  const fixArrayData = (data) => {
+    if (timbre) {
+      data.push(timbre);
+    }
+    return data;
+  }
+
   return (
     <AlcaldiaRecursosMunicipalesGenericTable
       tableTitle={tableTitle}
@@ -47,6 +54,7 @@ function AlcaldiaActividadesTableDeleteToGroup (props) {
       handleGetSize={handleGetSize}
       tableArrayCustomRowButtons={tableArrayCustomRowButtons}
       columnsToShow={enumTableColumnsToShow.MINIMUM}
+      fixArrayData={fixArrayData}
     >
     </AlcaldiaRecursosMunicipalesGenericTable>
   );
@@ -56,10 +64,12 @@ export default AlcaldiaActividadesTableDeleteToGroup;
 
 AlcaldiaActividadesTableDeleteToGroup.propTypes = {
   idActividad: PropTypes.number,
-  setIsRequestInProgress: PropTypes.func
+  setIsRequestInProgress: PropTypes.func,
+  timbre: PropTypes.string
 };
 
 AlcaldiaActividadesTableDeleteToGroup.defaultProps = {
   idActividad: 0,
-  setIsRequestInProgress: () => {}
+  setIsRequestInProgress: () => { },
+  timbre: ""
 };

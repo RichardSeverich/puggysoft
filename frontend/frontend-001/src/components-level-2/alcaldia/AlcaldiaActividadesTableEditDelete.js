@@ -68,7 +68,7 @@ function AlcaldiaActividadesTableEditDelete () {
     {
       variant: "info",
       handleCustom: handleSelect,
-      text: i18n.commonTable.selectRelationsButton
+      text: i18n.alcaldiaActividadesTable.buttonRecursos
     },
     {
       variant: "primary",

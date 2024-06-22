@@ -1,21 +1,36 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router";
 import Card from "react-bootstrap/Card/";
 import CommonLoading from "../../components-level-1/CommonLoading";
 import i18n from "../../i18n/i18n";
 import AlcaldiaActividadesTableAddToGroup from "./AlcaldiaActividadesTableAddToGroup";
 import AlcaldiaActividadesTableDeleteToGroup from "./AlcaldiaActividadesTableDeleteToGroup";
+import { handleGetRequest } from "../../actions/HandleManager";
 
-function AlcaldiaActividadesGrupo () {
+function AlcaldiaActividadesGrupo() {
   const history = useHistory();
   const isEditDefaultValue = history && history.location && history.location.state;
   const [isEdit] = useState(isEditDefaultValue);
   const [isRequestInProgress, setIsRequestInProgress] = useState(false);
+  const [timbre, setTimbre] = useState(null);
+  const [isRequestInProgressTimbres, setIsRequestInProgressTimbres] = useState(false);
+
+  const handleAfterGetTimbreSuccess = (timbre) => {
+    setTimbre(timbre);
+    setIsRequestInProgressTimbres(false);
+  }
+
+  useEffect(() => {
+    if (isEdit.data.idTimbre) {
+      setIsRequestInProgressTimbres(true);
+      handleGetRequest(`alcaldia-recursos-municipales/${isEdit.data.idTimbre}`, handleAfterGetTimbreSuccess);
+    }
+  }, []);
 
   return (
     <div>
       <Card.Header as="h2">{`${i18n.alcaldiaActividadesTable.titleGroup} ${isEdit.data.name}`}</Card.Header>
-      {isRequestInProgress
+      {isRequestInProgress || isRequestInProgressTimbres
         ? <CommonLoading></CommonLoading>
         : <>
           <div className="puggysoft-two-divs-side-by-side-child">
@@ -29,6 +44,7 @@ function AlcaldiaActividadesGrupo () {
             <AlcaldiaActividadesTableDeleteToGroup
               idActividad={isEdit.data.id}
               setIsRequestInProgress={setIsRequestInProgress}
+              timbre={timbre}
             >
             </AlcaldiaActividadesTableDeleteToGroup>
           </div>
