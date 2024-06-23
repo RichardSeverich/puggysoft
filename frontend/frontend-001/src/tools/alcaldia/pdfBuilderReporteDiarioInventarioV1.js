@@ -31,6 +31,10 @@ const GeneratePdf = (bodyResponse, fecha, bodyRequest) => {
   let precioTotal = 0;
   let primeraNota = bodyResponse[0]?.nota.split(",")[0];
   let ultimaNota = bodyResponse[bodyResponse.length - 1]?.nota.split(",")[1];
+
+  if (primeraNota.includes("-")) {
+    primeraNota = primeraNota.split("-")[1];
+  }
   
   const rows = bodyResponse.map((elemento) => {
     cantidadTotal = cantidadTotal + Number(elemento.aux);
@@ -56,8 +60,8 @@ const GeneratePdf = (bodyResponse, fecha, bodyRequest) => {
     footValues: [
       i18n.alcaldiaRecursosMunicipalesReportePdf.total,
       null,
-      null,
       cantidadTotal,
+      null,
       precioTotal
     ]
   }
