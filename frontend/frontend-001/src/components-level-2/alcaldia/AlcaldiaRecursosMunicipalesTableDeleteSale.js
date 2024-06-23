@@ -31,7 +31,7 @@ function AlcaldiaRecursosMunicipalesTableDeleteSale (props) {
     handleFilterRequest(`alcaldia/filter-by-ventas-id/filter/size?pageSize=${pageSize}&ventasId=${ventasId}`, filterBody, setTotalPages);
   }
 
-  function afterAddProductToSale () {
+  function afterDeleteProductToSale () {
     setUpdateTableDelete(false);
   }
 
@@ -39,7 +39,7 @@ function AlcaldiaRecursosMunicipalesTableDeleteSale (props) {
     handleChangeData(data.precioAux);
     setUpdateTableDelete(true);
     handleDeleteRequest(`alcaldia-recursos-municipales-ventas-detalle/${data.id}`,
-      afterAddProductToSale, afterAddProductToSale, afterAddProductToSale
+      afterDeleteProductToSale, afterDeleteProductToSale, afterDeleteProductToSale
     );
   }
 
@@ -84,6 +84,7 @@ function AlcaldiaRecursosMunicipalesTableDeleteSale (props) {
     let newPrecioTotal = 0;
     const newDataAux = JSON.parse(JSON.stringify(data));
     const newData = newDataAux.map((element, index) => {
+      element.cantidad = element.nameAux;
       element.precioAux = element.precio;
       element.precio = <Form.Control
         onChange={(event) => onChangeArryPrecios(event, index, setArrayData, valuePrecioTotalCopy)}
