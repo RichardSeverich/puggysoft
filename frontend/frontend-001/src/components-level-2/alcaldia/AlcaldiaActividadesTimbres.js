@@ -60,8 +60,9 @@ function AlcaldiaRecursosMunicipalesTimbresTable() {
   }, []);
 
   function handleSelectionAdd(timbreSelected) {
-    setTimbre(timbreSelected);
-    if (handleValidation({ valueCantidadTimbres }, setClassNameFormText)) {
+    const isValid = handleValidation({ valueCantidadTimbres }, setClassNameFormText);
+    if (isValid) {
+      setTimbre(timbreSelected);
       setIsRequestInProgress(true);
       const username = window.sessionStorage.getItem("username");
       actividadSelected.idTimbre = timbreSelected.id;
