@@ -71,6 +71,9 @@ function AlcaldiaRecursosMunicipalesTableAddSale(props) {
         }
     ]} */
     recursosMunicipalesVendidos.current = params.arrayRecursos;
+    if (params.newVentaNota) {
+      setValueNota(params.newVentaNota);
+    }
     setValueVentaPrecioTotal(Number(params.precioTotal) + Number(valueVentaPrecioTotal));
     setIsSaveButtonDisabled(false);
     setUpdateTableDelete(false);
