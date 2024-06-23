@@ -133,9 +133,9 @@ public class ServiceAlcaldiaRecursosMunicipalesVentaPorActividades {
         dtoControl.setId(Long.parseLong(dto.getIdVenta()));
         repositoryAlcaldiaRecursosMunicipalesVenta.save(dtoControl.dtoToEntity());
 
-        String result = "{\"precioTotal\": \"${precioTotal}\", \"arrayRecursos\": ${arrayString} , \"newVentaNota\": \"${newVentaNota}\"}";
+        String result = "{\"precioTotal\": \"${precioTotal}\", \"arrayRecursos\": ${arrayString}, \"newVentaNota\": \"${newVentaNota}\"}";
         result = result.replace("${precioTotal}", precioTotal.toString());
-        result = result.replace("${arrayString}", "[]");
+        result = result.replace("${arrayString}", arrayString);
         result = result.replace("${newVentaNota}", newVentaNota);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(result);
