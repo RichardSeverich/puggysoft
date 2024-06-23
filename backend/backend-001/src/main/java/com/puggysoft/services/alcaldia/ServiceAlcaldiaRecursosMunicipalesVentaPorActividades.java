@@ -45,6 +45,9 @@ public class ServiceAlcaldiaRecursosMunicipalesVentaPorActividades {
   @Autowired
   private ServiceAlcaldiaRecursosMunicipalesEditById serviceRecursosEditById;
 
+  @Autowired
+  private ServiceAlcaldiaRecursosMunicipalesVentaGetById serviceVentaGetById;
+
   /** method for filter. */
   @SuppressWarnings(value = "unchecked")
 
@@ -52,6 +55,9 @@ public class ServiceAlcaldiaRecursosMunicipalesVentaPorActividades {
     ResponseEntity actividadResponse = serviceActividadesGetById.getById(Long.parseLong(dto.getIdRecursoMunicipal()));
     DtoAlcaldiaRecursosMunicipales dtoTimbre = null;
     DtoAlcaldiaActividades dtoActividades = null;
+    DtoAlcaldiaRecursosMunicipalesVenta dtoVenta = null;
+    String newVentaNota = "";
+
     if(actividadResponse.getBody() != null) {
       dtoActividades = (DtoAlcaldiaActividades)actividadResponse.getBody();
       if(dtoActividades.getIdTimbre() != null && !"".equals(dtoActividades.getIdTimbre())){
@@ -59,12 +65,22 @@ public class ServiceAlcaldiaRecursosMunicipalesVentaPorActividades {
         dtoTimbre = (DtoAlcaldiaRecursosMunicipales)recursoResponse.getBody();
         int disponibles = Integer.parseInt(dtoTimbre.getTalonarioFinal()) - Integer.parseInt(dtoTimbre.getTalonarioMovimiento());
 
+        //Verificando si hay timbres disponibles
         if(Integer.parseInt(dtoActividades.getCantidadTimbres()) > disponibles) {
           return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Timbres no disponibles");
         } else {
+          int movimientoOld = Integer.parseInt(dtoTimbre.getTalonarioMovimiento());
           int newMovimiento = Integer.parseInt(dtoTimbre.getTalonarioMovimiento()) + Integer.parseInt(dtoActividades.getCantidadTimbres());
           dtoTimbre.setTalonarioMovimiento(String.valueOf(newMovimiento));
           serviceRecursosEditById.editById(dtoTimbre.getId(), dtoTimbre);
+          // Get venta
+          ResponseEntity ventaResponse = serviceVentaGetById.getById(Long.parseLong(dto.getIdVenta()));
+          dtoVenta = (DtoAlcaldiaRecursosMunicipalesVenta)ventaResponse.getBody();
+          newVentaNota = "${nombreRecurso}-Desde el timbre ${inicio}, Hasta el timbre ${final}";
+          newVentaNota = newVentaNota.replace("${nombreRecurso}", dtoActividades.getName());
+          newVentaNota = newVentaNota.replace("${inicio}", String.valueOf(movimientoOld + 1));
+          newVentaNota = newVentaNota.replace("${final}", String.valueOf(newMovimiento));
+          dtoVenta.setNota(newVentaNota);
         }
       }
     }
@@ -117,9 +133,10 @@ public class ServiceAlcaldiaRecursosMunicipalesVentaPorActividades {
         dtoControl.setId(Long.parseLong(dto.getIdVenta()));
         repositoryAlcaldiaRecursosMunicipalesVenta.save(dtoControl.dtoToEntity());
 
-        String result = "{\"precioTotal\": \"${precioTotal}\", \"arrayRecursos\": ${arrayString}}";
+        String result = "{\"precioTotal\": \"${precioTotal}\", \"arrayRecursos\": ${arrayString} , \"newVentaNota\": \"${newVentaNota}\"}";
         result = result.replace("${precioTotal}", precioTotal.toString());
-        result = result.replace("${arrayString}", arrayString);
+        result = result.replace("${arrayString}", "[]");
+        result = result.replace("${newVentaNota}", newVentaNota);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(result);
     } catch (DataAccessException ex) {
