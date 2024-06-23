@@ -1,6 +1,7 @@
 package com.puggysoft.services.alcaldia;
 
 import com.google.gson.Gson;
+import com.puggysoft.dtos.alcaldia.DtoAlcaldiaActividades;
 import com.puggysoft.dtos.alcaldia.DtoAlcaldiaRecursosMunicipales;
 import com.puggysoft.dtos.alcaldia.DtoAlcaldiaRecursosMunicipalesVenta;
 import com.puggysoft.dtos.alcaldia.DtoAlcaldiaRecursosMunicipalesVentaDetalle;
@@ -35,10 +36,38 @@ public class ServiceAlcaldiaRecursosMunicipalesVentaPorActividades {
   @PersistenceContext
   private EntityManager entityManager;
 
+  @Autowired
+  private ServiceAlcaldiaActividadesGetById serviceActividadesGetById;
+
+  @Autowired
+  private ServiceAlcaldiaRecursosMunicipalesGetById serviceRecursosGetById;
+
+  @Autowired
+  private ServiceAlcaldiaRecursosMunicipalesEditById serviceRecursosEditById;
+
   /** method for filter. */
   @SuppressWarnings(value = "unchecked")
 
   public ResponseEntity<String> create (DtoAlcaldiaRecursosMunicipalesVentaDetalle dto) {
+    ResponseEntity actividadResponse = serviceActividadesGetById.getById(Long.parseLong(dto.getIdRecursoMunicipal()));
+    DtoAlcaldiaRecursosMunicipales dtoTimbre = null;
+    DtoAlcaldiaActividades dtoActividades = null;
+    if(actividadResponse.getBody() != null) {
+      dtoActividades = (DtoAlcaldiaActividades)actividadResponse.getBody();
+      if(dtoActividades.getIdTimbre() != null && !"".equals(dtoActividades.getIdTimbre())){
+        ResponseEntity recursoResponse = serviceRecursosGetById.getById(Long.parseLong(dtoActividades.getIdTimbre()));
+        dtoTimbre = (DtoAlcaldiaRecursosMunicipales)recursoResponse.getBody();
+        int disponibles = Integer.parseInt(dtoTimbre.getTalonarioFinal()) - Integer.parseInt(dtoTimbre.getTalonarioMovimiento());
+
+        if(Integer.parseInt(dtoActividades.getCantidadTimbres()) > disponibles) {
+          return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Timbres no disponibles");
+        } else {
+          int newMovimiento = Integer.parseInt(dtoTimbre.getTalonarioMovimiento()) + Integer.parseInt(dtoActividades.getCantidadTimbres());
+          dtoTimbre.setTalonarioMovimiento(String.valueOf(newMovimiento));
+          serviceRecursosEditById.editById(dtoTimbre.getId(), dtoTimbre);
+        }
+      }
+    }
 
     String fullQuery = "SELECT alcaldia_recursos_municipales.* "
     + "FROM alcaldia_recursos_municipales "
@@ -53,6 +82,10 @@ public class ServiceAlcaldiaRecursosMunicipalesVentaPorActividades {
         .stream()
         .map(DtoAlcaldiaRecursosMunicipales::entityToDto)
         .collect(Collectors.toList());
+
+      if(dtoTimbre != null) {
+        listDto.add(dtoTimbre);
+      }
         Gson gson = new Gson();
         arrayString = gson.toJson(listDto);
         Optional<EntityAlcaldiaRecursosMunicipalesVenta> optionalEntity = repositoryAlcaldiaRecursosMunicipalesVenta
@@ -64,10 +97,16 @@ public class ServiceAlcaldiaRecursosMunicipalesVentaPorActividades {
           DtoAlcaldiaRecursosMunicipalesVentaDetalle dtoCreate= new DtoAlcaldiaRecursosMunicipalesVentaDetalle();
           dtoCreate.setIdVenta(dto.getIdVenta());
           dtoCreate.setIdRecursoMunicipal(String.valueOf(producto.getId()));
-          dtoCreate.setCantidad("1");
+          if(producto.getName().contains("TIMBRES")) {
+            dtoCreate.setCantidad(dtoActividades.getCantidadTimbres());
+            Float newPrecio = Float.parseFloat(producto.getPrecio()) * Float.parseFloat(dtoCreate.getCantidad());
+            dtoCreate.setPrecioUnidad(newPrecio.toString());
+          } else {
+            dtoCreate.setCantidad("1");
+            dtoCreate.setPrecioUnidad(producto.getPrecio());
+          }
           dtoCreate.setCreatedBy(dto.getCreatedBy());
           dtoCreate.setTenant(dto.getTenant());
-          dtoCreate.setPrecioUnidad(producto.getPrecio());
           precioTotal = precioTotal + Float.parseFloat(producto.getPrecio()) *  Float.parseFloat(dtoCreate.getCantidad());
           repositoryAlcaldiaRecursosMunicipalesVentaDetalle
             .save(dtoCreate.dtoToEntity());

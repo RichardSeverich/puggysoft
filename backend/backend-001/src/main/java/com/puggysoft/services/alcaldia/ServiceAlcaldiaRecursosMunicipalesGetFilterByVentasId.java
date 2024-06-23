@@ -43,7 +43,7 @@ public class ServiceAlcaldiaRecursosMunicipalesGetFilterByVentasId {
           + "alcaldia_recursos_municipales.codigo_auxiliar, "
           + "alcaldia_recursos_municipales_venta_detalle.cantidad, "
           + "alcaldia_recursos_municipales.name, "
-          + "alcaldia_recursos_municipales.name_aux, "
+          + "alcaldia_recursos_municipales_venta_detalle.cantidad AS name_aux, "
           + "alcaldia_recursos_municipales.folder_cantidad_timbres, "
           + "alcaldia_recursos_municipales_venta_detalle.precio_unidad as precio, "
           + "alcaldia_recursos_municipales.talonario_movimiento, "
