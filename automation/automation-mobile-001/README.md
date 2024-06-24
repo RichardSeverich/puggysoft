@@ -14,7 +14,7 @@ Select ony one option:
 * install wix: ```brew tap wix/brew```
 * install applesimutils: ```brew install applesimutils``` (applesimutils version 0.9.10)
 * Install and Configure ```Xcode``` [Xcode.md](./documentation/README-DEPLOY-04-Xcode.md) (Only for MAC)
-* Install ```Appium, inspector and doctor```: follow all instructions from [Appium.md](./README-DEPLOY-02-Appium.md)
+* Install ```Appium, inspector and doctor```: follow all instructions from [Appium.md](./documentation/README-DEPLOY-02-Appium.md)
 * Configure ```config.properties``` file for Android according with [Config-Props-Android.md](./documentation/README-DEPLOY-03-Config-Props-Android.md)
 * Configure ```config.properties``` file for iOS according with [Config-Props-iOS.md](./documentation/README-DEPLOY-05-Config-Props-iOS.md) (Only for MAC)
 
