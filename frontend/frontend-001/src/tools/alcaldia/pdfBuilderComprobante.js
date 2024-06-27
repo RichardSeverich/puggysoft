@@ -34,14 +34,20 @@ const GeneratePdf = (data, body) => {
   doc.text(2.6, 3.9, ` ${body.nota}`);
 
   let y = 6.5;
-  for (let index = 0; index < data.length; index++) {
-    const element = data[index];
+  data.forEach(element => {
     doc.text(1.4, y, ` ${element.codigo}`);
     doc.text(3.3, y, ` ${element.name}`);
     doc.text(13.2, y, ` ${Number(element.precio).toFixed(2)}`);
     y = y + 0.4;
-  }
-  doc.text(3.3, y + 0.8, ` ${"GLOSA: " + body.glosa}`);
+  });
+
+  const margin = 3.4;
+  const pageWidth = doc.internal.pageSize.width - 2 * margin;
+  const textLines = doc.splitTextToSize(` ${"GLOSA: " + body.glosa}`, pageWidth);
+  textLines.forEach((line) => {
+    y = y + 0.4;
+    doc.text(3.3, y, line);
+  });
 
   doc.text(13.2, 12.1, ` ${body.ventaPrecioTotal}`);
   doc.text(2, 12.1, NumeroALetras(body.ventaPrecioTotal));
