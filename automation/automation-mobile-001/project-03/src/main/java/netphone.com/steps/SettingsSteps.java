@@ -20,7 +20,7 @@ public class SettingsSteps {
   /**
    * Click on button.
    */
-  @Then("^I click 'Profile Settings' button$")
+  @Then("^I go to 'Profile Settings' screen$")
   public void clickProfileSettingsButton() {
     this.settingsActions.clickProfileSettingsButton();
   }
@@ -36,33 +36,33 @@ public class SettingsSteps {
   /**
    * Verify.
    */
-  @Then("^I verify \"([^\"]*)\" 'Profile image' text is visible$")
-  public void verifyProfileImageText(String userInitials) {
-    this.settingsActions.verifyProfileImageText(userInitials);
+  @Then("^I verify 'Profile image' text is visible$")
+  public void verifyProfileImageText() {
+    this.settingsActions.verifyProfileImageText();
   }
 
   /**
    * Verify.
    */
-  @Then("^I verify \"([^\"]*)\" 'User name' text is visible$")
-  public void verifyUserNameText(String userName) {
-    this.settingsActions.verifyUsernameText(userName);
+  @Then("^I verify 'User name' text is visible$")
+  public void verifyUserNameText() {
+    this.settingsActions.verifyUsernameText();
   }
 
   /**
    * Verify.
    */
-  @Then("^I verify \"([^\"]*)\" 'User mail' text is visible$")
-  public void verifyUserMailText(String userMail) {
-    this.settingsActions.verifyUserMailText(userMail);
+  @Then("^I verify 'User mail' text is visible$")
+  public void verifyUserMailText() {
+    this.settingsActions.verifyUserMailText();
   }
 
   /**
    * Verify.
    */
-  @Then("^I verify \"([^\"]*)\" 'User ext' text is visible$")
-  public void verifyUserExtText(String userExt) {
-    this.settingsActions.verifyUserExtText(userExt);
+  @Then("^I verify 'User ext' text is visible$")
+  public void verifyUserExtText() {
+    this.settingsActions.verifyUserExtText();
   }
 
   /**
@@ -84,9 +84,9 @@ public class SettingsSteps {
   /**
    * Verify.
    */
-  @Then("^I verify 'Time zone EST' text is visible$")
+  @Then("^I verify 'Zone' text is visible$")
   public void verifyTimeZoneESTText() {
-    this.settingsActions.verifyTimeZoneESTText();
+    this.settingsActions.verifyZoneText();
   }
 
   /**
@@ -116,9 +116,9 @@ public class SettingsSteps {
   /**
    * Verify.
    */
-  @Then("^I verify \"([^\"]*)\" 'Caller id number' text is visible$")
-  public void verifyCallerIdNumberText(String callerIdNumber) {
-    this.settingsActions.verifyCallerIdNumberText(callerIdNumber);
+  @Then("^I verify 'Caller id number' text is visible$")
+  public void verifyCallerIdNumberText() {
+    this.settingsActions.verifyCallerIdNumberText();
   }
 
   /**
@@ -231,6 +231,16 @@ public class SettingsSteps {
   @Then("^I click 'Logout' button$")
   public void clickLogoutButton() {
     this.settingsActions.clickLogoutButton();
+  }
+
+  @Then("^I scrolling 'Down'$")
+  public void scrollingDown() {
+    this.settingsActions.scroll(0.8F, 0.2F);
+  }
+
+  @Then("^I scrolling 'Up'$")
+  public void scrollingUp() {
+    this.settingsActions.scroll(0.2F, 0.8F);
   }
 
 }

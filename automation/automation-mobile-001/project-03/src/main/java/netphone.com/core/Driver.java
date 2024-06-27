@@ -39,6 +39,8 @@ public class Driver {
       this.capabilities.setCapability("app", this.config.app);
     }
     // Configurations
+    this.capabilities.setCapability("bundleId", this.config.bundleId);
+    capabilities.setCapability("fullReset", this.config.fullReset);
     this.capabilities.setCapability("noReset", this.config.noReset);
     this.capabilities.setCapability("clearSystemFiles", this.config.clearSystemFiles);
     // Hide keyboard
@@ -60,28 +62,44 @@ public class Driver {
   public static Driver getInstance() {
     if (instance == null) {
       instance = new Driver();
-      instance.startSession();
+      instance.startSessionControlled();
     }
     return instance;
   }
 
-  /** Start Session. */
-  public void startSession() {
+  private URL getURl() {
     try {
-      URL url = new URL(config.appiumUrl);
-      if (config.platformName.equals("iOS")) {
-        this.appiumDriver = new IOSDriver<>(url, capabilities);
-        this.config.enumPlatformName = EnumPlatformName.IOS;
-      } else {
-        this.appiumDriver = new AndroidDriver<>(url, capabilities);
-        this.config.enumPlatformName = EnumPlatformName.ANDROID;
-      }
-      this.appiumDriver.manage().timeouts().implicitlyWait(config.implicitlyWaitSeconds, TimeUnit.SECONDS);
-      this.driverWait =  new WebDriverWait(this.appiumDriver, this.config.explicitlyWaitSeconds);
+      return new URL(config.appiumUrl);
     } catch (MalformedURLException exception) {
       System.out.println(exception.getMessage());
-      exception.printStackTrace();
+      return null;
     }
+  }
+
+  /** Start Session. */
+  public void startSessionControlled() {
+    try {
+      this.startSession();
+    } catch (Exception e) {
+      System.out.println("error when starting session with appium");
+      System.out.println("trying one more time...");
+      System.out.println(e.getMessage());
+      this.startSession();
+    }
+  }
+
+  /** Start Session. */
+  private void startSession() {
+    URL url = this.getURl();
+    if (config.platformName.equals("iOS")) {
+      this.appiumDriver = new IOSDriver<>(url, capabilities);
+      this.config.enumPlatformName = EnumPlatformName.IOS;
+    } else {
+      this.appiumDriver = new AndroidDriver<>(url, capabilities);
+      this.config.enumPlatformName = EnumPlatformName.ANDROID;
+    }
+    this.appiumDriver.manage().timeouts().implicitlyWait(config.implicitlyWaitSeconds, TimeUnit.SECONDS);
+    this.driverWait =  new WebDriverWait(this.appiumDriver, this.config.explicitlyWaitSeconds);
   }
 
 }

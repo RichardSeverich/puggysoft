@@ -101,8 +101,9 @@ public class HomeSteps {
   /**
    * Verify.
    */
-  @Then("^I go to 'Profile Settings' screen$")
-  public void verifyUserSettingsButton() {
-    this.homeActions.clickProfileSettingsButton();
+  @Then("^I verify 'No activities yet' text is visible$")
+  public void verifyNoActivitiesYetTextIos() {
+    this.homeActions.verifyNoActivitiesYetTextIos();
   }
+
 }

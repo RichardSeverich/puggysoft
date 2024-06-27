@@ -28,7 +28,7 @@ public class SettingsActions extends AbstractActions {
    * Verification Settings text.
    */
   public void clickProfileSettingsButton() {
-    this.settingsScreen.settingsButton.click();
+    this.settingsScreen.getImageProfileText(this.settingsScreen.adminInitials).click();
   }
 
   /**
@@ -41,29 +41,29 @@ public class SettingsActions extends AbstractActions {
   /**
    * Verification Profile image text.
    */
-  public void verifyProfileImageText(String userInitials) {
-    this.waitForDisplayed(this.settingsScreen.getImageProfileText(userInitials));
+  public void verifyProfileImageText() {
+    this.waitForDisplayed(this.settingsScreen.getImageProfileText(this.settingsScreen.adminInitials));
   }
 
   /**
    * Verification Username text.
    */
-  public void verifyUsernameText(String userName) {
-    this.waitForDisplayed(this.settingsScreen.getNameText(userName));
+  public void verifyUsernameText() {
+    this.waitForDisplayed(this.settingsScreen.getNameText(this.settingsScreen.adminName));
   }
 
   /**
    * Verification User mail text.
    */
-  public void verifyUserMailText(String userMail) {
-    this.waitForDisplayed(this.settingsScreen.getMailText(userMail));
+  public void verifyUserMailText() {
+    this.waitForDisplayed(this.settingsScreen.getMailText(this.settingsScreen.adminUsername));
   }
 
   /**
    * Verification User ext text.
    */
-  public void verifyUserExtText(String userExt) {
-    this.waitForDisplayed(this.settingsScreen.getExtText(userExt));
+  public void verifyUserExtText() {
+    this.waitForDisplayed(this.settingsScreen.getExtText(this.settingsScreen.adminExt));
   }
 
   /**
@@ -83,8 +83,8 @@ public class SettingsActions extends AbstractActions {
   /**
    * Verification Time zone EST text.
    */
-  public void verifyTimeZoneESTText() {
-    this.waitForDisplayed(this.settingsScreen.timeZoneESTText);
+  public void verifyZoneText() {
+    this.waitForDisplayed(this.settingsScreen.getZoneText(this.settingsScreen.adminZone));
   }
 
   /**
@@ -111,8 +111,8 @@ public class SettingsActions extends AbstractActions {
   /**
    * Verification Caller id number text.
    */
-  public void verifyCallerIdNumberText(String callerIdNumber) {
-    this.waitForDisplayed(this.settingsScreen.getCallerIdNumberText(callerIdNumber));
+  public void verifyCallerIdNumberText() {
+    this.waitForDisplayed(this.settingsScreen.getCallerIdNumberText(this.settingsScreen.adminCallerIdNumber));
   }
 
   /**
@@ -197,7 +197,7 @@ public class SettingsActions extends AbstractActions {
    * Verification Logout text.
    */
   public void verifyLogoutText() {
-    this.waitForDisplayed(this.settingsScreen.logOutText);
+    this.waitForDisplayed(this.settingsScreen.logOutButton);
   }
 
   /**

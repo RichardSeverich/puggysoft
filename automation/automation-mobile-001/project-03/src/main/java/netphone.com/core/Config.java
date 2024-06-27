@@ -22,6 +22,7 @@ public final class Config {
   protected String app;
   protected boolean autoGrantPermissions;
   protected boolean autoAcceptAlerts;
+  protected boolean fullReset;
   protected boolean noReset;
   protected boolean unicodeKeyboard;
   protected boolean resetKeyboard;
@@ -36,6 +37,12 @@ public final class Config {
   protected String userUsername;
   protected String userPassword;
   protected EnumPlatformName enumPlatformName;
+  // App admin info
+  protected String adminInitials;
+  protected String adminName;
+  protected String adminExt;
+  protected String adminZone;
+  protected String adminCallerIdNumber;
 
   /** Constructor read config properties file. */
   private Config() {
@@ -56,6 +63,7 @@ public final class Config {
       app = prop.getProperty("desiredCapabilities.app");
       autoGrantPermissions = prop.getProperty("desiredCapabilities.autoGrantPermissions").equals("true");
       autoAcceptAlerts = prop.getProperty("desiredCapabilities.autoAcceptAlerts").equals("true");
+      fullReset = prop.getProperty("desiredCapabilities.fullReset").equals("true");
       noReset = prop.getProperty("desiredCapabilities.noReset").equals("true");
       unicodeKeyboard = prop.getProperty("desiredCapabilities.unicodeKeyboard").equals("true");
       resetKeyboard = prop.getProperty("desiredCapabilities.resetKeyboard").equals("true");
@@ -69,6 +77,12 @@ public final class Config {
       adminPassword = prop.getProperty("admin.password");
       userUsername = prop.getProperty("user.username");
       userPassword = prop.getProperty("user.password");
+      // App admin info
+      adminInitials = prop.getProperty("admin.initials");
+      adminName = prop.getProperty("admin.name");
+      adminExt = prop.getProperty("admin.ext");
+      adminZone = prop.getProperty("admin.zone");
+      adminCallerIdNumber = prop.getProperty("admin.callerIdNumber");
     } catch (IOException exception) {
       System.out.println(exception.getMessage());
       exception.printStackTrace();

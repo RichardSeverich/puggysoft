@@ -38,7 +38,7 @@ public class LoginScreen extends Screen {
 
   // @AndroidFindBy(xpath = "//android.widget.EditText[@resource-id='email']")
   @AndroidFindBy(xpath = "//android.widget.EditText")
-  @iOSXCUITFindBy(xpath = "//XCUIElementTypeTextField[@value=\"Your email or username\"]")
+  @iOSXCUITFindBy(xpath = "(//XCUIElementTypeTextField)[1]")
   public MobileElement emailInput;
 
   @AndroidFindBy(xpath = "//android.widget.Button[@text='NEXT']")
@@ -46,6 +46,7 @@ public class LoginScreen extends Screen {
   public MobileElement nextButton;
 
   @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Email or username is incorrect.\"]")
+  @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"Email or username is incorrect.\"]")
   public MobileElement emailInputErrorMessage;
 
   // Login Screen Part 3
@@ -59,14 +60,19 @@ public class LoginScreen extends Screen {
   public MobileElement loginButton;
 
   @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Login / Password is incorrect.\"]")
+  @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"Login / Password is incorrect.\"]")
   public MobileElement passwordInputErrorMessage;
 
-  // @AndroidFindBy(xpath = "//android.view.View[@text=\"Forgot Password?\"]")
-  @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Forgot Password?\"]")
+  // 4.0.0build518 -> @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Forgot Password?\"]")
+  // 4.0.0build520 -> @AndroidFindBy(xpath = "//android.view.View[@text=\"Forgot Password?\"]")
+  @AndroidFindBy(xpath = "//android.view.View[@text=\"Forgot Password?\"]")
+  @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"Forgot Password?\"]")
   public MobileElement forgotPasswordText;
 
-  // @AndroidFindBy(xpath = "//android.view.View[@text=\"Please contact your authentication provider.\"]")
-  @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Please contact your authentication provider.\"]")
+  // 4.0.0build518 -> @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Please contact your authentication provider.\"]")
+  // 4.0.0build520 -> @AndroidFindBy(xpath = "//android.view.View[@text=\"Please contact your authentication provider.\"]")
+  @AndroidFindBy(xpath = "//android.view.View[@text=\"Please contact your authentication provider.\"]")
+  @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"Please contact your authentication provider.\"]")
   public MobileElement contactProviderText;
 
 }

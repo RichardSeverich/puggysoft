@@ -31,9 +31,9 @@ public class CallsSteps {
     this.callsActions.verifyCompanyButtonText();
   }
 
-  @Then("^I verify 'Clear history empty' button is visible$")
-  public void verifyClearHistoryEmptyText() {
-    this.callsActions.verifyClearHistoryEmptyText();
+  @Then("^I verify 'Call history empty' text is visible$")
+  public void verifyCallHistoryEmptyText() {
+    this.callsActions.verifyCallHistoryEmptyText();
   }
 
 }

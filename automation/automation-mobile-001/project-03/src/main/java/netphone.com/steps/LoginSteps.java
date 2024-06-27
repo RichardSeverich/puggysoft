@@ -71,7 +71,12 @@ public class LoginSteps {
 
   @Then("^I set \"([^\"]*)\" email")
   public void setInvalidEmail(String email) {
-    this.loginActions.setEmail(email);
+    this.loginActions.setEmail(email, false);
+  }
+
+  @Then("^ios I set \"([^\"]*)\" email")
+  public void setInvalidEmailIos(String email) {
+    this.loginActions.setEmail(email, true);
   }
 
   @Then("^I verify email error message")
@@ -113,7 +118,7 @@ public class LoginSteps {
 
   @Then("^I set \"([^\"]*)\" password")
   public void setPassword(String password) {
-    this.loginActions.setPassword(password);
+    this.loginActions.setPassword(password, false);
   }
 
   @Then("^I verify Login button is enabled")

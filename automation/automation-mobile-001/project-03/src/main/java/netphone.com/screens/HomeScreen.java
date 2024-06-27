@@ -36,6 +36,7 @@ public class HomeScreen extends Screen {
   public MobileElement contactsText;
 
   @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"All\"]")
+  @iOSXCUITFindBy(xpath = "//XCUIElementTypeOther[@name=\"All\"]")
   public MobileElement allText;
 
   @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Channels\"]")
@@ -44,7 +45,13 @@ public class HomeScreen extends Screen {
   @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"There is nothing here\"]")
   public MobileElement thereIsNothingHereText;
 
-  // PROFILE BUTTON
-  @AndroidFindBy(xpath = "//android.widget.FrameLayout[@resource-id=\"android:id/content\"]/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[1]/android.view.ViewGroup")
-  public MobileElement profileSettingsButton;
+  @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"No activities yet?\"]")
+  public MobileElement noActivitiesYetText;
+
+  @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"Start a conversation\"]")
+  public MobileElement startAConversationText;
+
+  @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"to unlock chat and call history\"]")
+  public MobileElement toUnlockChatText;
+
 }

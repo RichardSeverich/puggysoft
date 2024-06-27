@@ -1,0 +1,58 @@
+pipeline {
+     agent {
+        label 'n2p-mobile-automation-mac'
+    }
+    environment {
+        AUTOMATION_FRAMEWORK_DIR = '/Users/ec2-user/Desktop/n2p-automation-ui-mobile'
+        AUTOMATION_STORE_REPORTS_DIR = '/Users/ec2-user/Desktop/reports'
+        CONFIG_PROPERTIES_ANDROID = 'config-android.properties'
+        CONFIG_IOS_ANDROID = 'config-ios.properties'
+        PROJECT_NAME = 'n2p-mobile'
+        BUILD_VERSION = '4.0.0'
+        BUILD_NUMBER = '520'
+        JAVA_HOME = '/Library/Java/JavaVirtualMachines/jdk-1.8.jdk/Contents/Home'
+    }
+    stages {
+        stage('Deploy automation') {
+            steps {
+                echo 'Deploy n2p automation mobile...'
+                dir("${AUTOMATION_FRAMEWORK_DIR}") {
+                    sh 'git pull'
+                    sh 'chmod +x gradlew'
+                    sh "export JAVA_HOME=${JAVA_HOME}"
+                    sh 'export PATH=JAVA_HOME/bin:$PATH'
+                    sh './gradlew :n2p-mobile:build'
+                }
+            }
+        }
+        stage('Run Android test cases') {
+            steps {
+                echo 'Run Android test cases...'
+                dir("${AUTOMATION_FRAMEWORK_DIR}") {
+                    sh "rm ${PROJECT_NAME}/config.properties || true"
+                    sh "cp ${PROJECT_NAME}/${CONFIG_PROPERTIES_ANDROID} n2p-mobile/config.properties"
+                    sh './gradlew :n2p-mobile:cucumber -P tags=@Android || true'
+                }
+            }
+        }
+        stage('Publish and save Android report') {
+            steps {
+                echo 'Publish and save Android report...'
+                sh "cp -R ${AUTOMATION_FRAMEWORK_DIR}/${PROJECT_NAME}/reports ${AUTOMATION_STORE_REPORTS_DIR}/\$(date +%Y-%m-%d-%H%M%S)-report-android-${BUILD_VERSION}build${BUILD_NUMBER}"
+                publishHTML target: [
+                        allowMissing: false,
+                        alwaysLinkToLastBuild: false,
+                        keepAll: true,
+                        reportDir: "${AUTOMATION_FRAMEWORK_DIR}/${PROJECT_NAME}/reports",
+                        reportFiles: 'index.html',
+                        reportName: "Android Report"
+                    ]
+            }
+        }
+        stage('Run iOS test cases') {
+            steps {
+                echo 'Run iOS test cases...'
+            }
+        }
+    }
+}
