@@ -6,9 +6,11 @@ import com.puggysoft.dtos.alcaldia.DtoAlcaldiaRecursosMunicipalesReportCriteria;
 import com.puggysoft.dtos.alcaldia.DtoAlcaldiaRecursosMunicipalesReporteCorto;
 import com.puggysoft.repositories.alcaldia.IRepositoryAlcaldiaRecursosMunicipales;
 import com.puggysoft.repositories.alcaldia.IRepositoryAlcaldiaRecursosMunicipalesReport;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -30,7 +32,7 @@ public class ServiceAlcaldiaRecursosMunicipalesReporteCorto {
    * method for retrieve.
    */
   public ResponseEntity<DtoAlcaldiaRecursosMunicipalesReporteCortoResponse> getReport(
-        DtoAlcaldiaRecursosMunicipalesReportCriteria criteria) {
+      DtoAlcaldiaRecursosMunicipalesReportCriteria criteria) {
     String estadoVenta = criteria.estadoVenta.toString();
     String tenant = criteria.tenant;
     String fecha = criteria.fecha;
@@ -42,7 +44,7 @@ public class ServiceAlcaldiaRecursosMunicipalesReporteCorto {
         .collect(Collectors.toList());
     DtoAlcaldiaRecursosMunicipalesReporteCortoResponse reportResult = new DtoAlcaldiaRecursosMunicipalesReporteCortoResponse();
     List<DtoAlcaldiaRecursosMunicipalesReporteCorto> listaPadres = new ArrayList<>();
-
+    Double granTotal = 0d;
     for (DtoAlcaldiaRecursosMunicipales recursoPadre : listOfRecursosPadres) {
       DtoAlcaldiaRecursosMunicipalesReporteCorto padreByList = new DtoAlcaldiaRecursosMunicipalesReporteCorto();
       padreByList.setCodigoRecursoMunicipal(recursoPadre.getCodigo());
@@ -51,11 +53,10 @@ public class ServiceAlcaldiaRecursosMunicipalesReporteCorto {
       Double totalPadre = 0.0;
 
       List<DtoAlcaldiaRecursosMunicipales> listOfRecursosHijos = repositoryAlcaldiaRecursos
-        .findAlcaldiaRecursosMunicipalesHijoByPadreIdAll(recursoPadre.getId())
-        .stream()
-        .map(DtoAlcaldiaRecursosMunicipales::entityToDto)
-        .collect(Collectors.toList());
-
+          .findAlcaldiaRecursosMunicipalesHijoByPadreIdAll(recursoPadre.getId())
+          .stream()
+          .map(DtoAlcaldiaRecursosMunicipales::entityToDto)
+          .collect(Collectors.toList());
       for (DtoAlcaldiaRecursosMunicipales recursoHijo : listOfRecursosHijos) {
         DtoAlcaldiaRecursosMunicipalesReporteCorto hijoByList = new DtoAlcaldiaRecursosMunicipalesReporteCorto();
         hijoByList.setCodigoRecursoMunicipal(recursoHijo.getCodigo());
@@ -63,25 +64,26 @@ public class ServiceAlcaldiaRecursosMunicipalesReporteCorto {
         hijoByList.setNombreRecursoMunicipal(recursoHijo.getName());
 
         Double totalHijo = repositoryReport.getRevenuePerProductTotal(
-          recursoHijo.getId(),
-          estadoVenta,
-          tenant,
-          fecha);
+            recursoHijo.getId(),
+            estadoVenta,
+            tenant,
+            fecha);
 
         hijoByList.ventasTotales = totalHijo == null ? 0.0 : totalHijo;
         totalPadre = totalHijo == null ? totalPadre : (totalPadre + totalHijo);
 
         padreByList.arrayHijos.add(hijoByList);
       }
+      granTotal = granTotal + totalPadre;
       padreByList.setVentasTotales(totalPadre);
       listaPadres.add(padreByList);
     }
-    Double granTotal = repositoryReport.getRevenueTotal(
+    /*Double granTotal = repositoryReport.getRevenueTotal(
         estadoVenta,
         tenant,
-        fecha);
+        fecha);*/
     reportResult.listaPadres = listaPadres;
-    reportResult.granTotal = granTotal == null ? 0.0 : granTotal;
+    reportResult.granTotal = granTotal;
     return ResponseEntity.status(HttpStatus.OK).body(reportResult);
   }
 }
