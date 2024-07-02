@@ -199,7 +199,7 @@ function AlcaldiaRecursosMunicipalesVentasForm () {
             idRecursoMunicipal: recursosMunicipalesVendidos.current.find(rm => rm.codigo === element.codigo && rm.name === element.name)?.id,
             idVenta,
             precioUnidad: element.precio,
-            cantidad: 1,
+            cantidad: element.nameAux,
             createdBy: username,
             updatedBy: username,
             tenant

@@ -9,8 +9,8 @@ import lombok.Data;
 @Data
 public class DtoAlcaldiaRecursosMunicipalesReportItem {
 
-  public Long numeroVenta;
-  public Double ingresoVenta;
+  public String numeroVenta;
+  public String ingresoVenta;
 
   /**
    *

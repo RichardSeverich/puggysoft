@@ -11,8 +11,8 @@ public class EntityAlcaldiaRecursosMunicipalesReportItem {
 
   @Id
   @Column(name = "numero_venta")
-  private Long numeroVenta;
+  private String numeroVenta;
 
   @Column(name = "ingreso_venta")
-  private Double ingresoVenta;
+  private String ingresoVenta;
 }
