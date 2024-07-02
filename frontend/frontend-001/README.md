@@ -25,6 +25,13 @@
  * delete ".eslintrc.json" file to avoid "react" was conflicted between ".eslintrc.json".
 6. Run Storybook: `npm run storybook`  `http://localhost:6006/`
 
+### Deploy Production
+
+0. Create build: `npm run build`.
+1. Install server: `npm install -g serve`.
+2. Run server in package build: `serve -s`.
+3. If you need change .env variables search in build folder: `REACT_APP_BACKEND_HOST:`.
+
 ## Documentation
 - React Bootstrap Documentation
 https://react-bootstrap.github.io/getting-started/introduction

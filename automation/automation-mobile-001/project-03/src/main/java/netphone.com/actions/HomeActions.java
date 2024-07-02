@@ -84,17 +84,16 @@ public class HomeActions extends AbstractActions {
     this.waitForDisplayed(this.homeScreen.allText);
   }
 
+  public void verifyNoActivitiesYetTextIos() {
+    this.waitForDisplayed(this.homeScreen.noActivitiesYetText);
+    this.waitForDisplayed(this.homeScreen.startAConversationText);
+    this.waitForDisplayed(this.homeScreen.toUnlockChatText);
+  }
+
   /**
    * Verification There Is Nothing Here Text.
    */
   public void verifyThereIsNothingHereText() {
     this.waitForDisplayed(this.homeScreen.thereIsNothingHereText);
-  }
-
-  /**
-   * Click User Settings Button.
-   */
-  public void clickProfileSettingsButton() {
-    this.homeScreen.profileSettingsButton.click();
   }
 }

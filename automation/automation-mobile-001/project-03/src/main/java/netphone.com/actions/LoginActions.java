@@ -1,5 +1,6 @@
 package netphone.com.actions;
 
+import netphone.com.models.EnumPlatformName;
 import netphone.com.screens.LoginScreen;
 import org.openqa.selenium.Keys;
 
@@ -26,16 +27,20 @@ public class LoginActions extends AbstractActions {
     // Part 1
     this.waitForDisplayed(this.loginScreen.letsGetStarterButton);
     this.loginScreen.letsGetStarterButton.click();
+    this.sleepInSeconds(1);
     // Part 2
     this.waitForDisplayed(this.loginScreen.emailInput);
     this.loginScreen.emailInput.click();
     this.loginScreen.emailInput.sendKeys(username);
+    this.hideKeyboardIos();
     this.waitForDisplayed(this.loginScreen.nextButton);
     this.loginScreen.nextButton.click();
+    this.sleepInSeconds(1);
     // Part 3
     this.waitForDisplayed(this.loginScreen.passwordInput);
     this.loginScreen.passwordInput.click();
     this.loginScreen.passwordInput.sendKeys(password);
+    this.hideKeyboardIos();
     this.waitForDisplayed(this.loginScreen.loginButton);
     this.loginScreen.loginButton.click();
   }
@@ -85,12 +90,19 @@ public class LoginActions extends AbstractActions {
   }
 
   /** Set email. */
-  public void setEmail(String email) {
+  public void setEmail(String email, boolean isDeleted) {
     this.waitForDisplayed(this.loginScreen.emailInput);
     this.loginScreen.emailInput.click();
-    this.loginScreen.emailInput.sendKeys(Keys.CONTROL + "a");
-    this.loginScreen.emailInput.sendKeys(Keys.DELETE);
+    if (this.loginScreen.platformName == EnumPlatformName.IOS && isDeleted) {
+      this.loginScreen.emailInput.click();
+      this.anyScreen.textInputSelectAllButton.click();
+      this.anyScreen.keyboardDeleteButton.click();
+    } else if (this.loginScreen.platformName == EnumPlatformName.ANDROID) {
+      this.loginScreen.emailInput.sendKeys(Keys.CONTROL + "a");
+      this.loginScreen.emailInput.sendKeys(Keys.DELETE);
+    }
     this.loginScreen.emailInput.sendKeys(email);
+    this.hideKeyboardIos();
   }
 
   /** Verify email error message. */
@@ -142,17 +154,23 @@ public class LoginActions extends AbstractActions {
   }
 
   /** Set password */
-  public void setPassword(String password) {
+  public void setPassword(String password, boolean isDeleted) {
     this.waitForDisplayed(this.loginScreen.passwordInput);
     this.loginScreen.passwordInput.click();
-    this.loginScreen.passwordInput.sendKeys(Keys.CONTROL + "a");
-    this.loginScreen.passwordInput.sendKeys(Keys.DELETE);
+    if (this.loginScreen.platformName == EnumPlatformName.IOS && isDeleted) {
+      this.loginScreen.emailInput.click();
+      this.anyScreen.textInputSelectAllButton.click();
+      this.anyScreen.keyboardDeleteButton.click();
+    } else if (this.loginScreen.platformName == EnumPlatformName.ANDROID) {
+      this.loginScreen.emailInput.sendKeys(Keys.CONTROL + "a");
+      this.loginScreen.emailInput.sendKeys(Keys.DELETE);
+    }
     this.loginScreen.passwordInput.sendKeys(password);
+    this.hideKeyboardIos();
   }
 
   /** Click Next button. */
   public void clickLoginButton() {
     this.loginScreen.loginButton.click();
   }
-
 }

@@ -30,9 +30,9 @@ public class CallsActions extends AbstractActions {
     this.waitForDisplayed(this.callsScreen.companyButton);
   }
 
-  public void verifyClearHistoryEmptyText() {
-    this.waitForDisplayed(this.callsScreen.clearHistoryIsEmptyText);
-    this.waitForDisplayed(this.callsScreen.clearHistoryIsEmptyUnderText);
+  public void verifyCallHistoryEmptyText() {
+    this.waitForDisplayed(this.callsScreen.callHistoryIsEmptyText);
+    this.waitForDisplayed(this.callsScreen.callHistoryIsEmptyUnderText);
   }
 
 }
