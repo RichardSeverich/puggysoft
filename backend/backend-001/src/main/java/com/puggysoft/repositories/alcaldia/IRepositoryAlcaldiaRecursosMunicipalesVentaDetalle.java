@@ -33,12 +33,10 @@ public interface IRepositoryAlcaldiaRecursosMunicipalesVentaDetalle
       + "WHERE alcaldia_recursos_municipales.id = :recursoMunicipalId "
       + "AND alcaldia_recursos_municipales_venta.venta_status = :estadoVenta "
       + "AND alcaldia_recursos_municipales_venta.id = :idVenta "
-      + "AND alcaldia_recursos_municipales_venta_detalle.tenant = :tenant "
-      + "AND DATE(alcaldia_recursos_municipales_venta_detalle.creation_date) = :fecha ", nativeQuery = true)
+      + "AND alcaldia_recursos_municipales_venta_detalle.tenant = :tenant ", nativeQuery = true)
   List<EntityAlcaldiaRecursosMunicipalesVentaDetalle> getVentasDeUnVenta(
       @Param("recursoMunicipalId") Long recursoMunicipalId,
       @Param("estadoVenta") String estadoVenta,
       @Param("tenant") String tenant,
-      @Param("idVenta") Long idVenta,
-      @Param("fecha") String date);
+      @Param("idVenta") Long idVenta);
 }

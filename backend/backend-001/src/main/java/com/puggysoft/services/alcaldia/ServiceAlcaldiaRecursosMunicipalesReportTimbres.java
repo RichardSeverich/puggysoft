@@ -62,14 +62,13 @@ public class ServiceAlcaldiaRecursosMunicipalesReportTimbres {
               tenant,
               fecha);
       List<DtoAlcaldiaRecursosMunicipalesReportItem> listReportItems = new ArrayList<>();
-      // obtener todos los detalles de la venta en una determina fecha.
+      // obtener todos los detalles de una venta
       for (EntityAlcaldiaRecursosMunicipalesVenta venta : ventasDeUnProducto) {
         List<EntityAlcaldiaRecursosMunicipalesVentaDetalle> ventaDetalle = repositoryVentaDetalles
             .getVentasDeUnVenta(producto.getId(),
                 estadoVenta,
                 tenant,
-                venta.getId(),
-                fecha);
+                venta.getId());
         // Recorremos todos los detalles
         for (EntityAlcaldiaRecursosMunicipalesVentaDetalle detalle : ventaDetalle) {
           DtoAlcaldiaRecursosMunicipalesReportItem reportItem = new DtoAlcaldiaRecursosMunicipalesReportItem();
