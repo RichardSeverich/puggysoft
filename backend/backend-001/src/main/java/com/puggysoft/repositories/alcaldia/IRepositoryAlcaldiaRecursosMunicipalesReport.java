@@ -21,8 +21,7 @@ public interface IRepositoryAlcaldiaRecursosMunicipalesReport
       + "WHERE alcaldia_recursos_municipales.id = :recursoMunicipalId "
       + "AND alcaldia_recursos_municipales_venta.venta_status = :estadoVenta "
       + "AND alcaldia_recursos_municipales_venta_detalle.tenant = :tenant "
-      + "AND DATE(alcaldia_recursos_municipales_venta_detalle.creation_date) = :fecha "
-      + "GROUP BY alcaldia_recursos_municipales_venta.id", nativeQuery = true)
+      + "AND DATE(alcaldia_recursos_municipales_venta_detalle.creation_date) = :fecha ", nativeQuery = true)
   List<EntityAlcaldiaRecursosMunicipalesReportItem> getRevenueSummary(
       @Param("recursoMunicipalId") Long recursoMunicipalId,
       @Param("estadoVenta") String estadoVenta,

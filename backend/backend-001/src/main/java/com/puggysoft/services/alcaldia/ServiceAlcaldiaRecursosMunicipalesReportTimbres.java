@@ -2,8 +2,12 @@ package com.puggysoft.services.alcaldia;
 
 import com.puggysoft.dtos.alcaldia.*;
 import com.puggysoft.entities.alcaldia.EntityAlcaldiaRecursosMunicipalesReportItem;
+import com.puggysoft.entities.alcaldia.EntityAlcaldiaRecursosMunicipalesVenta;
+import com.puggysoft.entities.alcaldia.EntityAlcaldiaRecursosMunicipalesVentaDetalle;
 import com.puggysoft.repositories.alcaldia.IRepositoryAlcaldiaRecursosMunicipales;
 import com.puggysoft.repositories.alcaldia.IRepositoryAlcaldiaRecursosMunicipalesReport;
+import com.puggysoft.repositories.alcaldia.IRepositoryAlcaldiaRecursosMunicipalesVenta;
+import com.puggysoft.repositories.alcaldia.IRepositoryAlcaldiaRecursosMunicipalesVentaDetalle;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,6 +29,12 @@ public class ServiceAlcaldiaRecursosMunicipalesReportTimbres {
   @Autowired
   private IRepositoryAlcaldiaRecursosMunicipalesReport repositoryReport;
 
+  @Autowired
+  private IRepositoryAlcaldiaRecursosMunicipalesVenta repositoryVentas;
+
+  @Autowired
+  private IRepositoryAlcaldiaRecursosMunicipalesVentaDetalle repositoryVentaDetalles;
+
   /**
    * method for retrieve.
    */
@@ -44,15 +54,32 @@ public class ServiceAlcaldiaRecursosMunicipalesReportTimbres {
     List<DtoAlcaldiaRecursosMunicipalesReportResumen> reportResumenList = new ArrayList<>();
     for (DtoAlcaldiaRecursosMunicipales producto : listOfProducts) {
       DtoAlcaldiaRecursosMunicipalesReportResumen reportResumen = new DtoAlcaldiaRecursosMunicipalesReportResumen();
-      List<EntityAlcaldiaRecursosMunicipalesReportItem> listReportItemsEntities = repositoryReport.getRevenueSummary(
-          producto.getId(),
-          estadoVenta,
-          tenant,
-          fecha);
-      List<DtoAlcaldiaRecursosMunicipalesReportItem> listReportItems = listReportItemsEntities
-          .stream()
-          .map(DtoAlcaldiaRecursosMunicipalesReportItem::entityToDto)
-          .collect(Collectors.toList());
+      // Get Details
+      // Obtener todas las ventas de un determinado producto en una determinada fecha.
+      List<EntityAlcaldiaRecursosMunicipalesVenta> ventasDeUnProducto =
+          repositoryVentas.getVentaDeUnProducto(producto.getId(),
+              estadoVenta,
+              tenant,
+              fecha);
+      List<DtoAlcaldiaRecursosMunicipalesReportItem> listReportItems = new ArrayList<>();
+      // obtener todos los detalles de la venta en una determina fecha.
+      for (EntityAlcaldiaRecursosMunicipalesVenta venta : ventasDeUnProducto) {
+        List<EntityAlcaldiaRecursosMunicipalesVentaDetalle> ventaDetalle = repositoryVentaDetalles
+            .getVentasDeUnVenta(producto.getId(),
+                estadoVenta,
+                tenant,
+                venta.getId(),
+                fecha);
+        // Recorremos todos los detalles
+        for (EntityAlcaldiaRecursosMunicipalesVentaDetalle detalle : ventaDetalle) {
+          DtoAlcaldiaRecursosMunicipalesReportItem reportItem = new DtoAlcaldiaRecursosMunicipalesReportItem();
+          String numeroVenta = venta.getNumeroComprobante();
+          reportItem.setNumeroVenta(numeroVenta);
+          Double ingresoVenta = Double.parseDouble(detalle.getCantidad()) * Double.parseDouble(detalle.getPrecioUnidad());
+          reportItem.setIngresoVenta(String.valueOf(ingresoVenta));
+          listReportItems.add(reportItem);
+        }
+      }
       reportResumen.resumenVentas = listReportItems;
       Double totalPerProduct = repositoryReport.getRevenuePerProductTotal(
           producto.getId(),

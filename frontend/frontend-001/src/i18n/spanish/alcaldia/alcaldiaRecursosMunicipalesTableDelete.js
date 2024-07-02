@@ -3,7 +3,7 @@ const alcaldiaRecursosMunicipalesTableDelete = {
   titleToSelect: "Seleccione un recurso",
   columnCodigo: "Codigo",
   columnName: "Nombre",
-  columnPrecio: "Precio"
+  columnPrecio: "Precio Unidad"
 };
 
 export default alcaldiaRecursosMunicipalesTableDelete;

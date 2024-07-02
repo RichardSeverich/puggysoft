@@ -115,7 +115,8 @@ public class ServiceAlcaldiaRecursosMunicipalesVentaPorActividades {
           dtoCreate.setIdRecursoMunicipal(String.valueOf(producto.getId()));
           if(producto.getName().contains("TIMBRES")) {
             dtoCreate.setCantidad(dtoActividades.getCantidadTimbres());
-            Float newPrecio = Float.parseFloat(producto.getPrecio()) * Float.parseFloat(dtoCreate.getCantidad());
+            // Float newPrecio = Float.parseFloat(producto.getPrecio()) * Float.parseFloat(dtoCreate.getCantidad());
+            Float newPrecio = Float.parseFloat(producto.getPrecio());
             dtoCreate.setPrecioUnidad(newPrecio.toString());
           } else {
             dtoCreate.setCantidad("1");
