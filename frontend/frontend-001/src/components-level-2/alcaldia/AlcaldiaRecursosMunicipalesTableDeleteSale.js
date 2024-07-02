@@ -92,7 +92,7 @@ function AlcaldiaRecursosMunicipalesTableDeleteSale (props) {
         disabled={isEdit}
         type="number"
       />;
-      newPrecioTotal = newPrecioTotal + Number(element.precioAux);
+      newPrecioTotal = newPrecioTotal + Number(element.precioAux) * Number(element.cantidad);
       return element;
     });
     dataNewCopy.current = newData;

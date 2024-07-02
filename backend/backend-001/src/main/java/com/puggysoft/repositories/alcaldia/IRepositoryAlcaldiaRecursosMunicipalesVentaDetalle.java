@@ -21,7 +21,13 @@ public interface IRepositoryAlcaldiaRecursosMunicipalesVentaDetalle
   @Query(value = "SELECT * FROM alcaldia_recursos_municipales_venta_detalle "
       + "WHERE alcaldia_recursos_municipales_venta_detalle.id_venta = :idVenta"
       ,nativeQuery = true)
-  EntityAlcaldiaRecursosMunicipalesVentaDetalle getVentaDetalleByIdVenta(
+  EntityAlcaldiaRecursosMunicipalesVentaDetalle getVentaDetalleTimbresByIdVenta(
+      @Param("idVenta") Integer idVenta);
+
+  @Query(value = "SELECT * FROM alcaldia_recursos_municipales_venta_detalle "
+      + "WHERE alcaldia_recursos_municipales_venta_detalle.id_venta = :idVenta"
+      ,nativeQuery = true)
+  List<EntityAlcaldiaRecursosMunicipalesVentaDetalle> getVentaDetalleByIdVenta(
       @Param("idVenta") Integer idVenta);
 
 }

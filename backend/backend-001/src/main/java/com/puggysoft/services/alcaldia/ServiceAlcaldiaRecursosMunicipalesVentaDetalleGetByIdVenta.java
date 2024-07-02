@@ -18,7 +18,7 @@ public class ServiceAlcaldiaRecursosMunicipalesVentaDetalleGetByIdVenta {
   public ResponseEntity<DtoAlcaldiaRecursosMunicipalesVentaDetalle> getDtoRecursosMunicipalesVentaDetalleByIdVenta(
       Integer idVenta) {
       DtoAlcaldiaRecursosMunicipalesVentaDetalle dto = DtoAlcaldiaRecursosMunicipalesVentaDetalle
-          .entityToDto(IRepository.getVentaDetalleByIdVenta(idVenta));
+          .entityToDto(IRepository.getVentaDetalleTimbresByIdVenta(idVenta));
       return ResponseEntity.status(HttpStatus.OK).body(dto);
   }
 }

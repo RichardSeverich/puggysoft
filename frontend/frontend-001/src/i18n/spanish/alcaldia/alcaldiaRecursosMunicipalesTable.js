@@ -8,7 +8,7 @@ const alcaldiaRecursosMunicipalesTable = {
   columnCodigo: "Codigo/Rubro",
   columnCodigoAuxiliar: "Codigo/Rubro Auxiliar",
   columnName: "Nombre",
-  columnPrecio: "Precio"
+  columnPrecio: "Precio unidad"
 };
 
 export default alcaldiaRecursosMunicipalesTable;
