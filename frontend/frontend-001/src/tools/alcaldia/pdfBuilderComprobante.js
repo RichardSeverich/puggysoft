@@ -27,30 +27,40 @@ const GeneratePdf = (data, body) => {
     return textoEncontrado.charAt(0).toUpperCase() + textoEncontrado.substring(1);
   });
   if (body.clienteCiNit !== "0000000") {
-    doc.text(1, 2.6, ` ${body.clienteCiNit}`);
+    doc.text(2, 5, ` ${body.clienteCiNit}`);
   }
-  doc.text(3.7, 2.6, ` ${nombre}`);
-  doc.text(2.6, 3.4, ` ${body.direccion}`);
-  doc.text(2.6, 3.9, ` ${body.nota}`);
+  doc.text(4, 5, ` ${nombre}`);
+  doc.text(3, 5.6, ` ${body.direccion}`);
+  doc.text(3, 6.1, ` ${body.nota}`);
 
-  let y = 6.5;
-  data.forEach(element => {
-    doc.text(1.4, y, ` ${element.codigo}`);
-    doc.text(3.3, y, ` ${element.name}`);
-    doc.text(13.2, y, ` ${Number(element.precio).toFixed(2)}`);
+  let y = 8.5;
+  for (let index = 0; index < data.length; index++) {
+    const element = data[index];
+    doc.text(2, y, ` ${element.codigo}`);
+    doc.text(4, y, ` ${element.name}`);
+    doc.text(11.5, y, ` ${Number(element.precio).toFixed(2)}`);
     y = y + 0.4;
+  }
+   // Función para dividir el texto de la glosa
+   const splitTextToLines = (text, maxLineLength) => {
+    const lines = [];
+    while (text.length > maxLineLength) {
+      let lastSpaceIndex = text.lastIndexOf(' ', maxLineLength);
+      if (lastSpaceIndex === -1) lastSpaceIndex = maxLineLength;
+      lines.push(text.substring(0, lastSpaceIndex));
+      text = text.substring(lastSpaceIndex + 1);
+    }
+    lines.push(text);
+    return lines;
+  };
+
+  const glosaLines = splitTextToLines(`GLOSA: ${body.glosa}`, 41);
+  glosaLines.forEach((line, index) => {
+    doc.text(4, y + 0.1 + (index * 0.4), line);
   });
 
-  const margin = 3.4;
-  const pageWidth = doc.internal.pageSize.width - 2 * margin;
-  const textLines = doc.splitTextToSize(` ${"GLOSA: " + body.glosa}`, pageWidth);
-  textLines.forEach((line) => {
-    y = y + 0.4;
-    doc.text(3.3, y, line);
-  });
-
-  doc.text(13.2, 12.1, ` ${body.ventaPrecioTotal}`);
-  doc.text(2, 12.1, NumeroALetras(body.ventaPrecioTotal));
+  doc.text(11.5, 13.1, ` ${body.ventaPrecioTotal}`);
+  doc.text(3, 13.1, NumeroALetras(body.ventaPrecioTotal));
   let fecha = [];
   let creationTime;
   let amPm;
@@ -69,11 +79,11 @@ const GeneratePdf = (data, body) => {
     amPm = hora >= 12 ? "pm" : "am";
   }
   doc.setFontSize(7);
-  doc.text(6.4, 14.4, ` ${fecha[0]}`);
-  doc.text(8.4, 14.4, ` ${fecha[2]}`);
-  doc.text(10.6, 14.4, ` ${fecha[4].split("")[3]}`);
-  doc.text(11.6, 14.4, creationTime);
-  doc.text(12.3, 14.4, amPm);
+doc.text(6, 14.1, ` ${fecha[0]}`);
+  doc.text(7.2, 14.1, ` ${fecha[2]}`);
+  doc.text(10.2, 14.1, ` ${fecha[4].split("")[3]}`);
+  doc.text(11, 14.1, creationTime);
+  doc.text(11.5, 14.1, amPm);
 
   doc.output("dataurlnewwindow");
   doc.save(`${dateForName}-venta-${body.idVenta}.pdf`);
