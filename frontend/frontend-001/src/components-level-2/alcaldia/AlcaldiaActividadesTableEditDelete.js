@@ -50,21 +50,20 @@ function AlcaldiaActividadesTableEditDelete () {
     });
   }
 
+  const handleSelectFolders = (data) => {
+    history.push({
+      pathname: enumPaths.ALCALDIA_ACTIVIDADES_FOLDERS,
+      state: {
+        actividad: data
+      }
+    });
+  };
+
   function handleDelete (data) {
     handleDeleteRequest(`alcaldia-actividades/${data.id}`, undefined, undefined, undefined, true);
   }
 
   const tableArrayCustomRowButtons = [
-    {
-      variant: "success",
-      handleCustom: handleEdit,
-      text: i18n.commonTable.editButton
-    },
-    {
-      variant: "danger",
-      handleCustom: handleDelete,
-      text: i18n.commonTable.deleteButton
-    },
     {
       variant: "info",
       handleCustom: handleSelect,
@@ -74,6 +73,21 @@ function AlcaldiaActividadesTableEditDelete () {
       variant: "primary",
       handleCustom: handleSelectTimbres,
       text: i18n.alcaldiaActividadesTable.buttonTimbres
+    },
+    {
+      variant: "primary",
+      handleCustom: handleSelectFolders,
+      text: i18n.alcaldiaActividadesTable.buttonFolders
+    },
+    {
+      variant: "success",
+      handleCustom: handleEdit,
+      text: i18n.commonTable.editButton
+    },
+    {
+      variant: "danger",
+      handleCustom: handleDelete,
+      text: i18n.commonTable.deleteButton
     }
   ];
 

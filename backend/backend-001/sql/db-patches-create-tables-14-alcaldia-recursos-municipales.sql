@@ -103,6 +103,8 @@ CREATE TABLE alcaldia_actividades(
    name VARCHAR(120)  NOT NULL,
    id_timbre VARCHAR(120),
    cantidad_timbres VARCHAR(60),
+   id_folder VARCHAR(120),
+   cantidad_folders VARCHAR(60),
    aux VARCHAR(60),
    tenant VARCHAR(30) NOT NULL,
    creation_date DATETIME DEFAULT CURRENT_TIMESTAMP,
