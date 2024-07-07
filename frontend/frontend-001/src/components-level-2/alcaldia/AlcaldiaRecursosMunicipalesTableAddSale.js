@@ -9,7 +9,7 @@ import enumTableColumnsToShow from "../../models/enumTableColumnsToShow";
 
 import PropTypes from "prop-types";
 
-function AlcaldiaRecursosMunicipalesTableAddSale(props) {
+function AlcaldiaRecursosMunicipalesTableAddSale (props) {
   const {
     setValueNota,
     ventasId,
@@ -23,15 +23,15 @@ function AlcaldiaRecursosMunicipalesTableAddSale(props) {
   const pageSize = 10;
   const numberPagesToShow = 7;
 
-  function handleGetData(activePage, filterBody, updateArrayData) {
+  function handleGetData (activePage, filterBody, updateArrayData) {
     handleFilterRequest(`alcaldia-actividades/filter?page=${activePage - 1}&size=${pageSize}`, filterBody, updateArrayData);
   }
 
-  function handleGetSize(filterBody, setTotalPages) {
+  function handleGetSize (filterBody, setTotalPages) {
     handleFilterRequest(`alcaldia-actividades/filter/size/${pageSize}`, filterBody, setTotalPages);
   }
 
-  function afterAddProductToSale(params) {
+  function afterAddProductToSale (params) {
     // params = {'precioTotal': '${precioTotal}', 'arrayRecursos': '${arrayString}'}
     /* {
     "precioTotal": "4.0",
@@ -72,21 +72,21 @@ function AlcaldiaRecursosMunicipalesTableAddSale(props) {
     ]} */
     recursosMunicipalesVendidos.current = params.arrayRecursos;
     if (params.newVentaNota) {
-      setValueNota(params.newVentaNota);
+      setValueNota(`${params.newVentaNota}_${params.newVentaNotaFolders}`);
     }
     setValueVentaPrecioTotal(Number(params.precioTotal) + Number(valueVentaPrecioTotal));
     setIsSaveButtonDisabled(false);
     setUpdateTableDelete(false);
   }
 
-  function afterAddProductToSaleOnFail(response) {
+  function afterAddProductToSaleOnFail (response) {
     if (response && response.status === 404) {
       alert("Timbres no disponibles");
     }
     console.error("error in add producto to sale");
   }
 
-  function handleAddProductToSale(data) {
+  function handleAddProductToSale (data) {
     setUpdateTableDelete(true);
     setValueNota(data.name);
     const username = window.sessionStorage.getItem("username");

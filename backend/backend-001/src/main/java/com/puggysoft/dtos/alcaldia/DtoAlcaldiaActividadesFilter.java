@@ -22,6 +22,12 @@ public class DtoAlcaldiaActividadesFilter {
   // CANTIDAD TIMBRES
   public String cantidadTimbresCriteria;
   public EnumCompareOperator cantidadTimbresOperator;
+  // ID FOLDER
+  public String idFolderCriteria;
+  public EnumCompareOperator idFolderOperator;
+  // CANTIDAD FOLDERS
+  public String cantidadFoldersCriteria;
+  public EnumCompareOperator cantidadFoldersOperator;
   // AUX
   public String auxCriteria;
   public EnumCompareOperator auxOperator;
