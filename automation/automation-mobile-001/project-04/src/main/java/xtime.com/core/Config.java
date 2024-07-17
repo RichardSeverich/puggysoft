@@ -22,6 +22,7 @@ public final class Config {
   protected String app;
   protected boolean autoGrantPermissions;
   protected boolean autoAcceptAlerts;
+  protected boolean fullReset;
   protected boolean noReset;
   protected boolean unicodeKeyboard;
   protected boolean resetKeyboard;
@@ -31,11 +32,21 @@ public final class Config {
   protected int implicitlyWaitSeconds;
   protected int explicitlyWaitSeconds;
   // App credentials
-  protected String adminUsername;
-  protected String adminPassword;
   protected String userUsername;
   protected String userPassword;
   protected EnumPlatformName enumPlatformName;
+  // App user info
+  protected String userName;
+  protected String userInitials;
+  // App environment
+  protected String environmentCode;
+  protected String environmentName;
+  // App running
+  protected String dealership;
+  protected String customer;
+  protected String vehicle;
+  protected String customerEmail;
+  protected String customerPhone;
 
   /** Constructor read config properties file. */
   private Config() {
@@ -56,6 +67,7 @@ public final class Config {
       app = prop.getProperty("desiredCapabilities.app");
       autoGrantPermissions = prop.getProperty("desiredCapabilities.autoGrantPermissions").equals("true");
       autoAcceptAlerts = prop.getProperty("desiredCapabilities.autoAcceptAlerts").equals("true");
+      fullReset = prop.getProperty("desiredCapabilities.fullReset").equals("true");
       noReset = prop.getProperty("desiredCapabilities.noReset").equals("true");
       unicodeKeyboard = prop.getProperty("desiredCapabilities.unicodeKeyboard").equals("true");
       resetKeyboard = prop.getProperty("desiredCapabilities.resetKeyboard").equals("true");
@@ -65,10 +77,21 @@ public final class Config {
       implicitlyWaitSeconds = Integer.parseInt(prop.getProperty("selenium.implicitlyWaitSeconds"));
       explicitlyWaitSeconds = Integer.parseInt(prop.getProperty("selenium.explicitWaitSeconds"));
       // App credentials
-      adminUsername = prop.getProperty("admin.username");
-      adminPassword = prop.getProperty("admin.password");
       userUsername = prop.getProperty("user.username");
       userPassword = prop.getProperty("user.password");
+      // App user info
+      userName = prop.getProperty("user.name");
+      userInitials = prop.getProperty("user.initials");
+      customerEmail = prop.getProperty("customer.email");
+      customerPhone = prop.getProperty("customer.phone");
+      // App environment
+      environmentCode = prop.getProperty("environment.code");
+      environmentName = prop.getProperty("environment.name");
+      //App running
+      dealership = prop.getProperty("dealership");
+      customer = prop.getProperty("customer");
+      vehicle = prop.getProperty("vehicle");
+
     } catch (IOException exception) {
       System.out.println(exception.getMessage());
       exception.printStackTrace();
