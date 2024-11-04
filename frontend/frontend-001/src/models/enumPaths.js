@@ -134,6 +134,7 @@ const ALCALDIA_ACTIVIDADES_FORM = "/alcaldia-actividades-form";
 const ALCALDIA_ACTIVIDADES_TABLE = "/alcaldia-actividades-table";
 const ALCALDIA_ACTIVIDADES_JERARQUIA = "/alcaldia-actividades-jerarquia";
 const ALCALDIA_ACTIVIDADES_TIMBRES = "/alcaldia-actividades-timbres";
+const ALCALDIA_ACTIVIDADES_FOLDERS = "/alcaldia-actividades-folders";
 const ALCALDIA_RECURSOS_MUNICIPALES_TIMBRES_FORM = "/alcaldia-recursos-municipales-timbres-form";
 const ALCALDIA_RECURSOS_MUNICIPALES_TIMBRES_TABLE = "/alcaldia-recursos-municipales-timbres-table";
 const ALCALDIA_RECURSOS_MUNICIPALES_TIMBRES_DESCONTINUADOS_FORM = "/alcaldia-recursos-municipales-timbres-descontinuados-form";
@@ -354,6 +355,7 @@ const enumPaths = {
   ALCALDIA_ACTIVIDADES_TABLE,
   ALCALDIA_ACTIVIDADES_JERARQUIA,
   ALCALDIA_ACTIVIDADES_TIMBRES,
+  ALCALDIA_ACTIVIDADES_FOLDERS,
   ALCALDIA_RECURSOS_MUNICIPALES_TIMBRES_VENTAS_FORM,
   ALCALDIA_RECURSOS_MUNICIPALES_FOLDERS_VENTAS_STEP_1,
   ALCALDIA_RECURSOS_MUNICIPALES_TIMBRES_VENTAS_STEP_1,

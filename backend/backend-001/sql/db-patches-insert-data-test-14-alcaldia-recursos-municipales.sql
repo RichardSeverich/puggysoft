@@ -39,6 +39,14 @@ INSERT INTO alcaldia_recursos_municipales (codigo, codigo_auxiliar, name, precio
 INSERT INTO alcaldia_recursos_municipales (codigo, codigo_auxiliar, name, precio, tipo, tenant, created_by, creation_date) VALUES ("23000", "", "TRANSFERENCIAS DE CAPITAL", "0", "PADRE", "EMPRESA_1", "RecursosMunicipalesEncargado", "2021-11-01");
 INSERT INTO alcaldia_recursos_municipales (codigo, codigo_auxiliar, name, precio, tipo, tenant, created_by, creation_date) VALUES ("23110", "", "DE UNIDADES FAMILIARES (APORTES DE BENEFICIARIOS)", "0", "HIJO", "EMPRESA_1", "RecursosMunicipalesEncargado", "2021-11-01");
 
+-- VALORADOS
+INSERT INTO alcaldia_recursos_municipales (codigo, codigo_auxiliar, name, name_aux, talonario_inicio, talonario_movimiento, talonario_final, precio, tipo, tenant, created_by) VALUES 
+("12250", "122000-003", "FOLDERS EXPEDIENTE", "FOLDERS 2024 07 03", "0", "0", "1500", "7", "HIJO", "EMPRESA_1", "RecursosMunicipalesEncargado"),
+("12250", "122000-003", "FOLDERS INS O CAMBIO NOMBRE", "FOLDERS 2024 07 03", "0", "0", "1500", "20", "HIJO", "EMPRESA_1", "RecursosMunicipalesEncargado"),
+("12250", "122000-003", "FOLDERS TRANSFERENCIA", "FOLDERS 2024 07 03", "0", "0", "1500", "25", "HIJO", "EMPRESA_1", "RecursosMunicipalesEncargado"),
+("12250", "122000-003", "FOLDERS EMPADRONAMIENTO", "FOLDERS 2024 07 03", "0", "0", "1500", "65", "HIJO", "EMPRESA_1", "RecursosMunicipalesEncargado"),
+("12250", "122000-003", "FOLDERS EDIFICACIONES", "FOLDERS 2024 07 03", "0", "0", "1500", "25", "HIJO", "EMPRESA_1", "RecursosMunicipalesEncargado");
+
 -- ALCALDIA-RECURSOS-MUNICIPALES_GRUPO_REPORTES
 INSERT INTO alcaldia_recursos_municipales_grupo_para_reportes (id_recurso_municipal_padre, id_recurso_municipal_hijo, tenant, created_by, creation_date) VALUES ((select id from alcaldia_recursos_municipales where codigo='12200' LIMIT 0, 1), (select id from alcaldia_recursos_municipales where codigo='12110' LIMIT 0, 1), "EMPRESA_1", "RecursosMunicipalesEncargado", "2023-05-26");
 INSERT INTO alcaldia_recursos_municipales_grupo_para_reportes (id_recurso_municipal_padre, id_recurso_municipal_hijo, tenant, created_by, creation_date) VALUES ((select id from alcaldia_recursos_municipales where codigo='12200' LIMIT 0, 1), (select id from alcaldia_recursos_municipales where codigo='12210' LIMIT 0, 1), "EMPRESA_1", "RecursosMunicipalesEncargado", "2023-05-26");
@@ -443,6 +451,14 @@ INSERT INTO alcaldia_recursos_municipales (codigo, codigo_auxiliar, name_aux, na
 -- RECURSOS MUNICIPALES TIMBRES Y FOLDERS
 INSERT INTO alcaldia_recursos_municipales (codigo, codigo_auxiliar, name, name_aux, talonario_inicio, talonario_movimiento, talonario_final, precio, tipo, tenant, created_by, creation_date) VALUES ("12250", "122000-003", "TIMBRES", "TIMBRES 2024 06 18", "983808", "0", "995000", "10", "HIJO", "COLCAPIRHUA", "RecursosMunicipalesAdmin", "2024-06-05");
 INSERT INTO alcaldia_recursos_municipales (codigo, codigo_auxiliar, name, name_aux, folder_cantidad_timbres, talonario_inicio, talonario_movimiento, talonario_final, precio, tipo, tenant, created_by, creation_date) VALUES ("12260", "122001-001", "FOLDERS", "FOLDERS 2024 06 18", "0", "983808", "0", "995000", "25", "HIJO", "COLCAPIRHUA", "RecursosMunicipalesAdmin", "2024-06-05");
+
+-- VALORADOS
+INSERT INTO alcaldia_recursos_municipales (codigo, codigo_auxiliar, name, name_aux, talonario_inicio, talonario_movimiento, talonario_final, precio, tipo, tenant, created_by) VALUES 
+("1220", "122000-01", "FOLDERS EXPEDIENTE", "FOLDERS 2024 07 03", "0", "0", "1500", "7", "HIJO", "COLCAPIRHUA", "RecursosMunicipalesEncargado"),
+("1221", "122000-02", "FOLDERS INS O CAMBIO NOMBRE", "FOLDERS 2024 07 03", "0", "0", "1500", "20", "HIJO", "COLCAPIRHUA", "RecursosMunicipalesEncargado"),
+("1222", "122000-03", "FOLDERS TRANSFERENCIA", "FOLDERS 2024 07 03", "0", "0", "1500", "25", "HIJO", "COLCAPIRHUA", "RecursosMunicipalesEncargado"),
+("1223", "122000-04", "FOLDERS EMPADRONAMIENTO", "FOLDERS 2024 07 03", "0", "0", "1500", "65", "HIJO", "COLCAPIRHUA", "RecursosMunicipalesEncargado"),
+("1224", "122000-05", "FOLDERS EDIFICACIONES", "FOLDERS 2024 07 03", "0", "0", "1500", "25", "HIJO", "COLCAPIRHUA", "RecursosMunicipalesEncargado");
 
 -- ACTIVIDADES
 INSERT INTO alcaldia_actividades (name, tenant, creation_date, update_date, created_by, updated_by) VALUES

@@ -1,6 +1,7 @@
 /.gradle/
 /.idea/
 /build/
+/reports/
 /drivers/
 /project-01/build/
 /project-02/build/

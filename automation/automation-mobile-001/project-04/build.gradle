@@ -8,11 +8,12 @@ plugins {
 sourceCompatibility = 1.8
 
 repositories {
-    jcenter()
+    //jcenter()
+    mavenCentral()
 }
 
 dependencies {
-    implementation group: 'io.appium', name: 'java-client', version: '7.0.0'
+    implementation group: 'io.appium', name: 'java-client', version: '7.3.0'
     compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.141.59'
     testImplementation group: 'org.testng', name: 'testng', version: '6.14.3'
     implementation group: 'info.cukes', name: 'cucumber-java', version: '1.2.5'
@@ -44,7 +45,7 @@ task cucumber() {
             args = [
                     '--plugin', 'pretty',
                     '--plugin', 'html:reports',
-                    '--glue', 'netphone.com',
+                    '--glue', 'xtime.com',
                     'src/test/resources',
                     '--tags', tags]
         }

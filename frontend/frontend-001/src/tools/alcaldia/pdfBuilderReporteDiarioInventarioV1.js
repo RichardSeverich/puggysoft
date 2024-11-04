@@ -1,5 +1,5 @@
 import { jsPDF } from "jspdf";
-import 'jspdf-autotable';
+import "jspdf-autotable";
 import appUrlConfig from "../appUrlConfig";
 import i18n from "../../i18n/i18n";
 
@@ -29,23 +29,58 @@ const GeneratePdf = (bodyResponse, fecha, bodyRequest) => {
 
   let cantidadTotal = 0;
   let precioTotal = 0;
-  let primeraNota = bodyResponse[0]?.nota.split(",")[0];
-  let ultimaNota = bodyResponse[bodyResponse.length - 1]?.nota.split(",")[1];
 
-  if (primeraNota.includes("-")) {
-    primeraNota = primeraNota.split("-")[1];
-  }
-  
+  const buildNota = (primeraNota, ultimaNota) => {
+    // obteniendo timbre/folder inicio de la primera nota de timbres/folders
+    if (primeraNota.includes("_")) {
+      bodyRequest.nameRecursoMunicipal.includes("TIMBRES")
+        ? primeraNota = primeraNota.split("_")[0]
+        : primeraNota = primeraNota.split("_")[1];
+      primeraNota = primeraNota.split("-")[1];
+    }
+    if (primeraNota.includes("-")) {
+      primeraNota = primeraNota.split("-")[1];
+    }
+    primeraNota = primeraNota.split(",")[0];
+
+    // obteniendo timbre/folder final de la ultima nota de timbres/folders
+    if (ultimaNota.includes("_")) {
+      bodyRequest.nameRecursoMunicipal.includes("TIMBRES")
+        ? ultimaNota = ultimaNota.split("_")[0]
+        : ultimaNota = ultimaNota.split("_")[1];
+      ultimaNota = ultimaNota.split("-")[1];
+    }
+    if (ultimaNota.includes("-")) {
+      ultimaNota = ultimaNota.split("-")[1];
+    }
+    ultimaNota = ultimaNota.split(",")[1];
+
+    return { inicio: primeraNota, final: ultimaNota };
+  };
+
+  const primeraNota = bodyResponse[0].nota;
+  const ultimaNota = bodyResponse[bodyResponse.length - 1].nota;
+
+  const objectNota = buildNota(primeraNota, ultimaNota);
+
   const rows = bodyResponse.map((elemento) => {
     cantidadTotal = cantidadTotal + Number(elemento.aux);
     precioTotal = precioTotal + Number(elemento.ventaPrecioTotal);
+
+    // Obteniendo nota detalle timbres/folders
+    (bodyRequest.nameRecursoMunicipal.includes("TIMBRES") && elemento.nota.includes("_"))
+      ? elemento.nota = elemento.nota.split("_")[0]
+      : (bodyRequest.nameRecursoMunicipal.includes("FOLDERS") && elemento.nota.includes("_"))
+        ? elemento.nota = elemento.nota.split("_")[1]
+        : elemento.nota = elemento.nota;
+
     return [elemento.numeroComprobante,
-    elemento.nota,
-    elemento.aux,
-    elemento.clienteCambio,
-    elemento.ventaPrecioTotal
+      elemento.nota,
+      elemento.aux,
+      elemento.clienteCambio,
+      elemento.ventaPrecioTotal
     ];
-  })
+  });
 
   const detailTable = {
     headValues: [
@@ -64,7 +99,7 @@ const GeneratePdf = (bodyResponse, fecha, bodyRequest) => {
       null,
       precioTotal
     ]
-  }
+  };
 
   const resultTable = {
     headValues: [
@@ -74,19 +109,19 @@ const GeneratePdf = (bodyResponse, fecha, bodyRequest) => {
       i18n.alcaldiaRecursosMunicipalesReportePdf.totalBs
     ],
     bodyValues: [
-      primeraNota,
-      ultimaNota,
-      cantidadTotal, 
+      objectNota.inicio,
+      objectNota.final,
+      cantidadTotal,
       precioTotal
     ]
-  }
+  };
 
   doc.autoTable({
     startY: 80,
     head: [resultTable.headValues],
     body: [resultTable.bodyValues],
-    tableWidth: 'wrap'
-  })
+    tableWidth: "wrap"
+  });
 
   doc.autoTable({
     startY: 120,

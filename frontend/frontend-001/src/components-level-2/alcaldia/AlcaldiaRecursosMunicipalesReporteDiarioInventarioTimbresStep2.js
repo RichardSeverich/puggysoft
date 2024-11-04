@@ -20,7 +20,7 @@ import GeneratePdf from "../../tools/alcaldia/pdfBuilderReporteDiarioInventarioV
 
 import "./../css/all-forms.css";
 
-function AlcaldiaRecursosMunicipalesForm() {
+function AlcaldiaRecursosMunicipalesForm () {
   const history = useHistory();
 
   const [classNameFormText, setClassNameFormText] = useState(classNameFormTextNew);
@@ -29,7 +29,6 @@ function AlcaldiaRecursosMunicipalesForm() {
   const [isMessageVisible, setIsMessageVisible] = useState(false);
   const [messageTitle, setMessageTitle] = useState("");
   const [messageText, setMessageText] = useState("");
-
 
   let timbreSelected;
   let folderSelected;

@@ -19,6 +19,10 @@ public class DtoAlcaldiaActividades extends DtoSuperClass {
 
   private String cantidadTimbres;
 
+  private String idFolder;
+
+  private String cantidadFolders;
+
   private String aux;
   @NotNull
   private String tenant;
@@ -31,6 +35,8 @@ public class DtoAlcaldiaActividades extends DtoSuperClass {
     entity.setName(name);
     entity.setIdTimbre(idTimbre);
     entity.setCantidadTimbres(cantidadTimbres);
+    entity.setIdFolder(idFolder);
+    entity.setCantidadFolders(cantidadFolders);
     entity.setAux(aux);
     entity.setTenant(tenant);
     entity.setCreatedBy(createdBy);
@@ -46,6 +52,8 @@ public class DtoAlcaldiaActividades extends DtoSuperClass {
     dto.setName(entity.getName());
     dto.setIdTimbre(entity.getIdTimbre());
     dto.setCantidadTimbres(entity.getCantidadTimbres());
+    dto.setIdFolder(entity.getIdFolder());
+    dto.setCantidadFolders(entity.getCantidadFolders());
     dto.setAux(entity.getAux());
     dto.setTenant(entity.getTenant());
     dto.setCreatedBy(entity.getCreatedBy());
