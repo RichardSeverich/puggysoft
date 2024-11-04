@@ -76,7 +76,8 @@ CREATE TABLE sales_products(
 -- Products Groups
 CREATE TABLE product_groups(
     id BIGINT AUTO_INCREMENT,
-    name VARCHAR(50) NOT NULL,
+    name VARCHAR(256) NOT NULL,
+    aux TEXT,
     image LONGBLOB,
     tenant VARCHAR(30) NOT NULL,
     creation_date DATETIME DEFAULT CURRENT_TIMESTAMP,
@@ -93,6 +94,7 @@ CREATE TABLE product_groups(
 CREATE TABLE product_groups_products(
     id_product BIGINT NOT NULL,
     id_product_group BIGINT NOT NULL,
+    aux TEXT,
     tenant VARCHAR(30) NOT NULL,
     creation_date DATETIME DEFAULT CURRENT_TIMESTAMP,
     update_date DATETIME ON UPDATE CURRENT_TIMESTAMP,
