@@ -14,6 +14,8 @@ const productTable = {
   titleSelectionToReportRevenueMonthComp: "Seleccione para ver reporte de ingresos de ventas mensual (Comparar 2 Meses)",
   titleSelectionToReportProfitMonth: "Seleccione para ver reporte de ganancias de ventas mensual",
   titleSelectionToReportProfitMonthComp: "Seleccione para ver reporte de ganancias de ventas mensual (Comparar 2 Meses)",
+  titleAvailable: "Productos disponibles",
+  titleaggregates: "Productos agregados",
   columnId: "Id",
   columnCode: "Codigo",
   columnName: "Nombre Producto",

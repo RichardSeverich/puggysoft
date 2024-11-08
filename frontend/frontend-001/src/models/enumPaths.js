@@ -56,6 +56,10 @@ const ROLES_USERS_TENANTS_STEP_THREE = "/roles-users-tenants-step-three";
 // SALES SYSTEM
 const SALES_PRODUCTS_FORM = "/sales-products-form";
 const SALES_PRODUCTS_TABLE_FILTER = "/sales-products-table-filter-edit-delete";
+const SALES_GROUP_PRODUCTS_FORM = "/sales-group-products-form";
+const SALES_GROUP_PRODUCTS_TABLE_FILTER = "/sales-group-products-table-filter-edit-delete";
+const SALES_GROUP_PRODUCTS_FOR_PRODUCTS_STEP1 = "/sales-group-products-for-product-step1";
+const SALES_GROUP_PRODUCTS_FOR_PRODUCTS_STEP2 = "/sales-group-products-for-product-step2";
 const SALES_CLIENT_FORM = "/sales-client-user-form";
 const SALES_CLIENT_TABLE_FILTER_TO_DETAILS = "/sales-client-user-table-filter-to-details";
 const SALES_SELLER_FORM = "/sales-seller-user-form";
@@ -283,6 +287,10 @@ const enumPaths = {
   // SALES SYSTEM
   SALES_PRODUCTS_FORM,
   SALES_PRODUCTS_TABLE_FILTER,
+  SALES_GROUP_PRODUCTS_FORM,
+  SALES_GROUP_PRODUCTS_TABLE_FILTER,
+  SALES_GROUP_PRODUCTS_FOR_PRODUCTS_STEP1,
+  SALES_GROUP_PRODUCTS_FOR_PRODUCTS_STEP2,
   SALES_CLIENT_FORM,
   SALES_CLIENT_TABLE_FILTER_TO_DETAILS,
   SALES_SELLER_FORM,
