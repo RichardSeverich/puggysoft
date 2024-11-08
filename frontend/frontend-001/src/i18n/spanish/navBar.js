@@ -60,6 +60,11 @@ const navBar = {
   productShowTable: "Mostrar Productos (Tabla)",
   productShowTableFilter: "Mostrar Products (Tabla, Filtro)",
   productShowCard: "Mostrar Productos (Tarjetas)",
+  // Group Products
+  groupProductAdmin: "Adm. Categorias",
+  groupProductRegistration: "Registrar Categoria",
+  groupProductShowTableFilter: "Mostrar Categorias (Tabla)",
+  groupProductForProducts: "Asignar Productos (Tabla)",
   // Orders
   orderAdmin: "Adm. Pedidos",
   orderRegistration: "Registrar Pedido",

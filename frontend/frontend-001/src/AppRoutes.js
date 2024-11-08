@@ -44,6 +44,10 @@ import TenantsUsersRolesStepCPage from "./components-level-3/users/TenantsUsersR
 // Sales System
 import ProductFormPage from "./components-level-3/sales/ProductFormPage";
 import ProductTableFilterEditDeletePage from "./components-level-3/sales/ProductTableFilterEditDeletePage";
+import GoupProductFormPage from "./components-level-3/sales/GroupProductFormPage";
+import GoupProductTableFilterEditDeletePage from "./components-level-3/sales/GroupProductTableFilterEditDeletePage";
+import GroupProductForProductsStep1Page from "./components-level-3/sales/GroupProductForProductsStep1Page";
+import GroupProductForProductsStep2Page from "./components-level-3/sales/GroupProductForProductsStep2Page";
 import ClientFormPage from "./components-level-3/sales/ClientFormPage";
 import ClientTableFilterSelectionToDetailsPage from "./components-level-3/sales/ClientTableFilterSelectionToDetailsPage";
 import SellerFormPage from "./components-level-3/sales/SellerFormPage";
@@ -258,6 +262,10 @@ const AppRoutes = () => (
       {/** Sales System */}
       <Route exact path={enumPaths.SALES_PRODUCTS_FORM} component={ProductFormPage} />
       <Route exact path={enumPaths.SALES_PRODUCTS_TABLE_FILTER} component={ProductTableFilterEditDeletePage} />
+      <Route exact path={enumPaths.SALES_GROUP_PRODUCTS_FORM} component={GoupProductFormPage} />
+      <Route exact path={enumPaths.SALES_GROUP_PRODUCTS_TABLE_FILTER} component={GoupProductTableFilterEditDeletePage} />
+      <Route exact path={enumPaths.SALES_GROUP_PRODUCTS_FOR_PRODUCTS_STEP1} component={GroupProductForProductsStep1Page} />
+      <Route exact path={enumPaths.SALES_GROUP_PRODUCTS_FOR_PRODUCTS_STEP2} component={GroupProductForProductsStep2Page} />
       <Route exact path={enumPaths.SALES_CLIENT_FORM} component={ClientFormPage} />
       <Route exact path={enumPaths.SALES_CLIENT_TABLE_FILTER_TO_DETAILS} component={ClientTableFilterSelectionToDetailsPage} />
       <Route exact path={enumPaths.SALES_SELLER_FORM} component={SellerFormPage} />

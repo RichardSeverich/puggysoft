@@ -69,6 +69,27 @@ function CommonForm ({
                       </Form.Text>
                     </Form.Group>
                   }
+                  {item.inputType === enumInputType.FILE_IMAGE &&
+                    <div key={`${item.key}-show`}>
+                      <Card.Img variant="top product-image" size="" src={item.pictureToShow} />
+                      <Form.Group key={item.key} className="mb-3 puggysoft-form-item-input-file">
+                        <Form.Label>
+                          {item.label}
+                        </Form.Label>
+                        <Form.Control
+                          type="file"
+                          disabled={item.isDisabledEdit}
+                          onChange={(event) => {
+                            item.onChange(event, item);
+                          }}
+                          value={item.inputValue}
+                        />
+                        <Form.Text muted className={item.suggestionTextClassName}>
+                          {item.suggestionText}
+                        </Form.Text>
+                      </Form.Group>
+                    </div>
+                  }
                 </>
               );
             })}
@@ -93,39 +114,45 @@ CommonForm.propTypes = {
   handleAction: PropTypes.func,
   buttonText: PropTypes.string,
   buttonVariant: PropTypes.oneOf(
-    enumBootstrapVariant.SUCCESS,
-    enumBootstrapVariant.WARNING,
-    enumBootstrapVariant.SECONDARY,
-    enumBootstrapVariant.PRIMARY,
-    enumBootstrapVariant.LIGHT,
-    enumBootstrapVariant.INFO,
-    enumBootstrapVariant.DANGER,
-    enumBootstrapVariant.DARK
+    [
+      enumBootstrapVariant.SUCCESS,
+      enumBootstrapVariant.WARNING,
+      enumBootstrapVariant.SECONDARY,
+      enumBootstrapVariant.PRIMARY,
+      enumBootstrapVariant.LIGHT,
+      enumBootstrapVariant.INFO,
+      enumBootstrapVariant.DANGER,
+      enumBootstrapVariant.DARK
+    ]
   ),
-  schema: PropTypes.arrayOf({
-    key: PropTypes.string,
-    inputType: PropTypes.oneOf(
-      [
-        enumInputType.TEXT,
-        enumInputType.NUMBER,
-        enumInputType.DATE,
-        enumInputType.EMAIL,
-        enumInputType.PASSWORD,
-        enumInputType.SELECT
-      ]
-    ),
-    label: PropTypes.string,
-    inputValue: PropTypes.string,
-    suggestionText: PropTypes.string,
-    suggestionTextClassName: PropTypes.oneOf("", "puggysoft-red-text"),
-    onChange: PropTypes.func,
-    isDisabledEdit: PropTypes.bool,
-    inputSelectOption: PropTypes.arrayOf({
+  schema: PropTypes.arrayOf(
+    PropTypes.shape({
       key: PropTypes.string,
-      value: PropTypes.string,
-      label: PropTypes.string
+      inputType: PropTypes.oneOf(
+        [
+          enumInputType.TEXT,
+          enumInputType.NUMBER,
+          enumInputType.DATE,
+          enumInputType.EMAIL,
+          enumInputType.PASSWORD,
+          enumInputType.FILE_IMAGE,
+          enumInputType.SELECT
+        ]
+      ),
+      label: PropTypes.string,
+      inputValue: PropTypes.string,
+      pictureToShow: PropTypes.string,
+      suggestionText: PropTypes.string,
+      suggestionTextClassName: PropTypes.oneOf(["", "puggysoft-red-text"]),
+      onChange: PropTypes.func,
+      isDisabledEdit: PropTypes.bool,
+      inputSelectOption: PropTypes.arrayOf({
+        key: PropTypes.string,
+        value: PropTypes.string,
+        label: PropTypes.string
+      })
     })
-  })
+  )
 };
 
 CommonForm.defaultProps = {

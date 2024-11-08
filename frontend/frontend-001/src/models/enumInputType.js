@@ -5,6 +5,7 @@ const EMAIL = "email";
 const DATE = "date";
 const SELECT = "select";
 const FILE = "file";
+const FILE_IMAGE = "fileImage";
 const PASSWORD = "password";
 
 const enumInputType = {
@@ -15,6 +16,7 @@ const enumInputType = {
   EMAIL,
   SELECT,
   FILE,
+  FILE_IMAGE,
   PASSWORD
 };
 

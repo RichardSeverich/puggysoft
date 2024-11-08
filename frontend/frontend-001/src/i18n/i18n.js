@@ -35,6 +35,8 @@ import notFoundPage from "./spanish/system/notFoundPage";
 // Sales System
 import productTable from "./spanish/sales/productTable";
 import productForm from "./spanish/sales/productForm";
+import productGroupForm from "./spanish/sales/productGroupForm";
+import productGroupTable from "./spanish/sales/productGroupTable";
 import clientForm from "./spanish/sales/clientForm";
 import clientTable from "./spanish/sales/clientTable";
 import sellerForm from "./spanish/sales/sellerForm";
@@ -145,6 +147,8 @@ const i18n = {
   // Sales System
   productTable,
   productForm,
+  productGroupForm,
+  productGroupTable,
   clientForm,
   clientTable,
   sellerForm,

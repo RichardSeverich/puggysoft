@@ -92,6 +92,7 @@ CREATE TABLE product_groups(
 
 -- Relation Products Groups - Products
 CREATE TABLE product_groups_products(
+    id BIGINT AUTO_INCREMENT,
     id_product BIGINT NOT NULL,
     id_product_group BIGINT NOT NULL,
     aux TEXT,
@@ -106,4 +107,4 @@ CREATE TABLE product_groups_products(
     FOREIGN KEY (id_product) REFERENCES products(id),
     FOREIGN KEY (id_product_group) REFERENCES product_groups(id),
     UNIQUE (id_product, id_product_group)
-);
+)AUTO_INCREMENT=1000;
