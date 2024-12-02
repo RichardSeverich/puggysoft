@@ -17,7 +17,7 @@ import { openCommonMessage } from "./../../redux/reducers/reducerCommonMessage";
 import { handleAddRequest, handleEditRequest, handleAddFileRequest } from "../../actions/HandleManager";
 import CommonLoading from "../../components-level-1/CommonLoading";
 
-function MateriasForm () {
+function ProductsGroupsForm () {
   const dispatch = useDispatch();
   const history = useHistory();
   const isEditDefaultValue = history && history.location && history.location.state;
@@ -38,7 +38,7 @@ function MateriasForm () {
   isEdit.data.image !== null
     ? isEdit.data.image
     : null;
-  
+
   if (productImage && productImage !== null) {
     if (productImage.includes("blob:")) {
       imageUrlInitAux = productImage;
@@ -47,7 +47,6 @@ function MateriasForm () {
     }
   }
   const { value: valuePictureToShow, setValue: setValuePictureToShow } = useInput(imageUrlInitAux);
-// ----
 
   const name = editData && editData.data.name !== null ? editData.data.name : "";
 
@@ -81,7 +80,7 @@ function MateriasForm () {
     showSuccessMessage();
     if (isEdit) {
       history.push({
-        pathname: enumPaths.SALES_GROUP_PRODUCTS_TABLE_FILTER,
+        pathname: enumPaths.SALES_GROUP_PRODUCTS_TABLE_FILTER
       });
     }
   }
@@ -111,9 +110,9 @@ function MateriasForm () {
 
   const handleAferAddEdit = function (idProductGroups) {
     if (isEdit) {
-      handleAddImage(isEdit.data?.id)
+      handleAddImage(isEdit.data?.id);
     } else {
-      handleAddImage(idProductGroups)
+      handleAddImage(idProductGroups);
     }
   };
 
@@ -220,4 +219,4 @@ function MateriasForm () {
   );
 }
 
-export default MateriasForm;
+export default ProductsGroupsForm;
