@@ -223,6 +223,15 @@ function NavBar () {
   const navigateProductsTableFilter = () => {
     history.push(enumPaths.SALES_PRODUCTS_TABLE_FILTER);
   };
+  const navigateGroupProductsForm = () => {
+    history.push(enumPaths.SALES_GROUP_PRODUCTS_FORM);
+  };
+  const navigateGroupProductsTableFilter = () => {
+    history.push(enumPaths.SALES_GROUP_PRODUCTS_TABLE_FILTER);
+  };
+  const navigateGroupProductsForProductsStepOne = () => {
+    history.push(enumPaths.SALES_GROUP_PRODUCTS_FOR_PRODUCTS_STEP1);
+  };
   const navigateClientForm = () => {
     history.push(enumPaths.SALES_CLIENT_FORM);
   };
@@ -618,6 +627,11 @@ function NavBar () {
   // const productShowTableLabel = (<><AiOutlineTable /> {i18n.navBar.productShowTable}</>)
   const productShowTableFilterLabel = (<><AiOutlineTable /> {i18n.navBar.productShowTableFilter}</>);
   // const productShowCardLabel = (<><AiOutlineIdcard /> {i18n.navBar.productShowCard}</>)
+  // GROUP PRODUCTS
+  const groupProductAdminLabel = (<><GrProductHunt /> {i18n.navBar.groupProductAdmin}</>);
+  const groupProductRegistrationLabel = (<><GrAddCircle /> {i18n.navBar.groupProductRegistration}</>);
+  const groupProductShowTableFilterLabel = (<><AiOutlineTable /> {i18n.navBar.groupProductShowTableFilter}</>);
+  const groupProductByProductShowTableFilterLabel = (<><AiOutlineTable /> {i18n.navBar.groupProductForProducts}</>);
   // ORDERS
   const orderAdminLabel = (<><FaTicketAlt /> {i18n.navBar.orderAdmin}</>);
   const orderRegistrationLabel = (<><GrAddCircle /> {i18n.navBar.orderRegistration}</>);
@@ -981,6 +995,13 @@ function NavBar () {
               <NavDropdown.Item onClick={navigateProductsForm}>{productRegistrationLabel}</NavDropdown.Item>
               <NavDropdown.Item onClick={navigateProductsTableFilter}>{productShowTableFilterLabel}</NavDropdown.Item>
               {/* <NavDropdown.Item onClick={navigateGeneric}>{productShowCardLabel}</NavDropdown.Item> */}
+            </NavDropdown>}
+          {(userRoles.includes(enumRoles.SALES_ADMIN) ||
+            userRoles.includes(enumRoles.SALES_ADMIN_RESTAURANT)) &&
+            <NavDropdown title={groupProductAdminLabel}>
+              <NavDropdown.Item onClick={navigateGroupProductsForm}>{groupProductRegistrationLabel}</NavDropdown.Item>
+              <NavDropdown.Item onClick={navigateGroupProductsTableFilter}>{groupProductShowTableFilterLabel}</NavDropdown.Item>
+              <NavDropdown.Item onClick={navigateGroupProductsForProductsStepOne}>{groupProductByProductShowTableFilterLabel}</NavDropdown.Item>
             </NavDropdown>}
           {(userRoles.includes(enumRoles.SALES_ADMIN_RESTAURANT) ||
             userRoles.includes(enumRoles.SALES_SELLER_RESTAURANT)) &&
