@@ -106,5 +106,6 @@ CREATE TABLE product_groups_products(
     FOREIGN KEY (updated_by) REFERENCES users(username),
     FOREIGN KEY (id_product) REFERENCES products(id),
     FOREIGN KEY (id_product_group) REFERENCES product_groups(id),
-    UNIQUE (id_product, id_product_group)
+    UNIQUE (id_product, id_product_group),
+    PRIMARY KEY (id)
 )AUTO_INCREMENT=1000;
