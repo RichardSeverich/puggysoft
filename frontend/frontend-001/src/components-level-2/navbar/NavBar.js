@@ -298,10 +298,10 @@ function NavBar () {
 
   // ******* ******* ******* MENSUALIDAD SYSTEM ******* ******* *******
   const navigateColegiaturaMatriculaForm = () => {
-    history.push(enumPaths.MENSUALIDADES_COLEGIATURAS_MATRICULAS_FORM);
+    history.push(enumPaths.MENSUALIDAD_COLEGIATURAS_MATRICULAS_FORM);
   };
   const navigateColegiaturaMatriculaTable = () => {
-    history.push(enumPaths.MENSUALIDADES_COLEGIATURAS_MATRICULAS_TABLE);
+    history.push(enumPaths.MENSUALIDAD_COLEGIATURAS_MATRICULAS_TABLE);
   };
 
   // ******* ******* ******* HOSPITAL SYSTEM ******* ******* *******

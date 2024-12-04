@@ -1,6 +1,6 @@
 import React from "react";
 import NavBar from "../../components-level-2/navbar/NavBar";
-import ColegiaturaMatriculaTable from "../../components-level-2/mensualidades/ColegiaturaMatriculaTable";
+import ColegiaturaMatriculaTable from "../../components-level-2/mensualidad/ColegiaturaMatriculaTable";
 
 function ColegiaturaMatriculaTablePage () {
   return (

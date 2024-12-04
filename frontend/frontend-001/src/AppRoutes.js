@@ -96,8 +96,8 @@ import SaleReportProfitByProductPage from "./components-level-3/sales/SaleReport
 import SaleReportProfitComparativeByProductPage from "./components-level-3/sales/SaleReportProfitComparativeByProductPage";
 
 // Mensualidad System
-import ColegiaturaMatriculaFormPage from "./components-level-3/mesualidades/ColegiaturaMatriculaFormPage";
-import ColegiaturaMatriculaTablePage from "./components-level-3/mesualidades/ColegiaturaMatriculaTablePage";
+import ColegiaturaMatriculaFormPage from "./components-level-3/mesualidad/ColegiaturaMatriculaFormPage";
+import ColegiaturaMatriculaTablePage from "./components-level-3/mesualidad/ColegiaturaMatriculaTablePage";
 
 // Hospital System
 import DoctorUserFormPage from "./components-level-3/hospital/DoctorUserFormPage";
@@ -318,8 +318,8 @@ const AppRoutes = () => (
       <Route exact path={enumPaths.SALES_REPORT_PROFIT_MONTH_COMP_BY_PRODUCT} component={SaleReportProfitMonthCompByProductPage} />
 
       {/** Mensualidad System */}
-      <Route exact path={enumPaths.MENSUALIDADES_COLEGIATURAS_MATRICULAS_FORM} component={ColegiaturaMatriculaFormPage} />
-      <Route exact path={enumPaths.MENSUALIDADES_COLEGIATURAS_MATRICULAS_TABLE} component={ColegiaturaMatriculaTablePage} />
+      <Route exact path={enumPaths.MENSUALIDAD_COLEGIATURAS_MATRICULAS_FORM} component={ColegiaturaMatriculaFormPage} />
+      <Route exact path={enumPaths.MENSUALIDAD_COLEGIATURAS_MATRICULAS_TABLE} component={ColegiaturaMatriculaTablePage} />
 
       {/** Hospital System */}
       <Route exact path={enumPaths.HOSPITAL_DOCTOR_USER_FORM} component={DoctorUserFormPage} />
