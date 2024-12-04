@@ -113,6 +113,12 @@ const navBar = {
   reportProfitMonthPerProduct: "Ganancias de ventas mensual por producto",
   reportProfitMonthPerProductCompare: "Ganancias de ventas mensual por producto (Comparar 2 meses)",
 
+  // ******* ******* MENSUALIDAD SYSTEM ******* *******
+  // Colegiatura/Matricula
+  colegiaturaMatriculaAdmin: "Adm. Colegiaturas/Matriculas",
+  colegiaturaMatriculaRegistration: "Registrar Colegiaturas/Matriculas",
+  colegiaturaMatriculaTable: "Mostrar Colegiaturas/Matriculas",
+
   // ******* ******* HOSPITAL SYSTEM ******* *******
   // Doctors
   doctorAdmin: "Adm. Doctores",
