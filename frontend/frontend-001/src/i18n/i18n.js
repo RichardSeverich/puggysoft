@@ -48,6 +48,8 @@ import saleErrorMessages from "./spanish/sales/saleErrorMessages";
 import successMessages from "./spanish/successMessages";
 import saleReport from "./spanish/sales/saleReport";
 import saleTicket from "./spanish/sales/saleTicket";
+// Mensualidad System
+import mensualidad from "./spanish/mensualidad/mensualidad";
 // Hospital System
 import doctorUserForm from "./spanish/hospital/doctorUserForm";
 import doctorTable from "./spanish/hospital/doctorTable";
@@ -159,6 +161,8 @@ const i18n = {
   saleErrorMessages,
   saleReport,
   saleTicket,
+  // Mensualidad System
+  mensualidad,
   // Hospital System
   doctorUserForm,
   doctorTable,

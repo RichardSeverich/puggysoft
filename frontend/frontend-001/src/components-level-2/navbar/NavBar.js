@@ -296,6 +296,14 @@ function NavBar () {
     history.push(enumPaths.SALES_PRODUCTS_TABLE_TO_PROFIT_MONTH_BY_PRODUCT);
   };
 
+  // ******* ******* ******* MENSUALIDAD SYSTEM ******* ******* *******
+  const navigateColegiaturaMatriculaForm = () => {
+    history.push(enumPaths.MENSUALIDADES_COLEGIATURAS_MATRICULAS_FORM);
+  };
+  const navigateColegiaturaMatriculaTable = () => {
+    history.push(enumPaths.MENSUALIDADES_COLEGIATURAS_MATRICULAS_TABLE);
+  };
+
   // ******* ******* ******* HOSPITAL SYSTEM ******* ******* *******
   const navigateDoctorUserForm = () => {
     history.push(enumPaths.HOSPITAL_DOCTOR_USER_FORM);
@@ -721,6 +729,11 @@ function NavBar () {
     questionMarkEnable
     questionMarkTooltipLabel={i18n.saleReport.infoReportProfitMonthPerProduct}
   />);
+  // ******* ******* ******* MENSUALIDAD SYSTEM ******* ******* *******
+  // COLEGIATURAS/MATRICULAS
+  const colegiaturaMatriculaAdminLabel = (<><FaBook /> {i18n.navBar.colegiaturaMatriculaAdmin}</>);
+  const colegiaturaMatriculaRegistrationLabel = (<><GrAddCircle /> {i18n.navBar.colegiaturaMatriculaRegistration}</>);
+  const colegiaturaMatriculaTableLabel = (<><AiOutlineTable /> {i18n.navBar.colegiaturaMatriculaTable}</>);
   // ******* ******* ******* HOSPITAL SYSTEM ******* ******* *******
   // DOCTORS
   const doctorAdminLabel = (<><FaUserMd /> {i18n.navBar.doctorAdmin}</>);
@@ -1044,6 +1057,13 @@ function NavBar () {
               <NavDropdown.Item onClick={navigateSalesReportRevenueAnnualByProduct}>{reportRevenuePerProduct}</NavDropdown.Item>
               <NavDropdown.Item onClick={navigateSalesReportProfitAnnualByProduct}>{reportProfitPerProductAnnual}</NavDropdown.Item>
             </NavDropdown>}
+
+          {/* ******* ******* ******* MENSUALIDAD SYSTEM ******* ******* ********/}
+          {(userRoles.includes(enumRoles.MENSUALIDAD_ENCARGADO)) &&
+          <NavDropdown title={colegiaturaMatriculaAdminLabel}>
+            <NavDropdown.Item onClick={navigateColegiaturaMatriculaForm}>{colegiaturaMatriculaRegistrationLabel}</NavDropdown.Item>
+            <NavDropdown.Item onClick={navigateColegiaturaMatriculaTable}>{colegiaturaMatriculaTableLabel}</NavDropdown.Item>
+          </NavDropdown>}
 
           {/* ******* ******* ******* HOSPITAL SYSTEM ******* ******* ********/}
           {userRoles.includes(enumRoles.HOSPITAL_ADMIN) &&
