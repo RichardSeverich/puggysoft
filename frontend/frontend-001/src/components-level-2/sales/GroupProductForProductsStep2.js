@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 import { useHistory } from "react-router";
 import i18n from "../../i18n/i18n";
 import {
@@ -7,18 +8,38 @@ import {
   handleDeleteRequest
 } from "../../actions/HandleManager";
 import ProductGroupGenericTable from "./generic/ProductGenericTable";
+import ColegiaturaMatriculaGenericTable from "../mensualidad/generic/ColegiaturaMatriculaGenericTable";
 import enumTableColumnsToShow from "../../models/enumTableColumnsToShow";
 import Card from "react-bootstrap/Card";
 import CommonLoading from "../../components-level-1/CommonLoading";
+import enumSystems from "../../models/enumSystems";
 
-function GroupProductForProductsStep2 () {
-  const tableSubTitleOne = i18n.productTable.titleAvailable;
-  const tableSubTitleTwo = i18n.productTable.titleaggregates;
+function GroupProductForProductsStep2 (props) {
   const pageSize = 7;
   const numberPagesToShow = 7;
   const history = useHistory();
   const productGroupSelected = history && history.location && history.location.state.data;
   const [isLoadingTable, setIsLoadingTable] = useState(false);
+
+  const whatSystemIs = props.whatSystemIs;
+  let GenericTable;
+  let itemSelectedTitle;
+  let tableSubTitleOne;
+  let tableSubTitleTwo;
+  switch (whatSystemIs) {
+  case enumSystems.MENSUALIDAD:
+    GenericTable = ColegiaturaMatriculaGenericTable;
+    itemSelectedTitle = i18n.mensualidad.programaPostgradoLabel;
+    tableSubTitleOne = i18n.mensualidad.colegiaturaMatriculaTitleAvaliable;
+    tableSubTitleTwo = i18n.mensualidad.colegiaturaMatriculaTitleAggregate;
+    break;
+  default:
+    GenericTable = ProductGroupGenericTable;
+    itemSelectedTitle = i18n.productGroupTable.categoryLabel;
+    tableSubTitleOne = i18n.productTable.titleAvailable;
+    tableSubTitleTwo = i18n.productTable.titleaggregates;
+    break;
+  }
 
   function handleGetDataA (activePage, filterBody, updateArrayData) {
     handleFilterRequest(
@@ -98,11 +119,11 @@ function GroupProductForProductsStep2 () {
     <div>
       <Card>
         <Card.Header as="h3">
-          {"Categoria" + `: ${productGroupSelected.name}`}
+          {itemSelectedTitle + `: ${productGroupSelected.name}`}
         </Card.Header>
       </Card>
       <div className="puggysoft-two-divs-side-by-side-child">
-        <ProductGroupGenericTable
+        <GenericTable
           tableTitle={tableSubTitleOne}
           numberPagesToShow={numberPagesToShow}
           handleGetData={handleGetDataA}
@@ -112,7 +133,7 @@ function GroupProductForProductsStep2 () {
         />
       </div>
       <div className="puggysoft-two-divs-side-by-side-child">
-        <ProductGroupGenericTable
+        <GenericTable
           tableTitle={tableSubTitleTwo}
           numberPagesToShow={numberPagesToShow}
           handleGetData={handleGetDataB}
@@ -126,3 +147,14 @@ function GroupProductForProductsStep2 () {
 }
 
 export default GroupProductForProductsStep2;
+
+GroupProductForProductsStep2.propTypes = {
+  whatSystemIs: PropTypes.oneOf([
+    enumSystems.MENSUALIDAD,
+    enumSystems.SALES
+  ])
+};
+
+GroupProductForProductsStep2.defaultProps = {
+  whatSystemIs: enumSystems.SALES
+};

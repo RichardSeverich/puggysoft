@@ -3,6 +3,8 @@ import enumTableColumnsToShow from "../enumTableColumnsToShow";
 import arrayFields from "./productGroupTableFields";
 import arrayLabels from "./productGroupTableLabels";
 import tableFilter from "./productGroupTableFilter";
+import arrayMensualidadLabels from "./../mensualidad/programaPostgradoTableLabels";
+import enumSystems from "../enumSystems";
 
 const tableModel = function (
   tableColumnsToShow,
@@ -11,10 +13,18 @@ const tableModel = function (
   /* CREATED BY */criteriaCreatedBy, criteriaOnChangeCreatedBy, criteriaSetCreatedBy, operatorCreatedBy, operatorOnChangeCreatedBy, operatorSetCreatedBy,
   /* UPDATED BY */criteriaUpdatedBy, criteriaOnChangeUpdatedBy, criteriaSetUpdatedBy, operatorUpdatedBy, operatorOnChangeUpdatedBy, operatorSetUpdatedBy,
   /* CREATED DATE */criteriaCreatedDate, criteriaOnChangeCreatedDate, criteriaSetCreatedDate, operatorCreatedDate, operatorOnChangeCreatedDate, operatorSetCreatedDate,
-  /* UPDATED DATE */criteriaUpdatedDate, criteriaOnChangeUpdatedDate, criteriaSetUpdatedDate, operatorUpdatedDate, operatorOnChangeUpdatedDate, operatorSetUpdatedDate
+  /* UPDATED DATE */criteriaUpdatedDate, criteriaOnChangeUpdatedDate, criteriaSetUpdatedDate, operatorUpdatedDate, operatorOnChangeUpdatedDate, operatorSetUpdatedDate,
+  whatSystemIs
 ) {
   let arrayDataFields = arrayFields;
-  let arrayColumnsLabels = arrayLabels;
+  let arrayColumnsLabels = null;
+  switch (whatSystemIs) {
+  case enumSystems.MENSUALIDAD:
+    arrayColumnsLabels = arrayMensualidadLabels;
+    break;
+  default:
+    arrayColumnsLabels = arrayLabels;
+  }
   let arrayColumnsFilter = tableFilter(
     /* ID */ criteriaId, criteriaOnChangeId, operatorId, operatorOnChangeId,
     /* NAME */criteriaName, criteriaOnChangeName, operatorName, operatorOnChangeName,

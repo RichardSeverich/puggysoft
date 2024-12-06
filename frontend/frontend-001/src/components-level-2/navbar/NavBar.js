@@ -303,6 +303,15 @@ function NavBar () {
   const navigateColegiaturaMatriculaTable = () => {
     history.push(enumPaths.MENSUALIDAD_COLEGIATURAS_MATRICULAS_TABLE);
   };
+  const navigateProgramaPostgradoForm = () => {
+    history.push(enumPaths.MENSUALIDAD_PROGRAMA_POSTGRADO_FORM);
+  };
+  const navigateProgramaPostgradoTable = () => {
+    history.push(enumPaths.MENSUALIDAD_PROGRAMA_POSTGRADO_TABLE);
+  };
+  const navigateAssignColegiaturaMatricula = () => {
+    history.push(enumPaths.MENSUALIDAD_ASSIGN_COLEGIATURA_MATRICULA_STEP1);
+  };
 
   // ******* ******* ******* HOSPITAL SYSTEM ******* ******* *******
   const navigateDoctorUserForm = () => {
@@ -734,6 +743,11 @@ function NavBar () {
   const colegiaturaMatriculaAdminLabel = (<><FaBook /> {i18n.navBar.colegiaturaMatriculaAdmin}</>);
   const colegiaturaMatriculaRegistrationLabel = (<><GrAddCircle /> {i18n.navBar.colegiaturaMatriculaRegistration}</>);
   const colegiaturaMatriculaTableLabel = (<><AiOutlineTable /> {i18n.navBar.colegiaturaMatriculaTable}</>);
+  // PROGRAMAS POSTGRADO
+  const programaPostgradoAdminLabel = (<><IoMdSchool /> {i18n.navBar.programaPostgradoAdmin}</>);
+  const programaPostgradoRegistrationLabel = (<><GrAddCircle /> {i18n.navBar.programaPostgradoRegistration}</>);
+  const programaPostgradoTableLabel = (<><AiOutlineTable /> {i18n.navBar.programaPostgradoTable}</>);
+  const assignColegiaturaMatriculaLabel = (<><GrAddCircle /> {i18n.navBar.assignColegiaturaMatricula}</>);
   // ******* ******* ******* HOSPITAL SYSTEM ******* ******* *******
   // DOCTORS
   const doctorAdminLabel = (<><FaUserMd /> {i18n.navBar.doctorAdmin}</>);
@@ -1063,6 +1077,12 @@ function NavBar () {
           <NavDropdown title={colegiaturaMatriculaAdminLabel}>
             <NavDropdown.Item onClick={navigateColegiaturaMatriculaForm}>{colegiaturaMatriculaRegistrationLabel}</NavDropdown.Item>
             <NavDropdown.Item onClick={navigateColegiaturaMatriculaTable}>{colegiaturaMatriculaTableLabel}</NavDropdown.Item>
+          </NavDropdown>}
+          {(userRoles.includes(enumRoles.MENSUALIDAD_ENCARGADO)) &&
+          <NavDropdown title={programaPostgradoAdminLabel}>
+            <NavDropdown.Item onClick={navigateProgramaPostgradoForm}>{programaPostgradoRegistrationLabel}</NavDropdown.Item>
+            <NavDropdown.Item onClick={navigateProgramaPostgradoTable}>{programaPostgradoTableLabel}</NavDropdown.Item>
+            <NavDropdown.Item onClick={navigateAssignColegiaturaMatricula}>{assignColegiaturaMatriculaLabel}</NavDropdown.Item>
           </NavDropdown>}
 
           {/* ******* ******* ******* HOSPITAL SYSTEM ******* ******* ********/}
