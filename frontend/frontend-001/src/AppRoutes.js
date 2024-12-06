@@ -98,6 +98,8 @@ import SaleReportProfitComparativeByProductPage from "./components-level-3/sales
 // Mensualidad System
 import ColegiaturaMatriculaFormPage from "./components-level-3/mesualidad/ColegiaturaMatriculaFormPage";
 import ColegiaturaMatriculaTablePage from "./components-level-3/mesualidad/ColegiaturaMatriculaTablePage";
+import ProgramaPostgradoFormPage from "./components-level-3/mesualidad/ProgramaPostgradoFormPage";
+import ProgramaPostgradoTablePage from "./components-level-3/mesualidad/ProgramaPostgradoTablePage";
 
 // Hospital System
 import DoctorUserFormPage from "./components-level-3/hospital/DoctorUserFormPage";
@@ -218,6 +220,8 @@ import CalificacionesTablePage from "./components-level-3/escuela/Calificaciones
 // Games System
 import TicTacToePage from "./components-level-3/games/tic-tac-toe/TicTacToePage";
 import TicTacToePagePc from "./components-level-3/games/tic-tac-toe/TicTacToePagePc";
+import AssignColegiaturaMatriculaStep1Page from "./components-level-3/mesualidad/AssignColegiaturaMatriculaStep1Page";
+import AssignColegiaturaMatriculaStep2Page from "./components-level-3/mesualidad/AssignColegiaturaMatriculaStep2Page";
 
 // const CursosFormLazyPage = lazy(() => import("./components-level-3/escuela/CursosFormPage"));
 
@@ -316,11 +320,13 @@ const AppRoutes = () => (
       <Route exact path={enumPaths.SALES_REPORT_PROFIT_COMP_BY_PRODUCT} component={SaleReportProfitComparativeByProductPage} />
       <Route exact path={enumPaths.SALES_REPORT_PROFIT_MONTH_BY_PRODUCT} component={SaleReportProfitMonthByProductPage} />
       <Route exact path={enumPaths.SALES_REPORT_PROFIT_MONTH_COMP_BY_PRODUCT} component={SaleReportProfitMonthCompByProductPage} />
-
       {/** Mensualidad System */}
       <Route exact path={enumPaths.MENSUALIDAD_COLEGIATURAS_MATRICULAS_FORM} component={ColegiaturaMatriculaFormPage} />
       <Route exact path={enumPaths.MENSUALIDAD_COLEGIATURAS_MATRICULAS_TABLE} component={ColegiaturaMatriculaTablePage} />
-
+      <Route exact path={enumPaths.MENSUALIDAD_PROGRAMA_POSTGRADO_FORM} component={ProgramaPostgradoFormPage} />
+      <Route exact path={enumPaths.MENSUALIDAD_PROGRAMA_POSTGRADO_TABLE} component={ProgramaPostgradoTablePage} />
+      <Route exact path={enumPaths.MENSUALIDAD_ASSIGN_COLEGIATURA_MATRICULA_STEP1} component={AssignColegiaturaMatriculaStep1Page} />
+      <Route exact path={enumPaths.MENSUALIDAD_ASSIGN_COLEGIATURA_MATRICULA_STEP2} component={AssignColegiaturaMatriculaStep2Page} />
       {/** Hospital System */}
       <Route exact path={enumPaths.HOSPITAL_DOCTOR_USER_FORM} component={DoctorUserFormPage} />
       <Route exact path={enumPaths.HOSPITAL_DOCTOR_USER_TABLE_TO_DETAILS} component={DoctorUserTableToDetailsPage} />

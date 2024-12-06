@@ -118,6 +118,11 @@ const navBar = {
   colegiaturaMatriculaAdmin: "Adm. Colegiaturas/Matriculas",
   colegiaturaMatriculaRegistration: "Registrar Colegiaturas/Matriculas",
   colegiaturaMatriculaTable: "Mostrar Colegiaturas/Matriculas",
+  // Programas Postgrado
+  programaPostgradoAdmin: "Adm. Programas de Postgrado",
+  programaPostgradoRegistration: "Registrar Programa de postgrado",
+  programaPostgradoTable: "Mostrar Programas de postgrado",
+  assignColegiaturaMatricula: "Asignar Colegiaturas/Matriculas",
 
   // ******* ******* HOSPITAL SYSTEM ******* *******
   // Doctors

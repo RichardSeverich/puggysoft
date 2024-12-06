@@ -5,6 +5,7 @@ const productGroupTable = {
   columnImage: "Foto",
   productGroupTitleOne: "Categorias disponibles",
   productGroupTitleTwo: "Categorias agregadas",
+  categoryLabel: "Categoria"
 };
 
 export default productGroupTable;

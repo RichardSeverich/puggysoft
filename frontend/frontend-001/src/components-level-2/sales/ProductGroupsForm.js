@@ -3,6 +3,7 @@ import React, {
   useEffect
 } from "react";
 
+import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router";
 import { handleValidation, classNameFormTextNew } from "./../../validations/sales/HandleProductGroupsFormValidations";
@@ -16,16 +17,36 @@ import enumBootstrapVariant from "./../../models/enumBootstrapVariant";
 import { openCommonMessage } from "./../../redux/reducers/reducerCommonMessage";
 import { handleAddRequest, handleEditRequest, handleAddFileRequest } from "../../actions/HandleManager";
 import CommonLoading from "../../components-level-1/CommonLoading";
+import enumSystems from "../../models/enumSystems";
 
-function ProductsGroupsForm () {
+function ProductsGroupsForm (props) {
   const dispatch = useDispatch();
   const history = useHistory();
-  const isEditDefaultValue = history && history.location && history.location.state;
-  const [isEdit] = useState(isEditDefaultValue);
-  const editDataParam = history && history.location && history.location.state;
-  const [editData, setEditData] = useState(editDataParam);
+  const historyState = history && history.location && history.location.state;
+  const [isEdit] = useState(historyState);
+  const [editData, setEditData] = useState(historyState);
   const [classNameFormText, setClassNameFormText] = useState(classNameFormTextNew);
   const [isRequestInProgress, setIsRequestInProgress] = useState(false);
+
+  const whatSystemIs = historyState ? historyState.whatSystemIs : props.whatSystemIs;
+  let formTitle;
+  let nameLabel;
+  let imageLabel;
+  let imageErrorText;
+  switch (whatSystemIs) {
+  case enumSystems.MENSUALIDAD:
+    formTitle = i18n.mensualidad.programaPostgradoFormTitle;
+    nameLabel = i18n.mensualidad.programaPostgradoNameLabel;
+    imageLabel = i18n.mensualidad.programaPostgradoImageLabel;
+    imageErrorText = i18n.mensualidad.programaPostgradoImageErrorText;
+    break;
+  default:
+    formTitle = i18n.productGroupForm.title;
+    nameLabel = i18n.productGroupForm.fieldName;
+    imageLabel = i18n.productGroupForm.fieldImage;
+    imageErrorText = i18n.productGroupForm.formTextImage;
+    break;
+  }
 
   // CONFIGURE IMAGE
   const fileName = "product-groups-default.jpg";
@@ -173,7 +194,7 @@ function ProductsGroupsForm () {
   };
 
   const formProps = {
-    title: i18n.productGroupForm.title,
+    title: formTitle,
     handleAction: handleAddEdit,
     buttonText: i18n.commonForm.saveButton,
     buttonVariant: enumBootstrapVariant.PRIMARY,
@@ -181,7 +202,7 @@ function ProductsGroupsForm () {
       {
         key: "name",
         inputType: enumInputType.TEXT,
-        label: i18n.productGroupForm.fieldName,
+        label: nameLabel,
         inputValue: valueName,
         suggestionText: i18n.escuela.materiasNameError,
         suggestionTextClassName: classNameFormText.name,
@@ -192,10 +213,10 @@ function ProductsGroupsForm () {
       {
         key: "image-product-group",
         inputType: enumInputType.FILE_IMAGE,
-        label: i18n.productGroupForm.fieldImage,
+        label: imageLabel,
         inputValue: valuePicturePath,
         pictureToShow: valuePictureToShow,
-        suggestionText: i18n.productGroupForm.formTextImage,
+        suggestionText: imageErrorText,
         suggestionTextClassName: classNameFormText.image,
         onChange: handleUploadPicture,
         isDisabledEdit: false,
@@ -220,3 +241,14 @@ function ProductsGroupsForm () {
 }
 
 export default ProductsGroupsForm;
+
+ProductsGroupsForm.propTypes = {
+  whatSystemIs: PropTypes.oneOf([
+    enumSystems.MENSUALIDAD,
+    enumSystems.SALES
+  ])
+};
+
+ProductsGroupsForm.defaultProps = {
+  whatSystemIs: enumSystems.SALES
+};
