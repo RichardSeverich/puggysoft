@@ -7,6 +7,7 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 import { LuBellPlus } from "react-icons/lu";
 import { CiBellOn } from "react-icons/ci";
 import {
+  FaRegNewspaper,
   FaUsers,
   FaChartLine,
   FaTicketAlt,
@@ -258,6 +259,15 @@ function NavBar () {
   };
   const navigateSalesRegistrationStepOneCashier = () => {
     history.push(enumPaths.SALES_REGISTRATION_STEP_ONE_CASHIER);
+  };
+  const navigateSalesDailyReport = () => {
+    history.push(enumPaths.SALES_DAILY_REPORT);
+  };
+  const navigateSalesMonthlyReport = () => {
+    history.push(enumPaths.SALES_MONTHLY_REPORT);
+  };
+  const navigateSalesAnnualReport = () => {
+    history.push(enumPaths.SALES_ANNUAL_REPORT);
   };
   const navigateSalesReportQuantityAnnual = () => {
     history.push(enumPaths.SALES_REPORT_QUANTITY);
@@ -666,6 +676,24 @@ function NavBar () {
   // const salesShowCardLabel = (<><AiOutlineIdcard /> {i18n.navBar.salesShowCard}</>)
   // REPORTS
   const reportAdminLabel = (<><BsFillBarChartFill /> {i18n.navBar.reportAdmin}</>);
+  const reportDaily = (<CommonLabel
+    leftIcon={<FaRegNewspaper />}
+    label={i18n.navBar.reportDailyDetail}
+    questionMarkEnable
+    questionMarkTooltipLabel={i18n.saleReport.infoReportDailyDetail}
+  />);
+  const reportMonthly = (<CommonLabel
+    leftIcon={<FaRegNewspaper />}
+    label={i18n.navBar.reportMonthlyDetail}
+    questionMarkEnable
+    questionMarkTooltipLabel={i18n.saleReport.infoReportMonthlyDetail}
+  />);
+  const reportAnnual = (<CommonLabel
+    leftIcon={<FaRegNewspaper />}
+    label={i18n.navBar.reportAnnualDetail}
+    questionMarkEnable
+    questionMarkTooltipLabel={i18n.saleReport.infoReportAnnualDetail}
+  />);
   const reportQuantityAnnual = (<CommonLabel
     leftIcon={<FaChartLine />}
     label={i18n.navBar.reportQuantityAnnual}
@@ -1055,6 +1083,10 @@ function NavBar () {
           {(userRoles.includes(enumRoles.SALES_ADMIN) ||
             userRoles.includes(enumRoles.SALES_ADMIN_RESTAURANT)) &&
             <NavDropdown title={reportAdminLabel}>
+              <NavDropdown.Item onClick={navigateSalesDailyReport}>{reportDaily}</NavDropdown.Item>
+              <NavDropdown.Item onClick={navigateSalesMonthlyReport}>{reportMonthly}</NavDropdown.Item>
+              <NavDropdown.Item onClick={navigateSalesAnnualReport}>{reportAnnual}</NavDropdown.Item>
+              <NavDropdown.Divider />
               <NavDropdown.Item onClick={navigateSalesReportQuantityMonth}>{reportQuantityMonth}</NavDropdown.Item>
               <NavDropdown.Item onClick={navigateSalesReportRevenueMonth}>{reportRevenueMonth}</NavDropdown.Item>
               <NavDropdown.Item onClick={navigateSalesReportProfitMonth}>{reportProfitMonth}</NavDropdown.Item>

@@ -37,6 +37,7 @@ import productTable from "./spanish/sales/productTable";
 import productForm from "./spanish/sales/productForm";
 import productGroupForm from "./spanish/sales/productGroupForm";
 import productGroupTable from "./spanish/sales/productGroupTable";
+import reportDetailPdf from "./spanish/sales/reportDetailPdf";
 import clientForm from "./spanish/sales/clientForm";
 import clientTable from "./spanish/sales/clientTable";
 import sellerForm from "./spanish/sales/sellerForm";
@@ -151,6 +152,7 @@ const i18n = {
   productForm,
   productGroupForm,
   productGroupTable,
+  reportDetailPdf,
   clientForm,
   clientTable,
   sellerForm,

@@ -94,6 +94,9 @@ import SaleReportRevenueByProductPage from "./components-level-3/sales/SaleRepor
 import SaleReportRevenueComparativeByProductPage from "./components-level-3/sales/SaleReportRevenueComparativeByProductPage";
 import SaleReportProfitByProductPage from "./components-level-3/sales/SaleReportProfitByProductPage";
 import SaleReportProfitComparativeByProductPage from "./components-level-3/sales/SaleReportProfitComparativeByProductPage";
+import SaleDailyReportPage from "./components-level-3/sales/SaleDailyReportPage";
+import SaleMonthlyReportPage from "./components-level-3/sales/SaleMonthlyReportPage";
+import SaleAnnualReportPage from "./components-level-3/sales/SaleAnnualReportPage";
 
 // Mensualidad System
 import ColegiaturaMatriculaFormPage from "./components-level-3/mesualidad/ColegiaturaMatriculaFormPage";
@@ -320,6 +323,10 @@ const AppRoutes = () => (
       <Route exact path={enumPaths.SALES_REPORT_PROFIT_COMP_BY_PRODUCT} component={SaleReportProfitComparativeByProductPage} />
       <Route exact path={enumPaths.SALES_REPORT_PROFIT_MONTH_BY_PRODUCT} component={SaleReportProfitMonthByProductPage} />
       <Route exact path={enumPaths.SALES_REPORT_PROFIT_MONTH_COMP_BY_PRODUCT} component={SaleReportProfitMonthCompByProductPage} />
+      {/** Sales System Report Detail */}
+      <Route exact path={enumPaths.SALES_DAILY_REPORT} component={SaleDailyReportPage} />
+      <Route exact path={enumPaths.SALES_MONTHLY_REPORT} component={SaleMonthlyReportPage} />
+      <Route exact path={enumPaths.SALES_ANNUAL_REPORT} component={SaleAnnualReportPage} />
       {/** Mensualidad System */}
       <Route exact path={enumPaths.MENSUALIDAD_COLEGIATURAS_MATRICULAS_FORM} component={ColegiaturaMatriculaFormPage} />
       <Route exact path={enumPaths.MENSUALIDAD_COLEGIATURAS_MATRICULAS_TABLE} component={ColegiaturaMatriculaTablePage} />
