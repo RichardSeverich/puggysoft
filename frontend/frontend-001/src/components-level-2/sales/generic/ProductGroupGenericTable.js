@@ -76,7 +76,8 @@ ProductGroupGenericTable.propTypes = {
   tableArrayCustomRowButtons: PropTypes.array,
   columnsToShow: PropTypes.oneOf([
     enumTableColumnsToShow.FULL,
-    enumTableColumnsToShow.MEDIUM
+    enumTableColumnsToShow.MEDIUM,
+    enumTableColumnsToShow.MINIMUM
   ]),
   fixArrayData: PropTypes.func,
   whatSystemIs: PropTypes.oneOf([
