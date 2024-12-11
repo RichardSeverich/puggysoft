@@ -26,13 +26,20 @@ public class EntitySaleReportTotal {
   @Column(name = "sale_price")
   public Double salePrice;
 
-    public EntitySaleReportTotal() {
+  public EntitySaleReportTotal() {
   }
 
+  /**
+   * Este constructor inicializa el reporte de ventas con los valores dados.
+   *
+   * @param totalAmountOfProductsSold El total de productos vendidos.
+   * @param totalRevenue El total de ingresos obtenidos.
+   * @param totalProfits El total de beneficios generados.
+  */
   public EntitySaleReportTotal(Long totalAmountOfProductsSold, Double totalRevenue, Double totalProfits) {
     this.totalAmountOfProductsSold = totalAmountOfProductsSold;
     this.totalRevenue = totalRevenue;
     this.totalProfits = totalProfits;
-}
+  }
 
 }

@@ -1,7 +1,7 @@
 package com.puggysoft.repositories.sales;
 
-import com.puggysoft.entities.sales.EntitySaleReportTotal;
 import com.puggysoft.entities.sales.EntitySaleReportDetail;
+import com.puggysoft.entities.sales.EntitySaleReportTotal;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
