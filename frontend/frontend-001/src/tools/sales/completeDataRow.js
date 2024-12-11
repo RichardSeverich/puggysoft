@@ -11,7 +11,7 @@ function completeData(data, type, date) {
   } else if (type === "month") {
     dataResult = completeRow(data, getDaysInMonth(date), convertDay, findDayInMonth)
   } else if (type === "year") {
-    dataResult = completeRow(data, 12, convertMonth, findElement)
+    dataResult = completeRow(data, 12, convertMonth, findMonthInYear)
   }
   return dataResult;
 }
@@ -37,6 +37,10 @@ function completeRow(data, limit, formatId, findInData) {
 
 function findElement(value, i) {
   return value.identifier === `${i}`;
+}
+
+function findMonthInYear(value, i) {
+  return value.identifier === `${i + 1}`;
 }
 
 function findDayInMonth(value, i) {

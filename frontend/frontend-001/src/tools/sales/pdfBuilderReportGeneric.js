@@ -35,7 +35,14 @@ const GeneratePdf = async (data, setStateGenerate, config) => {
   doc.setFontSize(15);
   const widthTitle = doc.getStringUnitWidth(i18n.reportDetailPdf.titleDaily) * doc.internal.getFontSize() / doc.internal.scaleFactor;
   const posXTitle = (doc.internal.pageSize.width - widthTitle) / 2;
-  doc.text(i18n.reportDetailPdf.titleDaily, posXTitle, 17);
+
+  if (config.typeDate === "day") {
+    doc.text(i18n.reportDetailPdf.titleDaily, posXTitle, 17);
+  } else if (config.typeDate === "month") {
+    doc.text(i18n.reportDetailPdf.titleMonthly, posXTitle, 17);
+  } else if (config.typeDate === "year") {
+    doc.text(i18n.reportDetailPdf.titleYear, posXTitle, 17);
+  }
 
   doc.setFontSize(10);
   detailsPdf(config.optionGetData)(doc, config);
