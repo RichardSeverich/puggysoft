@@ -1,4 +1,5 @@
 const productGroupTable = {
+  productGroupTable: "Categorias",
   productGroupTableTitle: "Tabla de categorias",
   productGroupTableTitleSub: "Selecione una categoria",
   productGroupNameLabel: "Nombre de la categoria",

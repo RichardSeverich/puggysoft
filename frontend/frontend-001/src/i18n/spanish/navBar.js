@@ -83,6 +83,10 @@ const navBar = {
   salesShowCard: "Mostrar Ventas (Tarjetas)",
   // Report
   reportAdmin: "Reportes",
+  // REPORTES DETALLADOS
+  reportDailyDetail: "Detalle diario",
+  reportMonthlyDetail: "Detalle mensual",
+  reportAnnualDetail: "Detalle anual",
   // GENERAL PER YEAR
   reportOf: "Reporte de ",
   reportQuantityAnnual: "Cantidad de ventas anual",

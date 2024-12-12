@@ -52,7 +52,7 @@ const tableModel = function (
     operatorSetUpdatedDate(enumCompareOperators.DATE_EQUALS);
   };
 
-  const isMedium = tableColumnsToShow === enumTableColumnsToShow.MEDIUM;
+  const isMedium = tableColumnsToShow === enumTableColumnsToShow.MEDIUM || tableColumnsToShow === enumTableColumnsToShow.MINIMUM;
   if (isMedium) {
     arrayColumnsFilter = arrayColumnsFilter.slice(0, arrayColumnsFilter.length - 4);
     arrayColumnsLabels = arrayColumnsLabels.slice(0, arrayColumnsLabels.length - 4);

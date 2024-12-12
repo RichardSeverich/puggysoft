@@ -94,6 +94,9 @@ const SALES_REPORT_PROFIT_BY_PRODUCT = "/sales-report-profit-by-product";
 const SALES_REPORT_PROFIT_COMP_BY_PRODUCT = "/sales-report-profit-comparative-by-product";
 const SALES_REPORT_PROFIT_MONTH_BY_PRODUCT = "/sales-report-profit-month-by-product";
 const SALES_REPORT_PROFIT_MONTH_COMP_BY_PRODUCT = "/sales-report-profit-month-comparative-by-product";
+const SALES_DAILY_REPORT = "/sales-daily-report";
+const SALES_MONTHLY_REPORT = "/sales-monthly-report";
+const SALES_ANNUAL_REPORT = "/sales-annual-report";
 const SALES_PRODUCTS_TABLE_TO_QUANTITY_BY_PRODUCT = "/sales-products-table-to-quantity-report";
 const SALES_PRODUCTS_TABLE_TO_QUANTITY_BY_PRODUCT_COMP = "/sales-products-table-to-quantity-comp-report";
 const SALES_PRODUCTS_TABLE_TO_QUANTITY_MONTH_BY_PRODUCT = "/sales-products-table-to-quantity-month-report";
@@ -333,6 +336,9 @@ const enumPaths = {
   SALES_REPORT_PROFIT_COMP_BY_PRODUCT,
   SALES_REPORT_PROFIT_MONTH_BY_PRODUCT,
   SALES_REPORT_PROFIT_MONTH_COMP_BY_PRODUCT,
+  SALES_DAILY_REPORT,
+  SALES_MONTHLY_REPORT,
+  SALES_ANNUAL_REPORT,
   SALES_PRODUCTS_TABLE_TO_QUANTITY_BY_PRODUCT,
   SALES_PRODUCTS_TABLE_TO_QUANTITY_BY_PRODUCT_COMP,
   SALES_PRODUCTS_TABLE_TO_QUANTITY_MONTH_BY_PRODUCT,

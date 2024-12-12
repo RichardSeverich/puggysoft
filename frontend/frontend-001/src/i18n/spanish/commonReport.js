@@ -1,4 +1,13 @@
 const commonReport = {
+  dateSelection: "Selecciona una fecha:",
+  monthSelection: "Selecciona un mes:",
+  yearSelection: "Selecciona un año",
+  yearInvalid: "Año invalido (minimo 1900 y maximo 3000)",
+  productSelection: "Selecciona un producto:",
+  groupProductSelection: "Selecciona una categoria:",
+  clientSelection: "Selecciona un cliente:",
+  filterSelection: "Filtro",
+  filterEnabled: "Habilitar filtro",
   year: "Año:",
   month: "Mes:",
   yearSelectionOne: "Ingrese año 1",
