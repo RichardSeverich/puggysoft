@@ -100,6 +100,8 @@ import SaleAnnualReportPage from "./components-level-3/sales/SaleAnnualReportPag
 
 // Mensualidad System
 import ColegiaturaMatriculaFormPage from "./components-level-3/mesualidad/ColegiaturaMatriculaFormPage";
+import ProgramaPostgradoCursoFormPage from "./components-level-3/mesualidad/ProgramaPostgradoCursoFormPage";
+import ProgramaPostgradoCursoTablePage from "./components-level-3/mesualidad/ProgramaPostgradoCursoTablePage";
 import ColegiaturaMatriculaTablePage from "./components-level-3/mesualidad/ColegiaturaMatriculaTablePage";
 import ProgramaPostgradoFormPage from "./components-level-3/mesualidad/ProgramaPostgradoFormPage";
 import ProgramaPostgradoTablePage from "./components-level-3/mesualidad/ProgramaPostgradoTablePage";
@@ -331,6 +333,8 @@ const AppRoutes = () => (
       <Route exact path={enumPaths.MENSUALIDAD_COLEGIATURAS_MATRICULAS_FORM} component={ColegiaturaMatriculaFormPage} />
       <Route exact path={enumPaths.MENSUALIDAD_COLEGIATURAS_MATRICULAS_TABLE} component={ColegiaturaMatriculaTablePage} />
       <Route exact path={enumPaths.MENSUALIDAD_PROGRAMA_POSTGRADO_FORM} component={ProgramaPostgradoFormPage} />
+      <Route exact path={enumPaths.MENSUALIDAD_PROGRAMA_POSTGRADO_CURSO_FORM} component={ProgramaPostgradoCursoFormPage} />
+      <Route exact path={enumPaths.MENSUALIDAD_PROGRAMA_POSTGRADO_CURSO_TABLE} component={ProgramaPostgradoCursoTablePage} />
       <Route exact path={enumPaths.MENSUALIDAD_PROGRAMA_POSTGRADO_TABLE} component={ProgramaPostgradoTablePage} />
       <Route exact path={enumPaths.MENSUALIDAD_ASSIGN_COLEGIATURA_MATRICULA_STEP1} component={AssignColegiaturaMatriculaStep1Page} />
       <Route exact path={enumPaths.MENSUALIDAD_ASSIGN_COLEGIATURA_MATRICULA_STEP2} component={AssignColegiaturaMatriculaStep2Page} />

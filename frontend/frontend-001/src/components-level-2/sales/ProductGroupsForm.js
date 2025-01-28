@@ -70,6 +70,7 @@ function ProductsGroupsForm (props) {
   const { value: valuePictureToShow, setValue: setValuePictureToShow } = useInput(imageUrlInitAux);
 
   const name = editData && editData.data.name !== null ? editData.data.name : "";
+  const aux = editData && editData.data.aux !== null ? editData.data.aux : "";
 
   const { value: valueName, onChange: onChangeName, setValue: setName } = useInput(name);
   const { value: valuePicture, setValue: setPicture } = useInput(null);
@@ -80,10 +81,14 @@ function ProductsGroupsForm (props) {
     const tenant = window.sessionStorage.getItem("tenant");
     const body = {
       name: valueName,
+      aux,
       tenant,
       createdBy: username,
       updatedBy: username
     };
+    if (productImage !== null) {
+      body.image = productImage;
+    }
     return body;
   };
 

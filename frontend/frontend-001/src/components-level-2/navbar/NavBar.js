@@ -319,6 +319,12 @@ function NavBar () {
   const navigateProgramaPostgradoTable = () => {
     history.push(enumPaths.MENSUALIDAD_PROGRAMA_POSTGRADO_TABLE);
   };
+  const navigateProgramaPostgradoCursoForm = () => {
+    history.push(enumPaths.MENSUALIDAD_PROGRAMA_POSTGRADO_CURSO_FORM);
+  };
+  const navigateProgramaPostgradoCursoTable = () => {
+    history.push(enumPaths.MENSUALIDAD_PROGRAMA_POSTGRADO_CURSO_TABLE);
+  };
   const navigateAssignColegiaturaMatricula = () => {
     history.push(enumPaths.MENSUALIDAD_ASSIGN_COLEGIATURA_MATRICULA_STEP1);
   };
@@ -774,6 +780,8 @@ function NavBar () {
   // PROGRAMAS POSTGRADO
   const programaPostgradoAdminLabel = (<><IoMdSchool /> {i18n.navBar.programaPostgradoAdmin}</>);
   const programaPostgradoRegistrationLabel = (<><GrAddCircle /> {i18n.navBar.programaPostgradoRegistration}</>);
+  const programaPostgradoCursoRegistrationLabel = (<><GrAddCircle /> {i18n.navBar.programaPostgradoRegistration}</>);
+  const programaPostgradoCursoTableLabel = (<><AiOutlineTable /> {i18n.navBar.programaPostgradoTable}</>);
   const programaPostgradoTableLabel = (<><AiOutlineTable /> {i18n.navBar.programaPostgradoTable}</>);
   const assignColegiaturaMatriculaLabel = (<><GrAddCircle /> {i18n.navBar.assignColegiaturaMatricula}</>);
   // ******* ******* ******* HOSPITAL SYSTEM ******* ******* *******
@@ -1112,8 +1120,10 @@ function NavBar () {
           </NavDropdown>}
           {(userRoles.includes(enumRoles.MENSUALIDAD_ENCARGADO)) &&
           <NavDropdown title={programaPostgradoAdminLabel}>
-            <NavDropdown.Item onClick={navigateProgramaPostgradoForm}>{programaPostgradoRegistrationLabel}</NavDropdown.Item>
-            <NavDropdown.Item onClick={navigateProgramaPostgradoTable}>{programaPostgradoTableLabel}</NavDropdown.Item>
+            {/* <NavDropdown.Item onClick={navigateProgramaPostgradoForm}>{programaPostgradoRegistrationLabel}</NavDropdown.Item> */}
+            {/* <NavDropdown.Item onClick={navigateProgramaPostgradoTable}>{programaPostgradoTableLabel}</NavDropdown.Item> */}
+            <NavDropdown.Item onClick={navigateProgramaPostgradoCursoForm}>{programaPostgradoCursoRegistrationLabel}</NavDropdown.Item>
+            <NavDropdown.Item onClick={navigateProgramaPostgradoCursoTable}>{programaPostgradoCursoTableLabel}</NavDropdown.Item>
             <NavDropdown.Item onClick={navigateAssignColegiaturaMatricula}>{assignColegiaturaMatriculaLabel}</NavDropdown.Item>
           </NavDropdown>}
 

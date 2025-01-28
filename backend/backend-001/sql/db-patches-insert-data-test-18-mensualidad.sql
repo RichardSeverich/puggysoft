@@ -73,8 +73,11 @@ INSERT INTO products (name, purchase_price, sale_price, stock, description, imag
 INSERT INTO products (name, purchase_price, sale_price, stock, description, image, bar_code, location, minimum_stock, code, tenant) VALUES ("DICIEMBRE", 0, 1000, 9999999, "DICIEMBRE", null, null, "N/A", null, null, "EMPRESA_2");
 
 -- ******* AGRUPACION *******
-INSERT INTO product_groups (name, tenant) VALUES ("DOCTORADO EN CIENCIAS Y TECNOLOGIA V03", "EMPRESA_2");
-INSERT INTO product_groups (name, tenant) VALUES ("DOCTORADO EN CIENCIAS DE LA EDUCACION E INVESTIGACION V13", "EMPRESA_2");
+INSERT INTO product_groups (name, tenant, aux) VALUES ("DOCTORADO EN CIENCIAS Y TECNOLOGIA V03", "EMPRESA_2", "DCT-E_V03_B");
+INSERT INTO product_groups (name, tenant, aux) VALUES ("DOCTORADO EN CIENCIAS DE LA EDUCACION E INVESTIGACION V13", "EMPRESA_2", "DCEI_V13");
+INSERT INTO escuela_cursos (name, short_name, gestion, tenant, created_by, creation_date) VALUES ("DOCTORADO EN CIENCIAS Y TECNOLOGIA V03", "DCT-E_V03_B", "2023", "EMPRESA_2", "SysEscuelaAdmin", "2021-11-01");
+INSERT INTO escuela_cursos (name, short_name, gestion, tenant, created_by, creation_date) VALUES ("DOCTORADO EN CIENCIAS DE LA EDUCACION E INVESTIGACION V13", "DCEI_V13", "2023", "EMPRESA_2", "SysEscuelaAdmin", "2021-11-01");
+
 INSERT INTO product_groups_products (id_product, id_product_group, tenant) VALUES ((select id from products where name="MATRICULA 1 DCTE-V03"), (select id from product_groups where name="DOCTORADO EN CIENCIAS Y TECNOLOGIA V03"), "EMPRESA_2");
 INSERT INTO product_groups_products (id_product, id_product_group, tenant) VALUES ((select id from products where name="MATRICULA 2 DCTE-V03"), (select id from product_groups where name="DOCTORADO EN CIENCIAS Y TECNOLOGIA V03"), "EMPRESA_2");
 INSERT INTO product_groups_products (id_product, id_product_group, tenant) VALUES ((select id from products where name="MATRICULA 3 DCTE-V03"), (select id from product_groups where name="DOCTORADO EN CIENCIAS Y TECNOLOGIA V03"), "EMPRESA_2");

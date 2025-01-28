@@ -12,6 +12,9 @@ const tableFilter = function (
 ) {
   const arrayColumnsFilter = [
     {
+      type: enumFilterType.NONE
+    },
+    {
       type: enumFilterType.NUMBER,
       criteriaValue: criteriaId,
       criteriaOnchange: criteriaOnChangeId,

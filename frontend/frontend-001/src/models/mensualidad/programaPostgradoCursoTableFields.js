@@ -14,7 +14,7 @@ const arrayDataFields = [
   },
   "id",
   "name",
-  "shortName",
+  "aux",
   "gestion",
   "createdBy",
   "updatedBy",
