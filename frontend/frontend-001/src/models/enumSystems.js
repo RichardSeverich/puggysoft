@@ -1,9 +1,11 @@
 const MENSUALIDAD = "MENSUALIDAD";
 const SALES = "SALES";
+const ESCUELA = "ESCUELA";
 
 const enumSystems = {
   MENSUALIDAD,
-  SALES
+  SALES,
+  ESCUELA
 };
 
 export default enumSystems;

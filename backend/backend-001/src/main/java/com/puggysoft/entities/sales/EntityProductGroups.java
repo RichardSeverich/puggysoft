@@ -17,6 +17,8 @@ public class EntityProductGroups extends EntitySuperClass {
 
   @Column(name = "name")
   private String name;
+  @Column(name = "aux")
+  private String aux;
   @Lob
   private byte[] image;
   @Column(name = "tenant")

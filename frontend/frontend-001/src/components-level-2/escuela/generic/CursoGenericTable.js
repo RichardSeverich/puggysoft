@@ -5,6 +5,7 @@ import useInput from "../../../hooks/useInput";
 import enumCompareOperators from "../../../models/enumCompareOperators";
 import enumTableColumnsToShow from "../../../models/enumTableColumnsToShow";
 import tableModel from "../../../models/escuela/cursoTableModels";
+import enumSystems from "../../../models/enumSystems";
 
 function CursoGenericTable (props) {
   const {
@@ -15,7 +16,8 @@ function CursoGenericTable (props) {
     handleGetSize,
     tableArrayCustomRowButtons,
     columnsToShow,
-    fixArrayData
+    fixArrayData,
+    whatSystemIs
   } = props;
 
   // CRITERIA OF SEARCH OR FILTER
@@ -47,7 +49,8 @@ function CursoGenericTable (props) {
     /* CREATED BY */criteriaCreatedBy, criteriaOnChangeCreatedBy, criteriaSetCreatedBy, operatorCreatedBy, operatorOnChangeCreatedBy, operatorSetCreatedBy,
     /* UPDATED BY */criteriaUpdatedBy, criteriaOnChangeUpdatedBy, criteriaSetUpdatedBy, operatorUpdatedBy, operatorOnChangeUpdatedBy, operatorSetUpdatedBy,
     /* CREATED DATE */criteriaCreatedDate, criteriaOnChangeCreatedDate, criteriaSetCreatedDate, operatorCreatedDate, operatorOnChangeCreatedDate, operatorSetCreatedDate,
-    /* UPDATED DATE */criteriaUpdatedDate, criteriaOnChangeUpdatedDate, criteriaSetUpdatedDate, operatorUpdatedDate, operatorOnChangeUpdatedDate, operatorSetUpdatedDate
+    /* UPDATED DATE */criteriaUpdatedDate, criteriaOnChangeUpdatedDate, criteriaSetUpdatedDate, operatorUpdatedDate, operatorOnChangeUpdatedDate, operatorSetUpdatedDate,
+    whatSystemIs
   );
 
   return (
@@ -82,7 +85,12 @@ CursoGenericTable.propTypes = {
     enumTableColumnsToShow.FULL,
     enumTableColumnsToShow.MEDIUM
   ]),
-  fixArrayData: PropTypes.func
+  fixArrayData: PropTypes.func,
+  whatSystemIs: PropTypes.oneOf([
+    enumSystems.MENSUALIDAD,
+    enumSystems.SALES,
+    enumSystems.ESCUELA
+  ])
 };
 
 CursoGenericTable.defaultProps = {
@@ -93,5 +101,6 @@ CursoGenericTable.defaultProps = {
   handleGetSize: () => { },
   tableArrayCustomRowButtons: [],
   columnsToShow: enumTableColumnsToShow.FULL,
-  fixArrayData: undefined
+  fixArrayData: undefined,
+  whatSystemIs: enumSystems.ESCUELA
 };

@@ -17,6 +17,8 @@ public final class SqlProductGroupsFilterBuilderNative {
         dtoGroupProductsFilter.idOperator);
     query = query + SqlFilterBuilder.getFilterQuery("product_groups.name", dtoGroupProductsFilter.nameCriteria,
         dtoGroupProductsFilter.nameOperator);
+    query = query + SqlFilterBuilder.getFilterQuery("product_groups.aux", dtoGroupProductsFilter.auxCriteria,
+        dtoGroupProductsFilter.auxOperator);
     query = query + SqlFilterBuilder.getFilterQuery("product_groups.tenant ", dtoGroupProductsFilter.tenantCriteria,
         dtoGroupProductsFilter.tenantOperator);
     query = query + SqlFilterBuilder.getFilterQuery("product_groups.created_by", dtoGroupProductsFilter.createdByCriteria,

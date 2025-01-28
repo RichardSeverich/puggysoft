@@ -2,7 +2,9 @@ import enumCompareOperators from "../enumCompareOperators";
 import enumTableColumnsToShow from "../enumTableColumnsToShow";
 import arrayFields from "./cursoTableFields";
 import arrayLabels from "./cursoTableLabels";
+import arrayMensualidadLabels from "../mensualidad/programaPostgradoCursoTableLabels";
 import tableFilter from "./cursoTableFilter";
+import enumSystems from "../enumSystems";
 
 const tableModel = function (
   tableColumnsToShow,
@@ -13,10 +15,21 @@ const tableModel = function (
   /* CREATED BY */criteriaCreatedBy, criteriaOnChangeCreatedBy, criteriaSetCreatedBy, operatorCreatedBy, operatorOnChangeCreatedBy, operatorSetCreatedBy,
   /* UPDATED BY */criteriaUpdatedBy, criteriaOnChangeUpdatedBy, criteriaSetUpdatedBy, operatorUpdatedBy, operatorOnChangeUpdatedBy, operatorSetUpdatedBy,
   /* CREATED DATE */criteriaCreatedDate, criteriaOnChangeCreatedDate, criteriaSetCreatedDate, operatorCreatedDate, operatorOnChangeCreatedDate, operatorSetCreatedDate,
-  /* UPDATED DATE */criteriaUpdatedDate, criteriaOnChangeUpdatedDate, criteriaSetUpdatedDate, operatorUpdatedDate, operatorOnChangeUpdatedDate, operatorSetUpdatedDate
+  /* UPDATED DATE */criteriaUpdatedDate, criteriaOnChangeUpdatedDate, criteriaSetUpdatedDate, operatorUpdatedDate, operatorOnChangeUpdatedDate, operatorSetUpdatedDate,
+  whatSystemIs
 ) {
-  let arrayDataFields = arrayFields;
-  let arrayColumnsLabels = arrayLabels;
+  let arrayDataFields;
+  let arrayColumnsLabels;
+  switch (whatSystemIs) {
+  case enumSystems.MENSUALIDAD:
+    arrayDataFields = arrayFields;
+    arrayColumnsLabels = arrayMensualidadLabels;
+    break;
+  default:
+    arrayDataFields = arrayFields;
+    arrayColumnsLabels = arrayLabels;
+  }
+
   let arrayColumnsFilter = tableFilter(
     /* ID */ criteriaId, criteriaOnChangeId, operatorId, operatorOnChangeId,
     /* NAME */criteriaName, criteriaOnChangeName, operatorName, operatorOnChangeName,

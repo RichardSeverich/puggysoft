@@ -16,6 +16,9 @@ public class DtoProductGroupsFilter {
   // NAME
   public String nameCriteria;
   public EnumCompareOperator nameOperator;
+  // AUX
+  public String auxCriteria;
+  public EnumCompareOperator auxOperator;
   // TENANT
   public String tenantCriteria;
   public EnumCompareOperator tenantOperator;

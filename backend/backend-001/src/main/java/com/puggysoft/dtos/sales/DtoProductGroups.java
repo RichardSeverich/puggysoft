@@ -16,6 +16,8 @@ public class DtoProductGroups extends DtoSuperClass {
   @NotNull
   private String name;
 
+  private String aux;
+
   private byte[] image;
 
   @Size(min = 3, max = 30)
@@ -28,6 +30,7 @@ public class DtoProductGroups extends DtoSuperClass {
     EntityProductGroups entity = new EntityProductGroups();
     entity.setId(id);
     entity.setName(name);
+    entity.setAux(aux);
     entity.setImage(image);
     entity.setTenant(tenant);
     entity.setCreatedBy(createdBy);
@@ -41,6 +44,7 @@ public class DtoProductGroups extends DtoSuperClass {
     DtoProductGroups dto = new DtoProductGroups();
     dto.setId(entity.getId());
     dto.setName(entity.getName());
+    dto.setAux(entity.getAux());
     dto.setImage(entity.getImage());
     dto.setTenant(entity.getTenant());
     dto.setCreatedBy(entity.getCreatedBy());
