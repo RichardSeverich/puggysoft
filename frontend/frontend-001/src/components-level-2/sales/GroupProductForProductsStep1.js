@@ -58,7 +58,7 @@ function GroupProductForProductsStep1 (props) {
       handleGetData={handleGetData}
       handleGetSize={handleGetSize}
       tableArrayCustomRowButtons={tableArrayCustomRowButtons}
-      columnsToShow={enumTableColumnsToShow.FULL}
+      columnsToShow={enumTableColumnsToShow.MINIMUM}
       whatSystemIs={whatSystemIs}
     >
     </ProductGroupGenericTable>

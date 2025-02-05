@@ -1117,6 +1117,7 @@ function NavBar () {
           <NavDropdown title={colegiaturaMatriculaAdminLabel}>
             <NavDropdown.Item onClick={navigateColegiaturaMatriculaForm}>{colegiaturaMatriculaRegistrationLabel}</NavDropdown.Item>
             <NavDropdown.Item onClick={navigateColegiaturaMatriculaTable}>{colegiaturaMatriculaTableLabel}</NavDropdown.Item>
+            <NavDropdown.Item onClick={navigateAssignColegiaturaMatricula}>{assignColegiaturaMatriculaLabel}</NavDropdown.Item>
           </NavDropdown>}
           {(userRoles.includes(enumRoles.MENSUALIDAD_ENCARGADO)) &&
           <NavDropdown title={programaPostgradoAdminLabel}>
@@ -1124,7 +1125,6 @@ function NavBar () {
             {/* <NavDropdown.Item onClick={navigateProgramaPostgradoTable}>{programaPostgradoTableLabel}</NavDropdown.Item> */}
             <NavDropdown.Item onClick={navigateProgramaPostgradoCursoForm}>{programaPostgradoCursoRegistrationLabel}</NavDropdown.Item>
             <NavDropdown.Item onClick={navigateProgramaPostgradoCursoTable}>{programaPostgradoCursoTableLabel}</NavDropdown.Item>
-            <NavDropdown.Item onClick={navigateAssignColegiaturaMatricula}>{assignColegiaturaMatriculaLabel}</NavDropdown.Item>
           </NavDropdown>}
 
           {/* ******* ******* ******* HOSPITAL SYSTEM ******* ******* ********/}
