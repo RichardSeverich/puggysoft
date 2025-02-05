@@ -58,9 +58,9 @@ const tableModel = function (
   }
   const isMinimum = tableColumnsToShow === enumTableColumnsToShow.MINIMUM;
   if (isMinimum) {
-    arrayColumnsFilter = arrayColumnsFilter.slice(0, arrayColumnsFilter.length - 9);
-    arrayColumnsLabels = arrayColumnsLabels.slice(0, arrayColumnsLabels.length - 9);
-    arrayDataFields = arrayDataFields.slice(0, arrayDataFields.length - 9);
+    arrayColumnsFilter = arrayColumnsFilter.slice(0, arrayColumnsFilter.length - 6);
+    arrayColumnsLabels = arrayColumnsLabels.slice(0, arrayColumnsLabels.length - 6);
+    arrayDataFields = arrayDataFields.slice(0, arrayDataFields.length - 6);
   }
 
   const getFilterBody = () => {
