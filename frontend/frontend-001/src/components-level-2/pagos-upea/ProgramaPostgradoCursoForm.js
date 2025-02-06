@@ -5,7 +5,7 @@ import enumSystems from "../../models/enumSystems";
 function ProgramaPostgradoCursoForm () {
   return (
     <CursosForm
-      whatSystemIs = {enumSystems.MENSUALIDAD}
+      whatSystemIs = {enumSystems.PAGO_UPEA}
     />
   );
 }

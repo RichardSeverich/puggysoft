@@ -5,7 +5,7 @@ import enumSystems from "../../models/enumSystems";
 function ProgramaPostgradoCursoTable () {
   return (
     <CursosTable
-      whatSystemIs = {enumSystems.MENSUALIDAD}
+      whatSystemIs = {enumSystems.PAGO_UPEA}
     />
   );
 }

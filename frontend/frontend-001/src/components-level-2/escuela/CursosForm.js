@@ -36,14 +36,14 @@ function CursosForm (props) {
   let imageErrorText;
   let pathTable;
   switch (whatSystemIs) {
-  case enumSystems.MENSUALIDAD:
-    formTitle = i18n.mensualidad.programaPostgradoFormTitle;
-    nameLabel = i18n.mensualidad.programaPostgradoNameLabel;
-    shortNameLabel = i18n.mensualidad.programaPostgradoCodigoLabel;
-    gestionLabel = i18n.mensualidad.programaPostgradoGestionErrorText;
-    imageLabel = i18n.mensualidad.programaPostgradoImageLabel;
-    imageErrorText = i18n.mensualidad.programaPostgradoImageErrorText;
-    pathTable = enumPaths.MENSUALIDAD_PROGRAMA_POSTGRADO_CURSO_TABLE;
+  case enumSystems.PAGO_UPEA:
+    formTitle = i18n.pagoUpea.programaPostgradoFormTitle;
+    nameLabel = i18n.pagoUpea.programaPostgradoNameLabel;
+    shortNameLabel = i18n.pagoUpea.programaPostgradoCodigoLabel;
+    gestionLabel = i18n.pagoUpea.programaPostgradoGestionErrorText;
+    imageLabel = i18n.pagoUpea.programaPostgradoImageLabel;
+    imageErrorText = i18n.pagoUpea.programaPostgradoImageErrorText;
+    pathTable = enumPaths.PAGO_UPEA_PROGRAMA_POSTGRADO_CURSO_TABLE;
     break;
   default:
     formTitle = i18n.escuela.cursosFormTitle;
@@ -299,7 +299,7 @@ export default CursosForm;
 
 CursosForm.propTypes = {
   whatSystemIs: PropTypes.oneOf([
-    enumSystems.MENSUALIDAD,
+    enumSystems.PAGO_UPEA,
     enumSystems.SALES,
     enumSystems.ESCUELA
   ])

@@ -1,6 +1,6 @@
 import React from "react";
 import NavBar from "../../components-level-2/navbar/NavBar";
-import AssignColegiaturaMatriculaStep2 from "../../components-level-2/mensualidad/AssignColegiaturaMatriculaStep2";
+import AssignColegiaturaMatriculaStep2 from "../../components-level-2/pagos-upea/AssignColegiaturaMatriculaStep2";
 
 function AssignColegiaturaMatriculaStep2Page () {
   return (

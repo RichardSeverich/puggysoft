@@ -1,33 +1,19 @@
 const mensualidad = {
-  // ********** Colegiatura/Matriculas **********
-  colegiaturaMatriculaConceptLabel: "Concepto",
-  colegiaturaMatriculaImportBsLabel: "Importe en bs",
-  colegiaturaMatriculaCancellationDateLabel: "Fecha de cancelacion",
-  colegiaturaMatriculaTitleAvaliable: "Colegiaturas/Matriculas disponibles",
-  colegiaturaMatriculaTitleAggregate: "Colegiaturas/Matriculas agregadas",
+  // ********** Cuotas/Pagos **********
+  cuotaPagoConceptLabel: "Concepto",
+  cuotaPagoImportBsLabel: "Importe en bs",
+  cuotaPagoCancellationDateLabel: "Fecha de cancelacion",
+  cuotaPagoTitleAvaliable: "Cuotas de Pagos disponibles",
+  cuotaPagoTitleAggregate: "Cuotas de Pagos agregados",
+  cuotaPagoLabel: "Cuota de Pagos",
   // Form
-  colegiaturaMatriculaFormTitle: "Formulario de Colegiaturas/Matriculas",
+  cuotaPagoFormTitle: "Formulario de Cuotas de Pagos",
   // Table
-  colegiaturaMatriculaTableTitle: "Tabla de Colegiaturas/Matriculas",
+  cuotaPagoTableTitle: "Tabla de Cuotas de Pagos",
   // Error labels
-  colegiaturaMatriculaConceptError: "Ingrese el concepto (min 3, max 60) caracteres",
-  colegiaturaMatriculaImportBsError: "Ingrese el importe",
-  colegiaturaMatriculaCancellationDateError: "Ingrese la fecha de cancelacion",
-  // ********** Programas de Postgrado **********
-  programaPostgradoNameLabel: "Nombre programa de postgrado",
-  programaPostgradoNameErrorText: "Ingrese el nombre de postgrado (min 3, max 60) caracteres",
-  programaPostgradoImageLabel: "Foto",
-  programaPostgradoImageErrorText: "Seleccione foto del programa postgrado",
-  programaPostgradoLabel: "Programa de postgrado",
-  programaPostgradoCodigoLabel: "Codigo de programa de postgrado",
-  programaPostgradoCodigoErrorText: "Ingrese el codigo del programa postgrado",
-  programaPostgradoGestionLabel: "Gestion de programa de postgrado",
-  programaPostgradoGestionErrorText: "Ingrese gestion del programa postgrado",
-  // Form
-  programaPostgradoFormTitle: "Formulario programas de postgrado",
-  // Table
-  programaPostgradoTableTitle: "Tabla programas de postgrado",
-  programaPostgradoTableSubTitle: "Seleccionar programa de postgrado"
+  cuotaPagoConceptError: "Ingrese el concepto (min 3, max 60) caracteres",
+  cuotaPagoImportBsError: "Ingrese el importe",
+  cuotaPagoCancellationDateError: "Ingrese la fecha de cancelacion"
 };
 
 export default mensualidad;

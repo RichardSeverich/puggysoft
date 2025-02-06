@@ -99,12 +99,20 @@ import SaleMonthlyReportPage from "./components-level-3/sales/SaleMonthlyReportP
 import SaleAnnualReportPage from "./components-level-3/sales/SaleAnnualReportPage";
 
 // Mensualidad System
-import ColegiaturaMatriculaFormPage from "./components-level-3/mesualidad/ColegiaturaMatriculaFormPage";
-import ProgramaPostgradoCursoFormPage from "./components-level-3/mesualidad/ProgramaPostgradoCursoFormPage";
-import ProgramaPostgradoCursoTablePage from "./components-level-3/mesualidad/ProgramaPostgradoCursoTablePage";
-import ColegiaturaMatriculaTablePage from "./components-level-3/mesualidad/ColegiaturaMatriculaTablePage";
-import ProgramaPostgradoFormPage from "./components-level-3/mesualidad/ProgramaPostgradoFormPage";
-import ProgramaPostgradoTablePage from "./components-level-3/mesualidad/ProgramaPostgradoTablePage";
+import CuotaPagoFormPage from "./components-level-3/mesualidad/CuotaPagoFormPage";
+import CuotaPagoTablePage from "./components-level-3/mesualidad/CuotaPagoTablePage";
+import AssignCuotaPagoStep1Page from "./components-level-3/mesualidad/AssignCuotaPagoStep1Page";
+import AssignCuotaPagoStep2Page from "./components-level-3/mesualidad/AssignCuotaPagoStep2Page";
+
+// Pago Upea System
+import ColegiaturaMatriculaFormPage from "./components-level-3/pagos-upea/ColegiaturaMatriculaFormPage";
+import ProgramaPostgradoCursoFormPage from "./components-level-3/pagos-upea/ProgramaPostgradoCursoFormPage";
+import ProgramaPostgradoCursoTablePage from "./components-level-3/pagos-upea/ProgramaPostgradoCursoTablePage";
+import ColegiaturaMatriculaTablePage from "./components-level-3/pagos-upea/ColegiaturaMatriculaTablePage";
+import ProgramaPostgradoFormPage from "./components-level-3/pagos-upea/ProgramaPostgradoFormPage";
+import ProgramaPostgradoTablePage from "./components-level-3/pagos-upea/ProgramaPostgradoTablePage";
+import AssignColegiaturaMatriculaStep1Page from "./components-level-3/pagos-upea/AssignColegiaturaMatriculaStep1Page";
+import AssignColegiaturaMatriculaStep2Page from "./components-level-3/pagos-upea/AssignColegiaturaMatriculaStep2Page";
 
 // Hospital System
 import DoctorUserFormPage from "./components-level-3/hospital/DoctorUserFormPage";
@@ -225,8 +233,6 @@ import CalificacionesTablePage from "./components-level-3/escuela/Calificaciones
 // Games System
 import TicTacToePage from "./components-level-3/games/tic-tac-toe/TicTacToePage";
 import TicTacToePagePc from "./components-level-3/games/tic-tac-toe/TicTacToePagePc";
-import AssignColegiaturaMatriculaStep1Page from "./components-level-3/mesualidad/AssignColegiaturaMatriculaStep1Page";
-import AssignColegiaturaMatriculaStep2Page from "./components-level-3/mesualidad/AssignColegiaturaMatriculaStep2Page";
 
 // const CursosFormLazyPage = lazy(() => import("./components-level-3/escuela/CursosFormPage"));
 
@@ -330,14 +336,19 @@ const AppRoutes = () => (
       <Route exact path={enumPaths.SALES_MONTHLY_REPORT} component={SaleMonthlyReportPage} />
       <Route exact path={enumPaths.SALES_ANNUAL_REPORT} component={SaleAnnualReportPage} />
       {/** Mensualidad System */}
-      <Route exact path={enumPaths.MENSUALIDAD_COLEGIATURAS_MATRICULAS_FORM} component={ColegiaturaMatriculaFormPage} />
-      <Route exact path={enumPaths.MENSUALIDAD_COLEGIATURAS_MATRICULAS_TABLE} component={ColegiaturaMatriculaTablePage} />
-      <Route exact path={enumPaths.MENSUALIDAD_PROGRAMA_POSTGRADO_FORM} component={ProgramaPostgradoFormPage} />
-      <Route exact path={enumPaths.MENSUALIDAD_PROGRAMA_POSTGRADO_CURSO_FORM} component={ProgramaPostgradoCursoFormPage} />
-      <Route exact path={enumPaths.MENSUALIDAD_PROGRAMA_POSTGRADO_CURSO_TABLE} component={ProgramaPostgradoCursoTablePage} />
-      <Route exact path={enumPaths.MENSUALIDAD_PROGRAMA_POSTGRADO_TABLE} component={ProgramaPostgradoTablePage} />
-      <Route exact path={enumPaths.MENSUALIDAD_ASSIGN_COLEGIATURA_MATRICULA_STEP1} component={AssignColegiaturaMatriculaStep1Page} />
-      <Route exact path={enumPaths.MENSUALIDAD_ASSIGN_COLEGIATURA_MATRICULA_STEP2} component={AssignColegiaturaMatriculaStep2Page} />
+      <Route exact path={enumPaths.MENSUALIDAD_CUOTA_PAGO_FORM} component={CuotaPagoFormPage} />
+      <Route exact path={enumPaths.MENSUALIDAD_CUOTA_PAGO_TABLE} component={CuotaPagoTablePage} />
+      <Route exact path={enumPaths.MENSUALIDAD_ASSIGN_CUOTA_PAGO_STEP1} component={AssignCuotaPagoStep1Page} />
+      <Route exact path={enumPaths.MENSUALIDAD_ASSIGN_CUOTA_PAGO_STEP2} component={AssignCuotaPagoStep2Page} />
+      {/** Pagos Upea System */}
+      <Route exact path={enumPaths.PAGO_UPEA_COLEGIATURAS_MATRICULAS_FORM} component={ColegiaturaMatriculaFormPage} />
+      <Route exact path={enumPaths.PAGO_UPEA_COLEGIATURAS_MATRICULAS_TABLE} component={ColegiaturaMatriculaTablePage} />
+      <Route exact path={enumPaths.PAGO_UPEA_PROGRAMA_POSTGRADO_FORM} component={ProgramaPostgradoFormPage} />
+      <Route exact path={enumPaths.PAGO_UPEA_PROGRAMA_POSTGRADO_CURSO_FORM} component={ProgramaPostgradoCursoFormPage} />
+      <Route exact path={enumPaths.PAGO_UPEA_PROGRAMA_POSTGRADO_CURSO_TABLE} component={ProgramaPostgradoCursoTablePage} />
+      <Route exact path={enumPaths.PAGO_UPEA_PROGRAMA_POSTGRADO_TABLE} component={ProgramaPostgradoTablePage} />
+      <Route exact path={enumPaths.PAGO_UPEA_ASSIGN_COLEGIATURA_MATRICULA_STEP1} component={AssignColegiaturaMatriculaStep1Page} />
+      <Route exact path={enumPaths.PAGO_UPEA_ASSIGN_COLEGIATURA_MATRICULA_STEP2} component={AssignColegiaturaMatriculaStep2Page} />
       {/** Hospital System */}
       <Route exact path={enumPaths.HOSPITAL_DOCTOR_USER_FORM} component={DoctorUserFormPage} />
       <Route exact path={enumPaths.HOSPITAL_DOCTOR_USER_TABLE_TO_DETAILS} component={DoctorUserTableToDetailsPage} />

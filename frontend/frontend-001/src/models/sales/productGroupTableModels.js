@@ -3,7 +3,8 @@ import enumTableColumnsToShow from "../enumTableColumnsToShow";
 import arrayFields from "./productGroupTableFields";
 import arrayLabels from "./productGroupTableLabels";
 import tableFilter from "./productGroupTableFilter";
-import arrayMensualidadLabels from "./../mensualidad/programaPostgradoTableLabels";
+import arrayPagosUpeaLabels from "./../pagos-upea/programaPostgradoTableLabels";
+import arrayCursoLabels from "./../mensualidad/cursoTableLabels";
 import enumSystems from "../enumSystems";
 
 const tableModel = function (
@@ -20,7 +21,10 @@ const tableModel = function (
   let arrayColumnsLabels = null;
   switch (whatSystemIs) {
   case enumSystems.MENSUALIDAD:
-    arrayColumnsLabels = arrayMensualidadLabels;
+    arrayColumnsLabels = arrayCursoLabels;
+    break;
+  case enumSystems.PAGO_UPEA:
+    arrayColumnsLabels = arrayPagosUpeaLabels;
     break;
   default:
     arrayColumnsLabels = arrayLabels;

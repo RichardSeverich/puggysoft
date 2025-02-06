@@ -17,7 +17,7 @@ function ProductGroupsTableFilterEditDelete (props) {
 
   let tableTitle;
   switch (whatSystemIs) {
-  case enumSystems.MENSUALIDAD:
+  case enumSystems.PAGO_UPEA:
     tableTitle = i18n.mensualidad.programaPostgradoTableTitle;
     break;
   default:
@@ -76,7 +76,8 @@ export default ProductGroupsTableFilterEditDelete;
 ProductGroupsTableFilterEditDelete.propTypes = {
   whatSystemIs: PropTypes.oneOf([
     enumSystems.MENSUALIDAD,
-    enumSystems.SALES
+    enumSystems.SALES,
+    enumSystems.PAGO_UPEA
   ])
 };
 

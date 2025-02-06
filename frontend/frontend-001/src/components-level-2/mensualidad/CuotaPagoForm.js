@@ -3,6 +3,7 @@ import React, {
   useEffect
 } from "react";
 
+import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router";
 import { handleValidation, classNameFormTextNew } from "./../../validations/mensualidad/HandleColegiaturaMatriculaFormValidations";
@@ -14,14 +15,48 @@ import enumBootstrapVariant from "./../../models/enumBootstrapVariant";
 import { openCommonMessage } from "./../../redux/reducers/reducerCommonMessage";
 import { handleAddRequest, handleEditRequest } from "../../actions/HandleManager";
 import CommonLoading from "../../components-level-1/CommonLoading";
+import enumSystems from "../../models/enumSystems";
+import enumPaths from "../../models/enumPaths";
 
-function ColegiaturaMatriculaForm () {
+function CuotaPagoForm (props) {
   const dispatch = useDispatch();
   const history = useHistory();
-  const editDataParam = history && history.location && history.location.state;
-  const [editData, setEditData] = useState(editDataParam);
+  const historyState = history && history.location && history.location.state;
+  const [editData, setEditData] = useState(historyState);
   const [classNameFormText, setClassNameFormText] = useState(classNameFormTextNew);
   const [isRequestInProgress, setIsRequestInProgress] = useState(false);
+
+  const whatSystemIs = historyState ? historyState.whatSystemIs : props.whatSystemIs;
+  let formTitle;
+  let nameLabel;
+  let nameErrorText;
+  let salePriceLabel;
+  let salePriceErrorText;
+  let descriptionLabel;
+  let descriptionErrorText;
+  let pathTable;
+  switch (whatSystemIs) {
+  case enumSystems.PAGO_UPEA:
+    formTitle = i18n.pagoUpea.colegiaturaMatriculaFormTitle;
+    nameLabel = i18n.pagoUpea.colegiaturaMatriculaConceptLabel;
+    nameErrorText = i18n.pagoUpea.colegiaturaMatriculaConceptError;
+    salePriceLabel = i18n.pagoUpea.colegiaturaMatriculaImportBsLabel;
+    salePriceErrorText = i18n.pagoUpea.colegiaturaMatriculaImportBsError;
+    descriptionLabel = i18n.pagoUpea.colegiaturaMatriculaCancellationDateLabel;
+    descriptionErrorText = i18n.mensualidad.colegiaturaMatriculaCancellationDateError;
+    pathTable = enumPaths.PAGO_UPEA_COLEGIATURAS_MATRICULAS_TABLE;
+    break;
+  default:
+    formTitle = i18n.mensualidad.cuotaPagoFormTitle;
+    nameLabel = i18n.mensualidad.cuotaPagoConceptLabel;
+    nameErrorText = i18n.mensualidad.cuotaPagoConceptError;
+    salePriceLabel = i18n.mensualidad.cuotaPagoImportBsLabel;
+    salePriceErrorText = i18n.mensualidad.cuotaPagoImportBsError;
+    descriptionLabel = i18n.mensualidad.cuotaPagoCancellationDateLabel;
+    descriptionErrorText = i18n.mensualidad.cuotaPagoCancellationDateError;
+    pathTable = enumPaths.MENSUALIDAD_CUOTA_PAGO_TABLE;
+    break;
+  }
 
   const name = editData && editData.data.name !== null ? editData.data.name : "";
   const salePrice = editData && editData.data.salePrice !== null ? editData.data.salePrice : "";
@@ -81,6 +116,11 @@ function ColegiaturaMatriculaForm () {
     handleReset();
     setIsRequestInProgress(false);
     showSuccessMessage();
+    if (editData) {
+      history.push({
+        pathname: pathTable
+      });
+    }
   };
 
   const showSuccessMessage = function () {
@@ -117,7 +157,7 @@ function ColegiaturaMatriculaForm () {
   };
 
   const formProps = {
-    title: i18n.mensualidad.colegiaturaMatriculaFormTitle,
+    title: formTitle,
     handleAction: handleAddEdit,
     buttonText: i18n.commonForm.saveButton,
     buttonVariant: enumBootstrapVariant.PRIMARY,
@@ -125,9 +165,9 @@ function ColegiaturaMatriculaForm () {
       {
         key: "name",
         inputType: enumInputType.TEXT,
-        label: i18n.mensualidad.colegiaturaMatriculaConceptLabel,
+        label: nameLabel,
         inputValue: valueName,
-        suggestionText: i18n.mensualidad.colegiaturaMatriculaConceptError,
+        suggestionText: nameErrorText,
         suggestionTextClassName: classNameFormText.name,
         onChange: onChangeName,
         isDisabledEdit: false,
@@ -136,9 +176,9 @@ function ColegiaturaMatriculaForm () {
       {
         key: "salePrice",
         inputType: enumInputType.NUMBER,
-        label: i18n.mensualidad.colegiaturaMatriculaImportBsLabel,
+        label: salePriceLabel,
         inputValue: valueSalePrice,
-        suggestionText: i18n.mensualidad.colegiaturaMatriculaImportBsError,
+        suggestionText: salePriceErrorText,
         suggestionTextClassName: classNameFormText.salePrice,
         onChange: onChangeSalePrice,
         isDisabledEdit: false,
@@ -147,9 +187,9 @@ function ColegiaturaMatriculaForm () {
       {
         key: "description",
         inputType: enumInputType.DATE,
-        label: i18n.mensualidad.colegiaturaMatriculaCancellationDateLabel,
+        label: descriptionLabel,
         inputValue: valueDescription,
-        suggestionText: i18n.mensualidad.colegiaturaMatriculaCancellationDateError,
+        suggestionText: descriptionErrorText,
         suggestionTextClassName: classNameFormText.description,
         onChange: onChangeDescription,
         isDisabledEdit: false,
@@ -173,4 +213,15 @@ function ColegiaturaMatriculaForm () {
   );
 }
 
-export default ColegiaturaMatriculaForm;
+export default CuotaPagoForm;
+
+CuotaPagoForm.propTypes = {
+  whatSystemIs: PropTypes.oneOf([
+    enumSystems.MENSUALIDAD,
+    enumSystems.PAGO_UPEA
+  ])
+};
+
+CuotaPagoForm.defaultProps = {
+  whatSystemIs: enumSystems.MENSUALIDAD
+};

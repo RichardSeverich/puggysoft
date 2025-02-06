@@ -2,7 +2,7 @@ import React from "react";
 import GroupProductForProductsStep1 from "./../sales/GroupProductForProductsStep1";
 import enumSystems from "../../models/enumSystems";
 
-function AssignColegiaturaToProgramaPostgradoStep1 () {
+function AssignCuotaPagoStep1 () {
   return (
     <GroupProductForProductsStep1
       whatSystemIs = {enumSystems.MENSUALIDAD}
@@ -10,4 +10,4 @@ function AssignColegiaturaToProgramaPostgradoStep1 () {
   );
 }
 
-export default AssignColegiaturaToProgramaPostgradoStep1;
+export default AssignCuotaPagoStep1;
