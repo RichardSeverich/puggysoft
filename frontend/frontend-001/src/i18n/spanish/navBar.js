@@ -118,6 +118,17 @@ const navBar = {
   reportProfitMonthPerProductCompare: "Ganancias de ventas mensual por producto (Comparar 2 meses)",
 
   // ******* ******* MENSUALIDAD SYSTEM ******* *******
+  // Cuota de pago
+  cuotaPagoAdmin: "Adm. Cuota de pago",
+  cuotaPagoRegistration: "Registrar Cuota de pago",
+  cuotaPagoTable: "Mostrar Cuota de pago",
+  assigncuotaPago: "Asignar Cuota de pago",
+  // Pagos
+  pagosAdmin: "Adm. Pagos",
+  pagosAdminRegistration: "Registrar pago",
+  pagosAdminTable: "Mostrar pago",
+
+  // ******* ******* PAGOS UPEA SYSTEM ******* *******
   // Colegiatura/Matricula
   colegiaturaMatriculaAdmin: "Adm. Colegiaturas/Matriculas",
   colegiaturaMatriculaRegistration: "Registrar Colegiaturas/Matriculas",

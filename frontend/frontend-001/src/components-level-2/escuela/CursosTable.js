@@ -25,9 +25,9 @@ function CursosTable (props) {
   let tableTitle;
   let path;
   switch (whatSystemIs) {
-  case enumSystems.MENSUALIDAD:
-    path = enumPaths.MENSUALIDAD_PROGRAMA_POSTGRADO_CURSO_FORM;
-    tableTitle = i18n.mensualidad.programaPostgradoTableTitle;
+  case enumSystems.PAGO_UPEA:
+    path = enumPaths.PAGO_UPEA_PROGRAMA_POSTGRADO_CURSO_FORM;
+    tableTitle = i18n.pagoUpea.programaPostgradoTableTitle;
     break;
   default:
     path = enumPaths.ESCUELA_CURSOS_FORM;
@@ -167,7 +167,7 @@ export default CursosTable;
 
 CursosTable.propTypes = {
   whatSystemIs: PropTypes.oneOf([
-    enumSystems.MENSUALIDAD,
+    enumSystems.PAGO_UPEA,
     enumSystems.SALES,
     enumSystems.ESCUELA
   ])

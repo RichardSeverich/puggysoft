@@ -34,11 +34,11 @@ function ProductsGroupsForm (props) {
   let imageLabel;
   let imageErrorText;
   switch (whatSystemIs) {
-  case enumSystems.MENSUALIDAD:
-    formTitle = i18n.mensualidad.programaPostgradoFormTitle;
-    nameLabel = i18n.mensualidad.programaPostgradoNameLabel;
-    imageLabel = i18n.mensualidad.programaPostgradoImageLabel;
-    imageErrorText = i18n.mensualidad.programaPostgradoImageErrorText;
+  case enumSystems.PAGO_UPEA:
+    formTitle = i18n.pagoUpea.programaPostgradoFormTitle;
+    nameLabel = i18n.pagoUpea.programaPostgradoNameLabel;
+    imageLabel = i18n.pagoUpea.programaPostgradoImageLabel;
+    imageErrorText = i18n.pagoUpea.programaPostgradoImageErrorText;
     break;
   default:
     formTitle = i18n.productGroupForm.title;
@@ -250,7 +250,8 @@ export default ProductsGroupsForm;
 ProductsGroupsForm.propTypes = {
   whatSystemIs: PropTypes.oneOf([
     enumSystems.MENSUALIDAD,
-    enumSystems.SALES
+    enumSystems.SALES,
+    enumSystems.PAGO_UPEA
   ])
 };
 

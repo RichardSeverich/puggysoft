@@ -14,15 +14,27 @@ function GroupProductForProductsStep1 (props) {
   const whatSystemIs = props.whatSystemIs;
 
   let tableTitle;
+  let tableSubTitle;
   let pathStep2;
+  let columnsToShow;
   switch (whatSystemIs) {
   case enumSystems.MENSUALIDAD:
-    pathStep2 = enumPaths.MENSUALIDAD_ASSIGN_COLEGIATURA_MATRICULA_STEP2;
-    tableTitle = i18n.mensualidad.programaPostgradoTableTitle;
+    pathStep2 = enumPaths.MENSUALIDAD_ASSIGN_CUOTA_PAGO_STEP2;
+    tableTitle = i18n.escuela.cursosTableTitle;
+    tableSubTitle = i18n.escuela.cursosTableTitleSub;
+    columnsToShow = enumTableColumnsToShow.MINIMUM;
+    break;
+  case enumSystems.PAGO_UPEA:
+    pathStep2 = enumPaths.PAGO_UPEA_ASSIGN_COLEGIATURA_MATRICULA_STEP2;
+    tableTitle = i18n.pagoUpea.programaPostgradoTableTitle;
+    tableSubTitle = i18n.pagoUpea.programaPostgradoTableSubTitle;
+    columnsToShow = enumTableColumnsToShow.MINIMUM;
     break;
   default:
     pathStep2 = enumPaths.SALES_GROUP_PRODUCTS_FOR_PRODUCTS_STEP2;
     tableTitle = i18n.productGroupTable.productGroupTableTitle;
+    tableSubTitle = i18n.productGroupTable.productGroupTableTitleSub;
+    columnsToShow = enumTableColumnsToShow.MINIMUM;
     break;
   }
 
@@ -54,11 +66,12 @@ function GroupProductForProductsStep1 (props) {
   return (
     <ProductGroupGenericTable
       tableTitle={tableTitle}
+      tableSubTitle={tableSubTitle}
       numberPagesToShow={numberPagesToShow}
       handleGetData={handleGetData}
       handleGetSize={handleGetSize}
       tableArrayCustomRowButtons={tableArrayCustomRowButtons}
-      columnsToShow={enumTableColumnsToShow.MINIMUM}
+      columnsToShow={columnsToShow}
       whatSystemIs={whatSystemIs}
     >
     </ProductGroupGenericTable>

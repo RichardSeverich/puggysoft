@@ -2,7 +2,7 @@ import enumCompareOperators from "../enumCompareOperators";
 import enumTableColumnsToShow from "../enumTableColumnsToShow";
 import arrayFields from "./cursoTableFields";
 import arrayLabels from "./cursoTableLabels";
-import arrayMensualidadLabels from "../mensualidad/programaPostgradoCursoTableLabels";
+import arrayMensualidadLabels from "../pagos-upea/programaPostgradoCursoTableLabels";
 import tableFilter from "./cursoTableFilter";
 import enumSystems from "../enumSystems";
 

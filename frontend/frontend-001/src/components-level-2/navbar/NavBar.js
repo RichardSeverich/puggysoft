@@ -307,26 +307,37 @@ function NavBar () {
   };
 
   // ******* ******* ******* MENSUALIDAD SYSTEM ******* ******* *******
+  const navigateCuotaPagoForm = () => {
+    history.push(enumPaths.MENSUALIDAD_CUOTA_PAGO_FORM);
+  };
+  const navigateCuotaPagoTable = () => {
+    history.push(enumPaths.MENSUALIDAD_CUOTA_PAGO_TABLE);
+  };
+  const navigateAssignCuotaPagoStep1 = () => {
+    history.push(enumPaths.MENSUALIDAD_ASSIGN_CUOTA_PAGO_STEP1);
+  };
+
+  // ******* ******* ******* PAGO UPEA SYSTEM ******* ******* *******
   const navigateColegiaturaMatriculaForm = () => {
-    history.push(enumPaths.MENSUALIDAD_COLEGIATURAS_MATRICULAS_FORM);
+    history.push(enumPaths.PAGO_UPEA_COLEGIATURAS_MATRICULAS_FORM);
   };
   const navigateColegiaturaMatriculaTable = () => {
-    history.push(enumPaths.MENSUALIDAD_COLEGIATURAS_MATRICULAS_TABLE);
+    history.push(enumPaths.PAGO_UPEA_COLEGIATURAS_MATRICULAS_TABLE);
   };
   const navigateProgramaPostgradoForm = () => {
-    history.push(enumPaths.MENSUALIDAD_PROGRAMA_POSTGRADO_FORM);
+    history.push(enumPaths.PAGO_UPEA_PROGRAMA_POSTGRADO_FORM);
   };
   const navigateProgramaPostgradoTable = () => {
-    history.push(enumPaths.MENSUALIDAD_PROGRAMA_POSTGRADO_TABLE);
+    history.push(enumPaths.PAGO_UPEA_PROGRAMA_POSTGRADO_TABLE);
   };
   const navigateProgramaPostgradoCursoForm = () => {
-    history.push(enumPaths.MENSUALIDAD_PROGRAMA_POSTGRADO_CURSO_FORM);
+    history.push(enumPaths.PAGO_UPEA_PROGRAMA_POSTGRADO_CURSO_FORM);
   };
   const navigateProgramaPostgradoCursoTable = () => {
-    history.push(enumPaths.MENSUALIDAD_PROGRAMA_POSTGRADO_CURSO_TABLE);
+    history.push(enumPaths.PAGO_UPEA_PROGRAMA_POSTGRADO_CURSO_TABLE);
   };
   const navigateAssignColegiaturaMatricula = () => {
-    history.push(enumPaths.MENSUALIDAD_ASSIGN_COLEGIATURA_MATRICULA_STEP1);
+    history.push(enumPaths.PAGO_UPEA_ASSIGN_COLEGIATURA_MATRICULA_STEP1);
   };
 
   // ******* ******* ******* HOSPITAL SYSTEM ******* ******* *******
@@ -774,16 +785,22 @@ function NavBar () {
   />);
   // ******* ******* ******* MENSUALIDAD SYSTEM ******* ******* *******
   // COLEGIATURAS/MATRICULAS
+  const cuotaPagoAdminLabel = (<><FaBook /> {i18n.navBar.cuotaPagoAdmin}</>);
+  const cuotaPagoRegistrationLabel = (<><GrAddCircle /> {i18n.navBar.cuotaPagoRegistration}</>);
+  const cuotaPagoTableLabel = (<><AiOutlineTable /> {i18n.navBar.cuotaPagoTable}</>);
+  const assigncuotaPagoLabel = (<><GrAddCircle /> {i18n.navBar.assigncuotaPago}</>);
+  // ******* ******* ******* PAGOS UPEA SYSTEM ******* ******* *******
+  // COLEGIATURAS/MATRICULAS
   const colegiaturaMatriculaAdminLabel = (<><FaBook /> {i18n.navBar.colegiaturaMatriculaAdmin}</>);
   const colegiaturaMatriculaRegistrationLabel = (<><GrAddCircle /> {i18n.navBar.colegiaturaMatriculaRegistration}</>);
   const colegiaturaMatriculaTableLabel = (<><AiOutlineTable /> {i18n.navBar.colegiaturaMatriculaTable}</>);
+  const assignColegiaturaMatriculaLabel = (<><GrAddCircle /> {i18n.navBar.assignColegiaturaMatricula}</>);
   // PROGRAMAS POSTGRADO
-  const programaPostgradoAdminLabel = (<><IoMdSchool /> {i18n.navBar.programaPostgradoAdmin}</>);
   const programaPostgradoRegistrationLabel = (<><GrAddCircle /> {i18n.navBar.programaPostgradoRegistration}</>);
+  const programaPostgradoTableLabel = (<><AiOutlineTable /> {i18n.navBar.programaPostgradoTable}</>);
+  const programaPostgradoAdminLabel = (<><IoMdSchool /> {i18n.navBar.programaPostgradoAdmin}</>);
   const programaPostgradoCursoRegistrationLabel = (<><GrAddCircle /> {i18n.navBar.programaPostgradoRegistration}</>);
   const programaPostgradoCursoTableLabel = (<><AiOutlineTable /> {i18n.navBar.programaPostgradoTable}</>);
-  const programaPostgradoTableLabel = (<><AiOutlineTable /> {i18n.navBar.programaPostgradoTable}</>);
-  const assignColegiaturaMatriculaLabel = (<><GrAddCircle /> {i18n.navBar.assignColegiaturaMatricula}</>);
   // ******* ******* ******* HOSPITAL SYSTEM ******* ******* *******
   // DOCTORS
   const doctorAdminLabel = (<><FaUserMd /> {i18n.navBar.doctorAdmin}</>);
@@ -1114,18 +1131,41 @@ function NavBar () {
 
           {/* ******* ******* ******* MENSUALIDAD SYSTEM ******* ******* ********/}
           {(userRoles.includes(enumRoles.MENSUALIDAD_ENCARGADO)) &&
+          <NavDropdown title={cuotaPagoAdminLabel}>
+            <NavDropdown.Item onClick={navigateCuotaPagoForm}>{cuotaPagoRegistrationLabel}</NavDropdown.Item>
+            <NavDropdown.Item onClick={navigateCuotaPagoTable}>{cuotaPagoTableLabel}</NavDropdown.Item>
+            <NavDropdown.Item onClick={navigateAssignCuotaPagoStep1}>{assigncuotaPagoLabel}</NavDropdown.Item>
+          </NavDropdown>}
+          {userRoles.includes(enumRoles.MENSUALIDAD_ENCARGADO) &&
+            <NavDropdown title={escuelaCursosAdminLabel}>
+              <NavDropdown.Item onClick={navigateCursosForm}>{escuelaCursosFormLabel}</NavDropdown.Item>
+              <NavDropdown.Item onClick={navigateCursosTable}>{escuelaCursosTableLabel}</NavDropdown.Item>
+            </NavDropdown>}
+          {userRoles.includes(enumRoles.MENSUALIDAD_ENCARGADO) &&
+            <NavDropdown title={escuelaEstudiantesAdminLabel}>
+              <NavDropdown.Item onClick={navigateEstudiantesForm}>{escuelaEstudiantesFormLabel}</NavDropdown.Item>
+              <NavDropdown.Item onClick={navigateEstudiantesTable}>{escuelaEstudiantesTableLabel}</NavDropdown.Item>
+              <NavDropdown.Item onClick={navigateEstudiantesCursos}>{escuelaEstudiantesCursoLabel}</NavDropdown.Item>
+            </NavDropdown>}
+
+          {/* ******* ******* ******* PAGOS UPEA SYSTEM ******* ******* ********/}
+          {(userRoles.includes(enumRoles.UPEA_PAGOS_ENCARGADO)) &&
           <NavDropdown title={colegiaturaMatriculaAdminLabel}>
             <NavDropdown.Item onClick={navigateColegiaturaMatriculaForm}>{colegiaturaMatriculaRegistrationLabel}</NavDropdown.Item>
             <NavDropdown.Item onClick={navigateColegiaturaMatriculaTable}>{colegiaturaMatriculaTableLabel}</NavDropdown.Item>
             <NavDropdown.Item onClick={navigateAssignColegiaturaMatricula}>{assignColegiaturaMatriculaLabel}</NavDropdown.Item>
           </NavDropdown>}
-          {(userRoles.includes(enumRoles.MENSUALIDAD_ENCARGADO)) &&
+          {(userRoles.includes(enumRoles.UPEA_PAGOS_ENCARGADO)) &&
           <NavDropdown title={programaPostgradoAdminLabel}>
-            {/* <NavDropdown.Item onClick={navigateProgramaPostgradoForm}>{programaPostgradoRegistrationLabel}</NavDropdown.Item> */}
-            {/* <NavDropdown.Item onClick={navigateProgramaPostgradoTable}>{programaPostgradoTableLabel}</NavDropdown.Item> */}
             <NavDropdown.Item onClick={navigateProgramaPostgradoCursoForm}>{programaPostgradoCursoRegistrationLabel}</NavDropdown.Item>
             <NavDropdown.Item onClick={navigateProgramaPostgradoCursoTable}>{programaPostgradoCursoTableLabel}</NavDropdown.Item>
           </NavDropdown>}
+          {userRoles.includes(enumRoles.UPEA_PAGOS_ENCARGADO) &&
+            <NavDropdown title={escuelaEstudiantesAdminLabel}>
+              <NavDropdown.Item onClick={navigateEstudiantesForm}>{escuelaEstudiantesFormLabel}</NavDropdown.Item>
+              <NavDropdown.Item onClick={navigateEstudiantesTable}>{escuelaEstudiantesTableLabel}</NavDropdown.Item>
+              <NavDropdown.Item onClick={navigateEstudiantesCursos}>{escuelaEstudiantesCursoLabel}</NavDropdown.Item>
+            </NavDropdown>}
 
           {/* ******* ******* ******* HOSPITAL SYSTEM ******* ******* ********/}
           {userRoles.includes(enumRoles.HOSPITAL_ADMIN) &&

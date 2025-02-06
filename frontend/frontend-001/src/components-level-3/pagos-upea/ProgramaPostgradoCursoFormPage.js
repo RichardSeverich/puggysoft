@@ -1,6 +1,6 @@
 import React from "react";
 import NavBar from "../../components-level-2/navbar/NavBar";
-import ProgramaPostgradoCursoForm from "../../components-level-2/mensualidad/ProgramaPostgradoCursoForm";
+import ProgramaPostgradoCursoForm from "../../components-level-2/pagos-upea/ProgramaPostgradoCursoForm";
 
 function ProgramaPostgradoCursoFormPage () {
   return (

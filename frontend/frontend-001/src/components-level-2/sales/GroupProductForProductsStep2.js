@@ -8,7 +8,7 @@ import {
   handleDeleteRequest
 } from "../../actions/HandleManager";
 import ProductGroupGenericTable from "./generic/ProductGenericTable";
-import ColegiaturaMatriculaGenericTable from "../mensualidad/generic/ColegiaturaMatriculaGenericTable";
+import ColegiaturaMatriculaGenericTable from "../mensualidad/generic/CuotaPagoGenericTable";
 import enumTableColumnsToShow from "../../models/enumTableColumnsToShow";
 import Card from "react-bootstrap/Card";
 import CommonLoading from "../../components-level-1/CommonLoading";
@@ -29,9 +29,15 @@ function GroupProductForProductsStep2 (props) {
   switch (whatSystemIs) {
   case enumSystems.MENSUALIDAD:
     GenericTable = ColegiaturaMatriculaGenericTable;
-    itemSelectedTitle = i18n.mensualidad.programaPostgradoLabel;
-    tableSubTitleOne = i18n.mensualidad.colegiaturaMatriculaTitleAvaliable;
-    tableSubTitleTwo = i18n.mensualidad.colegiaturaMatriculaTitleAggregate;
+    itemSelectedTitle = i18n.escuela.curso;
+    tableSubTitleOne = i18n.mensualidad.cuotaPagoTitleAvaliable;
+    tableSubTitleTwo = i18n.mensualidad.cuotaPagoTitleAggregate;
+    break;
+  case enumSystems.PAGO_UPEA:
+    GenericTable = ColegiaturaMatriculaGenericTable;
+    itemSelectedTitle = i18n.pagoUpea.programaPostgradoLabel;
+    tableSubTitleOne = i18n.pagoUpea.colegiaturaMatriculaTitleAvaliable;
+    tableSubTitleTwo = i18n.pagoUpea.colegiaturaMatriculaTitleAggregate;
     break;
   default:
     GenericTable = ProductGroupGenericTable;

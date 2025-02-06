@@ -1,6 +1,6 @@
 import React from "react";
 import NavBar from "../../components-level-2/navbar/NavBar";
-import ProgramaPostgradoCursoTable from "../../components-level-2/mensualidad/ProgramaPostgradoCursoTable";
+import ProgramaPostgradoCursoTable from "../../components-level-2/pagos-upea/ProgramaPostgradoCursoTable";
 
 function ProgramaPostgradoCursoTablePage () {
   return (

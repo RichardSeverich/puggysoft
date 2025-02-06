@@ -4,9 +4,10 @@ import TableFilterGeneric from "../../generic/TableFilterGeneric";
 import useInput from "../../../hooks/useInput";
 import enumCompareOperators from "../../../models/enumCompareOperators";
 import enumTableColumnsToShow from "../../../models/enumTableColumnsToShow";
-import tableModel from "../../../models/mensualidad/colegiaturaMatriculaTableModels";
+import tableModel from "../../../models/mensualidad/cuotaPagoTableModels";
+import enumSystems from "../../../models/enumSystems";
 
-function ColegiaturaMatriculaGenericTable (props) {
+function CuotaPagoGenericTable (props) {
   const {
     numberPagesToShow,
     tableTitle,
@@ -15,7 +16,8 @@ function ColegiaturaMatriculaGenericTable (props) {
     handleGetSize,
     tableArrayCustomRowButtons,
     columnsToShow,
-    fixArrayData
+    fixArrayData,
+    whatSystemIs
   } = props;
 
   // CRITERIA OF SEARCH OR FILTER
@@ -47,7 +49,8 @@ function ColegiaturaMatriculaGenericTable (props) {
     /* CREATED BY */criteriaCreatedBy, criteriaOnChangeCreatedBy, criteriaSetCreatedBy, operatorCreatedBy, operatorOnChangeCreatedBy, operatorSetCreatedBy,
     /* UPDATED BY */criteriaUpdatedBy, criteriaOnChangeUpdatedBy, criteriaSetUpdatedBy, operatorUpdatedBy, operatorOnChangeUpdatedBy, operatorSetUpdatedBy,
     /* CREATED DATE */criteriaCreatedDate, criteriaOnChangeCreatedDate, criteriaSetCreatedDate, operatorCreatedDate, operatorOnChangeCreatedDate, operatorSetCreatedDate,
-    /* UPDATED DATE */criteriaUpdatedDate, criteriaOnChangeUpdatedDate, criteriaSetUpdatedDate, operatorUpdatedDate, operatorOnChangeUpdatedDate, operatorSetUpdatedDate
+    /* UPDATED DATE */criteriaUpdatedDate, criteriaOnChangeUpdatedDate, criteriaSetUpdatedDate, operatorUpdatedDate, operatorOnChangeUpdatedDate, operatorSetUpdatedDate,
+    whatSystemIs
   );
 
   return (
@@ -69,9 +72,9 @@ function ColegiaturaMatriculaGenericTable (props) {
   );
 }
 
-export default ColegiaturaMatriculaGenericTable;
+export default CuotaPagoGenericTable;
 
-ColegiaturaMatriculaGenericTable.propTypes = {
+CuotaPagoGenericTable.propTypes = {
   numberPagesToShow: PropTypes.number,
   tableTitle: PropTypes.string,
   tableSubTitle: PropTypes.string,
@@ -83,10 +86,14 @@ ColegiaturaMatriculaGenericTable.propTypes = {
     enumTableColumnsToShow.MEDIUM,
     enumTableColumnsToShow.MINIMUM
   ]),
-  fixArrayData: PropTypes.func
+  fixArrayData: PropTypes.func,
+  whatSystemIs: PropTypes.oneOf([
+    enumSystems.MENSUALIDAD,
+    enumSystems.PAGO_UPEA
+  ])
 };
 
-ColegiaturaMatriculaGenericTable.defaultProps = {
+CuotaPagoGenericTable.defaultProps = {
   numberPagesToShow: 0,
   tableTitle: "",
   tableSubTitle: undefined,
@@ -94,5 +101,6 @@ ColegiaturaMatriculaGenericTable.defaultProps = {
   handleGetSize: () => { },
   tableArrayCustomRowButtons: [],
   columnsToShow: enumTableColumnsToShow.FULL,
-  fixArrayData: undefined
+  fixArrayData: undefined,
+  whatSystemIs: enumSystems.MENSUALIDAD
 };
