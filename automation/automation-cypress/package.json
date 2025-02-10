@@ -1,0 +1,17 @@
+{
+  "name": "automation-frontend-002",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "cypress:open": "cypress open",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Richard Severich",
+  "license": "ISC",
+  "dependencies": {
+    "@cypress/xpath": "2.0.3",
+    "cypress": "12.17.4",
+    "cypress-xpath": "2.0.1"
+  }
+}
