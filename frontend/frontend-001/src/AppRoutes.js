@@ -103,6 +103,8 @@ import CuotaPagoFormPage from "./components-level-3/mesualidad/CuotaPagoFormPage
 import CuotaPagoTablePage from "./components-level-3/mesualidad/CuotaPagoTablePage";
 import AssignCuotaPagoStep1Page from "./components-level-3/mesualidad/AssignCuotaPagoStep1Page";
 import AssignCuotaPagoStep2Page from "./components-level-3/mesualidad/AssignCuotaPagoStep2Page";
+import MensualidadPagoStep1EncargadoPage from "./components-level-3/mesualidad/MensualidadPagoStep1EncargadoPage";
+import MensualidadPagoStep2EncargadoPage from "./components-level-3/mesualidad/MensualidadPagoStep2EncargadoPage";
 
 // Pago Upea System
 import ColegiaturaMatriculaFormPage from "./components-level-3/pagos-upea/ColegiaturaMatriculaFormPage";
@@ -340,6 +342,8 @@ const AppRoutes = () => (
       <Route exact path={enumPaths.MENSUALIDAD_CUOTA_PAGO_TABLE} component={CuotaPagoTablePage} />
       <Route exact path={enumPaths.MENSUALIDAD_ASSIGN_CUOTA_PAGO_STEP1} component={AssignCuotaPagoStep1Page} />
       <Route exact path={enumPaths.MENSUALIDAD_ASSIGN_CUOTA_PAGO_STEP2} component={AssignCuotaPagoStep2Page} />
+      <Route exact path={enumPaths.MENSUALIDAD_PAGO_STEP1_ENCARGADO} component={MensualidadPagoStep1EncargadoPage} />
+      <Route exact path={enumPaths.MENSUALIDAD_PAGO_STEP2_ENCARGADO} component={MensualidadPagoStep2EncargadoPage} />
       {/** Pagos Upea System */}
       <Route exact path={enumPaths.PAGO_UPEA_COLEGIATURAS_MATRICULAS_FORM} component={ColegiaturaMatriculaFormPage} />
       <Route exact path={enumPaths.PAGO_UPEA_COLEGIATURAS_MATRICULAS_TABLE} component={ColegiaturaMatriculaTablePage} />

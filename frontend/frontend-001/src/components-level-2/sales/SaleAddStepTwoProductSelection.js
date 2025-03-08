@@ -21,6 +21,7 @@ import enumPaths from "./../../models/enumPaths";
 import fixDate from "./../../tools/fixDate";
 import pdfBuilderTicket from "./../../tools/pdfBuilderTicket";
 import useInput from "./../../hooks/useInput";
+import enumSystems from "../../models/enumSystems";
 
 import "./../css/all-two-divs-side-by-side.css";
 import "./../css/all-six-divs-side-by-side.css";
@@ -40,7 +41,14 @@ function SaleAddStepTwoProductSelection () {
   const [messageTitle, setMessageTitle] = useState("");
   const [messageText, setMessageText] = useState("");
 
-  const { saleData, saleTableViewType } = history &&
+  const {
+    saleData,
+    saleTableViewType,
+    whatSystemIs,
+    // Mensualidad system
+    estudianteSelected,
+    cursoSelected
+  } = history &&
     history.location !== undefined &&
     history.location.state !== undefined &&
     history.location.state.data !== undefined
@@ -67,10 +75,18 @@ function SaleAddStepTwoProductSelection () {
 
   // functions to add products to a sale.
   function handleGetDataProductsAddToSale (activePage, filterBody, updateArrayData) {
-    handleFilterRequest(`products/filter?page=${activePage - 1}&size=${pageSize}`, filterBody, updateArrayData);
+    if (whatSystemIs === enumSystems.MENSUALIDAD) {
+      handleFilterRequest(`mensualidad-cuota-by-student-and-course/filter?studentUsername=${estudianteSelected.username}&courseId=${cursoSelected.id}&page=${activePage - 1}&size=${pageSize}`, filterBody, updateArrayData);
+    } else {
+      handleFilterRequest(`products/filter?page=${activePage - 1}&size=${pageSize}`, filterBody, updateArrayData);
+    }
   }
   function handleGetSizeProductsAddToSale (filterBody, setTotalPages) {
-    handleFilterRequest(`products/filter/size/${pageSize}`, filterBody, setTotalPages);
+    if (whatSystemIs === enumSystems.MENSUALIDAD) {
+      handleFilterRequest(`mensualidad-cuota-by-student-and-course/filter/size/?studentUsername=${estudianteSelected.username}&courseId=${cursoSelected.id}&pageSize=${pageSize}`, filterBody, setTotalPages);
+    } else {
+      handleFilterRequest(`products/filter/size/${pageSize}`, filterBody, setTotalPages);
+    }
   }
 
   function handleAfterAddProductToSale (salesProductsOrError) {

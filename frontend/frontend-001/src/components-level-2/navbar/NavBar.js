@@ -316,6 +316,9 @@ function NavBar () {
   const navigateAssignCuotaPagoStep1 = () => {
     history.push(enumPaths.MENSUALIDAD_ASSIGN_CUOTA_PAGO_STEP1);
   };
+  const navigateMensualidadVentaStep1Encargado = () => {
+    history.push(enumPaths.MENSUALIDAD_PAGO_STEP1_ENCARGADO);
+  };
 
   // ******* ******* ******* PAGO UPEA SYSTEM ******* ******* *******
   const navigateColegiaturaMatriculaForm = () => {
@@ -784,11 +787,13 @@ function NavBar () {
     questionMarkTooltipLabel={i18n.saleReport.infoReportProfitMonthPerProduct}
   />);
   // ******* ******* ******* MENSUALIDAD SYSTEM ******* ******* *******
-  // COLEGIATURAS/MATRICULAS
+  // CUOTA PAGO
   const cuotaPagoAdminLabel = (<><FaBook /> {i18n.navBar.cuotaPagoAdmin}</>);
   const cuotaPagoRegistrationLabel = (<><GrAddCircle /> {i18n.navBar.cuotaPagoRegistration}</>);
   const cuotaPagoTableLabel = (<><AiOutlineTable /> {i18n.navBar.cuotaPagoTable}</>);
   const assigncuotaPagoLabel = (<><GrAddCircle /> {i18n.navBar.assigncuotaPago}</>);
+  const pagoAdminLabel = (<><BsCartCheckFill /> {i18n.navBar.pagosAdmin}</>);
+  const pagoRegistrationLabel = (<><BsCartCheckFill /> {i18n.navBar.pagosAdminRegistration}</>);
   // ******* ******* ******* PAGOS UPEA SYSTEM ******* ******* *******
   // COLEGIATURAS/MATRICULAS
   const colegiaturaMatriculaAdminLabel = (<><FaBook /> {i18n.navBar.colegiaturaMatriculaAdmin}</>);
@@ -1101,7 +1106,8 @@ function NavBar () {
             userRoles.includes(enumRoles.SALES_SELLER)) &&
             <NavDropdown title={salesAdminLabel}>
               <NavDropdown.Item onClick={navigateSalesRegistrationStepOneSeller}>{salesRegistrationLabel}</NavDropdown.Item>
-              {userRoles.includes(enumRoles.SALES_ADMIN) &&
+              {(userRoles.includes(enumRoles.SALES_ADMIN) ||
+            userRoles.includes(enumRoles.SALES_ADMIN_RESTAURANT)) &&
                 <NavDropdown.Item onClick={navigateSalesTableFilter}>{salesShowTableLabel}</NavDropdown.Item>}
               {/* <NavDropdown.Item onClick={navigateGeneric}>{salesShowCardLabel}</NavDropdown.Item> */}
             </NavDropdown>}
@@ -1146,6 +1152,10 @@ function NavBar () {
               <NavDropdown.Item onClick={navigateEstudiantesForm}>{escuelaEstudiantesFormLabel}</NavDropdown.Item>
               <NavDropdown.Item onClick={navigateEstudiantesTable}>{escuelaEstudiantesTableLabel}</NavDropdown.Item>
               <NavDropdown.Item onClick={navigateEstudiantesCursos}>{escuelaEstudiantesCursoLabel}</NavDropdown.Item>
+            </NavDropdown>}
+          {userRoles.includes(enumRoles.MENSUALIDAD_ENCARGADO) &&
+            <NavDropdown title={pagoAdminLabel}>
+              <NavDropdown.Item onClick={navigateMensualidadVentaStep1Encargado}>{pagoRegistrationLabel}</NavDropdown.Item>
             </NavDropdown>}
 
           {/* ******* ******* ******* PAGOS UPEA SYSTEM ******* ******* ********/}
