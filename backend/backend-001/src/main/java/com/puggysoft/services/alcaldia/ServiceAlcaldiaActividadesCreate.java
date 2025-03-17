@@ -21,7 +21,7 @@ public class ServiceAlcaldiaActividadesCreate {
     try {
       EntityAlcaldiaActividades entity = repository
           .save(dto.dtoToEntity());
-          DtoAlcaldiaActividades dtoNew = DtoAlcaldiaActividades.entityToDto(entity);
+      DtoAlcaldiaActividades dtoNew = DtoAlcaldiaActividades.entityToDto(entity);
       String idString = String.valueOf(dtoNew.getId());
       return ResponseEntity.status(HttpStatus.CREATED).body(idString);
     } catch (DataAccessException ex) {

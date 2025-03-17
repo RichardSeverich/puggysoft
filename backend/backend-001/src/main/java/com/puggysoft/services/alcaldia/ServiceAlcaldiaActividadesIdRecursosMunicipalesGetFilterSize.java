@@ -34,8 +34,8 @@ public class ServiceAlcaldiaActividadesIdRecursosMunicipalesGetFilterSize {
       // Delete last 'AND' key workd.
       query = query.substring(0, query.length() - 4);
       String fullQuery = "SELECT COUNT(*) FROM alcaldia_recursos_municipales "
-      + "INNER JOIN alcaldia_recursos_municipales_actividades ON alcaldia_recursos_municipales.id=alcaldia_recursos_municipales_actividades.id_recurso_municipal "
-      + "WHERE alcaldia_recursos_municipales_actividades.id_actividades = " + idActividad + " AND " + query;
+          + "INNER JOIN alcaldia_recursos_municipales_actividades ON alcaldia_recursos_municipales.id=alcaldia_recursos_municipales_actividades.id_recurso_municipal "
+          + "WHERE alcaldia_recursos_municipales_actividades.id_actividades = " + idActividad + " AND " + query;
       Query filterQuery = entityManager.createNativeQuery(fullQuery);
       totalRows = Long.valueOf(filterQuery.getSingleResult().toString());
     }

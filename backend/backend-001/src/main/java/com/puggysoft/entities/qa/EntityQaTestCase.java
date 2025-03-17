@@ -1,11 +1,11 @@
 package com.puggysoft.entities.qa;
 
 import com.puggysoft.entities.EntitySuperClass;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
-import com.puggysoft.models.qa.EnumQaPriority;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 

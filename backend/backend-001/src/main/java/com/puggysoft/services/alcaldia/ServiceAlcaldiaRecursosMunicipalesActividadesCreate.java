@@ -22,7 +22,7 @@ public class ServiceAlcaldiaRecursosMunicipalesActividadesCreate {
     try {
       EntityAlcaldiaRecursosMunicipalesActividad entity = repository
           .save(dto.dtoToEntity());
-          DtoAlcaldiaRecursosMunicipalesActividad dtoNew = DtoAlcaldiaRecursosMunicipalesActividad.entityToDto(entity);
+      DtoAlcaldiaRecursosMunicipalesActividad dtoNew = DtoAlcaldiaRecursosMunicipalesActividad.entityToDto(entity);
       String idString = String.valueOf(dtoNew.getId());
       return ResponseEntity.status(HttpStatus.CREATED).body(idString);
     } catch (DataAccessException ex) {

@@ -1,11 +1,12 @@
 package com.puggysoft.repositories.escuela;
 
 import com.puggysoft.entities.escuela.EntityEscuelaCursosDocentes;
+
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
-
-import java.util.List;
 
 @Repository
 public interface IRepositoryEscuelaCursosDocentes extends JpaRepository<EntityEscuelaCursosDocentes, Long> {

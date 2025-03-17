@@ -5,13 +5,14 @@ import com.puggysoft.support.TotalPagesCalculator;
 import com.puggysoft.tools.SqlJoinCountBuilder;
 import com.puggysoft.tools.SqlNotInCountBuilder;
 import com.puggysoft.tools.qa.SqlQaTestCaseFilterBuilderNative;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
 
 /**
  * Services for get size.

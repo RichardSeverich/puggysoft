@@ -40,24 +40,24 @@ public class ServiceAlcaldiaActividadesIdRecursosMunicipalesGetFilter {
       // Delete last 'AND' key workd.
       query = query.substring(0, query.length() - 4);
       String fullQuery = "SELECT alcaldia_recursos_municipales_actividades.id AS id, "
-      + "alcaldia_recursos_municipales.codigo, "
-      + "alcaldia_recursos_municipales.codigo_auxiliar, "
-      + "alcaldia_recursos_municipales.name, "
-      + "alcaldia_recursos_municipales.name_aux, "
-      + "alcaldia_recursos_municipales.folder_cantidad_timbres, "
-      + "alcaldia_recursos_municipales.precio, "
-      + "alcaldia_recursos_municipales.tipo, "
-      + "alcaldia_recursos_municipales.tenant, "
-      + "alcaldia_recursos_municipales.talonario_movimiento, "
-      + "alcaldia_recursos_municipales.talonario_inicio, "
-      + "alcaldia_recursos_municipales.talonario_final, "
-      + "alcaldia_recursos_municipales.creation_date, "
-      + "alcaldia_recursos_municipales.update_date, "
-      + "alcaldia_recursos_municipales.created_by, "
-      + "alcaldia_recursos_municipales.updated_by "
-      + "FROM alcaldia_recursos_municipales "
-      + "INNER JOIN alcaldia_recursos_municipales_actividades ON alcaldia_recursos_municipales.id=alcaldia_recursos_municipales_actividades.id_recurso_municipal "
-      + "WHERE alcaldia_recursos_municipales_actividades.id_actividades = " + idActividad + " AND " + query + " LIMIT " + off + "," + size;
+          + "alcaldia_recursos_municipales.codigo, "
+          + "alcaldia_recursos_municipales.codigo_auxiliar, "
+          + "alcaldia_recursos_municipales.name, "
+          + "alcaldia_recursos_municipales.name_aux, "
+          + "alcaldia_recursos_municipales.folder_cantidad_timbres, "
+          + "alcaldia_recursos_municipales.precio, "
+          + "alcaldia_recursos_municipales.tipo, "
+          + "alcaldia_recursos_municipales.tenant, "
+          + "alcaldia_recursos_municipales.talonario_movimiento, "
+          + "alcaldia_recursos_municipales.talonario_inicio, "
+          + "alcaldia_recursos_municipales.talonario_final, "
+          + "alcaldia_recursos_municipales.creation_date, "
+          + "alcaldia_recursos_municipales.update_date, "
+          + "alcaldia_recursos_municipales.created_by, "
+          + "alcaldia_recursos_municipales.updated_by "
+          + "FROM alcaldia_recursos_municipales "
+          + "INNER JOIN alcaldia_recursos_municipales_actividades ON alcaldia_recursos_municipales.id=alcaldia_recursos_municipales_actividades.id_recurso_municipal "
+          + "WHERE alcaldia_recursos_municipales_actividades.id_actividades = " + idActividad + " AND " + query + " LIMIT " + off + "," + size;
       // JQPL (createQuery) and Native (createNativeQuery)
       Query filterQuery = entityManager.createNativeQuery(fullQuery, EntityAlcaldiaRecursosMunicipales.class);
       listEntities = (List<EntityAlcaldiaRecursosMunicipales>) filterQuery.getResultList();

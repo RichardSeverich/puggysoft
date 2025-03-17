@@ -1,30 +1,30 @@
 package com.puggysoft.services.alcaldia;
 
-import com.puggysoft.dtos.alcaldia.DtoAlcaldiaRecursosMunicipalesReporteCriteriaDay;
 import com.puggysoft.dtos.alcaldia.DtoAlcaldiaRecursosMunicipalesReporteCriteriaMonth;
 import com.puggysoft.dtos.alcaldia.DtoAlcaldiaRecursosMunicipalesVenta;
 import com.puggysoft.repositories.alcaldia.IRepositoryAlcaldiaRecursosMunicipalesVentasReporte;
+
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
 @Service
 public class ServiceAlcaldiaRecursosMunicipalesReporteVentaMensual {
 
   @Autowired
-  private IRepositoryAlcaldiaRecursosMunicipalesVentasReporte IRRecusosMunicipalesVentasReporte;
+  private IRepositoryAlcaldiaRecursosMunicipalesVentasReporte recusosMunicipalesVentasReporte;
 
   /**
    * method for retrieve.
    */
   public ResponseEntity<List<DtoAlcaldiaRecursosMunicipalesVenta>> getReporteVentasMensual(
-      DtoAlcaldiaRecursosMunicipalesReporteCriteriaMonth dtoCriteria){
+      DtoAlcaldiaRecursosMunicipalesReporteCriteriaMonth dtoCriteria) {
 
-    List<DtoAlcaldiaRecursosMunicipalesVenta> listDtoVentasDiarias = IRRecusosMunicipalesVentasReporte.getMonthReport(
+    List<DtoAlcaldiaRecursosMunicipalesVenta> listDtoVentasDiarias = recusosMunicipalesVentasReporte.getMonthReport(
         dtoCriteria.nameRecursoMunicipal,
             dtoCriteria.idRecursoMunipal,
             dtoCriteria.status.toString(),

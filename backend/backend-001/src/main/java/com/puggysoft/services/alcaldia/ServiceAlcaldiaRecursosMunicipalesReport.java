@@ -5,18 +5,17 @@ import com.puggysoft.dtos.alcaldia.DtoAlcaldiaRecursosMunicipalesReport;
 import com.puggysoft.dtos.alcaldia.DtoAlcaldiaRecursosMunicipalesReportCriteria;
 import com.puggysoft.dtos.alcaldia.DtoAlcaldiaRecursosMunicipalesReportItem;
 import com.puggysoft.dtos.alcaldia.DtoAlcaldiaRecursosMunicipalesReportResumen;
-import com.puggysoft.entities.alcaldia.EntityAlcaldiaRecursosMunicipalesReportItem;
 import com.puggysoft.entities.alcaldia.EntityAlcaldiaRecursosMunicipalesVenta;
 import com.puggysoft.entities.alcaldia.EntityAlcaldiaRecursosMunicipalesVentaDetalle;
 import com.puggysoft.repositories.alcaldia.IRepositoryAlcaldiaRecursosMunicipales;
 import com.puggysoft.repositories.alcaldia.IRepositoryAlcaldiaRecursosMunicipalesReport;
+import com.puggysoft.repositories.alcaldia.IRepositoryAlcaldiaRecursosMunicipalesVenta;
+import com.puggysoft.repositories.alcaldia.IRepositoryAlcaldiaRecursosMunicipalesVentaDetalle;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import com.puggysoft.repositories.alcaldia.IRepositoryAlcaldiaRecursosMunicipalesVenta;
-import com.puggysoft.repositories.alcaldia.IRepositoryAlcaldiaRecursosMunicipalesVentaDetalle;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -99,6 +98,9 @@ public class ServiceAlcaldiaRecursosMunicipalesReport {
     return ResponseEntity.status(HttpStatus.OK).body(reportResult);
   }
 
+  /**
+   * method for resources.
+   */
   public List<DtoAlcaldiaRecursosMunicipales> getAllResources(String tenant) {
     List<DtoAlcaldiaRecursosMunicipales> listOfProducts = repositoryAlcaldiaRecursos
         .findAlcaldiaRecursosMunicipalesKidsNotRepeatName(tenant)

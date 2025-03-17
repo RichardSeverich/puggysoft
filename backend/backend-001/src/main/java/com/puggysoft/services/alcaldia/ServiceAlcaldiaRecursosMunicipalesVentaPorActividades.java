@@ -10,7 +10,6 @@ import com.puggysoft.entities.alcaldia.EntityAlcaldiaRecursosMunicipalesVenta;
 import com.puggysoft.repositories.alcaldia.IRepositoryAlcaldiaRecursosMunicipalesVenta;
 import com.puggysoft.repositories.alcaldia.IRepositoryAlcaldiaRecursosMunicipalesVentaDetalle;
 
-import java.lang.String;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -176,8 +175,8 @@ public class ServiceAlcaldiaRecursosMunicipalesVentaPorActividades {
       dtoControl.setId(Long.parseLong(dto.getIdVenta()));
       repositoryAlcaldiaRecursosMunicipalesVenta.save(dtoControl.dtoToEntity());
 
-      String result = "{\"precioTotal\": \"${precioTotal}\", \"arrayRecursos\": ${arrayString}, \"newVentaNota\": \"${newVentaNota}\"," +
-      "\"newVentaNotaFolders\": \"${newVentaNotaFolders}\"}";
+      String result = "{\"precioTotal\": \"${precioTotal}\", \"arrayRecursos\": ${arrayString}, \"newVentaNota\": \"${newVentaNota}\","
+          + "\"newVentaNotaFolders\": \"${newVentaNotaFolders}\"}";
       result = result.replace("${precioTotal}", precioTotal.toString());
       result = result.replace("${arrayString}", arrayString);
       result = result.replace("${newVentaNota}", newVentaNota);

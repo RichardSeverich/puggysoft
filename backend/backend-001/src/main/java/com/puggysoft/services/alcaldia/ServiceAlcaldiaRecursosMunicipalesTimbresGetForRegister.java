@@ -14,6 +14,7 @@ public class ServiceAlcaldiaRecursosMunicipalesTimbresGetForRegister {
   @PersistenceContext
   private EntityManager entityManager;
 
+  /** filter. */
   public ResponseEntity<String> filter(String tenant) {
 
     String fullQuery = "SELECT MAX(talonario_final) FROM alcaldia_recursos_municipales WHERE name LIKE '%TIMBRES%' "

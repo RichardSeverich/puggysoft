@@ -1,21 +1,30 @@
 package com.puggysoft.services.system;
 
 import com.puggysoft.entities.users.EntityUser;
+
+import java.io.UnsupportedEncodingException;
+
+import javax.mail.MessagingException;
+import javax.mail.internet.MimeMessage;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
-import javax.mail.MessagingException;
-import javax.mail.internet.MimeMessage;
-import java.io.UnsupportedEncodingException;
-
 @Service
 public class ServiceEmailSender {
   @Autowired
   private JavaMailSender mailSender;
 
+  /**
+  * Sends a simple email to the specified recipient.
+  *
+  * @param toEmail the recipient's email address
+  * @param subject the subject of the email
+  * @param body the body content of the email
+  */
   public void sendSimpleEmail(String toEmail,
                               String subject,
                               String body

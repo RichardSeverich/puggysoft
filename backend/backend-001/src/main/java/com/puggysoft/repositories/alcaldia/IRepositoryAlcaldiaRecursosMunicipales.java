@@ -14,15 +14,19 @@ public interface IRepositoryAlcaldiaRecursosMunicipales extends JpaRepository<En
 
   @Query(value = "SELECT * FROM alcaldia_recursos_municipales LIMIT ?1, ?2", nativeQuery = true)
   List<EntityAlcaldiaRecursosMunicipales> findAlcaldiaRecursosMunicipalesByPagination(int off, int size);
+
   // obtener recursos hijos no repetidos por name
   @Query(value = "SELECT * FROM alcaldia_recursos_municipales WHERE tipo = \"HIJO\" AND tenant = ?1 GROUP BY name, id ORDER BY id", nativeQuery = true)
   List<EntityAlcaldiaRecursosMunicipales> findAlcaldiaRecursosMunicipalesKidsNotRepeatName(String tenant);
+
   // obtener recursos timbres no repetidos por name
   @Query(value = "SELECT * FROM alcaldia_recursos_municipales WHERE name LIKE \"%TIMBRES%\" AND tenant = ?1 GROUP BY name, id ORDER BY id", nativeQuery = true)
   List<EntityAlcaldiaRecursosMunicipales> findAlcaldiaRecursosMunicipalesKidsNotRepeatNameTimbres(String tenant);
+
   // obtener recursos folders no repetidos por name
   @Query(value = "SELECT * FROM alcaldia_recursos_municipales WHERE name LIKE \"%FOLDERS%\" AND tenant = ?1 GROUP BY name, id ORDER BY id", nativeQuery = true)
   List<EntityAlcaldiaRecursosMunicipales> findAlcaldiaRecursosMunicipalesKidsNotRepeatNameFolders(String tenant);
+
   // obtener recursos padres no repetidos por name
   @Query(value = "SELECT * FROM alcaldia_recursos_municipales WHERE tipo = \"PADRE\" AND tenant = ?1 GROUP BY name, id ORDER BY id", nativeQuery = true)
   List<EntityAlcaldiaRecursosMunicipales> findAlcaldiaRecursosMunicipalesfatherNotRepeatName(String tenant);
