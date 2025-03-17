@@ -1,9 +1,9 @@
 package com.puggysoft.services.alcaldia;
 
 import com.puggysoft.dtos.alcaldia.DtoAlcaldiaRecursosMunicipales;
-import com.puggysoft.dtos.alcaldia.DtoAlcaldiaRecursosMunicipalesReporteCortoResponse;
 import com.puggysoft.dtos.alcaldia.DtoAlcaldiaRecursosMunicipalesReportCriteria;
 import com.puggysoft.dtos.alcaldia.DtoAlcaldiaRecursosMunicipalesReporteCorto;
+import com.puggysoft.dtos.alcaldia.DtoAlcaldiaRecursosMunicipalesReporteCortoResponse;
 import com.puggysoft.repositories.alcaldia.IRepositoryAlcaldiaRecursosMunicipales;
 import com.puggysoft.repositories.alcaldia.IRepositoryAlcaldiaRecursosMunicipalesReport;
 

@@ -21,7 +21,7 @@ public class ServiceAlcaldiaRecursosMunicipalesTimbresDescontinuadosCreate {
     try {
       EntityAlcaldiaRecursosMunicipalesTimbresDescontinuados entity = repository
           .save(dtoAlcaldiaRecursosMunicipales.dtoToEntity());
-          DtoAlcaldiaRecursosMunicipalesTimbresDescontinuados dto = DtoAlcaldiaRecursosMunicipalesTimbresDescontinuados.entityToDto(entity);
+      DtoAlcaldiaRecursosMunicipalesTimbresDescontinuados dto = DtoAlcaldiaRecursosMunicipalesTimbresDescontinuados.entityToDto(entity);
       String idString = String.valueOf(dto.getId());
       return ResponseEntity.status(HttpStatus.CREATED).body(idString);
     } catch (DataAccessException ex) {

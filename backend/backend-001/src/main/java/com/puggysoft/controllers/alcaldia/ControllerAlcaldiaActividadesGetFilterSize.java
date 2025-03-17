@@ -18,8 +18,8 @@ public class ControllerAlcaldiaActividadesGetFilterSize {
 
   @PostMapping(path = "/api/v1/alcaldia-actividades/filter/size/{pageSize}")
   public ResponseEntity<Long> getSize(
-      @RequestBody @Valid DtoAlcaldiaActividadesFilter DtoFilter,
+      @RequestBody @Valid DtoAlcaldiaActividadesFilter dtoFilter,
       @PathVariable Long pageSize) {
-    return service.getSize(DtoFilter, pageSize);
+    return service.getSize(dtoFilter, pageSize);
   }
 }

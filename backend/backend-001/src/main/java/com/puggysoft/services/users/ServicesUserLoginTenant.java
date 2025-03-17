@@ -2,15 +2,15 @@ package com.puggysoft.services.users;
 
 import com.puggysoft.entities.system.EntitySystemProperty;
 import com.puggysoft.entities.users.EntityUser;
-import com.puggysoft.repositories.users.IRepositoryUser;
 import com.puggysoft.repositories.system.IRepositorySystemProperty;
+import com.puggysoft.repositories.users.IRepositoryUser;
+
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
-
 
 /**
  * Services for login tenant.

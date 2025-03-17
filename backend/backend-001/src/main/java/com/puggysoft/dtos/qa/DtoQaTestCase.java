@@ -1,10 +1,11 @@
 package com.puggysoft.dtos.qa;
 
 import com.puggysoft.dtos.DtoSuperClass;
-import javax.validation.constraints.NotNull;
-
 import com.puggysoft.entities.qa.EntityQaTestCase;
 import com.puggysoft.models.qa.EnumQaPriority;
+
+import javax.validation.constraints.NotNull;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
