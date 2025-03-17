@@ -12,13 +12,13 @@ import org.springframework.stereotype.Service;
 public class ServiceAlcaldiaRecursosMunicipalesVentaDetalleGetByIdVenta {
 
   @Autowired
-  private IRepositoryAlcaldiaRecursosMunicipalesVentaDetalle IRepository;
+  private IRepositoryAlcaldiaRecursosMunicipalesVentaDetalle repository;
 
   /** method for get by idVenta. */
   public ResponseEntity<DtoAlcaldiaRecursosMunicipalesVentaDetalle> getDtoRecursosMunicipalesVentaDetalleByIdVenta(
       Integer idVenta) {
-      DtoAlcaldiaRecursosMunicipalesVentaDetalle dto = DtoAlcaldiaRecursosMunicipalesVentaDetalle
-          .entityToDto(IRepository.getVentaDetalleByIdVenta(idVenta));
-      return ResponseEntity.status(HttpStatus.OK).body(dto);
+    DtoAlcaldiaRecursosMunicipalesVentaDetalle dto = DtoAlcaldiaRecursosMunicipalesVentaDetalle
+        .entityToDto(repository.getVentaDetalleByIdVenta(idVenta));
+    return ResponseEntity.status(HttpStatus.OK).body(dto);
   }
 }

@@ -2,14 +2,15 @@ package com.puggysoft.controllers.qa;
 
 import com.puggysoft.dtos.qa.DtoQaTagFilter;
 import com.puggysoft.services.qa.ServiceQaTagGetFilterSize;
+
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-
-import javax.validation.Valid;
 
 @RestController
 public class ControllerQaTagGetFilterSize {

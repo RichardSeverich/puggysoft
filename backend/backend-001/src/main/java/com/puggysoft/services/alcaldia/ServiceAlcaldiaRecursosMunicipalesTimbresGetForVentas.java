@@ -28,13 +28,13 @@ public class ServiceAlcaldiaRecursosMunicipalesTimbresGetForVentas {
 
     String query = SqlAlcaldiaRecursosMunicipalesFilterBuilderNative.build(dtoAlcaldiaRecursosMunicipalesFilter);
     List<EntityAlcaldiaRecursosMunicipales> listEntities;
-      // Delete last 'AND' key workd.
-      query = query.substring(0, query.length() - 4);
-      String fullQuery = "SELECT alcaldia_recursos_municipales.* FROM alcaldia_recursos_municipales WHERE "
-          + query + " AND alcaldia_recursos_municipales.talonario_final != alcaldia_recursos_municipales.talonario_movimiento ";
-      // JQPL (createQuery) and Native (createNativeQuery)
-      Query filterQuery = entityManager.createNativeQuery(fullQuery, EntityAlcaldiaRecursosMunicipales.class);
-      listEntities = (List<EntityAlcaldiaRecursosMunicipales>) filterQuery.getResultList();
+    // Delete last 'AND' key workd.
+    query = query.substring(0, query.length() - 4);
+    String fullQuery = "SELECT alcaldia_recursos_municipales.* FROM alcaldia_recursos_municipales WHERE "
+        + query + " AND alcaldia_recursos_municipales.talonario_final != alcaldia_recursos_municipales.talonario_movimiento ";
+    // JQPL (createQuery) and Native (createNativeQuery)
+    Query filterQuery = entityManager.createNativeQuery(fullQuery, EntityAlcaldiaRecursosMunicipales.class);
+    listEntities = (List<EntityAlcaldiaRecursosMunicipales>) filterQuery.getResultList();
     List<DtoAlcaldiaRecursosMunicipales> listDtoAlcaldiaRecursosMunicipales = listEntities
         .stream()
         .map(DtoAlcaldiaRecursosMunicipales::entityToDto)

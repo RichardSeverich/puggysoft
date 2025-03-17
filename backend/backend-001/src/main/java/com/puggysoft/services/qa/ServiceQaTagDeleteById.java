@@ -1,7 +1,6 @@
 package com.puggysoft.services.qa;
 
 import com.puggysoft.repositories.qa.IRepositoryQaTag;
-import com.puggysoft.repositories.qa.IRepositoryQaTestCase;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;

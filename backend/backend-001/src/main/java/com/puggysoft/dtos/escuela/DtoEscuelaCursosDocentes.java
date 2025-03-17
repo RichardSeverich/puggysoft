@@ -2,10 +2,11 @@ package com.puggysoft.dtos.escuela;
 
 import com.puggysoft.dtos.DtoSuperClass;
 import com.puggysoft.entities.escuela.EntityEscuelaCursosDocentes;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
 
 import javax.validation.constraints.NotNull;
+
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 /**
  * Class.

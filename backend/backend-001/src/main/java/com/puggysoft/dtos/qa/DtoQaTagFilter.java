@@ -1,9 +1,10 @@
 package com.puggysoft.dtos.qa;
 
 import com.puggysoft.models.EnumCompareOperator;
-import lombok.Data;
 
 import javax.validation.constraints.Size;
+
+import lombok.Data;
 
 /**
  * Class.

@@ -29,7 +29,7 @@ public class ServiceAlcaldiaRecursosMunicipalesTimbresDescontinuadosGetFilter {
   @SuppressWarnings(value = "unchecked")
 
   public ResponseEntity<List<DtoAlcaldiaRecursosMunicipalesTimbresDescontinuados>> filter(
-    DtoAlcaldiaRecursosMunicipalesTimbresDescontinuadosFilter dtoAlcaldiaRecursosMunicipalesFilter, int page, int size) {
+      DtoAlcaldiaRecursosMunicipalesTimbresDescontinuadosFilter dtoAlcaldiaRecursosMunicipalesFilter, int page, int size) {
 
     String query = SqlAlcaldiaRecursosMunicipalesTimbresDescontinuadosFilterBuilderNative.build(dtoAlcaldiaRecursosMunicipalesFilter);
     int off = page * size;

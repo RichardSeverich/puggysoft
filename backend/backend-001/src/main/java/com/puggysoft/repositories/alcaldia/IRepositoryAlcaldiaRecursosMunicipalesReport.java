@@ -10,7 +10,8 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface IRepositoryAlcaldiaRecursosMunicipalesReport
     extends JpaRepository<EntityAlcaldiaRecursosMunicipalesReportItem, Long> {
-      // detalle movimientos de ventas de un recurso recuperando n° de venta y precio total del detalle
+
+  // detalle movimientos de ventas de un recurso recuperando n° de venta y precio total del detalle
   @Query(value = "SELECT alcaldia_recursos_municipales_venta.id as numero_venta, "
       + "SUM(alcaldia_recursos_municipales_venta_detalle.precio_unidad * alcaldia_recursos_municipales_venta_detalle.cantidad) as ingreso_venta "
       + "FROM alcaldia_recursos_municipales_venta_detalle "
@@ -28,7 +29,7 @@ public interface IRepositoryAlcaldiaRecursosMunicipalesReport
       @Param("tenant") String tenant,
       @Param("fecha") String date);
 
-      // total diario de ventas de un recurso
+  // total diario de ventas de un recurso
   @Query(value = "SELECT "
       + "SUM(alcaldia_recursos_municipales_venta_detalle.precio_unidad * alcaldia_recursos_municipales_venta_detalle.cantidad) "
       + "FROM alcaldia_recursos_municipales_venta_detalle "
@@ -70,8 +71,8 @@ public interface IRepositoryAlcaldiaRecursosMunicipalesReport
       + "WHERE alcaldia_recursos_municipales.name LIKE '%:nameRecursoMunicipal%' "
       + "AND alcaldia_recursos_municipales_venta.venta_status = :estadoVenta "
       + "AND alcaldia_recursos_municipales_venta_detalle.tenant = :tenant "
-      + "AND DATE(alcaldia_recursos_municipales_venta_detalle.creation_date) = :yearMonthDay "
-      , nativeQuery = true)
+      + "AND DATE(alcaldia_recursos_municipales_venta_detalle.creation_date) = :yearMonthDay ",
+      nativeQuery = true)
   Double getIngresoTotalDiario(
       @Param("nameRecursoMunicipal") String nameRecursoMunicipal,
       @Param("estadoVenta") String estadoVenta,

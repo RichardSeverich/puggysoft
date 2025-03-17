@@ -2,10 +2,11 @@ package com.puggysoft.dtos.qa;
 
 import com.puggysoft.dtos.DtoSuperClass;
 import com.puggysoft.entities.qa.EntityQaTestCaseTag;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
 
 import javax.validation.constraints.NotNull;
+
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 /**
  * Class.

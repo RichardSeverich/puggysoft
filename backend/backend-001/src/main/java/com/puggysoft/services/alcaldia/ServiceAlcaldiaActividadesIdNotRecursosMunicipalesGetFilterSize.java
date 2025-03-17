@@ -34,21 +34,12 @@ public class ServiceAlcaldiaActividadesIdNotRecursosMunicipalesGetFilterSize {
       // Delete last 'AND' key workd.
       query = query.substring(0, query.length() - 4);
       String fullQuery = "SELECT DISTINCT COUNT(*) FROM alcaldia_recursos_municipales "
-      + "WHERE alcaldia_recursos_municipales.tipo = \"HIJO\" AND "
-      + "alcaldia_recursos_municipales.id NOT IN (SELECT alcaldia_recursos_municipales.id FROM alcaldia_recursos_municipales "
-      + "INNER JOIN alcaldia_recursos_municipales_actividades ON alcaldia_recursos_municipales.id = alcaldia_recursos_municipales_actividades.id_recurso_municipal "
-      + "WHERE alcaldia_recursos_municipales_actividades.id_actividades = " + idActividad + ") AND alcaldia_recursos_municipales.id " 
-      + "NOT IN (SELECT id FROM alcaldia_recursos_municipales WHERE name LIKE \"%TIMBRES%\") AND "
-      + query;
-      // + "WHERE alcaldia_recursos_municipales.tipo = \"HIJO\" AND "
-      // + "alcaldia_recursos_municipales.id NOT IN (SELECT alcaldia_recursos_municipales.id FROM alcaldia_recursos_municipales "
-      // + "INNER JOIN alcaldia_recursos_municipales_actividades ON alcaldia_recursos_municipales.id = alcaldia_recursos_municipales_actividades.id_recurso_municipal "
-      // + "WHERE alcaldia_recursos_municipales_actividades.id_actividades = " + idActividad + ") AND alcaldia_recursos_municipales.id " 
-      // + "NOT IN (SELECT id FROM alcaldia_recursos_municipales WHERE name = (SELECT alcaldia_recursos_municipales.name FROM alcaldia_recursos_municipales INNER JOIN alcaldia_recursos_municipales_actividades "
-      // + "ON alcaldia_recursos_municipales_actividades.id_recurso_municipal = alcaldia_recursos_municipales.id "
-      // + "WHERE alcaldia_recursos_municipales_actividades.id_actividades = " + idActividad + " AND alcaldia_recursos_municipales_actividades.id_recurso_municipal = "
-      // + "(SELECT id FROM `alcaldia_recursos_municipales` WHERE name LIKE \"%TIMBRES%\" LIMIT 1))) AND "
-      // + query;
+          + "WHERE alcaldia_recursos_municipales.tipo = \"HIJO\" AND "
+          + "alcaldia_recursos_municipales.id NOT IN (SELECT alcaldia_recursos_municipales.id FROM alcaldia_recursos_municipales "
+          + "INNER JOIN alcaldia_recursos_municipales_actividades ON alcaldia_recursos_municipales.id = alcaldia_recursos_municipales_actividades.id_recurso_municipal "
+          + "WHERE alcaldia_recursos_municipales_actividades.id_actividades = " + idActividad + ") AND alcaldia_recursos_municipales.id "
+          + "NOT IN (SELECT id FROM alcaldia_recursos_municipales WHERE name LIKE \"%TIMBRES%\") AND "
+          + query;
       Query filterQuery = entityManager.createNativeQuery(fullQuery);
       totalRows = Long.valueOf(filterQuery.getSingleResult().toString());
     }

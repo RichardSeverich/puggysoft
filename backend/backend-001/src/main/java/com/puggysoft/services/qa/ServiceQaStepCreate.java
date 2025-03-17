@@ -1,11 +1,8 @@
 package com.puggysoft.services.qa;
 
 import com.puggysoft.dtos.qa.DtoQaStep;
-import com.puggysoft.dtos.qa.DtoQaTag;
 import com.puggysoft.entities.qa.EntityQaStep;
-import com.puggysoft.entities.qa.EntityQaTag;
 import com.puggysoft.repositories.qa.IRepositoryQaStep;
-import com.puggysoft.repositories.qa.IRepositoryQaTag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;

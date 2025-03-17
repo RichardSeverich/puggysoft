@@ -4,14 +4,15 @@ import com.puggysoft.dtos.qa.DtoQaTagFilter;
 import com.puggysoft.repositories.qa.IRepositoryQaTag;
 import com.puggysoft.support.TotalPagesCalculator;
 import com.puggysoft.tools.qa.SqlQaTagFilterBuilderNative;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
 
 /** Services for get size. */
 @Service

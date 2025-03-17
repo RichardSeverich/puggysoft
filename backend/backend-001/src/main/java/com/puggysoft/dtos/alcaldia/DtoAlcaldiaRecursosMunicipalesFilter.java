@@ -28,9 +28,9 @@ public class DtoAlcaldiaRecursosMunicipalesFilter {
   // PRECIO
   public String precioCriteria;
   public EnumCompareOperator precioOperator;
-   // FOLDER_CANTIDAD_TIMBRES
-   public String folderCantidadTimbresCriteria;
-   public EnumCompareOperator folderCantidadTimbresOperator;
+  // FOLDER_CANTIDAD_TIMBRES
+  public String folderCantidadTimbresCriteria;
+  public EnumCompareOperator folderCantidadTimbresOperator;
   // TALONARIO MOVIMIENTO
   public String talonarioMovimientoCriteria;
   public EnumCompareOperator talonarioMovimientoOperator;

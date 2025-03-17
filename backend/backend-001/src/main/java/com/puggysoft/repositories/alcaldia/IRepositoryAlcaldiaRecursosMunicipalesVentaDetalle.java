@@ -19,8 +19,8 @@ public interface IRepositoryAlcaldiaRecursosMunicipalesVentaDetalle
       int size);
 
   @Query(value = "SELECT * FROM alcaldia_recursos_municipales_venta_detalle "
-      + "WHERE alcaldia_recursos_municipales_venta_detalle.id_venta = :idVenta"
-      ,nativeQuery = true)
+      + "WHERE alcaldia_recursos_municipales_venta_detalle.id_venta = :idVenta",
+      nativeQuery = true)
   EntityAlcaldiaRecursosMunicipalesVentaDetalle getVentaDetalleByIdVenta(
       @Param("idVenta") Integer idVenta);
 
