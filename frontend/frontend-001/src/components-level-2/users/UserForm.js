@@ -191,6 +191,7 @@ function UserForm (props) {
         messageModalVariant: "danger"
       }
     ));
+    finishLoading();
   };
 
   const messageAfterSuccess = function (isEditAction) {
