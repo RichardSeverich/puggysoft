@@ -33,7 +33,7 @@ public class ServiceMensualidadCuotaByStudentAndCourseGetFilter {
     int off = page * size;
     List<EntityProduct> listEntities;
     String fullQuery = "SELECT "
-        + "product_groups_products.id as id, "
+        + "products.id as id, "
         + "products.code, "
         + "products.name, "
         + "products.purchase_price, "
