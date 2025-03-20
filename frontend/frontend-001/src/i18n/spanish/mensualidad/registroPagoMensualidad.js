@@ -20,7 +20,7 @@ const registroPagoMensualidad = {
   buttonChangeSaleStatusQuestion: "Esta seguro que quiere cambiar el estado de la venta",
   buttonSaveNoteQuestion: "Esta seguro que quiere guardar la venta",
   buttonGenerateBill: "Generar factura",
-  buttonSaveNote: "Guardar venta",
+  buttonSaveNote: "Guardar Pago",
   noteBox: "Nota/Comentario",
   informationClient: "Este campo muestra el 'username', del cliente seleccionado.",
   informationSeller: "Este campo muestra el 'username', del vendedor actual.",
