@@ -51,6 +51,7 @@ import saleReport from "./spanish/sales/saleReport";
 import saleTicket from "./spanish/sales/saleTicket";
 // Mensualidad System
 import mensualidad from "./spanish/mensualidad/mensualidad";
+import registroPagoMensualidad from "./spanish/mensualidad/registroPagoMensualidad";
 // Pago upea System
 import pagoUpea from "./spanish/pagos-upea/pagosUpea";
 // Hospital System
@@ -167,6 +168,7 @@ const i18n = {
   saleTicket,
   // Mensualidad System
   mensualidad,
+  registroPagoMensualidad,
   // Pago upea
   pagoUpea,
   // Hospital System

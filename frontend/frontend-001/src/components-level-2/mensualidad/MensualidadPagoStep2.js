@@ -60,7 +60,7 @@ function CursosTable (props) {
       function handleGetNewSale (saleDataFromRequest) {
         saleData.creationDate = saleDataFromRequest.creationDate;
         history.push({
-          pathname: enumPaths.SALES_REGISTRATION_STEP_TWO,
+          pathname: enumPaths.MENSUALIDAD_PAGO_STEP3_ENCARGADO,
           state: {
             data: {
               saleData,
