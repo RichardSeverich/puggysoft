@@ -6,41 +6,48 @@ import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
 import { AiFillQuestionCircle } from "react-icons/ai";
 import { handleFilterRequest, handleAddRequest, handleDeleteRequest, handleEditRequest } from "../../actions/HandleManager";
-import ProductTableSuperReducedGeneric from "./ProductTableSuperReducedGeneric";
+import ProductTableSuperReducedGeneric from "../sales/ProductTableSuperReducedGeneric";
 import i18n from "../../i18n/i18n";
 import CommonLoading from "../../components-level-1/CommonLoading";
-import CommonMessage from "./../../components-level-1/CommonMessage";
-import arraySaleProductColumnsOne from "../../models/sales/arrayProductColumnsReducedSuperOne";
-import arraySaleProductColumnsTwo from "../../models/sales/arrayProductColumnsReducedSuperTwo";
+import CommonMessage from "../../components-level-1/CommonMessage";
+import CuotaPagoGenericTable from "./generic/CuotaPagoGenericTable";
+import enumTableColumnsToShow from "../../models/enumTableColumnsToShow";
 import Form from "react-bootstrap/Form";
 import Card from "react-bootstrap/Card";
-import enumWebElements from "./../../models/enumWebElements";
+import enumWebElements from "../../models/enumWebElements";
 import enumSaleTableViewType from "../../models/sales/enumSaleTableViewType";
 import enumSaleStatus from "../../models/sales/enumSaleStatus";
-import enumPaths from "./../../models/enumPaths";
-import fixDate from "./../../tools/fixDate";
-import pdfBuilderTicket from "./../../tools/pdfBuilderTicket";
-import useInput from "./../../hooks/useInput";
+import enumPaths from "../../models/enumPaths";
+import fixDate from "../../tools/fixDate";
+import pdfBuilderTicket from "../../tools/pdfBuilderTicket";
+import useInput from "../../hooks/useInput";
 
 import "./../css/all-two-divs-side-by-side.css";
 import "./../css/all-six-divs-side-by-side.css";
 import "./../css/all-forms-inline-block.css";
-import "./sale-add-step-two-product-selection.css";
+import "../sales/sale-add-step-two-product-selection.css";
 
-function SaleAddStepTwoProductSelection () {
+function VentaMensualidades () {
   const history = useHistory();
   const pageSize = 7;
   const numberPagesToShow = 10;
-  const tableTitleAddProductsToSale = i18n.saleProductTable.titleSelectionAddSaleForSeller;
-  const tableTitleDeleteProductsFromSale = i18n.saleProductTable.titleSelectionDeleteSaleForSeller;
-  const generalTitle = i18n.saleProductTable.titleForSeller;
+  const tableTitleAddProductsToSale = i18n.registroPagoMensualidad.titleSelectionAddSaleForSeller;
+  const tableTitleDeleteProductsFromSale = i18n.registroPagoMensualidad.titleSelectionDeleteSaleForSeller;
+  const generalTitle = i18n.registroPagoMensualidad.titleForSeller;
   const [arrayOfProductsFromSale, setArrayOfProductsFromSale] = useState([]);
   // Message states.
   const [isMessageVisible, setIsMessageVisible] = useState(false);
   const [messageTitle, setMessageTitle] = useState("");
   const [messageText, setMessageText] = useState("");
 
-  const { saleData, saleTableViewType } = history &&
+  const {
+    saleData,
+    saleTableViewType,
+    whatSystemIs,
+    // Mensualidad system
+    estudianteSelected,
+    cursoSelected
+  } = history &&
     history.location !== undefined &&
     history.location.state !== undefined &&
     history.location.state.data !== undefined
@@ -67,10 +74,11 @@ function SaleAddStepTwoProductSelection () {
 
   // functions to add products to a sale.
   function handleGetDataProductsAddToSale (activePage, filterBody, updateArrayData) {
-    handleFilterRequest(`products/filter?page=${activePage - 1}&size=${pageSize}`, filterBody, updateArrayData);
+    handleFilterRequest(`mensualidad-cuota-by-student-and-course/filter?studentUsername=${estudianteSelected.username}&courseId=${cursoSelected.id}&page=${activePage - 1}&size=${pageSize}`, filterBody, updateArrayData);
   }
   function handleGetSizeProductsAddToSale (filterBody, setTotalPages) {
-    handleFilterRequest(`products/filter/size/${pageSize}`, filterBody, setTotalPages);
+    handleFilterRequest(`mensualidad-cuota-by-student-and-course/filter/size/?studentUsername=${estudianteSelected.username}&courseId=${cursoSelected.id}&pageSize=${pageSize}`, filterBody, setTotalPages);
+    
   }
 
   function handleAfterAddProductToSale (salesProductsOrError) {
@@ -78,37 +86,20 @@ function SaleAddStepTwoProductSelection () {
   }
 
   function handleAddProductToSale (productData, textboxId) {
-    const textboxElement = document.getElementById(textboxId);
-    const saleQuantity = textboxElement.value;
-    if (!saleQuantity || saleQuantity === "" || saleQuantity <= 0) {
-      setMessageTitle(i18n.errorMessages.errorTitle);
-      setMessageText(i18n.saleErrorMessages.invalidQuantity);
-      setIsMessageVisible(true);
-    } else if (saleQuantity > productData.stock) {
-      setMessageTitle(i18n.errorMessages.errorTitle);
-      setMessageText(i18n.saleErrorMessages.quantityGreaterThanStock);
-      setIsMessageVisible(true);
-    } else {
-      setIsRequestInProgress(true);
-      setClientCash(0);
-      setClientCashChange(0);
-      const tenant = window.sessionStorage.getItem("tenant");
-      const body = {
-        idSale: saleData.id,
-        idProduct: productData.id,
-        quantity: saleQuantity,
-        tenant
-      };
-      handleAddRequest("sales-products", body, handleAfterAddProductToSale, true, handleAfterAddProductToSale);
-    }
+    setIsRequestInProgress(true);
+    setClientCash(0);
+    setClientCashChange(0);
+    const tenant = window.sessionStorage.getItem("tenant");
+    const body = {
+      idSale: saleData.id,
+      idProduct: productData.id,
+      quantity: 1,
+      tenant
+    };
+    handleAddRequest("sales-products", body, handleAfterAddProductToSale, true, handleAfterAddProductToSale);
   }
 
   const tableArrayCustomRowButtonsAddToSale = [
-    {
-      type: enumWebElements.TEXTBOX,
-      placeholder: "",
-      formType: "number"
-    },
     {
       variant: "primary",
       handleCustom: handleAddProductToSale,
@@ -193,7 +184,7 @@ function SaleAddStepTwoProductSelection () {
   }
 
   function handleSaveNote () {
-    const message = i18n.saleProductTable.buttonSaveNoteQuestion;
+    const message = i18n.registroPagoMensualidad.buttonSaveNoteQuestion;
     const newSaleData = { ...saleData };
     newSaleData.note = valueNote;
     newSaleData.totalPrice = totalToPay;
@@ -212,7 +203,7 @@ function SaleAddStepTwoProductSelection () {
   }
 
   function handleChangeSaleStatus () {
-    const message = i18n.saleProductTable.buttonChangeSaleStatusQuestion;
+    const message = i18n.registroPagoMensualidad.buttonChangeSaleStatusQuestion;
     const newSaleData = { ...saleData };
     const username = window.sessionStorage.getItem("username");
     newSaleData.updatedBy = username;
@@ -279,37 +270,37 @@ function SaleAddStepTwoProductSelection () {
 
   const renderTooltipClient = (props) => (
     <Tooltip id="tooltip-sales" {...props}>
-      {i18n.saleProductTable.informationClient}
+      {i18n.registroPagoMensualidad.informationClient}
     </Tooltip>
   );
 
   const renderTooltipSeller = (props) => (
     <Tooltip id="tooltip-sales" {...props}>
-      {i18n.saleProductTable.informationSeller}
+      {i18n.registroPagoMensualidad.informationSeller}
     </Tooltip>
   );
 
   const renderTooltipSaleDate = (props) => (
     <Tooltip id="tooltip-sales" {...props}>
-      {i18n.saleProductTable.informationSaleDate}
+      {i18n.registroPagoMensualidad.informationSaleDate}
     </Tooltip>
   );
 
   const renderTooltipTotalToPay = (props) => (
     <Tooltip id="tooltip-sales" {...props}>
-      {i18n.saleProductTable.informationTotalToPay}
+      {i18n.registroPagoMensualidad.informationTotalToPay}
     </Tooltip>
   );
 
   const renderTooltipClientCash = (props) => (
     <Tooltip id="tooltip-sales" {...props}>
-      {i18n.saleProductTable.informationClientTotalCash}
+      {i18n.registroPagoMensualidad.informationClientTotalCash}
     </Tooltip>
   );
 
   const renderTooltipClientChange = (props) => (
     <Tooltip id="tooltip-sales" {...props}>
-      {i18n.saleProductTable.informationClientChange}
+      {i18n.registroPagoMensualidad.informationClientChange}
     </Tooltip>
   );
 
@@ -329,7 +320,7 @@ function SaleAddStepTwoProductSelection () {
             <div className="puggysoft-six-divs-side-by-side-child">
               <Form.Group>
                 <div className="puggysoft-form-label">
-                  <Form.Label>{i18n.saleProductTable.clientBox}</Form.Label>
+                  <Form.Label>{i18n.registroPagoMensualidad.clientBox}</Form.Label>
                   <OverlayTrigger
                     placement="right"
                     delay={{ show: 60, hide: 256 }}
@@ -346,7 +337,7 @@ function SaleAddStepTwoProductSelection () {
             <div className="puggysoft-six-divs-side-by-side-child">
               <Form.Group>
                 <div className={"puggysoft-form-label"}>
-                  <Form.Label>{i18n.saleProductTable.sellerBox}</Form.Label>
+                  <Form.Label>{i18n.registroPagoMensualidad.sellerBox}</Form.Label>
                   <OverlayTrigger
                     placement="right"
                     delay={{ show: 60, hide: 256 }}
@@ -363,7 +354,7 @@ function SaleAddStepTwoProductSelection () {
             <div className="puggysoft-six-divs-side-by-side-child">
               <Form.Group>
                 <div className={"puggysoft-form-label"}>
-                  <Form.Label>{i18n.saleProductTable.saleDate}</Form.Label>
+                  <Form.Label>{i18n.registroPagoMensualidad.saleDate}</Form.Label>
                   <OverlayTrigger
                     placement="right"
                     delay={{ show: 60, hide: 256 }}
@@ -381,7 +372,7 @@ function SaleAddStepTwoProductSelection () {
             <div className="puggysoft-six-divs-side-by-side-child">
               <Form.Group>
                 <div className={"puggysoft-form-label"}>
-                  <Form.Label>{i18n.saleProductTable.saleTotalToPay}</Form.Label>
+                  <Form.Label>{i18n.registroPagoMensualidad.saleTotalToPay}</Form.Label>
                   <OverlayTrigger
                     placement="right"
                     delay={{ show: 60, hide: 256 }}
@@ -398,7 +389,7 @@ function SaleAddStepTwoProductSelection () {
             <div className="puggysoft-six-divs-side-by-side-child">
               <Form.Group>
                 <div className={"puggysoft-form-label"}>
-                  <Form.Label>{i18n.saleProductTable.clientCashToPay}</Form.Label>
+                  <Form.Label>{i18n.registroPagoMensualidad.clientCashToPay}</Form.Label>
                   <OverlayTrigger
                     placement="right"
                     delay={{ show: 60, hide: 256 }}
@@ -423,7 +414,7 @@ function SaleAddStepTwoProductSelection () {
             <div className="puggysoft-six-divs-side-by-side-child">
               <Form.Group>
                 <div className={"puggysoft-form-label"}>
-                  <Form.Label>{i18n.saleProductTable.clientCashChange}</Form.Label>
+                  <Form.Label>{i18n.registroPagoMensualidad.clientCashChange}</Form.Label>
                   <OverlayTrigger
                     placement="top"
                     delay={{ show: 60, hide: 256 }}
@@ -451,7 +442,7 @@ function SaleAddStepTwoProductSelection () {
                   type="button"
                   onClick={handleDelete}
                 >
-                  {i18n.saleProductTable.buttonDeleteSale}</Button>
+                  {i18n.registroPagoMensualidad.buttonDeleteSale}</Button>
               </div>}
             <div className="puggysoft-six-divs-side-by-side-child">
               {(saleTableViewType === enumSaleTableViewType.FOR_CASHIER ||
@@ -461,7 +452,7 @@ function SaleAddStepTwoProductSelection () {
                   variant="success sale-button"
                   type="button"
                   onClick={handleGenerateTicket}
-                >{i18n.saleProductTable.buttonGenerateTicket}</Button>
+                >{i18n.registroPagoMensualidad.buttonGenerateTicket}</Button>
               }
             </div>
             <div className="puggysoft-six-divs-side-by-side-child">
@@ -473,10 +464,10 @@ function SaleAddStepTwoProductSelection () {
                   delay={{ show: 60, hide: 256 }}
                   overlay={<Tooltip id="button-tooltip">
                     <div className='new-line'>
-                      {i18n.saleProductTable.buttonChangeSaleStateToolTip}: {getSaleStatusToShow(saleData.status)}
+                      {i18n.registroPagoMensualidad.buttonChangeSaleStateToolTip}: {getSaleStatusToShow(saleData.status)}
                     </div>
                     <div className='new-line'>
-                      {i18n.saleProductTable.buttonChangeSaleStateToolTipNext}: {getSaleStatusToShowNext(saleData.status)}
+                      {i18n.registroPagoMensualidad.buttonChangeSaleStateToolTipNext}: {getSaleStatusToShowNext(saleData.status)}
                     </div>
                   </Tooltip>}
                 >
@@ -485,7 +476,7 @@ function SaleAddStepTwoProductSelection () {
                     type="button"
                     onClick={handleChangeSaleStatus}
                   >
-                    {i18n.saleProductTable.buttonChangeSaleState}
+                    {i18n.registroPagoMensualidad.buttonChangeSaleState}
                   </Button>
                 </OverlayTrigger>
               }
@@ -496,7 +487,7 @@ function SaleAddStepTwoProductSelection () {
                   value={valueNote}
                   onChange={onChangeNote}
                   as="textarea"
-                  placeholder={i18n.saleProductTable.noteBox}
+                  placeholder={i18n.registroPagoMensualidad.noteBox}
                 />
                 </div>
               </Form.Group>
@@ -506,10 +497,10 @@ function SaleAddStepTwoProductSelection () {
                 variant="primary sale-button"
                 type="button"
                 onClick={handleSaveNote}
-              >{i18n.saleProductTable.buttonSaveNote}</Button>
+              >{i18n.registroPagoMensualidad.buttonSaveNote}</Button>
             </div>
             <div className="puggysoft-six-divs-side-by-side-child">
-              {/* <Button variant="secondary sale-button" type="button">{i18n.saleProductTable.buttonGenerateBill}</Button> */}
+              {/* <Button variant="secondary sale-button" type="button">{i18n.registroPagoMensualidad.buttonGenerateBill}</Button> */}
             </div>
           </div>
         </Card.Body>
@@ -517,31 +508,29 @@ function SaleAddStepTwoProductSelection () {
 
       <div>
         <div className="puggysoft-two-divs-side-by-side-child">
-          <ProductTableSuperReducedGeneric
+          <CuotaPagoGenericTable
             tableTitle={tableTitleAddProductsToSale}
+            numberPagesToShow={numberPagesToShow}
             handleGetData={handleGetDataProductsAddToSale}
             handleGetSize={handleGetSizeProductsAddToSale}
             tableArrayCustomRowButtons={tableArrayCustomRowButtonsAddToSale}
-            arrayColumns={arraySaleProductColumnsOne}
-            numberPagesToShow={numberPagesToShow}
-          >
-          </ProductTableSuperReducedGeneric>
+            columnsToShow={enumTableColumnsToShow.MEDIUM}
+          />
         </div>
         <div className="puggysoft-two-divs-side-by-side-child">
-          <ProductTableSuperReducedGeneric
+          <CuotaPagoGenericTable
             tableTitle={tableTitleDeleteProductsFromSale}
+            numberPagesToShow={numberPagesToShow}
             handleGetData={handleGetDataProductsToDelete}
             handleGetSize={handleGetSizeProductsToDelete}
             tableArrayCustomRowButtons={tableArrayCustomRowButtonsDeleteFromSale}
-            numberPagesToShow={numberPagesToShow}
-            arrayColumns={arraySaleProductColumnsTwo}
             fixArrayData={fixArrayData}
-          >
-          </ProductTableSuperReducedGeneric>
+            columnsToShow={enumTableColumnsToShow.MEDIUM}
+          />
         </div>
       </div >
     </div>
   );
 }
 
-export default SaleAddStepTwoProductSelection;
+export default VentaMensualidades;

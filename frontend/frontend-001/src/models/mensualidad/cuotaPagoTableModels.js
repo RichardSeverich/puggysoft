@@ -66,9 +66,9 @@ const tableModel = function (
 
   const isMedium = tableColumnsToShow === enumTableColumnsToShow.MEDIUM;
   if (isMedium) {
-    arrayColumnsFilter = arrayColumnsFilter.slice(0, arrayColumnsFilter.length - 4);
-    arrayColumnsLabels = arrayColumnsLabels.slice(0, arrayColumnsLabels.length - 4);
-    arrayDataFields = arrayDataFields.slice(0, arrayDataFields.length - 4);
+    arrayColumnsFilter = arrayColumnsFilter.slice(0, arrayColumnsFilter.length - 5);
+    arrayColumnsLabels = arrayColumnsLabels.slice(0, arrayColumnsLabels.length - 5);
+    arrayDataFields = arrayDataFields.slice(0, arrayDataFields.length - 5);
   }
   const isMinimum = tableColumnsToShow === enumTableColumnsToShow.MINIMUM;
   if (isMinimum) {

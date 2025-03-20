@@ -118,6 +118,7 @@ const MENSUALIDAD_ASSIGN_CUOTA_PAGO_STEP2 = "/mensualidad-assign-cuota-pago-step
 const MENSUALIDAD_PAGO_STEP1_ENCARGADO = "/mensualidad-venta-step1-encargado";
 const MENSUALIDAD_PAGO_STEP1_ESTUDIANTE = "/mensualidad-venta-step1-estudiante";
 const MENSUALIDAD_PAGO_STEP2_ENCARGADO = "/mensualidad-venta-step2-encargado";
+const MENSUALIDAD_PAGO_STEP3_ENCARGADO = "/mensualidad-venta-step3-encargado";
 const MENSUALIDAD_PAGO_STEP2_ESTUDIANTE = "/mensualidad-venta-step2-estudiante";
 
 // PAGO UPEA SYSTEM
@@ -371,6 +372,7 @@ const enumPaths = {
   MENSUALIDAD_PAGO_STEP1_ENCARGADO,
   MENSUALIDAD_PAGO_STEP1_ESTUDIANTE,
   MENSUALIDAD_PAGO_STEP2_ENCARGADO,
+  MENSUALIDAD_PAGO_STEP3_ENCARGADO,
   MENSUALIDAD_PAGO_STEP2_ESTUDIANTE,
   // PAGOS UPEA SYSTEM
   PAGO_UPEA_COLEGIATURAS_MATRICULAS_FORM,
