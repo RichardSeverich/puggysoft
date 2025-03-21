@@ -17,7 +17,6 @@ import enumSaleTableViewType from "../../models/sales/enumSaleTableViewType";
 import enumSaleStatus from "../../models/sales/enumSaleStatus";
 import enumPaths from "../../models/enumPaths";
 import fixDate from "../../tools/fixDate";
-import pdfBuilderTicket from "../../tools/pdfBuilderTicket";
 import useInput from "../../hooks/useInput";
 
 import "./../css/all-two-divs-side-by-side.css";
@@ -41,8 +40,6 @@ function VentaMensualidades () {
   const {
     saleData,
     saleTableViewType,
-    whatSystemIs,
-    // Mensualidad system
     estudianteSelected,
     cursoSelected
   } = history &&
@@ -205,16 +202,6 @@ function VentaMensualidades () {
     }
   }
 
-  function handleGenerateTicket () {
-    if (arrayOfProductsFromSale.length === 0) {
-      setMessageTitle(i18n.errorMessages.errorTitle);
-      setMessageText(i18n.saleTicket.ticketWithoutProductError);
-      setIsMessageVisible(true);
-    } else {
-      pdfBuilderTicket(saleData, totalToPay, arrayOfProductsFromSale);
-    }
-  }
-
   if (isRequestInProgress || !saleData) {
     return <CommonLoading />;
   }
@@ -371,8 +358,7 @@ function VentaMensualidades () {
         </Card.Body>
         <Card.Body className="sale-section-two">
           <div className="">
-            {(saleTableViewType === enumSaleTableViewType.FOR_CASHIER ||
-              saleTableViewType === enumSaleTableViewType.FOR_SELLER) &&
+            {(saleTableViewType === enumSaleTableViewType.FOR_SELLER) &&
               <div className="puggysoft-four-divs-side-by-side-child">
                 <Button
                   variant="danger sale-button"
@@ -382,19 +368,7 @@ function VentaMensualidades () {
                   {i18n.registroPagoMensualidad.buttonDeleteSale}</Button>
               </div>}
             <div className="puggysoft-four-divs-side-by-side-child">
-              {(saleTableViewType === enumSaleTableViewType.FOR_CASHIER ||
-                saleTableViewType === enumSaleTableViewType.FOR_DISPATCHER
-              ) &&
-                <Button
-                  variant="success sale-button"
-                  type="button"
-                  onClick={handleGenerateTicket}
-                >{i18n.registroPagoMensualidad.buttonGenerateTicket}</Button>
-              }
-            </div>
-            <div className="puggysoft-four-divs-side-by-side-child">
-              {(saleTableViewType === enumSaleTableViewType.FOR_CASHIER ||
-                saleTableViewType === enumSaleTableViewType.FOR_DISPATCHER
+              {(saleTableViewType === enumSaleTableViewType.FOR_SELLER
               ) &&
                 <OverlayTrigger
                   placement="bottom"

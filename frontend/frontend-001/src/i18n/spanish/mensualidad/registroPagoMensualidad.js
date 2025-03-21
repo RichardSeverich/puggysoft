@@ -12,7 +12,7 @@ const registroPagoMensualidad = {
   saleTotalToPay: "Total pagar",
   clientCashToPay: "Efectivo",
   clientCashChange: "Cambio",
-  buttonDeleteSale: "Eliminar venta",
+  buttonDeleteSale: "Eliminar pago",
   buttonGenerateTicket: "Generar ficha",
   buttonChangeSaleState: "Cambiar estado",
   buttonChangeSaleStateToolTip: "Estado actual",

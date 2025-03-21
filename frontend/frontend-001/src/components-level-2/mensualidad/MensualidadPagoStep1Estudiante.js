@@ -6,11 +6,9 @@ import enumPaths from "../../models/enumPaths";
 import { handleFilterRequest, handleAddRequest, handleGetRequest } from "../../actions/HandleManager";
 import CursoGenericTable from "../escuela/generic/CursoGenericTable";
 import enumTableColumnsToShow from "../../models/enumTableColumnsToShow";
-import PropTypes from "prop-types";
 import enumSaleTableViewType from "../../models/sales/enumSaleTableViewType";
 import enumSaleStatus from "./../../models/sales/enumSaleStatus";
 import CommonLoading from "../../components-level-1/CommonLoading";
-import enumSystems from "../../models/enumSystems";
 
 function CursosTable (props) {
   const tableTitle = i18n.escuela.cursosTableTitle;
@@ -21,9 +19,8 @@ function CursosTable (props) {
   const estudianteSelected = {
     username: window.sessionStorage.getItem("username")
   }
-  const saleTableViewType = props.saleTableViewType;
+  const saleTableViewType = enumSaleTableViewType.FOR_DISPATCHER;
   const [isRequestInProgress, setIsRequestInProgress] = useState(false);
-  const whatSystemIs = enumSystems.MENSUALIDAD;
 
   function handleGetData (activePage, filterBody, updateArrayData) {
     handleFilterRequest(
@@ -66,7 +63,6 @@ function CursosTable (props) {
               saleTableViewType,
               estudianteSelected,
               cursoSelected,
-              whatSystemIs
             }
           }
         });
@@ -110,14 +106,3 @@ function CursosTable (props) {
 }
 
 export default CursosTable;
-
-CursosTable.propTypes = {
-  saleTableViewType: PropTypes.oneOf([
-    enumSaleTableViewType.FOR_CASHIER,
-    enumSaleTableViewType.FOR_SELLER
-  ])
-};
-
-CursosTable.defaultProps = {
-  saleTableViewType: undefined
-};

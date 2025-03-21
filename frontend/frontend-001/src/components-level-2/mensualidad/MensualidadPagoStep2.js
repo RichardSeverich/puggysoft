@@ -10,7 +10,6 @@ import PropTypes from "prop-types";
 import enumSaleTableViewType from "../../models/sales/enumSaleTableViewType";
 import enumSaleStatus from "./../../models/sales/enumSaleStatus";
 import CommonLoading from "../../components-level-1/CommonLoading";
-import enumSystems from "../../models/enumSystems";
 
 function CursosTable (props) {
   const tableTitle = i18n.escuela.cursosTableTitle;
@@ -21,7 +20,6 @@ function CursosTable (props) {
   const { estudianteSelected } = history && history.location && history.location.state;
   const saleTableViewType = props.saleTableViewType;
   const [isRequestInProgress, setIsRequestInProgress] = useState(false);
-  const whatSystemIs = enumSystems.MENSUALIDAD;
 
   function handleGetData (activePage, filterBody, updateArrayData) {
     handleFilterRequest(
@@ -44,9 +42,6 @@ function CursosTable (props) {
     const username = window.sessionStorage.getItem("username");
     const tenant = window.sessionStorage.getItem("tenant");
     let saleStatus = enumSaleStatus.DONE;
-    if (saleTableViewType && saleTableViewType === enumSaleTableViewType.FOR_CASHIER) {
-      saleStatus = enumSaleStatus.TODO;
-    }
     const bodySale = {
       client: estudianteSelected.username,
       status: saleStatus,
@@ -67,7 +62,6 @@ function CursosTable (props) {
               saleTableViewType,
               estudianteSelected,
               cursoSelected,
-              whatSystemIs
             }
           }
         });
