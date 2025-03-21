@@ -6,7 +6,6 @@ import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
 import { AiFillQuestionCircle } from "react-icons/ai";
 import { handleFilterRequest, handleAddRequest, handleDeleteRequest, handleEditRequest } from "../../actions/HandleManager";
-import ProductTableSuperReducedGeneric from "../sales/ProductTableSuperReducedGeneric";
 import i18n from "../../i18n/i18n";
 import CommonLoading from "../../components-level-1/CommonLoading";
 import CommonMessage from "../../components-level-1/CommonMessage";
@@ -14,7 +13,6 @@ import CuotaPagoGenericTable from "./generic/CuotaPagoGenericTable";
 import enumTableColumnsToShow from "../../models/enumTableColumnsToShow";
 import Form from "react-bootstrap/Form";
 import Card from "react-bootstrap/Card";
-import enumWebElements from "../../models/enumWebElements";
 import enumSaleTableViewType from "../../models/sales/enumSaleTableViewType";
 import enumSaleStatus from "../../models/sales/enumSaleStatus";
 import enumPaths from "../../models/enumPaths";
@@ -23,7 +21,7 @@ import pdfBuilderTicket from "../../tools/pdfBuilderTicket";
 import useInput from "../../hooks/useInput";
 
 import "./../css/all-two-divs-side-by-side.css";
-import "./../css/all-six-divs-side-by-side.css";
+import "./../css/all-four-divs-side-by-side.css";
 import "./../css/all-forms-inline-block.css";
 import "../sales/sale-add-step-two-product-selection.css";
 
@@ -67,8 +65,6 @@ function VentaMensualidades () {
   }
 
   const [totalToPay, setTotalToPay] = useState(saleData?.totalPrice ? saleData.totalPrice : 0);
-  const [clientCash, setClientCash] = useState(saleData?.customerCash ? saleData.customerCash : 0);
-  const [clientCashChange, setClientCashChange] = useState(saleData?.customerCashChange ? saleData.customerCashChange : 0);
 
   const [isRequestInProgress, setIsRequestInProgress] = useState(false);
 
@@ -87,8 +83,6 @@ function VentaMensualidades () {
 
   function handleAddProductToSale (productData, textboxId) {
     setIsRequestInProgress(true);
-    setClientCash(0);
-    setClientCashChange(0);
     const tenant = window.sessionStorage.getItem("tenant");
     const body = {
       idSale: saleData.id,
@@ -126,8 +120,6 @@ function VentaMensualidades () {
     // NOTE: The ID field of this ${productData} object is the relation ID. sales_products.id
     // NOTE: The STOCK filed of this ${productData} object is the quantity of sales_products.
     setIsRequestInProgress(true);
-    setClientCash(0);
-    setClientCashChange(0);
     const idRelation = productData.id;
     handleDeleteRequest(`sales-products/${idRelation}`, handleAfterDeleteProductFromSale, handleAfterDeleteProductFromSale);
   }
@@ -140,11 +132,6 @@ function VentaMensualidades () {
     setTotalToPay(totalToPayNew);
     setArrayOfProductsFromSale(arrayProducts);
     return arrayProducts;
-  }
-
-  function onChangeClientCash (clientCash) {
-    setClientCashChange(clientCash - totalToPay);
-    setClientCash(clientCash);
   }
 
   const tableArrayCustomRowButtonsDeleteFromSale = [
@@ -188,8 +175,8 @@ function VentaMensualidades () {
     const newSaleData = { ...saleData };
     newSaleData.note = valueNote;
     newSaleData.totalPrice = totalToPay;
-    newSaleData.customerCash = clientCash;
-    newSaleData.customerCashChange = clientCashChange;
+    newSaleData.customerCash = totalToPay;
+    newSaleData.customerCashChange = 0;
     const username = window.sessionStorage.getItem("username");
     newSaleData.updatedBy = username;
     const result = window.confirm(message);
@@ -292,12 +279,6 @@ function VentaMensualidades () {
     </Tooltip>
   );
 
-  const renderTooltipClientCash = (props) => (
-    <Tooltip id="tooltip-sales" {...props}>
-      {i18n.registroPagoMensualidad.informationClientTotalCash}
-    </Tooltip>
-  );
-
   const renderTooltipClientChange = (props) => (
     <Tooltip id="tooltip-sales" {...props}>
       {i18n.registroPagoMensualidad.informationClientChange}
@@ -317,8 +298,8 @@ function VentaMensualidades () {
         <Card.Header as='h3'>{generalTitle} : {saleData.id}</Card.Header>
         <Card.Body className="sale-section-one">
           <div className="">
-            <div className="puggysoft-six-divs-side-by-side-child">
-              <Form.Group>
+            <div className="puggysoft-four-divs-side-by-side-child">
+              <Form.Group className="puggysoft-form-group">
                 <div className="puggysoft-form-label">
                   <Form.Label>{i18n.registroPagoMensualidad.clientBox}</Form.Label>
                   <OverlayTrigger
@@ -334,8 +315,8 @@ function VentaMensualidades () {
                 <div className={"puggysoft-form-input"}><Form.Control value={saleData.client} disabled /></div>
               </Form.Group>
             </div>
-            <div className="puggysoft-six-divs-side-by-side-child">
-              <Form.Group>
+            <div className="puggysoft-four-divs-side-by-side-child">
+              <Form.Group className="puggysoft-form-group">
                 <div className={"puggysoft-form-label"}>
                   <Form.Label>{i18n.registroPagoMensualidad.sellerBox}</Form.Label>
                   <OverlayTrigger
@@ -351,8 +332,8 @@ function VentaMensualidades () {
                 <div className={"puggysoft-form-input"}><Form.Control value={saleData.createdBy} disabled /></div>
               </Form.Group>
             </div>
-            <div className="puggysoft-six-divs-side-by-side-child">
-              <Form.Group>
+            <div className="puggysoft-four-divs-side-by-side-child">
+              <Form.Group className="puggysoft-form-group">
                 <div className={"puggysoft-form-label"}>
                   <Form.Label>{i18n.registroPagoMensualidad.saleDate}</Form.Label>
                   <OverlayTrigger
@@ -369,8 +350,8 @@ function VentaMensualidades () {
                 <div className={"puggysoft-form-input"}><Form.Control value={fixDate(saleData.creationDate)} disabled /></div>
               </Form.Group>
             </div>
-            <div className="puggysoft-six-divs-side-by-side-child">
-              <Form.Group>
+            <div className="puggysoft-four-divs-side-by-side-child">
+              <Form.Group className="puggysoft-form-group">
                 <div className={"puggysoft-form-label"}>
                   <Form.Label>{i18n.registroPagoMensualidad.saleTotalToPay}</Form.Label>
                   <OverlayTrigger
@@ -386,57 +367,13 @@ function VentaMensualidades () {
                 <div className={"puggysoft-form-input"}><Form.Control value={totalToPay} disabled /></div>
               </Form.Group>
             </div>
-            <div className="puggysoft-six-divs-side-by-side-child">
-              <Form.Group>
-                <div className={"puggysoft-form-label"}>
-                  <Form.Label>{i18n.registroPagoMensualidad.clientCashToPay}</Form.Label>
-                  <OverlayTrigger
-                    placement="right"
-                    delay={{ show: 60, hide: 256 }}
-                    overlay={renderTooltipClientCash}
-                  >
-                    <div className="question-mark-sales">
-                      <AiFillQuestionCircle />
-                    </div>
-                  </OverlayTrigger>
-                </div>
-                <div className={"puggysoft-form-input"}>
-                  <Form.Control
-                    type="number"
-                    value={clientCash}
-                    onChange={(event) => {
-                      onChangeClientCash(event.target.value);
-                    }}
-                  />
-                </div>
-              </Form.Group>
-            </div>
-            <div className="puggysoft-six-divs-side-by-side-child">
-              <Form.Group>
-                <div className={"puggysoft-form-label"}>
-                  <Form.Label>{i18n.registroPagoMensualidad.clientCashChange}</Form.Label>
-                  <OverlayTrigger
-                    placement="top"
-                    delay={{ show: 60, hide: 256 }}
-                    overlay={renderTooltipClientChange}
-                  >
-                    <div className="question-mark-sales">
-                      <AiFillQuestionCircle />
-                    </div>
-                  </OverlayTrigger>
-                </div>
-                <div className={"puggysoft-form-input"}>
-                  <Form.Control value={clientCashChange} disabled />
-                </div>
-              </Form.Group>
-            </div>
           </div>
         </Card.Body>
         <Card.Body className="sale-section-two">
           <div className="">
             {(saleTableViewType === enumSaleTableViewType.FOR_CASHIER ||
               saleTableViewType === enumSaleTableViewType.FOR_SELLER) &&
-              <div className="puggysoft-six-divs-side-by-side-child">
+              <div className="puggysoft-four-divs-side-by-side-child">
                 <Button
                   variant="danger sale-button"
                   type="button"
@@ -444,7 +381,7 @@ function VentaMensualidades () {
                 >
                   {i18n.registroPagoMensualidad.buttonDeleteSale}</Button>
               </div>}
-            <div className="puggysoft-six-divs-side-by-side-child">
+            <div className="puggysoft-four-divs-side-by-side-child">
               {(saleTableViewType === enumSaleTableViewType.FOR_CASHIER ||
                 saleTableViewType === enumSaleTableViewType.FOR_DISPATCHER
               ) &&
@@ -455,7 +392,7 @@ function VentaMensualidades () {
                 >{i18n.registroPagoMensualidad.buttonGenerateTicket}</Button>
               }
             </div>
-            <div className="puggysoft-six-divs-side-by-side-child">
+            <div className="puggysoft-four-divs-side-by-side-child">
               {(saleTableViewType === enumSaleTableViewType.FOR_CASHIER ||
                 saleTableViewType === enumSaleTableViewType.FOR_DISPATCHER
               ) &&
@@ -481,8 +418,8 @@ function VentaMensualidades () {
                 </OverlayTrigger>
               }
             </div>
-            <div className="puggysoft-six-divs-side-by-side-child">
-              <Form.Group>
+            <div className="puggysoft-four-divs-side-by-side-child">
+              <Form.Group className="">
                 <div><Form.Control
                   value={valueNote}
                   onChange={onChangeNote}
@@ -492,15 +429,14 @@ function VentaMensualidades () {
                 </div>
               </Form.Group>
             </div>
-            <div className="puggysoft-six-divs-side-by-side-child">
+            <div className="puggysoft-four-divs-side-by-side-child">
               <Button
                 variant="primary sale-button"
                 type="button"
                 onClick={handleSaveNote}
               >{i18n.registroPagoMensualidad.buttonSaveNote}</Button>
             </div>
-            <div className="puggysoft-six-divs-side-by-side-child">
-              {/* <Button variant="secondary sale-button" type="button">{i18n.registroPagoMensualidad.buttonGenerateBill}</Button> */}
+            <div className="puggysoft-four-divs-side-by-side-child">
             </div>
           </div>
         </Card.Body>
