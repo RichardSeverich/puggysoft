@@ -6,7 +6,6 @@ import enumPaths from "../../models/enumPaths";
 import { handleFilterRequest, handleAddRequest, handleGetRequest } from "../../actions/HandleManager";
 import CursoGenericTable from "../escuela/generic/CursoGenericTable";
 import enumTableColumnsToShow from "../../models/enumTableColumnsToShow";
-import PropTypes from "prop-types";
 import enumSaleTableViewType from "../../models/sales/enumSaleTableViewType";
 import enumSaleStatus from "./../../models/sales/enumSaleStatus";
 import CommonLoading from "../../components-level-1/CommonLoading";
@@ -17,8 +16,10 @@ function CursosTable (props) {
   const pageSize = 7;
   const numberPagesToShow = 7;
   const history = useHistory();
-  const { estudianteSelected } = history && history.location && history.location.state;
-  const saleTableViewType = props.saleTableViewType;
+  const estudianteSelected = {
+    username: window.sessionStorage.getItem("username")
+  }
+  const saleTableViewType = enumSaleTableViewType.FOR_DISPATCHER;
   const [isRequestInProgress, setIsRequestInProgress] = useState(false);
 
   function handleGetData (activePage, filterBody, updateArrayData) {
@@ -39,9 +40,9 @@ function CursosTable (props) {
 
   function handleSelection (cursoSelected) {
     setIsRequestInProgress(true);
-    const username = window.sessionStorage.getItem("username");
+    const { username } = estudianteSelected;
     const tenant = window.sessionStorage.getItem("tenant");
-    let saleStatus = enumSaleStatus.DONE;
+    const saleStatus = enumSaleStatus.IN_PROGRESS;
     const bodySale = {
       client: estudianteSelected.username,
       status: saleStatus,
@@ -105,14 +106,3 @@ function CursosTable (props) {
 }
 
 export default CursosTable;
-
-CursosTable.propTypes = {
-  saleTableViewType: PropTypes.oneOf([
-    enumSaleTableViewType.FOR_CASHIER,
-    enumSaleTableViewType.FOR_SELLER
-  ])
-};
-
-CursosTable.defaultProps = {
-  saleTableViewType: undefined
-};

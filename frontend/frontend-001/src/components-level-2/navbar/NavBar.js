@@ -319,6 +319,9 @@ function NavBar () {
   const navigateMensualidadVentaStep1Encargado = () => {
     history.push(enumPaths.MENSUALIDAD_PAGO_STEP1_ENCARGADO);
   };
+  const navigateMensualidadVentaStep1Estudiante = () => {
+    history.push(enumPaths.MENSUALIDAD_PAGO_STEP1_ESTUDIANTE);
+  };
 
   // ******* ******* ******* PAGO UPEA SYSTEM ******* ******* *******
   const navigateColegiaturaMatriculaForm = () => {
@@ -1156,6 +1159,10 @@ function NavBar () {
           {userRoles.includes(enumRoles.MENSUALIDAD_ENCARGADO) &&
             <NavDropdown title={pagoAdminLabel}>
               <NavDropdown.Item onClick={navigateMensualidadVentaStep1Encargado}>{pagoRegistrationLabel}</NavDropdown.Item>
+            </NavDropdown>}
+          {userRoles.includes(enumRoles.SCHOOL_ESTUDIANTE) &&
+            <NavDropdown title={pagoAdminLabel}>
+              <NavDropdown.Item onClick={navigateMensualidadVentaStep1Estudiante}>{pagoRegistrationLabel}</NavDropdown.Item>
             </NavDropdown>}
 
           {/* ******* ******* ******* PAGOS UPEA SYSTEM ******* ******* ********/}

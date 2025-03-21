@@ -5,4 +5,9 @@
     float: left;
     margin-left: 1.5rem;
   }
+
+  .puggysoft-six-divs-side-by-side-child .puggysoft-form-input {
+    width: 100%;
+  }
+
 }
