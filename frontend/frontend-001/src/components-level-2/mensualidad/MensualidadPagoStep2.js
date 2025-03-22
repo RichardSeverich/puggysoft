@@ -47,6 +47,7 @@ function CursosTable (props) {
       status: saleStatus,
       createdBy: username,
       updatedBy: username,
+      aux: cursoSelected.id,
       tenant
     };
     function handleAfterCreateSale (saleId) {

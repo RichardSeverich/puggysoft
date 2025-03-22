@@ -21,6 +21,7 @@ import useInput from "../../hooks/useInput";
 
 import "./../css/all-two-divs-side-by-side.css";
 import "./../css/all-four-divs-side-by-side.css";
+import "./VentaMensualidades.css";
 import "./../css/all-forms-inline-block.css";
 import "../sales/sale-add-step-two-product-selection.css";
 
@@ -49,6 +50,7 @@ function VentaMensualidades () {
     ? history.location.state.data
     : { saleData: undefined, saleTableViewType: undefined };
 
+  const { value: valuePicturePath, onChange: onChangePicturePath, setValue: setPicturePath } = useInput("");
   const { value: valueNote, onChange: onChangeNote } = useInput(
     saleData && saleData.note
       ? saleData.note
@@ -202,6 +204,13 @@ function VentaMensualidades () {
     }
   }
 
+  const handleUploadPicture = (event) => {
+    const file = event.target.files[0];
+    setPicture(file);
+    onChangePicturePath(event);
+    setValuePictureToShow(URL.createObjectURL(file));
+  };
+
   if (isRequestInProgress || !saleData) {
     return <CommonLoading />;
   }
@@ -285,7 +294,7 @@ function VentaMensualidades () {
         <Card.Header as='h3'>{generalTitle} : {saleData.id}</Card.Header>
         <Card.Body className="sale-section-one">
           <div className="">
-            <div className="puggysoft-four-divs-side-by-side-child">
+            <div className="puggysoft-five-divs-side-by-side-child">
               <Form.Group className="puggysoft-form-group">
                 <div className="puggysoft-form-label">
                   <Form.Label>{i18n.registroPagoMensualidad.clientBox}</Form.Label>
@@ -302,7 +311,7 @@ function VentaMensualidades () {
                 <div className={"puggysoft-form-input"}><Form.Control value={saleData.client} disabled /></div>
               </Form.Group>
             </div>
-            <div className="puggysoft-four-divs-side-by-side-child">
+            <div className="puggysoft-five-divs-side-by-side-child">
               <Form.Group className="puggysoft-form-group">
                 <div className={"puggysoft-form-label"}>
                   <Form.Label>{i18n.registroPagoMensualidad.sellerBox}</Form.Label>
@@ -319,7 +328,7 @@ function VentaMensualidades () {
                 <div className={"puggysoft-form-input"}><Form.Control value={saleData.createdBy} disabled /></div>
               </Form.Group>
             </div>
-            <div className="puggysoft-four-divs-side-by-side-child">
+            <div className="puggysoft-five-divs-side-by-side-child">
               <Form.Group className="puggysoft-form-group">
                 <div className={"puggysoft-form-label"}>
                   <Form.Label>{i18n.registroPagoMensualidad.saleDate}</Form.Label>
@@ -337,7 +346,7 @@ function VentaMensualidades () {
                 <div className={"puggysoft-form-input"}><Form.Control value={fixDate(saleData.creationDate)} disabled /></div>
               </Form.Group>
             </div>
-            <div className="puggysoft-four-divs-side-by-side-child">
+            <div className="puggysoft-five-divs-side-by-side-child">
               <Form.Group className="puggysoft-form-group">
                 <div className={"puggysoft-form-label"}>
                   <Form.Label>{i18n.registroPagoMensualidad.saleTotalToPay}</Form.Label>
@@ -354,6 +363,21 @@ function VentaMensualidades () {
                 <div className={"puggysoft-form-input"}><Form.Control value={totalToPay} disabled /></div>
               </Form.Group>
             </div>
+            {(saleTableViewType === enumSaleTableViewType.FOR_SELLER) &&
+              <div className="puggysoft-five-divs-side-by-side-child">
+                <Form.Group controlId="formFile" className="puggysoft-form-group">
+                  <div className={"puggysoft-form-label"}>
+                    <Form.Label>{i18n.registroPagoMensualidad.comprobanteDePago}</Form.Label>
+                  </div>
+                  <div className={"puggysoft-form-input"}>
+                    <Form.Control
+                      type="file"
+                      onChange={(event) => handleUploadPicture(event)}
+                      value={valuePicturePath}
+                    />
+                  </div>
+                </Form.Group>
+              </div>}
           </div>
         </Card.Body>
         <Card.Body className="sale-section-two">
@@ -393,6 +417,13 @@ function VentaMensualidades () {
               }
             </div>
             <div className="puggysoft-four-divs-side-by-side-child">
+              <Button
+                variant="primary sale-button"
+                type="button"
+                onClick={handleSaveNote}
+              >{i18n.registroPagoMensualidad.buttonSaveNote}</Button>
+            </div>
+            <div className="puggysoft-four-divs-side-by-side-child">
               <Form.Group className="">
                 <div><Form.Control
                   value={valueNote}
@@ -402,15 +433,6 @@ function VentaMensualidades () {
                 />
                 </div>
               </Form.Group>
-            </div>
-            <div className="puggysoft-four-divs-side-by-side-child">
-              <Button
-                variant="primary sale-button"
-                type="button"
-                onClick={handleSaveNote}
-              >{i18n.registroPagoMensualidad.buttonSaveNote}</Button>
-            </div>
-            <div className="puggysoft-four-divs-side-by-side-child">
             </div>
           </div>
         </Card.Body>

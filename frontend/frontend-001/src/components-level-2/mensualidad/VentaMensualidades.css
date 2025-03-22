@@ -1,0 +1,46 @@
+/* Only applies for resolutions greater than 720px */
+@media (min-width:720px) {
+  .puggysoft-five-divs-side-by-side-child {
+    width: max-content;
+    min-width: 400px;
+    margin: 0 auto;
+    margin-bottom: 10px;
+  }
+
+  .puggysoft-five-divs-side-by-side-child .puggysoft-form-group {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+/* Only applies for resolutions greater than 1080px */
+@media (min-width:1600px) {
+  .puggysoft-five-divs-side-by-side-child {
+    width: 16%;
+    float: left;
+    margin-left: 2rem;
+    min-width: 0;
+    margin-bottom: 0;
+  }
+
+  .puggysoft-five-divs-side-by-side-child .puggysoft-form-input {
+    width: 100%;
+    flex-direction: column;
+    justify-content: left;
+  }
+
+  .puggysoft-five-divs-side-by-side-child .puggysoft-form-group {
+    flex-direction: column;
+    align-items: normal;
+  }
+}
+
+.puggysoft-form-input input[type="file"] {
+  width: max-content;
+}
+
+.puggysoft-form-label {
+  width: 100%;
+}

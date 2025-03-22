@@ -17,6 +17,7 @@ public final class SqlSaleFilterBuilderNative {
     query = query + SqlFilterBuilder.getFilterQuery("id", dtoSaleFilter.idCriteria, dtoSaleFilter.idOperator);
     query = query + SqlFilterBuilder.getFilterQuery("sales.client", dtoSaleFilter.clientCriteria, dtoSaleFilter.clientOperator);
     query = query + SqlFilterBuilder.getFilterQuery("sales.status ", dtoSaleFilter.statusCriteria, dtoSaleFilter.statusOperator);
+    query = query + SqlFilterBuilder.getFilterQuery("sales.aux ", dtoSaleFilter.auxCriteria, dtoSaleFilter.auxOperator);
     query = query + SqlFilterBuilder.getFilterQuery("sales.tenant", dtoSaleFilter.tenantCriteria, dtoSaleFilter.tenantOperator);
     query = query + SqlFilterBuilder.getFilterQuery("sales.total_price", dtoSaleFilter.totalPriceCriteria, dtoSaleFilter.totalPriceOperator);
     query = query + SqlFilterBuilder.getFilterQuery("sales.customer_cash", dtoSaleFilter.customerCashCriteria, dtoSaleFilter.customerCashOperator);
