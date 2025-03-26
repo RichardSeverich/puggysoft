@@ -12,6 +12,7 @@ function PaymentsTableFilterStudent () {
   const tableTitle = i18n.pagoTable.titleSelectionToEditDelete;
   const history = useHistory();
   const [isRequestInProgress, setIsRequestInProgress] = useState(false);
+  const username = window.sessionStorage.getItem('username')
 
   function handleAfterDelete (responseData) {
     setIsRequestInProgress(false);
@@ -62,6 +63,7 @@ function PaymentsTableFilterStudent () {
     <PagosTableFilterGeneric
       tableArrayCustomRowButtons={ tableArrayCustomRowButtons}
       tableSaleStatusType={ enumSaleStatus.DONE}
+      tableFilterStudentCriteria={username}
       tableTitle={tableTitle }
     >
     </PagosTableFilterGeneric>

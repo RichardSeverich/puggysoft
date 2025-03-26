@@ -3,6 +3,7 @@ import enumCompareOperators from "./../enumCompareOperators";
 import enumPaymentStatus from "./enumPaymentStatus";
 
 import i18n from "../../i18n/i18n";
+import enumRoles from "../users/enumRoles";
 
 const getColumnsFilterModel = function (
   /* TENANT */ criteriaTenant, operatorTenant,
@@ -39,6 +40,8 @@ const getColumnsFilterModel = function (
     };
   }
 
+  const disabledFilterUser = enumRoles.SCHOOL_ESTUDIANTE === window.sessionStorage.getItem('role')
+
   const arrayColumnsFilter = [
     {
       type: enumFilterType.TEXTBOX,
@@ -49,6 +52,7 @@ const getColumnsFilterModel = function (
     },
     {
       type: enumFilterType.TEXTBOX,
+      disabled: disabledFilterUser,
       criteriaValue: criteriaClient,
       criteriaOnchange: criteriaOnChangeClient,
       operatorValue: operatorClient,

@@ -13,6 +13,7 @@ import enumSaleStatus from "../../../models/sales/enumSaleStatus";
 function PagosTableFilterGeneric ({
   tableArrayCustomRowButtons,
   tableFilterSaleStatusCriteria,
+  tableFilterStudentCriteria,
   tableTitle
 }) {
   const pageSize = 10;
@@ -28,13 +29,17 @@ function PagosTableFilterGeneric ({
 
   // CRITERIA OF SEARCH OR FILTER
   const { value: criteriaId, onChange: criteriaOnChangeId, setValue: criteriaSetId } = useInput("");
-  const { value: criteriaClient, onChange: criteriaOnChangeClient, setValue: criteriaSetClient } = useInput("");
   let criteriaStatusDefault = "";
   if (tableFilterSaleStatusCriteria === enumSaleStatus.TODO) {
     criteriaStatusDefault = enumSaleStatus.TODO;
   } else if (tableFilterSaleStatusCriteria === enumSaleStatus.IN_PROGRESS) {
     criteriaStatusDefault = enumSaleStatus.IN_PROGRESS;
   }
+  let criteriaStudent = "";
+  if (tableFilterStudentCriteria !== "") {
+    criteriaStudent = tableFilterStudentCriteria;
+  }
+  const { value: criteriaClient, onChange: criteriaOnChangeClient, setValue: criteriaSetClient } = useInput(criteriaStudent);
   const { value: criteriaStatus, onChange: criteriaOnChangeStatus, setValue: criteriaSetStatus } = useInput(criteriaStatusDefault);
   const { value: criteriaCreatedBy, onChange: criteriaOnChangeCreatedBy, setValue: criteriaSetCreatedBy } = useInput("");
   const { value: criteriaUpdatedBy, onChange: criteriaOnChangeUpdatedBy, setValue: criteriaSetUpdatedBy } = useInput("");

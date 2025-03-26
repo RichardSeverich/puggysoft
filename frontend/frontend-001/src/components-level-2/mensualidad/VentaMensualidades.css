@@ -35,6 +35,10 @@
     flex-direction: column;
     align-items: normal;
   }
+
+  .puggysoft-five-divs-side-by-side-child .puggysoft-button {
+    margin-top: 1.5rem;
+  }
 }
 
 .puggysoft-form-input input[type="file"] {
