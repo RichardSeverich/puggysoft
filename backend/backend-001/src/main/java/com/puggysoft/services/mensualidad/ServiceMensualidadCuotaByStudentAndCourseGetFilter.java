@@ -23,11 +23,11 @@ public class ServiceMensualidadCuotaByStudentAndCourseGetFilter {
 
   /** method for filter. */
   public ResponseEntity<List<DtoProduct>> filter(
-    String studentUsername,
-    Long courseId,
-    DtoProductFilter dtoProductFilter,
-    int page,
-    int size
+      String studentUsername,
+      Long courseId,
+      DtoProductFilter dtoProductFilter,
+      int page,
+      int size
   ) {
     String query = SqlProductFilterBuilderNative.build(dtoProductFilter);
     int off = page * size;

@@ -3,14 +3,14 @@ package com.puggysoft.services.mensualidad;
 import com.puggysoft.dtos.sales.DtoProductFilter;
 import com.puggysoft.support.TotalPagesCalculator;
 import com.puggysoft.tools.sales.SqlProductFilterBuilderNative;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
 
 /** Services for filter. */
 @Service
@@ -21,10 +21,10 @@ public class ServiceMensualidadCuotaByStudentAndCourseGetFilterSize {
 
   /** method for filter. */
   public ResponseEntity<Long> filter(
-    String studentUsername,
-    Long courseId,
-    DtoProductFilter dtoProductFilter,
-    Long pageSize
+      String studentUsername,
+      Long courseId,
+      DtoProductFilter dtoProductFilter,
+      Long pageSize
   ) {
     String query = SqlProductFilterBuilderNative.build(dtoProductFilter);
     String fullQuery = "SELECT COUNT(*) "

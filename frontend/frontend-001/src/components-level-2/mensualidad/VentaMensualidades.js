@@ -5,7 +5,14 @@ import Button from "react-bootstrap/Button";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
 import { AiFillQuestionCircle } from "react-icons/ai";
-import { handleFilterRequest, handleAddRequest, handleDeleteRequest, handleEditRequest } from "../../actions/HandleManager";
+import {
+  handleFilterRequest,
+  handleGetRequest,
+  handleAddRequest,
+  handleDeleteRequest,
+  handleEditRequest,
+  handleAddFileRequest
+} from "../../actions/HandleManager";
 import i18n from "../../i18n/i18n";
 import CommonLoading from "../../components-level-1/CommonLoading";
 import CommonMessage from "../../components-level-1/CommonMessage";
@@ -13,6 +20,7 @@ import CuotaPagoGenericTable from "./generic/CuotaPagoGenericTable";
 import enumTableColumnsToShow from "../../models/enumTableColumnsToShow";
 import Form from "react-bootstrap/Form";
 import Card from "react-bootstrap/Card";
+import Image from 'react-bootstrap/Image';
 import enumSaleTableViewType from "../../models/sales/enumSaleTableViewType";
 import enumSaleStatus from "../../models/sales/enumSaleStatus";
 import enumPaths from "../../models/enumPaths";
@@ -21,6 +29,7 @@ import useInput from "../../hooks/useInput";
 
 import "./../css/all-two-divs-side-by-side.css";
 import "./../css/all-four-divs-side-by-side.css";
+import "./VentaMensualidades.css";
 import "./../css/all-forms-inline-block.css";
 import "../sales/sale-add-step-two-product-selection.css";
 
@@ -34,8 +43,8 @@ function VentaMensualidades () {
   const [arrayOfProductsFromSale, setArrayOfProductsFromSale] = useState([]);
   // Message states.
   const [isMessageVisible, setIsMessageVisible] = useState(false);
-  const [messageTitle, setMessageTitle] = useState("");
-  const [messageText, setMessageText] = useState("");
+  const [messageTitle, setMessageTitle] = useState(i18n.registroPagoMensualidad.titleComprobantePago);
+  const [messageText, setMessageText] = useState(<div></div>);
 
   const {
     saleData,
@@ -49,6 +58,9 @@ function VentaMensualidades () {
     ? history.location.state.data
     : { saleData: undefined, saleTableViewType: undefined };
 
+  const { value: valuePictureToShow, setValue: setValuePictureToShow } = useInput("");
+  const { value: valuePicture, setValue: setPicture } = useInput(null);
+  const { value: valuePicturePath, onChange: onChangePicturePath, setValue: setPicturePath } = useInput("");
   const { value: valueNote, onChange: onChangeNote } = useInput(
     saleData && saleData.note
       ? saleData.note
@@ -92,6 +104,7 @@ function VentaMensualidades () {
 
   const tableArrayCustomRowButtonsAddToSale = [
     {
+      disabled: saleData.status === enumSaleStatus.DONE,
       variant: "primary",
       handleCustom: handleAddProductToSale,
       text: i18n.commonTable.addButton
@@ -133,23 +146,18 @@ function VentaMensualidades () {
 
   const tableArrayCustomRowButtonsDeleteFromSale = [
     {
+      disabled: saleData.status === enumSaleStatus.DONE,
       variant: "danger",
       handleCustom: handleDeleteSaleProductRelation,
       text: i18n.commonTable.deleteButton
     }
   ];
 
-  function handleAfterOnSuccess (responseData) {
-    let pathName = enumPaths.SALES_SALES_TABLE_FILTER_TO_EDIT_DELETE_DETAILS;
-    if (saleTableViewType === enumSaleTableViewType.FOR_CASHIER) {
-      pathName = enumPaths.SALES_SALES_TABLE_FILTER_TO_EDIT_DELETE_DETAILS_TODO;
-    } else if (saleTableViewType === enumSaleTableViewType.FOR_DISPATCHER) {
-      pathName = enumPaths.SALES_SALES_TABLE_FILTER_TO_EDIT_DELETE_DETAILS_IN_PROGRESS;
-    }
-    history.push({
-      pathname: pathName
-    });
+  function handleAfterOnSuccess (newSaleData) {
+    saleData.status = newSaleData.status
+    setIsRequestInProgress(false)
   }
+
   function handleAfterOnFail (response) {
     setIsRequestInProgress(false);
   }
@@ -163,7 +171,9 @@ function VentaMensualidades () {
   }
 
   function handleAfterOnSuccessSaveNote () {
+    handleAddImage(saleData.id);
     saleData.note = valueNote;
+    setPicturePath('')
     setIsRequestInProgress(false);
   }
 
@@ -198,9 +208,24 @@ function VentaMensualidades () {
       handleEditRequest("sales/",
         newSaleData,
         saleData.id,
-        handleAfterOnSuccess);
+        () => {handleAfterOnSuccess(newSaleData)});
     }
   }
+
+  const handleAddImage = (saleId) => {
+    if (valuePicture !== null) {
+      handleAddFileRequest("file/picture/", valuePicture, saleId, () => {}, false, () => {});
+    } else {
+      setIsRequestInProgress(false);
+    }
+  };
+
+  const handleUploadPicture = (event) => {
+    const file = event.target.files[0];
+    setPicture(file);
+    onChangePicturePath(event);
+    setValuePictureToShow(URL.createObjectURL(file));
+  };
 
   if (isRequestInProgress || !saleData) {
     return <CommonLoading />;
@@ -219,27 +244,34 @@ function VentaMensualidades () {
   }
 
   function getSaleStatusToShowNext (someSaleStatus) {
-    if (someSaleStatus === enumSaleStatus.TODO) {
-      return i18n.saleStatus.inProgress;
-    } else if (someSaleStatus === enumSaleStatus.IN_PROGRESS) {
+    if (someSaleStatus === enumSaleStatus.IN_PROGRESS) {
       return i18n.saleStatus.done;
     } else if (someSaleStatus === enumSaleStatus.DONE) {
-      return i18n.saleStatus.todo;
+      return i18n.saleStatus.inProgress;
     } else {
       return someSaleStatus;
     }
   }
 
   function getSaleStatusToRequestNext (someSaleStatus) {
-    if (someSaleStatus === enumSaleStatus.TODO) {
-      return enumSaleStatus.IN_PROGRESS;
-    } else if (someSaleStatus === enumSaleStatus.IN_PROGRESS) {
+    if (someSaleStatus === enumSaleStatus.IN_PROGRESS) {
       return enumSaleStatus.DONE;
     } else if (someSaleStatus === enumSaleStatus.DONE) {
-      return i18n.saleStatus.TODO;
+      return i18n.saleStatus.inProgress;
     } else {
       return someSaleStatus;
     }
+  }
+
+  const handleViewPayment = async () => {
+    handleGetRequest(`file/picture?id=${saleData.id}`, (data) => {
+      setIsMessageVisible(true);
+      setMessageText(<Image fluid src={`data:image/jpeg;base64, ${data.archive}`} />)
+    }, () => {
+      setIsMessageVisible(true);
+      setMessageText(<div>Sin comprobante de pago</div>)
+    }, false)
+    // imageUrlInitAux = `data:image/jpeg;base64, ${comprobante}`;
   }
 
   const renderTooltipClient = (props) => (
@@ -279,13 +311,13 @@ function VentaMensualidades () {
         setIsVisible={setIsMessageVisible}
         titleText={messageTitle}
         bodyText={messageText}
-        variant="danger"
+        variant="secondary"
       />
       <Card>
         <Card.Header as='h3'>{generalTitle} : {saleData.id}</Card.Header>
         <Card.Body className="sale-section-one">
           <div className="">
-            <div className="puggysoft-four-divs-side-by-side-child">
+            <div className="puggysoft-five-divs-side-by-side-child">
               <Form.Group className="puggysoft-form-group">
                 <div className="puggysoft-form-label">
                   <Form.Label>{i18n.registroPagoMensualidad.clientBox}</Form.Label>
@@ -302,7 +334,7 @@ function VentaMensualidades () {
                 <div className={"puggysoft-form-input"}><Form.Control value={saleData.client} disabled /></div>
               </Form.Group>
             </div>
-            <div className="puggysoft-four-divs-side-by-side-child">
+            <div className="puggysoft-five-divs-side-by-side-child">
               <Form.Group className="puggysoft-form-group">
                 <div className={"puggysoft-form-label"}>
                   <Form.Label>{i18n.registroPagoMensualidad.sellerBox}</Form.Label>
@@ -319,7 +351,7 @@ function VentaMensualidades () {
                 <div className={"puggysoft-form-input"}><Form.Control value={saleData.createdBy} disabled /></div>
               </Form.Group>
             </div>
-            <div className="puggysoft-four-divs-side-by-side-child">
+            <div className="puggysoft-five-divs-side-by-side-child">
               <Form.Group className="puggysoft-form-group">
                 <div className={"puggysoft-form-label"}>
                   <Form.Label>{i18n.registroPagoMensualidad.saleDate}</Form.Label>
@@ -337,7 +369,7 @@ function VentaMensualidades () {
                 <div className={"puggysoft-form-input"}><Form.Control value={fixDate(saleData.creationDate)} disabled /></div>
               </Form.Group>
             </div>
-            <div className="puggysoft-four-divs-side-by-side-child">
+            <div className="puggysoft-five-divs-side-by-side-child">
               <Form.Group className="puggysoft-form-group">
                 <div className={"puggysoft-form-label"}>
                   <Form.Label>{i18n.registroPagoMensualidad.saleTotalToPay}</Form.Label>
@@ -354,6 +386,34 @@ function VentaMensualidades () {
                 <div className={"puggysoft-form-input"}><Form.Control value={totalToPay} disabled /></div>
               </Form.Group>
             </div>
+            {!(saleTableViewType === enumSaleTableViewType.FOR_SELLER) &&
+              <div className="puggysoft-five-divs-side-by-side-child">
+                <Form.Group controlId="formFile" className="puggysoft-form-group">
+                  <div className={"puggysoft-form-label"}>
+                    <Form.Label>{i18n.registroPagoMensualidad.comprobanteDePago}</Form.Label>
+                  </div>
+                  <div className={"puggysoft-form-input"}>
+                    <Form.Control
+                      disabled={saleData.status === enumSaleStatus.DONE}
+                      type="file"
+                      onChange={(event) => handleUploadPicture(event)}
+                      value={valuePicturePath}
+                    />
+                  </div>
+                </Form.Group>
+              </div>}
+            {(saleTableViewType === enumSaleTableViewType.FOR_SELLER) &&
+              <div className="puggysoft-five-divs-side-by-side-child">
+                <div className="puggysoft-button">
+                  <Button
+                    className="puggysoft-form-input"
+                      variant="secondary sale-button"
+                      type="button"
+                      onClick={handleViewPayment}
+                    >{i18n.registroPagoMensualidad.buttonPayment}
+                  </Button>
+                </div>
+              </div>}
           </div>
         </Card.Body>
         <Card.Body className="sale-section-two">
@@ -393,8 +453,17 @@ function VentaMensualidades () {
               }
             </div>
             <div className="puggysoft-four-divs-side-by-side-child">
+              <Button
+                disabled={saleData.status === enumSaleStatus.DONE}
+                variant="primary sale-button"
+                type="button"
+                onClick={handleSaveNote}
+              >{i18n.registroPagoMensualidad.buttonSaveNote}</Button>
+            </div>
+            <div className="puggysoft-four-divs-side-by-side-child">
               <Form.Group className="">
                 <div><Form.Control
+                  disabled={saleData.status === enumSaleStatus.DONE}
                   value={valueNote}
                   onChange={onChangeNote}
                   as="textarea"
@@ -403,15 +472,18 @@ function VentaMensualidades () {
                 </div>
               </Form.Group>
             </div>
-            <div className="puggysoft-four-divs-side-by-side-child">
-              <Button
-                variant="primary sale-button"
-                type="button"
-                onClick={handleSaveNote}
-              >{i18n.registroPagoMensualidad.buttonSaveNote}</Button>
-            </div>
-            <div className="puggysoft-four-divs-side-by-side-child">
-            </div>
+            {!(saleTableViewType === enumSaleTableViewType.FOR_SELLER) &&
+              <div className="puggysoft-five-divs-side-by-side-child">
+                <div className="puggysoft-button">
+                  <Button
+                    className="puggysoft-form-input"
+                      variant="secondary sale-button"
+                      type="button"
+                      onClick={handleViewPayment}
+                    >{i18n.registroPagoMensualidad.buttonPayment}
+                  </Button>
+                </div>
+              </div>}
           </div>
         </Card.Body>
       </Card>

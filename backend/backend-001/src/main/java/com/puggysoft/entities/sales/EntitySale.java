@@ -21,6 +21,8 @@ public class EntitySale extends EntitySuperClass {
 
   private String note;
 
+  private String aux;
+
   @Column(name = "total_price")
   private Float totalPrice;
 
