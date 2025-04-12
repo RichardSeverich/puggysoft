@@ -126,7 +126,7 @@ const navBar = {
   // Pagos
   pagosAdmin: "Adm. Pagos",
   pagosAdminRegistration: "Registrar pago",
-  pagosAdminTable: "Mostrar pago",
+  pagosAdminTable: "Mostrar pagos",
 
   // ******* ******* PAGOS UPEA SYSTEM ******* *******
   // Colegiatura/Matricula

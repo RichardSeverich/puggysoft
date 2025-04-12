@@ -52,10 +52,12 @@ function CommonTable (props) {
       } else if (enumFilterType.TEXTBOX === filter.type) {
         return <th key={"filter-textbox-" + index}>
           <Form.Control
+            disabled={filter.disabled}
             value={filter.criteriaValue}
             onChange={filter.criteriaOnchange}
             placeholder="" />
           <Form.Select
+            disabled={filter.disabled}
             value={filter.operatorValue}
             onChange={filter.operatorOnchange}
           >
@@ -225,6 +227,7 @@ function CommonTable (props) {
               ? dataElement.variantFunction(data)
               : dataElement.variant}
             onClick={() => dataElement.handleCustom(data, textboxId)}
+            disabled={dataElement.disabled}
           >
             {typeof dataElement.textFunction === "function"
               ? dataElement.textFunction(data)

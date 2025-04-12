@@ -319,6 +319,15 @@ function NavBar () {
   const navigateMensualidadVentaStep1Encargado = () => {
     history.push(enumPaths.MENSUALIDAD_PAGO_STEP1_ENCARGADO);
   };
+  const navigateMensualidadVentaStep1Estudiante = () => {
+    history.push(enumPaths.MENSUALIDAD_PAGO_STEP1_ESTUDIANTE);
+  };
+  const navigateMensualidadPagosTablaEstudiante = () => {
+    history.push(enumPaths.MENSUALIDAD_TABLA_PAGOS_ESTUDIANTE);
+  };
+  const navigateMensualidadPagosTablaEncargado = () => {
+    history.push(enumPaths.MENSUALIDAD_TABLA_PAGOS_ENCARGADO);
+  };
 
   // ******* ******* ******* PAGO UPEA SYSTEM ******* ******* *******
   const navigateColegiaturaMatriculaForm = () => {
@@ -794,6 +803,7 @@ function NavBar () {
   const assigncuotaPagoLabel = (<><GrAddCircle /> {i18n.navBar.assigncuotaPago}</>);
   const pagoAdminLabel = (<><BsCartCheckFill /> {i18n.navBar.pagosAdmin}</>);
   const pagoRegistrationLabel = (<><BsCartCheckFill /> {i18n.navBar.pagosAdminRegistration}</>);
+  const pagoTableLabel = (<><BsCartCheckFill /> {i18n.navBar.pagosAdminTable}</>);
   // ******* ******* ******* PAGOS UPEA SYSTEM ******* ******* *******
   // COLEGIATURAS/MATRICULAS
   const colegiaturaMatriculaAdminLabel = (<><FaBook /> {i18n.navBar.colegiaturaMatriculaAdmin}</>);
@@ -1156,6 +1166,12 @@ function NavBar () {
           {userRoles.includes(enumRoles.MENSUALIDAD_ENCARGADO) &&
             <NavDropdown title={pagoAdminLabel}>
               <NavDropdown.Item onClick={navigateMensualidadVentaStep1Encargado}>{pagoRegistrationLabel}</NavDropdown.Item>
+              <NavDropdown.Item onClick={navigateMensualidadPagosTablaEncargado}>{pagoTableLabel}</NavDropdown.Item>
+            </NavDropdown>}
+          {userRoles.includes(enumRoles.SCHOOL_ESTUDIANTE) &&
+            <NavDropdown title={pagoAdminLabel}>
+              <NavDropdown.Item onClick={navigateMensualidadVentaStep1Estudiante}>{pagoRegistrationLabel}</NavDropdown.Item>
+              <NavDropdown.Item onClick={navigateMensualidadPagosTablaEstudiante}>{pagoTableLabel}</NavDropdown.Item>
             </NavDropdown>}
 
           {/* ******* ******* ******* PAGOS UPEA SYSTEM ******* ******* ********/}

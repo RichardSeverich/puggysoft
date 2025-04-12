@@ -42,6 +42,7 @@ CREATE TABLE sales(
     total_price FLOAT(11,2),
     customer_cash FLOAT(11,2),
     customer_cash_change FLOAT(11,2),
+    aux VARCHAR(30),
     tenant VARCHAR(30) NOT NULL,
     creation_date DATETIME DEFAULT CURRENT_TIMESTAMP,
     update_date DATETIME ON UPDATE CURRENT_TIMESTAMP,

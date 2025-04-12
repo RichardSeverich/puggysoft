@@ -106,6 +106,10 @@ import AssignCuotaPagoStep2Page from "./components-level-3/mesualidad/AssignCuot
 import MensualidadPagoStep1EncargadoPage from "./components-level-3/mesualidad/MensualidadPagoStep1EncargadoPage";
 import MensualidadPagoStep2EncargadoPage from "./components-level-3/mesualidad/MensualidadPagoStep2EncargadoPage";
 import MensualidadPagoStep3EncargadoPage from "./components-level-3/mesualidad/MensualidadPagoStep3EncargadoPage";
+import MensualidadPagoStep1EstudiantePage from "./components-level-3/mesualidad/MensualidadPagoStep1EstudiantePage";
+import MensualidadPagoStep2EstudiantePage from "./components-level-3/mesualidad/MensualidadPagoStep2EstudiantePage";
+import MensualidadTablaPagosEncargadoPage from "./components-level-3/mesualidad/MensualidadTablaPagosEncargadoPage";
+import MensualidadTablaPagosEstudiantePage from "./components-level-3/mesualidad/MensualidadTablaPagosEstudiantePage";
 
 // Pago Upea System
 import ColegiaturaMatriculaFormPage from "./components-level-3/pagos-upea/ColegiaturaMatriculaFormPage";
@@ -346,6 +350,10 @@ const AppRoutes = () => (
       <Route exact path={enumPaths.MENSUALIDAD_PAGO_STEP1_ENCARGADO} component={MensualidadPagoStep1EncargadoPage} />
       <Route exact path={enumPaths.MENSUALIDAD_PAGO_STEP2_ENCARGADO} component={MensualidadPagoStep2EncargadoPage} />
       <Route exact path={enumPaths.MENSUALIDAD_PAGO_STEP3_ENCARGADO} component={MensualidadPagoStep3EncargadoPage} />
+      <Route exact path={enumPaths.MENSUALIDAD_PAGO_STEP1_ESTUDIANTE} component={MensualidadPagoStep1EstudiantePage} />
+      <Route exact path={enumPaths.MENSUALIDAD_PAGO_STEP2_ESTUDIANTE} component={MensualidadPagoStep2EstudiantePage} />
+      <Route exact path={enumPaths.MENSUALIDAD_TABLA_PAGOS_ENCARGADO} component={MensualidadTablaPagosEncargadoPage} />
+      <Route exact path={enumPaths.MENSUALIDAD_TABLA_PAGOS_ESTUDIANTE} component={MensualidadTablaPagosEstudiantePage} />
       {/** Pagos Upea System */}
       <Route exact path={enumPaths.PAGO_UPEA_COLEGIATURAS_MATRICULAS_FORM} component={ColegiaturaMatriculaFormPage} />
       <Route exact path={enumPaths.PAGO_UPEA_COLEGIATURAS_MATRICULAS_TABLE} component={ColegiaturaMatriculaTablePage} />

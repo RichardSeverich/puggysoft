@@ -6,16 +6,16 @@ import com.puggysoft.entities.escuela.EntityEscuelaCursos;
 import com.puggysoft.tools.SqlJoinBuilderBasic;
 import com.puggysoft.tools.SqlNotInBuilder;
 import com.puggysoft.tools.escuela.SqlEscuelaCursosFilterBuilderNative;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
-import java.util.List;
-import java.util.stream.Collectors;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
 
 /**
  * Services for filter.

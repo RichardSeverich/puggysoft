@@ -23,6 +23,8 @@ public class DtoSale extends DtoSuperClass {
 
   private String note;
 
+  private String aux;
+
   private Float totalPrice;
 
   private Float customerCash;
@@ -40,6 +42,7 @@ public class DtoSale extends DtoSuperClass {
     entity.setClient(client);
     entity.setStatus(status);
     entity.setNote(note);
+    entity.setAux(aux);
     entity.setTotalPrice(totalPrice);
     entity.setCustomerCash(customerCash);
     entity.setCustomerCashChange(customerCashChange);
@@ -56,6 +59,7 @@ public class DtoSale extends DtoSuperClass {
     dto.setClient(entity.getClient());
     dto.setStatus(entity.getStatus());
     dto.setNote(entity.getNote());
+    dto.setAux(entity.getAux());
     dto.setTotalPrice(entity.getTotalPrice());
     dto.setCustomerCash(entity.getCustomerCash());
     dto.setCustomerCashChange(entity.getCustomerCashChange());

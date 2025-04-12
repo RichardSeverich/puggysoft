@@ -50,7 +50,7 @@ public final class SqlReportTotalDetailFilterBuilderNative {
     if (filter.productCriteria != null) {
       this.where = this.where + "AND products.id = '" + filter.productCriteria + "' ";
     } else if (filter.groupProductCriteria != null) {
-      this.join = this.join + "INNER JOIN product_groups_products AS pgp ON	products.id = pgp.id_product ";
+      this.join = this.join + "INNER JOIN product_groups_products AS pgp ON products.id = pgp.id_product ";
       this.where = this.where + "AND pgp.id_product_group = '" + filter.groupProductCriteria + "' ";
     } else if (filter.clientCriteriar != null) {
       this.join = this.join + "INNER JOIN sales ON sales.id = sp.id_sale ";
@@ -66,7 +66,7 @@ public final class SqlReportTotalDetailFilterBuilderNative {
       this.where = this.where + "AND products.id = '" + filter.productCriteria + "' ";
     }
     if (filter.groupProductCriteria != null) {
-      this.join = this.join + "INNER JOIN EntityProductGroupsProducts AS pgp ON	products.id = pgp.idProduct ";
+      this.join = this.join + "INNER JOIN EntityProductGroupsProducts AS pgp ON products.id = pgp.idProduct ";
       this.where = this.where + "AND pgp.idProductGroup = '" + filter.groupProductCriteria + "' ";
     }
     if (filter.clientCriteriar != null) {

@@ -20,6 +20,9 @@ public class DtoSaleFilter {
   // STATUS: TODO, IN-PROGRESS, DONE.
   public String statusCriteria;
   public EnumCompareOperator statusOperator;
+  // AUX
+  public String auxCriteria;
+  public EnumCompareOperator auxOperator;
   // TENANT
   public String tenantCriteria;
   public EnumCompareOperator tenantOperator;
