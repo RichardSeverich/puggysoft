@@ -37,13 +37,19 @@ public class ServiceMensualidadCuotaByStudentAndCourseGetFilterSize {
         + "ON product_groups.aux = escuela_cursos.short_name "
         + "INNER JOIN escuela_cursos_estudiantes "
         + "ON escuela_cursos_estudiantes.curso = escuela_cursos.short_name "
-        + "WHERE escuela_cursos_estudiantes.estudiante = " + "'" + studentUsername + "'";
-    if (query.isEmpty()) {
-      fullQuery = fullQuery + " AND escuela_cursos.id = " + courseId;
-    } else if (!query.isEmpty()) {
+        + "WHERE escuela_cursos_estudiantes.estudiante = " + "'" + studentUsername + "'"
+        + "AND escuela_cursos.id = " + "'" + courseId + "'"
+        + "AND products.id NOT IN (SELECT products.id FROM products "
+        + "INNER JOIN sales_products "
+        + "ON sales_products.id_product = products.id "
+        + "INNER JOIN sales "
+        + "ON sales_products.id_sale = sales.id "
+        + "WHERE sales.client = " + "'" + studentUsername + "'"
+        + " AND sales.aux = " + "'" + courseId + "')";
+    if (!query.isEmpty()) {
       // Delete last 'AND' key workd.
       query = query.substring(0, query.length() - 4);
-      fullQuery = fullQuery + " AND escuela_cursos.id = " + courseId + " AND " + query;
+      fullQuery = fullQuery + " AND " + query;
     }
     // JQPL (createQuery) and Native (createNativeQuery)
     Query filterQuery = entityManager.createNativeQuery(fullQuery);

@@ -257,7 +257,7 @@ function VentaMensualidades () {
     if (someSaleStatus === enumSaleStatus.IN_PROGRESS) {
       return enumSaleStatus.DONE;
     } else if (someSaleStatus === enumSaleStatus.DONE) {
-      return i18n.saleStatus.inProgress;
+      return enumSaleStatus.IN_PROGRESS;
     } else {
       return someSaleStatus;
     }

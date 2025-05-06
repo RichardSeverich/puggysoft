@@ -3,13 +3,12 @@ import { useHistory } from "react-router";
 import Card from "react-bootstrap/Card";
 import i18n from "../../i18n/i18n";
 import enumPaths from "../../models/enumPaths";
-import { handleFilterRequest, handleAddRequest, handleGetRequest } from "../../actions/HandleManager";
+import { handleFilterRequest } from "../../actions/HandleManager";
 import CursoGenericTable from "../escuela/generic/CursoGenericTable";
 import enumTableColumnsToShow from "../../models/enumTableColumnsToShow";
-import PropTypes from "prop-types";
 import enumSaleTableViewType from "../../models/sales/enumSaleTableViewType";
-import enumSaleStatus from "./../../models/sales/enumSaleStatus";
 import CommonLoading from "../../components-level-1/CommonLoading";
+import enumCompareOperators from "../../models/enumCompareOperators";
 
 function CursosTable (props) {
   const tableTitle = i18n.escuela.cursosTableTitle;
@@ -17,8 +16,10 @@ function CursosTable (props) {
   const pageSize = 7;
   const numberPagesToShow = 7;
   const history = useHistory();
-  const { estudianteSelected } = history && history.location && history.location.state;
-  const saleTableViewType = props.saleTableViewType;
+  const estudianteSelected = {
+    username: window.sessionStorage.getItem("username")
+  }
+  const saleTableViewType = enumSaleTableViewType.FOR_DISPATCHER;
   const [isRequestInProgress, setIsRequestInProgress] = useState(false);
 
   function handleGetData (activePage, filterBody, updateArrayData) {
@@ -39,37 +40,26 @@ function CursosTable (props) {
 
   function handleSelection (cursoSelected) {
     setIsRequestInProgress(true);
-    const username = window.sessionStorage.getItem("username");
-    const tenant = window.sessionStorage.getItem("tenant");
-    let saleStatus = enumSaleStatus.IN_PROGRESS;
-    const bodySale = {
-      client: estudianteSelected.username,
-      status: saleStatus,
-      createdBy: username,
-      updatedBy: username,
-      aux: cursoSelected.id,
-      tenant
-    };
-    function handleAfterCreateSale (saleId) {
-      const saleData = bodySale;
-      saleData.id = saleId;
-      function handleGetNewSale (saleDataFromRequest) {
-        saleData.creationDate = saleDataFromRequest.creationDate;
-        history.push({
-          pathname: enumPaths.MENSUALIDAD_PAGO_STEP3_ENCARGADO,
-          state: {
-            data: {
-              saleData,
-              saleTableViewType,
-              estudianteSelected,
-              cursoSelected,
-            }
+    const afterGetProfile = (profile) => {
+      history.push({
+        pathname: enumPaths.MENSUALIDAD_HISTORY_POR_ESTUDIANTE_CURSO,
+        state: {
+          data: {
+            saleTableViewType,
+            estudianteSelected: profile[0],
+            cursoSelected,
           }
-        });
-      }
-      handleGetRequest(`sales/${saleId}`, handleGetNewSale);
+        }
+      });
     }
-    handleAddRequest("sales/", bodySale, handleAfterCreateSale, false);
+    handleFilterRequest(
+      `users/filter?page=0&size=1`,
+      {
+        usernameCriteria: estudianteSelected.username,
+        usernameOperator: enumCompareOperators.TEXT_EQUALS,
+      },
+      afterGetProfile
+    )
   }
 
   const tableArrayCustomRowButtons = [
@@ -80,10 +70,6 @@ function CursosTable (props) {
     }
   ];
 
-  if (isRequestInProgress) {
-    return <CommonLoading />;
-  }
-
   function fixArrayData(listData) {
     const newList = listData.map((data) => {
       return {
@@ -92,6 +78,10 @@ function CursosTable (props) {
       }
     });
     return newList;
+  }
+
+  if (isRequestInProgress) {
+    return <CommonLoading />;
   }
 
   return (
@@ -117,14 +107,3 @@ function CursosTable (props) {
 }
 
 export default CursosTable;
-
-CursosTable.propTypes = {
-  saleTableViewType: PropTypes.oneOf([
-    enumSaleTableViewType.FOR_CASHIER,
-    enumSaleTableViewType.FOR_SELLER
-  ])
-};
-
-CursosTable.defaultProps = {
-  saleTableViewType: undefined
-};

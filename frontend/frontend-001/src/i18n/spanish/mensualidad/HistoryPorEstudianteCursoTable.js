@@ -1,0 +1,30 @@
+const commonTable = {
+  tableTitle: "Historial de Pagos para ",
+  tableSubTitle: 'Curso: ',
+  numColumn: "N°",
+  feeColumn: "Cuota",
+  amountColumn: "Monto",
+  limitDateColumn: "Fecha Limite de pago",
+  dateColumn: "Fecha de pago",
+  statusColumn: "Estado",
+  limitDateBoolColumn: "Plazo Expirado",
+  detailsButton: "Detalle",
+  limitDateValueYes: "Si",
+  limitDateValueNo: "No",
+  tableTitlePdf: "Historial de pagos",
+  fecha: "Fecha",
+  name: "Nombre",
+  
+  ciColumn: "CI",
+  paidEnrollmentColumn: "Pagado Matricula",
+  paidTuitionColumn: "Pagado Colegiatura",
+  paidOtherColumn: "Pagado otros",
+  debtEnrollmentColumn: "Deuda Matricula",
+  debtTuitionColumn: "Deuda Colegiatura",
+  debtOtherColumn: "Deuda otros",
+  tableTitlePdfCourse: "Informe de pagos",
+  statePaymentsCourse: "Estado de pagos",
+  urgentCourse: "urgente",
+};
+
+export default commonTable;

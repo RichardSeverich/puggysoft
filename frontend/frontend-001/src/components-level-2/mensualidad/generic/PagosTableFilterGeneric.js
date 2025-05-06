@@ -48,7 +48,7 @@ function PagosTableFilterGeneric ({
 
   // FILTER OPERATORS
   const { value: operatorId, onChange: operatorOnChangeId, setValue: operatorSetId } = useInput(enumCompareOperators.TEXT_CONTAINS);
-  const { value: operatorClient, onChange: operatorOnChangeClient, setValue: operatorSetClient } = useInput(enumCompareOperators.TEXT_CONTAINS);
+  const { value: operatorClient, onChange: operatorOnChangeClient, setValue: operatorSetClient } = useInput(enumCompareOperators.TEXT_EQUALS);
   const { value: operatorStatus, onChange: operatorOnChangeStatus, setValue: operatorSetStatus } = useInput(enumCompareOperators.TEXT_EQUALS);
   const { value: operatorCreatedBy, onChange: operatorOnChangeCreatedBy, setValue: operatorSetCreatedBy } = useInput(enumCompareOperators.TEXT_CONTAINS);
   const { value: operatorUpdatedBy, onChange: operatorOnChangeUpdatedBy, setValue: operatorSetUpdatedBy } = useInput(enumCompareOperators.TEXT_CONTAINS);

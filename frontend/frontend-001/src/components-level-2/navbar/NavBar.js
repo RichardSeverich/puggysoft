@@ -55,6 +55,7 @@ import {
 } from "react-icons/bs";
 import {
   TbHierarchy3,
+  TbReportAnalytics,
   TbSoccerField
 } from "react-icons/tb";
 import { RiLoginCircleLine, RiUser2Fill, RiShieldKeyholeFill } from "react-icons/ri";
@@ -327,6 +328,15 @@ function NavBar () {
   };
   const navigateMensualidadPagosTablaEncargado = () => {
     history.push(enumPaths.MENSUALIDAD_TABLA_PAGOS_ENCARGADO);
+  };
+  const navigateMensualidadHistoryPaymentsEncargado = () => {
+    history.push(enumPaths.MENSUALIDAD_HISTORY_SELECCIONAR_ESTUDIANTE_ENCANRGADO);
+  };
+  const navigateMensualidadHistoryPaymentsByCourseEncargado = () => {
+    history.push(enumPaths.MENSUALIDAD_HISTORY_SELECCIONAR_SOLO_CURSO);
+  };
+  const navigateMensualidadHistoryPaymentsEstudiante = () => {
+    history.push(enumPaths.MENSUALIDAD_HISTORY_SELECCIONAR_CURSO_ESTUDIANTE);
   };
 
   // ******* ******* ******* PAGO UPEA SYSTEM ******* ******* *******
@@ -804,6 +814,10 @@ function NavBar () {
   const pagoAdminLabel = (<><BsCartCheckFill /> {i18n.navBar.pagosAdmin}</>);
   const pagoRegistrationLabel = (<><BsCartCheckFill /> {i18n.navBar.pagosAdminRegistration}</>);
   const pagoTableLabel = (<><BsCartCheckFill /> {i18n.navBar.pagosAdminTable}</>);
+  const hisrotyAdminLabel = (<><TbReportAnalytics /> {i18n.navBar.hisrotyAdminLabel}</>);
+  const hisrotyEncargadoLabel = (<><TbReportAnalytics /> {i18n.navBar.hisrotyCursoEstudianteLabel}</>);
+  const hisrotyByCourseEncargadoLabel = (<><TbReportAnalytics /> {i18n.navBar.hisrotyCursoLabel}</>);
+  const hisrotyEstudianteLabel = (<><TbReportAnalytics /> {i18n.navBar.hisrotyCursoLabel}</>);
   // ******* ******* ******* PAGOS UPEA SYSTEM ******* ******* *******
   // COLEGIATURAS/MATRICULAS
   const colegiaturaMatriculaAdminLabel = (<><FaBook /> {i18n.navBar.colegiaturaMatriculaAdmin}</>);
@@ -1172,6 +1186,15 @@ function NavBar () {
             <NavDropdown title={pagoAdminLabel}>
               <NavDropdown.Item onClick={navigateMensualidadVentaStep1Estudiante}>{pagoRegistrationLabel}</NavDropdown.Item>
               <NavDropdown.Item onClick={navigateMensualidadPagosTablaEstudiante}>{pagoTableLabel}</NavDropdown.Item>
+            </NavDropdown>}
+          {userRoles.includes(enumRoles.MENSUALIDAD_ENCARGADO) &&
+            <NavDropdown title={hisrotyAdminLabel}>
+              <NavDropdown.Item onClick={navigateMensualidadHistoryPaymentsEncargado}>{hisrotyEncargadoLabel}</NavDropdown.Item>
+              <NavDropdown.Item onClick={navigateMensualidadHistoryPaymentsByCourseEncargado}>{hisrotyByCourseEncargadoLabel}</NavDropdown.Item>
+            </NavDropdown>}
+          {userRoles.includes(enumRoles.SCHOOL_ESTUDIANTE) &&
+            <NavDropdown title={hisrotyAdminLabel}>
+              <NavDropdown.Item onClick={navigateMensualidadHistoryPaymentsEstudiante}>{hisrotyEstudianteLabel}</NavDropdown.Item>
             </NavDropdown>}
 
           {/* ******* ******* ******* PAGOS UPEA SYSTEM ******* ******* ********/}

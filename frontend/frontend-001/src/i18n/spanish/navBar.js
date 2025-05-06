@@ -127,6 +127,10 @@ const navBar = {
   pagosAdmin: "Adm. Pagos",
   pagosAdminRegistration: "Registrar pago",
   pagosAdminTable: "Mostrar pagos",
+  // Pagos
+  hisrotyAdminLabel: "Adm. Historial de Pagos",
+  hisrotyCursoEstudianteLabel: "Por Estudiante",
+  hisrotyCursoLabel: "Por Curso",
 
   // ******* ******* PAGOS UPEA SYSTEM ******* *******
   // Colegiatura/Matricula
