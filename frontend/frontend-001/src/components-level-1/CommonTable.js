@@ -227,7 +227,7 @@ function CommonTable (props) {
               ? dataElement.variantFunction(data)
               : dataElement.variant}
             onClick={() => dataElement.handleCustom(data, textboxId)}
-            disabled={dataElement.disabled}
+            disabled={dataElement.disabled || data.buttonDisabled}
           >
             {typeof dataElement.textFunction === "function"
               ? dataElement.textFunction(data)

@@ -163,7 +163,7 @@ function ReportDetailGeneric({
             }}
           />
         </Col>
-        <Col xs="auto"><Card.Header as='h3'>{reportTitle}</Card.Header></Col>
+        <Col xs="auto"><h3>{reportTitle}</h3></Col>
         <Col xs="3"/>
       </Row>
       <Col xs={11} sm={9} md={7} lg={6} xl={5} xxl={4}>

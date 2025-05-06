@@ -110,6 +110,12 @@ import MensualidadPagoStep1EstudiantePage from "./components-level-3/mesualidad/
 import MensualidadPagoStep2EstudiantePage from "./components-level-3/mesualidad/MensualidadPagoStep2EstudiantePage";
 import MensualidadTablaPagosEncargadoPage from "./components-level-3/mesualidad/MensualidadTablaPagosEncargadoPage";
 import MensualidadTablaPagosEstudiantePage from "./components-level-3/mesualidad/MensualidadTablaPagosEstudiantePage";
+import MensualidadHistorySeleccionarEstudianteEncargadoPage from "./components-level-3/mesualidad/MensualidadHistorySeleccionarEstudianteEncargadoPage";
+import MensualidadHistorySeleccionarCursoEncargadoPage from "./components-level-3/mesualidad/MensualidadHistorySeleccionarCursoEncargadoPage";
+import MensualidadHistorySeleccionarCursoEstudiantePage from "./components-level-3/mesualidad/MensualidadHistorySeleccionarCursoEstudiantePage";
+import MensualidadHistoryPorEstudianteCursoPage from "./components-level-3/mesualidad/MensualidadHistoryPorEstudianteCursoPage";
+import MensualidadHistorySeleccionarSoloCursoEncargadoPage from "./components-level-3/mesualidad/MensualidadHistorySeleccionarSoloCursoEncargadoPage";
+import MensualidadHistoryPorCursoPage from "./components-level-3/mesualidad/MensualidadHistoryPorCursoPage";
 
 // Pago Upea System
 import ColegiaturaMatriculaFormPage from "./components-level-3/pagos-upea/ColegiaturaMatriculaFormPage";
@@ -354,6 +360,13 @@ const AppRoutes = () => (
       <Route exact path={enumPaths.MENSUALIDAD_PAGO_STEP2_ESTUDIANTE} component={MensualidadPagoStep2EstudiantePage} />
       <Route exact path={enumPaths.MENSUALIDAD_TABLA_PAGOS_ENCARGADO} component={MensualidadTablaPagosEncargadoPage} />
       <Route exact path={enumPaths.MENSUALIDAD_TABLA_PAGOS_ESTUDIANTE} component={MensualidadTablaPagosEstudiantePage} />
+      {/*  Mensualidad History */}
+      <Route exact path={enumPaths.MENSUALIDAD_HISTORY_SELECCIONAR_ESTUDIANTE_ENCANRGADO} component={MensualidadHistorySeleccionarEstudianteEncargadoPage} />
+      <Route exact path={enumPaths.MENSUALIDAD_HISTORY_SELECCIONAR_CURSO_ENCANRGADO} component={MensualidadHistorySeleccionarCursoEncargadoPage} />
+      <Route exact path={enumPaths.MENSUALIDAD_HISTORY_SELECCIONAR_CURSO_ESTUDIANTE} component={MensualidadHistorySeleccionarCursoEstudiantePage} />
+      <Route exact path={enumPaths.MENSUALIDAD_HISTORY_POR_ESTUDIANTE_CURSO} component={MensualidadHistoryPorEstudianteCursoPage} />
+      <Route exact path={enumPaths.MENSUALIDAD_HISTORY_SELECCIONAR_SOLO_CURSO} component={MensualidadHistorySeleccionarSoloCursoEncargadoPage} />
+      <Route exact path={enumPaths.MENSUALIDAD_HISTORY_POR_CURSO} component={MensualidadHistoryPorCursoPage} />
       {/** Pagos Upea System */}
       <Route exact path={enumPaths.PAGO_UPEA_COLEGIATURAS_MATRICULAS_FORM} component={ColegiaturaMatriculaFormPage} />
       <Route exact path={enumPaths.PAGO_UPEA_COLEGIATURAS_MATRICULAS_TABLE} component={ColegiaturaMatriculaTablePage} />
