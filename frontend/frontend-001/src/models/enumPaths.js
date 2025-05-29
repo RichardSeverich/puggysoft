@@ -253,14 +253,20 @@ const ESCUELA_DOCENTES_TABLE = "/casa-estudios-docentes-table";
 const ESCUELA_CALIFICACIONES_TABLE = "/casa-estudios-calificaciones-table";
 const ESCUELA_ASIGNAR_CURSOS_A_ESTUDIANTE_STEP_ONE = "/casa-estudios-asignar-cursos-a-estudiante-step-1";
 const ESCUELA_ASIGNAR_CURSOS_A_ESTUDIANTE_STEP_TWO = "/casa-estudios-asignar-cursos-a-estudiante-step-2";
-const ESCUELA_ASIGNAR_CURSOS_A_DOCENTE_STEP_ONE = "/casa-estudios-asignar-cursos-a-docente-step-1";
-const ESCUELA_ASIGNAR_CURSOS_A_DOCENTE_STEP_TWO = "/casa-estudios-asignar-cursos-a-docente-step-2";
+const ESCUELA_ASIGNAR_CURSOS_MATERIAS_A_DOCENTE_STEP_ONE = "/casa-estudios-asignar-cursos-materias-a-docente-step-1";
+const ESCUELA_ASIGNAR_CURSOS_MATERIAS_A_DOCENTE_STEP_TWO = "/casa-estudios-asignar-cursos-materias-a-docente-step-2";
+const ESCUELA_ASIGNAR_CURSOS_MATERIAS_A_DOCENTE_STEP_THREE = "/casa-estudios-asignar-cursos-materias-a-docente-step-3";
 const ESCUELA_ASIGNAR_CALIFICACIONES_STEP_ONE = "/casa-estudios-asignar-calificaciones-step-1";
 const ESCUELA_ASIGNAR_CALIFICACIONES_STEP_ONE_TABLE = "/casa-estudios-asignar-calificaciones-step-1-table";
 const ESCUELA_ASIGNAR_CALIFICACIONES_STEP_TWO = "/casa-estudios-asignar-calificaciones-step-2";
 const ESCUELA_ASIGNAR_CALIFICACIONES_STEP_THREE = "/casa-estudios-asignar-calificaciones-step-3";
 const ESCUELA_ASIGNAR_CALIFICACIONES_STEP_FOUR = "/casa-estudios-asignar-calificaciones-step-4";
 const ESCUELA_ASIGNAR_CALIFICACIONES_STEP_FIVE = "/casa-estudios-asignar-calificaciones-step-5";
+const ESCUELA_CALIFICACIONES_VIEW_ESTUDIANTE= "/escuela-calificaciones-view-estudiante";
+const ESCUELA_ASIGNAR_CALIFICACIONES_DOCENTE = "/escuela-asignar-calificaciones-docente";
+const ESCUELA_REPORTES_ESTUDIANTES_NOTA_FINAL_MATERIA = "/escuela-reportes-estudiantes-nota-final-materia";
+const ESCUELA_REPORTES_DETALLE_ENCARGADO = "/escuela-reportes-detalle-encargado";
+const ESCUELA_REPORTES_NOTA_FINAL_PARA_ESTUDIANTE = "/escuela-reportes-nota-final-para-estudiante";
 
 const enumPaths = {
   DASHBOARD,
@@ -496,14 +502,20 @@ const enumPaths = {
   ESCUELA_CALIFICACIONES_TABLE,
   ESCUELA_ASIGNAR_CURSOS_A_ESTUDIANTE_STEP_ONE,
   ESCUELA_ASIGNAR_CURSOS_A_ESTUDIANTE_STEP_TWO,
-  ESCUELA_ASIGNAR_CURSOS_A_DOCENTE_STEP_ONE,
-  ESCUELA_ASIGNAR_CURSOS_A_DOCENTE_STEP_TWO,
+  ESCUELA_ASIGNAR_CURSOS_MATERIAS_A_DOCENTE_STEP_ONE,
+  ESCUELA_ASIGNAR_CURSOS_MATERIAS_A_DOCENTE_STEP_TWO,
+  ESCUELA_ASIGNAR_CURSOS_MATERIAS_A_DOCENTE_STEP_THREE,
   ESCUELA_ASIGNAR_CALIFICACIONES_STEP_ONE,
   ESCUELA_ASIGNAR_CALIFICACIONES_STEP_ONE_TABLE,
   ESCUELA_ASIGNAR_CALIFICACIONES_STEP_TWO,
   ESCUELA_ASIGNAR_CALIFICACIONES_STEP_THREE,
   ESCUELA_ASIGNAR_CALIFICACIONES_STEP_FOUR,
   ESCUELA_ASIGNAR_CALIFICACIONES_STEP_FIVE,
+  ESCUELA_ASIGNAR_CALIFICACIONES_DOCENTE,
+  ESCUELA_CALIFICACIONES_VIEW_ESTUDIANTE,
+  ESCUELA_REPORTES_ESTUDIANTES_NOTA_FINAL_MATERIA,
+  ESCUELA_REPORTES_DETALLE_ENCARGADO,
+  ESCUELA_REPORTES_NOTA_FINAL_PARA_ESTUDIANTE,
   // GAMES
   GAMES_TIC_TAC_TOE,
   GAMES_TIC_TAC_TOE_PC,

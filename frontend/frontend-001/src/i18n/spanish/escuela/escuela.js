@@ -15,7 +15,7 @@ const escuela = {
   // Materias
   materiasFormTitle: "Formulario de materia",
   materiasTableTitle: "Tabla de materias",
-  materiasTableTitleSub: "Selecione una materia",
+  materiasTableTitleSub: "Seleccione una materia",
   materiasNameLabel: "Nombre de materia",
   materiasShortNameLabel: "Codigo de materia",
   materiasNotaMaximaLabel: "Nota maxima",
@@ -28,7 +28,7 @@ const escuela = {
   // Notas
   notasFormTitle: "Formulario de notas",
   notasTableTitle: "Tabla de nota",
-  notasTableTitleSub: "Selecione una nota",
+  notasTableTitleSub: "Seleccione una nota",
   notasNameLabel: "Nombre de la nota",
   notasShortNameLabel: "Codigo de la nota",
   notasPorcentajeLabel: "Porcentaje de la nota",
@@ -39,18 +39,26 @@ const escuela = {
   notasPorcentajeError: "Ingrese porcentaje (min 1, max 100)",
   nota: "Nota",
   calificacion: "Calificacion",
+  calificaciones: "Calificaciones",
+  detalles: "Detalles",
   calificacionTable: "Tabla de Calificacion",
+  obtainData: "Obtener datos",
+  obtenerNotas: "Obtener notas",
+  selectBeforeCourse: "Primero seleccione un curso",
   calificacionValidation: "La calificacion debe ser igual o mayor que 0",
+  generateReport: "Generar reporte",
   // Estudiantes
   estudianteForm: "Formulario de Estudiantes",
   estudianteTable: "Tabla de Estudiantes",
-  estudianteTableTitleSub: "Selecione un estudiante",
+  estudianteTableTitleSub: "Seleccione un estudiante",
   estudiante: "Estudiante",
   // Docentes
   docentesForm: "Formulario de Docentes",
   docentesTable: "Tabla de Docentes",
-  docenteTableTitleSub: "Selecione un docente",
-  docente: "Docente"
+  docenteTableTitleSub: "Seleccione un docente",
+  docente: "Docente",
+
+  notaFinal: "Nota Final"
 };
 
 export default escuela;

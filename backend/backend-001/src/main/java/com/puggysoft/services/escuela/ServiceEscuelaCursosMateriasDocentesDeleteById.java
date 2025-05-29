@@ -1,6 +1,6 @@
 package com.puggysoft.services.escuela;
 
-import com.puggysoft.repositories.escuela.IRepositoryEscuelaCursosDocentes;
+import com.puggysoft.repositories.escuela.IRepositoryEscuelaCursosMateriasDocentes;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
@@ -9,10 +9,10 @@ import org.springframework.stereotype.Service;
 
 /** Services for delete by id. */
 @Service
-public class ServiceEscuelaCursosDocentesDeleteById {
+public class ServiceEscuelaCursosMateriasDocentesDeleteById {
 
   @Autowired
-  private IRepositoryEscuelaCursosDocentes repository;
+  private IRepositoryEscuelaCursosMateriasDocentes repository;
 
   /** method for delete. */
   public ResponseEntity<String> deleteById(Long id) {

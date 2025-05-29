@@ -338,6 +338,9 @@ function NavBar () {
   const navigateMensualidadHistoryPaymentsEstudiante = () => {
     history.push(enumPaths.MENSUALIDAD_HISTORY_SELECCIONAR_CURSO_ESTUDIANTE);
   };
+  const navigateCalificacionesViewEstuduante = () => {
+    history.push(enumPaths.ESCUELA_CALIFICACIONES_VIEW_ESTUDIANTE);
+  };
 
   // ******* ******* ******* PAGO UPEA SYSTEM ******* ******* *******
   const navigateColegiaturaMatriculaForm = () => {
@@ -585,11 +588,23 @@ function NavBar () {
     history.push(enumPaths.ESCUELA_DOCENTES_TABLE);
   };
   const navigateDocentesCursos = () => {
-    history.push(enumPaths.ESCUELA_ASIGNAR_CURSOS_A_DOCENTE_STEP_ONE);
+    history.push(enumPaths.ESCUELA_ASIGNAR_CURSOS_MATERIAS_A_DOCENTE_STEP_ONE);
   };
   // CALIFICACIONES
   const navigateAsignarCalificaciones = () => {
     history.push(enumPaths.ESCUELA_ASIGNAR_CALIFICACIONES_STEP_ONE);
+  };
+  const navigateAsignarCalificacionesDocente = () => {
+    history.push(enumPaths.ESCUELA_ASIGNAR_CALIFICACIONES_DOCENTE);
+  };
+  const navigateReporteEstudiantesNotaFinalMateria = () => {
+    history.push(enumPaths.ESCUELA_REPORTES_ESTUDIANTES_NOTA_FINAL_MATERIA);
+  };
+  const navigateReporteDetalladoEncargado = () => {
+    history.push(enumPaths.ESCUELA_REPORTES_DETALLE_ENCARGADO);
+  };
+  const navigateReporteNotaFinalMateriasViewEstudiante = () => {
+    history.push(enumPaths.ESCUELA_REPORTES_NOTA_FINAL_PARA_ESTUDIANTE);
   };
 
   const navigateCalificacionesTable1 = () => {
@@ -969,6 +984,7 @@ function NavBar () {
   const escuelaEstudiantesFormLabel = (<><GrAddCircle /> {i18n.navBar.escuelaEstudiantesForm}</>);
   const escuelaEstudiantesTableLabel = (<><AiOutlineTable /> {i18n.navBar.escuelaEstudiantesTable}</>);
   const escuelaEstudiantesCursoLabel = (<><GrAddCircle /> {i18n.navBar.escuelaEstudiantesMaterias}</>);
+  const escuelaCalificacionesView = (<><TbReportAnalytics /> {i18n.navBar.escuelaCalificacionesView}</>);
   // DOCENTES
   const escuelaDocentesAdminLabel = (<>< GiTeacher /> {i18n.navBar.escuelaDocentesAdmin}</>);
   const escuelaDocentesFormLabel = (<><GrAddCircle /> {i18n.navBar.escuelaDocentesForm}</>);
@@ -979,6 +995,11 @@ function NavBar () {
   const escuelaCalificacionesForm = (<><GrAddCircle /> {i18n.navBar.escuelaCalificacionesForm}</>);
   const escuelaCalificacionesTable1 = (<><AiOutlineTable /> {i18n.navBar.escuelaCalificacionesTable1}</>);
   const escuelaCalificacionesTable2 = (<><AiOutlineTable /> {i18n.navBar.escuelaCalificacionesTable2}</>);
+  const escuelaGestionarCalificaciones = (<><GrAddCircle /> {i18n.navBar.gestionarCalificacion}</>);
+  // REPORTE CALIFICACIONES
+  const escuelaReportesAdmin = (<>< GiVibratingShield /> {i18n.navBar.escuelaReporteCalificacionesAdmin}</>);
+  const escuelaReporteEstudiantesNotaFinalMateria = (<><AiOutlineTable /> {i18n.navBar.escuelaReporteEstudiantesNotaFinalMateria}</>);
+  const escuelaReporteDetalladoEncargado = (<><AiOutlineTable /> {i18n.navBar.escuelaReportePorCurso}</>);
 
   // ******* ******* ******* GAMES SYSTEM ******* ******* *******
   // GAMES
@@ -1196,6 +1217,11 @@ function NavBar () {
             <NavDropdown title={hisrotyAdminLabel}>
               <NavDropdown.Item onClick={navigateMensualidadHistoryPaymentsEstudiante}>{hisrotyEstudianteLabel}</NavDropdown.Item>
             </NavDropdown>}
+          {userRoles.includes(enumRoles.SCHOOL_ESTUDIANTE) &&
+            <NavDropdown title={escuelaCalificacionesAdmin}>
+              <NavDropdown.Item onClick={navigateCalificacionesViewEstuduante}>{escuelaReporteEstudiantesNotaFinalMateria}</NavDropdown.Item>
+              <NavDropdown.Item onClick={navigateReporteNotaFinalMateriasViewEstudiante}>{escuelaCalificacionesView}</NavDropdown.Item>
+            </NavDropdown>}
 
           {/* ******* ******* ******* PAGOS UPEA SYSTEM ******* ******* ********/}
           {(userRoles.includes(enumRoles.UPEA_PAGOS_ENCARGADO)) &&
@@ -1397,7 +1423,21 @@ function NavBar () {
               <NavDropdown.Item onClick={navigateAsignarCalificaciones}>{escuelaCalificacionesForm}</NavDropdown.Item>
               <NavDropdown.Item onClick={navigateCalificacionesTable1}>{escuelaCalificacionesTable1}</NavDropdown.Item>
               <NavDropdown.Item onClick={navigateCalificacionesTable2}>{escuelaCalificacionesTable2}</NavDropdown.Item>
+              <NavDropdown.Item onClick={navigateReporteEstudiantesNotaFinalMateria}>{escuelaReporteEstudiantesNotaFinalMateria}</NavDropdown.Item>
+              <NavDropdown.Item onClick={navigateReporteDetalladoEncargado}>{escuelaReporteDetalladoEncargado}</NavDropdown.Item>
             </NavDropdown>}
+            {/* SCHOOL_DOCENTE */}
+          {userRoles.includes(enumRoles.SCHOOL_DOCENTE) &&
+            <NavDropdown title={escuelaCalificacionesAdmin}>
+              <NavDropdown.Item onClick={navigateAsignarCalificacionesDocente}>{escuelaGestionarCalificaciones}</NavDropdown.Item>
+              <NavDropdown.Item onClick={navigateReporteEstudiantesNotaFinalMateria}>{escuelaReporteEstudiantesNotaFinalMateria}</NavDropdown.Item>
+            </NavDropdown>}
+            {/* SCHOOL_DOCENTE */}
+          {/* {(userRoles.includes(enumRoles.SCHOOL_DOCENTE) ||
+            userRoles.includes(enumRoles.SCHOOL_ENCARGADO)) &&
+            <NavDropdown title={escuelaReportesAdmin}>
+              <NavDropdown.Item onClick={navigateReporteEstudiantesNotaFinalMateria}>{escuelaReporteEstudiantesNotaFinalMateria}</NavDropdown.Item>
+            </NavDropdown>} */}
 
           {/* ******* ******* ******* GAMES SYSTEM ******* ******* ********/}
           {userRoles.includes(enumRoles.GAMES_ENCARGADO) &&

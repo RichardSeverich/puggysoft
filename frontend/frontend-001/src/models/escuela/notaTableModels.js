@@ -1,11 +1,13 @@
 import enumCompareOperators from "../enumCompareOperators";
 import enumTableColumnsToShow from "../enumTableColumnsToShow";
+import enumTableColumnCalification from "../escuela/enumTableColumnCalification";
 import arrayFields from "./notaTableFields";
 import arrayLabels from "./notaTableLabels";
 import tableFilter from "./notaTableFilter";
 
 const tableModel = function (
   tableColumnsToShow,
+  columnCalification,
   /* ID */ criteriaId, criteriaOnChangeId, criteriaSetId, operatorId, operatorOnChangeId, operatorSetId,
   /* NAME */criteriaName, criteriaOnChangeName, criteriaSetName, operatorName, operatorOnChangeName, operatorSetName,
   /* SHORT NAME */criteriaShortName, criteriaOnChangeShortName, criteriaSetShortName, operatorShortName, operatorOnChangeShortName, operatorSetShortName,
@@ -51,10 +53,21 @@ const tableModel = function (
   };
 
   const isMedium = tableColumnsToShow === enumTableColumnsToShow.MEDIUM;
+
+  const calificationView = columnCalification === enumTableColumnCalification.VIEW;
+  const calificationManage = columnCalification === enumTableColumnCalification.MANAGE;
   if (isMedium) {
     arrayColumnsFilter = arrayColumnsFilter.slice(0, arrayColumnsFilter.length - 4);
     arrayColumnsLabels = arrayColumnsLabels.slice(0, arrayColumnsLabels.length - 4);
     arrayDataFields = arrayDataFields.slice(0, arrayDataFields.length - 4);
+  }
+  // para gestionar calificaciones calificaciones
+  if (calificationManage) {
+    arrayColumnsLabels.push("Calificacion");
+  }
+  if (calificationView) {
+    arrayColumnsLabels.push("Calificacion");
+    arrayDataFields.push("calificacion");
   }
 
   const getFilterBody = () => {

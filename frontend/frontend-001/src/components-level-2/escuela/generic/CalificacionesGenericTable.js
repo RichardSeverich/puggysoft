@@ -6,6 +6,7 @@ import useInput from "../../../hooks/useInput";
 import enumCompareOperators from "../../../models/enumCompareOperators";
 import enumTableColumnsToShow from "../../../models/enumTableColumnsToShow";
 import tableModel from "../../../models/escuela/calificacionesTableModels";
+import i18n from "../../../i18n/i18n";
 
 function CalificacionesGenericTable (props) {
   const {
@@ -23,10 +24,14 @@ function CalificacionesGenericTable (props) {
   let estudianteSelected = "";
   let cursoSelected = "";
   let materiaSelected = "";
+  let newSubtitle;
   if (history && history.location && history.location.state) {
     estudianteSelected = history.location.state.estudianteSelected;
     cursoSelected = history.location.state.cursoSelected;
     materiaSelected = history.location.state.materiaSelected;
+    newSubtitle = `
+      ${i18n.escuela.estudiante}: ${estudianteSelected.username} | ${i18n.escuela.curso}: ${cursoSelected.name} | ${i18n.escuela.materia}: ${materiaSelected.name}
+    `;
   }
 
   // CRITERIA OF SEARCH OR FILTER
@@ -74,7 +79,7 @@ function CalificacionesGenericTable (props) {
       handleGetData={handleGetData}
       handleGetSize={handleGetSize}
       tableTitle={tableTitle}
-      tableSubTitle={tableSubTitle}
+      tableSubTitle={newSubtitle? newSubtitle: tableSubTitle}
       tableArrayCustomRowButtons={tableArrayCustomRowButtons}
       numberPagesToShow={numberPagesToShow}
       arrayColumnsFilter={arrayColumnsFilter}
