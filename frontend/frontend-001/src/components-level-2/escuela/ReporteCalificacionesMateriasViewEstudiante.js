@@ -13,6 +13,7 @@ import i18n from "../../i18n/i18n";
 import { handleFilterRequest } from "../../actions/HandleManager";
 import pdfBuilder from "../../tools/escuela/pdfBuilderReporteEstudianteCalificacionesMaterias"
 import enumTableColumnCalification from "./../../models/escuela/enumTableColumnCalification";
+import NotasEstudianteMateriaModals from "./generic/NotasEstudianteMateriaModals";
 
 function ReporteCalificacionesMateriasViewEstudiante(params) {
   const pageSize = 200;
@@ -20,6 +21,7 @@ function ReporteCalificacionesMateriasViewEstudiante(params) {
   const [validateTemplate, setValidateTemplate] = useState({...validateTemplateNew, materia: false});
 
   const [curso, setCurso] = useState({name: ''}); // curso seleccionada
+  const [materia, setMateria] = useState({name: ''}); // materia
 
   // modal select
   const [username] = useState(window.sessionStorage.getItem('username')); // estudiante
@@ -35,9 +37,24 @@ function ReporteCalificacionesMateriasViewEstudiante(params) {
   // tabla notas
   const [viewNotas, setViewNotas] = useState(false);
 
+  const [modalNotas, setModalNotas] = useState(false);
+
   const controlValidate = (templateValidation) => {
     setValidated(handleValidation(templateValidation));
   }
+
+  function handleSelection (data) {
+    setMateria(data.materia);
+    setModalNotas(true);
+  }
+
+  const tableArrayCustomRowButtons = [
+    {
+      variant: "info",
+      handleCustom: handleSelection,
+      text: i18n.escuela.detalles
+    }
+  ];
 
   function handleFilterRequestAsync(url, filtros) {
     return new Promise((resolve) => {
@@ -87,6 +104,7 @@ function ReporteCalificacionesMateriasViewEstudiante(params) {
         num: num++,
         name: materia.name,
         notaFinal: ponderado,
+        materia: materia,
       }
     })
     const dataTable = await Promise.all(dataTablePromise);
@@ -126,6 +144,23 @@ function ReporteCalificacionesMateriasViewEstudiante(params) {
           setValidateTemplate={setValidateTemplate}
           estudiante={username}
           controlValidate={controlValidate}
+        />
+      </Modal.Body>
+    </Modal>
+    {/* Modal para mostrar notas/calificaciones de un estudiante */}
+    <Modal
+      size="lg"
+      show={modalNotas}
+      onHide={() => setModalNotas(false)}
+    >
+      <Modal.Header closeButton/>
+      <Modal.Body>
+        <NotasEstudianteMateriaModals
+          notaFinalShow={true}
+          columnCalification={enumTableColumnCalification.VIEW}
+          estudiante={username}
+          curso={curso}
+          materia={materia}
         />
       </Modal.Body>
     </Modal>
@@ -176,6 +211,7 @@ function ReporteCalificacionesMateriasViewEstudiante(params) {
     </Row>
     <Row className="justify-content-center">
       {viewNotas && <ReporteNotaFinalViewEstudianteGenericTable
+        tableArrayCustomRowButtons={tableArrayCustomRowButtons}
         handleGetData={handleGetData}
         handleGetSize={handleGetSize}
         tableTitle={title}
