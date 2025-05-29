@@ -6,23 +6,25 @@ import {
   handleAddRequest,
   handleDeleteRequest
 } from "../../actions/HandleManager";
-import NotaGenericTable from "./generic/NotaGenericTable";
+import MateriaGenericTable from "./generic/MateriaGenericTable";
 import enumTableColumnsToShow from "../../models/enumTableColumnsToShow";
 import Card from "react-bootstrap/Card";
 import CommonLoading from "../../components-level-1/CommonLoading";
 
-function AsignarCursosStep2 () {
-  const tableSubTitleOne = i18n.escuela.cursosTitleOne;
-  const tableSubTitleTwo = i18n.escuela.cursosTitleTwo;
+function AsignarCursosMateriasADocentesStep3 () {
+  const tableSubTitleOne = i18n.escuela.materiasTitleOne;
+  const tableSubTitleTwo = i18n.escuela.materiasTitleTwo;
   const pageSize = 7;
   const numberPagesToShow = 7;
   const history = useHistory();
-  const userSelected = history && history.location && history.location.state.data;
+  const { userData, courseData } = history && history.location && history.location.state;
   const [isLoadingTable, setIsLoadingTable] = useState(false);
+  console.log(userData);
+  console.log(courseData);
 
   function handleGetDataA (activePage, filterBody, updateArrayData) {
     handleFilterRequest(
-      `escuela-cursos-docentes/filter?page=${activePage - 1}&size=${pageSize}&docente=${userSelected.username}&contains=false`,
+      `escuela-cursos-materias-docentes/filter?page=${activePage - 1}&size=${pageSize}&docente=${userData.username}&curso=${courseData.shortName}&contains=false`,
       filterBody,
       updateArrayData
     );
@@ -30,7 +32,7 @@ function AsignarCursosStep2 () {
 
   function handleGetSizeA (filterBody, setTotalPages) {
     handleFilterRequest(
-      `escuela-cursos-docentes/filter/size?pageSize=${pageSize}&docente=${userSelected.username}&contains=false`,
+      `escuela-cursos-materias-docentes/filter/size?pageSize=${pageSize}&docente=${userData.username}&curso=${courseData.shortName}&contains=false`,
       filterBody,
       setTotalPages
     );
@@ -38,7 +40,7 @@ function AsignarCursosStep2 () {
 
   function handleGetDataB (activePage, filterBody, updateArrayData) {
     handleFilterRequest(
-      `escuela-cursos-docentes/filter?page=${activePage - 1}&size=${pageSize}&docente=${userSelected.username}&contains=true`,
+      `escuela-cursos-materias-docentes/filter?page=${activePage - 1}&size=${pageSize}&docente=${userData.username}&curso=${courseData.shortName}&contains=true`,
       filterBody,
       updateArrayData
     );
@@ -46,7 +48,7 @@ function AsignarCursosStep2 () {
 
   function handleGetSizeB (filterBody, setTotalPages) {
     handleFilterRequest(
-      `escuela-cursos-docentes/filter/size?pageSize=${pageSize}&docente=${userSelected.username}&contains=true`,
+      `escuela-cursos-materias-docentes/filter/size?pageSize=${pageSize}&docente=${userData.username}&curso=${courseData.shortName}&contains=true`,
       filterBody,
       setTotalPages
     );
@@ -56,17 +58,18 @@ function AsignarCursosStep2 () {
     setIsLoadingTable(false);
   }
 
-  const handleAggregate = function (curso) {
+  const handleAggregate = function (materia) {
     setIsLoadingTable(true);
     const username = window.sessionStorage.getItem("username");
     const tenant = window.sessionStorage.getItem("tenant");
     const body = {
-      docente: userSelected.username,
-      curso: curso.shortName,
+      docente: userData.username,
+      curso: courseData.shortName,
+      materia: materia.shortName,
       createdBy: username,
       tenant
     };
-    handleAddRequest("escuela-cursos-docentes", body, afterApiCall);
+    handleAddRequest("escuela-cursos-materias-docentes", body, afterApiCall);
   };
 
   const tableArrayCustomRowButtons = [
@@ -79,7 +82,7 @@ function AsignarCursosStep2 () {
 
   function handleDelete (materia) {
     setIsLoadingTable(true);
-    handleDeleteRequest(`escuela-cursos-docentes/${materia.id}`, afterApiCall);
+    handleDeleteRequest(`escuela-cursos-materias-docentes/${materia.id}`, afterApiCall);
   }
 
   const tableArrayCustomRowButtonsTwo = [
@@ -98,11 +101,12 @@ function AsignarCursosStep2 () {
     <div>
       <Card>
         <Card.Header as="h3">
-          {"Docente" + `: ${userSelected.name}`}
+          {"Docente" + `: ${userData.name}`}<br/>
+          {"Curso" + `: ${courseData.name}`}
         </Card.Header>
       </Card>
       <div className="puggysoft-two-divs-side-by-side-child">
-        <NotaGenericTable
+        <MateriaGenericTable
           tableTitle={tableSubTitleOne}
           numberPagesToShow={numberPagesToShow}
           handleGetData={handleGetDataA}
@@ -112,7 +116,7 @@ function AsignarCursosStep2 () {
         />
       </div>
       <div className="puggysoft-two-divs-side-by-side-child">
-        <NotaGenericTable
+        <MateriaGenericTable
           tableTitle={tableSubTitleTwo}
           numberPagesToShow={numberPagesToShow}
           handleGetData={handleGetDataB}
@@ -125,4 +129,4 @@ function AsignarCursosStep2 () {
   );
 }
 
-export default AsignarCursosStep2;
+export default AsignarCursosMateriasADocentesStep3;

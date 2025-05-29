@@ -1,8 +1,10 @@
 package com.puggysoft.controllers.escuela;
 
-import com.puggysoft.dtos.escuela.DtoEscuelaCursosFilter;
-import com.puggysoft.services.escuela.ServiceEscuelaCursosDocentesGetFilterSize;
+import com.puggysoft.dtos.escuela.DtoEscuelaMateriasFilter;
+import com.puggysoft.services.escuela.ServiceEscuelaCursosMateriasDocentesGetFilterSize;
+
 import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -12,18 +14,19 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-public class ControllerEscuelaCursosDocentesGetFilterSize {
+public class ControllerEscuelaCursosMateriasDocentesGetFilterSize {
 
   @Autowired
-  private ServiceEscuelaCursosDocentesGetFilterSize service;
+  private ServiceEscuelaCursosMateriasDocentesGetFilterSize service;
 
-  @PostMapping(path = "/api/v1/escuela-cursos-docentes/filter/size")
+  @PostMapping(path = "/api/v1/escuela-cursos-materias-docentes/filter/size")
   public ResponseEntity<Long> getSize(
       @RequestParam Long pageSize,
       @RequestParam String docente,
+      @RequestParam String curso,
       @RequestParam boolean contains,
-      @RequestBody @Valid DtoEscuelaCursosFilter dtoFilter
+      @RequestBody @Valid DtoEscuelaMateriasFilter dtoFilter
   ) {
-    return service.getSize(dtoFilter, pageSize, docente, contains);
+    return service.getSize(dtoFilter, pageSize, docente, curso, contains);
   }
 }

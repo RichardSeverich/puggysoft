@@ -233,19 +233,25 @@ import DocentesFormPage from "./components-level-3/escuela/DocentesFormPage";
 import DocentesTablePage from "./components-level-3/escuela/DocentesTablePage";
 import AsignarCursosAEstudiantesPageStep1 from "./components-level-3/escuela/AsignarCursosAEstudiantesPageStep1";
 import AsignarCursosAEstudiantesPageStep2 from "./components-level-3/escuela/AsignarCursosAEstudiantesPageStep2";
-import AsignarCursosADocentesPageStep1 from "./components-level-3/escuela/AsignarCursosADocentesPageStep1";
-import AsignarCursosADocentesPageStep2 from "./components-level-3/escuela/AsignarCursosADocentesPageStep2";
+import AsignarCursosMateriasADocentesPageStep1 from "./components-level-3/escuela/AsignarCursosMateriasADocentesPageStep1";
+import AsignarCursosMateriasADocentesPageStep2 from "./components-level-3/escuela/AsignarCursosMateriasADocentesPageStep2";
+import AsignarCursosMateriasADocentesPageStep3 from "./components-level-3/escuela/AsignarCursosMateriasADocentesPageStep3";
 import AsignarCalificacionesPageStep1 from "./components-level-3/escuela/AsignarCalificacionesPageStep1";
 import AsignarCalificacionesPageStep1Table from "./components-level-3/escuela/AsignarCalificacionesPageStep1Table";
 import AsignarCalificacionesPageStep2 from "./components-level-3/escuela/AsignarCalificacionesPageStep2";
 import AsignarCalificacionesPageStep3 from "./components-level-3/escuela/AsignarCalificacionesPageStep3";
 import AsignarCalificacionesPageStep4 from "./components-level-3/escuela/AsignarCalificacionesPageStep4";
 import AsignarCalificacionesPageStep5 from "./components-level-3/escuela/AsignarCalificacionesPageStep5";
+import AsignarCalificacionesDocentePage from "./components-level-3/escuela/AsignarCalificacionesDocentePage";
+import CalificacionesViewEstudiantePage from "./components-level-3/escuela/CalificacionesViewEstudiantePage";
 import CalificacionesTablePage from "./components-level-3/escuela/CalificacionesTablePage";
 
 // Games System
 import TicTacToePage from "./components-level-3/games/tic-tac-toe/TicTacToePage";
 import TicTacToePagePc from "./components-level-3/games/tic-tac-toe/TicTacToePagePc";
+import ReporteCalificacionesMateriasPage from "./components-level-3/escuela/ReporteCalificacionesMateriasPage";
+import ReporteDetalladoEncargadoPage from "./components-level-3/escuela/ReporteDetalladoEncargadoPage";
+import ReporteCalificacionesMateriasViewEstudiantePage from "./components-level-3/escuela/ReporteCalificacionesMateriasViewEstudiantePage";
 
 // const CursosFormLazyPage = lazy(() => import("./components-level-3/escuela/CursosFormPage"));
 
@@ -469,14 +475,20 @@ const AppRoutes = () => (
       <Route exact path={enumPaths.ESCUELA_CALIFICACIONES_TABLE} component={CalificacionesTablePage} />
       <Route exact path={enumPaths.ESCUELA_ASIGNAR_CURSOS_A_ESTUDIANTE_STEP_ONE} component={AsignarCursosAEstudiantesPageStep1} />
       <Route exact path={enumPaths.ESCUELA_ASIGNAR_CURSOS_A_ESTUDIANTE_STEP_TWO} component={AsignarCursosAEstudiantesPageStep2} />
-      <Route exact path={enumPaths.ESCUELA_ASIGNAR_CURSOS_A_DOCENTE_STEP_ONE} component={AsignarCursosADocentesPageStep1} />
-      <Route exact path={enumPaths.ESCUELA_ASIGNAR_CURSOS_A_DOCENTE_STEP_TWO} component={AsignarCursosADocentesPageStep2} />
+      <Route exact path={enumPaths.ESCUELA_ASIGNAR_CURSOS_MATERIAS_A_DOCENTE_STEP_ONE} component={AsignarCursosMateriasADocentesPageStep1} />
+      <Route exact path={enumPaths.ESCUELA_ASIGNAR_CURSOS_MATERIAS_A_DOCENTE_STEP_TWO} component={AsignarCursosMateriasADocentesPageStep2} />
+      <Route exact path={enumPaths.ESCUELA_CALIFICACIONES_VIEW_ESTUDIANTE} component={CalificacionesViewEstudiantePage} />
+      <Route exact path={enumPaths.ESCUELA_ASIGNAR_CURSOS_MATERIAS_A_DOCENTE_STEP_THREE} component={AsignarCursosMateriasADocentesPageStep3} />
       <Route exact path={enumPaths.ESCUELA_ASIGNAR_CALIFICACIONES_STEP_ONE} component={AsignarCalificacionesPageStep1} />
       <Route exact path={enumPaths.ESCUELA_ASIGNAR_CALIFICACIONES_STEP_ONE_TABLE} component={AsignarCalificacionesPageStep1Table} />
       <Route exact path={enumPaths.ESCUELA_ASIGNAR_CALIFICACIONES_STEP_TWO} component={AsignarCalificacionesPageStep2} />
       <Route exact path={enumPaths.ESCUELA_ASIGNAR_CALIFICACIONES_STEP_THREE} component={AsignarCalificacionesPageStep3} />
       <Route exact path={enumPaths.ESCUELA_ASIGNAR_CALIFICACIONES_STEP_FOUR} component={AsignarCalificacionesPageStep4} />
       <Route exact path={enumPaths.ESCUELA_ASIGNAR_CALIFICACIONES_STEP_FIVE} component={AsignarCalificacionesPageStep5} />
+      <Route exact path={enumPaths.ESCUELA_ASIGNAR_CALIFICACIONES_DOCENTE} component={AsignarCalificacionesDocentePage} />
+      <Route exact path={enumPaths.ESCUELA_REPORTES_ESTUDIANTES_NOTA_FINAL_MATERIA} component={ReporteCalificacionesMateriasPage} />
+      <Route exact path={enumPaths.ESCUELA_REPORTES_DETALLE_ENCARGADO} component={ReporteDetalladoEncargadoPage} />
+      <Route exact path={enumPaths.ESCUELA_REPORTES_NOTA_FINAL_PARA_ESTUDIANTE} component={ReporteCalificacionesMateriasViewEstudiantePage} />
       {/** GAMES */}
       <Route exact path={enumPaths.GAMES_TIC_TAC_TOE} component={TicTacToePage} />
       <Route exact path={enumPaths.GAMES_TIC_TAC_TOE_PC} component={TicTacToePagePc} />

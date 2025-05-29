@@ -4,6 +4,7 @@ import TableFilterGeneric from "../../generic/TableFilterGeneric";
 import useInput from "../../../hooks/useInput";
 import enumCompareOperators from "../../../models/enumCompareOperators";
 import enumTableColumnsToShow from "../../../models/enumTableColumnsToShow";
+import enumTableColumnCalification from "../../../models/escuela/enumTableColumnCalification";
 import tableModel from "../../../models/escuela/notaTableModels";
 
 function NotaGenericTable (props) {
@@ -15,6 +16,7 @@ function NotaGenericTable (props) {
     handleGetSize,
     tableArrayCustomRowButtons,
     columnsToShow,
+    columnCalification,
     fixArrayData
   } = props;
 
@@ -40,6 +42,7 @@ function NotaGenericTable (props) {
 
   const { arrayColumnsFilter, clearFilters, getFilterBody, arrayColumnsLabels, arrayDataFields } = tableModel(
     columnsToShow,
+    columnCalification,
     /* ID */ criteriaId, criteriaOnChangeId, criteriaSetId, operatorId, operatorOnChangeId, operatorSetId,
     /* NAME */criteriaName, criteriaOnChangeName, criteriaSetName, operatorName, operatorOnChangeName, operatorSetName,
     /* SHORT NAME */criteriaShortName, criteriaOnChangeShortName, criteriaSetShortName, operatorShortName, operatorOnChangeShortName, operatorSetShortName,
@@ -80,7 +83,11 @@ NotaGenericTable.propTypes = {
   tableArrayCustomRowButtons: PropTypes.array,
   columnsToShow: PropTypes.oneOf([
     enumTableColumnsToShow.FULL,
-    enumTableColumnsToShow.MEDIUM
+    enumTableColumnsToShow.MEDIUM,
+  ]),
+  columnCalification: PropTypes.oneOf([
+    enumTableColumnCalification.MANAGE,
+    enumTableColumnCalification.VIEW,
   ]),
   fixArrayData: PropTypes.func
 };
@@ -93,5 +100,6 @@ NotaGenericTable.defaultProps = {
   handleGetSize: () => { },
   tableArrayCustomRowButtons: [],
   columnsToShow: enumTableColumnsToShow.FULL,
+  columnCalification: undefined,
   fixArrayData: undefined
 };

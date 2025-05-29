@@ -1,8 +1,8 @@
 package com.puggysoft.services.escuela;
 
-import com.puggysoft.dtos.escuela.DtoEscuelaCursosDocentes;
-import com.puggysoft.entities.escuela.EntityEscuelaCursosDocentes;
-import com.puggysoft.repositories.escuela.IRepositoryEscuelaCursosDocentes;
+import com.puggysoft.dtos.escuela.DtoEscuelaCursosMateriasDocentes;
+import com.puggysoft.entities.escuela.EntityEscuelaCursosMateriasDocentes;
+import com.puggysoft.repositories.escuela.IRepositoryEscuelaCursosMateriasDocentes;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
@@ -11,17 +11,17 @@ import org.springframework.stereotype.Service;
 
 /** Services for create. */
 @Service
-public class ServiceEscuelaCursosDocentesCreate {
+public class ServiceEscuelaCursosMateriasDocentesCreate {
 
   @Autowired
-  private IRepositoryEscuelaCursosDocentes repository;
+  private IRepositoryEscuelaCursosMateriasDocentes repository;
 
   /** method for create. */
-  public ResponseEntity<String> create(DtoEscuelaCursosDocentes dtoEscuelaCursosDocentes) {
+  public ResponseEntity<String> create(DtoEscuelaCursosMateriasDocentes dtoEscuelaCursosDocentes) {
     try {
-      EntityEscuelaCursosDocentes entity = repository
+      EntityEscuelaCursosMateriasDocentes entity = repository
           .save(dtoEscuelaCursosDocentes.dtoToEntity());
-      DtoEscuelaCursosDocentes dto = DtoEscuelaCursosDocentes.entityToDto(entity);
+      DtoEscuelaCursosMateriasDocentes dto = DtoEscuelaCursosMateriasDocentes.entityToDto(entity);
       String idString = String.valueOf(dto.getId());
       return ResponseEntity.status(HttpStatus.CREATED).body(idString);
     } catch (DataAccessException ex) {
