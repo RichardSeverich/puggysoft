@@ -1241,6 +1241,30 @@ function NavBar () {
               <NavDropdown.Item onClick={navigateEstudiantesTable}>{escuelaEstudiantesTableLabel}</NavDropdown.Item>
               <NavDropdown.Item onClick={navigateEstudiantesCursos}>{escuelaEstudiantesCursoLabel}</NavDropdown.Item>
             </NavDropdown>}
+          {userRoles.includes(enumRoles.UPEA_PAGOS_ENCARGADO) &&
+            <NavDropdown title={pagoAdminLabel}>
+              <NavDropdown.Item onClick={navigateMensualidadVentaStep1Encargado}>{pagoRegistrationLabel}</NavDropdown.Item>
+              <NavDropdown.Item onClick={navigateMensualidadPagosTablaEncargado}>{pagoTableLabel}</NavDropdown.Item>
+            </NavDropdown>}
+          {userRoles.includes(enumRoles.UPEA_PAGOS_ENCARGADO) &&
+            <NavDropdown title={hisrotyAdminLabel}>
+              <NavDropdown.Item onClick={navigateMensualidadHistoryPaymentsEncargado}>{hisrotyEncargadoLabel}</NavDropdown.Item>
+              <NavDropdown.Item onClick={navigateMensualidadHistoryPaymentsByCourseEncargado}>{hisrotyByCourseEncargadoLabel}</NavDropdown.Item>
+            </NavDropdown>}
+          {userRoles.includes(enumRoles.UPEA_ESTUDIANTE) &&
+            <NavDropdown title={pagoAdminLabel}>
+              <NavDropdown.Item onClick={navigateMensualidadVentaStep1Estudiante}>{pagoRegistrationLabel}</NavDropdown.Item>
+              <NavDropdown.Item onClick={navigateMensualidadPagosTablaEstudiante}>{pagoTableLabel}</NavDropdown.Item>
+            </NavDropdown>}
+          {userRoles.includes(enumRoles.UPEA_ESTUDIANTE) &&
+            <NavDropdown title={hisrotyAdminLabel}>
+              <NavDropdown.Item onClick={navigateMensualidadHistoryPaymentsEstudiante}>{hisrotyEstudianteLabel}</NavDropdown.Item>
+            </NavDropdown>}
+          {userRoles.includes(enumRoles.UPEA_ESTUDIANTE) &&
+            <NavDropdown title={escuelaCalificacionesAdmin}>
+              <NavDropdown.Item onClick={navigateCalificacionesViewEstuduante}>{escuelaReporteEstudiantesNotaFinalMateria}</NavDropdown.Item>
+              <NavDropdown.Item onClick={navigateReporteNotaFinalMateriasViewEstudiante}>{escuelaCalificacionesView}</NavDropdown.Item>
+            </NavDropdown>}
 
           {/* ******* ******* ******* HOSPITAL SYSTEM ******* ******* ********/}
           {userRoles.includes(enumRoles.HOSPITAL_ADMIN) &&
