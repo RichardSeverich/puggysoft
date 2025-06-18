@@ -81,6 +81,16 @@ function CursosTable (props) {
     }
   ];
 
+  function fixArrayData(listData) {
+    const newList = listData.map((data) => {
+      return {
+        ...data,
+        image: null,
+      }
+    });
+    return newList;
+  }
+
   if (isRequestInProgress) {
     return <CommonLoading />;
   }
@@ -100,6 +110,7 @@ function CursosTable (props) {
         handleGetSize={handleGetSize}
         tableArrayCustomRowButtons={tableArrayCustomRowButtons}
         columnsToShow={enumTableColumnsToShow.MEDIUM}
+        fixArrayData={fixArrayData}
       >
       </CursoGenericTable>
     </div>

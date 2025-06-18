@@ -53,6 +53,8 @@ import saleTicket from "./spanish/sales/saleTicket";
 import mensualidad from "./spanish/mensualidad/mensualidad";
 import registroPagoMensualidad from "./spanish/mensualidad/registroPagoMensualidad";
 import pagoTable from "./spanish/mensualidad/pagoTable";
+import HistoryPorEstudianteCursoTable from "./spanish/mensualidad/HistoryPorEstudianteCursoTable";
+import mensualidadStatus from "./spanish/mensualidad/mensualidadStatus";
 // Pago upea System
 import pagoUpea from "./spanish/pagos-upea/pagosUpea";
 // Hospital System
@@ -171,6 +173,8 @@ const i18n = {
   mensualidad,
   registroPagoMensualidad,
   pagoTable,
+  HistoryPorEstudianteCursoTable,
+  mensualidadStatus,
   // Pago upea
   pagoUpea,
   // Hospital System

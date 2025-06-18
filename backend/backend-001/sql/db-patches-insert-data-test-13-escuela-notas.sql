@@ -608,9 +608,9 @@ INSERT INTO escuela_cursos_estudiantes (curso, estudiante, tenant, created_by, c
 INSERT INTO escuela_cursos_estudiantes (curso, estudiante, tenant, created_by, creation_date) VALUES ("1PRIM", "RICARDO_VILLAFAN", "EMPRESA_1", "SysEscuelaAdmin", "2021-11-01");
 
 -- ESCUELA-CURSOS-DOCENTES
-INSERT INTO escuela_cursos_docentes (curso, docente, tenant, created_by, creation_date) VALUES ("1PRIM", "EDWIN_MONTES", "EMPRESA_1", "SysEscuelaAdmin", "2021-11-01");
-INSERT INTO escuela_cursos_docentes (curso, docente, tenant, created_by, creation_date) VALUES ("1PRIM", "ALFONSO_ORIHUELA", "EMPRESA_1", "SysEscuelaAdmin", "2021-11-01");
-INSERT INTO escuela_cursos_docentes (curso, docente, tenant, created_by, creation_date) VALUES ("1PRIM", "RICARDO_VILLAFAN", "EMPRESA_1", "SysEscuelaAdmin", "2021-11-01");
+INSERT INTO escuela_cursos_materias_docentes (curso, docente, materia, tenant, created_by, creation_date) VALUES ("1PRIM", "EDWIN_MONTES", "MATE", "EMPRESA_1", "SysEscuelaAdmin", "2021-11-01");
+INSERT INTO escuela_cursos_materias_docentes (curso, docente, materia, tenant, created_by, creation_date) VALUES ("1PRIM", "ALFONSO_ORIHUELA", "LENG", "EMPRESA_1", "SysEscuelaAdmin", "2021-11-01");
+INSERT INTO escuela_cursos_materias_docentes (curso, docente, materia, tenant, created_by, creation_date) VALUES ("1PRIM", "RICARDO_VILLAFAN", "CNAT", "EMPRESA_1", "SysEscuelaAdmin", "2021-11-01");
 
 -- ESCUELA-CALIFICACIONES
 INSERT INTO escuela_calificaciones (curso, materia, estudiante, nota, nota_valor, tenant, created_by, creation_date) VALUES ("1PRIM", "MATE", "ADRIANA_HERNANDEZ", "EX1TRIM", "70.7", "EMPRESA_1", "SysEscuelaAdmin", "2021-11-01");

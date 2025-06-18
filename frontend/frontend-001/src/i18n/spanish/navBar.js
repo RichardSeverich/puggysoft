@@ -127,6 +127,10 @@ const navBar = {
   pagosAdmin: "Adm. Pagos",
   pagosAdminRegistration: "Registrar pago",
   pagosAdminTable: "Mostrar pagos",
+  // Pagos
+  hisrotyAdminLabel: "Adm. Historial de Pagos",
+  hisrotyCursoEstudianteLabel: "Por Estudiante",
+  hisrotyCursoLabel: "Por Curso",
 
   // ******* ******* PAGOS UPEA SYSTEM ******* *******
   // Colegiatura/Matricula
@@ -291,16 +295,23 @@ const navBar = {
   escuelaEstudiantesForm: "Registrar Estudiantes",
   escuelaEstudiantesTable: "Mostrar Estudiantes",
   escuelaEstudiantesMaterias: "Asignar Cursos (Inscripciones)",
+  escuelaCalificacionesView: "Por Curso",
   // Docentes
   escuelaDocentesAdmin: "Adm. Docentes",
   escuelaDocentesForm: "Registrar Docentes",
   escuelaDocentesTable: "Mostrar Docentes",
-  escuelaDocentesMaterias: "Asignar Cursos",
+  escuelaDocentesMaterias: "Asignar Cursos/Materias",
   // Caliticaciones
-  escuelaCalificacionesAdmin: "Adm. Calificaciones",
+  escuelaCalificacionesAdmin: "Adm. Historial de Calificaciones",
+  gestionarCalificacion: "Registrar Calificaciones",
   escuelaCalificacionesForm: "Registrar Calificacion",
   escuelaCalificacionesTable1: "Mostrar Calificaciones 1",
   escuelaCalificacionesTable2: "Mostrar Calificaciones 2",
+  escuelaCalificacionesNotas: "Registrar Calificacion Por Notas",
+  // Reporte Calificaciones
+  escuelaReporteCalificacionesAdmin: "Reporte de Calificiones",
+  escuelaReporteEstudiantesNotaFinalMateria: "Por Materia",
+  escuelaReportePorCurso: "Por Curso",
 
   // ******* ******* GAMES ******* *******
   gamesAdmin: "Juegos",

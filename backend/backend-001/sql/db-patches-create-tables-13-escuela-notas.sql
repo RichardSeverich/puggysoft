@@ -102,10 +102,11 @@ CREATE TABLE escuela_cursos_estudiantes(
    PRIMARY KEY (id)
 )AUTO_INCREMENT=1000;
 
-CREATE TABLE escuela_cursos_docentes(
+CREATE TABLE escuela_cursos_materias_docentes(
    id BIGINT AUTO_INCREMENT,
    curso VARCHAR(30) NOT NULL,
    docente VARCHAR(30) NOT NULL,
+   materia VARCHAR(30) NOT NULL,
    tenant VARCHAR(30) NOT NULL,
    creation_date DATETIME DEFAULT CURRENT_TIMESTAMP,
    update_date DATETIME ON UPDATE CURRENT_TIMESTAMP,
@@ -115,8 +116,9 @@ CREATE TABLE escuela_cursos_docentes(
    FOREIGN KEY (updated_by) REFERENCES users(username),
    FOREIGN KEY (tenant) REFERENCES tenants(short_name),
    FOREIGN KEY (curso) REFERENCES escuela_cursos(short_name),
+   FOREIGN KEY (materia) REFERENCES escuela_materias(short_name),
    FOREIGN KEY (docente) REFERENCES users(username),
-   UNIQUE (curso, docente),
+   UNIQUE (curso, docente, materia),
    PRIMARY KEY (id)
 )AUTO_INCREMENT=1000;
 

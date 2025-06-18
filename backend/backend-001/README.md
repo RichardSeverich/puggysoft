@@ -213,3 +213,229 @@ DELETE localhost:8080/api/v1/products/{id}
 ## License
 
 - Proprietary.
+
+---
+
+
+## Historial de pagos
+> En la tabla `app_files` se guarda el comprobante de pago, el comprobante de pago lo puede subir unicamente el estudiante.  
+
+> Relaciones imaginarias/ayuda:  
+`product_groups.aux` = `escuela_cursos.shortName` crea un curso normal y curso para agrupar las cuotas de pago (productos)  
+`sales.aux` = `escuela_cursos.id` para saber que cuotas de pago (products) quiro pagar en esta venta deacurdo al curso (product_group)  
+`app_files.sis` = `sales.id` para guardar el comprobante de pago  
+### Mensualidad (MENSUALIDAD_ENCARGADO)
+- Adm. cuotas de pago:  
+  - retistrar  
+    > Se crea un nuevo registro en la tabla `products` con **stock inagotable (9999999)**  
+    endpoint `api/v1/products/` -- method `POST`
+    ```json
+      {
+        "name":"segunda cuota de pago para nuevo curso",
+        "purchasePrice":0,
+        "salePrice":"1200",
+        "stock":9999999,
+        "description":"2025-04-30",
+        "createdBy":"SysMensualidadEncargado",
+        "updatedBy":"SysMensualidadEncargado",
+        "tenant":"EMPRESA_2"
+      }
+    ```
+  - mostrar  
+    endpoint `api/v1/products/filter?page=0&size=16` -- method `POST`
+    - editar  
+      seleccionar cuota de pago (produsts) -> editar  
+      endpoint `api/v1/products/{idProduct}` -- method `PUT`
+    - eliminar  
+      endpoint `api/v1/products/{idProduct}` -- method `DELETE`
+  - asignar cuota de pago (products) a un curso (product_groups)  
+    seleccionar curso (product_groups) `api/v1/product-groups/filter?page=0&size=7` -- method `POST` ->  
+    > Para relizar los siguientes registros/eliminaciones se trabaja con la tabla intermediaria (product_groups_products)
+      - agregar cuotas de pago (products)
+        endpoint `api/v1/product-groups-products` -- method `POST`
+        ```json
+          {
+            "idProduct":1165,
+            "idProductGroup":1037,
+            "createdBy":"SysMensualidadEncargado",
+            "tenant":"EMPRESA_2"
+          }
+        ```
+      - eliminar cuotas de pago
+        endpoint `api/v1/product-groups-products/{id_product_groups_products}` -- method `DELETE`
+- Adm. cursos:  
+  - registrar  
+    > Se crea un nuevo registro en las tablas `product_groups` y `escuela_cursos`  
+    estos tienen una relacion imaginaria que no se ve reflejada en la DB  
+    `product_groups.aux` **(auxiliar)** <-> `escuela_cursos.shortName` **(codigo curso)**  
+    endpoints `api/v1/product-groups/` - `api/v1/escuela-cursos/` -- methods `POST`
+    ```json
+      "product_groups":{
+        "name":"nuevo curso",
+        "aux":"122332",
+        "tenant":"EMPRESA_2",
+        "createdBy":"SysMensualidadEncargado",
+        "updatedBy":"SysMensualidadEncargado"
+      },
+      "escuela_cursos":{
+        "name":"nuevo curso",
+        "shortName":"122332",
+        "gestion":"2025",
+        "tenant":"EMPRESA_2",
+        "createdBy":"SysMensualidadEncargado",
+        "updatedBy":"SysMensualidadEncargado"
+      }
+    ```
+  - mostrar  
+    > La lista de cursos que se muestra se optiene de la tabla `escuela_cursos`,  
+    luego se optiene el `product_groups` de cada uno con un request independente al que se le manda el filter de `auxCriteria: {escuela_cursos.shortName}`.
+    endpoints `api/v1/escuela-cursos/filter?page=0&size=7` - `api/v1/product-groups/filter?page=0&size=1` -- method `POST`
+    - editar  
+      seleccionar curso (escuela_cursos) -> editar  
+      > al editar el curso se actualizan las tablas `product_groups` y `escuela_cursos`  
+      endpoints `api/v1/product-groups/{id_product_groups}` - `api/v1/escuela-cursos/{id_escuela_cursos}` -- method `PUT`
+    - eliminar  
+      > Siguiendo la logica, debemos eliminar el curso de las tablas `product_groups` `escuela_cursos`  
+      endpoint `api/v1/product-groups/{id_product_groups}` - `api/v1/escuela-cursos/{id_escuela_cursos}` -- method `DELETE`
+- Adm. estudinates:  
+  - registrar  
+    > se obtiene el `id_role` para luego asignarlo de manera automatica al momento de registrar el usuario  
+    endpoint `api/v1/role?roleName=SCHOOL_ESTUDIANTE` -- method `GET`  
+    endpoints: 
+      `api/v1/users/`  
+      `api/v1/users-roles`  
+      `api/v1/tenants-users`
+    methods `POST`
+    ```json
+      "users": {
+        "username":"estudiante",
+        "password":"admin123",
+        "dni":"32223233",
+        "name":"joao",
+        "secondName":"charly",
+        "lastName":"mene",
+        "secondLastName":"parede",
+        "age":1,"sex":"MALE",
+        "occupation":"estudiante",
+        "birthDate":"2024-09-05",
+        "telephone":"43332332",
+        "address":"colca",
+        "email":"estu@gmail.com",
+        "active":true,
+        "emailVerified":false,
+        "createdBy":"SysMensualidadEncargado",
+        "updatedBy":"SysMensualidadEncargado",
+        "image":null
+      },
+      "users_roles": {
+        "idUser":1138,
+        "idRole":1021,
+        "createdBy":"SysMensualidadEncargado",
+        "tenant":"EMPRESA_2"
+      },
+      "tenants_users": {
+        "username":"estudiante",
+        "tenant":"EMPRESA_2",
+        "createdBy":"SysMensualidadEncargado"
+      }
+    ```
+  - mostrar:  
+    > se obtiene el `role.id` para obtener los usuarios con el rol de `SCHOOL_ESTUDIANTE`,  
+    luego se optiene la lista de estudiantes
+    endpoints `api/v1/role?roleName=SCHOOL_ESTUDIANTE`- `api/v1/users/filter/with-roles-and-tenants?page=0&size=10&idRole={role.id}&tenant=EMPRESA_2` -- method `GET - POST`  
+    seleccionar -> editar  
+  - asignar cursos:  
+    > obtenemos el `role.id` de `SCHOOL_ESTUDIANTE` para posteriormente obtener la lista de estudiantes (usuarios con el rol de `SCHOOL_ESTUDIANTE`)  
+    endpoints `api/v1/role?roleName=SCHOOL_ESTUDIANTE` - `api/v1/users/filter/with-roles-and-tenants?page=0&size=10&idRole={role.id}&tenant=EMPRESA_2` -- methods `GET - POST`  
+    seleccionar estudiante ->  
+    asignar/quitar cursos a estudiantes  
+    endpoints `api/v1/escuela-cursos-estudiantes` - `api/v1/escuela-cursos-estudiantes/{id_escula_cursos_estudiantes}` -- methods `POST - DELETE`
+    ```json
+      {
+        "estudiante":"estudiante",
+        "curso":"DCEI_V13",
+        "createdBy":"SysMensualidadEncargado",
+        "tenant":"EMPRESA_2"
+      }
+    ```
+- Adm. pagos  
+  - registrar:  
+    - seleccionar estudiante ->
+      > se obtiene el `role.id` para obtener los usuarios con el rol de `SCHOOL_ESTUDIANTE`,  
+      luego se optiene la lista de estudiantes
+      endpoints `api/v1/role?roleName=SCHOOL_ESTUDIANTE`- `api/v1/users/filter/with-roles-and-tenants?page=0&size=10&idRole={role.id}&tenant=EMPRESA_2` -- method `GET - POST`  
+    - seleccionar curso ->  
+      > Obtenemos los cursos a los que esta inscrito el estudiante
+      endpoint `api/v1/escuela-cursos-estudiantes-basic/filter?page=0&size=7&estudiante={user.username}&contains=true` -- method `POST`  
+      > se crea una venta `sales`  
+      recuperamos los detalles de la nueva venta con el id que devuelve el post  
+      endpoints `api/v1/sales/` - `api/v1/sales/1750` -- methods `POST - GET`
+    - agregar/quitar cuota  ->
+      endpoint `api/v1/sales-products` - `api/v1/sales-products/{sale_products.id}` -- methods `POST - DELETE`  
+      ```json
+        {
+          "idSale":1758,
+          "idProduct":1109,
+          "quantity":1,
+          "tenant":"EMPRESA_2"
+        }
+      ```
+      tambien se puede modificar el estado de pago
+  - mostrar:  
+    - seleccionar pago ->  
+      agregar/quitar cuota - cambiar estado de pago
+- Adm. historial de pagos
+  - historial de pagos de un estudiante por cursos:
+    - seleccionar estudiante ->
+      > se obtiene el `role.id` para obtener los usuarios con el rol de `SCHOOL_ESTUDIANTE`,  
+      luego se optiene la lista de estudiantes
+      endpoints `api/v1/role?roleName=SCHOOL_ESTUDIANTE`- `api/v1/users/filter/with-roles-and-tenants?page=0&size=10&idRole={role.id}&tenant=EMPRESA_2` -- method `GET - POST`
+    - seleccionar curso ->  
+      > Obtenemos los cursos a los que esta inscrito el estudiante
+      endpoint `api/v1/escuela-cursos-estudiantes-basic/filter?page=0&size=7&estudiante={user.username}&contains=true` -- method `POST`  
+    - Historial de pagos ->  
+      > se optienen los datos necesarios para generar el historial de pagos del estudiante  
+      endpoint `api/v1/history-by-student-curse?courseName={cursos.name}&idCourse={cursos.id}&studentUsername={user.username}`  
+  - Reporte de curso:
+    - seleccionar curso ->  
+      > Obtenemos los cursos  
+      endpoint `api/v1/escuela-cursos/filter?page=0&size=7` -- method `POST`   
+    - Reporte pagos ->  
+      > se optienen los datos necesarios para generar el Reporte de pagos de los estudiantes  
+      endpoint `api/v1/history-course?courseShortName={cursos.short_name}&courseId={cursos.id}` 
+
+### Estudiante (SCHOOL_ESTUDIANTE)
+- Adm. pagos
+  - registrar:  
+    - seleccionar curso ->   
+      > Obtenemos los cursos a los que esta inscrito el estudiante
+      endpoint `api/v1/escuela-cursos-estudiantes-basic/filter?page=0&size=7&estudiante={user.username}&contains=true` -- method `POST`  
+      > se crea una venta `sales`  
+      recuperamos los detalles de la nueva venta con el id que devuelve el post  
+      endpoints `api/v1/sales/` - `api/v1/sales/1750` -- methods `POST - GET`
+    - agregar/quitar cuota  ->
+      endpoint `api/v1/sales-products` - `api/v1/sales-products/{sale_products.id}` -- methods `POST - DELETE`  
+      ```json
+        {
+          "idSale":1758,
+          "idProduct":1109,
+          "quantity":1,
+          "tenant":"EMPRESA_2"
+        }
+      ```
+      tambien se puede modificar el comprobante
+  - mostrar:  
+    - seleccionar pago ->  
+      agregar/quitar cuota - cambiar/agragar comprobante  
+- Adm. historial de pagos  
+  - historial de pagos de un estudiante por cursos:
+    - seleccionar estudiante ->
+      > se obtiene el `role.id` para obtener los usuarios con el rol de `SCHOOL_ESTUDIANTE`,  
+      luego se optiene la lista de estudiantes
+      endpoints `api/v1/role?roleName=SCHOOL_ESTUDIANTE`- `api/v1/users/filter/with-roles-and-tenants?page=0&size=10&idRole={role.id}&tenant=EMPRESA_2` -- method `GET - POST`
+    - seleccionar curso ->  
+      > Obtenemos los cursos a los que esta inscrito el estudiante
+      endpoint `api/v1/escuela-cursos-estudiantes-basic/filter?page=0&size=7&estudiante={user.username}&contains=true` -- method `POST`  
+    - Historial de pagos ->  
+      > se optienen los datos necesarios para generar el historial de pagos del estudiante  
+      endpoint `api/v1/history-by-student-curse?courseName={cursos.name}&idCourse={cursos.id}&studentUsername={user.username}`

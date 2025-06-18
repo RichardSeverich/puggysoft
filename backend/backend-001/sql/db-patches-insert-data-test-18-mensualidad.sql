@@ -59,18 +59,18 @@ INSERT INTO products (name, purchase_price, sale_price, stock, description, imag
 INSERT INTO products (name, purchase_price, sale_price, stock, description, image, bar_code, location, minimum_stock, code, tenant) VALUES ("25ta. CUOTA CDEI-V13", 0, 1000, 9999999, "15/01/2026", null, null, "N/A", null, null, "EMPRESA_2");
 
 -- ******* MENSUALIDADES POR MES *******
-INSERT INTO products (name, purchase_price, sale_price, stock, description, image, bar_code, location, minimum_stock, code, tenant) VALUES ("ENERO", 0, 1000, 9999999, "ENERO", null, null, "N/A", null, null, "EMPRESA_2");
-INSERT INTO products (name, purchase_price, sale_price, stock, description, image, bar_code, location, minimum_stock, code, tenant) VALUES ("FEBRERO", 0, 1000, 9999999, "FEBRERO", null, null, "N/A", null, null, "EMPRESA_2");
-INSERT INTO products (name, purchase_price, sale_price, stock, description, image, bar_code, location, minimum_stock, code, tenant) VALUES ("MARZO", 0, 1000, 9999999, "MARZO", null, null, "N/A", null, null, "EMPRESA_2");
-INSERT INTO products (name, purchase_price, sale_price, stock, description, image, bar_code, location, minimum_stock, code, tenant) VALUES ("ABRIL", 0, 1000, 9999999, "ABRIL", null, null, "N/A", null, null, "EMPRESA_2");
-INSERT INTO products (name, purchase_price, sale_price, stock, description, image, bar_code, location, minimum_stock, code, tenant) VALUES ("MAYO", 0, 1000, 9999999, "MAYO", null, null, "N/A", null, null, "EMPRESA_2");
-INSERT INTO products (name, purchase_price, sale_price, stock, description, image, bar_code, location, minimum_stock, code, tenant) VALUES ("JUNIO", 0, 1000, 9999999, "JUNIO", null, null, "N/A", null, null, "EMPRESA_2");
-INSERT INTO products (name, purchase_price, sale_price, stock, description, image, bar_code, location, minimum_stock, code, tenant) VALUES ("JULIO", 0, 1000, 9999999, "JULIO", null, null, "N/A", null, null, "EMPRESA_2");
-INSERT INTO products (name, purchase_price, sale_price, stock, description, image, bar_code, location, minimum_stock, code, tenant) VALUES ("AGOSTO", 0, 1000, 9999999, "AGOSTO", null, null, "N/A", null, null, "EMPRESA_2");
-INSERT INTO products (name, purchase_price, sale_price, stock, description, image, bar_code, location, minimum_stock, code, tenant) VALUES ("SEPTIEMBRE", 0, 1000, 9999999, "SEPTIEMBRE", null, null, "N/A", null, null, "EMPRESA_2");
-INSERT INTO products (name, purchase_price, sale_price, stock, description, image, bar_code, location, minimum_stock, code, tenant) VALUES ("OCTUBRE", 0, 1000, 9999999, "OCTUBRE", null, null, "N/A", null, null, "EMPRESA_2");
-INSERT INTO products (name, purchase_price, sale_price, stock, description, image, bar_code, location, minimum_stock, code, tenant) VALUES ("NOVIEMBRE", 0, 1000, 9999999, "NOVIEMBRE", null, null, "N/A", null, null, "EMPRESA_2");
-INSERT INTO products (name, purchase_price, sale_price, stock, description, image, bar_code, location, minimum_stock, code, tenant) VALUES ("DICIEMBRE", 0, 1000, 9999999, "DICIEMBRE", null, null, "N/A", null, null, "EMPRESA_2");
+INSERT INTO products (name, purchase_price, sale_price, stock, description, image, bar_code, location, minimum_stock, code, tenant) VALUES ("ENERO", 0, 1000, 9999999, "07/02/2026", null, null, "N/A", null, null, "EMPRESA_2");
+INSERT INTO products (name, purchase_price, sale_price, stock, description, image, bar_code, location, minimum_stock, code, tenant) VALUES ("FEBRERO", 0, 1000, 9999999, "07/03/2026", null, null, "N/A", null, null, "EMPRESA_2");
+INSERT INTO products (name, purchase_price, sale_price, stock, description, image, bar_code, location, minimum_stock, code, tenant) VALUES ("MARZO", 0, 1000, 9999999, "07/04/2026", null, null, "N/A", null, null, "EMPRESA_2");
+INSERT INTO products (name, purchase_price, sale_price, stock, description, image, bar_code, location, minimum_stock, code, tenant) VALUES ("ABRIL", 0, 1000, 9999999, "07/05/2026", null, null, "N/A", null, null, "EMPRESA_2");
+INSERT INTO products (name, purchase_price, sale_price, stock, description, image, bar_code, location, minimum_stock, code, tenant) VALUES ("MAYO", 0, 1000, 9999999, "07/06/2026", null, null, "N/A", null, null, "EMPRESA_2");
+INSERT INTO products (name, purchase_price, sale_price, stock, description, image, bar_code, location, minimum_stock, code, tenant) VALUES ("JUNIO", 0, 1000, 9999999, "07/07/2026", null, null, "N/A", null, null, "EMPRESA_2");
+INSERT INTO products (name, purchase_price, sale_price, stock, description, image, bar_code, location, minimum_stock, code, tenant) VALUES ("JULIO", 0, 1000, 9999999, "07/08/2026", null, null, "N/A", null, null, "EMPRESA_2");
+INSERT INTO products (name, purchase_price, sale_price, stock, description, image, bar_code, location, minimum_stock, code, tenant) VALUES ("AGOSTO", 0, 1000, 9999999, "07/09/2026", null, null, "N/A", null, null, "EMPRESA_2");
+INSERT INTO products (name, purchase_price, sale_price, stock, description, image, bar_code, location, minimum_stock, code, tenant) VALUES ("SEPTIEMBRE", 0, 1000, 9999999, "07/10/2026", null, null, "N/A", null, null, "EMPRESA_2");
+INSERT INTO products (name, purchase_price, sale_price, stock, description, image, bar_code, location, minimum_stock, code, tenant) VALUES ("OCTUBRE", 0, 1000, 9999999, "07/11/2026", null, null, "N/A", null, null, "EMPRESA_2");
+INSERT INTO products (name, purchase_price, sale_price, stock, description, image, bar_code, location, minimum_stock, code, tenant) VALUES ("NOVIEMBRE", 0, 1000, 9999999, "07/12/2026", null, null, "N/A", null, null, "EMPRESA_2");
+INSERT INTO products (name, purchase_price, sale_price, stock, description, image, bar_code, location, minimum_stock, code, tenant) VALUES ("DICIEMBRE", 0, 1000, 9999999, "07/01/2027", null, null, "N/A", null, null, "EMPRESA_2");
 
 -- ******* AGRUPACION *******
 INSERT INTO product_groups (name, tenant, aux) VALUES ("DOCTORADO EN CIENCIAS Y TECNOLOGIA V03", "EMPRESA_2", "DCT-E_V03_B");

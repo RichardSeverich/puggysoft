@@ -41,7 +41,7 @@ function CursosTable (props) {
     setIsRequestInProgress(true);
     const username = window.sessionStorage.getItem("username");
     const tenant = window.sessionStorage.getItem("tenant");
-    let saleStatus = enumSaleStatus.DONE;
+    let saleStatus = enumSaleStatus.IN_PROGRESS;
     const bodySale = {
       client: estudianteSelected.username,
       status: saleStatus,
@@ -84,6 +84,16 @@ function CursosTable (props) {
     return <CommonLoading />;
   }
 
+  function fixArrayData(listData) {
+    const newList = listData.map((data) => {
+      return {
+        ...data,
+        image: null,
+      }
+    });
+    return newList;
+  }
+
   return (
     <div>
       <Card>
@@ -99,6 +109,7 @@ function CursosTable (props) {
         handleGetSize={handleGetSize}
         tableArrayCustomRowButtons={tableArrayCustomRowButtons}
         columnsToShow={enumTableColumnsToShow.MEDIUM}
+        fixArrayData={fixArrayData}
       >
       </CursoGenericTable>
     </div>
