@@ -66,13 +66,34 @@ function ReporteDetalladoEncargado(params) {
     });
   }
 
+  async function limitConcurrency(tasks, limit = 5) {
+    const results = [];
+    const executing = [];
+
+    for (const task of tasks) {
+      const p = Promise.resolve().then(() => task());
+      results.push(p);
+
+      if (limit <= tasks.length) {
+        const e = p.then(() => executing.splice(executing.indexOf(e), 1));
+        executing.push(e);
+        if (executing.length >= limit) {
+          await Promise.race(executing);
+        }
+      }
+    }
+
+    return Promise.all(results);
+  }
+
   async function handleGetData (activePage, filterBody, updateArrayData) {
-    const dataTablePromise = estudiantes.map(async (estudiante, index) => {
-      const materiasFinalesPromise = materias.map(async materia => {
+    setBottonSubmit(false);
+    const dataTablePromise = estudiantes.map((estudiante, index) => async () => {
+      const materiasFinalesPromise = materias.map(materia => async () => {
         // obtener notas
         const notas = await handleFilterRequestAsync(`escuela-materias-notas/filter?page=0&size=${pageSize}&materia=${materia.shortName}&contains=true`,{});
         // obtener calificaciones
-        const getCalificaciones = notas.map( nota => {
+        const getCalificaciones = notas.map( nota => async () => {
           return new Promise((resolve) => {
             handleFilterRequest(`escuela-calificaciones/filter?page=0&size=1`,
               {
@@ -94,17 +115,17 @@ function ReporteDetalladoEncargado(params) {
             );
           })
         })
-        const calificaciones = await Promise.all(getCalificaciones)
+        const calificaciones = await limitConcurrency(getCalificaciones, 5)
         // calcular promedio
         const ponderado = calificaciones.reduce((prev, current) => {
           return prev + ((Number(current.porcentaje / 100)) * (Number(current.calificacion) || 0) )
         }, 0);
         return {
           materia: materia.shortName,
-          [materia.shortName]: ponderado
+          [materia.shortName]: Number(ponderado.toFixed(2))
         }
       })
-      const materiasFinales = await Promise.all(materiasFinalesPromise)
+      const materiasFinales = await limitConcurrency(materiasFinalesPromise, 5)
       console.log(materiasFinales)
       let result = {
         num: index,
@@ -118,9 +139,10 @@ function ReporteDetalladoEncargado(params) {
       })
       return result;
     })
-    const estudiantesResponse = await Promise.all(dataTablePromise)
+    const estudiantesResponse = await limitConcurrency(dataTablePromise, 5)
 
     updateArrayData(estudiantesResponse);
+    setBottonSubmit(true);
   }
 
   function handleGetSize (filterBody, setTotalPages) {
