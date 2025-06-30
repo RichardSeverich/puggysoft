@@ -5,7 +5,7 @@ const tableModel = function (materias) {
 
   const labelsMaterias = materias.map((materia) => {
     const palabra = materia.shortName;
-    return palabra.length >= 3 ? palabra.slice(0, 3) : palabra;
+    return palabra.length >= 5 ? palabra.slice(0, 5) : palabra;
   })
 
   const fieldsMaterias = materias.map((materia) => {

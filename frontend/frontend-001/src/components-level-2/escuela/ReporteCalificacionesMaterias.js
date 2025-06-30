@@ -63,6 +63,26 @@ function ReporteCalificacionesMaterias(params) {
     setValidated(handleValidation(templateValidation));
   }
 
+  async function limitConcurrency(tasks, limit = 5) {
+    const results = [];
+    const executing = [];
+
+    for (const task of tasks) {
+      const p = Promise.resolve().then(() => task());
+      results.push(p);
+
+      if (limit <= tasks.length) {
+        const e = p.then(() => executing.splice(executing.indexOf(e), 1));
+        executing.push(e);
+        if (executing.length >= limit) {
+          await Promise.race(executing);
+        }
+      }
+    }
+
+    return Promise.all(results);
+  }
+
   function handleFilterRequestAsync(url, filtros) {
     return new Promise((resolve) => {
       handleFilterRequest(url, filtros, (data) => {
@@ -79,11 +99,11 @@ function ReporteCalificacionesMaterias(params) {
     ])
     let num = 1;
 
-    const dataTablePromise = users.map(async student => {
-      // obtener calificaciones
-      const getCalificaciones = notas.map( nota => {
+    const tasks = users.map(student => async () => {
+      const getCalificaciones = notas.map(nota => {
         return new Promise((resolve) => {
-          handleFilterRequest(`escuela-calificaciones/filter?page=0&size=1`,
+          handleFilterRequest(
+            `escuela-calificaciones/filter?page=0&size=1`,
             {
               estudianteCriteria: student.username,
               estudianteOperator: "TEXT_EQUALS",
@@ -93,21 +113,22 @@ function ReporteCalificacionesMaterias(params) {
               materiaOperator: "TEXT_EQUALS",
               notaCriteria: nota.shortName,
               notaOperator: "TEXT_EQUALS"
-            }, (calificacion) => {
+            },
+            (calificacion) => {
               resolve({
                 ...nota,
                 calificacion: calificacion[0]?.notaValor,
-              })
+              });
             }
           );
-        })
-      })
-      const calificaciones = await Promise.all(getCalificaciones)
-      // calcular promedio
+        });
+      });
+
+      const calificaciones = await Promise.all(getCalificaciones);
       const ponderado = calificaciones.reduce((prev, current) => {
-        return prev + ((Number(current.porcentaje / 100)) * (Number(current.calificacion) || 0) )
+        return prev + ((Number(current.porcentaje) / 100) * (Number(current.calificacion) || 0));
       }, 0);
-      // retornamos los rowData
+
       return {
         num: num++,
         ci: student.dni,
@@ -115,9 +136,13 @@ function ReporteCalificacionesMaterias(params) {
         lastName: student.lastName,
         notaFinal: ponderado,
         username: student.username,
-      }
-    })
-    const dataTable = await Promise.all(dataTablePromise);
+      };
+    });
+
+    // ⚠️ Solo procesamos 5 estudiantes a la vez
+    const dataTable = await limitConcurrency(tasks, 5);
+
+    // const dataTable = await Promise.all(dataTablePromise);
     updateArrayData(dataTable);
   }
 

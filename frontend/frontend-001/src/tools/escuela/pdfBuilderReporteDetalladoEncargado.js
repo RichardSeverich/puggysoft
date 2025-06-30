@@ -59,13 +59,25 @@ const GeneratePdf = async (data) => {
 
   doc.autoTable({
     startY: 74,
-    headStyles: { fillColor: [13, 110, 253] },
+    headStyles: {
+      fillColor: [13, 110, 253],
+      fontSize: 7,
+    },
     bodyStyles: {
-      fontSize: 9,
+      fontSize: 7,
+    },
+    styles: {
+      cellPadding: { top: 1, right: 0.5, bottom: 1, left: 0.5 }
     },
     html: '.table',
     theme: 'grid',
     willDrawCell: function (data) {
+      if (data.section === 'head' && data.column.dataKey > 1) {
+        console.log('entro');
+        console.log(data.cell.text);
+        const text = data.cell.text.join('');
+        data.cell.text = text.length >=3? text.slice(0, 3) : text;
+      }
       if (data.section === 'body' && data.column.dataKey === 5) {
         const raw = data.cell.raw;
         if (raw instanceof HTMLElement) {
@@ -77,6 +89,17 @@ const GeneratePdf = async (data) => {
           }
         }
       }
+      // Alternancia de colores en las filas del body
+      if (data.section === 'body') {
+        if (data.row.index % 2 === 0) {
+            doc.setFillColor(255, 255, 255);  // Color de fondo claro
+        } else {
+            doc.setFillColor(225, 225, 225);  // Color de fondo oscuro
+        }
+
+        // Aplica el fondo de la celda
+        doc.rect(data.cell.x, data.cell.y, data.cell.width, data.cell.height, 'F');
+    }
     },
   })
 
