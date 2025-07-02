@@ -19,7 +19,7 @@ function CuotaPagoTable (props) {
   let path;
   switch (whatSystemIs) {
   case enumSystems.PAGO_UPEA:
-    path = enumPaths.PAGO_UPEA_PROGRAMA_POSTGRADO_CURSO_FORM;
+    path = enumPaths.PAGO_UPEA_COLEGIATURAS_MATRICULAS_FORM;
     tableTitle = i18n.pagoUpea.colegiaturaMatriculaTableTitle;
     break;
   default:
