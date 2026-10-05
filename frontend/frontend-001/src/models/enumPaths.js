@@ -12,6 +12,8 @@ const TENANTS_TABLE_FILTER_BY_ROLE = "/tenants-table-filter-by-role";
 const TENANTS_TABLE_FILTER_EDIT_DELETE = "/tenants-table-filter-edit-delete";
 const TENANTS_TABLE_FILTER_BY_USER = "/tenants-table-filter-by-user";
 const IN_PROGRESS_PAGE = "/in-progress-page";
+const CHATBOT_PAGE = "/chatbot";
+
 // USERS SYSTEM
 const USERS_FORM = "/users-form";
 const USERS_FORM_TENANT = "/users-form-tenant";
@@ -282,6 +284,7 @@ const enumPaths = {
   TENANTS_TABLE_FILTER_EDIT_DELETE,
   TENANTS_TABLE_FILTER_BY_USER,
   IN_PROGRESS_PAGE,
+  CHATBOT_PAGE,
   // USERS SYSTEM
   USERS_FORM,
   USERS_FORM_TENANT,

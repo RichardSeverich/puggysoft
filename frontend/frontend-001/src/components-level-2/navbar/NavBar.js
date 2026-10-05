@@ -19,7 +19,9 @@ import {
   FaStickyNote,
   FaBook,
   FaFolderPlus,
-  FaHouseUser
+  FaHouseUser,
+  FaRobot,
+  FaRocketchat
 } from "react-icons/fa";
 import {
   AiOutlineUserAdd,
@@ -142,6 +144,11 @@ function NavBar () {
     history.push({
       pathname: enumPaths.ROLES_TABLE_SELECTION_FOR_TENANTS
     });
+  };
+
+  // ******* ******* ******* CHATBOT ******* ******* *******
+  const navigateChatbot = () => {
+    history.push(enumPaths.CHATBOT_PAGE);
   };
 
   // ******* ******* ******* USERS SYSTEM ******* ******* *******
@@ -662,6 +669,10 @@ function NavBar () {
   const tenantRoleCrudByTenantLabel = (<><AiOutlineTable /> {i18n.navBar.tenantRoleCrudByTenant}</>);
   const tenantRoleCrudByRoleLabel = (<><AiOutlineTable /> {i18n.navBar.tenantRoleCrudByRole}</>);
 
+  // ******* ******* ******* CHATBOT ******* ******* *******
+  const chatbotLabel = (<><FaRobot /> {i18n.navBar.chatbotAdmin}</>);
+  const chatbotMessageLabel = (<><FaRocketchat /> {i18n.navBar.chatbotMessages}</>);
+
   // ******* ******* ******* USERS SYSTEM ******* ******* *******
   // USERS
   const userAdminLabel = (<><FaUsers /> {i18n.navBar.userAdmin}</>);
@@ -1092,7 +1103,6 @@ function NavBar () {
               <NavDropdown.Item onClick={navigateToUsersRolesStepOne}>{userRoleByUserLabel}</NavDropdown.Item>
               <NavDropdown.Item onClick={navigateToRolesUsersStepOne}>{userRoleByRolLabel}</NavDropdown.Item>
             </NavDropdown>}
-
           {/* ******* ******* ******* SYSTEM PROPERTIES ******* ******* ********/}
           {userRoles.includes(enumRoles.ADMIN) &&
             <NavDropdown title={systemPropertiesAdminLabel}>
@@ -1498,6 +1508,9 @@ function NavBar () {
         </Nav>
         {/* ******* ******* ******* ALL SYSTEM ******* ******* ********/}
         <Nav variant={"puggysoft-nav-config"}>
+          <NavDropdown align="end" title={chatbotLabel}>
+            <NavDropdown.Item onClick={navigateChatbot}>{chatbotMessageLabel}</NavDropdown.Item>
+          </NavDropdown>
           <NavDropdown align="end" title={configAdminLabel}>
             <NavDropdown.Item onClick={navigateToLogout}>{configLogout}</NavDropdown.Item>
             <NavDropdown.Item onClick={navigateThemeForm}>{configTheme}</NavDropdown.Item>

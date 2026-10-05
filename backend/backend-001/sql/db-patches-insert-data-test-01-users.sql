@@ -500,12 +500,15 @@ INSERT INTO tenants (name, short_name, status, description, created_by) VALUES (
 INSERT INTO users_roles (id_user, id_role, created_by, tenant) VALUES
 ((select id from users where username='SysPagosAdmin'), (select id from roles where name='ADMIN_USERS'), "SysAdmin", "ACADEMIA_GENESIS"),
 ((select id from users where username='SysPagosEncargado'), (select id from roles where name='PAGOS_ENCARGADO'), "SysAdmin", "ACADEMIA_GENESIS"),
+((select id from users where username='SysEscuelaEncargado'), (select id from roles where name='SCHOOL_ENCARGADO'), "SysAdmin", "ACADEMIA_GENESIS"),
 ((select id from users where username='SysEstudiante'), (select id from roles where name='ESTUDIANTE'), "SysAdmin", "ACADEMIA_GENESIS");
+
 
 -- USERS - TENANTS
 INSERT INTO tenants_users(username, tenant, created_by) VALUES
 ('SysPagosAdmin', 'ACADEMIA_GENESIS', 'SysAdmin'),
 ('SysPagosEncargado', 'ACADEMIA_GENESIS', 'SysAdmin'),
+('SysEscuelaEncargado', 'ACADEMIA_GENESIS', 'SysAdmin'),
 ('SysEstudiante', 'ACADEMIA_GENESIS', 'SysAdmin');
 
 -- TENANTS - ROLES
@@ -513,4 +516,5 @@ INSERT INTO tenants_roles (role, tenant, created_by) VALUES
 ('ADMIN', 'ACADEMIA_GENESIS', "SysAdmin"),
 ('ADMIN_USERS', 'ACADEMIA_GENESIS', "SysAdmin"),
 ('PAGOS_ENCARGADO', 'ACADEMIA_GENESIS', "admin"),
+('SCHOOL_ENCARGADO', 'ACADEMIA_GENESIS', "admin"),
 ('ESTUDIANTE', 'ACADEMIA_GENESIS', "admin");

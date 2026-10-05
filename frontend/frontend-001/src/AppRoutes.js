@@ -15,6 +15,7 @@ import TenantTableSelectForRolePage from "./components-level-3/system/TenantTabl
 import TenantTableFilterByRolePage from "./components-level-3/system/TenantTableFilterByRolePage";
 import CommonMessageReduxPage from "./components-level-3/system/CommonMessageReduxPage";
 import ThemeFormPage from "./components-level-3/system/ThemeFormPage";
+import ChatbotPage from "./components-level-3/chatbot/ChatbotPage";
 
 // Users System
 import UsersFormPage from "./components-level-3/users/UserFormPage";
@@ -255,6 +256,7 @@ import ReporteCalificacionesMateriasViewEstudiantePage from "./components-level-
 
 // const CursosFormLazyPage = lazy(() => import("./components-level-3/escuela/CursosFormPage"));
 
+
 const AppRoutes = () => (
   <App>
     {/** Here common components */}
@@ -263,6 +265,7 @@ const AppRoutes = () => (
       <Route exact path={enumPaths.DASHBOARD} component={DashboardPage} />
       <Route exact path={enumPaths.IN_PROGRESS_PAGE} component={InProgressPage} />
       <Route exact path={enumPaths.THEME_FORM} component={ThemeFormPage} />
+      <Route exact path={enumPaths.CHATBOT_PAGE} component={ChatbotPage} />
       {/** System Properties */}
       <Route exact path={enumPaths.SYSTEM_PROPERTIES_FORM} component={SystemPropertiesFormPage} />
       <Route exact path={enumPaths.SYSTEM_PROPERTIES_TABLE} component={SystemPropertiesTablePage} />

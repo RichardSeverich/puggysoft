@@ -9,6 +9,7 @@
 5. Install Docker 19.03.8 (Optional)
 6. Install MySQL Shell 8.0.33 ```https://dev.mysql.com/downloads/shell/```
 7. Install DBeaver Community. ```https://dbeaver.io/```
+7. Install and Run Ollama. Check Readme from `documents/README-CHATBOT.md` folder
 
 Note see installers on: https://drive.google.com/drive/folders/1r2BjEkD81jj2xuj9UWdbCxU1tFeCDFN3
 
@@ -40,6 +41,7 @@ password: secret123
 ### Deploy Normal
 
 0. Execute all queries from ```sql folder```.
+ - Execute `db-init-mysqlsh.bat` from command line (Needs: MySQL Shell 8.0.33)
 1. Execute: ```gradlew build```
 2. Configure: ```build/resources/main/application.properties```
 

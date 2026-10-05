@@ -12,6 +12,10 @@ const navBar = {
   tenantRoleCrudByTenant: "Adm. Tenants de roles por Tenant",
   tenantRoleCrudByRole: "Adm. Tenants de roles por Rol",
 
+  // ******* ******* CHATBOT ******* *******
+    chatbotAdmin: "Chatbot",
+    chatbotMessages: "Chatear",
+
   // ******* ******* USERS SYSTEM ******* *******
   // Users
   userAdmin: "Adm. Usuarios",
